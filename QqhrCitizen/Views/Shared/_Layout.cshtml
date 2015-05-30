@@ -1,0 +1,68 @@
+﻿<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title </title>
+    <link href="~/Styles/citizen.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery-1.11.3.min.js"></script>
+    <script src="~/Scripts/citizen.js"></script>
+    @*@RenderSection()*@
+
+</head>
+<body>
+    <div class="header">
+        <div class="container">
+            <a href="#"><img class="logo" src="~/Images/logo.png" /></a>
+            <div class="search">
+                <input type="submit" class="search-btn" value="" />
+                <input type="text" class="search-box" placeholder="搜索" />
+            </div>
+        </div>
+    </div>
+    <div class="nav">
+        <div class="container">
+            <a href="#"><div class="nav-item">首页</div></a>
+            <a href="#" data-toggle="NewsPopMenu"><div class="nav-item">新闻</div></a>
+            <div id="NewsPopMenu" class="pop-menu" style="width: 300px;">
+                <strong>新闻分类</strong>
+                <br />
+                <a href="#">实时热点</a>
+                <a href="#">体育新闻</a>
+                <a href="#">娱乐新闻</a>
+                <a href="#">电子科技</a>
+                <a href="#">军事新闻</a>
+                <a href="#">视频新闻</a>
+                <a href="#">政治新闻</a>
+                <a href="#">其他新闻</a>
+                <br />
+                <br />
+                <strong>新闻分类</strong>
+                <br />
+                <a href="#">实时热点</a>
+                <a href="#">体育新闻</a>
+                <a href="#">娱乐新闻</a>
+                <a href="#">电子科技</a>
+                <a href="#">军事新闻</a>
+                <a href="#">视频新闻</a>
+                <a href="#">政治新闻</a>
+                <a href="#">其他新闻</a>
+            </div>
+            <a href="#" data-toggle="TestPopMenu"><div class="nav-item">首页</div></a>
+            <div id="TestPopMenu" class="pop-menu">
+                <p>123</p>
+            </div>
+            <a href="#"><div class="nav-item">首页</div></a>
+            <a href="#"><div class="nav-item flt-r">登录</div></a>
+            <a href="#"><div class="nav-item flt-r">注册</div></a>
+            <div class="clr"></div>
+        </div>
+    </div>
+    @RenderBody()
+    <div class="footer">
+        <div class="container">
+            <div class="copyright">©2015 齐齐哈尔市广播电视大学 版权所有 由哈尔滨市码锋窝科技有限公司提供技术支持</div>
+        </div>
+    </div>
+</body>
+</html>
