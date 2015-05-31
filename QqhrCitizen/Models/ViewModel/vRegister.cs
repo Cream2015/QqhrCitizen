@@ -17,16 +17,14 @@ namespace QqhrCitizen.Models.ViewModel
         public string Password { get; set; }
 
         [Required]
-        [Display(Name = "密码重复")]
-        [Compare("Password", ErrorMessage = "与密码不一致!")]
-        public string Confirm { get; set; }
-        [Required]
+
         [Display(Name = "真实姓名")]
         public string Realname { get; set; }
 
         [Required]
         [Display(Name = "电子邮箱")]
         public string Email { get; set; }
+        [Required]
 
         [Display(Name = "电话号码")]
         public string Phone { get; set; }

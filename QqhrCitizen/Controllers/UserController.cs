@@ -18,35 +18,34 @@ namespace QqhrCitizen.Controllers
         [HttpPost]
         public ActionResult Register(vRegister model)
         {
-            if (ModelState.IsValid)
+            User user = new User { Username = model.Username, Password = Helper.Encryt.GetMD5(model.Password), Role = Role.User };
+            db.Users.Add(user);
+            int result = db.SaveChanges();
+            if (result > 0)
             {
-                User user1 = new User();
-                user1 = db.Users.Where(u => u.Username == model.Username).SingleOrDefault();
-                if (user1 != null)
-                {
-                    ModelState.AddModelError("", "用户名已有人使用");
-                }
-                else
-                {
-                    User user = new User { Username = model.Username, Password = Helper.Encryt.GetMD5(model.Password), Role = Role.User };
-                    db.Users.Add(user);
-                    int result = db.SaveChanges();
-                    if (result > 0)
-                    {
-                        return RedirectToAction("Login");
-                    }
-                    else
-                    {
-                        ModelState.AddModelError("", "添加用户失败！");
-                    }
-                }
+                return RedirectToAction("Login");
             }
             else
             {
-                ModelState.AddModelError("", "用户名或密码输入不正确");
+                return Message("注册失败，请重新注册");
             }
-            return View(model);
+       
         }
+       
+        public ActionResult CheckName(string username)
+        {
+                User user1 = new User();
+                user1 = db.Users.Where(u => u.Username == username).SingleOrDefault();
+                if (user1 != null)
+                {
+                    return Content("NO");
+                }
+                else
+                {
+                    return Content("OK");
+                }
+        }
+       
 
         public ActionResult Login()
         {
