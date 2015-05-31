@@ -18,7 +18,7 @@ namespace QqhrCitizen.Controllers
         [HttpPost]
         public ActionResult Register(vRegister model)
         {
-            User user = new User { Username = model.Username, Password = Helper.Encryt.GetMD5(model.Password), Role = Role.User };
+            User user = new User { Username = model.Username, Password = Helpers.Encryt.GetMD5(model.Password), Role = Role.User };
             db.Users.Add(user);
             int result = db.SaveChanges();
             if (result > 0)
