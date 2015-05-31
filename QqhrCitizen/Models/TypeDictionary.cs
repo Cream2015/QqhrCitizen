@@ -22,5 +22,12 @@ namespace QqhrCitizen.Models
         //public int UserID { get; set; }
         //public virtual User User { get; set; }
         public bool NeedAuthorize { get; set; }
+
+        /// <summary>
+        ///  输入哪一类
+        /// </summary>
+        public BelongerType Belonger { get; set; }
     }
+
+
 }

@@ -170,6 +170,7 @@
     </Compile>
     <Compile Include="Helpers\HtmlFilter.cs" />
     <Compile Include="Models\Channel.cs" />
+    <Compile Include="Models\Common.cs" />
     <Compile Include="Models\Course.cs" />
     <Compile Include="Models\DB.cs" />
     <Compile Include="Models\EBook.cs" />

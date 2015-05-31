@@ -15,6 +15,7 @@ namespace QqhrCitizen.Controllers
         {
             return View();
         }
+
         [HttpPost]
         public ActionResult Register(vRegister model)
         {
@@ -32,6 +33,7 @@ namespace QqhrCitizen.Controllers
        
         }
        
+        [HttpGet]
         public ActionResult CheckName(string username)
         {
                 User user1 = new User();

@@ -3,35 +3,39 @@
     ViewBag.Title = "用户注册 - 齐齐哈尔市民学习网";
 }
 <script>
+
+    function CheckUsername() {
+        if ($("#Username").val() == "") {
+            CastMsg("用户名不能为空");
+            return false;
+        } else {
+             
+            $.get("/User/CheckName", {
+                Username: $("#Username").val()
+            }, function (data) {
+                if (data == "OK") {
+                    return true;
+                }
+                else return false;
+            });
+        }
+    }
+
     function frmCheck() {
         $("#UsernameInfo").html("");
         $("#ConfirmInfo").html("");
         if (!CheckPassword()) return false;
-        alert(CheckUsername());
+        var result = CheckUsername();
+        alert(result);
         if (!CheckUsername()) return false;
-        alert("sd");
         if ($("#Password").val().length < 4) {
             CastMsg("至少输入4位密码");
             return false;
         }
         return true;
     }
-    function CheckUsername() {
-        if ($("#Username").val() == "") {
-            CastMsg("用户名不能为空");
-            return false;
-        }
-        $.post("/User/CheckName", {
-            Username: $("#Username").val()
-        }, function (data) {
-            if (data == "OK") {
-                return true;
-            }
-            else return false;
-        });
-    }
+   
     function CheckPassword() {
-
         if ($('#Password').val() != $('#Confirm').val()) {
             CastMsg("两次输入密码不一致");
             $("#ConfirmInfo").css("color:red");
