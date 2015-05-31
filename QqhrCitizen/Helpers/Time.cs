@@ -51,7 +51,6 @@ namespace QqhrCitizen.Helper
                     return -sec / 60 / 60 / 24 + "天后";
             }
             return time.ToString("yyyy-MM-dd HH:mm:ss");
-            return time.ToString("yyyy-MM-dd");
         }
 
         public static string ToVagueTimeLength(DateTime time1, DateTime time2)
