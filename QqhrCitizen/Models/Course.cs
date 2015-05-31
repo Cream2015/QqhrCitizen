@@ -30,11 +30,9 @@ namespace QqhrCitizen.Models
         [NotMapped]
         public Authority Authority
         {
-            set { AuthorityAsInt = (int)value; }
+            set { AuthorityAsInt = (int)Authority; }
             get { return (Authority)AuthorityAsInt; }
         }
 
     }
-
-    public enum Authority { User, Admin }
 }

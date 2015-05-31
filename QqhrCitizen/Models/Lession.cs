@@ -21,7 +21,7 @@ namespace QqhrCitizen.Models
         public int CourseID { get; set; }
         public virtual Course Course{ get; set; }
         public DateTime Time { get; set; }
-        public string Remank { get; set; }
+        public string Remark { get; set; }
         public string Path { get; set; }
         //[ForeignKey("User")]
         //public int UserID { get; set; }

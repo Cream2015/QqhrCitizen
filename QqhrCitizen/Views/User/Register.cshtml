@@ -1,23 +1,23 @@
-﻿
+﻿@model 
 @{
     ViewBag.Title = "用户注册 - 齐齐哈尔市民学习网";
 }
-
-
 <div class="container wrap-cont">
     <div class="narrow block">
         <h2>新用户注册</h2>
         <table class="detail-table">
             <tr>
                 <td class="row-title">用户名</td>
-                <td><input type="text" name="Username" class="textbox w-3" /></td>
+                <td><input type="text" name="Username" class="textbox w-3" />
+                    @Html.TextBoxFor(model=>model.Username)
+                </td>
             </tr>
             <tr>
                 <td class="row-title">密码</td>
                 <td><input type="password" name="Password" class="textbox w-3" /></td>
             </tr>
             <tr>
-                <td class="row-title">用户名</td>
+                <td class="row-title">确认密码</td>
                 <td><input type="password" name="Confirm" class="textbox w-3" /></td>
             </tr>
             <tr>

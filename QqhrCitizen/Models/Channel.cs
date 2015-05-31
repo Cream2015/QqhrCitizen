@@ -16,9 +16,19 @@ namespace QqhrCitizen.Models
         [StringLength(100)]
         public string Title { get; set; }
         public string Description { get; set; }
-        public DateTime Authority { get; set; }
+        public DateTime Time { get; set; }
+        
         [ForeignKey("User")]
         public int UserID { get; set; }
         public virtual User User { get; set; }
+        public int AuthorityAsInt { set; get; }
+
+        [NotMapped]
+        public Authority Authority
+        {
+            set { AuthorityAsInt = (int)Authority; }
+            get { return (Authority)AuthorityAsInt; }
+        }
     }
+    public enum Authority { User, Admin }
 }

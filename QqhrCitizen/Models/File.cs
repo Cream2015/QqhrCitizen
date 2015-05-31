@@ -15,6 +15,7 @@ namespace QqhrCitizen.Models
         public int ID { get; set; }
         [StringLength(50)]
         public string FileName { get; set; }
+        public string Path { get; set; }
         public DateTime Time { get; set; }
         [ForeignKey("TypeDictionary")]
         public int FileTypeID { get; set; }

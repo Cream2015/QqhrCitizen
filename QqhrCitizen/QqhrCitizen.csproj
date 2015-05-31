@@ -152,6 +152,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helper\DateHelper.cs" />
+    <Compile Include="Helper\Encryt.cs" />
+    <Compile Include="Helper\Time.cs" />
     <Compile Include="Models\Channel.cs" />
     <Compile Include="Models\Course.cs" />
     <Compile Include="Models\DB.cs" />
@@ -175,6 +178,7 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\User\Register.cshtml" />
     <Content Include="Views\News\News.cshtml" />
+    <Content Include="Views\User\Login.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

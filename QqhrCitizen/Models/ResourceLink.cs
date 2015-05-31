@@ -20,7 +20,7 @@ namespace QqhrCitizen.Models
         [ForeignKey("TypeDictionary")]
         public int LinkTypeID { get; set; }
         public virtual TypeDictionary TypeDictionary { get; set; }
-        public bool isHaveFile { get; set; }
+        public bool IsHaveFile { get; set; }
         [ForeignKey("File")]
         public int FileID { get; set; }
         public virtual File File { get; set; }
