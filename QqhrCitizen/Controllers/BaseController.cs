@@ -32,5 +32,11 @@ namespace QqhrCitizen.Controllers
 
 
         public User CurrentUser { get; set; }
+
+
+        public ActionResult Message(string msg)
+        {
+            return RedirectToAction("Info", "Shared", new { msg = msg });
+        }
 	}
 }
