@@ -1,12 +1,8 @@
-<<<<<<< Updated upstream
 ﻿@model  QqhrCitizen.Models.ViewModel.vRegister
-=======
-﻿
->>>>>>> Stashed changes
 @{
     ViewBag.Title = "用户注册 - 齐齐哈尔市民学习网";
 }
-    <script>
+<script>
     function frmCheck() {
         $("#UsernameInfo").html("");
         $("#ConfirmInfo").html("");
@@ -21,7 +17,7 @@
         return true;
     }
     function CheckUsername() {
-        if ($("#Username").val() =="") {
+        if ($("#Username").val() == "") {
             CastMsg("用户名不能为空");
             return false;
         }
@@ -35,7 +31,7 @@
         });
     }
     function CheckPassword() {
-       
+
         if ($('#Password').val() != $('#Confirm').val()) {
             CastMsg("两次输入密码不一致");
             $("#ConfirmInfo").css("color:red");
@@ -43,10 +39,9 @@
         }
         return true;
     }
-    
-</script>
 
-@using (Html.BeginForm("Register","User", FormMethod.Post, new
+</script>
+@using (Html.BeginForm("Register", "User", FormMethod.Post, new
                     {
                         onsubmit = "return frmCheck();"
                     }))
@@ -61,7 +56,7 @@
                     <tr>
                         <td class="row-title">用户名</td>
                         <td>
-                            @Html.TextBoxFor(model => model.Username, new { @class = "textbox w-3" })<span id="UsernameInfo"  style="color:red"></span>
+                            @Html.TextBoxFor(model => model.Username, new { @class = "textbox w-3" })<span id="UsernameInfo" style="color:red"></span>
                         </td>
                     </tr>
                     <tr>
@@ -72,7 +67,7 @@
                     </tr>
                     <tr>
                         <td class="row-title">确认密码</td>
-                        <td>@Html.Password("Confirm","", new { @class = "textbox w-3" })<span id="ConfirmInfo"></span></td>
+                        <td>@Html.Password("Confirm", "", new { @class = "textbox w-3" })<span id="ConfirmInfo"></span></td>
                     </tr>
                     <tr>
                         <td class="row-title">真实姓名</td>
@@ -92,44 +87,3 @@
         </div>
     </fieldset>
 }
-<<<<<<< Updated upstream
-=======
-<div class="container wrap-cont">
-    <div class="narrow block">
-        <h2>新用户注册</h2>
-        <table class="detail-table">
-            <tr>
-                <td class="row-title">用户名</td>
-                <td><input type="text" name="Username" class="textbox w-3" />
-                   
-                </td>
-            </tr>
-            <tr>
-                <td class="row-title">密码</td>
-                <td><input type="password" name="Password" class="textbox w-3" /></td>
-            </tr>
-            <tr>
-                <td class="row-title">确认密码</td>
-                <td><input type="password" name="Confirm" class="textbox w-3" /></td>
-            </tr>
-            <tr>
-                <td class="row-title">真实姓名</td>
-                <td><input type="text" name="Name" class="textbox w-3" /></td>
-            </tr>
-            <tr>
-                <td class="row-title">电子邮箱</td>
-                <td><input type="text" name="Email" class="textbox w-3" /></td>
-            </tr>
-            <tr>
-                <td class="row-title">电话号码</td>
-                <td><input type="text" name="Phone" class="textbox w-3" /></td>
-            </tr>
-        </table>
-        <p><input type="submit" value="注册" class="button blue" /></p>
-    </div>
-</div>
-    
->>>>>>> Stashed changes
-
-
-

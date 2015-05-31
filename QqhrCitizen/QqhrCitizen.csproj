@@ -195,10 +195,10 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\User\Register.cshtml" />
     <Content Include="Views\News\News.cshtml" />
     <Content Include="Views\User\Login.cshtml" />
     <Content Include="Views\Shared\Info.cshtml" />
+    <Content Include="Views\User\Register.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
