@@ -1,4 +1,5 @@
 ﻿using QqhrCitizen.Models;
+using QqhrCitizen.Models.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,7 +16,7 @@ namespace QqhrCitizen.Controllers
             return View();
         }
         [HttpPost]
-        public ActionResult Register(User model)
+        public ActionResult Register(vRegister model)
         {
             if (ModelState.IsValid)
             {
