@@ -1,0 +1,11 @@
+﻿@{
+    ViewBag.Title = "提示信息";
+}
+
+<div>
+    <div>
+        <h2>提示信息</h2>
+        <blockquote><p>@ViewBag.Message</p></blockquote>
+        <p>@Html.ActionLink("点击返回首页", "Index", "Home", null, null)</p>
+    </div>
+</div>
