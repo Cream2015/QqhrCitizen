@@ -43,20 +43,14 @@ namespace QqhrCitizen.Helper
                 else
                     return -sec / 60 / 60 + "小时后";
             }
-<<<<<<< HEAD
-            else if (Math.Abs(sec) < 60 * 60 * 24 * 1)
-=======
             else if (Math.Abs(sec) < 60 * 60 * 24 * 30)
->>>>>>> origin/master
             {
                 if (sec > 0)
                     return sec / 60 / 60 / 24 + "天前";
                 else
                     return -sec / 60 / 60 / 24 + "天后";
             }
-<<<<<<< HEAD
             return time.ToString("yyyy-MM-dd HH:mm:ss");
-=======
             return time.ToString("yyyy-MM-dd");
         }
 
@@ -119,7 +113,6 @@ namespace QqhrCitizen.Helper
         {
             System.DateTime startTime = TimeZone.CurrentTimeZone.ToLocalTime(new System.DateTime(1970, 1, 1));
             return (int)(Time - startTime).TotalSeconds;
->>>>>>> origin/master
         }
     }
 }

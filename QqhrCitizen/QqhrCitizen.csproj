@@ -153,11 +153,8 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-<<<<<<< HEAD
     <Compile Include="Helper\DateHelper.cs" />
     <Compile Include="Helper\Encryt.cs" />
-=======
->>>>>>> origin/master
     <Compile Include="Helper\Time.cs" />
     <Compile Include="Models\Channel.cs" />
     <Compile Include="Models\Course.cs" />
@@ -182,11 +179,9 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\User\Register.cshtml" />
     <Content Include="Views\News\News.cshtml" />
-<<<<<<< HEAD
     <Content Include="Views\User\Login.cshtml" />
-=======
+
     <Content Include="Views\Shared\Info.cshtml" />
->>>>>>> origin/master
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
