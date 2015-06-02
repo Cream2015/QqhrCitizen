@@ -3,39 +3,35 @@
     ViewBag.Title = "用户注册 - 齐齐哈尔市民学习网";
 }
 <script>
-
+    function frmCheck() {
+        $("#UsernameInfo").html("");
+        $("#ConfirmInfo").html("");
+        if (!CheckUsername()) return false;
+        $.post("/User/CheckName", {
+            Username: $("#Username").val()
+        }, function (data) {
+            if (data == "OK") {
+                return true;
+            }
+            else return false;
+        });
+        if (!CheckPassword()) return false;
+        if (!CheckEmail()) return false;
+        
+        if ($("#Password").val().length < 4 ) {
+            CastMsg("至少输入4位密码");
+            return false;
+        }
+    }
     function CheckUsername() {
         if ($("#Username").val() == "") {
             CastMsg("用户名不能为空");
             return false;
-        } else {
-             
-            $.get("/User/CheckName", {
-                Username: $("#Username").val()
-            }, function (data) {
-                if (data == "OK") {
-                    return true;
-                }
-                else return false;
-            });
-        }
-    }
-
-    function frmCheck() {
-        $("#UsernameInfo").html("");
-        $("#ConfirmInfo").html("");
-        if (!CheckPassword()) return false;
-        var result = CheckUsername();
-        alert(result);
-        if (!CheckUsername()) return false;
-        if ($("#Password").val().length < 4) {
-            CastMsg("至少输入4位密码");
-            return false;
         }
         return true;
     }
-   
     function CheckPassword() {
+
         if ($('#Password').val() != $('#Confirm').val()) {
             CastMsg("两次输入密码不一致");
             $("#ConfirmInfo").css("color:red");
@@ -43,9 +39,23 @@
         }
         return true;
     }
+    function CheckEmail() {
+        if ($("#Email").val() == "") {
+            CastMsg("邮箱不能为空");
+            myreg.focus();
+            return false;
+        } else {
+            var myreg = /^([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+@@([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+\.[a-zA-Z]{2,3}$/;
+
+            if (myreg.test($("#Email").val())) {
+                return true;
+            }
+            return false;
+        }
+    }
 
 </script>
-@using (Html.BeginForm("Register", "User", FormMethod.Post, new
+@using (Html.BeginForm("Login", "User", FormMethod.Post, new
                     {
                         onsubmit = "return frmCheck();"
                     }))
@@ -60,7 +70,7 @@
                     <tr>
                         <td class="row-title">用户名</td>
                         <td>
-                            @Html.TextBoxFor(model => model.Username, new { @class = "textbox w-3" })<span id="UsernameInfo" style="color:red"></span>
+                            @Html.TextBoxFor(model => model.Username, new { @class = "textbox w-3" })<span id="UsernameInfo" style="color : red"></span>
                         </td>
                     </tr>
                     <tr>
@@ -79,7 +89,8 @@
                     </tr>
                     <tr>
                         <td class="row-title">电子邮箱</td>
-                        <td>@Html.TextBoxFor(model => model.Email, new { @class = "textbox w-3" })</td>
+                        <td>@Html.TextBoxFor(model => model.Email, new { @class = "textbox w-3" })<br />
+
                     </tr>
                     <tr>
                         <td class="row-title">电话号码</td>
