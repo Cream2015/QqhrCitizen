@@ -46,16 +46,18 @@
             return false;
         } else {
             var myreg = /^([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+@@([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+\.[a-zA-Z]{2,3}$/;
-
             if (myreg.test($("#Email").val())) {
                 return true;
+            } else {
+                CastMsg("邮箱格式输入错误！");
+                return false;
             }
-            return false;
+           
         }
     }
 
 </script>
-@using (Html.BeginForm("Login", "User", FormMethod.Post, new
+@using (Html.BeginForm("Register", "User", FormMethod.Post, new
                     {
                         onsubmit = "return frmCheck();"
                     }))
