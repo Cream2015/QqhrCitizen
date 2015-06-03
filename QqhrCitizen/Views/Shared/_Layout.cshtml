@@ -1,5 +1,4 @@
 ﻿<html xmlns="http://www.w3.org/1999/xhtml">
-
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,7 +8,6 @@
     <script src="~/Scripts/citizen.js"></script>
     <script src="~/Scripts/qqhrcitizen.base.js"></script>
     @*@RenderSection()*@
-
 </head>
 <body>
     <div class="header">
@@ -54,8 +52,18 @@
                 <p>123</p>
             </div>
             <a href="/Channel"><div class="nav-item">直播</div></a>
-            <a href="/User/Login"><div class="nav-item flt-r">登录</div></a>
-            <a href="/User/Register"><div class="nav-item flt-r">注册</div></a>
+            @{
+                if (User.Identity.IsAuthenticated)
+                {
+                    <a href="/User/Logout"><div class="nav-item flt-r">退出</div></a>
+                    <a href="/User/Show/@ViewBag.CurrentUser.ID"><div class="nav-item flt-r">@ViewBag.CurrentUser.Username</div></a>
+                }
+                else
+                {
+                    <a href="/User/Login"><div class="nav-item flt-r">登录</div></a>
+                    <a href="/User/Register"><div class="nav-item flt-r">注册</div></a>
+                }
+            }
             <div class="clr"></div>
         </div>
     </div>
