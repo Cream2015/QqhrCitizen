@@ -27,6 +27,8 @@ namespace QqhrCitizen.Models
         ///  输入哪一类
         /// </summary>
         public BelongerType Belonger { get; set; }
+
+        public int? FatherID { get; set; }
     }
 
 
