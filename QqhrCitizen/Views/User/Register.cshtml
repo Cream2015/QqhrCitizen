@@ -7,21 +7,26 @@
         $("#UsernameInfo").html("");
         $("#ConfirmInfo").html("");
         if (!CheckUsername()) return false;
-        $.post("/User/CheckName", {
-            Username: $("#Username").val()
-        }, function (data) {
-            if (data == "OK") {
-                return true;
-            }
-            else return false;
-        });
+
+        //$.ajax({
+        //    type: "GET",
+        //    url: "/User/CheckName",
+        //    async: false,
+        //    data: { Username: $("#Username").val() },
+        //    success: function (data) {
+        //        console.log(data);
+        //        if (data == "OK") {
+        //            return true;
+        //        }
+        //        else {
+        //            CastMsg("用户名已经有人使用！");
+        //            return false;
+        //        }
+        //    }
+        //});
+
         if (!CheckPassword()) return false;
         if (!CheckEmail()) return false;
-        
-        if ($("#Password").val().length < 4 ) {
-            CastMsg("至少输入4位密码");
-            return false;
-        }
     }
     function CheckUsername() {
         if ($("#Username").val() == "") {
@@ -31,7 +36,18 @@
         return true;
     }
     function CheckPassword() {
-
+        if($('#Password').val() == ""){
+            CastMsg("密码不能为空！");
+            return false;
+        }
+        if ($('#Confirm').val() == "") {
+            CastMsg("密码重复不能为空！");
+            return false;
+        }
+        if ($("#Password").val().length < 4) {
+            CastMsg("至少输入4位密码");
+            return false;
+        }
         if ($('#Password').val() != $('#Confirm').val()) {
             CastMsg("两次输入密码不一致");
             $("#ConfirmInfo").css("color:red");
@@ -42,7 +58,6 @@
     function CheckEmail() {
         if ($("#Email").val() == "") {
             CastMsg("邮箱不能为空");
-            myreg.focus();
             return false;
         } else {
             var myreg = /^([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+@@([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+\.[a-zA-Z]{2,3}$/;
@@ -52,7 +67,6 @@
                 CastMsg("邮箱格式输入错误！");
                 return false;
             }
-           
         }
     }
 
@@ -63,7 +77,6 @@
                     }))
 {
     @Html.AntiForgeryToken()
-    @Html.ValidationSummary(true)
     <fieldset>
         <div class="container wrap-cont">
             <div class="narrow block">

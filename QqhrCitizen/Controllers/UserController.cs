@@ -45,11 +45,12 @@ namespace QqhrCitizen.Controllers
             return View();
         }
 
+        [HttpGet]
         public ActionResult CheckName(string username)
         {
-            User user1 = new User();
-            user1 = db.Users.Where(u => u.Username == username).SingleOrDefault();
-            if (user1 != null)
+            User user = new User();
+            user = db.Users.Where(u => u.Username == username).SingleOrDefault();
+            if (user != null)
             {
                 return Content("NO");
             }
