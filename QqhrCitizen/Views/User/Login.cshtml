@@ -6,8 +6,6 @@
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    @Html.ValidationSummary(true)
-    <fieldset>
         <div class="container wrap-cont">
             <div class="narrow block">
                 <h2>用户登录</h2>
@@ -31,16 +29,15 @@
                             记住我
                             @Html.EditorFor(model => model.RememberMe, "1")<br />
                             @Html.ValidationMessageFor(model => model.RememberMe)
-                            @*<br />
-                                <span id="ErrorInfo" style="color : red "></span>*@
+                           
                         </td>
                     </tr>
 
                 </table>
                 <p><input type="submit" value="登录" class="button blue" /></p>
+                @Html.ValidationSummary(true)
             </div>
         </div>
-    </fieldset>
 }
 
 
