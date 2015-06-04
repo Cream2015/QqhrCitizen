@@ -1,0 +1,42 @@
+﻿@using QqhrCitizen.Models.ViewModel;
+@model  QqhrCitizen.Models.ViewModel.vLogin
+@{
+    ViewBag.Title = "用户信息 - 齐齐哈尔市民学习网";
+    vUser user = @ViewBag.user as vUser;
+}
+
+<div class="container wrap-cont">
+    <div class="narrow block">
+        <h2>用户信息</h2>
+        <div class="detail-table">
+            <p>
+                图像：<br />
+                @if (user.Picture == null)
+                {
+                    <img src="/Images/userphoto.png" width="100" height="100" style="border-radius:50%;" />
+                }
+                else
+                {
+                    <img src="/User/ShowPicture/@user.ID" width="100" height="100" style="border-radius:50%;" alt="图像" />
+                }
+            </p>
+            
+            <p>用户名：@user.Username</p>
+            <p>年龄:@user.Age</p>
+            <p>电话:@user.Phone</p>
+            <p>性别：@user.Sex</p>
+            <p>邮箱:@user.Email</p>
+            <p>住址:@user.Address</p>
+            <p>生日：@user.Birthday</p>
+            <p>真实姓名:@user.Realname</p>
+            <div>
+            @if (user != null && ViewBag.CurrentUser != null && ViewBag.CurrentUser.Username == user.Username)
+            {
+                <div>
+                    <a href="/User/Edit/@user.ID">修改用户信息</a>
+                </div>
+            }
+            </div>
+        </div>
+    </div>
+</div>
