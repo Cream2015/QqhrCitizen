@@ -19,11 +19,6 @@ namespace QqhrCitizen.Models.ViewModel
         [Display(Name = "新密码")]
         public string PasswordNew { set; get; }
 
-
-        [Display(Name = "新密码重复")]
-        [Compare("PasswordNew", ErrorMessage = "两次输入新密码不一致!")]
-        public string PasswordNew2 { get; set; }
-
         [Display(Name="住址")]
         public string Address { get; set; }
     }

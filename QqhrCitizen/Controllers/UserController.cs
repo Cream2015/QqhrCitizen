@@ -98,18 +98,52 @@ namespace QqhrCitizen.Controllers
         }
         public ActionResult Edit(vUserEdit model)
         {
-            User user = db.Users.Find(model.ID);
-            user.Username = model.Username;
+            User user1 = db.Users.Find(model.ID);
+            ViewBag.user = user1;
+            //user.Password = model.PasswordNew;
             //user.Age = model.Age;
             //user.Sex = model.Sex;
             //user.Phone = model.Phone;
-            user.Address = model.Address;
+            //user.Address = model.Address;
             //user.Birthday = model.Birthday;
             //user.Email = model.Email;
             //user.Picture = model.Picture;
             //user.Realname = model.Realname;
-            db.SaveChanges();
-            return RedirectToAction("Show");
+            
+
+            if (ModelState.IsValid)
+            {
+                 User user = db.Users.Find(model.ID);
+
+                //user.Username = model.Username;
+                //FormsAuthentication.SignOut();
+
+                FormsAuthentication.SetAuthCookie(model.Username, false);
+                
+                if (!string.IsNullOrEmpty(model.Password))
+                {
+                    if (!user.Password.Equals(Helpers.Encryt.GetMD5(model.Password)))
+                    {
+                        ModelState.AddModelError("", "原始密码输入不正确");
+                    }
+                    else
+                    {
+                        user.Password = Helpers.Encryt.GetMD5(model.PasswordNew);
+                        db.SaveChanges();
+                        return RedirectToAction("Show/" + model.ID);
+                    }
+                }
+                else
+                {
+                    db.SaveChanges();
+                    return RedirectToAction("Show/" + model.ID);
+                }
+            }
+            else
+            {
+                ModelState.AddModelError("", "修改的信息输入错误!");
+            }
+            return View(model);
         }
 
          #region 注销
