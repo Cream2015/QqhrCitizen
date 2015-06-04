@@ -69,6 +69,8 @@ namespace QqhrCitizen.Controllers
             }
             return View();
         }
+
+
         [HttpPost]
         public ActionResult Login(vLogin model)
         {
@@ -90,5 +92,22 @@ namespace QqhrCitizen.Controllers
             }
             return View(model);
         }
+
+
+
+        #region 注销
+
+        /// <summary>
+        ///  注销 
+        /// </summary>
+        /// <returns></returns>
+        public ActionResult Logout()
+        {
+            FormsAuthentication.SignOut();
+            return RedirectToAction("Index", "Home");
+        } 
+        #endregion
+
+        
     }
 }
