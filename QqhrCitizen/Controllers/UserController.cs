@@ -109,13 +109,13 @@ namespace QqhrCitizen.Controllers
 
         #region 修改个人西信息
         /// <summary>
-        /// 修改个人西信息
+        /// 修改个人密码信息
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
         [BaseAuth(Roles = "User")]
         [HttpGet]
-        public ActionResult Edit(int id)
+        public ActionResult PwEdit(int id)
         {
             User user = db.Users.Find(id);
             ViewBag.user = user;
@@ -125,14 +125,14 @@ namespace QqhrCitizen.Controllers
 
         #region 修改个人西信息
         /// <summary>
-        /// 修改个人西信息
+        /// 修改个人密码信息
         /// </summary>
         /// <param name="model"></param>
         /// <returns></returns>
         [BaseAuth(Roles = "User")]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(vUserEdit model)
+        public ActionResult PwEdit(vUserPwEdit model)
         {
             User user1 = db.Users.Find(model.ID);
             ViewBag.user = user1;

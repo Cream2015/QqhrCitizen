@@ -191,7 +191,7 @@
     <Compile Include="Models\ViewModel\vRegister.cs" />
     <Compile Include="Helpers\MvcHtmlHelperExt.cs" />
     <Compile Include="Models\ViewModel\vUser.cs" />
-    <Compile Include="Models\ViewModel\vUserEdit.cs" />
+    <Compile Include="Models\ViewModel\vUserPwEdit.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="Helpers\String.cs" />
@@ -209,7 +209,7 @@
     <Content Include="Views\User\Register.cshtml" />
     <Content Include="Views\Admin\Login.cshtml" />
     <Content Include="Views\User\Show.cshtml" />
-    <Content Include="Views\User\Edit.cshtml" />
+    <Content Include="Views\User\PwEdit.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
