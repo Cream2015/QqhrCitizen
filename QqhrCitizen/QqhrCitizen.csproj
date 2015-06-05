@@ -158,11 +158,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\NewsController.cs" />
     <Compile Include="Controllers\SharedController.cs" />
     <Compile Include="Controllers\UserController.cs" />
+    <Compile Include="Filters\BaseAuthAttribute.cs" />
     <Compile Include="Helpers\DateHelper.cs" />
     <Compile Include="Helpers\Encryt.cs" />
     <Compile Include="Global.asax.cs">
@@ -182,6 +184,7 @@
     <Compile Include="Models\ResourceLink.cs" />
     <Compile Include="Models\TypeDictionary.cs" />
     <Compile Include="Models\User.cs" />
+    <Compile Include="Models\ViewModel\vAdminModel.cs" />
     <Compile Include="Models\ViewModel\vLogin.cs" />
     <Compile Include="Models\ViewModel\vRegister.cs" />
     <Compile Include="Helpers\MvcHtmlHelperExt.cs" />
@@ -200,6 +203,7 @@
     <Content Include="Views\User\Login.cshtml" />
     <Content Include="Views\Shared\Info.cshtml" />
     <Content Include="Views\User\Register.cshtml" />
+    <Content Include="Views\Admin\Login.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
