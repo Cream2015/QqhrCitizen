@@ -18,7 +18,7 @@ namespace QqhrCitizen.Filters
             {
                 if (Roles.Contains(user.Role.ToString()))
                 {
-                    base.OnAuthorization(filterContext);
+                    return;
                 }
                 else
                 {

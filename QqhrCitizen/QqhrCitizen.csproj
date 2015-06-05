@@ -153,6 +153,7 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\qqhrcitizen.base.js" />
+    <Content Include="Styles\admin_login.css" />
     <Content Include="Styles\citizen.css" />
     <Content Include="Web.config" />
     <Content Include="Scripts\jquery-1.11.2.min.map" />
