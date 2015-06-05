@@ -6,21 +6,20 @@ using System.Web;
 
 namespace QqhrCitizen.Models.ViewModel
 {
-    public class vRegister
+    public class vUserEdit
     {
+        [Required]
+        public int ID { get; set; }
+
         [Display(Name = "用户名")]
         public string Username { get; set; }
-
-        [Display(Name = "密码")]
+        [Display(Name = "原始密码")]
         public string Password { get; set; }
 
-        [Display(Name = "真实姓名")]
-        public string Realname { get; set; }
+        [Display(Name = "新密码")]
+        public string PasswordNew { set; get; }
 
-        [Display(Name = "电子邮箱")]
-        public string Email { get; set; }
-
-        [Display(Name = "电话号码")]
-        public string Phone { get; set; }
+        [Display(Name="住址")]
+        public string Address { get; set; }
     }
 }

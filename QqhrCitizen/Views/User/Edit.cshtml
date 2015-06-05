@@ -1,0 +1,78 @@
+﻿@model QqhrCitizen.Models.ViewModel.vUserEdit
+@using QqhrCitizen.Models
+@{
+    ViewBag.Title = "修改用户信息 - 齐齐哈尔市民学习网";
+    User user = @ViewBag.user as User;
+}
+<script>
+    function UserEditCheck() {
+        if (!CheckUsername()) return false;
+        if (!CheckPassword()) return false;
+    }
+    function CheckUsername() {
+        if ($("#Username").val() == "") {
+            CastMsg("用户名不能为空");
+            return false;
+        }
+        return true;
+    }
+    function CheckPassword() {
+        if ($("#PasswordNew").val() != "") {
+            if ($("#PasswordNew").val().length < 4) {
+                CastMsg("至少输入4位密码");
+                return false;
+            }
+        }
+        if ($('#PasswordNew').val() != $('#NewPassword').val()) {
+            CastMsg("两次输入密码不一致");
+            $("#ConfirmInfo").css("color:red");
+            return false;
+        }
+        
+        return true;
+    }
+    
+
+</script>
+@using (Html.BeginForm("Edit", "User", FormMethod.Post, new
+                    {
+                        onsubmit = "return UserEditCheck();"
+                    }))
+{
+    @Html.AntiForgeryToken()
+    <fieldset>
+        <div class="container wrap-cont">
+            <div class="narrow block">
+                <h2>修改用户信息</h2>
+                <table class="detail-table">
+                    <tr>
+                        <td class="row-title">用户名</td>
+                        <td>
+                            @user.Username
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="row-title">原始密码</td>
+                        <td>
+                            @Html.PasswordFor(model=>model.Password, new { @class = "textbox w-3" })
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="row-title">新密码</td>
+                        <td>@Html.PasswordFor(model=>model.PasswordNew,  new { @class = "textbox w-3" })
+                    </tr>
+                    <tr>
+                        <td class="row-title">确认新密码</td>
+                        <td>@Html.Password("NewPassword", "", new { @class = "textbox w-3" })</td>
+                    </tr>
+                   
+                </table>
+                <div align="center"><input type="submit" value="保存" class="button blue" /><input type="reset" value="重置" class="button blue "></div>
+                @Html.ValidationSummary(true)
+            </div>
+        </div>
+    </fieldset>
+}
+
+
+

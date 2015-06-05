@@ -133,6 +133,7 @@
     <Content Include="Images\.DS_Store" />
     <Content Include="Images\banner.png" />
     <Content Include="Images\logo.psd" />
+    <Content Include="Images\userphoto.png" />
     <Content Include="Scripts\.DS_Store" />
     <None Include="Scripts\jquery-1.11.2.intellisense.js" />
     <Content Include="Images\bg.jpg" />
@@ -188,6 +189,8 @@
     <Compile Include="Models\ViewModel\vLogin.cs" />
     <Compile Include="Models\ViewModel\vRegister.cs" />
     <Compile Include="Helpers\MvcHtmlHelperExt.cs" />
+    <Compile Include="Models\ViewModel\vUser.cs" />
+    <Compile Include="Models\ViewModel\vUserEdit.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="Helpers\String.cs" />
@@ -203,7 +206,12 @@
     <Content Include="Views\User\Login.cshtml" />
     <Content Include="Views\Shared\Info.cshtml" />
     <Content Include="Views\User\Register.cshtml" />
+<<<<<<< HEAD
     <Content Include="Views\Admin\Login.cshtml" />
+=======
+    <Content Include="Views\User\Show.cshtml" />
+    <Content Include="Views\User\Edit.cshtml" />
+>>>>>>> origin/master
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

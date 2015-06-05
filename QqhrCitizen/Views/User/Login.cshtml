@@ -2,8 +2,31 @@
 @{
     ViewBag.Title = "用户登录 - 齐齐哈尔市民学习网";
 }
-
-@using (Html.BeginForm())
+<script>
+    function LoginCheck() {
+        if (!CheckUsername()) return false;
+        if (!CheckPassword()) return false;
+       
+    }
+    function CheckUsername() {
+            if ($("#Username").val() == "") {
+                CastMsg("用户名不能为空");
+                return false;
+            }
+            return true;
+        }
+    function CheckPassword() {
+        if ($('#Password').val() == "") {
+            CastMsg("密码不能为空！");
+            return false;
+        }
+        return true;
+    }
+</script>
+@using (Html.BeginForm("Login", "User", FormMethod.Post, new
+                    {
+                        onsubmit = "return LoginCheck();"
+                    }))
 {
     @Html.AntiForgeryToken()
         <div class="container wrap-cont">
@@ -14,21 +37,21 @@
                         <td class="row-title">用户名</td>
                         <td>
                             @Html.TextBoxFor(model => model.Username, new { @class = "textbox w-3" })<br>
-                            @Html.ValidationMessageFor(model => model.Username)
+                            
                         </td>
                     </tr>
                     <tr>
                         <td class="row-title">密码</td>
                         <td>
                             @Html.PasswordFor(model => model.Password, new { @class = "textbox w-3" })<br />
-                            @Html.ValidationMessageFor(model => model.Password)
+                           
                         </td>
                     </tr>
                     <tr>
                         <td class="row-title" colspan="2">
                             记住我
                             @Html.EditorFor(model => model.RememberMe, "1")<br />
-                            @Html.ValidationMessageFor(model => model.RememberMe)
+                            
                            
                         </td>
                     </tr>

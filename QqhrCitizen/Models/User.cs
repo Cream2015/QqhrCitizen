@@ -9,11 +9,13 @@ namespace QqhrCitizen.Models
 {
     public class User
     {
+        [Required]
         public int ID { get; set; }
         [StringLength(20)]
         public string Username { get; set; }
         [StringLength(40)]
         public string Password { get; set; }
+        public byte[] Picture { set; get; }
         public int Age { get; set; }
         [StringLength(40)]
         public string Email { get; set; }

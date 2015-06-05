@@ -8,11 +8,9 @@ namespace QqhrCitizen.Models.ViewModel
 {
     public class vLogin
     {
-        [Required]
         [Display(Name = "用户名")]
         public string Username { get; set; }
 
-        [Required]
         [Display(Name = "密码")]
         public string Password { get; set; }
 

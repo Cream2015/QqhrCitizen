@@ -4,29 +4,11 @@
 }
 <script>
     function frmCheck() {
-        $("#UsernameInfo").html("");
-        $("#ConfirmInfo").html("");
         if (!CheckUsername()) return false;
-
-        //$.ajax({
-        //    type: "GET",
-        //    url: "/User/CheckName",
-        //    async: false,
-        //    data: { Username: $("#Username").val() },
-        //    success: function (data) {
-        //        console.log(data);
-        //        if (data == "OK") {
-        //            return true;
-        //        }
-        //        else {
-        //            CastMsg("用户名已经有人使用！");
-        //            return false;
-        //        }
-        //    }
-        //});
-
         if (!CheckPassword()) return false;
+        if (!CheckRealname()) return false;
         if (!CheckEmail()) return false;
+        if (!CheckPhone()) return false;
     }
     function CheckUsername() {
         if ($("#Username").val() == "") {
@@ -59,15 +41,36 @@
         if ($("#Email").val() == "") {
             CastMsg("邮箱不能为空");
             return false;
-        } else {
-            var myreg = /^([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+@@([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+\.[a-zA-Z]{2,3}$/;
-            if (myreg.test($("#Email").val())) {
-                return true;
-            } else {
-                CastMsg("邮箱格式输入错误！");
-                return false;
-            }
         }
+        var myreg = /^([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+@@([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+\.[a-zA-Z]{2,3}$/;
+        if (!myreg.test($("#Email").val())) {
+            CastMsg("邮箱格式输入错误！");
+            return false;
+        }
+            return true;
+   }
+    function CheckRealname() {
+        if ($("#Realname").val() == "") {
+            CastMsg("真实姓名不能为空");
+            return false;
+        }
+        if ($("#Realname").val().length > 10)
+        {
+            CastMsg("真实姓名格式输入错误！");
+            return false;
+        }
+        return true;
+    }
+    function CheckPhone() {
+        if ($("#Phone").val() == "") {
+            CastMsg("电话不能为空");
+            return false;
+        }
+        if ($("#Phone").val().length > 14) {
+            CastMsg("电话格式输入错误！");
+            return false;
+        }
+        return true;
     }
 
 </script>
@@ -85,7 +88,7 @@
                     <tr>
                         <td class="row-title">用户名</td>
                         <td>
-                            @Html.TextBoxFor(model => model.Username, new { @class = "textbox w-3" })<span id="UsernameInfo" style="color : red"></span>
+                            @Html.TextBoxFor(model => model.Username, new { @class = "textbox w-3" })
                         </td>
                     </tr>
                     <tr>
@@ -96,7 +99,7 @@
                     </tr>
                     <tr>
                         <td class="row-title">确认密码</td>
-                        <td>@Html.Password("Confirm", "", new { @class = "textbox w-3" })<span id="ConfirmInfo"></span></td>
+                        <td>@Html.Password("Confirm", "", new { @class = "textbox w-3" })
                     </tr>
                     <tr>
                         <td class="row-title">真实姓名</td>
