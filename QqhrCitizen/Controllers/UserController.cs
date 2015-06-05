@@ -1,4 +1,5 @@
-﻿using QqhrCitizen.Models;
+﻿using QqhrCitizen.Filters;
+using QqhrCitizen.Models;
 using QqhrCitizen.Models.ViewModel;
 using System;
 using System.Collections.Generic;
@@ -13,12 +14,13 @@ namespace QqhrCitizen.Controllers
 {
     public class UserController : BaseController
     {
-        [Filters.BaseAuth(Roles = "User")]
+
         [HttpGet]
         public ActionResult Register()
         {
             return View();
         }
+
         [HttpPost]
         public ActionResult Register(vRegister model)
         {
@@ -46,6 +48,7 @@ namespace QqhrCitizen.Controllers
             }
             return View();
         }
+
         [HttpGet]
         public ActionResult Login()
         {
@@ -159,6 +162,9 @@ namespace QqhrCitizen.Controllers
             return RedirectToAction("Index", "Home");
         } 
         #endregion
+
+
+        [BaseAuth(Roles="User")]
         public ActionResult ShowPicture(int id)
         {
             User user = new User();

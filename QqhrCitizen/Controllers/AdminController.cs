@@ -31,7 +31,6 @@ namespace QqhrCitizen.Controllers
         } 
         #endregion
 
-      
         [HttpPost]
         public ActionResult Login(vAdminModel model)
         {

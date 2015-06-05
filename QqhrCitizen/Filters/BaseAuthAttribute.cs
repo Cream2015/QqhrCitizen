@@ -22,7 +22,14 @@ namespace QqhrCitizen.Filters
                 }
                 else
                 {
-                    filterContext.RequestContext.HttpContext.Response.Redirect("/Admin/Message");
+                    if (Roles.Contains("Admin"))
+                    {
+                        filterContext.RequestContext.HttpContext.Response.Redirect("/Shared/Info?msg=" + "你没有权限查看此页面！");
+                    }
+                    else if (Roles.Contains("User"))
+                    {
+                        filterContext.RequestContext.HttpContext.Response.Redirect("/Shared/Info?msg="+"你没有权限查看此页面！");
+                    }
                 }
             }
             else
