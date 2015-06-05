@@ -206,12 +206,9 @@
     <Content Include="Views\User\Login.cshtml" />
     <Content Include="Views\Shared\Info.cshtml" />
     <Content Include="Views\User\Register.cshtml" />
-<<<<<<< HEAD
     <Content Include="Views\Admin\Login.cshtml" />
-=======
     <Content Include="Views\User\Show.cshtml" />
     <Content Include="Views\User\Edit.cshtml" />
->>>>>>> origin/master
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

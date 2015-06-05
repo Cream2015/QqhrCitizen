@@ -13,6 +13,7 @@ namespace QqhrCitizen.Controllers
 {
     public class UserController : BaseController
     {
+        [Filters.BaseAuth(Roles = "User")]
         [HttpGet]
         public ActionResult Register()
         {

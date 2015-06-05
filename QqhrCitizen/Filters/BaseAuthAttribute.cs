@@ -9,7 +9,8 @@ namespace QqhrCitizen.Filters
 {
     public class BaseAuthAttribute : AuthorizeAttribute
     {
-        protected override bool AuthorizeCore(HttpContextBase httpContext)
+      
+        public override void OnAuthorization(AuthorizationContext filterContext)
         {
             DB db = new DB();
             User user = db.Users.Where(u => u.Username == HttpContext.Current.User.Identity.Name).FirstOrDefault();
@@ -17,16 +18,23 @@ namespace QqhrCitizen.Filters
             {
                 if (Roles.Contains(user.Role.ToString()))
                 {
-                    return true;
+                    base.OnAuthorization(filterContext);
                 }
                 else
                 {
-                    return base.AuthorizeCore(httpContext);
+                    filterContext.RequestContext.HttpContext.Response.Redirect("/Admin/Message");
                 }
             }
-            else 
+            else
             {
-                return base.AuthorizeCore(httpContext);
+                if (Roles.Contains("Admin"))
+                {
+                    filterContext.RequestContext.HttpContext.Response.Redirect("/Admin/Login");
+                }
+                else if (Roles.Contains("User"))
+                {
+                    filterContext.RequestContext.HttpContext.Response.Redirect("/User/Login");
+                }
             }
         }
     }

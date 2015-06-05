@@ -1,4 +1,5 @@
-﻿using QqhrCitizen.Models.ViewModel;
+﻿using QqhrCitizen.Filters;
+using QqhrCitizen.Models.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,6 +12,7 @@ namespace QqhrCitizen.Controllers
     {
 
         // GET: Admin
+        [BaseAuth(Roles = "Admin")]
         public ActionResult Index()
         {
             return View();
@@ -21,7 +23,7 @@ namespace QqhrCitizen.Controllers
         /// 后台管理登陆
         /// </summary>
         /// <returns></returns>
-        [Filters.BaseAuth(Roles = "Admin")]
+       
         [HttpGet]
         public ActionResult Login()
         {
