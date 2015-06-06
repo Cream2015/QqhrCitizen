@@ -34,6 +34,8 @@ namespace QqhrCitizen.Models
             set { SexAsInt = (int)value; }
             get { return (Sex)SexAsInt; }
         }
+       
+        [NotMapped]
         public Role Role
         {
             set { RoleAsInt = (int)value; }

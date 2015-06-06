@@ -153,8 +153,10 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\qqhrcitizen.base.js" />
+    <Content Include="Styles\admin.css" />
     <Content Include="Styles\admin_login.css" />
     <Content Include="Styles\citizen.css" />
+    <Content Include="Styles\common.css" />
     <Content Include="Web.config" />
     <Content Include="Scripts\jquery-1.11.2.min.map" />
   </ItemGroup>
@@ -212,6 +214,7 @@
     <Content Include="Views\User\Show.cshtml" />
     <Content Include="Views\User\PwdEdit.cshtml" />
     <Content Include="Views\User\Edit.cshtml" />
+    <Content Include="Views\Admin\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

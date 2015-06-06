@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace QqhrCitizen.Helper
+namespace QqhrCitizen.Helpers
 {
     public static class Time
     {
