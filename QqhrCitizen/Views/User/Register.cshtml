@@ -9,6 +9,7 @@
         if (!CheckRealname()) return false;
         if (!CheckEmail()) return false;
         if (!CheckPhone()) return false;
+        if (!CheckAddress()) return false;
     }
     function CheckUsername() {
         if ($("#Username").val() == "") {
@@ -72,7 +73,16 @@
         }
         return true;
     }
-
+    function CheckAddress() {
+        if ($("#Address").val() != "") {
+            var myreg = /([^\x00-\xff]|[A-Za-z0-9_])+/;
+            if (!myreg.test($("#Address").val())) {
+                CastMsg("地址格式输入错误！");
+                return false;
+            }
+        }
+        return true;
+    }
 </script>
 @using (Html.BeginForm("Register", "User", FormMethod.Post, new
                     {
@@ -113,6 +123,10 @@
                     <tr>
                         <td class="row-title">电话号码</td>
                         <td>@Html.TextBoxFor(model => model.Phone, new { @class = "textbox w-3" })</td>
+                    </tr>
+                    <tr>
+                        <td class="row-title">家庭住址</td>
+                        <td>@Html.TextAreaFor(model => model.Address, new { @class = "textbox w-3" })</td>
                     </tr>
                 </table>
                 <p><input type="submit" value="注册" class="button blue" /></p>

@@ -1,0 +1,159 @@
+﻿@model QqhrCitizen.Models.ViewModel.vUserEdit
+@using QqhrCitizen.Models.ViewModel
+@{
+    ViewBag.Title = "修改用户信息 - 齐齐哈尔市民学习网";
+    vUserEdit user = @ViewBag.user as vUserEdit;
+}
+<script>
+    function UserEditCheck() {
+        if (!CheckPhone()) return false;
+        if (!CheckAddress()) return false;
+        if (!CheckAge()) return false;
+        if (!CheckEmail()) return false;
+        if (!CheckBirthday()) return false;
+    }
+   
+    function CheckPhone() {
+        if ($("#Phone").val() != "") {
+            if ($("#Phone").val().length > 14 && $("#Phone").val().length < 6) {
+                CastMsg("电话格式不正确");
+                return false;
+            }
+        }
+        return true;
+    }
+    function CheckAge() {
+        if ($("#Age").val() != "") {
+            if ($("#Age").val().length > 4 && $("#Phone").val().length < 0) {
+                CastMsg("年龄格式不正确");
+                return false;
+            }
+        }
+        return true;
+    }
+    function CheckEmail() {
+        if ($("#Email").val() != "") {
+            var myreg = /^([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+@@([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+\.[a-zA-Z]{2,3}$/;
+            if (!myreg.test($("#Email").val())) {
+                CastMsg("邮箱格式输入错误！");
+                return false;
+            }
+        }
+        return true;
+    }
+    function CheckBirthday() {
+        if ($("#Birthday").val() != "") {
+            var str = $("#Birthday").val()
+            var year = Convert.ToInt32(str.Substring(0, 3));
+            var month = Convert.ToInt32(str.Substring(5, 2));
+            var bzh = "";
+            if (year/4==0)
+            {
+                if (!Regex.IsMatch(str, "^[1-2][0-9][0-9][0-9][-](([0][2]))[-](([2][9])|([3][0-1]))$"))
+                {
+                    bzh = "(^[1-2][0-9][0-9][0-9][-](([0][1,3,5,7,8])|([1][0,2]))[-](([0][0-9])|([1-2][0-9])|([3][0-1]))$)|(^[1-2][0-9][0-9][0-9][-](([0][4,6,9])|([1][1]))[-](([0][0-9])|([1-2][0-9])|([3][0]))$)";
+                }
+                else
+                    CastMsg("生日输入错误");
+                    return false;
+                if (Regex.IsMatch(str,bzh))
+                {
+                    return true;
+                }
+                else
+                    CastMsg("生日输入错误");
+                    return false;
+            }
+            if (year / 4 != 0)
+            {
+                if (!Regex.IsMatch(str, "^[1-2][0-9][0-9][0-9][-](([0][2]))[-]([3][0-1])$"))
+                {
+                    bzh = "(^[1-2][0-9][0-9][0-9][-](([0][1,3,5,7,8])|([1][0,2]))[-](([0][0-9])|([1-2][0-9])|([3][0-1]))$)|(^[1-2][0-9][0-9][0-9][-](([0][4,6,9])|([1][1]))[-](([0][0-9])|([1-2][0-9])|([3][0]))$)";
+                }
+                else
+                    CastMsg("生日输入错误");
+                    return false;
+                if (Regex.IsMatch(str, bzh))
+                {
+                    return true;
+                }
+                else
+                    CastMsg("生日输入错误");
+                    return false;
+            }
+           
+            }
+            return true;
+    }
+    function CheckAddress() {
+        if ($("#Address").val() != "") {
+            var myreg = /([^\x00-\xff]|[A-Za-z0-9_])+/;
+            if (!myreg.test($("#Address").val())) {
+                CastMsg("地址格式输入错误！");
+                return false;
+            }
+        }
+        return true;
+    }
+    
+
+</script>
+@using (Html.BeginForm("Edit", "User", FormMethod.Post, new
+                    {
+                        onsubmit = "return UserEditCheck();"
+                    }))
+{
+    @Html.AntiForgeryToken()
+    <fieldset>
+        <div class="container wrap-cont">
+            <div class="narrow block">
+                <h2>修改用户信息</h2>
+                <table class="detail-table">
+                    <tr>
+                        <td class="row-title">用户名</td>
+                        <td>
+                            @user.Username
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="row-title">头像</td>
+                        <td><input type="file" class="textbox w-3" name="file" /></td>
+                    </tr>
+                    <tr>
+                        <td class="row-title">年龄</td>
+                        <td>
+                            @Html.TextBoxFor(model => model.Age, new { @class = "textbox w-3" })
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="row-title">性别</td>
+                        <td>@Html.DropDownListFor(model=>model.Sex,ViewBag.SexList as IEnumerable<SelectListItem>, new { @class = "textbox w-3" })
+                    </tr>
+                    <tr>
+                        <td class="row-title">住址</td>
+                        <td>@Html.TextAreaFor(model=>model.Address, new { @class = "textbox w-3" })</td>
+                    </tr>
+                    <tr>
+                        <td class="row-title">电话</td>
+                        <td>@Html.TextBoxFor(model=>model.Phone, new { @class = "textbox w-3" })</td>
+                    </tr>
+                    <tr>
+                        <td class="row-title">生日</td>
+                        <td>@Html.TextBoxFor(model=>model.Birthday, new { @class = "textbox w-3" })<span style="font:300">格式：yyyy—mm—dd</span></td>
+                    </tr>
+                    <tr>
+                        <td class="row-title">Email</td>
+                        <td>@Html.TextBoxFor(model=>model.Email, new { @class = "textbox w-3" })</td>
+                    </tr>
+                </table>
+                <div align="center"><input type="submit" value="保存" class="button blue" /><input type="reset" value="重置" class="button blue "></div>
+                @Html.ValidationSummary(true)
+            </div>
+        </div>
+    </fieldset>
+}
+
+
+
+
+

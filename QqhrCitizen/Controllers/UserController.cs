@@ -36,7 +36,7 @@ namespace QqhrCitizen.Controllers
             user1 = db.Users.Where(u => u.Username == model.Username).SingleOrDefault();
             if (user1 == null)
             {
-                User user = new User { Username = model.Username, Password = Helpers.Encryt.GetMD5(model.Password), Role = Role.User, Realname = model.Realname, Email = model.Email, Phone = model.Phone };
+                User user = new User { Username = model.Username, Password = Helpers.Encryt.GetMD5(model.Password), Role = Role.User, Realname = model.Realname, Email = model.Email, Phone = model.Phone,Address=model.Address };
                 user.Birthday = Convert.ToDateTime("2012-1-1");
                 db.Users.Add(user);
                 int result = db.SaveChanges();
@@ -90,9 +90,9 @@ namespace QqhrCitizen.Controllers
             return View(model);
         }
 
-        #region show
+        #region Show
         /// <summary>
-        /// show
+        /// Show
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
@@ -106,8 +106,63 @@ namespace QqhrCitizen.Controllers
             return View();
         } 
         #endregion
+        #region 修改个人信息
+        /// <summary>
+        /// 修改个人信息
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        [BaseAuth(Roles = "User")]
+        [HttpGet]
+        public ActionResult Edit(int id)
+        {
+            User user = db.Users.Find(id);
+            ViewBag.user = new vUserEdit(user);
+            List<SelectListItem> ListSex = new List<SelectListItem>();
+            ListSex.Add(new SelectListItem { Text = "男", Value = "0", Selected = false });
+            ListSex.Add(new SelectListItem { Text = "女", Value = "1", Selected = false });
+            ViewBag.SexList = ListSex;
+            return View();
+        }
+        #endregion
 
-        #region 修改个人西信息
+        #region 修改个人信息
+        /// <summary>
+        /// 修改个人信息
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
+        [BaseAuth(Roles = "User")]
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit(vUserEdit model)
+        {
+            
+            if (ModelState.IsValid)
+            {
+                User user1 = db.Users.Find(model.ID);
+                ViewBag.user = user1;
+                user1.Age = model.Age;
+                user1.Sex = model.Sex;
+                user1.Phone = model.Phone;
+                user1.Address = model.Address;
+                user1.Birthday = model.Birthday;
+                user1.Email = model.Email;
+                user1.Picture = model.Picture;
+                user1.Realname = model.Realname;
+                db.SaveChanges();
+                return RedirectToAction("Show/" + model.ID);
+            }
+            else
+            {
+                ModelState.AddModelError("", "修改的信息输入错误!");
+            }
+            return View(model);
+        }
+       #endregion
+
+
+        #region 修改个人密码信息
         /// <summary>
         /// 修改个人密码信息
         /// </summary>
@@ -115,15 +170,16 @@ namespace QqhrCitizen.Controllers
         /// <returns></returns>
         [BaseAuth(Roles = "User")]
         [HttpGet]
-        public ActionResult PwEdit(int id)
+        public ActionResult PwdEdit(int id)
         {
             User user = db.Users.Find(id);
-            ViewBag.user = user;
+            ViewBag.user = new vUserPwdEdit(user);
             return View();
         } 
+
         #endregion
 
-        #region 修改个人西信息
+        #region 修改个人密码信息
         /// <summary>
         /// 修改个人密码信息
         /// </summary>
@@ -132,21 +188,10 @@ namespace QqhrCitizen.Controllers
         [BaseAuth(Roles = "User")]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult PwEdit(vUserPwEdit model)
+        public ActionResult PwdEdit(vUserPwdEdit model)
         {
             User user1 = db.Users.Find(model.ID);
             ViewBag.user = user1;
-            //user.Password = model.PasswordNew;
-            //user.Age = model.Age;
-            //user.Sex = model.Sex;
-            //user.Phone = model.Phone;
-            //user.Address = model.Address;
-            //user.Birthday = model.Birthday;
-            //user.Email = model.Email;
-            //user.Picture = model.Picture;
-            //user.Realname = model.Realname;
-
-
             if (ModelState.IsValid)
             {
                 User user = db.Users.Find(model.ID);

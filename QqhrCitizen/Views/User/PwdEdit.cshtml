@@ -1,20 +1,12 @@
-﻿@model QqhrCitizen.Models.ViewModel.vUserPwEdit
-@using QqhrCitizen.Models
+﻿@model QqhrCitizen.Models.ViewModel.vUserPwdEdit
+@using QqhrCitizen.Models.ViewModel
 @{
-    ViewBag.Title = "修改用户信息 - 齐齐哈尔市民学习网";
-    User user = @ViewBag.user as User;
+    ViewBag.Title = "修改用户密码信息 - 齐齐哈尔市民学习网";
+    vUserPwdEdit user = @ViewBag.user as vUserPwdEdit;
 }
 <script>
-    function UserEditCheck() {
-        if (!CheckUsername()) return false;
+    function UserPwdEditCheck() {
         if (!CheckPassword()) return false;
-    }
-    function CheckUsername() {
-        if ($("#Username").val() == "") {
-            CastMsg("用户名不能为空");
-            return false;
-        }
-        return true;
     }
     function CheckPassword() {
         if ($("#PasswordNew").val() != "") {
@@ -34,9 +26,9 @@
     
 
 </script>
-@using (Html.BeginForm("Edit", "User", FormMethod.Post, new
+@using (Html.BeginForm("PwdEdit", "User", FormMethod.Post, new
                     {
-                        onsubmit = "return UserEditCheck();"
+                        onsubmit = "return UserPwdEditCheck();"
                     }))
 {
     @Html.AntiForgeryToken()

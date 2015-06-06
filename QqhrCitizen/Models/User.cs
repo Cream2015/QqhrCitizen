@@ -40,6 +40,6 @@ namespace QqhrCitizen.Models
             get { return (Role)RoleAsInt; }
         }
     }
-    public enum Sex { male, female }
+    public enum Sex { 女, 男 }
     public enum Role { User, Admin }
 }

@@ -6,7 +6,7 @@ using System.Web;
 
 namespace QqhrCitizen.Models.ViewModel
 {
-    public class vUserPwEdit
+    public class vUserPwdEdit
     {
         [Required]
         public int ID { get; set; }
@@ -18,6 +18,13 @@ namespace QqhrCitizen.Models.ViewModel
 
         [Display(Name = "新密码")]
         public string PasswordNew { set; get; }
+        public vUserPwdEdit() { }
+        public vUserPwdEdit(User user)
+        {
+            this.ID = user.ID;
+            this.Username = user.Username;
+        }
+        
 
     }
 }
