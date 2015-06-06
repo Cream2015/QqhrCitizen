@@ -7,30 +7,19 @@
 <script>
     function UserEditCheck() {
         if (!CheckPhone()) return false;
-        if (!CheckAddress()) return false;
-        //if (!CheckAge()) return false;
         if (!CheckEmail()) return false;
         if (!CheckBirthday()) return false;
     }
 
     function CheckPhone() {
         if ($("#Phone").val() != "") {
-            if ($("#Phone").val().length > 14 && $("#Phone").val().length < 6) {
+            if ($("#Phone").val().length > 14 || $("#Phone").val().length < 6) {
                 CastMsg("电话格式不正确");
                 return false;
             }
         }
         return true;
     }
-    //function CheckAge() {
-    //    if ($("#Age").val() != "") {
-    //        if ($("#Age").val().length > 4 && $("#Phone").val().length < 0) {
-    //            CastMsg("年龄格式不正确");
-    //            return false;
-    //        }
-    //    }
-    //    return true;
-    //}
     function CheckEmail() {
         if ($("#Email").val() != "") {
             var myreg = /^([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+@@([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+\.[a-zA-Z]{2,3}$/;
@@ -77,16 +66,7 @@
             }
         }
     }
-    function CheckAddress() {
-        if ($("#Address").val() != "") {
-            var myreg = /([^\x00-\xff]|[A-Za-z0-9_])+/;
-            if (!myreg.test($("#Address").val())) {
-                CastMsg("地址格式输入错误！");
-                return false;
-            }
-        }
-        return true;
-    }
+  
     $(function () {
         $("#Address").html("@user.Address");
     });
