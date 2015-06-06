@@ -33,6 +33,7 @@
 {
     @Html.AntiForgeryToken()
     <fieldset>
+        @Html.HiddenFor(model => model.ID, new { @value = user.ID })
         <div class="container wrap-cont">
             <div class="narrow block">
                 <h2>修改用户信息</h2>

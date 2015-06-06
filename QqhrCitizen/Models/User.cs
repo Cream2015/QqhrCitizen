@@ -31,15 +31,14 @@ namespace QqhrCitizen.Models
         [NotMapped]
         public Sex Sex
         {
-            set { SexAsInt = (int)Sex; }
+            set { SexAsInt = (int)value; }
             get { return (Sex)SexAsInt; }
         }
         public Role Role
         {
-            set { RoleAsInt = (int)Role; }
+            set { RoleAsInt = (int)value; }
             get { return (Role)RoleAsInt; }
         }
     }
-    public enum Sex { 女, 男 }
-    public enum Role { User, Admin }
+    
 }

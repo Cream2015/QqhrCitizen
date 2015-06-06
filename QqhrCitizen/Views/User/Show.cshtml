@@ -10,7 +10,7 @@
         <h2>用户信息</h2>
         <div class="detail-table">
             <p>
-                图像：<br />
+                <br />
                 @if (user.Picture == null)
                 {
                     <img src="/Images/userphoto.png" width="100" height="100" style="border-radius:50%;" />
@@ -20,22 +20,35 @@
                     <img src="/User/ShowPicture/@user.ID" width="100" height="100" style="border-radius:50%;" alt="图像" />
                 }
             </p>
-            
-            <p>用户名：@user.Username</p>
-            <p>年龄:@user.Age</p>
-            <p>电话:@user.Phone</p>
-            <p>性别：@user.Sex</p>
-            <p>邮箱:@user.Email</p>
-            <p>住址:@user.Address</p>
-            <p>生日：@user.Birthday</p>
-            <p>真实姓名:@user.Realname</p>
-            <div>
-            @if (user != null && ViewBag.CurrentUser != null && ViewBag.CurrentUser.Username == user.Username)
-            {
-                <div>
-                    <a href="/User/Edit/@user.ID">修改用户信息</a>
-                </div>
+            @{
+                var bd = (@user.Birthday).ToString("yyyy-MM-dd");
+                int now = int.Parse(DateTime.Today.ToString("yyyyMMdd"));
+                int dob = int.Parse(@user.Birthday.ToString("yyyyMMdd"));
+                string dif = (now - dob).ToString();
+                var age = "0";
+                if (dif.Length > 4)
+                { 
+                    age = dif.Substring(0, dif.Length - 4);
+                }
             }
+            <div style="margin-left: 20px"><a href="/User/PwdEdit/@user.ID">修改密码</a></div>
+            <div style="margin-left: 150px; margin-top: -150px" >
+                <p>用户名：@user.Username</p>
+                <p>性别：@user.Sex</p>
+                <p>年龄:@age</p>
+                <p>生日：@bd</p>
+                <p>真实姓名:@user.Realname</p>
+                <p>电话:@user.Phone</p>
+                <p>邮箱:@user.Email</p>
+                <p>住址:@user.Address</p>
+                <div>
+                    @if (user != null && ViewBag.CurrentUser != null && ViewBag.CurrentUser.Username == user.Username)
+                    {
+                        <div>
+                            <a href="/User/Edit/@user.ID">修改用户信息</a>
+                        </div>
+                    }
+                </div>
             </div>
         </div>
     </div>

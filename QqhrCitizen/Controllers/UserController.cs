@@ -117,11 +117,12 @@ namespace QqhrCitizen.Controllers
         public ActionResult Edit(int id)
         {
             User user = db.Users.Find(id);
-            ViewBag.user = new vUserEdit(user);
+            ViewBag.user = user;
             List<SelectListItem> ListSex = new List<SelectListItem>();
-            ListSex.Add(new SelectListItem { Text = "男", Value = "0", Selected = false });
-            ListSex.Add(new SelectListItem { Text = "女", Value = "1", Selected = false });
-            ViewBag.SexList = ListSex;
+          
+            ListSex.Add(new SelectListItem { Text = "女", Value = "0", Selected = user.SexAsInt==0?true:false });
+            ListSex.Add(new SelectListItem { Text = "男", Value = "1", Selected = user.SexAsInt == 1 ? true : false });
+            ViewBag.Sex = ListSex;
             return View();
         }
         #endregion
@@ -137,19 +138,20 @@ namespace QqhrCitizen.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit(vUserEdit model)
         {
-            
+            User user = db.Users.Find(model.ID);
             if (ModelState.IsValid)
             {
-                User user1 = db.Users.Find(model.ID);
-                ViewBag.user = user1;
-                user1.Age = model.Age;
-                user1.Sex = model.Sex;
-                user1.Phone = model.Phone;
-                user1.Address = model.Address;
-                user1.Birthday = model.Birthday;
-                user1.Email = model.Email;
-                user1.Picture = model.Picture;
-                user1.Realname = model.Realname;
+                FormsAuthentication.SetAuthCookie(model.Username, false);
+                ViewBag.user = user;
+                user.Username = model.Username;
+                user.Age = model.Age;
+                user.Sex = model.Sex;
+                user.Phone = model.Phone;
+                user.Address = model.Address;
+                user.Birthday = model.Birthday;
+                user.Email = model.Email;
+                user.Picture = model.Picture;
+                user.Realname = model.Realname;
                 db.SaveChanges();
                 return RedirectToAction("Show/" + model.ID);
             }
@@ -157,6 +159,7 @@ namespace QqhrCitizen.Controllers
             {
                 ModelState.AddModelError("", "修改的信息输入错误!");
             }
+            ViewBag.user = user;
             return View(model);
         }
        #endregion
@@ -190,16 +193,10 @@ namespace QqhrCitizen.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult PwdEdit(vUserPwdEdit model)
         {
-            User user1 = db.Users.Find(model.ID);
-            ViewBag.user = user1;
+            User user = db.Users.Find(model.ID);
             if (ModelState.IsValid)
             {
-                User user = db.Users.Find(model.ID);
-
-                //user.Username = model.Username;
-                //FormsAuthentication.SignOut();
-
-                FormsAuthentication.SetAuthCookie(model.Username, false);
+              FormsAuthentication.SetAuthCookie(model.Username, false);
 
                 if (!string.IsNullOrEmpty(model.Password))
                 {
@@ -224,6 +221,7 @@ namespace QqhrCitizen.Controllers
             {
                 ModelState.AddModelError("", "修改的信息输入错误!");
             }
+            ViewBag.user = new vUserPwdEdit(user);
             return View(model);
         } 
         #endregion

@@ -19,10 +19,6 @@ namespace QqhrCitizen.Models.ViewModel
         public DateTime Birthday { get; set; }
         public string Realname { get; set; }
         public Sex Sex { get; set; }
-        public vUserEdit() { }
-        public vUserEdit(User user) {
-            this.ID = user.ID;
-            this.Username = user.Username;
-        }
+       
     }
 }

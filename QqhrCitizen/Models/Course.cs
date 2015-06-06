@@ -30,7 +30,7 @@ namespace QqhrCitizen.Models
         [NotMapped]
         public Authority Authority
         {
-            set { AuthorityAsInt = (int)Authority; }
+            set { AuthorityAsInt = (int)value; }
             get { return (Authority)AuthorityAsInt; }
         }
 

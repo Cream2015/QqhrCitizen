@@ -6,4 +6,7 @@ using System.Web;
 namespace QqhrCitizen.Models
 {
     public enum BelongerType { News,File,ResourceLink,EBook,Course }
+    public enum Authority { User, Admin }
+    public enum Sex { 女, 男 }
+    public enum Role { User, Admin }
 }
