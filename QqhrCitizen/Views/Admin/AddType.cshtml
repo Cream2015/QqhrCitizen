@@ -1,0 +1,59 @@
+﻿
+@{
+    ViewBag.Title = "增加类型";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div>
+    <div class="result-title">
+        <h1>增加类型</h1>
+    </div>
+    
+    <form method="post" action="/Admin/AddType">
+        <table class="detail-table">
+            <tr>
+                <td class="row-title">所属分类</td>
+                <td>
+                    <select name="Belonger" class="textbox" id="lsBelonger">
+                        <option value="">选择所属分类</option>
+                        <option value="News">新闻</option>
+                        <option value="File">文件</option>
+                        <option value="ResourceLink">资源链接</option>
+                        <option value="EBook">电子书</option>
+                        <option value="Course">课程</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td class="row-title">
+                    内容
+                </td>
+                <td>
+                    <input type="text" name="TypeValue" class="textbox" />
+                </td>
+            </tr>
+            <tr>
+                <td class="row-title">
+                    是否需要登陆标记
+                </td>
+                <td>
+                    <select name="NeedAuthorize" class="textbox">
+                        <option value="0">否</option>
+                        <option value="1">是</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td class="row-title">
+                      上级类型
+                </td>
+                <td>
+                    <select name="FatherID" id="lsFatherID" class="textbox">
+                    </select>
+                </td>
+            </tr>
+        </table>
+        <p><input type="submit" value="增加" class="button blue" /></p>
+    </form>
+</div>
+

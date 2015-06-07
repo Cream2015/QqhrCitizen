@@ -215,6 +215,9 @@
     <Content Include="Views\User\PwdEdit.cshtml" />
     <Content Include="Views\User\Edit.cshtml" />
     <Content Include="Views\Admin\Index.cshtml" />
+    <Content Include="Views\Shared\_AdminLayout.cshtml" />
+    <Content Include="Views\Admin\TypeManager.cshtml" />
+    <Content Include="Views\Admin\AddType.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

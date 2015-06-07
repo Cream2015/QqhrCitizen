@@ -8,6 +8,8 @@ $(document).ready(function () {
 		menu.css('left', offset.left + 2);
 		menu.slideDown();
 	});
+
+	
 });
 
 $(document).on('click', function (e) {

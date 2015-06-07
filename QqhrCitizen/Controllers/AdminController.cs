@@ -72,5 +72,30 @@ namespace QqhrCitizen.Controllers
             return RedirectToAction("Admin", "Home");
         }
         #endregion
+
+
+        #region 类型管理
+        /// <summary>
+        /// 类型管理
+        /// </summary>
+        /// <returns></returns>
+        [BaseAuth(Roles = "Admin")]
+        [HttpGet]
+        public ActionResult TypeManager()
+        {
+            return View();
+        }
+        
+        #endregion
+
+        /// <summary>
+        /// 增加类型
+        /// </summary>
+        /// <returns></returns>
+        public ActionResult AddType()
+        {
+            return View();
+        }
+
     }
 }

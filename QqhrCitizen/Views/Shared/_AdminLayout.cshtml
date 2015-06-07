@@ -1,0 +1,86 @@
+﻿@using QqhrCitizen.Models;
+@{
+    User user = ViewBag.Currentuser as User;
+}
+
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>市民学习网 - 后台管理</title>
+    <link href="~/Styles/common.css" rel="stylesheet" />
+    <link href="~/Styles/admin.css" rel="stylesheet" />
+
+    <script src="~/Scripts/jquery-1.11.3.min.js"></script>
+    <script src="~/Scripts/citizen.admin.js"></script>
+</head>
+<body>
+    <div class="topbar-wrap white">
+        <div class="topbar-inner clearfix">
+            <div class="topbar-logo-wrap clearfix">
+                <h1 class="topbar-logo none"><a href="index.html" class="navbar-brand">后台管理</a></h1>
+                <ul class="navbar-list clearfix">
+                    <li><a class="on" href="index.html">首页</a></li>
+                    <li><a href="/Home/Index" target="_blank">网站首页</a></li>
+                </ul>
+            </div>
+            <div class="top-info-wrap">
+                <ul class="top-info-list clearfix">
+                    <li><a href="#">@user.Username</a></li>
+                    <li><a href="#">修改密码</a></li>
+                    <li><a href="/Admin/Logut">退出</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="container clearfix">
+        <div class="sidebar-wrap">
+            <div class="sidebar-title">
+                <h1>菜单</h1>
+            </div>
+            <div class="sidebar-content">
+                <ul class="sidebar-list">
+                    <li>
+                        <a href="#"><i class="icon-font">&#xe003;</i>分类管理</a>
+                        <ul class="sub-menu">
+                            <li><a href="/Admin/TypeManager"><i class="icon-font">&#xe008;</i>分类管理</a></li>
+                            <li><a href="design.html"><i class="icon-font">&#xe005;</i>增加分类</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#"><i class="icon-font">&#xe018;</i>系统管理</a>
+                        <ul class="sub-menu">
+                            <li><a href="system.html"><i class="icon-font">&#xe017;</i>系统设置</a></li>
+                            <li><a href="system.html"><i class="icon-font">&#xe037;</i>清理缓存</a></li>
+                            <li><a href="system.html"><i class="icon-font">&#xe046;</i>数据备份</a></li>
+                            <li><a href="system.html"><i class="icon-font">&#xe045;</i>数据还原</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <!--/sidebar-->
+
+        <div class="main-wrap">
+            <div class="result-wrap">
+                <div class="result-title">
+                    <h1>快捷操作</h1>
+                </div>
+                <div class="result-content">
+                    <div class="short-wrap">
+                        @*<a href="#"><i class="icon-font">&#xe001;</i>新增作品</a>
+                        <a href="#"><i class="icon-font">&#xe005;</i>新增博文</a>
+                        <a href="#"><i class="icon-font">&#xe048;</i>新增作品分类</a>
+                        <a href="#"><i class="icon-font">&#xe041;</i>新增博客分类</a>
+                        <a href="#"><i class="icon-font">&#xe01e;</i>作品评论</a>*@
+                    </div>
+                </div>
+            </div>
+            <div class="result-wrap">
+                @RenderBody()
+            </div>
+        </div>
+        <!--/main-->
+    </div>
+</body>
+</html>
