@@ -88,14 +88,55 @@ namespace QqhrCitizen.Controllers
         
         #endregion
 
+        #region 增加类型
         /// <summary>
         /// 增加类型
         /// </summary>
         /// <returns></returns>
+        [BaseAuth(Roles = "Admin")]
+        [HttpGet]
         public ActionResult AddType()
         {
             return View();
-        }
+        } 
+        #endregion
 
+        #region 增加分类
+        /// <summary>
+        /// 增加分类
+        /// </summary>
+        /// <param name="Belonger"></param>
+        /// <param name="TypeValue"></param>
+        /// <param name="NeedAuthorize"></param>
+        /// <param name="FatherID"></param>
+        /// <returns></returns>
+        [BaseAuth(Roles = "Admin")]
+        [HttpPost]
+        public ActionResult AddType(TypeBelonger Belonger, string TypeValue, int NeedAuthorize, int FatherID)
+        {
+            bool flag =  Convert.ToBoolean(NeedAuthorize);
+            TypeDictionary type = new TypeDictionary { TypeValue = TypeValue, Belonger = Belonger, NeedAuthorize = flag, FatherID = FatherID, Time = DateTime.Now };
+            db.TypeDictionaries.Add(type);
+            db.SaveChanges();
+            return RedirectToAction("TypeManager");
+        } 
+        #endregion
+
+
+        #region 根据模块得到分类
+        /// <summary>
+        /// 根据模块得到分类
+        /// </summary>
+        /// <param name="belonger"></param>
+        /// <returns></returns>
+        [BaseAuth(Roles = "Admin")]
+        [HttpGet]
+        public ActionResult GetTypeByBelonger(TypeBelonger belonger)
+        {
+            List<TypeDictionary> TypeDictionaries = new List<TypeDictionary>();
+            TypeDictionaries = db.TypeDictionaries.Where(td => td.Belonger == belonger).ToList();
+            return Json(TypeDictionaries,JsonRequestBehavior.AllowGet);
+        } 
+        #endregion
     }
 }

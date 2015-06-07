@@ -141,6 +141,7 @@
     <Content Include="Images\logo.png" />
     <Content Include="Images\search.jpg" />
     <Content Include="Images\search_hover.jpg" />
+    <Content Include="Scripts\citizen.admin.js" />
     <Content Include="Scripts\citizen.js" />
     <Content Include="Scripts\jquery-1.11.2.js" />
     <Content Include="Scripts\jquery-1.11.2.min.js" />
