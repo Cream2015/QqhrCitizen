@@ -140,5 +140,23 @@ namespace QqhrCitizen.Controllers
             return Json(TypeDictionaries,JsonRequestBehavior.AllowGet);
         } 
         #endregion
+
+
+        #region 删除分类字典 一条数据
+        /// <summary>
+        /// 删除分类字典一条数据
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        [ValidateSID]
+        [HttpGet]
+        public ActionResult TypeDictionaryDelete(int id)
+        {
+            var TypeDictionary = db.TypeDictionaries.Find(id);
+            db.TypeDictionaries.Remove(TypeDictionary);
+            db.SaveChanges();
+            return RedirectToAction("TypeManager");
+        } 
+        #endregion
     }
 }

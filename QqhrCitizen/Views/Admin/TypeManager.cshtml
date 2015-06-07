@@ -13,7 +13,7 @@
     </div>
     <div class="result-content">
          
-       <table class="detail-table">
+       <table class="table">
            <thead>
                <tr>
                    <th>编号</th>
@@ -33,7 +33,7 @@
                         <td>@item.TypeValue</td>
                         <td>@item.NeedAuthorize</td>
                         <td>@item.Time</td>
-                        <td><a href="javascript:$('#DeleteID').val(@item.ID);">@ViewBag.SID</a></td>
+                        <td><a href="javascript:Delete(@item.ID);">删除</a></td>
                     </tr>
                    }
                }
@@ -43,8 +43,9 @@
     </div>
 </div>
 
-@using (Html.BeginForm("DeleteTypeDictionnary", "Admin", null, FormMethod.Post, new { id = "frmDeleteDictionnary" }))
-{
-    @Html.AntiForgeryToken()
-    <input type="hidden" id="DeleteID" name="id" />
-}
+
+<script>
+    function Delete(id) {
+        window.location = '/Admin/TypeDictionaryDelete/' + id + '?sid=@ViewBag.SID';
+    }
+</script>
