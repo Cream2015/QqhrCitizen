@@ -1,4 +1,6 @@
-﻿
+﻿@using PagedList
+@using PagedList.Mvc 
+@model PagedList<QqhrCitizen.Models.TypeDictionary>
 @{
     ViewBag.Title = "类型管理";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
@@ -9,4 +11,40 @@
     <div class="result-title">
         <h1>类型管理 <a href="/Admin/AddType">增加</a></h1> 
     </div>
+    <div class="result-content">
+         
+       <table class="detail-table">
+           <thead>
+               <tr>
+                   <th>编号</th>
+                   <th>名称</th>
+                   <th>是否是登陆授权</th>
+                   <th>增加时间</th>
+                   <th>操作</th>
+               </tr>
+           </thead>
+           <tbody>
+               @if (Model.Count > 0)
+               {
+                   foreach (var item in Model)
+                   {
+                    <tr>
+                        <td>@item.ID</td>
+                        <td>@item.TypeValue</td>
+                        <td>@item.NeedAuthorize</td>
+                        <td>@item.Time</td>
+                        <td><a href="javascript:$('#DeleteID').val(@item.ID);">content</a></td>
+                    </tr>
+                   }
+               }
+           </tbody>
+       </table>
+       @Html.PagedListPager((IPagedList)Model, page => Url.Action("TypeManager", new { page }))
+    </div>
 </div>
+
+@using (Html.BeginForm("DeleteTypeDictionnary", "Admin", null, FormMethod.Post, new { id = "frmDeleteDictionnary" }))
+{
+    @Html.AntiForgeryToken()
+    <input type="hidden" id="DeleteID" name="id" />
+}

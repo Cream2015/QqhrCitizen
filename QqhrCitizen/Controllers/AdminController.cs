@@ -7,6 +7,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
+using PagedList;
 
 namespace QqhrCitizen.Controllers
 {
@@ -81,9 +82,10 @@ namespace QqhrCitizen.Controllers
         /// <returns></returns>
         [BaseAuth(Roles = "Admin")]
         [HttpGet]
-        public ActionResult TypeManager()
+        public ActionResult TypeManager(int page = 1)
         {
-            return View();
+            var list = db.TypeDictionaries.OrderByDescending(tp => tp.ID).ToPagedList(page, 10);
+            return View(list);
         }
         
         #endregion

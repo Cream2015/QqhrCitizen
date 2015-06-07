@@ -104,6 +104,12 @@
     <Reference Include="System.Web.Services" />
     <Reference Include="System.EnterpriseServices" />
     <Reference Include="System.Xml.Linq" />
+    <Reference Include="X.PagedList">
+      <HintPath>..\packages\X.PagedList.1.22.5.150\lib\portable-net4+sl5+wp8+win8\X.PagedList.dll</HintPath>
+    </Reference>
+    <Reference Include="X.PagedList.Mvc">
+      <HintPath>..\packages\X.PagedList.Mvc.4.8.0.100\lib\net45\X.PagedList.Mvc.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System.Web.Razor">
@@ -158,6 +164,7 @@
     <Content Include="Styles\admin_login.css" />
     <Content Include="Styles\citizen.css" />
     <Content Include="Styles\common.css" />
+    <Content Include="Styles\PagedList.css" />
     <Content Include="Web.config" />
     <Content Include="Scripts\jquery-1.11.2.min.map" />
   </ItemGroup>
@@ -228,6 +235,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Content\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

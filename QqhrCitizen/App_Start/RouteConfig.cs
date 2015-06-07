@@ -18,6 +18,12 @@ namespace QqhrCitizen
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
             );
+
+            routes.MapRoute(
+                name:"Page",
+                url: "{controller}/{action}/{page}",
+                defaults: new { controller = "Home", action = "Index", page = UrlParameter.Optional }   
+                ); 
         }
     }
 }
