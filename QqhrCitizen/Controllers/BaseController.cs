@@ -22,6 +22,8 @@ namespace QqhrCitizen.Controllers
                 ViewBag.CurrentUser = (from u in db.Users
                                        where u.Username == requestContext.HttpContext.User.Identity.Name
                                        select u).Single();
+
+                ViewBag.SID = requestContext.HttpContext.Session["SID"].ToString();
                 CurrentUser = ViewBag.CurrentUser;
             }
             else

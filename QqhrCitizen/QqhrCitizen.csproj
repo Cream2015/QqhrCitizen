@@ -177,6 +177,7 @@
     <Compile Include="Controllers\SharedController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Filters\BaseAuthAttribute.cs" />
+    <Compile Include="Filters\ValidateSIDAttribute.cs" />
     <Compile Include="Helpers\DateHelper.cs" />
     <Compile Include="Helpers\Encryt.cs" />
     <Compile Include="Global.asax.cs">

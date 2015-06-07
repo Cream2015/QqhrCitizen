@@ -14,5 +14,12 @@ namespace QqhrCitizen
             AreaRegistration.RegisterAllAreas();
             RouteConfig.RegisterRoutes(RouteTable.Routes);
         }
+
+        protected void Session_Start(object sender, EventArgs e)
+        {
+            Session["sid"] = Helpers.String.RandomString(64);
+        }
+
+
     }
 }
