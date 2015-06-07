@@ -1,0 +1,32 @@
+﻿@model QqhrCitizen.Models.TypeDictionary
+@{
+    ViewBag.Title = "TypeDictionaryEdit";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div>
+    <div class="result-title">
+        <h1>类型管理 <a href="/Admin/AddType">增加</a></h1>
+    </div>
+    <div class="result-content">
+      @using (Html.BeginForm("Admin", "TypeDictionaryEdit",new { id = Model.ID }, FormMethod.Post, new { id = "frmTypeDictionaryEdit" }))
+      {
+          @Html.AntiForgerySID()
+        <table>
+            <tr>
+                <td class="row-title">所属类别</td>
+                <td>
+                    <select name="Belonger">
+                        <option value="News" @Model.Belonger.ToString()= ="News" ?"select":"">新闻</option>
+                        <option value="File">文件</option>
+                        <option value="ResourceLink">资源链接</option>
+                        <option value="EBook">电子书</option>
+                        <option value="Course">课程</option>
+                    </select>
+                </td>
+            </tr>
+        </table>
+      }
+      
+    </div>
+</div>

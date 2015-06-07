@@ -1,10 +1,11 @@
-﻿using System;
+﻿using QqhrCitizen.Helpers;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace QqhrCitizen.Helpers
+namespace System.Web.Mvc
 {
     public static class MvcHtmlHelperExt
     {
@@ -12,6 +13,11 @@ namespace QqhrCitizen.Helpers
         {
             if (html == null) return new MvcHtmlString("");
             return new MvcHtmlString(HtmlFilter.Instance.SanitizeHtml(html));
+        }
+
+        public static MvcHtmlString AntiForgerySID<TModel>(this HtmlHelper<TModel> self)
+        {
+            return new MvcHtmlString("<input type=\"hidden\" name=\"sid\" value=\"" + self.ViewBag.SID + "\" />");
         }
     }
 }

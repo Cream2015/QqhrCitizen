@@ -158,5 +158,17 @@ namespace QqhrCitizen.Controllers
             return RedirectToAction("TypeManager");
         } 
         #endregion
+
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public ActionResult TypeDictionaryEdit(int id)
+        {
+           var TypeDictionary = db.TypeDictionaries.Find(id);
+           return View(TypeDictionary);
+        }
     }
 }

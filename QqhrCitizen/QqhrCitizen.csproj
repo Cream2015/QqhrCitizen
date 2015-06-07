@@ -227,6 +227,7 @@
     <Content Include="Views\Shared\_AdminLayout.cshtml" />
     <Content Include="Views\Admin\TypeManager.cshtml" />
     <Content Include="Views\Admin\AddType.cshtml" />
+    <Content Include="Views\Admin\TypeDictionaryEdit.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
