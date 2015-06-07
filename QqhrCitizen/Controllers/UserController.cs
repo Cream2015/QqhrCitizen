@@ -96,7 +96,7 @@ namespace QqhrCitizen.Controllers
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        [BaseAuth(Roles = "User")]
+        [BaseAuth(Roles = "User,Admin")]
         [HttpGet]
         public ActionResult Show(int id)
         {
@@ -112,7 +112,7 @@ namespace QqhrCitizen.Controllers
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        [BaseAuth(Roles = "User")]
+        [BaseAuth(Roles = "User,Admin")]
         [HttpGet]
         public ActionResult Edit(int id)
         {
@@ -133,7 +133,7 @@ namespace QqhrCitizen.Controllers
         /// </summary>
         /// <param name="model"></param>
         /// <returns></returns>
-        [BaseAuth(Roles = "User")]
+        [BaseAuth(Roles = "User,Admin")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(vUserEdit model)
@@ -171,7 +171,7 @@ namespace QqhrCitizen.Controllers
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        [BaseAuth(Roles = "User")]
+        [BaseAuth(Roles = "User,Admin")]
         [HttpGet]
         public ActionResult PwdEdit(int id)
         {

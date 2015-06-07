@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
 
 namespace QqhrCitizen.Filters
 {
-    public class ValidateSIDAttribute:BaseAuthAttribute
+    public class ValidateSIDAttribute:AuthorizeAttribute
     {
         protected override bool AuthorizeCore(HttpContextBase httpContext)
         {
@@ -18,6 +19,11 @@ namespace QqhrCitizen.Filters
                 return false;
         }
 
+
+        protected override void HandleUnauthorizedRequest(AuthorizationContext filterContext)
+        {
+            filterContext.Result = new RedirectResult("/Shared/AccessDenied");
+        }
 
     }
 }

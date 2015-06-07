@@ -44,11 +44,5 @@ namespace QqhrCitizen.Filters
                 }
             }
         }
-
-
-        protected override void HandleUnauthorizedRequest(AuthorizationContext filterContext)
-        {
-            filterContext.Result = new RedirectResult("/Shared/AccessDenied");
-        }
     }
 }
