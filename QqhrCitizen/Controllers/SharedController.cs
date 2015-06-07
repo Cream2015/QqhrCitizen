@@ -14,5 +14,17 @@ namespace QqhrCitizen.Controllers
             ViewBag.Message = msg;
             return View();
         }
+
+
+        #region MyRegion
+        /// <summary>
+        /// 访问受限时跳转
+        /// </summary>
+        /// <returns></returns>
+        public ActionResult AccessDenied()
+        {
+            return Message("您没有权限执行本操作！");
+        } 
+        #endregion
     }
 }
