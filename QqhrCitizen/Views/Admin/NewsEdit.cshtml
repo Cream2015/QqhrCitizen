@@ -1,8 +1,8 @@
 ﻿@using QqhrCitizen.Models
 @{
-    ViewBag.Title = "新闻修改";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
     News news = ViewBag.News as News;
+    ViewBag.Title = news.Title;
 }
 
 <div>

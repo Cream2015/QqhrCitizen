@@ -332,5 +332,20 @@ namespace QqhrCitizen.Controllers
             return RedirectToAction("NewsManager"); 
         } 
         #endregion
+
+        #region 新闻详细信息
+        /// <summary>
+        ///  新闻详细信息
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public ActionResult NewsShow(int id)
+        {
+            News news = new News();
+            news = db.News.Find(id);
+            ViewBag.News = news;
+            return View();
+        } 
+        #endregion
     }
 }

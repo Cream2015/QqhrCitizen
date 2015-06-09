@@ -1,0 +1,56 @@
+﻿@using QqhrCitizen.Models
+@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    News news = ViewBag.News as News;
+    ViewBag.Title = news.Title;
+}
+
+<h2>新闻详细  <a href="/Admin/NewsEdit/@news.ID">修改</a></h2>
+
+<table class="detail-table">
+    <tr>
+        <td class="row-title">一级分类</td>
+        <td>
+           @news.TypeDictionary.Belonger
+        </td>
+    </tr>
+    <tr>
+        <td class="row-title">二级分类</td>
+        <td>
+            @news.TypeDictionary.TypeValue
+        </td>
+    </tr>
+    <tr>
+        <td class="row-title">标题</td>
+        <td>
+            @news.Title
+        </td>
+    </tr>
+    <tr>
+        <td class="row-title">
+            内容
+        </td>
+        <td>
+            @news.Content
+        </td>
+    </tr>
+    <tr>
+        <td class="row-title">
+            时间
+        </td>
+        <td>
+            @news.Time
+        </td>
+    </tr>
+    <tr>
+        <td class="row-title">
+            操作员
+        </td>
+        <td>
+            @news.User.Username
+        </td>
+    </tr>
+</table>
+
+
+
