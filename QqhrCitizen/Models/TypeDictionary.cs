@@ -33,7 +33,9 @@ namespace QqhrCitizen.Models
         /// </summary>
         public TypeBelonger Belonger { get; set; }
 
+        
         public int? FatherID { get; set; }
+ 
     }
 
 

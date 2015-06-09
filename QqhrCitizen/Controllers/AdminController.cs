@@ -160,15 +160,44 @@ namespace QqhrCitizen.Controllers
         #endregion
 
 
+        #region MyReg修改类型字典ion
+
         /// <summary>
-        ///  
+        ///   修改类型字典
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
+        [HttpGet]
+        [BaseAuth(Roles="Admin")]
         public ActionResult TypeDictionaryEdit(int id)
         {
-           var TypeDictionary = db.TypeDictionaries.Find(id);
-           return View(TypeDictionary);
-        }
+            var TypeDictionary = db.TypeDictionaries.Find(id);
+            return View(TypeDictionary);
+        } 
+        #endregion
+
+
+        #region 执行修改类型字典
+        /// <summary>
+        /// 执行修改类型字典
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="modle"></param>
+        /// <returns></returns>
+        [HttpPost]
+        [ValidateSID]
+        [BaseAuth(Roles = "Admin")]
+        public ActionResult TypeDictionaryEdit(int id, TypeDictionary model)
+        {
+            var TypeDictionary = new TypeDictionary();
+            TypeDictionary = db.TypeDictionaries.Find(id);
+            TypeDictionary.Belonger = model.Belonger;
+            TypeDictionary.TypeValue = model.TypeValue;
+            TypeDictionary.FatherID = model.FatherID;
+            TypeDictionary.NeedAuthorize = model.NeedAuthorize;
+            db.SaveChanges();
+            return RedirectToAction("TypeManager");
+        } 
+        #endregion
     }
 }

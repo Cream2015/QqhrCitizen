@@ -24,28 +24,17 @@
             <a href="/Home/Index"><div class="nav-item">首页</div></a>
             <a href="#" data-toggle="NewsPopMenu"><div class="nav-item">新闻</div></a>
             <div id="NewsPopMenu" class="pop-menu" style="width: 300px;">
-                <strong>新闻分类</strong>
-                <br />
-                <a href="#">实时热点</a>
-                <a href="#">体育新闻</a>
-                <a href="#">娱乐新闻</a>
-                <a href="#">电子科技</a>
-                <a href="#">军事新闻</a>
-                <a href="#">视频新闻</a>
-                <a href="#">政治新闻</a>
-                <a href="#">其他新闻</a>
-                <br />
-                <br />
-                <strong>新闻分类</strong>
-                <br />
-                <a href="#">实时热点</a>
-                <a href="#">体育新闻</a>
-                <a href="#">娱乐新闻</a>
-                <a href="#">电子科技</a>
-                <a href="#">军事新闻</a>
-                <a href="#">视频新闻</a>
-                <a href="#">政治新闻</a>
-                <a href="#">其他新闻</a>
+                @foreach (var item in ViewBag.NewsTypes)
+                {
+                    <strong>@item.TypeValue</strong>
+                    <br />
+                    foreach (var _item in item.Children)
+                    { 
+                      <a href="">@_item.TypeValue</a>
+                    }
+                    <br />
+                    <br />
+                }
             </div>
             <a href="#" data-toggle="TestPopMenu"><div class="nav-item">课程</div></a>
             <div id="TestPopMenu" class="pop-menu">

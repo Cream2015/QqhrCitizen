@@ -9,24 +9,53 @@
         <h1>类型管理 <a href="/Admin/AddType">增加</a></h1>
     </div>
     <div class="result-content">
-      @using (Html.BeginForm("Admin", "TypeDictionaryEdit",new { id = Model.ID }, FormMethod.Post, new { id = "frmTypeDictionaryEdit" }))
-      {
-          @Html.AntiForgerySID()
-        <table>
-            <tr>
-                <td class="row-title">所属类别</td>
-                <td>
-                    <select name="Belonger">
-                        <option value="News" @Model.Belonger.ToString()= ="News" ?"select":"">新闻</option>
-                        <option value="File">文件</option>
-                        <option value="ResourceLink">资源链接</option>
-                        <option value="EBook">电子书</option>
-                        <option value="Course">课程</option>
-                    </select>
-                </td>
-            </tr>
-        </table>
-      }
-      
+        @using (Html.BeginForm("TypeDictionaryEdit", "Admin", new { id = Model.ID }, FormMethod.Post, new { id = "frmTypeDictionaryEdit" }))
+        {
+            @Html.AntiForgerySID()
+            <table>
+                <tr>
+                    <td class="row-title">所属类别</td>
+                    <td>
+                        <select name="Belonger" id="lsBelonger">
+                            <option value="News" @Model.Belonger.ToString()= ="News" ?"select":"">新闻</option>
+                            <option value="File">文件</option>
+                            <option value="ResourceLink">资源链接</option>
+                            <option value="EBook">电子书</option>
+                            <option value="Course">课程</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="row-title">
+                        内容
+                    </td>
+                    <td>
+                        <input type="text" name="TypeValue" class="textbox"  value="@Model.TypeValue" />
+                    </td>
+                </tr>
+                <tr>
+                    <td class="row-title">
+                        是否需要登陆标记
+                    </td>
+                    <td>
+                        <select name="NeedAuthorize" class="textbox">
+                            <option value="false"  @(Model.NeedAuthorize?"selected":"")>否</option>
+                            <option value="true" @(Model.NeedAuthorize ? "selected" : "")>是</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="row-title">
+                        上级类型
+                    </td>
+                    <td>
+                        <select name="FatherID" id="lsFatherID" class="textbox">
+                        </select>
+                    </td>
+                </tr>
+            </table>
+         <p><input type="submit" value="保存" class="button blue" /></p>
+        }
+
     </div>
 </div>

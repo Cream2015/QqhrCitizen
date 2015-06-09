@@ -1,4 +1,5 @@
 ﻿using QqhrCitizen.Models;
+using QqhrCitizen.Models.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,7 +17,14 @@ namespace QqhrCitizen.Controllers
         protected override void Initialize(System.Web.Routing.RequestContext requestContext)
         {
             base.Initialize(requestContext);
-
+            List<TypeDictionary> newsTypes = new List<TypeDictionary>();
+            List<vTypeDictionary> _newsTypes = new List<vTypeDictionary>();
+            newsTypes = db.TypeDictionaries.Where(td => td.FatherID == 0 && td.Belonger == TypeBelonger.News).ToList();
+            foreach (var type in newsTypes)
+            {
+                _newsTypes.Add(new vTypeDictionary(type));
+            }
+            ViewBag.NewsTypes = _newsTypes;
             if (requestContext.HttpContext.User != null && requestContext.HttpContext.User.Identity.IsAuthenticated)
             {
                 ViewBag.CurrentUser = (from u in db.Users

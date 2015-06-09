@@ -201,6 +201,7 @@
     <Compile Include="Models\ViewModel\vLogin.cs" />
     <Compile Include="Models\ViewModel\vRegister.cs" />
     <Compile Include="Helpers\MvcHtmlHelperExt.cs" />
+    <Compile Include="Models\ViewModel\vTypeDictionary.cs" />
     <Compile Include="Models\ViewModel\vUser.cs" />
     <Compile Include="Models\ViewModel\vUserEdit.cs" />
     <Compile Include="Models\ViewModel\vUserPwdEdit.cs" />

@@ -19,6 +19,7 @@
                     <td>编号</td>
                     <td>名称</td>
                     <td>是否是登陆授权</td>
+                    <td>所属类别</td>
                     <td>增加时间</td>
                     <td>操作</td>
                 </tr>
@@ -31,7 +32,8 @@
                         <tr>
                             <td>@item.ID</td>
                             <td>@item.TypeValue</td>
-                            <td>@item.NeedAuthorize</td>
+                            <td>@(item.NeedAuthorize?"是":"否")</td>
+                            <td>@item.Belonger</td>
                             <td>@item.Time</td>
                             <td>
                                 <a href="javascript:Delete(@item.ID);">删除</a>
