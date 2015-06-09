@@ -15,7 +15,7 @@
             <tr>
                 <td class="row-title">一级分类</td>
                 <td>
-                    <select name="oneType" class="textbox" id="lsOneType">
+                    <select name="oneType" class="textbox w-0-8"  id="lsOneType">
                         <option value="0">选择分类</option>
                         @foreach (var item in ViewBag.Types)
                         {
@@ -27,13 +27,13 @@
             <tr>
                 <td class="row-title">二级分类</td>
                 <td>
-                    <select name="NewsTypeID" class="textbox" id="lsSecondType"></select>
+                    <select name="NewsTypeID" class="textbox w-0-8" id="lsSecondType"></select>
                 </td>
             </tr>
             <tr>
                 <td class="row-title">标题</td>
                 <td>
-                    <input class="textbox" name="Title" />
+                    <input class="textbox w-3" name="Title" />
                 </td>
             </tr>
             <tr>
@@ -45,6 +45,7 @@
                 </td>
             </tr>
         </table>
+        
         <p><input type="submit" value="增加" class="button blue" /></p>
     }
 </div>

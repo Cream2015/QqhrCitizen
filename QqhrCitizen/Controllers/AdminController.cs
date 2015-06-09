@@ -136,7 +136,7 @@ namespace QqhrCitizen.Controllers
         public ActionResult GetTypeByBelonger(TypeBelonger belonger)
         {
             List<TypeDictionary> TypeDictionaries = new List<TypeDictionary>();
-            TypeDictionaries = db.TypeDictionaries.Where(td => td.Belonger == belonger).ToList();
+            TypeDictionaries = db.TypeDictionaries.Where(td => td.Belonger == belonger && td.FatherID==0).ToList();
             return Json(TypeDictionaries,JsonRequestBehavior.AllowGet);
         } 
         #endregion
@@ -288,14 +288,49 @@ namespace QqhrCitizen.Controllers
         #endregion
 
 
+        #region 新闻修改
         /// <summary>
         /// 新闻修改
         /// </summary>
         /// <returns></returns>
-        public ActionResult NewsEdit()
+        [HttpGet]
+        [BaseAuth(Roles = "Admin")]
+        public ActionResult NewsEdit(int id)
         {
-            return View();
-        }
+            News news = new News();
+            List<TypeDictionary> newsTypes = new List<TypeDictionary>();
+            news = db.News.Find(id);
+            newsTypes = db.TypeDictionaries.Where(td => td.FatherID == 0 && td.Belonger == TypeBelonger.News).ToList();
 
+            var second = new List<TypeDictionary>();
+            second = db.TypeDictionaries.Where(td => td.FatherID == news.TypeDictionary.FatherID).ToList();
+
+            ViewBag.Second = second;
+            ViewBag.News = news;
+            ViewBag.Types = newsTypes;
+            return View();
+        } 
+        #endregion
+
+
+        #region 执行修改新闻
+        /// <summary>
+        /// 执行修改新闻
+        /// </summary>
+        /// <returns></returns>
+        [HttpPost]
+        [ValidateSID]
+        [BaseAuth(Roles = "Admin")]
+        public ActionResult NewsEdit(News model)
+        {
+            News news = new News();
+            news = db.News.Find(model.ID);
+            news.NewsTypeID = model.NewsTypeID;
+            news.Title = model.Title;
+            news.Content = model.Content;
+            db.SaveChanges();
+            return RedirectToAction("NewsManager"); 
+        } 
+        #endregion
     }
 }

@@ -1,0 +1,60 @@
+﻿@using QqhrCitizen.Models
+@{
+    ViewBag.Title = "新闻修改";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    News news = ViewBag.News as News;
+}
+
+<div>
+    <div class="result-title">
+        <h1>新闻修改</h1>
+    </div>
+    @using (Html.BeginForm("NewsEdit", "Admin", FormMethod.Post))
+    {
+        @Html.AntiForgerySID()
+        <input value="@news.ID" type="hidden" name="ID" />
+        <table class="detail-table">
+            <tr>
+                <td class="row-title">一级分类</td>
+                <td>
+                    <select name="oneType" class="textbox w-0-8" id="lsOneType">
+                        <option value="0">选择分类</option>
+                        @foreach (var item in ViewBag.Types)
+                        {
+                            <option value="@item.ID" @(news.TypeDictionary.FatherID==item.ID?"selected":"")>@item.TypeValue</option>
+                        }
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td class="row-title">二级分类</td>
+                <td>
+                    <select name="NewsTypeID" class="textbox w-0-8" id="lsSecondType">
+                        @foreach (var item in ViewBag.Second)
+                        {
+                            <option value="@item.ID" @(news.TypeDictionary.ID == item.ID ? "selected" : "")>@item.TypeValue</option>
+                        }
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td class="row-title">标题</td>
+                <td>
+                    <input class="textbox w-3" name="Title" value="@news.Title"  />
+                </td>
+            </tr>
+            <tr>
+                <td class="row-title">
+                    内容
+                </td>
+                <td>
+                    <textarea class="textbox" style="height:100px;" name="Content">@news.Content</textarea>
+                </td>
+            </tr>
+        </table>
+
+        <p><input type="submit" value="保存" class="button blue" /></p>
+    }
+</div>
+
+

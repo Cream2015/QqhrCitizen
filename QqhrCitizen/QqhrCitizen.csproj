@@ -234,6 +234,7 @@
     <Content Include="Views\Admin\TypeDictionaryEdit.cshtml" />
     <Content Include="Views\Admin\NewsManager.cshtml" />
     <Content Include="Views\Admin\AddNews.cshtml" />
+    <Content Include="Views\Admin\NewsEdit.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

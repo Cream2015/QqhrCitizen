@@ -122,6 +122,25 @@ textarea:focus,input[type="text"]:focus,input[type="password"]:focus,input[type=
 .list-page .current{margin:0 5px;padding:2px 7px;background:#f60;border:1px solid #fe8101;color:#fff;}
 
 
+.w-0-6 {
+    width: 60px!important;
+}
+
+.w-0-8 {
+    width: 80px!important;
+}
+
+.w-1 {
+    width: 100px!important;
+}
+
+.w-2 {
+    width: 200px!important;
+}
+
+.w-3 {
+    width: 300px!important;
+}
 
 
 .detail-table td {
@@ -136,3 +155,90 @@ table {
     border-spacing: 0;
 }
 
+
+.textbox {
+    margin: 0;
+    -webkit-box-sizing: content-box;
+    -moz-box-sizing: content-box;
+    box-sizing: content-box;
+    height: 20px;
+    line-height: 20px;
+    outline: 0;
+    padding: 4px;
+    border: 1px solid #ccc;
+    transition: box-shadow .2s linear,background .2s linear;
+    background: #f2f2f2;
+    max-width:100%;
+    _width:120px;
+    *width:120px;
+    behavior:url(/styles/PIE.htc);
+}
+
+.textbox:hover {
+    border-color: #b8b8b8;
+    background: #fcfcfc;
+}
+
+.textbox:focus {
+    border-color: #ffdf00;
+    background: #fcfcfc;
+    -webkit-box-shadow: 0 0 10px #ffdf00;
+    box-shadow: 0 0 10px #ffdf00;
+    behavior:url(/styles/PIE.htc);
+}
+
+.textbox.error {
+    border-color: #ff696d;
+    background: #fcfcfc;
+    -webkit-box-shadow: 0 0 10px rgb(255, 128, 128);
+    box-shadow: 0 0 10px rgb(255, 128, 128);
+    behavior:url(/styles/PIE.htc);
+}
+
+.row-title {
+    background-color: #f0f0f0;
+    width: 180px;
+    vertical-align: middle;
+}
+
+
+.button {
+    text-transform: none;
+    margin: 5px 10px 0 0;
+    line-height: normal;
+    border: 0;
+    padding: 5px 10px;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 8px;
+    outline: 0;
+    transition: all 0.2s linear;
+    behavior:url(/styles/PIE.htc);
+}
+
+.button.blue {
+    color: #fff;
+    background-color: #2daebf;
+    -webkit-animation-name: bluePulse;
+    -webkit-animation-duration: 2s;
+    -webkit-animation-iteration-count: infinite;
+    transition: all 0.2s linear;
+    behavior:url(/styles/PIE.htc);
+}
+
+@-webkit-keyframes redPulse {
+    from {
+        background-color: #bc330d;
+        -webkit-box-shadow: 0 0 9px #fff
+    }
+
+    50% {
+        background-color: #e33100;
+        -webkit-box-shadow: 0 0 18px #e33100
+    }
+
+    to {
+        background-color: #bc330d;
+        -webkit-box-shadow: 0 0 9px #fff
+    }
+}

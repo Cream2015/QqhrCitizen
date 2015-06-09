@@ -159,7 +159,7 @@ a.dark:focus, a.dark:hover {
 	padding-left: 8px;
 	padding: 5px 0 5px 15px;
 	border-left: 5px solid #56a5eb;
-	margin: 0!imp;
+	margin: 0!important;
 }
 
 .link-text {
