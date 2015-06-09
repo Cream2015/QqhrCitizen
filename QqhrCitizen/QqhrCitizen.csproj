@@ -198,6 +198,8 @@
     <Compile Include="Models\TypeDictionary.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Models\ViewModel\vAdminModel.cs" />
+    <Compile Include="Models\ViewModel\vCourse.cs" />
+    <Compile Include="Models\ViewModel\vLession.cs" />
     <Compile Include="Models\ViewModel\vLogin.cs" />
     <Compile Include="Models\ViewModel\vRegister.cs" />
     <Compile Include="Helpers\MvcHtmlHelperExt.cs" />
