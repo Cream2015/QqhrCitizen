@@ -13,11 +13,10 @@
             </tr>
             <tr>
                 <td>
-                    <p><a href="#">[2015-5-23] 最新新闻1</a></p>
-                    <p><a href="#">[2015-5-23] 最新新闻2</a></p>
-                    <p><a href="#">[2015-5-23] 最新新闻3</a></p>
-                    <p><a href="#">[2015-5-23] 最新新闻4</a></p>
-                    <p><a href="#">[2015-5-23] 最新新闻5</a></p>
+                    @foreach (var item in ViewBag.News)
+                    { 
+                      <p><a href="/News/Show/@item.ID">[@item.Time.ToString("yyyy-MM-dd")] @item.Title</a></p>
+                    }
                     <p><a href="#">更多...</a></p>
                 </td>
                 <td>

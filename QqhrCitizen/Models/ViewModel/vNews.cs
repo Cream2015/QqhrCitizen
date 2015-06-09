@@ -14,7 +14,7 @@ namespace QqhrCitizen.Models.ViewModel
         public string Content { get; set; }
         public int NewsTypeID { get; set; }
         public TypeDictionary TypeDictionary { get; set; }
-        public string Time { get; set; }
+        public DateTime Time { get; set; }
 
         public int UserID { get; set; }
 
@@ -29,7 +29,7 @@ namespace QqhrCitizen.Models.ViewModel
             this.Content = model.Content;
             this.NewsTypeID = model.NewsTypeID;
             this.TypeDictionary = model.TypeDictionary;
-            this.Time = model.Time.ToString();
+            this.Time = model.Time;
             this.UserID = model.UserID;
             this.Username = model.User.Username;
         }

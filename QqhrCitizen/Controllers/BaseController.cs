@@ -19,7 +19,8 @@ namespace QqhrCitizen.Controllers
             base.Initialize(requestContext);
             List<TypeDictionary> newsTypes = new List<TypeDictionary>();
             List<vTypeDictionary> _newsTypes = new List<vTypeDictionary>();
-
+            List<News> news = new List<News>();
+            List<vNews> _news = new List<vNews>();
             List<TypeDictionary> courseTypes = new List<TypeDictionary>();
             List<vTypeDictionary> _courseTypes = new List<vTypeDictionary>();
 
@@ -35,9 +36,14 @@ namespace QqhrCitizen.Controllers
                 _courseTypes.Add(new vTypeDictionary(type));
             }
 
-
+            news = db.News.OrderByDescending(n => n.Time).Take(5).ToList();
+            foreach (var item in news)
+            {
+                _news.Add(new vNews(item));
+            }
             ViewBag.NewsTypes = _newsTypes;
             ViewBag.CourseTypes = _courseTypes;
+            ViewBag.News = _news;
             if (requestContext.HttpContext.User != null && requestContext.HttpContext.User.Identity.IsAuthenticated)
             {
                 ViewBag.CurrentUser = (from u in db.Users
