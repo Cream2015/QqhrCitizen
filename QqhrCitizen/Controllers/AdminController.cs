@@ -220,6 +220,8 @@ namespace QqhrCitizen.Controllers
         ///  增加新闻
         /// </summary>
         /// <returns></returns>
+        [HttpGet]
+        [BaseAuth(Roles = "Admin")]
         public ActionResult AddNews()
         {
             List<TypeDictionary> newsTypes = new List<TypeDictionary>();
@@ -230,25 +232,6 @@ namespace QqhrCitizen.Controllers
         #endregion
 
 
-        #region 增加新闻
-        /// <summary>
-        /// 增加新闻
-        /// </summary>
-        /// <param name="model"></param>
-        /// <returns></returns>
-        [HttpPost]
-        [ValidateSID]
-        [BaseAuth(Roles="ADmin")]
-        public ActionResult AddNews(News model)
-        {
-            model.UserID = CurrentUser.ID;
-            model.Time = DateTime.Now;
-            db.News.Add(model);
-            db.SaveChanges();
-            return RedirectToAction("NewsManager");
-        }
-        
-        #endregion
         #region 分类根据父节点得到子节点
         /// <summary>
         ///  分类根据父节点得到子节点
@@ -259,11 +242,60 @@ namespace QqhrCitizen.Controllers
         public ActionResult GetChildrenTypeByFather(int father)
         {
             var types = db.TypeDictionaries.Where(tp => tp.FatherID == father).ToList();
-            return Json(types,JsonRequestBehavior.AllowGet);
+            return Json(types, JsonRequestBehavior.AllowGet);
+        }
+        #endregion
+
+
+
+        #region 增加新闻
+        /// <summary>
+        /// 增加新闻
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
+        [HttpPost]
+        [ValidateSID]
+        [BaseAuth(Roles="Admin")]
+        public ActionResult AddNews(News model)
+        {
+            model.UserID = CurrentUser.ID;
+            model.Time = DateTime.Now;
+            db.News.Add(model);
+            db.SaveChanges();
+            return RedirectToAction("NewsManager");
+        }
+        
+        #endregion
+
+        #region 新闻删除
+        /// <summary>
+        /// 新闻删除
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        [HttpGet]
+        [ValidateSID]
+        [BaseAuth(Roles = "Admin")]
+        public ActionResult NewsDelete(int id)
+        {
+            News news = new News();
+            news = db.News.Find(id);
+            db.News.Remove(news);
+            db.SaveChanges();
+            return RedirectToAction("NewsManager");
         } 
         #endregion
 
 
+        /// <summary>
+        /// 新闻修改
+        /// </summary>
+        /// <returns></returns>
+        public ActionResult NewsEdit()
+        {
+            return View();
+        }
 
     }
 }
