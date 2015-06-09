@@ -1,0 +1,55 @@
+﻿@using PagedList
+@using PagedList.Mvc
+@{
+    ViewBag.Title = "新闻管理";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div>
+    <div class="result-title">
+        <h1>新闻管理 <a href="/Admin/AddNews">增加</a></h1>
+    </div>
+    <div class="result-content">
+
+        <table class="detail-table">
+            <thead>
+                <tr>
+                    <td>编号</td>
+                    <td>标题</td>
+                    <td>分类</td>
+                    <td>时间</td>
+                    <td>操作员</td>
+                    <td>操作</td>
+                </tr>
+            </thead>
+            <tbody>
+                @if (Model.Count > 0)
+                {
+                    foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@item.ID</td>
+                            <td>@item.Title</td>
+                            <td>@item.TypeDictionary</td>
+                            <td>@item.Time</td>
+                            <td>@item.User.Username</td>
+                            <td>
+                                <a href="javascript:Delete(@item.ID);">删除</a>
+                                <a href="/Admin/NewsEdit/@item.ID">编辑</a>
+                            </td>
+                        </tr>
+                    }
+                }
+            </tbody>
+        </table>
+        @Html.PagedListPager((IPagedList)Model, page => Url.Action("TypeManager", new { page }))
+    </div>
+</div>
+
+
+<script>
+    function Delete(id) {
+        window.location = '/Admin/NewsDelete/' + id + '?sid=@ViewBag.SID';
+    }
+</script>
+

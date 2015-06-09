@@ -199,5 +199,71 @@ namespace QqhrCitizen.Controllers
             return RedirectToAction("TypeManager");
         } 
         #endregion
+
+
+        #region 新闻管理 
+        /// <summary>
+        /// 新闻管理
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet]
+        [BaseAuth(Roles="Admin")]
+        public ActionResult NewsManager(int page = 1)
+        {
+            var list = db.News.OrderByDescending(tp => tp.ID).ToPagedList(page, 10);
+            return View(list);
+        } 
+        #endregion
+
+        #region 增加新闻
+        /// <summary>
+        ///  增加新闻
+        /// </summary>
+        /// <returns></returns>
+        public ActionResult AddNews()
+        {
+            List<TypeDictionary> newsTypes = new List<TypeDictionary>();
+            newsTypes = db.TypeDictionaries.Where(td => td.FatherID == 0 && td.Belonger == TypeBelonger.News).ToList();
+            ViewBag.Types = newsTypes;
+            return View();
+        } 
+        #endregion
+
+
+        #region 增加新闻
+        /// <summary>
+        /// 增加新闻
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
+        [HttpPost]
+        [ValidateSID]
+        [BaseAuth(Roles="ADmin")]
+        public ActionResult AddNews(News model)
+        {
+            model.UserID = CurrentUser.ID;
+            model.Time = DateTime.Now;
+            db.News.Add(model);
+            db.SaveChanges();
+            return RedirectToAction("NewsManager");
+        }
+        
+        #endregion
+        #region 分类根据父节点得到子节点
+        /// <summary>
+        ///  分类根据父节点得到子节点
+        /// </summary>
+        /// <param name="father"></param>
+        /// <returns></returns>
+        [HttpGet]
+        public ActionResult GetChildrenTypeByFather(int father)
+        {
+            var types = db.TypeDictionaries.Where(tp => tp.FatherID == father).ToList();
+            return Json(types,JsonRequestBehavior.AllowGet);
+        } 
+        #endregion
+
+
+
     }
 }

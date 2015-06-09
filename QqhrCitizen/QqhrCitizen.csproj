@@ -201,6 +201,7 @@
     <Compile Include="Models\ViewModel\vCourse.cs" />
     <Compile Include="Models\ViewModel\vLession.cs" />
     <Compile Include="Models\ViewModel\vLogin.cs" />
+    <Compile Include="Models\ViewModel\vNews.cs" />
     <Compile Include="Models\ViewModel\vRegister.cs" />
     <Compile Include="Helpers\MvcHtmlHelperExt.cs" />
     <Compile Include="Models\ViewModel\vTypeDictionary.cs" />
@@ -231,6 +232,8 @@
     <Content Include="Views\Admin\TypeManager.cshtml" />
     <Content Include="Views\Admin\AddType.cshtml" />
     <Content Include="Views\Admin\TypeDictionaryEdit.cshtml" />
+    <Content Include="Views\Admin\NewsManager.cshtml" />
+    <Content Include="Views\Admin\AddNews.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
