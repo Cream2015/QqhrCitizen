@@ -1,3 +1,38 @@
+var lock = false;
+var page = 0;
+var tid = "";
+
+
+function LoadNews() {
+    if (lock) {
+        return;
+    }
+    else {
+        lock = true;
+        $.ajax({
+            url: "/News/getNews",
+            type: "post",
+            data: { "page": page, "tid": tid },
+        }).done(function (data) {
+            console.log(data);
+            var str = "";
+            for (var i = 0 ; i < data.length; i++) {
+                str += "<div><a> href='/News/Show/"+data[i].ID+"'</a>"+data[i].Title+" </a> <span>"+data[i].Time+"</span></div>";
+            }
+            if (data.length == 10) {
+                lock = false;
+                page++;
+            }
+        });
+    }
+}
+
+function Load() {
+    if ($(".lstNews").length > 0) {
+        LoadNews();
+    }
+}
+
 $(document).ready(function () {
 	$('a[data-toggle]').click(function () {
 		$('.pop-menu').slideUp();
@@ -9,6 +44,16 @@ $(document).ready(function () {
 		menu.slideDown();
 	});
 
+	Load();
+
+	$(window).scroll(
+    function () {
+        totalheight = parseFloat($(window).height())
+           + parseFloat($(window).scrollTop());
+        if ($(document).height() <= totalheight) {
+            Load();
+        }
+    });
 	
 });
 
