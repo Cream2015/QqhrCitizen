@@ -1,0 +1,59 @@
+﻿@using QqhrCitizen.Models.ViewModel
+@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    vResourceLink link = ViewBag.ResourceLink as vResourceLink;
+    ViewBag.Title = link.Title;
+}
+
+<div>
+    <div class="result-title">
+        <h1>增加新闻 <a href="/Admin/LinkEdit/@link.ID">修改</a></h1>
+    </div>
+    @using (Html.BeginForm("LinkEdit", "Admin", new { ID = link.ID }, FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        @Html.AntiForgerySID()
+        <input type="hidden" name="ID" value="@link.ID" />
+        <input type="hidden" name="FileID" value="@link.FileID" />
+        <table class="detail-table">
+            <tr>
+                <td class="row-title">链接类型</td>
+                <td>
+                     @link.TypeDictionary.TypeValue
+                </td>
+            </tr>
+            <tr>
+            <tr>
+                <td class="row-title">标题</td>
+                <td>
+                   @link.Title
+                </td>
+            </tr>
+            <tr>
+                <td class="row-title">
+                    URL地址
+                </td>
+                <td>
+                   @link.URL
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    是否上传文件
+                </td>
+                <td>
+                    @(link.IsHaveFile==true?"是":"否")
+                </td>
+            </tr>
+            @if (link.IsHaveFile)
+            {
+                <tr>
+                    <td>资源文件</td>
+                    <td>
+                        @link.File.FileName
+                    </td>
+                </tr>
+            }
+        </table>
+    }
+</div>
+

@@ -563,5 +563,103 @@ namespace QqhrCitizen.Controllers
             return RedirectToAction("LinkManager");
         } 
         #endregion
+
+        #region 链接修改
+        /// <summary>
+        ///  链接修改
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        [HttpGet]
+        [BaseAuth(Roles = "Admin")]
+        public ActionResult LinkEdit(int id)
+        {
+            List<TypeDictionary> CourseTypes = new List<TypeDictionary>();
+            CourseTypes = db.TypeDictionaries.Where(td => td.FatherID == 0 && td.Belonger == TypeBelonger.ResourceLink).ToList();
+            ViewBag.Types = CourseTypes;
+            ResourceLink link = new ResourceLink();
+            link = db.ResourceLinks.Find(id);
+            ViewBag.ResourceLink = new vResourceLink(link);
+            return View();
+        } 
+        #endregion
+
+
+        #region 链接修改
+        /// <summary>
+        /// 链接修改
+        /// </summary>
+        /// <param name="model"></param>
+        /// <param name="file"></param>
+        /// <returns></returns>
+        public ActionResult LinkEdit(ResourceLink model, HttpPostedFileBase file)
+        {
+
+            int fileId = 0;
+            if (file != null && model.IsHaveFile)
+            {
+                if (model.FileID != 0)
+                {
+                    string fileName = Path.Combine(Request.MapPath("~/Upload"), DateHelper.GetTimeStamp() + Path.GetFileName(file.FileName));
+                    file.SaveAs(fileName);
+                    Models.File _file = new Models.File();
+                    _file = db.Files.Find(model.FileID);
+                    _file.FileTypeID = model.LinkTypeID;
+                    _file.Path = DateHelper.GetTimeStamp() + Path.GetFileName(file.FileName);
+                    _file.ContentType = file.ContentType;
+                    _file.FileName = file.FileName;
+                    _file.FileSize = file.ContentLength.ToString();
+                    db.SaveChanges();
+                    fileId = _file.ID;
+                }
+                else
+                {
+                    string fileName = Path.Combine(Request.MapPath("~/Upload"), DateHelper.GetTimeStamp() + Path.GetFileName(file.FileName));
+                    file.SaveAs(fileName);
+                    Models.File _file = new Models.File();
+                    _file.FileTypeID = model.LinkTypeID;
+                    _file.Path = DateHelper.GetTimeStamp() + Path.GetFileName(file.FileName);
+                    _file.Time = DateTime.Now;
+                    _file.ContentType = file.ContentType;
+                    _file.FileName = file.FileName;
+                    _file.FileSize = file.ContentLength.ToString();
+                    db.Files.Add(_file);
+                    db.SaveChanges();
+                    fileId = _file.ID;
+                }
+            }
+            if (!model.IsHaveFile)
+            {
+                if (model.FileID != 0)
+                {
+                    Models.File _file = new Models.File();
+                    _file = db.Files.Find(model.FileID);
+                    var path = Server.MapPath("~/Upload/" + _file.Path);
+                    System.IO.File.Delete(path);
+                    db.Files.Remove(_file);
+                    db.SaveChanges();
+                    fileId = 0;
+                }
+            }
+            ResourceLink link = new ResourceLink();
+            link = db.ResourceLinks.Find(model.ID);
+            link.IsHaveFile = model.IsHaveFile;
+            link.LinkTypeID = model.LinkTypeID;
+            link.Title = model.Title;
+            link.URL = model.URL;
+            link.FileID = fileId;
+            db.SaveChanges();
+            return RedirectToAction("LinkManager");
+        }
+
+        #endregion
+
+        public ActionResult LinkShow(int id)
+        {
+            ResourceLink link = new ResourceLink();
+            link = db.ResourceLinks.Find(id);
+            ViewBag.ResourceLink = new vResourceLink(link);
+            return View();
+        }
     }
 }

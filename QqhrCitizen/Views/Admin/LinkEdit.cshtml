@@ -1,24 +1,29 @@
-﻿@{
-    ViewBag.Title = "增加资源链接";
+﻿@using QqhrCitizen.Models.ViewModel
+@{
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    vResourceLink link = ViewBag.ResourceLink as vResourceLink;
+    ViewBag.Title = link.Title;
 }
+
 
 <div>
     <div class="result-title">
         <h1>增加新闻</h1>
     </div>
-    @using (Html.BeginForm("AddLink", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    @using (Html.BeginForm("LinkEdit", "Admin", new { ID = link.ID }, FormMethod.Post, new { enctype = "multipart/form-data" }))
     {
         @Html.AntiForgerySID()
+         <input type="hidden" name="ID" value="@link.ID" />
+        <input type="hidden" name="FileID" value="@link.FileID" />
         <table class="detail-table">
             <tr>
                 <td class="row-title">链接类型</td>
                 <td>
-                    <select name="LinkTypeID" class="textbox w-0-8" id="lsOneType">
+                    <select name="LinkTypeID" class="textbox w-0-6" id="lsOneType">
                         <option value="0">选择分类</option>
                         @foreach (var item in ViewBag.Types)
                         {
-                            <option value="@item.ID">@item.TypeValue</option>
+                            <option value="@item.ID" @(item.ID == link.LinkTypeID?"selected":"")>@item.TypeValue</option>
                         }
                     </select>
                 </td>
@@ -27,7 +32,7 @@
             <tr>
                 <td class="row-title">标题</td>
                 <td>
-                    <input class="textbox w-3" name="Title" />
+                    <input class="textbox w-3" name="Title" value="@link.Title" />
                 </td>
             </tr>
             <tr>
@@ -35,7 +40,7 @@
                     URL地址
                 </td>
                 <td>
-                    <input type="text" name="URL" class="textbox w-3" />
+                    <input type="text" name="URL" class="textbox w-3" value="@link.URL" />
                 </td>
             </tr>
             <tr>
@@ -44,11 +49,20 @@
                 </td>
                 <td>
                     <select name="IsHaveFile">
-                        <option value="false">否</option>
-                        <option value="true">是</option>
+                        <option value="false" @(link.IsHaveFile==false?"selected":"")>否</option>
+                        <option value="true" @(link.IsHaveFile==true? "selected" : "")>是</option>
                     </select>
                 </td>
             </tr>
+            @if (link.IsHaveFile)
+            { 
+             <tr>
+                 <td>资源文件</td>
+                 <td>
+                   @link.File.FileName
+                 </td>
+             </tr>
+            }
             <tr>
                 <td>
                     请选择文件:
@@ -61,7 +75,5 @@
         <p><input type="submit" value="增加" class="button blue" /></p>
     }
 </div>
-
-
 
 
