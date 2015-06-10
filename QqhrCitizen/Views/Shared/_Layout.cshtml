@@ -5,6 +5,7 @@
     <title>@ViewBag.Title </title>
     <link href="~/Styles/citizen.css" rel="stylesheet" />
     <script src="~/Scripts/jquery-1.11.3.min.js"></script>
+    <script src="~/Scripts/moment.js"></script>
     <script src="~/Scripts/citizen.js"></script>
     <script src="~/Scripts/qqhrcitizen.base.js"></script>
     @*@RenderSection()*@
@@ -30,7 +31,7 @@
                     <br />
                     foreach (var _item in item.Children)
                     { 
-                      <a href="">@_item.TypeValue</a>
+                      <a href="/News/Index?tid=@_item.ID">@_item.TypeValue</a>
                     }
                     <br />
                     <br />
@@ -44,7 +45,7 @@
                     <br />
                     foreach (var _item in item.Children)
                     {
-                        <a href="">@_item.TypeValue</a>
+                        <a href="/Course/Index?tid=@_item.ID">@_item.TypeValue</a>
                     }
                     <br />
                     <br />

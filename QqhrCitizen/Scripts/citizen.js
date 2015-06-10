@@ -17,8 +17,10 @@ function LoadNews() {
             console.log(data);
             var str = "";
             for (var i = 0 ; i < data.length; i++) {
-                str += "<div><a> href='/News/Show/"+data[i].ID+"'</a>"+data[i].Title+" </a> <span>"+data[i].Time+"</span></div>";
+                str += "<div><a href='/News/Show/"+data[i].ID+"'>"+data[i].Title+" </a> <span>"+moment(data[i].Time).format("YYYY-mm-DD HH:mm:ss")+"</span></div>";
             }
+            console.log(str);
+            $(".lstNews").append(str);
             if (data.length == 10) {
                 lock = false;
                 page++;
