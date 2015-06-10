@@ -9,7 +9,7 @@
     <div class="result-title">
         <h1>增加图书</h1>
     </div>
-    @using (Html.BeginForm("AddEBook", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    @using (Html.BeginForm("EBookEdit", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
     {
         @Html.AntiForgerySID()
         <input type="hidden" value="@book.ID" name="ID" />
@@ -20,7 +20,7 @@
                     <select name="oneType" class="textbox w-0-8" id="lsOneType">
                         <option value="0">选择分类</option>
                         @foreach (var item in ViewBag.Types)
-                {
+                        {
                             <option value="@item.ID" @(book.TypeDictionary.FatherID == item.ID ? "selected" : "")>@item.TypeValue</option>
                         }
                     </select>
@@ -37,10 +37,9 @@
                     </select>
                 </td>
             </tr>
-
             <tr>
                 <td class="row-title">标题</td>
-                <td><input type="text" name="Title" value="@book.Title" /></td>
+                <td><input type="text" name="Title" class="textbox" value="@book.Title" /></td>
             </tr>
             <tr>
                 <td class="row-title">
@@ -53,7 +52,7 @@
 
             <tr>
                 <td class="row-title">图书文件</td>
-                <td>
+                <td> 
                     <input type="file" name="file" value="@book.File.FileName" />
                 </td>
             </tr>

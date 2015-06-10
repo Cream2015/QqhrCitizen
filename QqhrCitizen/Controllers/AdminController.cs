@@ -88,7 +88,7 @@ namespace QqhrCitizen.Controllers
             var list = db.TypeDictionaries.OrderByDescending(tp => tp.ID).ToPagedList(page, 10);
             return View(list);
         }
-        
+
         #endregion
 
         #region 增加类型
@@ -101,7 +101,7 @@ namespace QqhrCitizen.Controllers
         public ActionResult AddType()
         {
             return View();
-        } 
+        }
         #endregion
 
         #region 增加分类
@@ -117,12 +117,12 @@ namespace QqhrCitizen.Controllers
         [HttpPost]
         public ActionResult AddType(TypeBelonger Belonger, string TypeValue, int NeedAuthorize, int FatherID)
         {
-            bool flag =  Convert.ToBoolean(NeedAuthorize);
+            bool flag = Convert.ToBoolean(NeedAuthorize);
             TypeDictionary type = new TypeDictionary { TypeValue = TypeValue, Belonger = Belonger, NeedAuthorize = flag, FatherID = FatherID, Time = DateTime.Now };
             db.TypeDictionaries.Add(type);
             db.SaveChanges();
             return RedirectToAction("TypeManager");
-        } 
+        }
         #endregion
 
 
@@ -137,9 +137,9 @@ namespace QqhrCitizen.Controllers
         public ActionResult GetTypeByBelonger(TypeBelonger belonger)
         {
             List<TypeDictionary> TypeDictionaries = new List<TypeDictionary>();
-            TypeDictionaries = db.TypeDictionaries.Where(td => td.Belonger == belonger && td.FatherID==0).ToList();
-            return Json(TypeDictionaries,JsonRequestBehavior.AllowGet);
-        } 
+            TypeDictionaries = db.TypeDictionaries.Where(td => td.Belonger == belonger && td.FatherID == 0).ToList();
+            return Json(TypeDictionaries, JsonRequestBehavior.AllowGet);
+        }
         #endregion
 
 
@@ -157,7 +157,7 @@ namespace QqhrCitizen.Controllers
             db.TypeDictionaries.Remove(TypeDictionary);
             db.SaveChanges();
             return RedirectToAction("TypeManager");
-        } 
+        }
         #endregion
 
 
@@ -169,12 +169,12 @@ namespace QqhrCitizen.Controllers
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpGet]
-        [BaseAuth(Roles="Admin")]
+        [BaseAuth(Roles = "Admin")]
         public ActionResult TypeDictionaryEdit(int id)
         {
             var TypeDictionary = db.TypeDictionaries.Find(id);
             return View(TypeDictionary);
-        } 
+        }
         #endregion
 
 
@@ -198,7 +198,7 @@ namespace QqhrCitizen.Controllers
             TypeDictionary.NeedAuthorize = model.NeedAuthorize;
             db.SaveChanges();
             return RedirectToAction("TypeManager");
-        } 
+        }
         #endregion
 
 
@@ -208,12 +208,12 @@ namespace QqhrCitizen.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpGet]
-        [BaseAuth(Roles="Admin")]
+        [BaseAuth(Roles = "Admin")]
         public ActionResult NewsManager(int page = 1)
         {
             var list = db.News.OrderByDescending(tp => tp.ID).ToPagedList(page, 10);
             return View(list);
-        } 
+        }
         #endregion
 
         #region 增加新闻
@@ -229,7 +229,7 @@ namespace QqhrCitizen.Controllers
             newsTypes = db.TypeDictionaries.Where(td => td.FatherID == 0 && td.Belonger == TypeBelonger.News).ToList();
             ViewBag.Types = newsTypes;
             return View();
-        } 
+        }
         #endregion
 
 
@@ -257,7 +257,7 @@ namespace QqhrCitizen.Controllers
         /// <returns></returns>
         [HttpPost]
         [ValidateSID]
-        [BaseAuth(Roles="Admin")]
+        [BaseAuth(Roles = "Admin")]
         public ActionResult AddNews(News model)
         {
             model.UserID = CurrentUser.ID;
@@ -267,7 +267,7 @@ namespace QqhrCitizen.Controllers
             db.SaveChanges();
             return RedirectToAction("NewsManager");
         }
-        
+
         #endregion
 
         #region 新闻删除
@@ -286,7 +286,7 @@ namespace QqhrCitizen.Controllers
             db.News.Remove(news);
             db.SaveChanges();
             return RedirectToAction("NewsManager");
-        } 
+        }
         #endregion
 
 
@@ -311,7 +311,7 @@ namespace QqhrCitizen.Controllers
             ViewBag.News = news;
             ViewBag.Types = newsTypes;
             return View();
-        } 
+        }
         #endregion
 
 
@@ -331,8 +331,8 @@ namespace QqhrCitizen.Controllers
             news.Title = model.Title;
             news.Content = model.Content;
             db.SaveChanges();
-            return RedirectToAction("NewsManager"); 
-        } 
+            return RedirectToAction("NewsManager");
+        }
         #endregion
 
         #region 新闻详细信息
@@ -347,7 +347,7 @@ namespace QqhrCitizen.Controllers
             news = db.News.Find(id);
             ViewBag.News = news;
             return View();
-        } 
+        }
         #endregion
 
         #region 课程管理
@@ -477,12 +477,12 @@ namespace QqhrCitizen.Controllers
         /// <param name="page"></param>
         /// <returns></returns>
         [HttpGet]
-        [BaseAuth(Roles="Admin")]
+        [BaseAuth(Roles = "Admin")]
         public ActionResult LinkManager(int page = 1)
         {
             var list = db.ResourceLinks.OrderByDescending(tp => tp.ID).ToPagedList(page, 10);
             return View(list);
-        } 
+        }
         #endregion
 
         /// <summary>
@@ -490,7 +490,7 @@ namespace QqhrCitizen.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpGet]
-        [BaseAuth(Roles="Admin")]
+        [BaseAuth(Roles = "Admin")]
         public ActionResult AddLink()
         {
             List<TypeDictionary> CourseTypes = new List<TypeDictionary>();
@@ -537,7 +537,7 @@ namespace QqhrCitizen.Controllers
             db.ResourceLinks.Add(link);
             db.SaveChanges();
             return RedirectToAction("LinkManager");
-        } 
+        }
         #endregion
 
         #region 链接删除
@@ -561,7 +561,7 @@ namespace QqhrCitizen.Controllers
             }
             db.SaveChanges();
             return RedirectToAction("LinkManager");
-        } 
+        }
         #endregion
 
         #region 链接修改
@@ -581,7 +581,7 @@ namespace QqhrCitizen.Controllers
             link = db.ResourceLinks.Find(id);
             ViewBag.ResourceLink = new vResourceLink(link);
             return View();
-        } 
+        }
         #endregion
 
 
@@ -593,7 +593,7 @@ namespace QqhrCitizen.Controllers
         /// <param name="file"></param>
         /// <returns></returns>
         [HttpGet]
-        [BaseAuth(Roles="Admin")]
+        [BaseAuth(Roles = "Admin")]
         public ActionResult LinkEdit(ResourceLink model, HttpPostedFileBase file)
         {
 
@@ -663,7 +663,7 @@ namespace QqhrCitizen.Controllers
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpGet]
-        [BaseAuth(Roles="Admin")]
+        [BaseAuth(Roles = "Admin")]
         public ActionResult LinkShow(int id)
         {
             ResourceLink link = new ResourceLink();
@@ -803,6 +803,8 @@ namespace QqhrCitizen.Controllers
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
+        [HttpGet]
+        [BaseAuth(Roles="Admin")]
         public ActionResult EBookEdit(int id)
         {
             EBook book = new EBook();
@@ -820,6 +822,43 @@ namespace QqhrCitizen.Controllers
             return View();
         }
         #endregion
+
+        #region 修改电子书
+        /// <summary>
+        ///  修改电子书
+        /// </summary>
+        /// <param name="model"></param>
+        /// <param name="file"></param>
+        /// <returns></returns>
+        [HttpPost]
+        [BaseAuth(Roles = "Admin")]
+        public ActionResult EBookEdit(EBook model, HttpPostedFileBase file)
+        {
+            EBook book = new EBook();
+            book = db.EBooks.Find(model.ID);
+            book.Title = model.Title;
+            book.Description = model.Description;
+            book.EBookTypeID = model.EBookTypeID;
+            if (file != null)
+            {
+                Models.File _file = new Models.File();
+                _file = db.Files.Find(book.FileID);
+                var path = Server.MapPath("~/Upload/" + _file.Path);
+                System.IO.File.Delete(path);
+
+                string fileName = Path.Combine(Request.MapPath("~/Upload"), DateHelper.GetTimeStamp() + Path.GetFileName(file.FileName));
+                file.SaveAs(fileName);
+                _file.Path = DateHelper.GetTimeStamp() + Path.GetFileName(file.FileName);
+                _file.ContentType = file.ContentType;
+                _file.FileName = file.FileName;
+                _file.FileSize = file.ContentLength.ToString();
+            }
+            db.SaveChanges();
+
+            return RedirectToAction("EBookManager");
+        } 
+        #endregion
+
 
         /// <summary>
         ///  消息
