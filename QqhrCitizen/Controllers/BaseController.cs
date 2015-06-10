@@ -25,7 +25,8 @@ namespace QqhrCitizen.Controllers
             List<vTypeDictionary> _courseTypes = new List<vTypeDictionary>();
 
             List<ResourceLink> nflinks = new List<ResourceLink>();
-
+            List<ResourceLink> flinks = new List<ResourceLink>();
+            List<vResourceLink> vflinks = new List<vResourceLink>();
             newsTypes = db.TypeDictionaries.Where(td => td.FatherID == 0 && td.Belonger == TypeBelonger.News).ToList();
             foreach (var type in newsTypes)
             {
@@ -47,12 +48,16 @@ namespace QqhrCitizen.Controllers
             #endregion
 
             nflinks = db.ResourceLinks.Where(l => l.IsHaveFile == false).OrderByDescending(l => l.Time).Take(12).ToList();
-
-
+            flinks = db.ResourceLinks.Where(l => l.IsHaveFile == true).OrderByDescending(l => l.Time).Take(12).ToList();
+            foreach (var item in flinks)
+            {
+                vflinks.Add(new vResourceLink(item));
+            }
             ViewBag.NewsTypes = _newsTypes;
             ViewBag.CourseTypes = _courseTypes;
             ViewBag.News = _news;
             ViewBag.NfLinks = nflinks;
+            ViewBag.FLinks = vflinks;
             if (requestContext.HttpContext.User != null && requestContext.HttpContext.User.Identity.IsAuthenticated)
             {
                 ViewBag.CurrentUser = (from u in db.Users
