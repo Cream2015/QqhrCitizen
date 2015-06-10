@@ -250,6 +250,7 @@
     <Content Include="Views\Admin\LinkShow.cshtml" />
     <Content Include="Views\Admin\EBookManager.cshtml" />
     <Content Include="Views\Admin\AddEBook.cshtml" />
+    <Content Include="Views\Admin\AdminMessage.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

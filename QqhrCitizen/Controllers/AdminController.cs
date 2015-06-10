@@ -694,10 +694,116 @@ namespace QqhrCitizen.Controllers
         ///   增加图书
         /// </summary>
         /// <returns></returns>
+        [HttpGet]
+        [BaseAuth(Roles = "Admin")]
         public ActionResult AddEBook()
         {
+            List<TypeDictionary> EBookTypes = new List<TypeDictionary>();
+            EBookTypes = db.TypeDictionaries.Where(td => td.FatherID == 0 && td.Belonger == TypeBelonger.EBook).ToList();
+            ViewBag.Types = EBookTypes;
             return View();
-        } 
+        }
         #endregion
+
+
+        #region 增加电子书
+
+        /// <summary>
+        ///  增加电子书
+        /// </summary>
+        /// <param name="model"></param>
+        /// <param name="file"></param>
+        /// <returns></returns>
+        [HttpPost]
+        [BaseAuth(Roles = "Admin")]
+        public ActionResult AddEBook(EBook model, HttpPostedFileBase file)
+        {
+            int fileId = 0;
+            if (file != null)
+            {
+                string fileName = Path.Combine(Request.MapPath("~/Upload"), DateHelper.GetTimeStamp() + Path.GetFileName(file.FileName));
+                file.SaveAs(fileName);
+                Models.File _file = new Models.File();
+                _file.FileTypeID = model.EBookTypeID;
+                _file.Path = DateHelper.GetTimeStamp() + Path.GetFileName(file.FileName);
+                _file.Time = DateTime.Now;
+                _file.ContentType = file.ContentType;
+                _file.FileName = file.FileName;
+                _file.FileSize = file.ContentLength.ToString();
+                db.Files.Add(_file);
+                db.SaveChanges();
+                fileId = _file.ID;
+
+                EBook Ebook = new EBook();
+                Ebook.Browses = 0;
+                Ebook.Title = model.Title;
+                Ebook.Description = model.Description;
+                Ebook.EBookTypeID = model.EBookTypeID;
+                Ebook.FileID = fileId;
+                Ebook.Time = DateTime.Now;
+                Ebook.UserID = CurrentUser.ID;
+                db.EBooks.Add(Ebook);
+                db.SaveChanges();
+                return RedirectToAction("EBookManager");
+            }
+            else
+            {
+                return Redirect("/Admin/AdminMessage?msg=文件不能为空");
+            }
+
+        }
+
+        #endregion
+
+
+        #region 删除电子书
+        /// <summary>
+        /// 删除电子书
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        [HttpGet]
+        [ValidateSID]
+        public ActionResult EBookDelete(int id)
+        {
+            EBook book = new EBook();
+            Models.File file = new Models.File();
+            book = db.EBooks.Find(id);
+            file = db.Files.Find(book.FileID);
+            var path = Server.MapPath("~/Upload/" + file.Path);
+            System.IO.File.Delete(path);
+            db.Files.Remove(file);
+            db.EBooks.Remove(book);
+            db.SaveChanges();
+            return RedirectToAction("EBookManager");
+        }
+
+        #endregion
+
+
+        /// <summary>
+        ///  图书详情
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public ActionResult EBookShow(int id)
+        {
+            EBook book = new EBook();
+            book = db.EBooks.Find(id);
+            ViewBag.EBook = book;
+            return View();
+        }
+
+
+        /// <summary>
+        ///  消息
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet]
+        public ActionResult AdminMessage(string msg)
+        {
+            ViewBag.Msg = msg;
+            return View();
+        }
     }
 }
