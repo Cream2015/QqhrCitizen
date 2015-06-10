@@ -10,7 +10,7 @@ namespace QqhrCitizen.Models.ViewModel
         public int ID { get; set; }
 
         public int CourseTypeID { get; set; }
-        public virtual TypeDictionary TypeDictionary { get; set; }
+        public TypeDictionary TypeDictionary { get; set; }
 
         public string Title { get; set; }
         public string Description { get; set; }
@@ -18,11 +18,24 @@ namespace QqhrCitizen.Models.ViewModel
         public int UserID { get; set; }
 
         public string Username { get; set; }
-        public string Time { get; set; }
+        public DateTime Time { get; set; }
         public string Remark { get; set; }
 
         public int AuthorityAsInt { set; get; }
 
-     
+        public vCourse() { }
+
+        public vCourse(Course model)
+        {
+            this.ID = model.ID;
+            this.CourseTypeID = model.CourseTypeID;
+            this.Title = model.Title;
+            this.Description = model.Description;
+            this.UserID = model.UserID;
+            this.Username = model.User.Username;
+            this.Time = model.Time;
+            this.Remark = model.Remark;
+        }
+
     }
 }

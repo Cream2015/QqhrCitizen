@@ -19,8 +19,13 @@ namespace QqhrCitizen.Controllers
             base.Initialize(requestContext);
             List<TypeDictionary> newsTypes = new List<TypeDictionary>();
             List<vTypeDictionary> _newsTypes = new List<vTypeDictionary>();
+
             List<News> news = new List<News>();
             List<vNews> _news = new List<vNews>();
+
+            List<Course> courses = new List<Course>();
+            List<vCourse> _courses = new List<vCourse>();
+
             List<TypeDictionary> courseTypes = new List<TypeDictionary>();
             List<vTypeDictionary> _courseTypes = new List<vTypeDictionary>();
 
@@ -39,7 +44,7 @@ namespace QqhrCitizen.Controllers
                 _courseTypes.Add(new vTypeDictionary(type));
             }
 
-            #region 最新5条消息
+            #region 最新5条新闻
             news = db.News.OrderByDescending(n => n.Time).Take(5).ToList();
             foreach (var item in news)
             {
@@ -47,15 +52,30 @@ namespace QqhrCitizen.Controllers
             }
             #endregion
 
+            #region 最新的5门课程
+            courses = db.Courses.OrderByDescending(c => c.Time).Take(5).ToList();
+            foreach (var item in courses)
+            {
+                _courses.Add(new vCourse(item));
+            } 
+            #endregion
+
+            #region 资源连接
             nflinks = db.ResourceLinks.Where(l => l.IsHaveFile == false).OrderByDescending(l => l.Time).Take(12).ToList();
             flinks = db.ResourceLinks.Where(l => l.IsHaveFile == true).OrderByDescending(l => l.Time).Take(12).ToList();
             foreach (var item in flinks)
             {
                 vflinks.Add(new vResourceLink(item));
-            }
+            } 
+            #endregion
+
+            
+
+
             ViewBag.NewsTypes = _newsTypes;
             ViewBag.CourseTypes = _courseTypes;
             ViewBag.News = _news;
+            ViewBag.Courses = _courses;
             ViewBag.NfLinks = nflinks;
             ViewBag.FLinks = vflinks;
             if (requestContext.HttpContext.User != null && requestContext.HttpContext.User.Identity.IsAuthenticated)
@@ -76,7 +96,8 @@ namespace QqhrCitizen.Controllers
 
         public User CurrentUser { get; set; }
 
-
+       
+        
         public ActionResult Message(string msg)
         {
             return RedirectToAction("Info", "Shared", new { msg = msg });
