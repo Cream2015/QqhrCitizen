@@ -236,6 +236,8 @@
     <Content Include="Views\Admin\AddNews.cshtml" />
     <Content Include="Views\Admin\NewsEdit.cshtml" />
     <Content Include="Views\Admin\NewsShow.cshtml" />
+    <Content Include="Views\News\Show.cshtml" />
+    <Content Include="Views\News\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
