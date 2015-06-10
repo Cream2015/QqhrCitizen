@@ -592,6 +592,8 @@ namespace QqhrCitizen.Controllers
         /// <param name="model"></param>
         /// <param name="file"></param>
         /// <returns></returns>
+        [HttpGet]
+        [BaseAuth(Roles="Admin")]
         public ActionResult LinkEdit(ResourceLink model, HttpPostedFileBase file)
         {
 
@@ -660,11 +662,40 @@ namespace QqhrCitizen.Controllers
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
+        [HttpGet]
+        [BaseAuth(Roles="Admin")]
         public ActionResult LinkShow(int id)
         {
             ResourceLink link = new ResourceLink();
             link = db.ResourceLinks.Find(id);
             ViewBag.ResourceLink = new vResourceLink(link);
+            return View();
+        }
+        #endregion
+
+
+        #region 图书管理
+        /// <summary>
+        /// 图书管理
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet]
+        [BaseAuth(Roles = "Admin")]
+        public ActionResult EBookManager(int page = 1)
+        {
+            var list = db.EBooks.OrderByDescending(tp => tp.ID).ToPagedList(page, 10);
+            return View(list);
+        }
+        #endregion
+
+
+        #region 增加图书
+        /// <summary>
+        ///   增加图书
+        /// </summary>
+        /// <returns></returns>
+        public ActionResult AddEBook()
+        {
             return View();
         } 
         #endregion

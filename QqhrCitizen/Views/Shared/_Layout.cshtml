@@ -51,6 +51,22 @@
                     <br />
                 }
             </div>
+
+            <a href="#" data-toggle="TestPopMenu"><div class="nav-item">图书</div></a>
+            <div id="TestPopMenu" class="pop-menu" style="width: 300px;">
+                @foreach (var item in ViewBag.CourseTypes)
+                {
+                    <strong>@item.TypeValue</strong>
+                    <br />
+                    foreach (var _item in item.Children)
+                    {
+                        <a href="/Course/Index?tid=@_item.ID">@_item.TypeValue</a>
+                    }
+                    <br />
+                    <br />
+                }
+            </div>
+
             <a href="/Channel"><div class="nav-item">直播</div></a>
             @{
                 if (User.Identity.IsAuthenticated)

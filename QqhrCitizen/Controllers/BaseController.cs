@@ -102,5 +102,7 @@ namespace QqhrCitizen.Controllers
         {
             return RedirectToAction("Info", "Shared", new { msg = msg });
         }
+
+       
 	}
 }

@@ -23,8 +23,15 @@ namespace QqhrCitizen.Models
         [ForeignKey("User")]
         public int UserID { get; set; }
         public virtual User User { get; set; }
+
         [ForeignKey("File")]
         public int FileID { get; set; }
+
         public virtual File File { get; set; }
+
+        /// <summary>
+        /// 浏览数
+        /// </summary>
+        public int Browses { get; set; }
     }
 }
