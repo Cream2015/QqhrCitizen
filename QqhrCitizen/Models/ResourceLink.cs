@@ -24,7 +24,6 @@ namespace QqhrCitizen.Models
 
         public int FileID { get; set; }
 
-
         [ForeignKey("User")]
         public int UserID { get; set; }
         public virtual User User { get; set; }

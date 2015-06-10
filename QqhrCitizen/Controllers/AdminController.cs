@@ -654,12 +654,19 @@ namespace QqhrCitizen.Controllers
 
         #endregion
 
+        #region 连接详情
+        /// <summary>
+        /// 连接详情
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public ActionResult LinkShow(int id)
         {
             ResourceLink link = new ResourceLink();
             link = db.ResourceLinks.Find(id);
             ViewBag.ResourceLink = new vResourceLink(link);
             return View();
-        }
+        } 
+        #endregion
     }
 }

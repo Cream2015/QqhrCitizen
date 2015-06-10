@@ -24,6 +24,8 @@ namespace QqhrCitizen.Controllers
             List<TypeDictionary> courseTypes = new List<TypeDictionary>();
             List<vTypeDictionary> _courseTypes = new List<vTypeDictionary>();
 
+            List<ResourceLink> nflinks = new List<ResourceLink>();
+
             newsTypes = db.TypeDictionaries.Where(td => td.FatherID == 0 && td.Belonger == TypeBelonger.News).ToList();
             foreach (var type in newsTypes)
             {
@@ -36,14 +38,21 @@ namespace QqhrCitizen.Controllers
                 _courseTypes.Add(new vTypeDictionary(type));
             }
 
+            #region 最新5条消息
             news = db.News.OrderByDescending(n => n.Time).Take(5).ToList();
             foreach (var item in news)
             {
                 _news.Add(new vNews(item));
             }
+            #endregion
+
+            nflinks = db.ResourceLinks.Where(l => l.IsHaveFile == false).OrderByDescending(l => l.Time).Take(12).ToList();
+
+
             ViewBag.NewsTypes = _newsTypes;
             ViewBag.CourseTypes = _courseTypes;
             ViewBag.News = _news;
+            ViewBag.NfLinks = nflinks;
             if (requestContext.HttpContext.User != null && requestContext.HttpContext.User.Identity.IsAuthenticated)
             {
                 ViewBag.CurrentUser = (from u in db.Users

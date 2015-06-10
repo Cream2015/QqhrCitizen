@@ -40,18 +40,10 @@
     </div>
     <div class="block">
         <h3 class="home-title">链接</h3>
-        <a href="#"><div class="link-text">百度</div></a>
-        <a href="#"><div class="link-text">百度</div></a>
-        <a href="#"><div class="link-text">百度</div></a>
-        <a href="#"><div class="link-text">百度</div></a>
-        <a href="#"><div class="link-text">百度</div></a>
-        <a href="#"><div class="link-text">百度</div></a>
-        <a href="#"><div class="link-text">百度</div></a>
-        <a href="#"><div class="link-text">百度</div></a>
-        <a href="#"><div class="link-text">百度</div></a>
-        <a href="#"><div class="link-text">百度</div></a>
-        <a href="#"><div class="link-text">百度</div></a>
-        <a href="#"><div class="link-text">百度</div></a>
+        @foreach (var item in ViewBag.NfLinks)
+        {
+            <a href="http://@item.URL" target="_blank"><div class="link-text">@item.Title</div></a>
+        }
         <div class="clr"></div>
         <br />
         <a href="#"><img src="#" class="link-img" /></a>

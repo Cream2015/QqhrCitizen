@@ -12,7 +12,7 @@
         @using (Html.BeginForm("TypeDictionaryEdit", "Admin", new { id = Model.ID }, FormMethod.Post, new { id = "frmTypeDictionaryEdit" }))
         {
             @Html.AntiForgerySID()
-            <table>
+            <table class="detail-table">
                 <tr>
                     <td class="row-title">所属类别</td>
                     <td>
