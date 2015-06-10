@@ -236,6 +236,10 @@
     <Content Include="Views\Admin\AddNews.cshtml" />
     <Content Include="Views\Admin\NewsEdit.cshtml" />
     <Content Include="Views\Admin\NewsShow.cshtml" />
+    <Content Include="Views\Admin\CoursesManager.cshtml" />
+    <Content Include="Views\Admin\AddCourses.cshtml" />
+    <Content Include="Views\Admin\CourseShow.cshtml" />
+    <Content Include="Views\Admin\CoursesEdit.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

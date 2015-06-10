@@ -13,7 +13,6 @@ namespace QqhrCitizen.Controllers
 {
     public class AdminController : BaseController
     {
-
         // GET: Admin
         [BaseAuth(Roles = "Admin")]
         public ActionResult Index()
@@ -346,6 +345,125 @@ namespace QqhrCitizen.Controllers
             ViewBag.News = news;
             return View();
         } 
+        #endregion
+
+        #region 课程管理
+        /// <summary>
+        /// 新闻管理
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet]
+        [BaseAuth(Roles = "Admin")]
+        public ActionResult CoursesManager(int page = 1)
+        {
+            var list = db.Courses.OrderByDescending(tp => tp.ID).ToPagedList(page, 10);
+            return View(list);
+        }
+        #endregion
+
+        #region 增加课程
+        /// <summary>
+        ///  增加新闻
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet]
+        [BaseAuth(Roles = "Admin")]
+        public ActionResult AddCourses()
+        {
+            List<TypeDictionary> CourseTypes = new List<TypeDictionary>();
+            CourseTypes = db.TypeDictionaries.Where(td => td.FatherID == 0 && td.Belonger == TypeBelonger.Course).ToList();
+            ViewBag.Types = CourseTypes;
+            return View();
+        }
+        #endregion
+
+        [HttpPost]
+        [ValidateSID]
+        [BaseAuth(Roles = "Admin")]
+        public ActionResult AddCourses(Course model)
+        {
+            model.UserID = CurrentUser.ID;
+            model.Time = DateTime.Now;
+            db.Courses.Add(model);
+            db.SaveChanges();
+            return RedirectToAction("CoursesManager");
+        }
+
+        #region 课程删除
+        /// <summary>
+        /// 新闻删除
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        [HttpGet]
+        [ValidateSID]
+        [BaseAuth(Roles = "Admin")]
+        public ActionResult CoursesDelete(int id)
+        {
+            Course course = new Course();
+            course = db.Courses.Find(id);
+            db.Courses.Remove(course);
+            db.SaveChanges();
+            return RedirectToAction("CoursesManager");
+        }
+        #endregion
+
+        #region 课程修改
+        /// <summary>
+        /// 新闻修改
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet]
+        [BaseAuth(Roles = "Admin")]
+        public ActionResult CoursesEdit(int id)
+        {
+            Course course = new Course();
+            List<TypeDictionary> courseTypes = new List<TypeDictionary>();
+            course = db.Courses.Find(id);
+            courseTypes = db.TypeDictionaries.Where(td => td.FatherID == 0 && td.Belonger == TypeBelonger.Course).ToList();
+
+            var second = new List<TypeDictionary>();
+            second = db.TypeDictionaries.Where(td => td.FatherID == course.TypeDictionary.FatherID).ToList();
+
+            ViewBag.Second = second;
+            ViewBag.Course = course;
+            ViewBag.Types = courseTypes;
+            return View();
+        }
+        #endregion
+        #region 执行修改课程
+        /// <summary>
+        /// 执行修改新闻
+        /// </summary>
+        /// <returns></returns>
+        [HttpPost]
+        [ValidateSID]
+        [BaseAuth(Roles = "Admin")]
+        public ActionResult CoursesEdit(Course model)
+        {
+            Course course = new Course();
+            course = db.Courses.Find(model.ID);
+            course.CourseTypeID = model.CourseTypeID;
+            course.Title = model.Title;
+            course.Description = model.Description;
+            db.SaveChanges();
+            return RedirectToAction("CoursesManager");
+        }
+        #endregion
+
+        #region 课程详细信息
+        /// <summary>
+        ///  新闻详细信息
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public ActionResult CourseShow(int id)
+        {
+            Course course = new Course();
+            course = db.Courses.Find(id);
+            ViewBag.Course = course;
+            return View();
+        }
         #endregion
     }
 }

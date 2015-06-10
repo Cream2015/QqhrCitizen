@@ -1,0 +1,52 @@
+﻿@{
+    ViewBag.Title = "增加课程";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div>
+    <div class="result-title">
+        <h1>增加课程</h1>
+    </div>
+    @using (Html.BeginForm("AddCourses", "Admin", FormMethod.Post))
+    {
+        @Html.AntiForgerySID()
+        <table class="detail-table">
+            <tr>
+                <td class="row-title">一级分类</td>
+                <td>
+                    <select name="oneType" class="textbox w-0-8" id="lsOneType">
+                        <option value="0">选择分类</option>
+                        @foreach (var item in ViewBag.Types)
+                        {
+                            <option value="@item.ID">@item.TypeValue</option>
+                        }
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td class="row-title">二级分类</td>
+                <td>
+                    <select name="CourseTypeID" class="textbox w-0-8" id="lsSecondType"></select>
+                </td>
+            </tr>
+            <tr>
+                <td class="row-title">标题</td>
+                <td>
+                    <input class="textbox w-3" name="Title" />
+                </td>
+            </tr>
+            <tr>
+                <td class="row-title">
+                    内容
+                </td>
+                <td>
+                    <textarea class="textbox" style="height:100px;" name="Content"></textarea>
+                </td>
+            </tr>
+        </table>
+
+        <p><input type="submit" value="增加" class="button blue" /></p>
+    }
+</div>
+
+

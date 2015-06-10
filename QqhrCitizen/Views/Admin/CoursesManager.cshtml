@@ -1,0 +1,59 @@
+﻿@using PagedList
+@using PagedList.Mvc
+@{
+    ViewBag.Title = "课程管理";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div>
+    <div class="result-title">
+        <h1>课程管理 <a href="/Admin/AddNews">增加</a></h1>
+    </div>
+    <div class="result-content">
+
+        <table class="detail-table">
+            <thead>
+                <tr>
+                    <td>编号</td>
+                    <td>标题</td>
+                    <td>分类</td>
+                    <td>时间</td>
+                    <td>操作员</td>
+                    <td>操作</td>
+                </tr>
+            </thead>
+            <tbody>
+                @if (Model.Count > 0)
+                {
+                    foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@item.ID</td>
+                            <td>@item.Title</td>
+                            <td>@item.TypeDictionary.TypeValue</td>
+                            <td>@item.Time</td>
+                            <td>@item.User.Username</td>
+                            <td>
+                                <a href="/Admin/CourseShow/@item.ID">查看详细</a>
+                                <a href="javascript:Delete(@item.ID);">删除</a>
+                                <a href="/Admin/CoursesEdit/@item.ID">编辑</a>
+                                <a href="/Admin/AddLession/@item.ID">添加课时</a>
+</td>
+                        </tr>
+                    }
+                }
+            </tbody>
+        </table>
+        @Html.PagedListPager((IPagedList)Model, page => Url.Action("TypeManager", new { page }))
+    </div>
+</div>
+
+
+<script>
+    function Delete(id) {
+        window.location = '/Admin/CoursesDelete/' + id + '?sid=@ViewBag.SID';
+    }
+</script>
+
+
+
