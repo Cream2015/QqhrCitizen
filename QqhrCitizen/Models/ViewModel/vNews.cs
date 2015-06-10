@@ -18,6 +18,7 @@ namespace QqhrCitizen.Models.ViewModel
 
         public int UserID { get; set; }
 
+        public int Browses { get; set; }
         public string Username { get; set; }
 
         public vNews() { }
@@ -32,6 +33,7 @@ namespace QqhrCitizen.Models.ViewModel
             this.Time = model.Time;
             this.UserID = model.UserID;
             this.Username = model.User.Username;
+            this.Browses = model.Browses;
         }
     }
 }

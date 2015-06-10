@@ -8,6 +8,8 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
 using PagedList;
+using System.IO;
+using QqhrCitizen.Helpers;
 
 namespace QqhrCitizen.Controllers
 {
@@ -260,6 +262,7 @@ namespace QqhrCitizen.Controllers
         {
             model.UserID = CurrentUser.ID;
             model.Time = DateTime.Now;
+            model.Browses = 0;
             db.News.Add(model);
             db.SaveChanges();
             return RedirectToAction("NewsManager");
@@ -464,6 +467,101 @@ namespace QqhrCitizen.Controllers
             ViewBag.Course = course;
             return View();
         }
+        #endregion
+
+
+        #region MyRegion
+        /// <summary>
+        /// 资源链接
+        /// </summary>
+        /// <param name="page"></param>
+        /// <returns></returns>
+        [HttpGet]
+        [BaseAuth(Roles="Admin")]
+        public ActionResult LinkManager(int page = 1)
+        {
+            var list = db.ResourceLinks.OrderByDescending(tp => tp.ID).ToPagedList(page, 10);
+            return View(list);
+        } 
+        #endregion
+
+        /// <summary>
+        /// 增加链接
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet]
+        [BaseAuth(Roles="Admin")]
+        public ActionResult AddLink()
+        {
+            List<TypeDictionary> CourseTypes = new List<TypeDictionary>();
+            CourseTypes = db.TypeDictionaries.Where(td => td.FatherID == 0 && td.Belonger == TypeBelonger.ResourceLink).ToList();
+            ViewBag.Types = CourseTypes;
+            return View();
+        }
+
+        #region 增加地址链接
+        /// <summary>
+        ///  增加地址链接
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
+        [HttpPost]
+        [BaseAuth(Roles = "Admin")]
+        [ValidateSID]
+        public ActionResult AddLink(ResourceLink model, HttpPostedFileBase file)
+        {
+            int fileId = 0;
+            if (model.IsHaveFile)
+            {
+                string fileName = Path.Combine(Request.MapPath("~/Upload"), DateHelper.GetTimeStamp() + Path.GetFileName(file.FileName));
+                file.SaveAs(fileName);
+                Models.File _file = new Models.File();
+                _file.FileTypeID = model.LinkTypeID;
+                _file.Path = DateHelper.GetTimeStamp() + Path.GetFileName(file.FileName);
+                _file.Time = DateTime.Now;
+                _file.ContentType = file.ContentType;
+                _file.FileName = file.FileName;
+                _file.FileSize = file.ContentLength.ToString();
+                db.Files.Add(_file);
+                db.SaveChanges();
+                fileId = _file.ID;
+            }
+            ResourceLink link = new ResourceLink();
+            link.IsHaveFile = model.IsHaveFile;
+            link.LinkTypeID = model.LinkTypeID;
+            link.Time = DateTime.Now;
+            link.Title = model.Title;
+            link.URL = model.URL;
+            link.UserID = CurrentUser.ID;
+            link.FileID = fileId;
+            db.ResourceLinks.Add(link);
+            db.SaveChanges();
+            return RedirectToAction("LinkManager");
+        } 
+        #endregion
+
+        #region 链接删除
+        /// <summary>
+        /// 链接删除
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public ActionResult LinkDelete(int id)
+        {
+            ResourceLink link = new ResourceLink();
+            link = db.ResourceLinks.Find(id);
+            db.ResourceLinks.Remove(link);
+            if (link.IsHaveFile)
+            {
+                Models.File file = new Models.File();
+                file = db.Files.Find(link.FileID);
+                var path = Server.MapPath("~/Upload/" + file.Path);
+                System.IO.File.Delete(path);
+                db.Files.Remove(file);
+            }
+            db.SaveChanges();
+            return RedirectToAction("LinkManager");
+        } 
         #endregion
     }
 }

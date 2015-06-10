@@ -21,9 +21,10 @@ namespace QqhrCitizen.Models
         public int LinkTypeID { get; set; }
         public virtual TypeDictionary TypeDictionary { get; set; }
         public bool IsHaveFile { get; set; }
-        [ForeignKey("File")]
+
         public int FileID { get; set; }
-        public virtual File File { get; set; }
+
+
         [ForeignKey("User")]
         public int UserID { get; set; }
         public virtual User User { get; set; }

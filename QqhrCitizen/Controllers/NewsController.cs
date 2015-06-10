@@ -27,10 +27,13 @@ namespace QqhrCitizen.Controllers
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
+        [HttpGet]
         public ActionResult Show(int id)
         {
             News news = new News();
             news = db.News.Find(id);
+            news.Browses = news.Browses + 1;
+            db.SaveChanges();
             vNews _news = new vNews(news);
             List<News> lstNews = new List<News>();
             lstNews = db.News.Where(n =>n.NewsTypeID ==news.NewsTypeID && n.ID!=id).OrderByDescending(n=>n.Time).Take(8).ToList();

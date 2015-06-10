@@ -23,6 +23,11 @@ namespace QqhrCitizen.Models
         [ForeignKey("User")]
         public int UserID { get; set; }
         public virtual User User { get; set; }
+
+        /// <summary>
+        /// 浏览数
+        /// </summary>
+        public int Browses  { get; set; }
         
     }
 }
