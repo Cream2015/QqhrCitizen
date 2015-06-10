@@ -200,6 +200,7 @@
     <Compile Include="Models\User.cs" />
     <Compile Include="Models\ViewModel\vAdminModel.cs" />
     <Compile Include="Models\ViewModel\vCourse.cs" />
+    <Compile Include="Models\ViewModel\vEBook.cs" />
     <Compile Include="Models\ViewModel\vLession.cs" />
     <Compile Include="Models\ViewModel\vLogin.cs" />
     <Compile Include="Models\ViewModel\vNews.cs" />
@@ -251,6 +252,8 @@
     <Content Include="Views\Admin\EBookManager.cshtml" />
     <Content Include="Views\Admin\AddEBook.cshtml" />
     <Content Include="Views\Admin\AdminMessage.cshtml" />
+    <Content Include="Views\Admin\EBookShow.cshtml" />
+    <Content Include="Views\Admin\EBookEdit.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

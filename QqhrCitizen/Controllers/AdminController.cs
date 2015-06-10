@@ -781,6 +781,7 @@ namespace QqhrCitizen.Controllers
         #endregion
 
 
+        #region 图书详情
         /// <summary>
         ///  图书详情
         /// </summary>
@@ -790,10 +791,35 @@ namespace QqhrCitizen.Controllers
         {
             EBook book = new EBook();
             book = db.EBooks.Find(id);
-            ViewBag.EBook = book;
+            ViewBag.EBook = new vEBook(book);
             return View();
         }
+        #endregion
 
+
+        #region 图书修改
+        /// <summary>
+        /// 图书修改
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public ActionResult EBookEdit(int id)
+        {
+            EBook book = new EBook();
+            book = db.EBooks.Find(id);
+            ViewBag.EBook = book;
+
+            List<TypeDictionary> EBookTypes = new List<TypeDictionary>();
+            EBookTypes = db.TypeDictionaries.Where(td => td.FatherID == 0 && td.Belonger == TypeBelonger.EBook).ToList();
+            ViewBag.Types = EBookTypes;
+
+            var second = new List<TypeDictionary>();
+            second = db.TypeDictionaries.Where(td => td.FatherID == book.TypeDictionary.FatherID).ToList();
+
+            ViewBag.Second = second;
+            return View();
+        }
+        #endregion
 
         /// <summary>
         ///  消息

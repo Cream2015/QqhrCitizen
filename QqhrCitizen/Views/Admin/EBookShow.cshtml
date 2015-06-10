@@ -1,0 +1,53 @@
+﻿@using QqhrCitizen.Models.ViewModel
+@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    vEBook book = ViewBag.EBook as vEBook;
+    ViewBag.Title =  book.Title;
+}
+
+<h2>图书详情 <a href="/Admin/EBookEdit/@book.ID">修改图书</a></h2>
+
+<table class="detail-table">
+    <tr>
+        <td class="row-title">分类</td>
+        <td>
+            @book.TypeDictionary.TypeValue @book.FatherType.TypeValue
+        </td>
+    </tr>
+    <tr>
+        <td class="row-title">标题</td>
+        <td>
+             @book.Title
+        </td>
+    </tr>
+    <tr>
+        <td class="row-title">
+            描述
+        </td>
+        <td>
+           @book.Description
+        </td>
+    </tr>
+
+    <tr>
+        <td class="row-title">图书文件</td>
+        <td>
+             @book.File.Path
+        </td>
+    </tr>
+    <tr>
+        <td class="row-title">上传时间</td>
+        <td>
+            @book.Time.ToString("yyyy-MM-dd HH:ss:mm");
+        </td>
+    </tr>
+    <tr>
+        <td class="row-title">操作员</td>
+        <td>
+            @book.Username
+        </td>
+    </tr>
+</table>
+
+
+
