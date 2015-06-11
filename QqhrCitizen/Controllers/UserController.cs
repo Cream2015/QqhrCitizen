@@ -69,6 +69,7 @@ namespace QqhrCitizen.Controllers
 
 
         [HttpPost]
+        [ValidateSID]
         public ActionResult Login(vLogin model)
         {
 
@@ -136,7 +137,7 @@ namespace QqhrCitizen.Controllers
         /// <returns></returns>
         [Authorize]
         [HttpPost]
-        [ValidateAntiForgeryToken]
+        [ValidateSID]
         public ActionResult Edit(vUserEdit model)
         {
             User user = db.Users.Find(model.ID);
