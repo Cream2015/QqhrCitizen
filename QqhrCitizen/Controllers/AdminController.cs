@@ -1060,6 +1060,19 @@ namespace QqhrCitizen.Controllers
         #endregion
 
         /// <summary>
+        /// 显示问题
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public ActionResult QuestionShow(int id)
+        {
+            Question question = new Question();
+            question = db.Questions.Find(id);
+
+            return View();
+        }
+
+        /// <summary>
         ///  消息
         /// </summary>
         /// <returns></returns>
