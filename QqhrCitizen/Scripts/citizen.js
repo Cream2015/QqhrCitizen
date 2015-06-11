@@ -1,8 +1,8 @@
-var lock = false;
+ï»¿var lock = false;
 var page = 0;
 var tid = "";
 
-//¼ÓÔØÐÂÎÅ
+//åŠ è½½æ–°é—»
 function LoadNews() {
     if (lock) {
         return;
@@ -16,7 +16,7 @@ function LoadNews() {
         }).done(function (data) {
             var str = "";
             for (var i = 0 ; i < data.length; i++) {
-                str += "<div><a href='/News/Show/"+data[i].ID+"'>"+data[i].Title+" </a> <span>"+moment(data[i].Time).format("YYYY-MM-DD HH:mm:ss")+"</span></div>";
+                str += "<div><a href='/News/Show/" + data[i].ID + "'>" + data[i].Title + " </a> <span>" + moment(data[i].Time).format("YYYY-MM-DD HH:mm:ss") + "</span></div>";
             }
             $(".lstNews").append(str);
             if (data.length == 10) {
@@ -27,7 +27,7 @@ function LoadNews() {
     }
 }
 
-//¼ÓÔØ¿Î³Ì
+//åŠ è½½è¯¾ç¨‹
 function LoadCourses() {
     if (lock) {
         return;
@@ -52,7 +52,7 @@ function LoadCourses() {
     }
 }
 
-// ¼ÓÔØÍ¼Êé
+// åŠ è½½å›¾ä¹¦
 function LoadEBooks() {
     if (lock) {
         return;
@@ -64,9 +64,10 @@ function LoadEBooks() {
             type: "post",
             data: { "page": page, "tid": tid },
         }).done(function (data) {
+            console.log(data);
             var str = "";
             for (var i = 0 ; i < data.length; i++) {
-                str += "<div><a href='/EBook/Show/" + data[i].ID + "'>" + data[i].Title + " </a> <span>" + moment(data[i].Time).format("YYYY-MM-DD HH:mm:ss") + "</span></div>";
+                str += "<div><a href='/EBook/Show/" + data[i].ID + "'>" + data[i].Title + " </a> <span>" + moment(data[i].Time).format("YYYY-MM-DD HH:mm:ss") + "</span> <a href='/Upload/" + data[i].File.Path + "'>åœ¨çº¿é¢„è§ˆ</a> <a href='/EBook/Download/"+data[i].ID+"'>ä¸‹è½½</a></div>";
             }
             $(".lstEBook").append(str);
             if (data.length == 10) {
@@ -90,19 +91,19 @@ function Load() {
 }
 
 $(document).ready(function () {
-	$('a[data-toggle]').click(function () {
-		$('.pop-menu').slideUp();
-		var target = $(this).attr('data-toggle');
-		var menu = $('#' + target);
-		var offset = $(this).find('div').offset();
-		menu.css('top', offset.top + 50);
-		menu.css('left', offset.left + 2);
-		menu.slideDown();
-	});
+    $('a[data-toggle]').click(function () {
+        $('.pop-menu').slideUp();
+        var target = $(this).attr('data-toggle');
+        var menu = $('#' + target);
+        var offset = $(this).find('div').offset();
+        menu.css('top', offset.top + 50);
+        menu.css('left', offset.left + 2);
+        menu.slideDown();
+    });
 
-	Load();
+    Load();
 
-	$(window).scroll(
+    $(window).scroll(
     function () {
         totalheight = parseFloat($(window).height())
            + parseFloat($(window).scrollTop());
@@ -110,13 +111,13 @@ $(document).ready(function () {
             Load();
         }
     });
-	
+
 });
 
 $(document).on('click', function (e) {
-	if ($(e.target).attr('data-toggle')) return;
-	if ($(e.target).hasClass('pop-menu')) return;
-	if ($(e.target).hasClass('nav-item')) return;
-	if ($(e.target).parents('.pop-menu').length > 0) return;
-	$('.pop-menu').slideUp();
+    if ($(e.target).attr('data-toggle')) return;
+    if ($(e.target).hasClass('pop-menu')) return;
+    if ($(e.target).hasClass('nav-item')) return;
+    if ($(e.target).parents('.pop-menu').length > 0) return;
+    $('.pop-menu').slideUp();
 });

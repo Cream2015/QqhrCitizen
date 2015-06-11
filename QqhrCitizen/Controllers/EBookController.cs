@@ -48,6 +48,23 @@ namespace QqhrCitizen.Controllers
             }
 
             return Json(_lstEBook);
+        }
+        #endregion
+
+
+
+        #region 电子书下载
+        /// <summary>
+        /// 电子书下载
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public ActionResult Download(int id)
+        {
+            EBook book = new EBook();
+            book = db.EBooks.Find(id);
+            var path = Server.MapPath("~/Upload/" + book.File.Path);
+            return File(path, "1", Url.Encode(book.File.Path));
         } 
         #endregion
     }
