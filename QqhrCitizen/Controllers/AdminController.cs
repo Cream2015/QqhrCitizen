@@ -81,7 +81,7 @@ namespace QqhrCitizen.Controllers
         /// 类型管理
         /// </summary>
         /// <returns></returns>
-        [BaseAuth(Roles = "Admin")]
+        
         [HttpGet]
         public ActionResult TypeManager(int page = 1)
         {
@@ -96,7 +96,7 @@ namespace QqhrCitizen.Controllers
         /// 增加类型
         /// </summary>
         /// <returns></returns>
-        [BaseAuth(Roles = "Admin")]
+        
         [HttpGet]
         public ActionResult AddType()
         {
@@ -113,7 +113,7 @@ namespace QqhrCitizen.Controllers
         /// <param name="NeedAuthorize"></param>
         /// <param name="FatherID"></param>
         /// <returns></returns>
-        [BaseAuth(Roles = "Admin")]
+        
         [HttpPost]
         public ActionResult AddType(TypeBelonger Belonger, string TypeValue, int NeedAuthorize, int FatherID)
         {
@@ -132,7 +132,7 @@ namespace QqhrCitizen.Controllers
         /// </summary>
         /// <param name="belonger"></param>
         /// <returns></returns>
-        [BaseAuth(Roles = "Admin")]
+        
         [HttpGet]
         public ActionResult GetTypeByBelonger(TypeBelonger belonger)
         {
@@ -149,8 +149,8 @@ namespace QqhrCitizen.Controllers
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        [ValidateSID]
         [HttpGet]
+        [ValidateSID]
         public ActionResult TypeDictionaryDelete(int id)
         {
             var TypeDictionary = db.TypeDictionaries.Find(id);
@@ -161,7 +161,7 @@ namespace QqhrCitizen.Controllers
         #endregion
 
 
-        #region MyReg修改类型字典ion
+        #region MyReg修改类型字典
 
         /// <summary>
         ///   修改类型字典
@@ -169,7 +169,6 @@ namespace QqhrCitizen.Controllers
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpGet]
-        [BaseAuth(Roles = "Admin")]
         public ActionResult TypeDictionaryEdit(int id)
         {
             var TypeDictionary = db.TypeDictionaries.Find(id);
@@ -187,7 +186,6 @@ namespace QqhrCitizen.Controllers
         /// <returns></returns>
         [HttpPost]
         [ValidateSID]
-        [BaseAuth(Roles = "Admin")]
         public ActionResult TypeDictionaryEdit(int id, TypeDictionary model)
         {
             var TypeDictionary = new TypeDictionary();
@@ -208,7 +206,7 @@ namespace QqhrCitizen.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpGet]
-        [BaseAuth(Roles = "Admin")]
+        
         public ActionResult NewsManager(int page = 1)
         {
             var list = db.News.OrderByDescending(tp => tp.ID).ToPagedList(page, 10);
@@ -222,7 +220,7 @@ namespace QqhrCitizen.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpGet]
-        [BaseAuth(Roles = "Admin")]
+        
         public ActionResult AddNews()
         {
             List<TypeDictionary> newsTypes = new List<TypeDictionary>();
@@ -257,7 +255,7 @@ namespace QqhrCitizen.Controllers
         /// <returns></returns>
         [HttpPost]
         [ValidateSID]
-        [BaseAuth(Roles = "Admin")]
+        
         public ActionResult AddNews(News model)
         {
             model.UserID = CurrentUser.ID;
@@ -278,7 +276,6 @@ namespace QqhrCitizen.Controllers
         /// <returns></returns>
         [HttpGet]
         [ValidateSID]
-        [BaseAuth(Roles = "Admin")]
         public ActionResult NewsDelete(int id)
         {
             News news = new News();
@@ -296,7 +293,6 @@ namespace QqhrCitizen.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpGet]
-        [BaseAuth(Roles = "Admin")]
         public ActionResult NewsEdit(int id)
         {
             News news = new News();
@@ -322,7 +318,6 @@ namespace QqhrCitizen.Controllers
         /// <returns></returns>
         [HttpPost]
         [ValidateSID]
-        [BaseAuth(Roles = "Admin")]
         public ActionResult NewsEdit(News model)
         {
             News news = new News();
@@ -356,7 +351,7 @@ namespace QqhrCitizen.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpGet]
-        [BaseAuth(Roles = "Admin")]
+        
         public ActionResult CourseManager(int page = 1)
         {
             var list = db.Courses.OrderByDescending(tp => tp.ID).ToPagedList(page, 10);
@@ -372,7 +367,7 @@ namespace QqhrCitizen.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpGet]
-        [BaseAuth(Roles = "Admin")]
+        
         public ActionResult AddCourse()
         {
             List<TypeDictionary> CourseTypes = new List<TypeDictionary>();
@@ -384,7 +379,7 @@ namespace QqhrCitizen.Controllers
 
         [HttpPost]
         [ValidateSID]
-        [BaseAuth(Roles = "Admin")]
+        
         public ActionResult AddCourse(Course model)
         {
             model.UserID = CurrentUser.ID;
@@ -402,7 +397,6 @@ namespace QqhrCitizen.Controllers
         /// <returns></returns>
         [HttpGet]
         [ValidateSID]
-        [BaseAuth(Roles = "Admin")]
         public ActionResult CoursesDelete(int id)
         {
             Course course = new Course();
@@ -419,7 +413,6 @@ namespace QqhrCitizen.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpGet]
-        [BaseAuth(Roles = "Admin")]
         public ActionResult CoursesEdit(int id)
         {
             Course course = new Course();
@@ -443,7 +436,6 @@ namespace QqhrCitizen.Controllers
         /// <returns></returns>
         [HttpPost]
         [ValidateSID]
-        [BaseAuth(Roles = "Admin")]
         public ActionResult CoursesEdit(Course model)
         {
             Course course = new Course();
@@ -481,7 +473,7 @@ namespace QqhrCitizen.Controllers
         /// <param name="page"></param>
         /// <returns></returns>
         [HttpGet]
-        [BaseAuth(Roles = "Admin")]
+        
         public ActionResult LinkManager(int page = 1)
         {
             var list = db.ResourceLinks.OrderByDescending(tp => tp.ID).ToPagedList(page, 10);
@@ -494,7 +486,7 @@ namespace QqhrCitizen.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpGet]
-        [BaseAuth(Roles = "Admin")]
+        
         public ActionResult AddLink()
         {
             List<TypeDictionary> CourseTypes = new List<TypeDictionary>();
@@ -510,7 +502,7 @@ namespace QqhrCitizen.Controllers
         /// <param name="model"></param>
         /// <returns></returns>
         [HttpPost]
-        [BaseAuth(Roles = "Admin")]
+        
         [ValidateSID]
         public ActionResult AddLink(ResourceLink model, HttpPostedFileBase file)
         {
@@ -550,6 +542,8 @@ namespace QqhrCitizen.Controllers
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
+        [HttpGet]
+        [ValidateSID]
         public ActionResult LinkDelete(int id)
         {
             ResourceLink link = new ResourceLink();
@@ -575,7 +569,6 @@ namespace QqhrCitizen.Controllers
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpGet]
-        [BaseAuth(Roles = "Admin")]
         public ActionResult LinkEdit(int id)
         {
             List<TypeDictionary> CourseTypes = new List<TypeDictionary>();
@@ -597,7 +590,7 @@ namespace QqhrCitizen.Controllers
         /// <param name="file"></param>
         /// <returns></returns>
         [HttpPost]
-        [BaseAuth(Roles = "Admin")]
+        [ValidateSID]
         public ActionResult LinkEdit(ResourceLink model, HttpPostedFileBase file)
         {
 
@@ -667,7 +660,7 @@ namespace QqhrCitizen.Controllers
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpGet]
-        [BaseAuth(Roles = "Admin")]
+        
         public ActionResult LinkShow(int id)
         {
             ResourceLink link = new ResourceLink();
@@ -684,7 +677,7 @@ namespace QqhrCitizen.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpGet]
-        [BaseAuth(Roles = "Admin")]
+        
         public ActionResult EBookManager(int page = 1)
         {
             var list = db.EBooks.OrderByDescending(tp => tp.ID).ToPagedList(page, 10);
@@ -699,7 +692,7 @@ namespace QqhrCitizen.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpGet]
-        [BaseAuth(Roles = "Admin")]
+        
         public ActionResult AddEBook()
         {
             List<TypeDictionary> EBookTypes = new List<TypeDictionary>();
@@ -719,7 +712,7 @@ namespace QqhrCitizen.Controllers
         /// <param name="file"></param>
         /// <returns></returns>
         [HttpPost]
-        [BaseAuth(Roles = "Admin")]
+        
         public ActionResult AddEBook(EBook model, HttpPostedFileBase file)
         {
             int fileId = 0;
@@ -808,7 +801,6 @@ namespace QqhrCitizen.Controllers
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpGet]
-      
         public ActionResult EBookEdit(int id)
         {
             EBook book = new EBook();
@@ -835,7 +827,7 @@ namespace QqhrCitizen.Controllers
         /// <param name="file"></param>
         /// <returns></returns>
         [HttpPost]
-        [BaseAuth(Roles = "Admin")]
+        [ValidateSID]
         public ActionResult EBookEdit(EBook model, HttpPostedFileBase file)
         {
             EBook book = new EBook();
@@ -934,7 +926,6 @@ namespace QqhrCitizen.Controllers
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpGet]
-        [BaseAuth(Roles = "Admin")]
         public ActionResult LessionEdit(int id)
         {
             Lession lession = new Lession();
@@ -953,7 +944,7 @@ namespace QqhrCitizen.Controllers
         /// <param name="file"></param>
         /// <returns></returns>
         [HttpPost]
-      
+        [ValidateSID]
         public ActionResult LessionEdit(Lession model, HttpPostedFileBase file)
         {
             Lession lession = db.Lessions.Find(model.ID);
@@ -999,6 +990,8 @@ namespace QqhrCitizen.Controllers
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
+        [HttpGet]
+        [ValidateSID]
         public ActionResult QuestionDelete(int id)
         {
             Question question = new Question();
@@ -1017,7 +1010,7 @@ namespace QqhrCitizen.Controllers
         /// <param name="lid"></param>
         /// <returns></returns>
         [HttpGet]
-        [BaseAuth(Roles = "Admin")]
+        
         public ActionResult AddQuestion(int lid)
         {
             ViewBag.LessionID = lid;
@@ -1033,7 +1026,7 @@ namespace QqhrCitizen.Controllers
         /// <param name="model"></param>
         /// <returns></returns>
         [HttpPost]
-        [BaseAuth(Roles = "Admin")]
+        
         public ActionResult AddQuestion(Question model)
         {
             var options = Request.Params.GetValues("option");
