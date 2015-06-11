@@ -100,29 +100,28 @@ namespace QqhrCitizen.Controllers
             ViewBag.FLinks = vflinks;
             if (requestContext.HttpContext.User != null && requestContext.HttpContext.User.Identity.IsAuthenticated)
             {
-                ViewBag.CurrentUser = (from u in db.Users
+                CurrentUser = (from u in db.Users
                                        where u.Username == requestContext.HttpContext.User.Identity.Name
                                        select u).Single();
-
-                ViewBag.SID = requestContext.HttpContext.Session["SID"].ToString();
-                CurrentUser = ViewBag.CurrentUser;
             }
             else
             {
                 ViewBag.CurrentUser = null;
             }
+
+            ViewBag.SID = requestContext.HttpContext.Session["SID"].ToString();
+            ViewBag.CurrentUser = CurrentUser;
         }
 
 
         public User CurrentUser { get; set; }
-
-       
-        
+ 
         public ActionResult Message(string msg)
         {
             return RedirectToAction("Info", "Shared", new { msg = msg });
         }
 
        
-	}
+
+    }
 }

@@ -113,8 +113,8 @@ namespace QqhrCitizen.Controllers
         /// <param name="NeedAuthorize"></param>
         /// <param name="FatherID"></param>
         /// <returns></returns>
-        
         [HttpPost]
+        [ValidateSID]
         public ActionResult AddType(TypeBelonger Belonger, string TypeValue, int NeedAuthorize, int FatherID)
         {
             bool flag = Convert.ToBoolean(NeedAuthorize);
@@ -255,7 +255,6 @@ namespace QqhrCitizen.Controllers
         /// <returns></returns>
         [HttpPost]
         [ValidateSID]
-        
         public ActionResult AddNews(News model)
         {
             model.UserID = CurrentUser.ID;
@@ -502,7 +501,6 @@ namespace QqhrCitizen.Controllers
         /// <param name="model"></param>
         /// <returns></returns>
         [HttpPost]
-        
         [ValidateSID]
         public ActionResult AddLink(ResourceLink model, HttpPostedFileBase file)
         {
@@ -712,7 +710,7 @@ namespace QqhrCitizen.Controllers
         /// <param name="file"></param>
         /// <returns></returns>
         [HttpPost]
-        
+        [ValidateSID]
         public ActionResult AddEBook(EBook model, HttpPostedFileBase file)
         {
             int fileId = 0;

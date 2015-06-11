@@ -85,11 +85,11 @@
     }
 </script>
 @using (Html.BeginForm("Register", "User", FormMethod.Post, new
-                    {
-                        onsubmit = "return frmCheck();"
-                    }))
 {
-    @Html.AntiForgeryToken()
+    onsubmit = "return frmCheck();"
+}))
+{
+    @Html.AntiForgerySID()
     <fieldset>
         <div class="container wrap-cont">
             <div class="narrow block">

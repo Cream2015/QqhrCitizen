@@ -28,7 +28,7 @@ namespace QqhrCitizen.Controllers
         /// <param name="model"></param>
         /// <returns></returns>
         [HttpPost]
-        [ValidateAntiForgeryToken]
+        [ValidateSID]
         public ActionResult Register(vRegister model)
         {
 
