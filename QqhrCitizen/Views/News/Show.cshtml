@@ -1,13 +1,8 @@
 ﻿@using QqhrCitizen.Models.ViewModel
 @{
-   
     Layout = "~/Views/Shared/_Layout.cshtml";
     vNews news = ViewBag.News as vNews;
     ViewBag.Title = news.Title;
-}
-
-@{
-    ViewBag.Title = "新闻展示 - 齐齐哈尔市民学习网";
 }
 <div class="container wrap-cont">
     <p>当前位置：/<a href="#" class="pos">@news.TypeDictionary.TypeValue</a>/<a href="#" class="pos">@news.Title</a></p>
