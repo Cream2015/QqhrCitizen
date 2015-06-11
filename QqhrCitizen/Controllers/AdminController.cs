@@ -901,7 +901,7 @@ namespace QqhrCitizen.Controllers
             model.Time = DateTime.Now;
             db.Lessions.Add(model);
             db.SaveChanges();
-            return RedirectToAction("CourseManager");
+            return Redirect("/Admin/CourseShow/" + model.CourseID);
         } 
         #endregion
 
@@ -1068,7 +1068,7 @@ namespace QqhrCitizen.Controllers
         {
             Question question = new Question();
             question = db.Questions.Find(id);
-
+            ViewBag.Question = new vQuestion(question);
             return View();
         }
 

@@ -1,0 +1,42 @@
+﻿@using QqhrCitizen.Models.ViewModel
+@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    vQuestion question = ViewBag.Question as vQuestion;
+    ViewBag.Title = "问题显示";
+}
+
+<div>
+    <h2>显示问题</h2>
+    <table class="detail-table">
+        <tr>
+            <td class="row-title">课程</td>
+            <td>@question.Lession.Course.Title</td>
+        </tr>
+        <tr>
+            <td class="row-title">课时</td>
+            <td>@question.Lession.Title</td>
+        </tr>
+        <tr>
+            <td class="row-title">题目内容</td>
+            <td>@question.Content</td>
+        </tr>
+        <tr>
+            <td class="row-title">选项</td>
+            <td>
+                @foreach (var item in question.Answers)
+                {
+                     @item <br />
+                }
+            </td>
+        </tr>
+
+        <tr>
+            <td class="row-title">添加时间</td>
+            <td>
+                @question.Time
+            </td>
+        </tr>
+    </table>
+</div>
+
+

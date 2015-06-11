@@ -25,6 +25,11 @@ namespace QqhrCitizen.Models.ViewModel
             this.ID = ID;
             this.Content = model.Content;
             this.RightAnswer = model.RightAnswer;
+            this.Remark = model.Remark;
+            this.Time = model.Time;
+            this.LessionID = model.LessionID;
+            this.Lession = model.Lession;
+            this.Answers= model.Answers.Split('|').ToList();
         }
     }
 }

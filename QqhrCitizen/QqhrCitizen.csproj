@@ -205,6 +205,7 @@
     <Compile Include="Models\ViewModel\vLession.cs" />
     <Compile Include="Models\ViewModel\vLogin.cs" />
     <Compile Include="Models\ViewModel\vNews.cs" />
+    <Compile Include="Models\ViewModel\vQuestion.cs" />
     <Compile Include="Models\ViewModel\vRegister.cs" />
     <Compile Include="Helpers\MvcHtmlHelperExt.cs" />
     <Compile Include="Models\ViewModel\vResourceLink.cs" />
@@ -260,6 +261,7 @@
     <Content Include="Views\Admin\LessionEdit.cshtml" />
     <Content Include="Views\Admin\LessionShow.cshtml" />
     <Content Include="Views\Admin\AddQuestion.cshtml" />
+    <Content Include="Views\Admin\QuestionShow.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
