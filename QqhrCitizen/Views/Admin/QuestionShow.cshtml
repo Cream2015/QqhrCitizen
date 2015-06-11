@@ -1,4 +1,5 @@
 ﻿@using QqhrCitizen.Models.ViewModel
+@using QqhrCitizen.Models
 @{
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
     vQuestion question = ViewBag.Question as vQuestion;
@@ -23,13 +24,18 @@
         <tr>
             <td class="row-title">选项</td>
             <td>
-                @foreach (var item in question.Answers)
+                @for (int i= 0;i<question.Answers.Count;i++)
                 {
-                     @item <br />
+                   <span>@CommonEnums.Answers[i]</span><span>:</span> @question.Answers[i] <br />
                 }
             </td>
         </tr>
-
+        <tr>
+            <td class="row-title">正确答案</td>
+            <td>
+                @question.RightAnswer
+            </td>
+        </tr>
         <tr>
             <td class="row-title">添加时间</td>
             <td>

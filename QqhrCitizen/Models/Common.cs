@@ -9,4 +9,9 @@ namespace QqhrCitizen.Models
     public enum Authority { User, Admin }
     public enum Sex { 女, 男 }
     public enum Role { User, Admin }
+
+    public class CommonEnums
+    {
+        public static string[] Answers = { "A", "B", "C", "D"};
+    }
 }
