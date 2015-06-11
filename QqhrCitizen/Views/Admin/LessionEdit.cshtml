@@ -1,34 +1,35 @@
 ﻿@using QqhrCitizen.Models
 @{
+    ViewBag.Title = "课程修改";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
-    Course course = ViewBag.Course as Course;
-    ViewBag.Title = course.Title;
+    Lession lession = ViewBag.Lession as Lession;
 }
 
+
 <div>
-    <h2>增加课时</h2>
-    @using (Html.BeginForm("AddLession", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    <h2>课时修改</h2>
+    @using (Html.BeginForm("LessionEdit", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
     {
         @Html.AntiForgerySID()
-        <input type="hidden" name="CourseID" value="@course.ID" />
+        <input type="hidden" name="ID" value="@lession.ID" />
         <table class="detail-table">
             <tr>
                 <td class="row-title">课程</td>
                 <td>
-                    @course.Title
+                   @lession.Course.Title
                 </td>
             </tr>
             <tr>
                 <td class="row-title">课时名称</td>
                 <td>
-                    <input type="text" name="Title" class="textbox" />
+                    <input type="text" name="Title" class="textbox" value="@lession.Title" />
                 </td>
             </tr>
 
             <tr>
                 <td class="row-title">描述</td>
                 <td>
-                    <textarea name="Description" class="textbox"></textarea>
+                    <textarea name="Description" class="textbox">@lession.Description</textarea>
                 </td>
             </tr>
             <tr>
@@ -36,7 +37,7 @@
                     备注
                 </td>
                 <td>
-                    <textarea name="Remark" class="textbox"></textarea>
+                    <textarea name="Remark" class="textbox">@lession.Remark</textarea>
                 </td>
             </tr>
             <tr>
@@ -44,11 +45,13 @@
                     视频文件
                 </td>
                 <td>
-                    <input type="file" name="file" />
+                    <input type="file" name="file" />(若不修改，请留空)
                 </td>
             </tr>
         </table>
-        <p><input type="submit" value="增加" class="button blue" /></p>
+        <p><input type="submit" value="保存" class="button blue" /></p>
     }
 
 </div>
+
+

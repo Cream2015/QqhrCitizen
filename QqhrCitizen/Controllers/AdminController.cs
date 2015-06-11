@@ -452,7 +452,7 @@ namespace QqhrCitizen.Controllers
             course.Title = model.Title;
             course.Description = model.Description;
             db.SaveChanges();
-            return RedirectToAction("CoursesManager");
+            return RedirectToAction("CourseManager");
         }
         #endregion
 
@@ -905,10 +905,7 @@ namespace QqhrCitizen.Controllers
         } 
         #endregion
 
-
-
-
-
+ 
         #region 课程删除
         /// <summary>
         /// 课程删除
@@ -925,7 +922,57 @@ namespace QqhrCitizen.Controllers
             System.IO.File.Delete(path);
             db.Lessions.Remove(lession);
             db.SaveChanges();
-            return RedirectToAction("CourseManager");
+            return Redirect("/Admin/CourseShow/"+lession.CourseID);
+        } 
+        #endregion
+
+
+        #region 课时编辑
+        /// <summary>
+        ///  课时编辑
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        [HttpGet]
+        [BaseAuth(Roles = "Admin")]
+        public ActionResult LessionEdit(int id)
+        {
+            Lession lession = new Lession();
+            lession = db.Lessions.Find(id);
+            ViewBag.Lession = lession;
+            return View();
+        } 
+        #endregion
+
+
+        #region 课时修改
+        /// <summary>
+        ///  课时修改
+        /// </summary>
+        /// <param name="model"></param>
+        /// <param name="file"></param>
+        /// <returns></returns>
+        [HttpPost]
+        [BaseAuth(Roles="Admin")]
+        public ActionResult LessionEdit(Lession model, HttpPostedFileBase file)
+        {
+            Lession lession = db.Lessions.Find(model.ID);
+            string path = "";
+            if (file != null)
+            {
+                path = Server.MapPath(lession.Path);
+                System.IO.File.Delete(path);
+
+                string fileName = Path.Combine(Request.MapPath("~/Lessions"), DateHelper.GetTimeStamp() + Path.GetFileName(file.FileName));
+                file.SaveAs(fileName);
+                path = "~/Lessions/" + DateHelper.GetTimeStamp() + Path.GetFileName(file.FileName);
+                lession.Path = path;
+            }
+            lession.Title = model.Title;
+            lession.Description = model.Description;
+            lession.Remark = model.Remark;
+            db.SaveChanges();
+            return Redirect("/Admin/CourseShow/" + lession.CourseID);
         } 
         #endregion
 
