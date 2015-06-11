@@ -89,12 +89,7 @@ namespace QqhrCitizen.Controllers
                 vflinks.Add(new vResourceLink(item));
             } 
             #endregion
-
-
-
-           
-
-
+ 
             ViewBag.NewsTypes = _newsTypes;
             ViewBag.CourseTypes = _courseTypes;
             ViewBag.EBookTypes = _ebookTypes;

@@ -2,7 +2,7 @@ var lock = false;
 var page = 0;
 var tid = "";
 
-
+//加载新闻
 function LoadNews() {
     if (lock) {
         return;
@@ -14,12 +14,10 @@ function LoadNews() {
             type: "post",
             data: { "page": page, "tid": tid },
         }).done(function (data) {
-            console.log(data);
             var str = "";
             for (var i = 0 ; i < data.length; i++) {
                 str += "<div><a href='/News/Show/"+data[i].ID+"'>"+data[i].Title+" </a> <span>"+moment(data[i].Time).format("YYYY-MM-DD HH:mm:ss")+"</span></div>";
             }
-            console.log(str);
             $(".lstNews").append(str);
             if (data.length == 10) {
                 lock = false;
@@ -29,6 +27,7 @@ function LoadNews() {
     }
 }
 
+//加载课程
 function LoadCourses() {
     if (lock) {
         return;
@@ -40,13 +39,36 @@ function LoadCourses() {
             type: "post",
             data: { "page": page, "tid": tid },
         }).done(function (data) {
-            console.log(data);
             var str = "";
             for (var i = 0 ; i < data.length; i++) {
                 str += "<div><a href='/Course/Show/" + data[i].ID + "'>" + data[i].Title + " </a> <span>" + moment(data[i].Time).format("YYYY-MM-DD HH:mm:ss") + "</span></div>";
             }
-            console.log(str);
             $(".lstCourse").append(str);
+            if (data.length == 10) {
+                lock = false;
+                page++;
+            }
+        });
+    }
+}
+
+// 加载图书
+function LoadEBooks() {
+    if (lock) {
+        return;
+    }
+    else {
+        lock = true;
+        $.ajax({
+            url: "/EBook/getEBookes",
+            type: "post",
+            data: { "page": page, "tid": tid },
+        }).done(function (data) {
+            var str = "";
+            for (var i = 0 ; i < data.length; i++) {
+                str += "<div><a href='/EBook/Show/" + data[i].ID + "'>" + data[i].Title + " </a> <span>" + moment(data[i].Time).format("YYYY-MM-DD HH:mm:ss") + "</span></div>";
+            }
+            $(".lstEBook").append(str);
             if (data.length == 10) {
                 lock = false;
                 page++;
@@ -62,7 +84,9 @@ function Load() {
     if ($(".lstCourse").length > 0) {
         LoadCourses();
     }
-
+    if ($(".lstEBook").length > 0) {
+        LoadEBooks();
+    }
 }
 
 $(document).ready(function () {
