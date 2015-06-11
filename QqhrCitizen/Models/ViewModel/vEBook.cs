@@ -49,6 +49,7 @@ namespace QqhrCitizen.Models.ViewModel
             this.Username = model.User.Username;
             this.FileID = model.FileID;
             this.File = model.File;
+            this.Browses = model.Browses;
         }
     }
 }

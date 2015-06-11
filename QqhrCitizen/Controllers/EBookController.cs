@@ -65,6 +65,24 @@ namespace QqhrCitizen.Controllers
             book = db.EBooks.Find(id);
             var path = Server.MapPath("~/Upload/" + book.File.Path);
             return File(path,book.File.ContentType, Url.Encode(book.File.FileName));
+        }
+        #endregion
+
+
+        #region 显示用户信息
+        /// <summary>
+        /// 显示用户信息
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public ActionResult Show(int id)
+        {
+            EBook book = new EBook();
+            book = db.EBooks.Find(id);
+            book.Browses += 1;
+            db.SaveChanges();
+            ViewBag.Ebook = new vEBook(book);
+            return View();
         } 
         #endregion
     }
