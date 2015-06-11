@@ -23,18 +23,23 @@ namespace QqhrCitizen.Models.ViewModel
 
         public int AuthorityAsInt { set; get; }
 
+        public List<Lession> Lessions { set; get; } 
+
         public vCourse() { }
 
         public vCourse(Course model)
         {
+            DB db = new DB();
             this.ID = model.ID;
             this.CourseTypeID = model.CourseTypeID;
+            this.TypeDictionary = model.TypeDictionary;
             this.Title = model.Title;
             this.Description = model.Description;
             this.UserID = model.UserID;
             this.Username = model.User.Username;
             this.Time = model.Time;
             this.Remark = model.Remark;
+            Lessions = db.Lessions.Where(l => l.CourseID == model.ID).ToList();
         }
 
     }

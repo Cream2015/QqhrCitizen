@@ -1,0 +1,54 @@
+﻿@using QqhrCitizen.Models
+@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    Course course = ViewBag.Course as Course;
+    ViewBag.Title = course.Title;
+}
+
+<div>
+    <h2>增加课时</h2>
+    @using (Html.BeginForm("AddLession", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        @Html.AntiForgerySID()
+        <input type="hidden" name="CourseID" value="@course.ID" />
+        <table class="detail-table">
+            <tr>
+                <td class="row-title">课程</td>
+                <td>
+                    @course.Title
+                </td>
+            </tr>
+            <tr>
+                <td class="row-title">课时名称</td>
+                <td>
+                    <input type="text" name="Title" class="textbox" />
+                </td>
+            </tr>
+
+            <tr>
+                <td class="row-title">描述</td>
+                <td>
+                    <input type="text" name="Description" class="textbox" />
+                </td>
+            </tr>
+            <tr>
+                <td class="row-title">
+                    备注
+                </td>
+                <td>
+                    <textarea name="Remark" class="textbox"></textarea>
+                </td>
+            </tr>
+            <tr>
+                <td class="row-title">
+                    视频文件
+                </td>
+                <td>
+                    <input type="file" name="file" />
+                </td>
+            </tr>
+        </table>
+        <p><input type="submit" value="增加" class="button blue" /></p>
+    }
+
+</div>

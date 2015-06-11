@@ -240,7 +240,7 @@
     <Content Include="Views\Admin\AddNews.cshtml" />
     <Content Include="Views\Admin\NewsEdit.cshtml" />
     <Content Include="Views\Admin\NewsShow.cshtml" />
-    <Content Include="Views\Admin\CoursesManager.cshtml" />
+    <Content Include="Views\Admin\CourseManager.cshtml" />
     <Content Include="Views\Admin\AddCourse.cshtml" />
     <Content Include="Views\Admin\CourseShow.cshtml" />
     <Content Include="Views\Admin\CoursesEdit.cshtml" />
@@ -256,6 +256,7 @@
     <Content Include="Views\Admin\EBookShow.cshtml" />
     <Content Include="Views\Admin\EBookEdit.cshtml" />
     <Content Include="Views\Course\Index.cshtml" />
+    <Content Include="Views\Admin\AddLession.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -266,6 +267,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Content\" />
+    <Folder Include="Lessions\" />
     <Folder Include="Upload\" />
   </ItemGroup>
   <PropertyGroup>

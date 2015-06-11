@@ -1,7 +1,7 @@
-﻿@using QqhrCitizen.Models
+﻿@using QqhrCitizen.Models.ViewModel
 @{
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
-    Course course = ViewBag.Course as Course;
+    vCourse course = ViewBag.Course as vCourse;
     ViewBag.Title = course.Title;
 }
 
@@ -47,12 +47,50 @@
             操作员
         </td>
         <td>
-            @course.User.Username
+            @course.Username
         </td>
     </tr>
 </table>
 
+<div style="margin-top:20px;">
+    <h2>课时  <a href="/Admin/CoursesEdit/@course.ID">修改</a></h2>
+    <table class="detail-table">
+        <thead>
+            <tr>
+                <td>课时名称</td>
+                <td>添加时间</td>
+                <td>操作</td>
+            </tr>
+        </thead>
+        <tbody>
+            @if (@course.Lessions.Count > 0)
+            {
+                foreach (var item in @course.Lessions)
+                {
+                    <tr>
+                        <td>
+                            @item.Title
+                        </td>
+                        <td>
+                            @item.Time.ToString("yyyy-MM-dd HH:mm:ss")
+                        </td>
+                        <td>
+                            <a href="javascript:Delete(@item.ID);">删除</a>
+                        </td>
+                    </tr>
 
+                }
+            }
+        </tbody>
+    </table>
+</div>
+
+
+<script>
+    function Delete(id) {
+        window.location = '/Admin/LessionDelete/' + id + '?sid=@ViewBag.SID';
+    }
+</script>
 
 
 

@@ -357,12 +357,14 @@ namespace QqhrCitizen.Controllers
         /// <returns></returns>
         [HttpGet]
         [BaseAuth(Roles = "Admin")]
-        public ActionResult CoursesManager(int page = 1)
+        public ActionResult CourseManager(int page = 1)
         {
             var list = db.Courses.OrderByDescending(tp => tp.ID).ToPagedList(page, 10);
             return View(list);
         }
         #endregion
+
+      
 
         #region 增加课程
         /// <summary>
@@ -460,17 +462,19 @@ namespace QqhrCitizen.Controllers
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
+        [HttpGet]
+        [BaseAuth(Roles="Admin")]
         public ActionResult CourseShow(int id)
         {
             Course course = new Course();
             course = db.Courses.Find(id);
-            ViewBag.Course = course;
+            ViewBag.Course = new vCourse(course);
             return View();
         }
         #endregion
 
-
-        #region MyRegion
+       
+        #region 资源链接
         /// <summary>
         /// 资源链接
         /// </summary>
@@ -856,6 +860,72 @@ namespace QqhrCitizen.Controllers
             db.SaveChanges();
 
             return RedirectToAction("EBookManager");
+        } 
+        #endregion
+
+
+        #region 增加课程
+        /// <summary>
+        /// 增加课程
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        [HttpGet]
+        [BaseAuth(Roles="Admin")]
+        public ActionResult AddLession(int id)
+        {
+            Course course = new Course();
+            course = db.Courses.Find(id);
+            ViewBag.Course = course;
+            return View();
+        }
+        #endregion
+
+
+        #region 创建课时
+        /// <summary>
+        /// 创建课时
+        /// </summary>
+        /// <param name="model"></param>
+        /// <param name="file"></param>
+        /// <returns></returns>
+        [HttpPost]
+        [BaseAuth(Roles="Admin")]
+        public ActionResult AddLession(Lession model, HttpPostedFileBase file)
+        {
+            string fileName = Path.Combine(Request.MapPath("~/Lessions"), DateHelper.GetTimeStamp() + Path.GetFileName(file.FileName));
+            file.SaveAs(fileName);
+            var path = "~/Lessions/" + DateHelper.GetTimeStamp() + Path.GetFileName(file.FileName);
+
+            model.Path = path;
+            model.Time = DateTime.Now;
+            db.Lessions.Add(model);
+            db.SaveChanges();
+            return RedirectToAction("CourseManager");
+        } 
+        #endregion
+
+
+
+
+
+        #region 课程删除
+        /// <summary>
+        /// 课程删除
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        [HttpGet]
+        [ValidateSID]
+        public ActionResult LessionDelete(int id)
+        {
+            Lession lession = new Lession();
+            lession = db.Lessions.Find(id);
+            var path = Server.MapPath(lession.Path);
+            System.IO.File.Delete(path);
+            db.Lessions.Remove(lession);
+            db.SaveChanges();
+            return RedirectToAction("CourseManager");
         } 
         #endregion
 
