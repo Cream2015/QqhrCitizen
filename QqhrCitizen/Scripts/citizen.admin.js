@@ -49,6 +49,39 @@ $(document).ready(function () {
 
         
     });
+
+
+    $("form").submit(function (e) {
+        $.each($(this).find("input[type='text']"), function (i, item) {
+            if ($(item).val() == "" && $(item).attr("name") != "undefined" && $(item).attr('class').indexOf('nullable') < 0) {
+                $(item).addClass('error');
+                e.preventDefault();
+                return false;
+            }
+            else {
+                return true;
+            }
+        });
+
+        $.each($(this).find("select"), function (i, item) {
+            if ($(item).val() == "" && $(item).attr("name") != "undefined" && $(item).attr('class').indexOf('nullable') < 0) {
+                $(item).addClass('error');
+                e.preventDefault();
+                return false;
+            }
+            else {
+                return true;
+            }
+        });
+    });
+
+    $('input').focus(function () {
+        $(this).removeClass('error');
+    });
+
+    $('select').focus(function () {
+        $(this).removeClass('error');
+    });
 });
 
 
@@ -65,3 +98,5 @@ function popMsg(txt) {
         }, 400);
     }, 2600);
 }
+
+
