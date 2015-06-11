@@ -517,11 +517,11 @@ namespace QqhrCitizen.Controllers
             int fileId = 0;
             if (model.IsHaveFile)
             {
-                string fileName = Path.Combine(Request.MapPath("~/Upload"), DateHelper.GetTimeStamp() + Path.GetFileName(file.FileName));
+                string fileName = Path.Combine(Request.MapPath("~/Upload"), DateHelper.GetTimeStamp() + Path.GetExtension(file.FileName));
                 file.SaveAs(fileName);
                 Models.File _file = new Models.File();
                 _file.FileTypeID = model.LinkTypeID;
-                _file.Path = DateHelper.GetTimeStamp() + Path.GetFileName(file.FileName);
+                _file.Path = DateHelper.GetTimeStamp()  + Path.GetExtension(file.FileName);
                 _file.Time = DateTime.Now;
                 _file.ContentType = file.ContentType;
                 _file.FileName = file.FileName;
@@ -596,7 +596,7 @@ namespace QqhrCitizen.Controllers
         /// <param name="model"></param>
         /// <param name="file"></param>
         /// <returns></returns>
-        [HttpGet]
+        [HttpPost]
         [BaseAuth(Roles = "Admin")]
         public ActionResult LinkEdit(ResourceLink model, HttpPostedFileBase file)
         {
@@ -606,12 +606,12 @@ namespace QqhrCitizen.Controllers
             {
                 if (model.FileID != 0)
                 {
-                    string fileName = Path.Combine(Request.MapPath("~/Upload"), DateHelper.GetTimeStamp() + Path.GetFileName(file.FileName));
+                    string fileName = Path.Combine(Request.MapPath("~/Upload"), DateHelper.GetTimeStamp() + Path.GetExtension(file.FileName));
                     file.SaveAs(fileName);
                     Models.File _file = new Models.File();
                     _file = db.Files.Find(model.FileID);
                     _file.FileTypeID = model.LinkTypeID;
-                    _file.Path = DateHelper.GetTimeStamp() + Path.GetFileName(file.FileName);
+                    _file.Path = DateHelper.GetTimeStamp()  + Path.GetExtension(file.FileName);
                     _file.ContentType = file.ContentType;
                     _file.FileName = file.FileName;
                     _file.FileSize = file.ContentLength.ToString();
@@ -620,11 +620,11 @@ namespace QqhrCitizen.Controllers
                 }
                 else
                 {
-                    string fileName = Path.Combine(Request.MapPath("~/Upload"), DateHelper.GetTimeStamp() + Path.GetFileName(file.FileName));
+                    string fileName = Path.Combine(Request.MapPath("~/Upload"), DateHelper.GetTimeStamp() + Path.GetExtension(file.FileName));
                     file.SaveAs(fileName);
                     Models.File _file = new Models.File();
                     _file.FileTypeID = model.LinkTypeID;
-                    _file.Path = DateHelper.GetTimeStamp() + Path.GetFileName(file.FileName);
+                    _file.Path = DateHelper.GetTimeStamp() + Path.GetExtension(file.FileName);
                     _file.Time = DateTime.Now;
                     _file.ContentType = file.ContentType;
                     _file.FileName = file.FileName;
@@ -725,11 +725,11 @@ namespace QqhrCitizen.Controllers
             int fileId = 0;
             if (file != null)
             {
-                string fileName = Path.Combine(Request.MapPath("~/Upload"), DateHelper.GetTimeStamp() + Path.GetFileName(file.FileName));
+                string fileName = Path.Combine(Request.MapPath("~/Upload"), DateHelper.GetTimeStamp() + Path.GetExtension(file.FileName));
                 file.SaveAs(fileName);
                 Models.File _file = new Models.File();
                 _file.FileTypeID = model.EBookTypeID;
-                _file.Path = DateHelper.GetTimeStamp() + Path.GetFileName(file.FileName);
+                _file.Path = DateHelper.GetTimeStamp() + Path.GetExtension(file.FileName);
                 _file.Time = DateTime.Now;
                 _file.ContentType = file.ContentType;
                 _file.FileName = file.FileName;
@@ -850,9 +850,9 @@ namespace QqhrCitizen.Controllers
                 var path = Server.MapPath("~/Upload/" + _file.Path);
                 System.IO.File.Delete(path);
 
-                string fileName = Path.Combine(Request.MapPath("~/Upload"), DateHelper.GetTimeStamp() + Path.GetFileName(file.FileName));
+                string fileName = Path.Combine(Request.MapPath("~/Upload"), DateHelper.GetTimeStamp()+ Path.GetExtension(file.FileName));
                 file.SaveAs(fileName);
-                _file.Path = DateHelper.GetTimeStamp() + Path.GetFileName(file.FileName);
+                _file.Path =DateHelper.GetTimeStamp() + Path.GetExtension(file.FileName);
                 _file.ContentType = file.ContentType;
                 _file.FileName = file.FileName;
                 _file.FileSize = file.ContentLength.ToString();
@@ -893,9 +893,9 @@ namespace QqhrCitizen.Controllers
         [BaseAuth(Roles="Admin")]
         public ActionResult AddLession(Lession model, HttpPostedFileBase file)
         {
-            string fileName = Path.Combine(Request.MapPath("~/Lessions"), DateHelper.GetTimeStamp() + Path.GetFileName(file.FileName));
+            string fileName = Path.Combine(Request.MapPath("~/Lessions"), DateHelper.GetTimeStamp() + Path.GetExtension(file.FileName));
             file.SaveAs(fileName);
-            var path = "~/Lessions/" + DateHelper.GetTimeStamp() + Path.GetFileName(file.FileName);
+            var path = DateHelper.GetTimeStamp()+ Path.GetExtension(file.FileName);
 
             model.Path = path;
             model.Time = DateTime.Now;
@@ -963,9 +963,9 @@ namespace QqhrCitizen.Controllers
                 path = Server.MapPath(lession.Path);
                 System.IO.File.Delete(path);
 
-                string fileName = Path.Combine(Request.MapPath("~/Lessions"), DateHelper.GetTimeStamp() + Path.GetFileName(file.FileName));
+                string fileName = Path.Combine(Request.MapPath("~/Lessions"), DateHelper.GetTimeStamp() + Path.GetExtension(file.FileName));
                 file.SaveAs(fileName);
-                path = "~/Lessions/" + DateHelper.GetTimeStamp() + Path.GetFileName(file.FileName);
+                path = DateHelper.GetTimeStamp() + Path.GetExtension(file.FileName);
                 lession.Path = path;
             }
             lession.Title = model.Title;
