@@ -383,7 +383,7 @@ namespace QqhrCitizen.Controllers
         [HttpPost]
         [ValidateSID]
         [BaseAuth(Roles = "Admin")]
-        public ActionResult AddCourses(Course model)
+        public ActionResult AddCourse(Course model)
         {
             model.UserID = CurrentUser.ID;
             model.Time = DateTime.Now;

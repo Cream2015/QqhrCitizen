@@ -46,7 +46,7 @@ function LoadCourses() {
                 str += "<div><a href='/Course/Show/" + data[i].ID + "'>" + data[i].Title + " </a> <span>" + moment(data[i].Time).format("YYYY-MM-DD HH:mm:ss") + "</span></div>";
             }
             console.log(str);
-            $(".lstNews").append(str);
+            $(".lstCourse").append(str);
             if (data.length == 10) {
                 lock = false;
                 page++;

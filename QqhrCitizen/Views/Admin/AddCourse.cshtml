@@ -7,14 +7,14 @@
     <div class="result-title">
         <h1>增加课程</h1>
     </div>
-    @using (Html.BeginForm("AddCourses", "Admin", FormMethod.Post))
+    @using (Html.BeginForm("AddCourse", "Admin", FormMethod.Post))
     {
         @Html.AntiForgerySID()
         <table class="detail-table">
             <tr>
                 <td class="row-title">一级分类</td>
                 <td>
-                    <select name="oneType" class="textbox w-0-8" id="lsOneType">
+                    <select name="oneType" class="textbox w-2" id="lsOneType">
                         <option value="0">选择分类</option>
                         @foreach (var item in ViewBag.Types)
                         {
@@ -26,7 +26,7 @@
             <tr>
                 <td class="row-title">二级分类</td>
                 <td>
-                    <select name="CourseTypeID" class="textbox w-0-8" id="lsSecondType"></select>
+                    <select name="CourseTypeID" class="textbox w-2" id="lsSecondType"></select>
                 </td>
             </tr>
             <tr>
@@ -40,7 +40,7 @@
                     内容
                 </td>
                 <td>
-                    <textarea class="textbox" style="height:100px;" name="Content"></textarea>
+                    <textarea class="textbox" style="height:100px;" name="Description"></textarea>
                 </td>
             </tr>
         </table>

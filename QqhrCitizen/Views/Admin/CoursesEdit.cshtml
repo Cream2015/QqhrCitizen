@@ -29,7 +29,7 @@
             <tr>
                 <td class="row-title">二级分类</td>
                 <td>
-                    <select name="NewsTypeID" class="textbox w-0-8" id="lsSecondType">
+                    <select name="CourseTypeID" class="textbox w-0-8" id="lsSecondType">
                         @foreach (var item in ViewBag.Second)
                         {
                             <option value="@item.ID" @(course.TypeDictionary.ID == item.ID ? "selected" : "")>@item.TypeValue</option>
@@ -48,7 +48,7 @@
                     内容
                 </td>
                 <td>
-                    <textarea class="textbox" style="height:100px;" name="Content">@course.Description</textarea>
+                    <textarea class="textbox" style="height:100px;" name="Description">@course.Description</textarea>
                 </td>
             </tr>
         </table>
