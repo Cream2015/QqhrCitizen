@@ -58,7 +58,7 @@ namespace QqhrCitizen.Controllers
             }
 
             #region 最新5条新闻
-            news = db.News.OrderByDescending(n => n.Time).Take(5).ToList();
+            news = db.News.OrderByDescending(n => n.Time).Take(10).ToList();
             foreach (var item in news)
             {
                 _news.Add(new vNews(item));
@@ -66,7 +66,7 @@ namespace QqhrCitizen.Controllers
             #endregion
 
             #region 最新的5门课程
-            courses = db.Courses.OrderByDescending(c => c.Time).Take(5).ToList();
+            courses = db.Courses.OrderByDescending(c => c.Time).Take(10).ToList();
             foreach (var item in courses)
             {
                 _courses.Add(new vCourse(item));
@@ -74,7 +74,7 @@ namespace QqhrCitizen.Controllers
             #endregion
 
             #region 最新的5门图书
-            books = db.EBooks.OrderByDescending(c => c.Time).Take(5).ToList();
+            books = db.EBooks.OrderByDescending(c => c.Time).Take(10).ToList();
             foreach (var item in books)
             {
                 _books.Add(new vEBook(item));

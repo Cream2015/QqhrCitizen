@@ -173,6 +173,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="Controllers\CourseController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\NewsController.cs" />
     <Compile Include="Controllers\SharedController.cs" />
@@ -240,7 +241,7 @@
     <Content Include="Views\Admin\NewsEdit.cshtml" />
     <Content Include="Views\Admin\NewsShow.cshtml" />
     <Content Include="Views\Admin\CoursesManager.cshtml" />
-    <Content Include="Views\Admin\AddCourses.cshtml" />
+    <Content Include="Views\Admin\AddCourse.cshtml" />
     <Content Include="Views\Admin\CourseShow.cshtml" />
     <Content Include="Views\Admin\CoursesEdit.cshtml" />
     <Content Include="Views\News\Show.cshtml" />
@@ -254,6 +255,7 @@
     <Content Include="Views\Admin\AdminMessage.cshtml" />
     <Content Include="Views\Admin\EBookShow.cshtml" />
     <Content Include="Views\Admin\EBookEdit.cshtml" />
+    <Content Include="Views\Course\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

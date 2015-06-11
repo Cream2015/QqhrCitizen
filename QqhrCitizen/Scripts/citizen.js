@@ -17,7 +17,33 @@ function LoadNews() {
             console.log(data);
             var str = "";
             for (var i = 0 ; i < data.length; i++) {
-                str += "<div><a href='/News/Show/"+data[i].ID+"'>"+data[i].Title+" </a> <span>"+moment(data[i].Time).format("YYYY-mm-DD HH:mm:ss")+"</span></div>";
+                str += "<div><a href='/News/Show/"+data[i].ID+"'>"+data[i].Title+" </a> <span>"+moment(data[i].Time).format("YYYY-MM-DD HH:mm:ss")+"</span></div>";
+            }
+            console.log(str);
+            $(".lstNews").append(str);
+            if (data.length == 10) {
+                lock = false;
+                page++;
+            }
+        });
+    }
+}
+
+function LoadCourses() {
+    if (lock) {
+        return;
+    }
+    else {
+        lock = true;
+        $.ajax({
+            url: "/Course/getCourses",
+            type: "post",
+            data: { "page": page, "tid": tid },
+        }).done(function (data) {
+            console.log(data);
+            var str = "";
+            for (var i = 0 ; i < data.length; i++) {
+                str += "<div><a href='/Course/Show/" + data[i].ID + "'>" + data[i].Title + " </a> <span>" + moment(data[i].Time).format("YYYY-MM-DD HH:mm:ss") + "</span></div>";
             }
             console.log(str);
             $(".lstNews").append(str);
@@ -33,6 +59,10 @@ function Load() {
     if ($(".lstNews").length > 0) {
         LoadNews();
     }
+    if ($(".lstCourse").length > 0) {
+        LoadCourses();
+    }
+
 }
 
 $(document).ready(function () {

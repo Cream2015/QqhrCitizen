@@ -52,8 +52,8 @@
                 }
             </div>
 
-            <a href="#" data-toggle="TestPopMenu"><div class="nav-item">图书</div></a>
-            <div id="TestPopMenu" class="pop-menu" style="width: 300px;">
+            <a href="#" data-toggle="EBookPopMenu"><div class="nav-item">图书</div></a>
+            <div id="EBookPopMenu" class="pop-menu" style="width: 300px;">
                 @foreach (var item in ViewBag.EbookTypes)
                 {
                     <strong>@item.TypeValue</strong>
@@ -73,6 +73,10 @@
                 {
                     <a href="/User/Logout"><div class="nav-item flt-r">退出</div></a>
                     <a href="/User/Show/@ViewBag.CurrentUser.ID"><div class="nav-item flt-r">@ViewBag.CurrentUser.Username</div></a>
+                    if (ViewBag.CurrentUser.RoleAsInt == 1)
+                    {
+                     <a href="/Admin/Index"><div class="nav-item flt-r">管理</div></a>
+                    }
                 }
                 else
                 {

@@ -371,7 +371,7 @@ namespace QqhrCitizen.Controllers
         /// <returns></returns>
         [HttpGet]
         [BaseAuth(Roles = "Admin")]
-        public ActionResult AddCourses()
+        public ActionResult AddCourse()
         {
             List<TypeDictionary> CourseTypes = new List<TypeDictionary>();
             CourseTypes = db.TypeDictionaries.Where(td => td.FatherID == 0 && td.Belonger == TypeBelonger.Course).ToList();
