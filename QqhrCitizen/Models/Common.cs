@@ -5,7 +5,7 @@ using System.Web;
 
 namespace QqhrCitizen.Models
 {
-    public enum TypeBelonger { News, File, ResourceLink, EBook, Course }
+    public enum TypeBelonger { 新闻, 文件, 资源链接, 电子书, 课程 }
     public enum Authority { User, Admin }
     public enum Sex { 女, 男 }
     public enum Role { User, Admin }

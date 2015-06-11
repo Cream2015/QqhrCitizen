@@ -226,7 +226,7 @@ namespace QqhrCitizen.Controllers
         public ActionResult AddNews()
         {
             List<TypeDictionary> newsTypes = new List<TypeDictionary>();
-            newsTypes = db.TypeDictionaries.Where(td => td.FatherID == 0 && td.Belonger == TypeBelonger.News).ToList();
+            newsTypes = db.TypeDictionaries.Where(td => td.FatherID == 0 && td.Belonger == TypeBelonger.新闻).ToList();
             ViewBag.Types = newsTypes;
             return View();
         }
@@ -302,7 +302,7 @@ namespace QqhrCitizen.Controllers
             News news = new News();
             List<TypeDictionary> newsTypes = new List<TypeDictionary>();
             news = db.News.Find(id);
-            newsTypes = db.TypeDictionaries.Where(td => td.FatherID == 0 && td.Belonger == TypeBelonger.News).ToList();
+            newsTypes = db.TypeDictionaries.Where(td => td.FatherID == 0 && td.Belonger == TypeBelonger.新闻).ToList();
 
             var second = new List<TypeDictionary>();
             second = db.TypeDictionaries.Where(td => td.FatherID == news.TypeDictionary.FatherID).ToList();
@@ -376,7 +376,7 @@ namespace QqhrCitizen.Controllers
         public ActionResult AddCourse()
         {
             List<TypeDictionary> CourseTypes = new List<TypeDictionary>();
-            CourseTypes = db.TypeDictionaries.Where(td => td.FatherID == 0 && td.Belonger == TypeBelonger.Course).ToList();
+            CourseTypes = db.TypeDictionaries.Where(td => td.FatherID == 0 && td.Belonger == TypeBelonger.课程).ToList();
             ViewBag.Types = CourseTypes;
             return View();
         }
@@ -425,7 +425,7 @@ namespace QqhrCitizen.Controllers
             Course course = new Course();
             List<TypeDictionary> courseTypes = new List<TypeDictionary>();
             course = db.Courses.Find(id);
-            courseTypes = db.TypeDictionaries.Where(td => td.FatherID == 0 && td.Belonger == TypeBelonger.Course).ToList();
+            courseTypes = db.TypeDictionaries.Where(td => td.FatherID == 0 && td.Belonger == TypeBelonger.课程).ToList();
 
             var second = new List<TypeDictionary>();
             second = db.TypeDictionaries.Where(td => td.FatherID == course.TypeDictionary.FatherID).ToList();
@@ -498,7 +498,7 @@ namespace QqhrCitizen.Controllers
         public ActionResult AddLink()
         {
             List<TypeDictionary> CourseTypes = new List<TypeDictionary>();
-            CourseTypes = db.TypeDictionaries.Where(td => td.FatherID == 0 && td.Belonger == TypeBelonger.ResourceLink).ToList();
+            CourseTypes = db.TypeDictionaries.Where(td => td.FatherID == 0 && td.Belonger == TypeBelonger.资源链接).ToList();
             ViewBag.Types = CourseTypes;
             return View();
         }
@@ -579,7 +579,7 @@ namespace QqhrCitizen.Controllers
         public ActionResult LinkEdit(int id)
         {
             List<TypeDictionary> CourseTypes = new List<TypeDictionary>();
-            CourseTypes = db.TypeDictionaries.Where(td => td.FatherID == 0 && td.Belonger == TypeBelonger.ResourceLink).ToList();
+            CourseTypes = db.TypeDictionaries.Where(td => td.FatherID == 0 && td.Belonger == TypeBelonger.资源链接).ToList();
             ViewBag.Types = CourseTypes;
             ResourceLink link = new ResourceLink();
             link = db.ResourceLinks.Find(id);
@@ -703,7 +703,7 @@ namespace QqhrCitizen.Controllers
         public ActionResult AddEBook()
         {
             List<TypeDictionary> EBookTypes = new List<TypeDictionary>();
-            EBookTypes = db.TypeDictionaries.Where(td => td.FatherID == 0 && td.Belonger == TypeBelonger.EBook).ToList();
+            EBookTypes = db.TypeDictionaries.Where(td => td.FatherID == 0 && td.Belonger == TypeBelonger.电子书).ToList();
             ViewBag.Types = EBookTypes;
             return View();
         }
@@ -816,7 +816,7 @@ namespace QqhrCitizen.Controllers
             ViewBag.EBook = book;
 
             List<TypeDictionary> EBookTypes = new List<TypeDictionary>();
-            EBookTypes = db.TypeDictionaries.Where(td => td.FatherID == 0 && td.Belonger == TypeBelonger.EBook).ToList();
+            EBookTypes = db.TypeDictionaries.Where(td => td.FatherID == 0 && td.Belonger == TypeBelonger.电子书).ToList();
             ViewBag.Types = EBookTypes;
 
             var second = new List<TypeDictionary>();
