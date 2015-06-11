@@ -977,6 +977,88 @@ namespace QqhrCitizen.Controllers
         #endregion
 
 
+
+        #region LessionShow
+        /// <summary>
+        /// 课程显示
+        /// </summary>
+        /// <returns></returns>
+        public ActionResult LessionShow(int id)
+        {
+            Lession lession = new Lession();
+            lession = db.Lessions.Find(id);
+            ViewBag.Lession = new vLession(lession);
+            return View();
+        }
+        #endregion
+
+
+        #region 删除问题
+        /// <summary>
+        /// 删除问题
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public ActionResult QuestionDelete(int id)
+        {
+            Question question = new Question();
+            question = db.Questions.Find(id);
+            db.Questions.Remove(question);
+            db.SaveChanges();
+            return Redirect("/Admin/LessionShow/" + question.LessionID);
+        } 
+        #endregion
+
+
+        #region 增加问题
+        /// <summary>
+        /// 增加问题
+        /// </summary>
+        /// <param name="lid"></param>
+        /// <returns></returns>
+        [HttpGet]
+        [BaseAuth(Roles = "Admin")]
+        public ActionResult AddQuestion(int lid)
+        {
+            ViewBag.LessionID = lid;
+            return View();
+        } 
+        #endregion
+
+
+        #region 增加问题
+        /// <summary>
+        /// 增加问题
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
+        [HttpPost]
+        [BaseAuth(Roles = "Admin")]
+        public ActionResult AddQuestion(Question model)
+        {
+            var options = Request.Params.GetValues("option");
+            string Answers = "";
+            for (int i=0;i<options.Count();i++)
+            {
+                if (i == options.Count() - 1)
+                {
+                    Answers += options[i];
+                }
+                else
+                {
+                    Answers += options[i] + "|";
+                }
+            }
+
+            model.Answers = Answers;
+            model.Time = DateTime.Now;
+            db.Questions.Add(model);
+            db.SaveChanges();
+            return Redirect("/Admin/LessionShow/"+model.LessionID);
+        }
+        
+        #endregion
+
         /// <summary>
         ///  消息
         /// </summary>
