@@ -1,4 +1,4 @@
-﻿var options = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J'];
+﻿var options = ['A', 'B', 'C', 'D'];
 
 $(document).ready(function () {
     $("#lsBelonger").change(function () {
@@ -28,6 +28,10 @@ $(document).ready(function () {
 
     $("#btnAddOption").click(function () {
         var optionIndex = $("#txtOptionIndex").val();
+        if (parseInt(optionIndex) >= 3) {
+            popMsg("最多添加四个选项");
+            return;
+        }
         var index = parseInt(optionIndex) + 1;
         $("#txtOptionIndex").val(index);
         var option = options[index];
@@ -45,4 +49,19 @@ $(document).ready(function () {
 
         
     });
-}); 
+});
+
+
+function popMsg(txt) {
+    var msg = $('<div class="msg hide">' + txt + '</div>');
+    msg.css('left', '50%');
+    $('body').append(msg);
+    msg.css('margin-left', '-' + parseInt(msg.outerWidth() / 2) + 'px');
+    msg.removeClass('hide');
+    setTimeout(function () {
+        msg.addClass('hide');
+        setTimeout(function () {
+            msg.remove();
+        }, 400);
+    }, 2600);
+}
