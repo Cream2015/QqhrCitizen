@@ -5,7 +5,7 @@
     ViewBag.Title = news.Title;
 }
 <div class="container wrap-cont">
-    <p>当前位置：/<a href="#" class="pos">@news.TypeDictionary.TypeValue</a>/<a href="#" class="pos">@news.Title</a></p>
+    <p>当前位置：/<a href="/News/Index?tid=@news.NewsTypeID" class="pos">@news.TypeDictionary.TypeValue</a>/<a href="#" class="pos">@news.Title</a></p>
     <div class="block main">
         <h2>@news.Title</h2>
         <div class="subtitle">时间：@news.Time.ToShortDateString() 浏览：@news.Browses 次 分类：<a href="#">@news.TypeDictionary.TypeValue</a></div>
