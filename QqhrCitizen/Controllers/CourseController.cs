@@ -1,4 +1,5 @@
-﻿using QqhrCitizen.Models;
+﻿using QqhrCitizen.Filters;
+using QqhrCitizen.Models;
 using QqhrCitizen.Models.ViewModel;
 using System;
 using System.Collections.Generic;
@@ -50,5 +51,34 @@ namespace QqhrCitizen.Controllers
             return Json(_lstCourse);
         } 
         #endregion
+
+        /// <summary>
+        /// 得到该课程详细课时信息
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        [HttpGet]
+        
+        public ActionResult Show(int id)
+        {
+
+            var listLessions = db.Lessions.Where(lession => lession.CourseID == id).ToList();
+            return View(listLessions);
+        }
+
+
+        /// <summary>
+        /// 得到该课时的详细信息
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        [HttpGet]
+        public ActionResult LessionDetails(int id)
+        {
+
+            var Lession = db.Lessions.Find(id);
+            ViewBag.Lession = Lession;
+            return View();
+        }
 	}
 }

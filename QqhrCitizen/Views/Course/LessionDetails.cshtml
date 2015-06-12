@@ -1,0 +1,6 @@
+﻿@using QqhrCitizen.Models
+@{
+    Lession lession = ViewBag.Lession as Lession;
+}
+<h2>@lession.Path</h2>
+<video id="video" src="@lession.Path" controls="controls"></video>
