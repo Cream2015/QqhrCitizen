@@ -141,6 +141,9 @@
     <Content Include="Images\logo.psd" />
     <Content Include="Images\userphoto.png" />
     <Content Include="Scripts\.DS_Store" />
+    <Content Include="Scripts\ckeditor\CHANGES.md" />
+    <Content Include="Scripts\ckeditor\LICENSE.md" />
+    <Content Include="Scripts\ckeditor\README.md" />
     <None Include="Scripts\jquery-1.11.2.intellisense.js" />
     <Content Include="Images\bg.jpg" />
     <Content Include="Images\header_bg.jpg" />
@@ -149,6 +152,11 @@
     <Content Include="Images\search_hover.jpg" />
     <Content Include="Scripts\citizen.admin.js" />
     <Content Include="Scripts\citizen.js" />
+    <Content Include="Scripts\ckeditor\build-config.js" />
+    <Content Include="Scripts\ckeditor\ckeditor.js" />
+    <Content Include="Scripts\ckeditor\config.js" />
+    <Content Include="Scripts\ckeditor\contents.css" />
+    <Content Include="Scripts\ckeditor\styles.js" />
     <Content Include="Scripts\jquery-1.11.2.js" />
     <Content Include="Scripts\jquery-1.11.2.min.js" />
     <Content Include="Scripts\jquery-1.11.3.min.js" />

@@ -14,7 +14,7 @@
             <tr>
                 <td class="row-title">链接类型</td>
                 <td>
-                    <select name="LinkTypeID" class="textbox w-0-8" id="lsOneType">
+                    <select name="LinkTypeID" class="textbox w-2" id="lsOneType">
                         <option value="0">选择分类</option>
                         @foreach (var item in ViewBag.Types)
                         {
@@ -43,7 +43,7 @@
                     是否上传文件
                 </td>
                 <td>
-                    <select name="IsHaveFile">
+                    <select name="IsHaveFile" class="textbox">
                         <option value="false">否</option>
                         <option value="true">是</option>
                     </select>
@@ -54,7 +54,7 @@
                     请选择文件:
                 </td>
                 <td>
-                    <input type="file" name="file" />
+                    <input type="file" name="file" class="textbox" />
                 </td>
             </tr>
         </table>

@@ -15,8 +15,8 @@
             <tr>
                 <td class="row-title">一级分类</td>
                 <td>
-                    <select name="oneType" class="textbox w-0-8"  id="lsOneType">
-                        <option value="0">选择分类</option>
+                    <select name="oneType" class="textbox w-2"  id="lsOneType">
+                        <option value="">选择分类</option>
                         @foreach (var item in ViewBag.Types)
                         {
                          <option value="@item.ID">@item.TypeValue</option>
@@ -27,13 +27,15 @@
             <tr>
                 <td class="row-title">二级分类</td>
                 <td>
-                    <select name="NewsTypeID" class="textbox w-0-8" id="lsSecondType"></select>
+                    <select name="NewsTypeID" class="textbox w-2" id="lsSecondType">
+                        <option value=""></option>
+                    </select>
                 </td>
             </tr>
             <tr>
                 <td class="row-title">标题</td>
                 <td>
-                    <input class="textbox w-3" name="Title" />
+                    <input class="textbox w-3" type="text" name="Title" />
                 </td>
             </tr>
             <tr>
@@ -50,4 +52,11 @@
     }
 </div>
 
-
+<script>
+    CKEDITOR.replace('Content',
+    {
+        toolbar: 'Basic',
+        width: "100%",
+        height: "170px"
+    });
+</script>
