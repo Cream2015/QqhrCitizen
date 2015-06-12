@@ -49,7 +49,7 @@ namespace QqhrCitizen.Controllers
             }
 
             return Json(_lstCourse);
-        } 
+        }
         #endregion
 
         /// <summary>
@@ -58,7 +58,7 @@ namespace QqhrCitizen.Controllers
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpGet]
-        
+
         public ActionResult Show(int id)
         {
 
@@ -78,7 +78,25 @@ namespace QqhrCitizen.Controllers
 
             var Lession = db.Lessions.Find(id);
             ViewBag.Lession = Lession;
+            var listNote = db.Notes.Where(note => note.LessionID == Lession.ID).ToList();
+            ViewBag.ListNote = listNote;
+            var listQuestions = db.Questions.Where(question => question.LessionID == id).ToList();
             return View();
         }
-	}
+
+        /// <summary>
+        /// 添加课时笔记
+        /// </summary>
+        /// <param name="note"></param>
+        /// <returns></returns>
+        [HttpPost]
+        public ActionResult AddNote(Note note)
+        {
+            note.Time = DateTime.Now;
+            note.UserID = CurrentUser.ID;
+            db.Notes.Add(note);
+            db.SaveChanges();
+            return Redirect("LessionDetails/" + note.LessionID);
+        }
+    }
 }
