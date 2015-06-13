@@ -73,7 +73,7 @@
                 {
                     <a href="/User/Logout"><div class="nav-item flt-r">退出</div></a>
                     <a href="/User/Show/@ViewBag.CurrentUser.ID"><div class="nav-item flt-r">@ViewBag.CurrentUser.Username</div></a>
-                    if (ViewBag.CurrentUser.RoleAsInt == 1)
+                    if (ViewBag.CurrentUser.RoleAsInt >= 1)
                     {
                      <a href="/Admin/Index"><div class="nav-item flt-r">管理</div></a>
                     }
