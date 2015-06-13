@@ -95,6 +95,27 @@ $(document).ready(function () {
     });
 
    
+    $("#frmAddManager").submit(function () {
+        var password = $("#txtPassword").val();
+        var confirm = $("#txtPasswordConfirm").val();
+        if (password == "") {
+            popMsg("请填写密码!");
+            return false;
+        }
+        if (confirm == "") {
+            popMsg("请填写密码重复!");
+            return false;
+        }
+        if (password != confirm) {
+            popMsg("两次密码输入不一致！!");
+            return false;
+        }
+        if (password.length < 6) {
+            popMsg("密码的长度不够！");
+            return false;
+        }
+        return true;
+    });
 });
 
 

@@ -1,0 +1,54 @@
+﻿
+@{
+    ViewBag.Title = "增加管理员";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div>
+    <div class="result-title">
+        <h1>增加课程</h1>
+    </div>
+    @using (Html.BeginForm("AddManager", "Admin", FormMethod.Post, new { id ="frmAddManager"}))
+    {
+        @Html.AntiForgerySID()
+        <table class="detail-table">
+            <tr>
+                <td class="row-title">用户名</td>
+                <td>
+                   <input type="text" class="textbox w-2" name="Username" />
+                </td>
+            </tr>
+            <tr>
+                <td class="row-title">密码</td>
+                <td>
+                    <input type="password" name="Password" id="txtPassword" class="textbox w-2" />
+                </td>
+            </tr>
+            <tr>
+                <td class="row-title">密码重复</td>
+                <td>
+                    <input type="password"  id="txtPasswordConfirm" class="textbox w-2" />
+                </td>
+            </tr>
+            <tr>
+                <td class="row-title">
+                    角色
+                </td>
+                <td>
+                    <select name="Role" class="textbox">
+                        <option value="Admin">超级管理员</option>
+                        <option value="NewsManager">新闻管理员</option>
+                        <option value="EBookManager">图书管理员</option>
+                        <option value="CourseManager">课程管理员</option>
+                    </select>
+                </td>
+            </tr>
+        </table>
+
+        <p><input type="submit" value="增加" class="button blue" /></p>
+    }
+</div>
+
+
+
+
