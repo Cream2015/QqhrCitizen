@@ -73,6 +73,17 @@ $(document).ready(function () {
                 return true;
             }
         });
+
+        $.each($(this).find("input[type='file']"), function (i, item) {
+            if ($(item).val() == "" && $(item).attr("name") != "undefined" && $(item).attr('class').indexOf('nullable') < 0) {
+                $(item).addClass('error');
+                e.preventDefault();
+                return false;
+            }
+            else {
+                return true;
+            }
+        });
     });
 
     $('input').focus(function () {
@@ -82,6 +93,8 @@ $(document).ready(function () {
     $('select').focus(function () {
         $(this).removeClass('error');
     });
+
+   
 });
 
 

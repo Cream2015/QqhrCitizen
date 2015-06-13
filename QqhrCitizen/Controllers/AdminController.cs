@@ -22,59 +22,6 @@ namespace QqhrCitizen.Controllers
             return View();
         }
 
-        #region 后台管理登陆
-        /// <summary>
-        /// 后台管理登陆
-        /// </summary>
-        /// <returns></returns>
-
-        [HttpGet]
-        public ActionResult Login()
-        {
-            return View();
-        }
-        #endregion
-
-
-        #region 执行登陆
-        /// <summary>
-        /// 执行登陆
-        /// </summary>
-        /// <param name="username"></param>
-        /// <param name="pwd"></param>
-        /// <returns></returns>
-        [HttpPost]
-        public ActionResult Login(string username, string pwd)
-        {
-            pwd = Helpers.Encryt.GetMD5(pwd);
-            User user = db.Users.Where(u => u.Username == username && u.Password == pwd && u.RoleAsInt == 1).FirstOrDefault();
-            if (user == null)
-            {
-                return RedirectToAction("Login");
-            }
-            else
-            {
-                FormsAuthentication.SetAuthCookie(username, false);
-                return RedirectToAction("Index", "Admin");
-            }
-        }
-        #endregion
-
-
-        #region 注销
-
-        /// <summary>
-        ///  注销 
-        /// </summary>
-        /// <returns></returns>
-        [HttpGet]
-        public ActionResult Logout()
-        {
-            FormsAuthentication.SignOut();
-            return RedirectToAction("Admin", "Home");
-        }
-        #endregion
-
 
         #region 类型管理
         /// <summary>
@@ -222,7 +169,6 @@ namespace QqhrCitizen.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpGet]
-        [BaseAuth(Roles = "Admin")]
         public ActionResult AddNews()
         {
             List<TypeDictionary> newsTypes = new List<TypeDictionary>();
@@ -257,7 +203,11 @@ namespace QqhrCitizen.Controllers
         /// <returns></returns>
         [HttpPost]
         [ValidateSID]
+<<<<<<< HEAD
         [BaseAuth(Roles = "Admin")]
+=======
+        [ValidateInput(false)]
+>>>>>>> origin/master
         public ActionResult AddNews(News model)
         {
             model.UserID = CurrentUser.ID;

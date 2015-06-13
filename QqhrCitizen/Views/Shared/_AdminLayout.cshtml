@@ -13,6 +13,7 @@
     <link href="~/Styles/PagedList.css" rel="stylesheet" />
 
     <script src="~/Scripts/jquery-1.11.3.min.js"></script>
+    <script src="~/Scripts/ckeditor/ckeditor.js"></script>
     <script src="~/Scripts/citizen.admin.js"></script>
 </head>
 <body>
@@ -27,9 +28,9 @@
             </div>
             <div class="top-info-wrap">
                 <ul class="top-info-list clearfix">
-                    <li><a href="#">@user.Username</a></li>
-                    <li><a href="#">修改密码</a></li>
-                    <li><a href="/Admin/Logut">退出</a></li>
+                    <li><a href="/User/Show/@user.ID">@user.Username</a></li>
+                    <li><a href="/User/PwdEdit/@user.ID">修改密码</a></li>
+                    <li><a href="/User/Logout">退出</a></li>
                 </ul>
             </div>
         </div>

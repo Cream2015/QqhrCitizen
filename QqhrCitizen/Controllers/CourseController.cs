@@ -50,5 +50,68 @@ namespace QqhrCitizen.Controllers
             return Json(_lstCourse);
         } 
         #endregion
-	}
+
+
+        /// <summary>
+        /// 得到该课程详细课时信息
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        [HttpGet]
+
+        public ActionResult Show(int id)
+        {
+            var Course = db.Courses.Find(id);
+            var listLessions = db.Lessions.Where(lession => lession.CourseID == id).ToList();
+            ViewBag.Lessions = listLessions;
+            ViewBag.Course = Course;
+            return View();
+        }
+
+
+        /// <summary>
+        /// 得到该课时的详细信息
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        [HttpGet]
+        public ActionResult LessionDetails(int id)
+        {
+            var questions = new List<vQuestion>();
+            var Lession = db.Lessions.Find(id);
+            ViewBag.Lession = Lession;
+            var listNote = db.Notes.Where(note => note.LessionID == Lession.ID).ToList();
+            ViewBag.ListNote = listNote;
+            var listQuestions = db.Questions.Where(question => question.LessionID == id).ToList();
+            foreach(var item in listQuestions)
+            {
+                questions.Add(new vQuestion(item));
+            }
+            ViewBag.Questions = questions;
+            return View();
+        }
+
+        /// <summary>
+        /// 添加课时笔记
+        /// </summary>
+        /// <param name="note"></param>
+        /// <returns></returns>
+        [HttpPost]
+        public ActionResult AddNote(Note note)
+        {
+            note.Time = DateTime.Now;
+            note.UserID = CurrentUser.ID;
+            db.Notes.Add(note);
+            db.SaveChanges();
+            return Redirect("LessionDetails/" + note.LessionID);
+        }
+
+        public ActionResult PlayLession(int id)
+        {
+            Lession lession = new Lession();
+            lession = db.Lessions.Find(id);
+            var path = Server.MapPath("~/Lessions/" +lession.Path);
+            return File(path, "video/mp4", Url.Encode(lession.Path));
+        }
+    }
 }

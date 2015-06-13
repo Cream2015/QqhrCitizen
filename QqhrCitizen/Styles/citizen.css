@@ -538,6 +538,11 @@ input[type="text"] {
 }
 
 
+li {
+    margin:0px;
+    padding:0px;
+    list-style:none;
+}
 
 .validation-summary-errors ul {
    padding:0;

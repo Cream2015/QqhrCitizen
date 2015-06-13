@@ -1,6 +1,7 @@
 ﻿var lock = false;
 var page = 0;
 var tid = "";
+var options = ['A', 'B', 'C', 'D'];
 //加载新闻
 function LoadNews() {
     if (lock) {
@@ -112,6 +113,31 @@ $(document).ready(function () {
         if ($(document).height() <= totalheight) {
             Load();
         }
+    });
+
+    $("#frmAddNote").submit(function () {
+        var userid = $("#userId").val();
+        if (userid == "") {
+            CastMsg("请先登录，在添加笔记");
+            return false;
+        }
+        return true;
+    })
+
+    $("#btnAnswerQuestion").click(function () {
+        var str = "";
+        var answers = $(".answer:checked");
+        $.each(answers, function (i, item) {
+            var answer = $(item).val();
+            var rightAnswer = $(item).parents(".question").children(".roghtanswer").val();
+            if (options[answer] != rightAnswer) {
+                str = str + "第" + (i + 1) + "题错误，答案应该是" + rightAnswer;
+            }
+            else {
+                str = str + "第" + (i + 1) + "题错误";
+            }
+        });
+        $(".warning").html(str);
     });
 
 });
