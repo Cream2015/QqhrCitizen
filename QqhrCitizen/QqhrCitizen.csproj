@@ -276,6 +276,8 @@
     <Content Include="Views\Admin\ManagerManage.cshtml" />
     <Content Include="Views\Admin\AddManager.cshtml" />
     <Content Include="Views\Admin\ManagerShow.cshtml" />
+    <Content Include="Views\Admin\UpdateManagerPwd.cshtml" />
+    <Content Include="Views\Admin\RoleUpdate.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

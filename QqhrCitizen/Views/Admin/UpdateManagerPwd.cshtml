@@ -1,0 +1,37 @@
+﻿@using QqhrCitizen.Models
+@{
+    ViewBag.Title = "密码重置";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    User user = ViewBag.User as User;
+}
+
+<div>
+    <h1>重置密码</h1>
+    @using (Html.BeginForm("UpdateManagerPwd", "Admin", FormMethod.Post,new { id="frmPasswordReset" }))
+    {
+        @Html.AntiForgerySID()
+        <input type="hidden" name="uid" value="@user.ID" />
+        <table class="detail-table">
+            <tr>
+                <td class="row-title">用户名</td>
+                <td>
+                    @user.Username
+                </td>
+            </tr>
+            <tr>
+                <td class="row-title">密码</td>
+                <td>
+                    <input type="password" name="password" class="textbox" id="txtPassword" />
+                </td>
+            </tr>
+            <tr>
+                <td class="row-title">密码重复</td>
+                <td>
+                    <input type="password" name="confirm" class="textbox" id="txtPasswordConfirm" />
+                </td>
+            </tr>
+        </table>
+
+        <p><input type="submit" value="确定" class="button blue" /></p>
+    }
+</div>

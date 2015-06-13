@@ -42,7 +42,7 @@ namespace QqhrCitizen.Controllers
         /// 增加类型
         /// </summary>
         /// <returns></returns>
-       
+
         [HttpGet]
         public ActionResult AddType()
         {
@@ -59,7 +59,7 @@ namespace QqhrCitizen.Controllers
         /// <param name="NeedAuthorize"></param>
         /// <param name="FatherID"></param>
         /// <returns></returns>
-       
+
         [HttpPost]
         public ActionResult AddType(TypeBelonger Belonger, string TypeValue, int NeedAuthorize, int FatherID)
         {
@@ -78,7 +78,7 @@ namespace QqhrCitizen.Controllers
         /// </summary>
         /// <param name="belonger"></param>
         /// <returns></returns>
-       
+
         [HttpGet]
         public ActionResult GetTypeByBelonger(TypeBelonger belonger)
         {
@@ -115,7 +115,7 @@ namespace QqhrCitizen.Controllers
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpGet]
-       
+
         public ActionResult TypeDictionaryEdit(int id)
         {
             var TypeDictionary = db.TypeDictionaries.Find(id);
@@ -133,7 +133,7 @@ namespace QqhrCitizen.Controllers
         /// <returns></returns>
         [HttpPost]
         [ValidateSID]
-       
+
         public ActionResult TypeDictionaryEdit(int id, TypeDictionary model)
         {
             var TypeDictionary = new TypeDictionary();
@@ -154,7 +154,7 @@ namespace QqhrCitizen.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpGet]
-       
+
         public ActionResult NewsManager(int page = 1)
         {
             var list = db.News.OrderByDescending(tp => tp.ID).ToPagedList(page, 10);
@@ -223,7 +223,7 @@ namespace QqhrCitizen.Controllers
         /// <returns></returns>
         [HttpGet]
         [ValidateSID]
-       
+
         public ActionResult NewsDelete(int id)
         {
             News news = new News();
@@ -241,7 +241,7 @@ namespace QqhrCitizen.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpGet]
-       
+
         public ActionResult NewsEdit(int id)
         {
             News news = new News();
@@ -267,7 +267,7 @@ namespace QqhrCitizen.Controllers
         /// <returns></returns>
         [HttpPost]
         [ValidateSID]
-       
+
         public ActionResult NewsEdit(News model)
         {
             News news = new News();
@@ -301,7 +301,7 @@ namespace QqhrCitizen.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpGet]
-       
+
         public ActionResult CourseManager(int page = 1)
         {
             var list = db.Courses.OrderByDescending(tp => tp.ID).ToPagedList(page, 10);
@@ -309,7 +309,7 @@ namespace QqhrCitizen.Controllers
         }
         #endregion
 
-      
+
 
         #region 增加课程
         /// <summary>
@@ -317,7 +317,7 @@ namespace QqhrCitizen.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpGet]
-       
+
         public ActionResult AddCourse()
         {
             List<TypeDictionary> CourseTypes = new List<TypeDictionary>();
@@ -329,7 +329,7 @@ namespace QqhrCitizen.Controllers
 
         [HttpPost]
         [ValidateSID]
-       
+
         public ActionResult AddCourse(Course model)
         {
             model.UserID = CurrentUser.ID;
@@ -347,7 +347,7 @@ namespace QqhrCitizen.Controllers
         /// <returns></returns>
         [HttpGet]
         [ValidateSID]
-       
+
         public ActionResult CoursesDelete(int id)
         {
             Course course = new Course();
@@ -364,7 +364,7 @@ namespace QqhrCitizen.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpGet]
-       
+
         public ActionResult CoursesEdit(int id)
         {
             Course course = new Course();
@@ -388,7 +388,7 @@ namespace QqhrCitizen.Controllers
         /// <returns></returns>
         [HttpPost]
         [ValidateSID]
-       
+
         public ActionResult CoursesEdit(Course model)
         {
             Course course = new Course();
@@ -408,7 +408,7 @@ namespace QqhrCitizen.Controllers
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpGet]
-       
+
         public ActionResult CourseShow(int id)
         {
             Course course = new Course();
@@ -418,7 +418,7 @@ namespace QqhrCitizen.Controllers
         }
         #endregion
 
-       
+
         #region 资源链接
         /// <summary>
         /// 资源链接
@@ -426,7 +426,7 @@ namespace QqhrCitizen.Controllers
         /// <param name="page"></param>
         /// <returns></returns>
         [HttpGet]
-       
+
         public ActionResult LinkManager(int page = 1)
         {
             var list = db.ResourceLinks.OrderByDescending(tp => tp.ID).ToPagedList(page, 10);
@@ -439,7 +439,7 @@ namespace QqhrCitizen.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpGet]
-       
+
         public ActionResult AddLink()
         {
             List<TypeDictionary> CourseTypes = new List<TypeDictionary>();
@@ -455,7 +455,7 @@ namespace QqhrCitizen.Controllers
         /// <param name="model"></param>
         /// <returns></returns>
         [HttpPost]
-       
+
         [ValidateSID]
         public ActionResult AddLink(ResourceLink model, HttpPostedFileBase file)
         {
@@ -520,7 +520,7 @@ namespace QqhrCitizen.Controllers
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpGet]
-       
+
         public ActionResult LinkEdit(int id)
         {
             List<TypeDictionary> CourseTypes = new List<TypeDictionary>();
@@ -542,7 +542,7 @@ namespace QqhrCitizen.Controllers
         /// <param name="file"></param>
         /// <returns></returns>
         [HttpGet]
-       
+
         public ActionResult LinkEdit(ResourceLink model, HttpPostedFileBase file)
         {
 
@@ -612,7 +612,7 @@ namespace QqhrCitizen.Controllers
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpGet]
-       
+
         public ActionResult LinkShow(int id)
         {
             ResourceLink link = new ResourceLink();
@@ -629,7 +629,7 @@ namespace QqhrCitizen.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpGet]
-       
+
         public ActionResult EBookManager(int page = 1)
         {
             var list = db.EBooks.OrderByDescending(tp => tp.ID).ToPagedList(page, 10);
@@ -644,7 +644,7 @@ namespace QqhrCitizen.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpGet]
-       
+
         public ActionResult AddEBook()
         {
             List<TypeDictionary> EBookTypes = new List<TypeDictionary>();
@@ -664,7 +664,7 @@ namespace QqhrCitizen.Controllers
         /// <param name="file"></param>
         /// <returns></returns>
         [HttpPost]
-       
+
         public ActionResult AddEBook(EBook model, HttpPostedFileBase file)
         {
             int fileId = 0;
@@ -753,7 +753,7 @@ namespace QqhrCitizen.Controllers
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpGet]
-       
+
         public ActionResult EBookEdit(int id)
         {
             EBook book = new EBook();
@@ -780,7 +780,7 @@ namespace QqhrCitizen.Controllers
         /// <param name="file"></param>
         /// <returns></returns>
         [HttpPost]
-       
+
         public ActionResult EBookEdit(EBook model, HttpPostedFileBase file)
         {
             EBook book = new EBook();
@@ -805,7 +805,7 @@ namespace QqhrCitizen.Controllers
             db.SaveChanges();
 
             return RedirectToAction("EBookManager");
-        } 
+        }
         #endregion
 
 
@@ -816,7 +816,7 @@ namespace QqhrCitizen.Controllers
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpGet]
-       
+
         public ActionResult AddLession(int id)
         {
             Course course = new Course();
@@ -835,7 +835,7 @@ namespace QqhrCitizen.Controllers
         /// <param name="file"></param>
         /// <returns></returns>
         [HttpPost]
-       
+
         public ActionResult AddLession(Lession model, HttpPostedFileBase file)
         {
             string fileName = Path.Combine(Request.MapPath("~/Lessions"), DateHelper.GetTimeStamp() + Path.GetFileName(file.FileName));
@@ -847,10 +847,10 @@ namespace QqhrCitizen.Controllers
             db.Lessions.Add(model);
             db.SaveChanges();
             return RedirectToAction("CourseManager");
-        } 
+        }
         #endregion
 
- 
+
         #region 课程删除
         /// <summary>
         /// 课程删除
@@ -867,8 +867,8 @@ namespace QqhrCitizen.Controllers
             System.IO.File.Delete(path);
             db.Lessions.Remove(lession);
             db.SaveChanges();
-            return Redirect("/Admin/CourseShow/"+lession.CourseID);
-        } 
+            return Redirect("/Admin/CourseShow/" + lession.CourseID);
+        }
         #endregion
 
 
@@ -879,14 +879,14 @@ namespace QqhrCitizen.Controllers
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpGet]
-       
+
         public ActionResult LessionEdit(int id)
         {
             Lession lession = new Lession();
             lession = db.Lessions.Find(id);
             ViewBag.Lession = lession;
             return View();
-        } 
+        }
         #endregion
 
 
@@ -898,7 +898,7 @@ namespace QqhrCitizen.Controllers
         /// <param name="file"></param>
         /// <returns></returns>
         [HttpPost]
-       
+
         public ActionResult LessionEdit(Lession model, HttpPostedFileBase file)
         {
             Lession lession = db.Lessions.Find(model.ID);
@@ -918,7 +918,7 @@ namespace QqhrCitizen.Controllers
             lession.Remark = model.Remark;
             db.SaveChanges();
             return Redirect("/Admin/CourseShow/" + lession.CourseID);
-        } 
+        }
         #endregion
 
 
@@ -952,7 +952,7 @@ namespace QqhrCitizen.Controllers
             db.Questions.Remove(question);
             db.SaveChanges();
             return Redirect("/Admin/LessionShow/" + question.LessionID);
-        } 
+        }
         #endregion
 
 
@@ -963,12 +963,12 @@ namespace QqhrCitizen.Controllers
         /// <param name="lid"></param>
         /// <returns></returns>
         [HttpGet]
-        
+
         public ActionResult AddQuestion(int lid)
         {
             ViewBag.LessionID = lid;
             return View();
-        } 
+        }
         #endregion
 
 
@@ -979,12 +979,12 @@ namespace QqhrCitizen.Controllers
         /// <param name="model"></param>
         /// <returns></returns>
         [HttpPost]
-        
+
         public ActionResult AddQuestion(Question model)
         {
             var options = Request.Params.GetValues("option");
             string Answers = "";
-            for (int i=0;i<options.Count();i++)
+            for (int i = 0; i < options.Count(); i++)
             {
                 if (i == options.Count() - 1)
                 {
@@ -1000,9 +1000,9 @@ namespace QqhrCitizen.Controllers
             model.Time = DateTime.Now;
             db.Questions.Add(model);
             db.SaveChanges();
-            return Redirect("/Admin/LessionShow/"+model.LessionID);
+            return Redirect("/Admin/LessionShow/" + model.LessionID);
         }
-        
+
         #endregion
 
         /// <summary>
@@ -1026,9 +1026,9 @@ namespace QqhrCitizen.Controllers
         [HttpGet]
         public ActionResult ManagerManage(int page = 1)
         {
-            var list = db.Users.Where(u => u.RoleAsInt > 0).OrderBy(u => u.ID).ToPagedList(page,10);
+            var list = db.Users.Where(u => u.RoleAsInt > 0).OrderBy(u => u.ID).ToPagedList(page, 10);
             return View(list);
-        } 
+        }
         #endregion
 
         #region 增加管理员
@@ -1040,7 +1040,7 @@ namespace QqhrCitizen.Controllers
         public ActionResult AddManager()
         {
             return View();
-        } 
+        }
         #endregion
 
         #region 增加管理员
@@ -1055,7 +1055,7 @@ namespace QqhrCitizen.Controllers
             model.Birthday = Convert.ToDateTime("2012-12-12");
             db.SaveChanges();
             return Redirect("/Admin/ManagerManage");
-        } 
+        }
         #endregion
 
         #region ManagerDelete
@@ -1073,7 +1073,7 @@ namespace QqhrCitizen.Controllers
             db.Users.Remove(user);
             db.SaveChanges();
             return Redirect("/Admin/ManagerManage");
-        } 
+        }
         #endregion
 
         #region 管理员展示
@@ -1088,9 +1088,16 @@ namespace QqhrCitizen.Controllers
             user = db.Users.Find(id);
             ViewBag.User = user;
             return View();
-        } 
+        }
         #endregion
 
+        #region MyRegion
+        /// <summary>
+        ///  管理员密码重置
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        [HttpGet]
         public ActionResult UpdateManagerPwd(int id)
         {
             User user = new User();
@@ -1098,7 +1105,63 @@ namespace QqhrCitizen.Controllers
             ViewBag.User = user;
             return View();
         }
+        #endregion
 
+        #region 管理员密码重置
+        /// <summary>
+        ///  管理员密码重置
+        /// </summary>
+        /// <param name="password"></param>
+        /// <param name="uid"></param>
+        /// <returns></returns>
+        [HttpPost]
+        [ValidateSID]
+        public ActionResult UpdateManagerPwd(string password, int uid)
+        {
+            User user = new Models.User();
+            user = db.Users.Find(uid);
+            user.Password = Helpers.Encryt.GetMD5(password);
+            db.SaveChanges();
+            return Redirect("/Admin/ManagerManage");
+        }
+        #endregion
+
+
+
+        #region 角色重置
+
+        /// <summary>
+        ///  角色重置
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        [HttpGet]
+        public ActionResult RoleUpdate(int id)
+        {
+            User user = new User();
+            user = db.Users.Find(id);
+            ViewBag.User = user;
+            return View();
+        }
+        #endregion
+
+        #region 执行角色重置
+        /// <summary>
+        ///  执行角色重置
+        /// </summary>
+        /// <param name="role"></param>
+        /// <returns></returns>
+        [HttpPost]
+        [ValidateSID]
+        public ActionResult RoleUpdate(Role role, int uid)
+        {
+            User user = new Models.User();
+            user = db.Users.Find(uid);
+            user.Role = role;
+            db.SaveChanges();
+            return Redirect("/Admin/ManagerManage");
+        } 
+        #endregion
 
         /// <summary>
         ///  消息

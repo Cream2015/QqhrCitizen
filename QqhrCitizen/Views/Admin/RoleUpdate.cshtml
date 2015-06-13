@@ -1,0 +1,36 @@
+﻿@using QqhrCitizen.Models
+@{
+    ViewBag.Title = "角色修改";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    User user = ViewBag.User as User;
+}
+
+
+<div>
+    <h1>角色修改</h1>
+    @using (Html.BeginForm("RoleUpdate", "Admin", FormMethod.Post))
+    {
+        @Html.AntiForgerySID()
+        <input type="hidden" name="uid" value="@user.ID" />
+        <table class="detail-table">
+            <tr>
+                <td class="row-title">用户名</td>
+                <td>
+                    @user.Username
+                </td>
+            </tr>
+            <tr>
+                <td class="row-title">密码</td>
+                <td>
+                    <select name="role" class="textbox">
+                        <option value="Admin">超级管理员</option>
+                        <option value="NewsManager">新闻管理员</option>
+                        <option value="EBookManager">图书管理员</option>
+                        <option value="CourseManager">课程管理员</option>
+                    </select>
+                </td>
+        </table>
+        <p><input type="submit" value="确定" class="button blue" /></p>
+    }
+</div>
+
