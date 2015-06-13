@@ -39,19 +39,19 @@ namespace QqhrCitizen.Controllers
             List<ResourceLink> nflinks = new List<ResourceLink>();
             List<ResourceLink> flinks = new List<ResourceLink>();
             List<vResourceLink> vflinks = new List<vResourceLink>();
-            newsTypes = db.TypeDictionaries.Where(td => td.FatherID == 0 && td.Belonger == TypeBelonger.News).ToList();
+            newsTypes = db.TypeDictionaries.Where(td => td.FatherID == 0 && td.Belonger == TypeBelonger.新闻).ToList();
             foreach (var type in newsTypes)
             {
                 _newsTypes.Add(new vTypeDictionary(type));
             }
 
-            courseTypes = db.TypeDictionaries.Where(td => td.FatherID == 0 && td.Belonger == TypeBelonger.Course).ToList();
+            courseTypes = db.TypeDictionaries.Where(td => td.FatherID == 0 && td.Belonger == TypeBelonger.课程).ToList();
             foreach (var type in courseTypes)
             {
                 _courseTypes.Add(new vTypeDictionary(type));
             }
 
-            ebookTypes = db.TypeDictionaries.Where(td => td.FatherID == 0 && td.Belonger == TypeBelonger.EBook).ToList();
+            ebookTypes = db.TypeDictionaries.Where(td => td.FatherID == 0 && td.Belonger == TypeBelonger.电子书).ToList();
             foreach (var type in ebookTypes)
             {
                 _ebookTypes.Add(new vTypeDictionary(type));
@@ -90,11 +90,6 @@ namespace QqhrCitizen.Controllers
             } 
             #endregion
 
-
-
-           
-
-
             ViewBag.NewsTypes = _newsTypes;
             ViewBag.CourseTypes = _courseTypes;
             ViewBag.EBookTypes = _ebookTypes;
@@ -108,17 +103,18 @@ namespace QqhrCitizen.Controllers
                 ViewBag.CurrentUser = (from u in db.Users
                                        where u.Username == requestContext.HttpContext.User.Identity.Name
                                        select u).Single();
-
-                ViewBag.SID = requestContext.HttpContext.Session["SID"].ToString();
+               
                 CurrentUser = ViewBag.CurrentUser;
             }
             else
             {
                 ViewBag.CurrentUser = null;
             }
+
+            ViewBag.SID = requestContext.HttpContext.Session["SID"].ToString();
         }
 
-
+        
         public User CurrentUser { get; set; }
 
        

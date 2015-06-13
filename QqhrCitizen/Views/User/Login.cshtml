@@ -6,15 +6,15 @@
     function LoginCheck() {
         if (!CheckUsername()) return false;
         if (!CheckPassword()) return false;
-       
+
     }
     function CheckUsername() {
-            if ($("#Username").val() == "") {
-                CastMsg("用户名不能为空");
-                return false;
-            }
-            return true;
+        if ($("#Username").val() == "") {
+            CastMsg("用户名不能为空");
+            return false;
         }
+        return true;
+    }
     function CheckPassword() {
         if ($('#Password').val() == "") {
             CastMsg("密码不能为空！");
@@ -28,30 +28,30 @@
                         onsubmit = "return LoginCheck();"
                     }))
 {
-       @Html.AntiForgerySID()
-        <div class="container wrap-cont">
-            <div class="narrow block">
-                <h2>用户登录</h2>
-                <table class="detail-table">
-                    <tr>
-                        <td class="row-title">用户名</td>
-                        <td>
-                            @Html.TextBoxFor(model => model.Username, new { @class = "textbox w-3" })<br>
-                            
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="row-title">密码</td>
-                        <td>
-                            @Html.PasswordFor(model => model.Password, new { @class = "textbox w-3" })<br />
-                           
-                        </td>
-                    </tr>
-                </table>
-                <p><input type="submit" value="登录" class="button blue" />  记住我 @Html.EditorFor(model => model.RememberMe, "1")</p>
-                @Html.ValidationSummary(true)
-            </div>
+    @Html.AntiForgerySID()
+    <div class="container wrap-cont">
+        <div class="narrow block">
+            <h2>用户登录</h2>
+            <table class="detail-table">
+                <tr>
+                    <td class="row-title">用户名</td>
+                    <td>
+                        @Html.TextBoxFor(model => model.Username, new { @class = "textbox w-3" })<br>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="row-title">密码</td>
+                    <td>
+                        @Html.PasswordFor(model => model.Password, new { @class = "textbox w-3" })<br />
+
+                    </td>
+                </tr>
+            </table>
+            <p><input type="submit" value="登录" class="button blue" />  记住我 @Html.EditorFor(model => model.RememberMe, "1")</p>
+            @Html.ValidationSummary(true)
         </div>
+    </div>
 }
 
 
