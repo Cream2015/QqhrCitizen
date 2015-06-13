@@ -132,7 +132,7 @@ $(document).ready(function () {
                 str = str + "第" + (i + 1) + "题错误，答案应该是" + rightAnswer;
             }
             else {
-                str = str + "第" + (i + 1) + "题错误";
+                str = str + "第" + (i + 1) + "题正确";
             }
         });
         $(".warning").html(str);

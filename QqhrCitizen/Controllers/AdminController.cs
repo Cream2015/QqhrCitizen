@@ -1011,6 +1011,31 @@ namespace QqhrCitizen.Controllers
             return View();
         }
 
+        #region 管理员管理
+        /// <summary>
+        ///  管理员管理
+        /// </summary>
+        /// <returns></returns>
+        [HttpPost]
+        public ActionResult ManagerManage()
+        {
+            return View();
+        } 
+        #endregion
+
+        #region 增加管理员
+        /// <summary>
+        ///  增加管理员
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet]
+        public ActionResult AddManager()
+        {
+            return View();
+        } 
+        #endregion
+
+
         /// <summary>
         ///  消息
         /// </summary>
