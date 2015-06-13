@@ -13,10 +13,10 @@ using QqhrCitizen.Helpers;
 
 namespace QqhrCitizen.Controllers
 {
+    [Authorize]
     public class AdminController : BaseController
     {
         // GET: Admin
-        [BaseAuth(Roles = "Admin")]
         public ActionResult Index()
         {
             return View();
@@ -28,7 +28,6 @@ namespace QqhrCitizen.Controllers
         /// 类型管理
         /// </summary>
         /// <returns></returns>
-        [BaseAuth(Roles = "Admin")]
         [HttpGet]
         public ActionResult TypeManager(int page = 1)
         {
@@ -43,7 +42,7 @@ namespace QqhrCitizen.Controllers
         /// 增加类型
         /// </summary>
         /// <returns></returns>
-        [BaseAuth(Roles = "Admin")]
+       
         [HttpGet]
         public ActionResult AddType()
         {
@@ -60,7 +59,7 @@ namespace QqhrCitizen.Controllers
         /// <param name="NeedAuthorize"></param>
         /// <param name="FatherID"></param>
         /// <returns></returns>
-        [BaseAuth(Roles = "Admin")]
+       
         [HttpPost]
         public ActionResult AddType(TypeBelonger Belonger, string TypeValue, int NeedAuthorize, int FatherID)
         {
@@ -79,7 +78,7 @@ namespace QqhrCitizen.Controllers
         /// </summary>
         /// <param name="belonger"></param>
         /// <returns></returns>
-        [BaseAuth(Roles = "Admin")]
+       
         [HttpGet]
         public ActionResult GetTypeByBelonger(TypeBelonger belonger)
         {
@@ -116,7 +115,7 @@ namespace QqhrCitizen.Controllers
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpGet]
-        [BaseAuth(Roles = "Admin")]
+       
         public ActionResult TypeDictionaryEdit(int id)
         {
             var TypeDictionary = db.TypeDictionaries.Find(id);
@@ -134,7 +133,7 @@ namespace QqhrCitizen.Controllers
         /// <returns></returns>
         [HttpPost]
         [ValidateSID]
-        [BaseAuth(Roles = "Admin")]
+       
         public ActionResult TypeDictionaryEdit(int id, TypeDictionary model)
         {
             var TypeDictionary = new TypeDictionary();
@@ -155,7 +154,7 @@ namespace QqhrCitizen.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpGet]
-        [BaseAuth(Roles = "Admin")]
+       
         public ActionResult NewsManager(int page = 1)
         {
             var list = db.News.OrderByDescending(tp => tp.ID).ToPagedList(page, 10);
@@ -224,7 +223,7 @@ namespace QqhrCitizen.Controllers
         /// <returns></returns>
         [HttpGet]
         [ValidateSID]
-        [BaseAuth(Roles = "Admin")]
+       
         public ActionResult NewsDelete(int id)
         {
             News news = new News();
@@ -242,7 +241,7 @@ namespace QqhrCitizen.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpGet]
-        [BaseAuth(Roles = "Admin")]
+       
         public ActionResult NewsEdit(int id)
         {
             News news = new News();
@@ -268,7 +267,7 @@ namespace QqhrCitizen.Controllers
         /// <returns></returns>
         [HttpPost]
         [ValidateSID]
-        [BaseAuth(Roles = "Admin")]
+       
         public ActionResult NewsEdit(News model)
         {
             News news = new News();
@@ -302,7 +301,7 @@ namespace QqhrCitizen.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpGet]
-        [BaseAuth(Roles = "Admin")]
+       
         public ActionResult CourseManager(int page = 1)
         {
             var list = db.Courses.OrderByDescending(tp => tp.ID).ToPagedList(page, 10);
@@ -318,7 +317,7 @@ namespace QqhrCitizen.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpGet]
-        [BaseAuth(Roles = "Admin")]
+       
         public ActionResult AddCourse()
         {
             List<TypeDictionary> CourseTypes = new List<TypeDictionary>();
@@ -330,7 +329,7 @@ namespace QqhrCitizen.Controllers
 
         [HttpPost]
         [ValidateSID]
-        [BaseAuth(Roles = "Admin")]
+       
         public ActionResult AddCourse(Course model)
         {
             model.UserID = CurrentUser.ID;
@@ -348,7 +347,7 @@ namespace QqhrCitizen.Controllers
         /// <returns></returns>
         [HttpGet]
         [ValidateSID]
-        [BaseAuth(Roles = "Admin")]
+       
         public ActionResult CoursesDelete(int id)
         {
             Course course = new Course();
@@ -365,7 +364,7 @@ namespace QqhrCitizen.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpGet]
-        [BaseAuth(Roles = "Admin")]
+       
         public ActionResult CoursesEdit(int id)
         {
             Course course = new Course();
@@ -389,7 +388,7 @@ namespace QqhrCitizen.Controllers
         /// <returns></returns>
         [HttpPost]
         [ValidateSID]
-        [BaseAuth(Roles = "Admin")]
+       
         public ActionResult CoursesEdit(Course model)
         {
             Course course = new Course();
@@ -427,7 +426,7 @@ namespace QqhrCitizen.Controllers
         /// <param name="page"></param>
         /// <returns></returns>
         [HttpGet]
-        [BaseAuth(Roles = "Admin")]
+       
         public ActionResult LinkManager(int page = 1)
         {
             var list = db.ResourceLinks.OrderByDescending(tp => tp.ID).ToPagedList(page, 10);
@@ -440,7 +439,7 @@ namespace QqhrCitizen.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpGet]
-        [BaseAuth(Roles = "Admin")]
+       
         public ActionResult AddLink()
         {
             List<TypeDictionary> CourseTypes = new List<TypeDictionary>();
@@ -456,7 +455,7 @@ namespace QqhrCitizen.Controllers
         /// <param name="model"></param>
         /// <returns></returns>
         [HttpPost]
-        [BaseAuth(Roles = "Admin")]
+       
         [ValidateSID]
         public ActionResult AddLink(ResourceLink model, HttpPostedFileBase file)
         {
@@ -521,7 +520,7 @@ namespace QqhrCitizen.Controllers
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpGet]
-        [BaseAuth(Roles = "Admin")]
+       
         public ActionResult LinkEdit(int id)
         {
             List<TypeDictionary> CourseTypes = new List<TypeDictionary>();
@@ -543,7 +542,7 @@ namespace QqhrCitizen.Controllers
         /// <param name="file"></param>
         /// <returns></returns>
         [HttpGet]
-        [BaseAuth(Roles = "Admin")]
+       
         public ActionResult LinkEdit(ResourceLink model, HttpPostedFileBase file)
         {
 
@@ -613,7 +612,7 @@ namespace QqhrCitizen.Controllers
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpGet]
-        [BaseAuth(Roles = "Admin")]
+       
         public ActionResult LinkShow(int id)
         {
             ResourceLink link = new ResourceLink();
@@ -630,7 +629,7 @@ namespace QqhrCitizen.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpGet]
-        [BaseAuth(Roles = "Admin")]
+       
         public ActionResult EBookManager(int page = 1)
         {
             var list = db.EBooks.OrderByDescending(tp => tp.ID).ToPagedList(page, 10);
@@ -645,7 +644,7 @@ namespace QqhrCitizen.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpGet]
-        [BaseAuth(Roles = "Admin")]
+       
         public ActionResult AddEBook()
         {
             List<TypeDictionary> EBookTypes = new List<TypeDictionary>();
@@ -665,7 +664,7 @@ namespace QqhrCitizen.Controllers
         /// <param name="file"></param>
         /// <returns></returns>
         [HttpPost]
-        [BaseAuth(Roles = "Admin")]
+       
         public ActionResult AddEBook(EBook model, HttpPostedFileBase file)
         {
             int fileId = 0;
@@ -781,7 +780,7 @@ namespace QqhrCitizen.Controllers
         /// <param name="file"></param>
         /// <returns></returns>
         [HttpPost]
-        [BaseAuth(Roles = "Admin")]
+       
         public ActionResult EBookEdit(EBook model, HttpPostedFileBase file)
         {
             EBook book = new EBook();
@@ -880,7 +879,7 @@ namespace QqhrCitizen.Controllers
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpGet]
-        [BaseAuth(Roles = "Admin")]
+       
         public ActionResult LessionEdit(int id)
         {
             Lession lession = new Lession();
