@@ -17,7 +17,7 @@ function LoadNews() {
             var str = "";
 
                 for (var i = 0 ; i < data.length; i++) {
-                    str += "<tr><td style='vertical-align:middle;font-size:19px;' height='50' ><a  href='/News/Show/" + data[i].ID + "' style='color:#000;' class='show'>" + data[i].Title + " </a></td></tr><tr><td >" + moment(data[i].Time).format("YYYY-MM-DD HH:mm:ss") + "</td></tr>";
+                    str += "<div class='Q-pList'><h2><a  href='/News/Show/" + data[i].ID + "' style='color:#000;' class='show'>" + data[i].Title + " </a></h2><p class='sub_title'>时间：" + moment(data[i].Time).format("YYYY-MM-DD HH:mm:ss") + "分类：" + data[i].TypeDictionary.TypeValue + "</p></div>";
                 }
              console.log(str);
 

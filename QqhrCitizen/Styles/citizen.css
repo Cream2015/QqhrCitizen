@@ -552,3 +552,29 @@ li {
 
    color:red;
 }
+
+
+ .Q-pList {
+border-bottom: 1px solid #f0f0f0;
+position: relative;
+padding-bottom: 0px
+}
+
+.Q-pList h2 {
+ font-size:20px;
+ margin: 8px 0 0;
+ display: inline-block;
+}
+ .Q-pList h2 a:hover {
+     text-decoration:none; 
+     color:#00FF00;
+    }
+
+.Q-pList .sub_title {
+ font-size:10px;
+ color: #818181;
+ margin:0;
+ padding: 1px 15px 0 0;
+ line-height:22px;
+}
+
