@@ -16,6 +16,13 @@ namespace QqhrCitizen.Controllers
         {
             string tid = HttpContext.Request.QueryString["tid"].ToString();
             ViewBag.Tid = tid;
+            var type = new TypeDictionary();
+            if (tid != "0")
+            {
+                int id = Convert.ToInt32(tid);
+                type = db.TypeDictionaries.Find(id);
+            }
+            ViewBag.Type = type.TypeValue;
             return View();
         }
 
@@ -48,7 +55,7 @@ namespace QqhrCitizen.Controllers
             }
 
             return Json(_lstCourse);
-        } 
+        }
         #endregion
 
 
@@ -83,7 +90,7 @@ namespace QqhrCitizen.Controllers
             var listNote = db.Notes.Where(note => note.LessionID == Lession.ID).ToList();
             ViewBag.ListNote = listNote;
             var listQuestions = db.Questions.Where(question => question.LessionID == id).ToList();
-            foreach(var item in listQuestions)
+            foreach (var item in listQuestions)
             {
                 questions.Add(new vQuestion(item));
             }
@@ -110,7 +117,7 @@ namespace QqhrCitizen.Controllers
         {
             Lession lession = new Lession();
             lession = db.Lessions.Find(id);
-            var path = Server.MapPath("~/Lessions/" +lession.Path);
+            var path = Server.MapPath("~/Lessions/" + lession.Path);
             return File(path, "video/mp4", Url.Encode(lession.Path));
         }
     }

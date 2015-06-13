@@ -18,6 +18,13 @@ namespace QqhrCitizen.Controllers
         {
             string tid =HttpContext.Request.QueryString["tid"].ToString();
             ViewBag.Tid = tid;
+            var type = new TypeDictionary();
+            if (tid != "0")
+            {
+                int id = Convert.ToInt32(tid);
+                type = db.TypeDictionaries.Find(id);
+            }
+            ViewBag.Type = type.TypeValue;
             return View();
         }
 

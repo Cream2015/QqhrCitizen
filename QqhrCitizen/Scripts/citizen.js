@@ -17,7 +17,7 @@ function LoadNews() {
             var str = "";
 
                 for (var i = 0 ; i < data.length; i++) {
-                    str += "<ul><li><tr><td style='vertical-align:middle;font-size:19px;' height='50' ><a  href='/News/Show/" + data[i].ID + "' style='color:#000;' class='show'>" + data[i].Title + " </a></td></tr></li></ul><ul style='font-size:13px; color:#999;'><tr><td >" + moment(data[i].Time).format("YYYY-MM-DD HH:mm:ss") + "</td></tr></ul>";
+                    str += "<tr><td style='vertical-align:middle;font-size:19px;' height='50' ><a  href='/News/Show/" + data[i].ID + "' style='color:#000;' class='show'>" + data[i].Title + " </a></td></tr><tr><td >" + moment(data[i].Time).format("YYYY-MM-DD HH:mm:ss") + "</td></tr>";
                 }
              console.log(str);
 
@@ -44,7 +44,8 @@ function LoadCourses() {
         }).done(function (data) {
             var str = "";
             for (var i = 0 ; i < data.length; i++) {
-                str += "<div><a href='/Course/Show/" + data[i].ID + "'>" + data[i].Title + " </a> <span>" + moment(data[i].Time).format("YYYY-MM-DD HH:mm:ss") + "</span></div>";
+                str += "<ul><li><tr><td style='vertical-align:middle;font-size:19px;' height='50' ><a  href='/Course/Show/" + data[i].ID + "' style='color:#000;' class='show'>" + data[i].Title + " </a></td></tr></li></ul><ul style='font-size:13px; color:#999;'><tr><td >" + moment(data[i].Time).format("YYYY-MM-DD HH:mm:ss") + "</td></tr></ul>";
+                //str += "<div><a href='/Course/Show/" + data[i].ID + "'>" + data[i].Title + " </a> <span>" + moment(data[i].Time).format("YYYY-MM-DD HH:mm:ss") + "</span></div>";
             }
             $(".lstCourse").append(str);
             if (data.length == 10) {
@@ -70,7 +71,8 @@ function LoadEBooks() {
             console.log(data);
             var str = "";
             for (var i = 0 ; i < data.length; i++) {
-                str += "<div><a href='/EBook/Show/" + data[i].ID + "'>" + data[i].Title + " </a> <span>" + moment(data[i].Time).format("YYYY-MM-DD HH:mm:ss") + "</span> <a href='/Upload/" + data[i].File.Path + "'>在线预览</a> <a href='/EBook/Download/"+data[i].ID+"'>下载</a></div>";
+                str += "<ul><li><tr><td style='vertical-align:middle;font-size:19px;' height='50' ><a  href='/Ebook/Show/" + data[i].ID + "' style='color:#000;' class='show'>" + data[i].Title + " </a></td></tr></li></ul><ul style='font-size:13px; color:#999;'><tr><td >" + moment(data[i].Time).format("YYYY-MM-DD HH:mm:ss") + "</td></tr></ul>";
+               // str += "<div><a href='/EBook/Show/" + data[i].ID + "'>" + data[i].Title + " </a> <span>" + moment(data[i].Time).format("YYYY-MM-DD HH:mm:ss") + "</span> <a href='/Upload/" + data[i].File.Path + "'>在线预览</a> <a href='/EBook/Download/"+data[i].ID+"'>下载</a></div>";
             }
             $(".lstEBook").append(str);
             if (data.length == 10) {

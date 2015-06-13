@@ -1,16 +1,22 @@
-﻿
+﻿@using QqhrCitizen.Models
 @{
     ViewBag.Title = "课程首页";
 }
 
 <input type="hidden" name="name" id="tid" value="@ViewBag.Tid" />
-<div class="lstCourse container" style="min-height:500px;">
 
+<div class="container" style="min-height:500px;">
+    <p>
+        当前位置：/<a href="/Course/Index?tid=0" class="pos">课程</a>/<a href="/Course/Index?tid=@ViewBag.Tid" class="pos">@ViewBag.Type</a>
+    </p>
+    <div class='block main'>
+        <table class="lstCourse"></table>
+    </div>
+    <div class='block sidebar'></div>
+    <div class="clr"></div>
 </div>
-
 
 <script>
     tid = $("#tid").val();
 </script>
-
 
