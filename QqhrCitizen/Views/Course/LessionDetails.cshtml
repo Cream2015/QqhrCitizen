@@ -1,45 +1,64 @@
 ﻿@using QqhrCitizen.Models
+@using QqhrCitizen.Models.ViewModel
 @{
     Lession lession = ViewBag.Lession as Lession;
     List<Note> listNote = ViewBag.ListNote as List<Note>;
+    List<vQuestion> questions = ViewBag.Questions as List<vQuestion>;
 }
 
-<div id="div_Main">
+<div class="container">
     <div id="div_Left">
-
     </div>
     <div id="div_Video">
-        <video id="video" src="@lession.Path" controls="controls"></video>
+        <video id="video" src="/Course/PlayLession/@lession.ID" controls="controls"></video>
     </div>
     <div id="div_Right">
         <div id="div_Question"></div>
         <div id="div_Note">
             <h5 style="padding-top:8px;">课堂笔记</h5>
-            @using (Html.BeginForm("AddNote", "Course"))
+            @using (Html.BeginForm("AddNote", "Course", FormMethod.Post, new { id = "frmAddNote" }))
             {
-
-            <input type="hidden" name="LessionID" id="LessionID" value="@lession.ID" />
-            <textarea name="Content" class="textbox"></textarea>
-            <p><input type="submit" value="保存" class="button blue" style="margin-left:10px;" /></p>
+                <input type="hidden" id="userId" name="UserID" value="@(ViewBag.CurrentUser==null?"":@ViewBag.CurrentUser.ID)" />
+                <input type="hidden" name="LessionID" id="LessionID" value="@lession.ID" />
+                <textarea name="Content" class="textbox"></textarea>
+                <p><input type="submit" value="保存" class="button blue" style="margin-left:10px;" /></p>
             }
             <hr />
             <div style="padding-top:10px;"><h5>历史笔记</h5></div>
 
-            @if (listNote.Count>0)
+            @if (listNote.Count > 0)
             {
                 foreach (var note in listNote)
                 {
-            <div class="div_HisNote">
-                <p>@note.Time</p>
-                @note.Content
-            </div>
+                    <div class="div_HisNote">
+                        <p>@note.Time</p>
+                        @note.Content
+                    </div>
                 }
             }
         </div>
 
     </div>
-    <div id="div_Bottom">
+    <div>
+        课后问题：
+        <div>
+            @for (int i = 0; i < questions.Count(); i++)
+            {
+                <div class="question">
+                    @(i + 1)<span>.</span>@questions[i].Content <br />
+                    <input value="@questions[i].RightAnswer" type="hidden" class="roghtanswer" />
+                    @for (int j = 0; j < questions[i].Answers.Count(); j++)
+                    {
+                    <input name="answer@(i+1)" type="radio" value="@j" class="answer" />@CommonEnums.Answers[j]<span>:</span>@questions[i].Answers[j] <br />
+                    }
+                </div>
+            }
 
+            <input type="button" value="提交" id="btnAnswerQuestion" />
+            <div class="warning">
+
+            </div>
+        </div>
     </div>
 </div>
 

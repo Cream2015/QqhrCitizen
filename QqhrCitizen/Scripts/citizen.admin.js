@@ -93,6 +93,8 @@ $(document).ready(function () {
     $('select').focus(function () {
         $(this).removeClass('error');
     });
+
+   
 });
 
 
