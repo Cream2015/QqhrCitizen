@@ -136,10 +136,10 @@ $(document).ready(function () {
             var answer = $(item).val();
             var rightAnswer = $(item).parents(".question").children(".roghtanswer").val();
             if (options[answer] != rightAnswer) {
-                str = str + "第" + (i + 1) + "题错误，答案应该是" + rightAnswer;
+                str = str + "第" + (i + 1) + "题错误，答案应该是" + rightAnswer+"  ";
             }
             else {
-                str = str + "第" + (i + 1) + "题正确";
+                str = str + "第" + (i + 1) + "题正确"+"  ";
             }
         });
         $(".warning").html(str);
