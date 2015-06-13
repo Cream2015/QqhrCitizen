@@ -9,22 +9,22 @@ function LoadNews() {
     }
     else {
         lock = true;
+        $(".loadMore").text("正在加载~~");
         $.ajax({
             url: "/News/getNews",
             type: "post",
             data: { "page": page, "tid": tid },
         }).done(function (data) {
             var str = "";
-
-                for (var i = 0 ; i < data.length; i++) {
-                    str += "<div class='Q-pList'><h2><a  href='/News/Show/" + data[i].ID + "' style='color:#000;' class='show'>" + data[i].Title + " </a></h2><p class='sub_title'>时间：" + moment(data[i].Time).format("YYYY-MM-DD HH:mm:ss") + "分类：" + data[i].TypeDictionary.TypeValue + "</p></div>";
-                }
-             console.log(str);
-
+            for (var i = 0 ; i < data.length; i++) {
+                str += "<div class='Q-pList'><h2><a  href='/News/Show/" + data[i].ID + "' style='color:#000;' class='show'>" + data[i].Title + " </a></h2><p class='sub_title'>时间：" + moment(data[i].Time).format("YYYY-MM-DD HH:mm:ss") + "分类：" + data[i].TypeDictionary.TypeValue + "</p></div>";
+            }
             $(".lstNews").append(str);
             if (data.length == 10) {
                 lock = false;
                 page++;
+            } else {
+                $(".loadMore").text("没有更多数据了！");
             }
         });
     }
@@ -37,6 +37,7 @@ function LoadCourses() {
     }
     else {
         lock = true;
+        $(".loadMore").text("正在加载~~");
         $.ajax({
             url: "/Course/getCourses",
             type: "post",
@@ -44,13 +45,14 @@ function LoadCourses() {
         }).done(function (data) {
             var str = "";
             for (var i = 0 ; i < data.length; i++) {
-                str += "<ul><li><tr><td style='vertical-align:middle;font-size:19px;' height='50' ><a  href='/Course/Show/" + data[i].ID + "' style='color:#000;' class='show'>" + data[i].Title + " </a></td></tr></li></ul><ul style='font-size:13px; color:#999;'><tr><td >" + moment(data[i].Time).format("YYYY-MM-DD HH:mm:ss") + "</td></tr></ul>";
-                //str += "<div><a href='/Course/Show/" + data[i].ID + "'>" + data[i].Title + " </a> <span>" + moment(data[i].Time).format("YYYY-MM-DD HH:mm:ss") + "</span></div>";
+                str += "<div class='Q-pList'><h2><a  href='/Course/Show/" + data[i].ID + "' style='color:#000;' class='show'>" + data[i].Title + " </a></h2><p class='sub_title'>时间：" + moment(data[i].Time).format("YYYY-MM-DD HH:mm:ss") + "分类：" + data[i].TypeDictionary.TypeValue + " </p></div>";
             }
             $(".lstCourse").append(str);
             if (data.length == 10) {
                 lock = false;
                 page++;
+            } else {
+                $(".loadMore").text("没有更多数据了！");
             }
         });
     }
@@ -72,7 +74,6 @@ function LoadEBooks() {
             var str = "";
             for (var i = 0 ; i < data.length; i++) {
                 str += "<div class='Q-pList'><h2><a  href='/EBook/Show/" + data[i].ID + "' style='color:#000;' class='show'>" + data[i].Title + " </a></h2><p class='sub_title'>时间：" + moment(data[i].Time).format("YYYY-MM-DD HH:mm:ss") + "分类：" + data[i].TypeDictionary.TypeValue + "   <a href='/Upload/" + data[i].File.Path + "'>在线预览</a> <a href='/EBook/Download/" + data[i].ID + "'>下载</a></p></div>";
-                 
             }
             $(".lstEBook").append(str);
             if (data.length == 10) {
