@@ -23,11 +23,9 @@ namespace QqhrCitizen.Models
         public virtual Course Course{ get; set; }
         public DateTime Time { get; set; }
         public string Remark { get; set; }
-        public string Path { get; set; }
 
+        public byte[] Video { set; get; }
 
-        //[ForeignKey("User")]
-        //public int UserID { get; set; }
-        //public virtual User User { get; set; }
+        public string ContentType { set; get; }
     }
 }

@@ -117,8 +117,7 @@ namespace QqhrCitizen.Controllers
         {
             Lession lession = new Lession();
             lession = db.Lessions.Find(id);
-            var path = Server.MapPath("~/Lessions/" + lession.Path);
-            return File(path, "video/mp4", Url.Encode(lession.Path));
+            return File(lession.Video, lession.ContentType);
         }
     }
 }

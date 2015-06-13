@@ -16,8 +16,7 @@ namespace QqhrCitizen.Models.ViewModel
         public  Course Course { get; set; }
         public DateTime Time { get; set; }
         public string Remark { get; set; }
-        public string Path { get; set; }
-
+        public string ContentType { set; get; }
         public List<Question> Questions { get; set; }
 
         public vLession() { }
@@ -32,7 +31,6 @@ namespace QqhrCitizen.Models.ViewModel
             this.Course = model.Course;
             this.Time = model.Time;
             this.Remark = model.Remark;
-            this.Path = model.Path;
             this.Questions = db.Questions.Where(c=>c.LessionID==model.ID).ToList();
         }
     }

@@ -838,12 +838,15 @@ namespace QqhrCitizen.Controllers
 
         public ActionResult AddLession(Lession model, HttpPostedFileBase file)
         {
-            string fileName = Path.Combine(Request.MapPath("~/Lessions"), DateHelper.GetTimeStamp() + Path.GetFileName(file.FileName));
-            file.SaveAs(fileName);
-            var path = "~/Lessions/" + DateHelper.GetTimeStamp() + Path.GetFileName(file.FileName);
 
-            model.Path = path;
+            System.IO.Stream stream = file.InputStream;
+            byte[] buffer = new byte[stream.Length];
+            stream.Read(buffer, 0, (int)stream.Length);
+            stream.Close();
+            model.Video = buffer;
+
             model.Time = DateTime.Now;
+            model.ContentType = file.ContentType;
             db.Lessions.Add(model);
             db.SaveChanges();
             return RedirectToAction("CourseManager");
@@ -863,8 +866,6 @@ namespace QqhrCitizen.Controllers
         {
             Lession lession = new Lession();
             lession = db.Lessions.Find(id);
-            var path = Server.MapPath(lession.Path);
-            System.IO.File.Delete(path);
             db.Lessions.Remove(lession);
             db.SaveChanges();
             return Redirect("/Admin/CourseShow/" + lession.CourseID);
@@ -902,16 +903,13 @@ namespace QqhrCitizen.Controllers
         public ActionResult LessionEdit(Lession model, HttpPostedFileBase file)
         {
             Lession lession = db.Lessions.Find(model.ID);
-            string path = "";
             if (file != null)
             {
-                path = Server.MapPath(lession.Path);
-                System.IO.File.Delete(path);
-
-                string fileName = Path.Combine(Request.MapPath("~/Lessions"), DateHelper.GetTimeStamp() + Path.GetFileName(file.FileName));
-                file.SaveAs(fileName);
-                path = "~/Lessions/" + DateHelper.GetTimeStamp() + Path.GetFileName(file.FileName);
-                lession.Path = path;
+                System.IO.Stream stream = file.InputStream;
+                byte[] buffer = new byte[stream.Length];
+                stream.Read(buffer, 0, (int)stream.Length);
+                stream.Close();
+                lession.Video = buffer;
             }
             lession.Title = model.Title;
             lession.Description = model.Description;
@@ -1160,7 +1158,7 @@ namespace QqhrCitizen.Controllers
             user.Role = role;
             db.SaveChanges();
             return Redirect("/Admin/ManagerManage");
-        } 
+        }
         #endregion
 
         /// <summary>
