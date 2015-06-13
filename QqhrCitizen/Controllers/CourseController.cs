@@ -61,9 +61,11 @@ namespace QqhrCitizen.Controllers
 
         public ActionResult Show(int id)
         {
-
+            var Course = db.Courses.Find(id);
             var listLessions = db.Lessions.Where(lession => lession.CourseID == id).ToList();
-            return View(listLessions);
+            ViewBag.Lessions = listLessions;
+            ViewBag.Course = Course;
+            return View();
         }
 
 
