@@ -2,7 +2,6 @@
 var page = 0;
 var tid = "";
 var options = ['A', 'B', 'C', 'D'];
-
 //加载新闻
 function LoadNews() {
     if (lock) {
@@ -16,9 +15,12 @@ function LoadNews() {
             data: { "page": page, "tid": tid },
         }).done(function (data) {
             var str = "";
-            for (var i = 0 ; i < data.length; i++) {
-                str += "<div><a href='/News/Show/" + data[i].ID + "'>" + data[i].Title + " </a> <span>" + moment(data[i].Time).format("YYYY-MM-DD HH:mm:ss") + "</span></div>";
-            }
+
+                for (var i = 0 ; i < data.length; i++) {
+                    str += "<ul><li><tr><td style='vertical-align:middle;font-size:19px;' height='50' ><a  href='/News/Show/" + data[i].ID + "' style='color:#000;' class='show'>" + data[i].Time + " </a></td></tr></li></ul><ul style='font-size:13px; color:#999;'><tr><td >" + moment(data[i].Time).format("YYYY-MM-DD HH:mm:ss") + "</td></tr></ul>";
+                }
+             console.log(str);
+
             $(".lstNews").append(str);
             if (data.length == 10) {
                 lock = false;

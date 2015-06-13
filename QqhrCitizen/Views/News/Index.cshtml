@@ -1,14 +1,21 @@
-﻿
-@{
+﻿@{
     ViewBag.Title = "新闻首页";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <input type="hidden" name="name" id="tid" value="@ViewBag.Tid" />
-<div class="lstNews container" style="min-height:500px;">
-    
-</div>
 
+
+<div class="container" style="min-height:500px;">
+    <p>当前位置：/<a href="#" class="pos">娱乐新闻</a>/<a href="#" class="pos">
+    NBA新闻
+</p>
+    <div class='block main'>
+        <table class="lstNews"></table>
+    </div>
+    <div class='block sidebar'></div>
+    <div class="clr"></div>
+</div>
 
 <script>
     tid = $("#tid").val();

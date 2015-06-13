@@ -13,10 +13,10 @@ using QqhrCitizen.Helpers;
 
 namespace QqhrCitizen.Controllers
 {
-    [Authorize]
     public class AdminController : BaseController
     {
         // GET: Admin
+        [BaseAuth(Roles = "Admin")]
         public ActionResult Index()
         {
             return View();
@@ -28,7 +28,7 @@ namespace QqhrCitizen.Controllers
         /// 类型管理
         /// </summary>
         /// <returns></returns>
-        
+        [BaseAuth(Roles = "Admin")]
         [HttpGet]
         public ActionResult TypeManager(int page = 1)
         {
@@ -43,7 +43,7 @@ namespace QqhrCitizen.Controllers
         /// 增加类型
         /// </summary>
         /// <returns></returns>
-        
+        [BaseAuth(Roles = "Admin")]
         [HttpGet]
         public ActionResult AddType()
         {
@@ -60,8 +60,8 @@ namespace QqhrCitizen.Controllers
         /// <param name="NeedAuthorize"></param>
         /// <param name="FatherID"></param>
         /// <returns></returns>
+        [BaseAuth(Roles = "Admin")]
         [HttpPost]
-        [ValidateSID]
         public ActionResult AddType(TypeBelonger Belonger, string TypeValue, int NeedAuthorize, int FatherID)
         {
             bool flag = Convert.ToBoolean(NeedAuthorize);
@@ -79,7 +79,7 @@ namespace QqhrCitizen.Controllers
         /// </summary>
         /// <param name="belonger"></param>
         /// <returns></returns>
-        
+        [BaseAuth(Roles = "Admin")]
         [HttpGet]
         public ActionResult GetTypeByBelonger(TypeBelonger belonger)
         {
@@ -96,8 +96,8 @@ namespace QqhrCitizen.Controllers
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        [HttpGet]
         [ValidateSID]
+        [HttpGet]
         public ActionResult TypeDictionaryDelete(int id)
         {
             var TypeDictionary = db.TypeDictionaries.Find(id);
@@ -108,7 +108,7 @@ namespace QqhrCitizen.Controllers
         #endregion
 
 
-        #region MyReg修改类型字典
+        #region MyReg修改类型字典ion
 
         /// <summary>
         ///   修改类型字典
@@ -116,6 +116,7 @@ namespace QqhrCitizen.Controllers
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpGet]
+        [BaseAuth(Roles = "Admin")]
         public ActionResult TypeDictionaryEdit(int id)
         {
             var TypeDictionary = db.TypeDictionaries.Find(id);
@@ -133,6 +134,7 @@ namespace QqhrCitizen.Controllers
         /// <returns></returns>
         [HttpPost]
         [ValidateSID]
+        [BaseAuth(Roles = "Admin")]
         public ActionResult TypeDictionaryEdit(int id, TypeDictionary model)
         {
             var TypeDictionary = new TypeDictionary();
@@ -153,7 +155,7 @@ namespace QqhrCitizen.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpGet]
-        
+        [BaseAuth(Roles = "Admin")]
         public ActionResult NewsManager(int page = 1)
         {
             var list = db.News.OrderByDescending(tp => tp.ID).ToPagedList(page, 10);
@@ -167,11 +169,10 @@ namespace QqhrCitizen.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpGet]
-
         public ActionResult AddNews()
         {
             List<TypeDictionary> newsTypes = new List<TypeDictionary>();
-            newsTypes = db.TypeDictionaries.Where(td => td.FatherID == 0 && td.Belonger == TypeBelonger.新闻).ToList();
+            newsTypes = db.TypeDictionaries.Where(td => td.FatherID == 0 && td.Belonger == TypeBelonger.News).ToList();
             ViewBag.Types = newsTypes;
             return View();
         }
@@ -202,7 +203,11 @@ namespace QqhrCitizen.Controllers
         /// <returns></returns>
         [HttpPost]
         [ValidateSID]
+<<<<<<< HEAD
+        [BaseAuth(Roles = "Admin")]
+=======
         [ValidateInput(false)]
+>>>>>>> origin/master
         public ActionResult AddNews(News model)
         {
             model.UserID = CurrentUser.ID;
@@ -223,6 +228,7 @@ namespace QqhrCitizen.Controllers
         /// <returns></returns>
         [HttpGet]
         [ValidateSID]
+        [BaseAuth(Roles = "Admin")]
         public ActionResult NewsDelete(int id)
         {
             News news = new News();
@@ -240,12 +246,13 @@ namespace QqhrCitizen.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpGet]
+        [BaseAuth(Roles = "Admin")]
         public ActionResult NewsEdit(int id)
         {
             News news = new News();
             List<TypeDictionary> newsTypes = new List<TypeDictionary>();
             news = db.News.Find(id);
-            newsTypes = db.TypeDictionaries.Where(td => td.FatherID == 0 && td.Belonger == TypeBelonger.新闻).ToList();
+            newsTypes = db.TypeDictionaries.Where(td => td.FatherID == 0 && td.Belonger == TypeBelonger.News).ToList();
 
             var second = new List<TypeDictionary>();
             second = db.TypeDictionaries.Where(td => td.FatherID == news.TypeDictionary.FatherID).ToList();
@@ -265,6 +272,7 @@ namespace QqhrCitizen.Controllers
         /// <returns></returns>
         [HttpPost]
         [ValidateSID]
+        [BaseAuth(Roles = "Admin")]
         public ActionResult NewsEdit(News model)
         {
             News news = new News();
@@ -298,7 +306,7 @@ namespace QqhrCitizen.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpGet]
-        
+        [BaseAuth(Roles = "Admin")]
         public ActionResult CourseManager(int page = 1)
         {
             var list = db.Courses.OrderByDescending(tp => tp.ID).ToPagedList(page, 10);
@@ -314,11 +322,11 @@ namespace QqhrCitizen.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpGet]
-        
+        [BaseAuth(Roles = "Admin")]
         public ActionResult AddCourse()
         {
             List<TypeDictionary> CourseTypes = new List<TypeDictionary>();
-            CourseTypes = db.TypeDictionaries.Where(td => td.FatherID == 0 && td.Belonger == TypeBelonger.课程).ToList();
+            CourseTypes = db.TypeDictionaries.Where(td => td.FatherID == 0 && td.Belonger == TypeBelonger.Course).ToList();
             ViewBag.Types = CourseTypes;
             return View();
         }
@@ -326,7 +334,7 @@ namespace QqhrCitizen.Controllers
 
         [HttpPost]
         [ValidateSID]
-        
+        [BaseAuth(Roles = "Admin")]
         public ActionResult AddCourse(Course model)
         {
             model.UserID = CurrentUser.ID;
@@ -344,6 +352,7 @@ namespace QqhrCitizen.Controllers
         /// <returns></returns>
         [HttpGet]
         [ValidateSID]
+        [BaseAuth(Roles = "Admin")]
         public ActionResult CoursesDelete(int id)
         {
             Course course = new Course();
@@ -360,12 +369,13 @@ namespace QqhrCitizen.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpGet]
+        [BaseAuth(Roles = "Admin")]
         public ActionResult CoursesEdit(int id)
         {
             Course course = new Course();
             List<TypeDictionary> courseTypes = new List<TypeDictionary>();
             course = db.Courses.Find(id);
-            courseTypes = db.TypeDictionaries.Where(td => td.FatherID == 0 && td.Belonger == TypeBelonger.课程).ToList();
+            courseTypes = db.TypeDictionaries.Where(td => td.FatherID == 0 && td.Belonger == TypeBelonger.Course).ToList();
 
             var second = new List<TypeDictionary>();
             second = db.TypeDictionaries.Where(td => td.FatherID == course.TypeDictionary.FatherID).ToList();
@@ -383,6 +393,7 @@ namespace QqhrCitizen.Controllers
         /// <returns></returns>
         [HttpPost]
         [ValidateSID]
+        [BaseAuth(Roles = "Admin")]
         public ActionResult CoursesEdit(Course model)
         {
             Course course = new Course();
@@ -402,7 +413,7 @@ namespace QqhrCitizen.Controllers
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpGet]
-      
+        [BaseAuth(Roles="Admin")]
         public ActionResult CourseShow(int id)
         {
             Course course = new Course();
@@ -420,7 +431,7 @@ namespace QqhrCitizen.Controllers
         /// <param name="page"></param>
         /// <returns></returns>
         [HttpGet]
-        
+        [BaseAuth(Roles = "Admin")]
         public ActionResult LinkManager(int page = 1)
         {
             var list = db.ResourceLinks.OrderByDescending(tp => tp.ID).ToPagedList(page, 10);
@@ -433,11 +444,11 @@ namespace QqhrCitizen.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpGet]
-        
+        [BaseAuth(Roles = "Admin")]
         public ActionResult AddLink()
         {
             List<TypeDictionary> CourseTypes = new List<TypeDictionary>();
-            CourseTypes = db.TypeDictionaries.Where(td => td.FatherID == 0 && td.Belonger == TypeBelonger.资源链接).ToList();
+            CourseTypes = db.TypeDictionaries.Where(td => td.FatherID == 0 && td.Belonger == TypeBelonger.ResourceLink).ToList();
             ViewBag.Types = CourseTypes;
             return View();
         }
@@ -449,17 +460,18 @@ namespace QqhrCitizen.Controllers
         /// <param name="model"></param>
         /// <returns></returns>
         [HttpPost]
+        [BaseAuth(Roles = "Admin")]
         [ValidateSID]
         public ActionResult AddLink(ResourceLink model, HttpPostedFileBase file)
         {
             int fileId = 0;
             if (model.IsHaveFile)
             {
-                string fileName = Path.Combine(Request.MapPath("~/Upload"), DateHelper.GetTimeStamp() + Path.GetExtension(file.FileName));
+                string fileName = Path.Combine(Request.MapPath("~/Upload"), DateHelper.GetTimeStamp() + Path.GetFileName(file.FileName));
                 file.SaveAs(fileName);
                 Models.File _file = new Models.File();
                 _file.FileTypeID = model.LinkTypeID;
-                _file.Path = DateHelper.GetTimeStamp()  + Path.GetExtension(file.FileName);
+                _file.Path = DateHelper.GetTimeStamp() + Path.GetFileName(file.FileName);
                 _file.Time = DateTime.Now;
                 _file.ContentType = file.ContentType;
                 _file.FileName = file.FileName;
@@ -488,8 +500,6 @@ namespace QqhrCitizen.Controllers
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        [HttpGet]
-        [ValidateSID]
         public ActionResult LinkDelete(int id)
         {
             ResourceLink link = new ResourceLink();
@@ -515,10 +525,11 @@ namespace QqhrCitizen.Controllers
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpGet]
+        [BaseAuth(Roles = "Admin")]
         public ActionResult LinkEdit(int id)
         {
             List<TypeDictionary> CourseTypes = new List<TypeDictionary>();
-            CourseTypes = db.TypeDictionaries.Where(td => td.FatherID == 0 && td.Belonger == TypeBelonger.资源链接).ToList();
+            CourseTypes = db.TypeDictionaries.Where(td => td.FatherID == 0 && td.Belonger == TypeBelonger.ResourceLink).ToList();
             ViewBag.Types = CourseTypes;
             ResourceLink link = new ResourceLink();
             link = db.ResourceLinks.Find(id);
@@ -535,8 +546,8 @@ namespace QqhrCitizen.Controllers
         /// <param name="model"></param>
         /// <param name="file"></param>
         /// <returns></returns>
-        [HttpPost]
-        [ValidateSID]
+        [HttpGet]
+        [BaseAuth(Roles = "Admin")]
         public ActionResult LinkEdit(ResourceLink model, HttpPostedFileBase file)
         {
 
@@ -545,12 +556,12 @@ namespace QqhrCitizen.Controllers
             {
                 if (model.FileID != 0)
                 {
-                    string fileName = Path.Combine(Request.MapPath("~/Upload"), DateHelper.GetTimeStamp() + Path.GetExtension(file.FileName));
+                    string fileName = Path.Combine(Request.MapPath("~/Upload"), DateHelper.GetTimeStamp() + Path.GetFileName(file.FileName));
                     file.SaveAs(fileName);
                     Models.File _file = new Models.File();
                     _file = db.Files.Find(model.FileID);
                     _file.FileTypeID = model.LinkTypeID;
-                    _file.Path = DateHelper.GetTimeStamp()  + Path.GetExtension(file.FileName);
+                    _file.Path = DateHelper.GetTimeStamp() + Path.GetFileName(file.FileName);
                     _file.ContentType = file.ContentType;
                     _file.FileName = file.FileName;
                     _file.FileSize = file.ContentLength.ToString();
@@ -559,11 +570,11 @@ namespace QqhrCitizen.Controllers
                 }
                 else
                 {
-                    string fileName = Path.Combine(Request.MapPath("~/Upload"), DateHelper.GetTimeStamp() + Path.GetExtension(file.FileName));
+                    string fileName = Path.Combine(Request.MapPath("~/Upload"), DateHelper.GetTimeStamp() + Path.GetFileName(file.FileName));
                     file.SaveAs(fileName);
                     Models.File _file = new Models.File();
                     _file.FileTypeID = model.LinkTypeID;
-                    _file.Path = DateHelper.GetTimeStamp() + Path.GetExtension(file.FileName);
+                    _file.Path = DateHelper.GetTimeStamp() + Path.GetFileName(file.FileName);
                     _file.Time = DateTime.Now;
                     _file.ContentType = file.ContentType;
                     _file.FileName = file.FileName;
@@ -606,7 +617,7 @@ namespace QqhrCitizen.Controllers
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpGet]
-        
+        [BaseAuth(Roles = "Admin")]
         public ActionResult LinkShow(int id)
         {
             ResourceLink link = new ResourceLink();
@@ -623,7 +634,7 @@ namespace QqhrCitizen.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpGet]
-        
+        [BaseAuth(Roles = "Admin")]
         public ActionResult EBookManager(int page = 1)
         {
             var list = db.EBooks.OrderByDescending(tp => tp.ID).ToPagedList(page, 10);
@@ -638,11 +649,11 @@ namespace QqhrCitizen.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpGet]
-        
+        [BaseAuth(Roles = "Admin")]
         public ActionResult AddEBook()
         {
             List<TypeDictionary> EBookTypes = new List<TypeDictionary>();
-            EBookTypes = db.TypeDictionaries.Where(td => td.FatherID == 0 && td.Belonger == TypeBelonger.电子书).ToList();
+            EBookTypes = db.TypeDictionaries.Where(td => td.FatherID == 0 && td.Belonger == TypeBelonger.EBook).ToList();
             ViewBag.Types = EBookTypes;
             return View();
         }
@@ -658,17 +669,17 @@ namespace QqhrCitizen.Controllers
         /// <param name="file"></param>
         /// <returns></returns>
         [HttpPost]
-        [ValidateSID]
+        [BaseAuth(Roles = "Admin")]
         public ActionResult AddEBook(EBook model, HttpPostedFileBase file)
         {
             int fileId = 0;
             if (file != null)
             {
-                string fileName = Path.Combine(Request.MapPath("~/Upload"), DateHelper.GetTimeStamp() + Path.GetExtension(file.FileName));
+                string fileName = Path.Combine(Request.MapPath("~/Upload"), DateHelper.GetTimeStamp() + Path.GetFileName(file.FileName));
                 file.SaveAs(fileName);
                 Models.File _file = new Models.File();
                 _file.FileTypeID = model.EBookTypeID;
-                _file.Path = DateHelper.GetTimeStamp() + Path.GetExtension(file.FileName);
+                _file.Path = DateHelper.GetTimeStamp() + Path.GetFileName(file.FileName);
                 _file.Time = DateTime.Now;
                 _file.ContentType = file.ContentType;
                 _file.FileName = file.FileName;
@@ -747,6 +758,7 @@ namespace QqhrCitizen.Controllers
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpGet]
+        [BaseAuth(Roles="Admin")]
         public ActionResult EBookEdit(int id)
         {
             EBook book = new EBook();
@@ -754,7 +766,7 @@ namespace QqhrCitizen.Controllers
             ViewBag.EBook = book;
 
             List<TypeDictionary> EBookTypes = new List<TypeDictionary>();
-            EBookTypes = db.TypeDictionaries.Where(td => td.FatherID == 0 && td.Belonger == TypeBelonger.电子书).ToList();
+            EBookTypes = db.TypeDictionaries.Where(td => td.FatherID == 0 && td.Belonger == TypeBelonger.EBook).ToList();
             ViewBag.Types = EBookTypes;
 
             var second = new List<TypeDictionary>();
@@ -773,7 +785,7 @@ namespace QqhrCitizen.Controllers
         /// <param name="file"></param>
         /// <returns></returns>
         [HttpPost]
-        [ValidateSID]
+        [BaseAuth(Roles = "Admin")]
         public ActionResult EBookEdit(EBook model, HttpPostedFileBase file)
         {
             EBook book = new EBook();
@@ -788,9 +800,9 @@ namespace QqhrCitizen.Controllers
                 var path = Server.MapPath("~/Upload/" + _file.Path);
                 System.IO.File.Delete(path);
 
-                string fileName = Path.Combine(Request.MapPath("~/Upload"), DateHelper.GetTimeStamp()+ Path.GetExtension(file.FileName));
+                string fileName = Path.Combine(Request.MapPath("~/Upload"), DateHelper.GetTimeStamp() + Path.GetFileName(file.FileName));
                 file.SaveAs(fileName);
-                _file.Path =DateHelper.GetTimeStamp() + Path.GetExtension(file.FileName);
+                _file.Path = DateHelper.GetTimeStamp() + Path.GetFileName(file.FileName);
                 _file.ContentType = file.ContentType;
                 _file.FileName = file.FileName;
                 _file.FileSize = file.ContentLength.ToString();
@@ -809,7 +821,7 @@ namespace QqhrCitizen.Controllers
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpGet]
-      
+        [BaseAuth(Roles="Admin")]
         public ActionResult AddLession(int id)
         {
             Course course = new Course();
@@ -828,18 +840,18 @@ namespace QqhrCitizen.Controllers
         /// <param name="file"></param>
         /// <returns></returns>
         [HttpPost]
-      
+        [BaseAuth(Roles="Admin")]
         public ActionResult AddLession(Lession model, HttpPostedFileBase file)
         {
-            string fileName = Path.Combine(Request.MapPath("~/Lessions"), DateHelper.GetTimeStamp() + Path.GetExtension(file.FileName));
+            string fileName = Path.Combine(Request.MapPath("~/Lessions"), DateHelper.GetTimeStamp() + Path.GetFileName(file.FileName));
             file.SaveAs(fileName);
-            var path = DateHelper.GetTimeStamp()+ Path.GetExtension(file.FileName);
+            var path = "~/Lessions/" + DateHelper.GetTimeStamp() + Path.GetFileName(file.FileName);
 
             model.Path = path;
             model.Time = DateTime.Now;
             db.Lessions.Add(model);
             db.SaveChanges();
-            return Redirect("/Admin/CourseShow/" + model.CourseID);
+            return RedirectToAction("CourseManager");
         } 
         #endregion
 
@@ -872,6 +884,7 @@ namespace QqhrCitizen.Controllers
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpGet]
+        [BaseAuth(Roles = "Admin")]
         public ActionResult LessionEdit(int id)
         {
             Lession lession = new Lession();
@@ -890,7 +903,7 @@ namespace QqhrCitizen.Controllers
         /// <param name="file"></param>
         /// <returns></returns>
         [HttpPost]
-        [ValidateSID]
+        [BaseAuth(Roles="Admin")]
         public ActionResult LessionEdit(Lession model, HttpPostedFileBase file)
         {
             Lession lession = db.Lessions.Find(model.ID);
@@ -900,9 +913,9 @@ namespace QqhrCitizen.Controllers
                 path = Server.MapPath(lession.Path);
                 System.IO.File.Delete(path);
 
-                string fileName = Path.Combine(Request.MapPath("~/Lessions"), DateHelper.GetTimeStamp() + Path.GetExtension(file.FileName));
+                string fileName = Path.Combine(Request.MapPath("~/Lessions"), DateHelper.GetTimeStamp() + Path.GetFileName(file.FileName));
                 file.SaveAs(fileName);
-                path = DateHelper.GetTimeStamp() + Path.GetExtension(file.FileName);
+                path = "~/Lessions/" + DateHelper.GetTimeStamp() + Path.GetFileName(file.FileName);
                 lession.Path = path;
             }
             lession.Title = model.Title;
@@ -912,7 +925,6 @@ namespace QqhrCitizen.Controllers
             return Redirect("/Admin/CourseShow/" + lession.CourseID);
         } 
         #endregion
-
 
 
         #region LessionShow

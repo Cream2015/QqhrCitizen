@@ -75,9 +75,9 @@ table {
 	width: 100%;
 	table-layout: fixed;
 }
-
 table td {
 	vertical-align: top;
+    
 }
 
 .footer {
@@ -139,10 +139,13 @@ a, a:visited {
     outline: 0;
     transition: color 0.2s linear;
 }
+.show:hover{
+    text-decoration: underline!important;
+    }
 
 a:hover {
     color: #3eb2f1;
-    text-decoration: none;
+    text-decoration:none;
 }
 
 a.dark, a.dark:visited {

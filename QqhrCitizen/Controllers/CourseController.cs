@@ -1,5 +1,4 @@
-﻿using QqhrCitizen.Filters;
-using QqhrCitizen.Models;
+﻿using QqhrCitizen.Models;
 using QqhrCitizen.Models.ViewModel;
 using System;
 using System.Collections.Generic;
@@ -49,8 +48,9 @@ namespace QqhrCitizen.Controllers
             }
 
             return Json(_lstCourse);
-        }
+        } 
         #endregion
+
 
         /// <summary>
         /// 得到该课程详细课时信息
