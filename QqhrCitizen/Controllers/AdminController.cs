@@ -408,7 +408,7 @@ namespace QqhrCitizen.Controllers
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpGet]
-        [BaseAuth(Roles="Admin")]
+       
         public ActionResult CourseShow(int id)
         {
             Course course = new Course();
@@ -753,7 +753,7 @@ namespace QqhrCitizen.Controllers
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpGet]
-        [BaseAuth(Roles="Admin")]
+       
         public ActionResult EBookEdit(int id)
         {
             EBook book = new EBook();
@@ -816,7 +816,7 @@ namespace QqhrCitizen.Controllers
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpGet]
-        [BaseAuth(Roles="Admin")]
+       
         public ActionResult AddLession(int id)
         {
             Course course = new Course();
@@ -835,7 +835,7 @@ namespace QqhrCitizen.Controllers
         /// <param name="file"></param>
         /// <returns></returns>
         [HttpPost]
-        [BaseAuth(Roles="Admin")]
+       
         public ActionResult AddLession(Lession model, HttpPostedFileBase file)
         {
             string fileName = Path.Combine(Request.MapPath("~/Lessions"), DateHelper.GetTimeStamp() + Path.GetFileName(file.FileName));
@@ -898,7 +898,7 @@ namespace QqhrCitizen.Controllers
         /// <param name="file"></param>
         /// <returns></returns>
         [HttpPost]
-        [BaseAuth(Roles="Admin")]
+       
         public ActionResult LessionEdit(Lession model, HttpPostedFileBase file)
         {
             Lession lession = db.Lessions.Find(model.ID);

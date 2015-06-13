@@ -17,7 +17,7 @@ function LoadNews() {
             var str = "";
 
                 for (var i = 0 ; i < data.length; i++) {
-                    str += "<ul><li><tr><td style='vertical-align:middle;font-size:19px;' height='50' ><a  href='/News/Show/" + data[i].ID + "' style='color:#000;' class='show'>" + data[i].Time + " </a></td></tr></li></ul><ul style='font-size:13px; color:#999;'><tr><td >" + moment(data[i].Time).format("YYYY-MM-DD HH:mm:ss") + "</td></tr></ul>";
+                    str += "<ul><li><tr><td style='vertical-align:middle;font-size:19px;' height='50' ><a  href='/News/Show/" + data[i].ID + "' style='color:#000;' class='show'>" + data[i].Title + " </a></td></tr></li></ul><ul style='font-size:13px; color:#999;'><tr><td >" + moment(data[i].Time).format("YYYY-MM-DD HH:mm:ss") + "</td></tr></ul>";
                 }
              console.log(str);
 
