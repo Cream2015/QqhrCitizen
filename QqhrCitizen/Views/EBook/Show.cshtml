@@ -10,31 +10,34 @@
 <div class="container wrap-cont">
     <p>当前位置：/<a href="#" class="pos">@book.TypeDictionary.TypeValue</a>/<a href="#" class="pos">@book.Title</a></p>
     <div class="block main">
-        <table class="detail-table">
-            <tr>
-                <td>名称</td>
-                <td>@book.Title</td>
-            </tr>
-            <tr>
-                <td>增加时间</td>
-                <td>@book.Time</td>
-            </tr>
-            <tr>
-                <td>浏览量</td>
-                <td>@book.Browses</td>
-            </tr>
-        </table>
+        <h2>@book.Title</h2>
+        <div class="subtitle">时间：@book.Time.ToShortDateString() 浏览：@book.Browses 次 分类：<a href="#">@book.TypeDictionary.TypeValue</a></div>
+        <p>@book.Description</p>
+        <hr />
+        <h3>评论</h3>
+        <!-- 多说评论框 start -->
+        <div class="ds-thread" data-thread-key="@book.EBookTypeID+@book.ID" data-title="@book.Title" data-url="@HttpContext.Current.Request.Url.ToString()"></div>
+        <!-- 多说评论框 end -->
+        <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+        <script type="text/javascript">
+            var duoshuoQuery = { short_name: "qqhrcitizen" };
+            (function () {
+                var ds = document.createElement('script');
+                ds.type = 'text/javascript'; ds.async = true;
+                ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+                ds.charset = 'UTF-8';
+                (document.getElementsByTagName('head')[0]
+					|| document.getElementsByTagName('body')[0]).appendChild(ds);
+            })();
+        </script>
+        <!-- 多说公共JS代码 end -->
     </div>
     <div class="block sidebar">
         <h3>相关图书</h3>
-        <p><a href="#">[2015-5-24] 图书</a></p>
-        <p><a href="#">[2015-5-24] 图书</a></p>
-        <p><a href="#">[2015-5-24] 图书</a></p>
-        <p><a href="#">[2015-5-24] 图书</a></p>
-        <p><a href="#">[2015-5-24] 图书</a></p>
-        <p><a href="#">[2015-5-24] 图书</a></p>
-        <p><a href="#">[2015-5-24] 图书</a></p>
-        <p><a href="#">[2015-5-24] 图书</a></p>
+        @foreach (var item in ViewBag.EBooks)
+        {
+            <p><a href="/EBook/Show/@item.ID">[@item.Time.ToString("yyyy-MM-dd")] @item.Title</a></p>
+        }
     </div>
     <div class="clr"></div>
 </div>

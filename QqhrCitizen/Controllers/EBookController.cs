@@ -69,9 +69,9 @@ namespace QqhrCitizen.Controllers
         #endregion
 
 
-        #region 显示用户信息
+        #region 显示图书信息
         /// <summary>
-        /// 显示用户信息
+        /// 显示图书信息
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
@@ -82,6 +82,10 @@ namespace QqhrCitizen.Controllers
             book.Browses += 1;
             db.SaveChanges();
             ViewBag.Ebook = new vEBook(book);
+
+            List<EBook> lstEBook  = new List<EBook>();
+            lstEBook = db.EBooks.Where(b => b.EBookTypeID == book.EBookTypeID && b.ID != id).OrderByDescending(b => b.Time).Take(8).ToList();
+            ViewBag.EBooks = lstEBook;
             return View();
         } 
         #endregion
