@@ -13,11 +13,27 @@ namespace QqhrCitizen.Models.ViewModel
         public string Description { get; set; }
 
         public int CourseID { get; set; }
-        public virtual Course Course { get; set; }
+        public  Course Course { get; set; }
         public DateTime Time { get; set; }
         public string Remark { get; set; }
         public string Path { get; set; }
 
+        public List<Question> Questions { get; set; }
 
+        public vLession() { }
+
+        public vLession(Lession model)
+        {
+            DB db  =new DB();
+            this.ID = model.ID;
+            this.Title = model.Title;
+            this.Description = model.Description;
+            this.CourseID = model.CourseID;
+            this.Course = model.Course;
+            this.Time = model.Time;
+            this.Remark = model.Remark;
+            this.Path = model.Path;
+            this.Questions = db.Questions.Where(c=>c.LessionID==model.ID).ToList();
+        }
     }
 }

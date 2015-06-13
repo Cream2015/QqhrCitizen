@@ -28,7 +28,7 @@ namespace QqhrCitizen.Controllers
         /// <param name="model"></param>
         /// <returns></returns>
         [HttpPost]
-        [ValidateAntiForgeryToken]
+        [ValidateSID]
         public ActionResult Register(vRegister model)
         {
 
@@ -69,6 +69,7 @@ namespace QqhrCitizen.Controllers
 
 
         [HttpPost]
+        [ValidateSID]
         public ActionResult Login(vLogin model)
         {
 
@@ -96,8 +97,8 @@ namespace QqhrCitizen.Controllers
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        [BaseAuth(Roles = "User,Admin")]
         [HttpGet]
+        [Authorize]
         public ActionResult Show(int id)
         {
             User user = new User();
@@ -106,13 +107,14 @@ namespace QqhrCitizen.Controllers
             return View();
         } 
         #endregion
+
         #region 修改个人信息
         /// <summary>
         /// 修改个人信息
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        [BaseAuth(Roles = "User,Admin")]
+        [Authorize]
         [HttpGet]
         public ActionResult Edit(int id)
         {
@@ -133,9 +135,9 @@ namespace QqhrCitizen.Controllers
         /// </summary>
         /// <param name="model"></param>
         /// <returns></returns>
-        [BaseAuth(Roles = "User,Admin")]
+        [Authorize]
         [HttpPost]
-        [ValidateAntiForgeryToken]
+        [ValidateSID]
         public ActionResult Edit(vUserEdit model)
         {
             User user = db.Users.Find(model.ID);
@@ -171,7 +173,7 @@ namespace QqhrCitizen.Controllers
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        [BaseAuth(Roles = "User,Admin")]
+        [Authorize]
         [HttpGet]
         public ActionResult PwdEdit(int id)
         {
@@ -241,7 +243,7 @@ namespace QqhrCitizen.Controllers
         #endregion
 
 
-        [BaseAuth(Roles="User")]
+        [Authorize]
         public ActionResult ShowPicture(int id)
         {
             User user = new User();

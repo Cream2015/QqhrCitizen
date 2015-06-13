@@ -28,7 +28,7 @@
                         onsubmit = "return LoginCheck();"
                     }))
 {
-    @Html.AntiForgeryToken()
+       @Html.AntiForgerySID()
         <div class="container wrap-cont">
             <div class="narrow block">
                 <h2>用户登录</h2>
@@ -47,17 +47,8 @@
                            
                         </td>
                     </tr>
-                    <tr>
-                        <td class="row-title" colspan="2">
-                            记住我
-                            @Html.EditorFor(model => model.RememberMe, "1")<br />
-                            
-                           
-                        </td>
-                    </tr>
-
                 </table>
-                <p><input type="submit" value="登录" class="button blue" /></p>
+                <p><input type="submit" value="登录" class="button blue" />  记住我 @Html.EditorFor(model => model.RememberMe, "1")</p>
                 @Html.ValidationSummary(true)
             </div>
         </div>

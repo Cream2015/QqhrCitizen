@@ -1,0 +1,35 @@
+﻿@model  List<QqhrCitizen.Models.Lession>
+@{
+    ViewBag.Title = "课时首页";
+}
+
+
+    <table class="detail-table" style="text-align:center;">
+        <thead>
+            <tr>
+                <td>标题</td>
+                <td>描述</td>
+                <td>备注</td>
+                <td>添加时间</td>
+                <td>观看</td>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model.Count > 0)
+            {
+                foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.Title</td>
+                        <td>@item.Description</td>
+                        <td>@item.Remark</td>
+                        <td>@item.Time</td>
+                        <td>
+                            <a href="/Course/LessionDetails/@item.ID">查看详细</a>
+                        </td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+

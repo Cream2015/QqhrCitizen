@@ -1,0 +1,69 @@
+﻿@using QqhrCitizen.Models.ViewModel
+@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    vLession lession = ViewBag.Lession as vLession;
+    ViewBag.Title = lession.Title;
+}
+
+
+<div>
+    <h2>课时详细  <a href="/Admin/LessionEdit/@lession.ID">修改</a></h2>
+    <table class="detail-table">
+        <tr>
+            <td class="row-title">课时名称</td>
+            <td>@lession.Title</td>
+        </tr>
+        <tr>
+            <td class="row-title">描述</td>
+            <td>@lession.Description</td>
+        </tr>
+        <tr>
+            <td class="row-title">课程</td>
+            <td>@lession.Course.Title</td>
+        </tr>
+        <tr>
+            <td class="row-title">备注</td>
+            <td>@lession.Remark</td>
+        </tr>
+        <tr>
+            <td class="row-title">时间</td>
+            <td>@lession.Time</td>
+        </tr>
+    </table>
+</div>
+
+
+<div style="margin-top:20px;">
+    <h2>问题 <a href="/Admin/AddQuestion?lid=@lession.ID">增加问题</a></h2>
+    <table class="detail-table">
+        <thead>
+            <tr>
+                <td>编号</td>
+                <td>备注</td>
+                <td>时间</td>
+                <td>操作</td>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in lession.Questions)
+            { 
+            <tr>
+                <td>@item.ID</td>
+                <td>@item.Remark</td>
+                <td>@item.Time</td>
+                <td>
+                    <a href="/Admin/QuestionShow/@item.ID">问题详情</a>
+                    <a href="javascript:Delete(@item.ID);">删除</a>
+                    @*<a href="/Admin/LessionEdit/@item.ID">修改</a>*@
+                </td>
+            </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+<script>
+    function Delete(id) {
+        window.location = '/Admin/QuestionDelete/' + id + '?sid=@ViewBag.SID';
+    }
+</script>

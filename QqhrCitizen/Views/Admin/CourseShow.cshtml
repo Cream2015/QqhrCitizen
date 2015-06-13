@@ -28,7 +28,7 @@
     </tr>
     <tr>
         <td class="row-title">
-            内容
+            描述
         </td>
         <td>
             @course.Description
@@ -53,7 +53,7 @@
 </table>
 
 <div style="margin-top:20px;">
-    <h2>课时  </h2>
+    <h2>课时   <a href="/Admin/AddLession/@course.ID">添加课时</a></h2>
     <table class="detail-table">
         <thead>
             <tr>
@@ -75,6 +75,7 @@
                             @item.Time.ToString("yyyy-MM-dd HH:mm:ss")
                         </td>
                         <td>
+                            <a href="/Admin/LessionShow/@item.ID">课时详情</a>
                             <a href="javascript:Delete(@item.ID);">删除</a>
                             <a href="/Admin/LessionEdit/@item.ID">修改</a>
                         </td>

@@ -40,9 +40,10 @@ namespace QqhrCitizen.Controllers
             ViewBag.News = _news;
             ViewBag.LstNews = lstNews;
             return View();
-        } 
+        }
         #endregion
 
+        #region 分页得到新闻
         /// <summary>
         /// 分页得到新闻
         /// </summary>
@@ -50,11 +51,11 @@ namespace QqhrCitizen.Controllers
         /// <param name="key"></param>
         /// <returns></returns>
         [HttpPost]
-        public ActionResult getNews(int page,int tid)
+        public ActionResult getNews(int page, int tid)
         {
             List<News> lstNews = new List<News>();
             List<vNews> _lstNews = new List<vNews>();
-            int index =  page*10;
+            int index = page * 10;
             if (tid == 0)
             {
                 lstNews = db.News.OrderByDescending(n => n.Time).Skip(index).Take(10).ToList();
@@ -63,15 +64,16 @@ namespace QqhrCitizen.Controllers
             {
                 var inews = db.News.Where(n => n.NewsTypeID == tid);
                 var ifnews = db.News.Where(n => n.TypeDictionary.FatherID == tid);
-                lstNews = inews.Union(ifnews).OrderByDescending(n=>n.Time).Skip(index).Take(10).ToList();
+                lstNews = inews.Union(ifnews).OrderByDescending(n => n.Time).Skip(index).Take(10).ToList();
             }
 
             foreach (var item in lstNews)
             {
                 _lstNews.Add(new vNews(item));
             }
-          
+
             return Json(_lstNews);
-        }
-	}
+        } 
+        #endregion
+    }
 }
