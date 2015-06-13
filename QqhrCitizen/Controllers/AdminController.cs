@@ -1023,10 +1023,11 @@ namespace QqhrCitizen.Controllers
         ///  管理员管理
         /// </summary>
         /// <returns></returns>
-        [HttpPost]
-        public ActionResult ManagerManage()
+        [HttpGet]
+        public ActionResult ManagerManage(int page = 1)
         {
-            return View();
+            var list = db.Users.Where(u => u.RoleAsInt > 0).OrderBy(u => u.ID).ToPagedList(page,10);
+            return View(list);
         } 
         #endregion
 
@@ -1042,6 +1043,20 @@ namespace QqhrCitizen.Controllers
         } 
         #endregion
 
+        #region 增加管理员
+        /// <summary>
+        /// 增加管理员
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
+        public ActionResult AddManager(User model)
+        {
+            db.Users.Add(model);
+            model.Birthday = Convert.ToDateTime("2012-12-12");
+            db.SaveChanges();
+            return Redirect("/Admin/ManagerManage");
+        } 
+        #endregion
 
         /// <summary>
         ///  消息

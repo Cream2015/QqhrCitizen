@@ -273,6 +273,8 @@
     <Content Include="Views\EBook\Show.cshtml" />
     <Content Include="Views\Course\LessionDetails.cshtml" />
     <Content Include="Views\Course\show.cshtml" />
+    <Content Include="Views\Admin\ManagerManage.cshtml" />
+    <Content Include="Views\Admin\AddManager.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
