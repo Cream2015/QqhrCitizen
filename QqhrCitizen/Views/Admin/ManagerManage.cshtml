@@ -38,10 +38,10 @@
                             <td>@item.Phone</td>
                             <td>@CommonEnums.RoleDisply[@item.RoleAsInt]</td>
                             <td>
-                                <a href="/Admin/ManagerShow/@item.ID">管理员详情</a>
+                                <a href="/Admin/ManagerShow/@item.ID">详情</a>
                                 <a href="javascript:Delete(@item.ID);">删除</a>
                                 <a href="/Admin/LinkEdit/@item.ID">赋予权限</a>
-                                <a href="/Admin/UpdateManagerPwd/@item.ID">修改管理员的密码</a>
+                                <a href="/Admin/UpdateManagerPwd/@item.ID">密码重置</a>
                             </td>
                         </tr>
                     }

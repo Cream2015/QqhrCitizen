@@ -1058,6 +1058,48 @@ namespace QqhrCitizen.Controllers
         } 
         #endregion
 
+        #region ManagerDelete
+        /// <summary>
+        ///  删除管理员
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        [HttpGet]
+        [ValidateSID]
+        public ActionResult ManagerDelete(int id)
+        {
+            User user = new User();
+            user = db.Users.Find(id);
+            db.Users.Remove(user);
+            db.SaveChanges();
+            return Redirect("/Admin/ManagerManage");
+        } 
+        #endregion
+
+        #region 管理员展示
+        /// <summary>
+        ///  管理员展示
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public ActionResult ManagerShow(int id)
+        {
+            User user = new User();
+            user = db.Users.Find(id);
+            ViewBag.User = user;
+            return View();
+        } 
+        #endregion
+
+        public ActionResult UpdateManagerPwd(int id)
+        {
+            User user = new User();
+            user = db.Users.Find(id);
+            ViewBag.User = user;
+            return View();
+        }
+
+
         /// <summary>
         ///  消息
         /// </summary>

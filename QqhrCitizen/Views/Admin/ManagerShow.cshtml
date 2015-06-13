@@ -1,0 +1,64 @@
+﻿@using QqhrCitizen.Models
+@{
+
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    User user = ViewBag.User as User;
+    ViewBag.Title = user.Username;
+}
+
+<div>
+    <div class="result-title">
+        <h1>管理员详情</h1>
+    </div>
+    <table class="detail-table">
+        <tr>
+            <td class="row-title">用户名</td>
+            <td>
+                @user.Username
+            </td>
+        </tr>
+        <tr>
+            <td class="row-title">真实姓名</td>
+            <td>
+               @user.Realname
+            </td>
+        </tr>
+        <tr>
+            <td class="row-title">邮箱</td>
+            <td>
+              @user.Email
+            </td>
+        </tr>
+        <tr>
+            <td class="row-title">
+                电话
+            </td>
+            <td>
+              @user.Phone
+            </td>
+        </tr>
+        <tr>
+            <td class="row-title">
+                角色
+            </td>
+            <td>
+                @CommonEnums.RoleDisply[user.RoleAsInt]
+            </td>
+        </tr>
+        <tr>
+            <td class="row-title">地址</td>
+            <td>
+                @user.Address
+            </td>
+        </tr>
+        <tr>
+            <td class="row-title">生日</td>
+            <td>
+                @user.Birthday
+            </td>
+        </tr>
+
+    </table>
+</div>
+
+
