@@ -17,6 +17,7 @@ namespace QqhrCitizen.Controllers
 
         public ActionResult Channel(int id)
         {
+            ViewBag.ChananelID = id;
             return View();
         }
 	}
