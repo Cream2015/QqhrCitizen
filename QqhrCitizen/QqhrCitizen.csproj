@@ -294,7 +294,6 @@
     <Folder Include="Content\" />
     <Folder Include="Lessions\" />
     <Folder Include="Upload\" />
-    <Folder Include="Views\Index\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

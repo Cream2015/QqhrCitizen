@@ -15,6 +15,8 @@ namespace QqhrCitizen.Controllers
         public ActionResult Index()
         {
             string tid = HttpContext.Request.QueryString["tid"].ToString();
+            List<Course> courses = new List<Course>();
+            courses = db.Courses.OrderByDescending(c => c.Browses).Take(8).ToList();
             ViewBag.Tid = tid;
             var type = new TypeDictionary();
             if (tid != "0")
@@ -23,6 +25,7 @@ namespace QqhrCitizen.Controllers
                 type = db.TypeDictionaries.Find(id);
             }
             ViewBag.Type = type.TypeValue;
+            ViewBag.Courses = courses;
             return View();
         }
 
@@ -69,10 +72,13 @@ namespace QqhrCitizen.Controllers
         public ActionResult Show(int id)
         {
             var Course = db.Courses.Find(id);
+            Course.Browses += 1;
+            db.SaveChanges();
             var listLessions = db.Lessions.Where(lession => lession.CourseID == id).ToList();
-
+            var lstCourse = db.Courses.Where(c => c.CourseTypeID == Course.CourseTypeID && c.ID != id).OrderByDescending(n => n.Time).Take(8).ToList();
             ViewBag.Lessions = listLessions;
             ViewBag.Course = Course;
+            ViewBag.lstCourse = lstCourse;
             return View();
         }
 

@@ -13,7 +13,13 @@
         <div class="lstNews"></div>
         <div><p class="loadMore">下拉加载更多</p></div>
     </div>
-    <div class='block sidebar'></div>
+    <div class='block sidebar'>
+        <h3>热门新闻</h3>
+        @foreach (var item in ViewBag.LstNews)
+        {
+            <p><a href="/News/Show/@item.ID">[@item.Time.ToString("yyyy-MM-dd")] @item.Title</a></p>
+        }
+    </div>
     <div class="clr"></div>
 </div>
 

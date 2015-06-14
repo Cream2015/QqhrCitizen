@@ -13,7 +13,13 @@
         <div class="lstCourse"></div>
         <div><p class="loadMore">下拉加载更多</p></div>
     </div>
-    <div class='block sidebar'></div>
+    <div class='block sidebar'>
+        <h3>热门课程</h3>
+        @foreach (var item in ViewBag.Courses)
+        {
+            <p><a href="/Course/Show/@item.ID">[@item.Time.ToString("yyyy-MM-dd")] @item.Title</a></p>
+        }
+    </div>
     <div class="clr"></div>
 </div>
 

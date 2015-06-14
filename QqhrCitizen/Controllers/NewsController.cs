@@ -17,6 +17,8 @@ namespace QqhrCitizen.Controllers
         public ActionResult Index()
         {
             string tid =HttpContext.Request.QueryString["tid"].ToString();
+            List<News> lstNews = new List<News>();
+            lstNews = db.News.OrderByDescending(n => n.Browses).Take(8).ToList();
             ViewBag.Tid = tid;
             var type = new TypeDictionary();
             if (tid != "0")
@@ -25,10 +27,11 @@ namespace QqhrCitizen.Controllers
                 type = db.TypeDictionaries.Find(id);
             }
             ViewBag.Type = type.TypeValue;
+            ViewBag.LstNews = lstNews;
             return View();
         }
 
-        #region MyRegion
+        #region 新闻显示
         /// <summary>
         /// 新闻显示
         /// </summary>

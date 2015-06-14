@@ -27,6 +27,8 @@ namespace QqhrCitizen.Models
 
         public int AuthorityAsInt { set; get; }
 
+        public int Browses { get; set; }
+
         [NotMapped]
         public Authority Authority
         {

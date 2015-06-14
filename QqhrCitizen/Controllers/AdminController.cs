@@ -148,7 +148,7 @@ namespace QqhrCitizen.Controllers
         #endregion
 
 
-        #region 新闻管理 
+        #region 新闻管理
         /// <summary>
         /// 新闻管理
         /// </summary>
@@ -865,6 +865,8 @@ namespace QqhrCitizen.Controllers
         {
             Lession lession = new Lession();
             lession = db.Lessions.Find(id);
+            var path = Server.MapPath(lession.Path);
+            System.IO.File.Delete(path);
             db.Lessions.Remove(lession);
             db.SaveChanges();
             return Redirect("/Admin/CourseShow/" + lession.CourseID);

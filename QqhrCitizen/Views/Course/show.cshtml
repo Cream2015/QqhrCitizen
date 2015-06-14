@@ -35,7 +35,11 @@
     </div>
 
     <div class="block sidebar">
-
+        <h3>相关课程</h3>
+        @foreach (var item in ViewBag.lstCourse)
+        {
+            <p><a href="/Course/Show/@item.ID">[@item.Time.ToString("yyyy-MM-dd")] @item.Title</a></p>
+        }
     </div>
 
     <div  class="clr"></div>

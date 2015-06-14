@@ -39,23 +39,31 @@
             </div>
         </div>
     </div>
-  
+
     <div class="block">
         <h5>课后问题</h5>
         <div>
-            @for (int i = 0; i < questions.Count(); i++)
+            @if (questions.Count() == 0)
             {
-                <div class="question">
-                    @(i + 1)<span>.</span>@questions[i].Content <br />
-                    <input value="@questions[i].RightAnswer" type="hidden" class="roghtanswer" />
-                    @for (int j = 0; j < questions[i].Answers.Count(); j++)
-                    {
-                        <input name="answer@(i+1)" type="radio" value="@j" class="answer" />@CommonEnums.Answers[j]<span>:</span>@questions[i].Answers[j] <br />
-                    }
-                </div>
+                <div>暂无课后问题</div>
+            }
+            else
+            {
+                for (int i = 0; i < questions.Count(); i++)
+                {
+                    <div class="question">
+                        @(i + 1)<span>.</span>@questions[i].Content <br />
+                        <input value="@questions[i].RightAnswer" type="hidden" class="roghtanswer" />
+                        @for (int j = 0; j < questions[i].Answers.Count(); j++)
+                        {
+                            <input name="answer@(i+1)" type="radio" value="@j" class="answer" />@CommonEnums.Answers[j]<span>:</span>@questions[i].Answers[j] <br />
+                        }
+                    </div>
+
+                }
+                <input type="button" class="button blue" value="提交" id="btnAnswerQuestion" />
             }
 
-            <input type="button" class="button blue" value="提交" id="btnAnswerQuestion" />
             <div class="warning">
             </div>
         </div>
@@ -82,7 +90,6 @@
 </div>
 
 <style type="text/css">
-
     #video {
         width: 100%;
         height: 100%;

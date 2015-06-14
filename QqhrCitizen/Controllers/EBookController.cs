@@ -15,6 +15,7 @@ namespace QqhrCitizen.Controllers
         {
             string tid = HttpContext.Request.QueryString["tid"].ToString();
             ViewBag.Tid = tid;
+            var lstBooks = db.EBooks.OrderByDescending(b => b.Browses).Take(8).ToList();
             var type = new TypeDictionary();
             if (tid != "0")
             {
@@ -22,6 +23,7 @@ namespace QqhrCitizen.Controllers
                 type = db.TypeDictionaries.Find(id);
             }
             ViewBag.Type = type.TypeValue;
+            ViewBag.EBooks = lstBooks;
             return View();
         }
 
