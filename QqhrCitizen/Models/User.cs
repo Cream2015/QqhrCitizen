@@ -22,7 +22,7 @@ namespace QqhrCitizen.Models
         [StringLength(14)]
         public string Phone { get; set; }
         public string Address { get; set; }
-        public DateTime Birthday { get; set; }
+        public DateTime? Birthday { get; set; }
         [StringLength(20)]
         public string Realname { get; set; }
         public int SexAsInt { set; get; }

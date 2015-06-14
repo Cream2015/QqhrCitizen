@@ -336,7 +336,7 @@ namespace QqhrCitizen.Controllers
             model.Time = DateTime.Now;
             db.Courses.Add(model);
             db.SaveChanges();
-            return RedirectToAction("CoursesManager");
+            return RedirectToAction("CourseManager");
         }
 
         #region 课程删除
@@ -839,14 +839,13 @@ namespace QqhrCitizen.Controllers
         public ActionResult AddLession(Lession model, HttpPostedFileBase file)
         {
 
-            System.IO.Stream stream = file.InputStream;
-            byte[] buffer = new byte[stream.Length];
-            stream.Read(buffer, 0, (int)stream.Length);
-            stream.Close();
-            model.Video = buffer;
+            string fileName = Path.Combine(Request.MapPath("~/Lessions"), DateHelper.GetTimeStamp() + Path.GetExtension(file.FileName));
+            file.SaveAs(fileName);
+            var path = DateHelper.GetTimeStamp() + Path.GetExtension(file.FileName);
 
             model.Time = DateTime.Now;
             model.ContentType = file.ContentType;
+            model.Path = path;
             db.Lessions.Add(model);
             db.SaveChanges();
             return RedirectToAction("CourseManager");
@@ -903,13 +902,16 @@ namespace QqhrCitizen.Controllers
         public ActionResult LessionEdit(Lession model, HttpPostedFileBase file)
         {
             Lession lession = db.Lessions.Find(model.ID);
+            string path = "";
             if (file != null)
             {
-                System.IO.Stream stream = file.InputStream;
-                byte[] buffer = new byte[stream.Length];
-                stream.Read(buffer, 0, (int)stream.Length);
-                stream.Close();
-                lession.Video = buffer;
+                path = Server.MapPath(lession.Path);
+                System.IO.File.Delete(path);
+
+                string fileName = Path.Combine(Request.MapPath("~/Lessions"), DateHelper.GetTimeStamp() + Path.GetExtension(file.FileName));
+                file.SaveAs(fileName);
+                path = DateHelper.GetTimeStamp() + Path.GetExtension(file.FileName);
+                lession.Path = path;
             }
             lession.Title = model.Title;
             lession.Description = model.Description;
@@ -1050,7 +1052,6 @@ namespace QqhrCitizen.Controllers
         public ActionResult AddManager(User model)
         {
             db.Users.Add(model);
-            model.Birthday = Convert.ToDateTime("2012-12-12");
             db.SaveChanges();
             return Redirect("/Admin/ManagerManage");
         }

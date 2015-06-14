@@ -1,4 +1,5 @@
-﻿using System;
+﻿using QqhrCitizen.Models.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -24,8 +25,14 @@ namespace QqhrCitizen.Models
         public DateTime Time { get; set; }
         public string Remark { get; set; }
 
-        public byte[] Video { set; get; }
+        public string  Path { set; get; }
 
         public string ContentType { set; get; }
+
+
+        public vLession ToVLesssion()
+        {
+            return new vLession(this);
+        }
     }
 }

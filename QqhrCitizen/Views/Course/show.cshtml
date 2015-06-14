@@ -1,4 +1,5 @@
 ﻿@using QqhrCitizen.Models
+@using QqhrCitizen.Models.ViewModel
 @{
 
     List<Lession> lessions = ViewBag.Lessions as List<Lession>;
@@ -17,7 +18,7 @@
         <div>
             <h4>课程提纲</h4>
             <ul class="">
-                @if (lessions.Count > 0)
+                @if (@lessions.Count > 0)
                 {
                     foreach (var item in lessions)
                     {

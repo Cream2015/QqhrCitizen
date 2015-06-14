@@ -39,7 +39,7 @@ namespace QqhrCitizen.Models.ViewModel
             this.Username = model.User.Username;
             this.Time = model.Time;
             this.Remark = model.Remark;
-            Lessions = db.Lessions.Where(l => l.CourseID == model.ID).ToList();
+            Lessions = (from l in db.Lessions where l.CourseID == model.ID select l).ToList();
         }
 
     }

@@ -70,6 +70,7 @@ namespace QqhrCitizen.Controllers
         {
             var Course = db.Courses.Find(id);
             var listLessions = db.Lessions.Where(lession => lession.CourseID == id).ToList();
+
             ViewBag.Lessions = listLessions;
             ViewBag.Course = Course;
             return View();
@@ -85,7 +86,7 @@ namespace QqhrCitizen.Controllers
         public ActionResult LessionDetails(int id)
         {
             var questions = new List<vQuestion>();
-            var Lession = db.Lessions.Find(id);
+            Lession Lession = db.Lessions.Find(id);
             ViewBag.Lession = Lession;
             var listNote = db.Notes.Where(note => note.LessionID == Lession.ID).ToList();
             ViewBag.ListNote = listNote;
@@ -117,7 +118,7 @@ namespace QqhrCitizen.Controllers
         {
             Lession lession = new Lession();
             lession = db.Lessions.Find(id);
-            return File(lession.Video, lession.ContentType);
+            return File("/Lessions/"+lession.Path, lession.ContentType);
         }
     }
 }
