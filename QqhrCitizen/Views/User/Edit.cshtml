@@ -7,7 +7,7 @@
 
 <script src="~/Scripts/jquery.datetimepicker.js"></script>
 <script>
-    $('.datetime').datetimepicker();
+    
     function UserEditCheck() {
         if (!CheckPhone()) return false;
         if (!CheckEmail()) return false;
@@ -72,6 +72,7 @@
 
     $(function () {
         $("#Address").html("@user.Address");
+        $('.datetime').datetimepicker();
     });
 
 
