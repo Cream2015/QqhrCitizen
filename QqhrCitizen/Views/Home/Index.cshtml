@@ -22,16 +22,16 @@
                 <td>
                     @foreach (var item in ViewBag.Courses)
                     {
-                        <p><a href="/News/Show/@item.ID">[@item.Time.ToString("yyyy-MM-dd")] @item.Title</a></p>
+                        <p><a href="/Course/Show/@item.ID">[@item.Time.ToString("yyyy-MM-dd")] @item.Title</a></p>
                     }
-                    <p><a href="/News/Index?tid=0">更多...</a></p>
+                    <p><a href="/Course/Index?tid=0">更多...</a></p>
                 </td>
                 <td>
                     @foreach (var item in ViewBag.EBooks)
                     {
-                        <p><a href="/News/Show/@item.ID">[@item.Time.ToString("yyyy-MM-dd")] @item.Title</a></p>
+                        <p><a href="/EBook/Show/@item.ID">[@item.Time.ToString("yyyy-MM-dd")] @item.Title</a></p>
                     }
-                    <p><a href="/News/Index?tid=0">更多...</a></p>
+                    <p><a href="/EBook/Index?tid=0">更多...</a></p>
                 </td>
             </tr>
         </table>

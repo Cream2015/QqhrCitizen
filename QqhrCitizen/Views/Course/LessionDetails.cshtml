@@ -8,7 +8,8 @@
 }
 
 <div class="container wrap-cont">
-    <div class="block">
+    <p>当前位置：/<a href="/Course/Show/@lession.CourseID" class="pos">@lession.Course.Title</a>/<a href="#" class="pos">@lession.Title</a></p>
+    <div class="block main">
         <div id="div_Video">
             <video id="video" src="/Course/PlayLession/@lession.ID" controls="controls"></video>
         </div>
@@ -40,7 +41,15 @@
         </div>
     </div>
 
-    <div class="block">
+    <div class="block sidebar">
+        <h2>课时</h2>
+        @foreach (var item in ViewBag.Lessions as List<vLession>)
+        {
+            <p><a href="/Course/LessionDetails/@item.ID">[@item.Time.ToString("yyyy-MM-dd")] @item.Title</a></p>
+        }
+    </div>
+    <div class="clr"></div>
+    <div class="block main">
         <h5>课后问题</h5>
         <div>
             @if (questions.Count() == 0)
@@ -68,7 +77,8 @@
             </div>
         </div>
     </div>
-    <div class="block">
+    <div class="clr"></div>
+    <div class="block main">
         <h3>评论</h3>
         <!-- 多说评论框 start -->
         <div class="ds-thread" data-thread-key="@lession.Course.CourseTypeID+@lession.ID" data-title="@lession.Title" data-url="@HttpContext.Current.Request.Url.ToString()"></div>
@@ -87,6 +97,7 @@
         </script>
         <!-- 多说公共JS代码 end -->
     </div>
+    <div class="clr"></div>
 </div>
 
 <style type="text/css">

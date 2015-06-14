@@ -92,16 +92,24 @@ namespace QqhrCitizen.Controllers
         public ActionResult LessionDetails(int id)
         {
             var questions = new List<vQuestion>();
+            var lessions = new List<Lession>();
+            var vLessions = new List<vLession>();
             Lession Lession = db.Lessions.Find(id);
             ViewBag.Lession = Lession;
             var listNote = db.Notes.Where(note => note.LessionID == Lession.ID).ToList();
             ViewBag.ListNote = listNote;
             var listQuestions = db.Questions.Where(question => question.LessionID == id).ToList();
+            lessions = db.Lessions.Where(l => l.CourseID == Lession.CourseID).ToList();
             foreach (var item in listQuestions)
             {
                 questions.Add(new vQuestion(item));
             }
+            foreach (var item in lessions)
+            {
+                vLessions.Add(new vLession(item));
+            }
             ViewBag.Questions = questions;
+            ViewBag.Lessions = vLessions;
             return View();
         }
 
@@ -120,11 +128,32 @@ namespace QqhrCitizen.Controllers
             return Redirect("LessionDetails/" + note.LessionID);
         }
 
+        #region 播放课时视屏
+        /// <summary>
+        /// 播放课时视屏
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public ActionResult PlayLession(int id)
         {
             Lession lession = new Lession();
             lession = db.Lessions.Find(id);
-            return File("/Lessions/"+lession.Path, lession.ContentType);
+            return File("/Lessions/" + lession.Path, lession.ContentType);
+        } 
+        #endregion
+
+
+        /// <summary>
+        /// 记录答题分数
+        /// </summary>
+        /// <param name="lid"></param>
+        /// <param name="rate"></param>
+        /// <returns></returns>
+        public ActionResult RecordScore(int lid,double rate)
+        {
+
+            return View();
         }
+
     }
 }

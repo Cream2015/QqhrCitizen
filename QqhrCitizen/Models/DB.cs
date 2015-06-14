@@ -21,6 +21,7 @@ namespace QqhrCitizen.Models
         public DbSet<ResourceLink> ResourceLinks { get; set; }
         public DbSet<TypeDictionary> TypeDictionaries { get; set; }
 
+        public DbSet<LessionScore> LessionScore { set; get; }
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
@@ -31,6 +32,7 @@ namespace QqhrCitizen.Models
             modelBuilder.Entity<ResourceLink>().HasRequired(r => r.TypeDictionary).WithMany().WillCascadeOnDelete(false);
 
             modelBuilder.Entity<Note>().HasRequired(n => n.User).WithMany().WillCascadeOnDelete(false);
+            modelBuilder.Entity<LessionScore>().HasRequired(ls => ls.User).WithMany().WillCascadeOnDelete(false);
         }
 
     }

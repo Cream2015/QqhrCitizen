@@ -26,8 +26,9 @@ function LoadNews() {
             data: { "page": page, "tid": tid },
         }).done(function (data) {
             var str = "";
+            console.log(data);
             for (var i = 0 ; i < data.length; i++) {
-                str += "<div class='Q-pList'><h2><a  href='/News/Show/" + data[i].ID + "' style='color:#000;' class='show'>" + data[i].Title + " </a></h2><p class='sub_title'>时间：" + moment(data[i].Time).format("YYYY-MM-DD HH:mm:ss") + "分类：" + data[i].TypeDictionary.TypeValue + "</p></div>";
+                str += "<div class='Q-pList'><h2><a  href='/News/Show/" + data[i].ID + "' style='color:#000;' class='show'>" + data[i].Title + " </a></h2><p class='sub_title'>时间：" + moment(data[i].Time).format("YYYY-MM-DD HH:mm:ss") + "分类：" + data[i].TypeDictionary.TypeValue + "</p><p>" + data[i].Sumamry + "</p></div>";
             }
             $(".lstNews").append(str);
             if (data.length == 10) {
@@ -146,15 +147,23 @@ $(document).ready(function () {
     $("#btnAnswerQuestion").click(function () {
         var str = "";
         var answers = $(".answer:checked");
+        var count = 0;
+        var rate = 1.0;
+        var questionCount = 0;
         $.each(answers, function (i, item) {
             var answer = $(item).val();
             var rightAnswer = $(item).parents(".question").children(".roghtanswer").val();
             if (options[answer] != rightAnswer) {
                 str = str + "第" + (i + 1) + "题错误，答案应该是" + rightAnswer+"  ";
+                questionCount++;
             }
             else {
-                str = str + "第" + (i + 1) + "题正确"+"  ";
+                str = str + "第" + (i + 1) + "题正确" + "  ";
+                count++;
+                questionCount++;
             }
+            rate = rate * (count / questionCount);
+            console.log(rate);
         });
         $(".warning").html(str);
     });

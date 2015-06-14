@@ -204,6 +204,7 @@
     <Compile Include="Models\EBook.cs" />
     <Compile Include="Models\File.cs" />
     <Compile Include="Models\Lession.cs" />
+    <Compile Include="Models\LessionScore.cs" />
     <Compile Include="Models\News.cs" />
     <Compile Include="Models\Note.cs" />
     <Compile Include="Models\Question.cs" />

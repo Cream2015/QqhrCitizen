@@ -509,6 +509,7 @@ input[type="text"] {
     line-height: 1.5;
     word-break: keep-all;
     word-wrap: normal;
+    z-index:999;
 }
 .show_public_tips {
     display: none;

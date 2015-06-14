@@ -17,7 +17,7 @@
         <input type="hidden" value="@ViewBag.ChananelID" id="ChananelID" />
         <input type="hidden" value="@((ViewBag.CurrentUser == null) ?"":ViewBag.CurrentUser.Username)" id="currentuser" />
         <div style="min-height:300px;">
-            <div class="msgDisplay" style="height:300px">
+            <div class="msgDisplay" style="height: 300px; overflow:scroll;">
 
             </div>
             <textarea id="txtMsg" class="textbox" style="height:100px;width:200px;"></textarea>
@@ -32,7 +32,7 @@
 <script>
     var contosoChatHubProxy = $.connection.contosoChatHub;
     contosoChatHubProxy.client.addContosoChatMessageToPage = function (name, message) {
-        var str = "<div>" + name + " " + moment(new Date()).format("YYYY-MM-DD HH:mm:ss") + "<p>" + message + "</p></div>";
+        var str = "<div>" + name + " " + moment(new Date()).format("YYYY-MM-DD HH:mm:ss") + "<p class='font-size:8px;'>" + message + "</p></div>";
         console.log(str);
         $(".msgDisplay").append(str);
     };

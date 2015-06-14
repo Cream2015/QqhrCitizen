@@ -354,7 +354,7 @@ namespace QqhrCitizen.Controllers
             course = db.Courses.Find(id);
             db.Courses.Remove(course);
             db.SaveChanges();
-            return RedirectToAction("CoursesManager");
+            return RedirectToAction("CourseManager");
         }
         #endregion
 
@@ -541,8 +541,7 @@ namespace QqhrCitizen.Controllers
         /// <param name="model"></param>
         /// <param name="file"></param>
         /// <returns></returns>
-        [HttpGet]
-
+        [HttpPost]
         public ActionResult LinkEdit(ResourceLink model, HttpPostedFileBase file)
         {
 
@@ -597,6 +596,17 @@ namespace QqhrCitizen.Controllers
             link.IsHaveFile = model.IsHaveFile;
             link.LinkTypeID = model.LinkTypeID;
             link.Title = model.Title;
+            if(link.URL.Contains("http"))
+            {
+                if (link.URL.Contains("https://"))
+                {
+                    link.URL = model.URL.Substring(0,7);
+                }
+                else 
+                {
+                    link.URL = model.URL.Substring(0, 6);
+                }
+            }
             link.URL = model.URL;
             link.FileID = fileId;
             db.SaveChanges();

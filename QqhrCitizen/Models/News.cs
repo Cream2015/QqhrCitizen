@@ -27,7 +27,26 @@ namespace QqhrCitizen.Models
         /// <summary>
         /// 浏览数
         /// </summary>
-        public int Browses  { get; set; }
-        
+        public int Browses { get; set; }
+
+        [NotMapped]
+        public string Sumamry
+        {
+            get
+            {
+                var tmp = Content.Split('\n');
+                if (tmp.Count() > 4)
+                {
+                    var ret = "";
+                    for (var i = 0; i < 3; i++)
+                    {
+                        ret += tmp[i];
+                    }
+                    ret += "<p>……</p>";
+                    return ret;
+                }
+                else return Content;
+            }
+        }
     }
 }

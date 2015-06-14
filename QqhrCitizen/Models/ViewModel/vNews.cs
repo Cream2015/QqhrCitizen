@@ -20,6 +20,7 @@ namespace QqhrCitizen.Models.ViewModel
 
         public int Browses { get; set; }
         public string Username { get; set; }
+        public string Sumamry { set; get; }
 
         public vNews() { }
 
@@ -27,13 +28,14 @@ namespace QqhrCitizen.Models.ViewModel
         {
             this.ID = model.ID;
             this.Title = model.Title;
-            this.Content = model.Content;
+            this.Content = QqhrCitizen.Helpers.HtmlFilter.Instance.SanitizeHtml(model.Content);
             this.NewsTypeID = model.NewsTypeID;
             this.TypeDictionary = model.TypeDictionary;
             this.Time = model.Time;
             this.UserID = model.UserID;
             this.Username = model.User.Username;
             this.Browses = model.Browses;
+            this.Sumamry = QqhrCitizen.Helpers.HtmlFilter.Instance.SanitizeHtml(model.Sumamry);
         }
     }
 }
