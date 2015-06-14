@@ -25,7 +25,14 @@
             <div style="margin-left: 150px; margin-top: -150px" >
                 <p>用户名：@user.Username</p>
                 <p>性别：@user.Sex</p>
-                <p>生日：@user.Birthday.Value.ToShortDateString()</p>
+                @if (user.Birthday != null)
+                {
+                    <p>生日：@user.Birthday.Value.ToShortDateString()</p>
+                }
+                else
+                {
+                    <p>生日：1990/01/01</p>
+                }
                 <p>真实姓名:@user.Realname</p>
                 <p>电话:@user.Phone</p>
                 <p>邮箱:@user.Email</p>
