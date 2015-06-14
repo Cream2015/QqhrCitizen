@@ -137,7 +137,7 @@ namespace QqhrCitizen.Controllers
         [Authorize]
         [HttpPost]
         [ValidateSID]
-        public ActionResult Edit(vUserEdit model)
+        public ActionResult Edit(vUserEdit model,HttpPostedFileBase file)
         {
             User user = db.Users.Find(model.ID);
             if (ModelState.IsValid)
@@ -153,6 +153,14 @@ namespace QqhrCitizen.Controllers
                 user.Email = model.Email;
                 user.Picture = model.Picture;
                 user.Realname = model.Realname;
+                if (file != null)
+                {
+                    System.IO.Stream stream = file.InputStream;
+                    byte[] buffer = new byte[stream.Length];
+                    stream.Read(buffer, 0, (int)stream.Length);
+                    stream.Close();
+                    user.Picture = buffer;
+                }
                 db.SaveChanges();
                 return RedirectToAction("Show/" + model.ID);
             }

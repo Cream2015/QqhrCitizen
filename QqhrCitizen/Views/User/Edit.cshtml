@@ -4,6 +4,8 @@
     ViewBag.Title = "修改用户信息 - 齐齐哈尔市民学习网";
     User user = ViewBag.user as User;
 }
+
+<script src="~/Scripts/jquery.datetimepicker.js"></script>
 <script>
     function UserEditCheck() {
         if (!CheckPhone()) return false;
@@ -75,7 +77,8 @@
 </script>
 @using (Html.BeginForm("Edit", "User", FormMethod.Post, new
                     {
-                        onsubmit = "return UserEditCheck();"
+                        onsubmit = "return UserEditCheck();",
+                        enctype = "multipart/form-data" 
                     }))
 {
     @Html.AntiForgerySID()
@@ -95,12 +98,6 @@
                             <td class="row-title">头像</td>
                             <td><input type="file" class="textbox w-3" name="file" /></td>
                    </tr>
-                    @*<tr>
-                            <td class="row-title">年龄</td>
-                            <td>
-                                @Html.TextBoxFor(model => model.Age, new { @Value = user.Age, @class = "textbox w-3" })
-                            </td>
-                        </tr>*@
                     <tr>
                         <td class="row-title">性别</td>
                         <td>@Html.DropDownListFor(model => model.Sex, ViewBag.Sex as IEnumerable<SelectListItem>, new { @class = "textbox w-3" })
@@ -116,7 +113,7 @@
                     <tr>
                         <td class="row-title">生日</td>
                         <td>
-                            @Html.TextBoxFor(model => model.Birthday, new { @Value = user.Birthday, @class = "textbox w-3" })<br />
+                            @Html.TextBoxFor(model => model.Birthday, new { @Value = user.Birthday, @class = "textbox w-3 datetime" })<br />
                         </td>
                     </tr>
                     <tr>

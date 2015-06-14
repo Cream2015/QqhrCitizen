@@ -99,6 +99,9 @@ function Load() {
 }
 
 $(document).ready(function () {
+
+    $('.datetime').datetimepicker();
+
     $('a[data-toggle]').click(function () {
         $('.pop-menu').slideUp();
         var target = $(this).attr('data-toggle');
