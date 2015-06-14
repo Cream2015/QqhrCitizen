@@ -61,6 +61,7 @@ namespace QqhrCitizen.Controllers
             news = db.News.OrderByDescending(n => n.Time).Take(10).ToList();
             foreach (var item in news)
             {
+                item.Title =Helpers.String.SubString(item.Title,16,"");
                 _news.Add(new vNews(item));
             }
             #endregion

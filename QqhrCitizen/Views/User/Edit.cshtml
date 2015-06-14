@@ -7,6 +7,7 @@
 
 <script src="~/Scripts/jquery.datetimepicker.js"></script>
 <script>
+    $('.datetime').datetimepicker();
     function UserEditCheck() {
         if (!CheckPhone()) return false;
         if (!CheckEmail()) return false;
@@ -68,7 +69,7 @@
             }
         }
     }
-  
+
     $(function () {
         $("#Address").html("@user.Address");
     });
@@ -78,58 +79,56 @@
 @using (Html.BeginForm("Edit", "User", FormMethod.Post, new
                     {
                         onsubmit = "return UserEditCheck();",
-                        enctype = "multipart/form-data" 
+                        enctype = "multipart/form-data"
                     }))
 {
     @Html.AntiForgerySID()
-    <fieldset>
-        @Html.HiddenFor(model => model.ID, new { @value = user.ID })
-        <div class="container wrap-cont">
-            <div class="narrow block">
-                <h2>修改用户信息</h2>
-                <table class="detail-table">
-                    <tr>
-                        <td class="row-title">用户名</td>
-                        <td>
-                            @Html.TextBoxFor(model => model.Username, new { @Value = user.Username, @class = "textbox w-3" })
-                        </td>
-                    </tr>
-                    <tr>
-                            <td class="row-title">头像</td>
-                            <td><input type="file" class="textbox w-3" name="file" /></td>
-                   </tr>
-                    <tr>
-                        <td class="row-title">性别</td>
-                        <td>@Html.DropDownListFor(model => model.Sex, ViewBag.Sex as IEnumerable<SelectListItem>, new { @class = "textbox w-3" })
-                    </tr>
-                    <tr>
-                        <td class="row-title">住址</td>
-                        <td>@Html.TextAreaFor(model => model.Address, new { @class = "textbox w-3",rows="10",cols="20" })</td>
-                    </tr>
-                    <tr>
-                        <td class="row-title">电话</td>
-                        <td>@Html.TextBoxFor(model => model.Phone, new { @Value = user.Phone, @class = "textbox w-3" })</td>
-                    </tr>
-                    <tr>
-                        <td class="row-title">生日</td>
-                        <td>
-                            @Html.TextBoxFor(model => model.Birthday, new { @Value = user.Birthday, @class = "textbox w-3 datetime" })<br />
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="row-title">邮箱</td>
-                        <td>@Html.TextBoxFor(model => model.Email, new { @Value = user.Email, @class = "textbox w-3" })</td>
-                    </tr>
-                    <tr>
-                        <td class="row-title">真实姓名</td>
-                        <td>@Html.TextBoxFor(model => model.Realname, new { @Value = user.Realname, @class = "textbox w-3" })</td>
-                    </tr>
-                </table>
-                <div align="center"><input type="submit" value="保存" class="button blue" /><input type="reset" value="重置" class="button blue " /></div>
-                @Html.ValidationSummary(true)
-            </div>
+    @Html.HiddenFor(model => model.ID, new { @value = user.ID })
+    <div class="container wrap-cont">
+        <div class="narrow block">
+            <h2>修改用户信息</h2>
+            <table class="detail-table">
+                <tr>
+                    <td class="row-title">用户名</td>
+                    <td>
+                        @Html.TextBoxFor(model => model.Username, new { @Value = user.Username, @class = "textbox w-3" })
+                    </td>
+                </tr>
+                <tr>
+                    <td class="row-title">头像</td>
+                    <td><input type="file" class="textbox w-2" name="file" />(不修改请留空)</td>
+                </tr>
+                <tr>
+                    <td class="row-title">性别</td>
+                    <td>@Html.DropDownListFor(model => model.Sex, ViewBag.Sex as IEnumerable<SelectListItem>, new { @class = "textbox w-3" })
+                </tr>
+                <tr>
+                    <td class="row-title">住址</td>
+                    <td>@Html.TextAreaFor(model => model.Address, new { @class = "textbox w-3", rows = "10", cols = "20" })</td>
+                </tr>
+                <tr>
+                    <td class="row-title">电话</td>
+                    <td>@Html.TextBoxFor(model => model.Phone, new { @Value = user.Phone, @class = "textbox w-3" })</td>
+                </tr>
+                <tr>
+                    <td class="row-title">生日</td>
+                    <td>
+                        @Html.TextBoxFor(model => model.Birthday, new { @Value = user.Birthday, @class = "textbox w-3 datetime" })<br />
+                    </td>
+                </tr>
+                <tr>
+                    <td class="row-title">邮箱</td>
+                    <td>@Html.TextBoxFor(model => model.Email, new { @Value = user.Email, @class = "textbox w-3" })</td>
+                </tr>
+                <tr>
+                    <td class="row-title">真实姓名</td>
+                    <td>@Html.TextBoxFor(model => model.Realname, new { @Value = user.Realname, @class = "textbox w-3" })</td>
+                </tr>
+            </table>
+            <div align="center"><input type="submit" value="保存" class="button blue" /><input type="reset" value="重置" class="button blue " /></div>
+            @Html.ValidationSummary(true)
         </div>
-    </fieldset>
+    </div>
 }
 
 

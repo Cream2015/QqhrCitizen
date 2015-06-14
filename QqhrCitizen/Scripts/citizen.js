@@ -2,6 +2,16 @@
 var page = 0;
 var tid = "";
 var options = ['A', 'B', 'C', 'D'];
+
+
+function resize() {
+    $('.main').width($(window).width() - 280);
+}
+
+$(window).resize(function () {
+    resize();
+});
+
 //加载新闻
 function LoadNews() {
     if (lock) {
@@ -99,8 +109,6 @@ function Load() {
 }
 
 $(document).ready(function () {
-
-    $('.datetime').datetimepicker();
 
     $('a[data-toggle]').click(function () {
         $('.pop-menu').slideUp();

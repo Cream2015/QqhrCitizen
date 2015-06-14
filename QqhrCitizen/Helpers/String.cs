@@ -81,5 +81,39 @@ namespace QqhrCitizen.Helpers
             byte[] sarr = System.Text.Encoding.Default.GetBytes(str);
             return sarr.Length;
         }
+
+
+        public static string SubString(string s, int l, string endStr)
+        {
+            string temp = s.Substring(0, (s.Length < l + 1) ? s.Length : l + 1);
+            byte[] encodedBytes = System.Text.ASCIIEncoding.ASCII.GetBytes(temp);
+
+            string outputStr = "";
+            int count = 0;
+
+            for (int i = 0; i < temp.Length; i++)
+            {
+                if ((int)encodedBytes[i] == 63)
+                    count += 2;
+                else
+                    count += 1;
+
+                if (count <= l - endStr.Length)
+                    outputStr += temp.Substring(i, 1);
+                else if (count > l)
+                    break;
+            }
+
+            if (count <= l)
+            {
+                outputStr = temp;
+                endStr = "";
+            }
+
+            outputStr += endStr;
+
+            return outputStr;
+        }
+
     }
 }
