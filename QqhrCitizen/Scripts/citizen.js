@@ -33,6 +33,7 @@ function LoadNews() {
             if (data.length == 10) {
                 lock = false;
                 page++;
+                $(".loadMore").text("下拉加载更多！");
             } else {
                 $(".loadMore").text("没有更多数据了！");
             }
@@ -61,6 +62,7 @@ function LoadCourses() {
             if (data.length == 10) {
                 lock = false;
                 page++;
+                $(".loadMore").text("下拉加载更多！");
             } else {
                 $(".loadMore").text("没有更多数据了！");
             }
@@ -89,6 +91,7 @@ function LoadEBooks() {
             if (data.length == 10) {
                 lock = false;
                 page++;
+                $(".loadMore").text("下拉加载更多！");
             } else {
                 $(".loadMore").text("没有更多数据了！");
             }
