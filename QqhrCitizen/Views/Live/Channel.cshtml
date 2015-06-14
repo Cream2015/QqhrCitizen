@@ -1,0 +1,46 @@
+﻿@{
+    ViewBag.Title = "Channel";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+ 
+<script src="~/Scripts/jquery.signalR-2.2.0.min.js"></script>
+<script src="/signalr/hubs"></script>
+
+<div class="container wrap-cont">
+    <div class="main block">
+        <video id="video" controls="controls"></video>
+    </div>
+    <div class="block sidebar">
+        <input type="hidden" value="@((ViewBag.CurrentUser == null) ?"":ViewBag.CurrentUser.Username)" id="currentuser" />
+        <div style="min-height:300px;">
+            <div class="msgDisplay"style="height:200px">
+
+            </div>
+            <textarea id="txtMsg" class="textbox" style="height:100px;"></textarea>
+            <input type="button" class="button blue" value="发送" id="newContosoChatMessage" />
+        </div>
+    </div>
+    <div class="clr"></div>
+
+
+</div>
+
+<script>
+    var contosoChatHubProxy = $.connection.contosoChatHub;
+    contosoChatHubProxy.client.addContosoChatMessageToPage = function (name, message) {
+        var str = "<div>" + name + " " +moment(new Date()).format("YYYY-MM-DD HH:mm:ss") + "<p>" + message + "</p></div>";
+        console.log(str);
+        $(".msgDisplay").append(str);
+    };
+    $.connection.hub.start().done(function () {
+        // Wire up Send button to call NewContosoChatMessage on the server.
+        $('#newContosoChatMessage').click(function () {
+            if ($('#currentuser').val() == "") {
+                CastMsg("请先登录在发送聊天信息");
+                return false;
+            }
+            contosoChatHubProxy.server.newContosoChatMessage($('#currentuser').val(), $('#txtMsg').val());
+            $('#message').val('').focus();
+        });
+    });
+</script>

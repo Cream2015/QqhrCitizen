@@ -183,6 +183,7 @@
     <Compile Include="Controllers\CourseController.cs" />
     <Compile Include="Controllers\EBookController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LiveController.cs" />
     <Compile Include="Controllers\NewsController.cs" />
     <Compile Include="Controllers\SharedController.cs" />
     <Compile Include="Controllers\UserController.cs" />
@@ -222,6 +223,7 @@
     <Compile Include="Models\ViewModel\vUserEdit.cs" />
     <Compile Include="Models\ViewModel\vUserPwdEdit.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SignalR\ContosoChatHub.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="Helpers\String.cs" />
     <Compile Include="Helpers\Time.cs" />
@@ -278,6 +280,8 @@
     <Content Include="Views\Admin\ManagerShow.cshtml" />
     <Content Include="Views\Admin\UpdateManagerPwd.cshtml" />
     <Content Include="Views\Admin\RoleUpdate.cshtml" />
+    <Content Include="Views\Live\Index.cshtml" />
+    <Content Include="Views\Live\Channel.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -290,6 +294,7 @@
     <Folder Include="Content\" />
     <Folder Include="Lessions\" />
     <Folder Include="Upload\" />
+    <Folder Include="Views\Index\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
