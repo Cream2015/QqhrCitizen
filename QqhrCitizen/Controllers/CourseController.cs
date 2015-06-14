@@ -151,8 +151,13 @@ namespace QqhrCitizen.Controllers
         /// <returns></returns>
         public ActionResult RecordScore(int lid,double rate)
         {
-
-            return View();
+            LessionScore lessionScore = new LessionScore();
+            lessionScore.UserId = CurrentUser.ID;
+            lessionScore.LessionId = lid;
+            lessionScore.Rate = rate;
+            db.LessionScore.Add(lessionScore);
+            db.SaveChanges();
+            return Content("ok");
         }
 
     }

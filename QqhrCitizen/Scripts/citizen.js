@@ -145,6 +145,11 @@ $(document).ready(function () {
     })
 
     $("#btnAnswerQuestion").click(function () {
+        var userid = $("#userId").val();
+        if (userid == "") {
+            CastMsg("请先登录，在添加回答问题");
+            return false;
+        }
         var str = "";
         var answers = $(".answer:checked");
         var count = 0;
@@ -162,9 +167,12 @@ $(document).ready(function () {
                 count++;
                 questionCount++;
             }
-            rate = rate * (count / questionCount);
-            console.log(rate);
+            
         });
+        rate = rate * (count * 1.0 / questionCount);
+        $.post("/Course/RecordScore", { lid: $("#LessionID").val(), rate: rate }, function (data) {
+            CastMsg("记录回答记录成功！");
+        })
         $(".warning").html(str);
     });
 
