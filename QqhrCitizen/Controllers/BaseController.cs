@@ -57,48 +57,9 @@ namespace QqhrCitizen.Controllers
                 _ebookTypes.Add(new vTypeDictionary(type));
             }
 
-            #region 最新5条新闻
-            news = db.News.OrderByDescending(n => n.Time).Take(10).ToList();
-            foreach (var item in news)
-            {
-                item.Title =Helpers.String.SubString(item.Title,16,"");
-                _news.Add(new vNews(item));
-            }
-            #endregion
-
-            #region 最新的5门课程
-            courses = db.Courses.OrderByDescending(c => c.Time).Take(10).ToList();
-            foreach (var item in courses)
-            {
-                _courses.Add(new vCourse(item));
-            }
-            #endregion
-
-            #region 最新的5门图书
-            books = db.EBooks.OrderByDescending(c => c.Time).Take(10).ToList();
-            foreach (var item in books)
-            {
-                _books.Add(new vEBook(item));
-            }
-            #endregion
-
-            #region 资源连接
-            nflinks = db.ResourceLinks.Where(l => l.IsHaveFile == false).OrderByDescending(l => l.Time).Take(12).ToList();
-            flinks = db.ResourceLinks.Where(l => l.IsHaveFile == true).OrderByDescending(l => l.Time).Take(12).ToList();
-            foreach (var item in flinks)
-            {
-                vflinks.Add(new vResourceLink(item));
-            } 
-            #endregion
-
             ViewBag.NewsTypes = _newsTypes;
             ViewBag.CourseTypes = _courseTypes;
             ViewBag.EBookTypes = _ebookTypes;
-            ViewBag.News = _news;
-            ViewBag.Courses = _courses;
-            ViewBag.EBooks = _books;
-            ViewBag.NfLinks = nflinks;
-            ViewBag.FLinks = vflinks;
             if (requestContext.HttpContext.User != null && requestContext.HttpContext.User.Identity.IsAuthenticated)
             {
                 ViewBag.CurrentUser = (from u in db.Users
@@ -117,8 +78,6 @@ namespace QqhrCitizen.Controllers
 
         
         public User CurrentUser { get; set; }
-
-       
         
         public ActionResult Message(string msg)
         {

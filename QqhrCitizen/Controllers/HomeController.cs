@@ -33,7 +33,7 @@ namespace QqhrCitizen.Controllers
             news = db.News.OrderByDescending(n => n.Time).Take(10).ToList();
             foreach (var item in news)
             {
-                item.Title = Helpers.String.SubString(item.Title, 16, "");
+                item.Title = Helpers.String.SubString(item.Title, 22, "");
                 _news.Add(new vNews(item));
             }
             #endregion
@@ -42,6 +42,7 @@ namespace QqhrCitizen.Controllers
             courses = db.Courses.OrderByDescending(c => c.Time).Take(10).ToList();
             foreach (var item in courses)
             {
+                item.Title = Helpers.String.SubString(item.Title, 22, "");
                 _courses.Add(new vCourse(item));
             }
             #endregion
@@ -50,6 +51,7 @@ namespace QqhrCitizen.Controllers
             books = db.EBooks.OrderByDescending(c => c.Time).Take(10).ToList();
             foreach (var item in books)
             {
+                item.Title = Helpers.String.SubString(item.Title, 22, "");
                 _books.Add(new vEBook(item));
             }
             #endregion

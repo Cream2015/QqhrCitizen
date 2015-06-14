@@ -1,4 +1,5 @@
 ﻿@using QqhrCitizen.Models.ViewModel;
+@using QqhrCitizen.Models;
 @model  QqhrCitizen.Models.ViewModel.vUser
 @{
     ViewBag.Title = "用户信息 - 齐齐哈尔市民学习网";
@@ -6,7 +7,7 @@
 }
 
 <div class="container wrap-cont">
-    <div class="narrow block">
+    <div class="block">
         <h2>用户信息</h2>
         <div class="detail-table">
             <p>
@@ -38,6 +39,20 @@
                     }
                 </div>
             </div>
+        </div>
+    </div>
+
+    <div class="block">
+        <h2>课程笔记</h2>
+        <div>
+            @foreach(var item in ViewBag.Notes as List<Note>)
+            {
+                <div>
+                    所属课程：<span>@item.Lession.Course.Title</span>  所属课时：<span>@item.Lession.Title</span>
+                    添加时间：<span>@item.Time</span> 
+                    内容:<span>@item.Content</span>
+                </div>
+            }
         </div>
     </div>
 </div>

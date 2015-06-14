@@ -103,6 +103,9 @@ namespace QqhrCitizen.Controllers
             User user = new User();
             user = db.Users.Find(id);
             ViewBag.user = new vUser(user);
+            List<Note> notes = new List<Note>();
+            notes = db.Notes.Where(n => n.UserID == id).ToList();
+            ViewBag.Notes = notes;
             return View();
         } 
         #endregion
@@ -151,7 +154,6 @@ namespace QqhrCitizen.Controllers
                 user.Address = model.Address;
                 user.Birthday = model.Birthday;
                 user.Email = model.Email;
-                user.Picture = model.Picture;
                 user.Realname = model.Realname;
                 if (file != null)
                 {
