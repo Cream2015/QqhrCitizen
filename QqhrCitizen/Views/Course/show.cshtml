@@ -2,7 +2,7 @@
 @using QqhrCitizen.Models.ViewModel
 @{
 
-    List<Lession> lessions = ViewBag.Lessions as List<Lession>;
+    List<vLession> lessions = ViewBag.Lessions as List<vLession>;
     Course course = ViewBag.Course as Course;
     ViewBag.Title = course.Title;
 }
@@ -24,7 +24,7 @@
                     {
                         <li>
                             <div>
-                                <h3><a href="/Course/LessionDetails/@item.ID">@item.Title</a></h3>
+                                <h3><a href="/Course/LessionDetails/@item.ID">@item.Title</a> 当前用户问题正确率:@item.Rate</h3>
                                 <p>@item.Description</p>
                             </div>
                         </li>

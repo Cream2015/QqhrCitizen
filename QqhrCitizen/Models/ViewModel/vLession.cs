@@ -19,6 +19,7 @@ namespace QqhrCitizen.Models.ViewModel
         public string ContentType { set; get; }
         public List<Question> Questions { get; set; }
 
+        public double Rate { set; get; }
         public vLession() { }
 
         public vLession(Lession model)
@@ -32,6 +33,13 @@ namespace QqhrCitizen.Models.ViewModel
             this.Time = model.Time;
             this.Remark = model.Remark;
             this.Questions = db.Questions.Where(c=>c.LessionID==model.ID).ToList();
+        }
+
+        public void SetDate(int uid)
+        {
+            DB db = new DB();
+            LessionScore lessionScore = db.LessionScore.Where(ls => ls.UserId == uid && ls.LessionId == this.ID).OrderByDescending(ls => ls.ID).FirstOrDefault();
+            this.Rate = lessionScore.Rate;
         }
     }
 }
