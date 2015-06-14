@@ -115,18 +115,16 @@
                     </tr>
                     <tr>
                         <td class="row-title">生日</td>
-                        @{var bd = (@user.Birthday).ToString("yyyy-MM-dd");}
                         <td>
-                            @Html.TextBoxFor(model => model.Birthday, new { @Value = bd, @class = "textbox w-3" })<br />
-                            <span style="font:100">格式：yyyy—mm—dd</span>
+                            @Html.TextBoxFor(model => model.Birthday, new { @Value = user.Birthday, @class = "textbox w-3" })<br />
                         </td>
                     </tr>
                     <tr>
-                        <td class="row-title">Email</td>
+                        <td class="row-title">邮箱</td>
                         <td>@Html.TextBoxFor(model => model.Email, new { @Value = user.Email, @class = "textbox w-3" })</td>
                     </tr>
                     <tr>
-                        <td class="row-title">Realname</td>
+                        <td class="row-title">真实姓名</td>
                         <td>@Html.TextBoxFor(model => model.Realname, new { @Value = user.Realname, @class = "textbox w-3" })</td>
                     </tr>
                 </table>
