@@ -23,7 +23,9 @@ namespace QqhrCitizen.Models.ViewModel
 
         public int AuthorityAsInt { set; get; }
 
-        public List<Lession> Lessions { set; get; } 
+        public List<Lession> Lessions { set; get; }
+
+        public string Sumamry { get; set; }
 
         public vCourse() { }
 
@@ -40,6 +42,7 @@ namespace QqhrCitizen.Models.ViewModel
             this.Time = model.Time;
             this.Remark = model.Remark;
             Lessions = (from l in db.Lessions where l.CourseID == model.ID select l).ToList();
+            this.Sumamry = Helpers.String.SubString(model.Description, 50, "...");
         }
 
     }

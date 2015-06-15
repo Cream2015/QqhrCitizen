@@ -57,7 +57,7 @@ function LoadCourses() {
         }).done(function (data) {
             var str = "";
             for (var i = 0 ; i < data.length; i++) {
-                str += "<div class='Q-pList'><h2><a  href='/Course/Show/" + data[i].ID + "' style='color:#000;' class='show'>" + data[i].Title + " </a></h2><p class='sub_title'> 时间：" + moment(data[i].Time).format("YYYY-MM-DD HH:mm:ss") + "  分类：" + data[i].TypeDictionary.TypeValue + " </p></div>";
+                str += "<div class='Q-pList'><h2><a  href='/Course/Show/" + data[i].ID + "' style='color:#000;' class='show'>" + data[i].Title + " </a></h2><p class='sub_title'> 时间：" + moment(data[i].Time).format("YYYY-MM-DD HH:mm:ss") + "  分类：" + data[i].TypeDictionary.TypeValue + " </p><p>" + data[i].Sumamry + "</p></div>";
             }
             $(".lstCourse").append(str);
             if (data.length == 10) {
@@ -86,7 +86,7 @@ function LoadEBooks() {
         }).done(function (data) {
             var str = "";
             for (var i = 0 ; i < data.length; i++) {
-                str += "<div class='Q-pList'><h2><a  href='/EBook/Show/" + data[i].ID + "' style='color:#000;' class='show'>" + data[i].Title + " </a></h2><p class='sub_title'>时间：" + moment(data[i].Time).format("YYYY-MM-DD HH:mm:ss") + "分类：" + data[i].TypeDictionary.TypeValue + "   <a href='/Upload/" + data[i].File.Path + "'>在线预览</a> <a href='/EBook/Download/" + data[i].ID + "'>下载</a></p></div>";
+                str += "<div class='Q-pList'><h2><a  href='/EBook/Show/" + data[i].ID + "' style='color:#000;' class='show'>" + data[i].Title + " </a></h2><p class='sub_title'>时间：" + moment(data[i].Time).format("YYYY-MM-DD HH:mm:ss") + "分类：" + data[i].TypeDictionary.TypeValue + "   <a href='/Upload/" + data[i].File.Path + "'>在线预览</a> <a href='/EBook/Download/" + data[i].ID + "'>下载</a></p><p>"+data[i].Sumamry+"</p></div>";
             }
             $(".lstEBook").append(str);
             if (data.length == 10) {

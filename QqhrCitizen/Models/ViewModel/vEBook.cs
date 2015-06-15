@@ -33,6 +33,8 @@ namespace QqhrCitizen.Models.ViewModel
         /// </summary>
         public int Browses { get; set; }
 
+        public string Sumamry { get; set; }
+        
         public vEBook() { }
 
         public vEBook(EBook model)
@@ -50,6 +52,7 @@ namespace QqhrCitizen.Models.ViewModel
             this.FileID = model.FileID;
             this.File = model.File;
             this.Browses = model.Browses;
+            this.Sumamry = Helpers.String.SubString(model.Description, 50, "...");
         }
     }
 }
