@@ -76,7 +76,7 @@
                         </td>
                         <td>
                             <a href="/Admin/LessionShow/@item.ID">课时详情</a>
-                            <a href="javascript:Delete(@item.ID);">删除</a>
+                            <a href="javascript:deleteDialog('/Admin/LessionDelete/' + @item.ID + '?sid=@ViewBag.SID',@item.ID);">删除</a>
                             <a href="/Admin/LessionEdit/@item.ID">修改</a>
                         </td>
                     </tr>
@@ -86,13 +86,6 @@
         </tbody>
     </table>
 </div>
-
-
-<script>
-    function Delete(id) {
-        window.location = '/Admin/LessionDelete/' + id + '?sid=@ViewBag.SID';
-    }
-</script>
 
 
 

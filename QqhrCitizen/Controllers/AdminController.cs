@@ -859,7 +859,7 @@ namespace QqhrCitizen.Controllers
             model.Path = path;
             db.Lessions.Add(model);
             db.SaveChanges();
-            return RedirectToAction("CourseManager");
+            return Redirect("/Admin/CourseShow/"+model.CourseID);
         }
         #endregion
 
@@ -876,11 +876,11 @@ namespace QqhrCitizen.Controllers
         {
             Lession lession = new Lession();
             lession = db.Lessions.Find(id);
-            var path = Server.MapPath(lession.Path);
+            var path = Server.MapPath("~/Lessions"+lession.Path);
             System.IO.File.Delete(path);
             db.Lessions.Remove(lession);
             db.SaveChanges();
-            return Redirect("/Admin/CourseShow/" + lession.CourseID);
+            return Content("ok");
         }
         #endregion
 
