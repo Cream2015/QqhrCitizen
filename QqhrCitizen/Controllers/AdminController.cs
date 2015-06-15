@@ -119,6 +119,16 @@ namespace QqhrCitizen.Controllers
         public ActionResult TypeDictionaryEdit(int id)
         {
             var TypeDictionary = db.TypeDictionaries.Find(id);
+            var LstFatherTypeDictionary = new List<TypeDictionary>();
+            if (TypeDictionary.FatherID == 0)
+            {
+                LstFatherTypeDictionary = null;
+            }
+            else
+            {
+                LstFatherTypeDictionary = db.TypeDictionaries.Where(td => td.ID == (int)TypeDictionary.FatherID).ToList();
+            }
+            ViewBag.LstFatherTypeDictionary = LstFatherTypeDictionary;
             return View(TypeDictionary);
         }
         #endregion

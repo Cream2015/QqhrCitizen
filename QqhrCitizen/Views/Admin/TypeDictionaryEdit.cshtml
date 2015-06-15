@@ -1,7 +1,9 @@
 ﻿@model QqhrCitizen.Models.TypeDictionary
+@using QqhrCitizen.Models;
 @{
     ViewBag.Title = "TypeDictionaryEdit";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    List<TypeDictionary> lstFather = ViewBag.LstFatherTypeDictionary as List<TypeDictionary>;
 }
 
 <div>
@@ -17,11 +19,11 @@
                     <td class="row-title">所属类别</td>
                     <td>
                         <select name="Belonger" id="lsBelonger">
-                            <option  @(Model.Belonger.ToString() == "新闻" ? "select" : "")>新闻</option>
-                            <option @(Model.Belonger.ToString() == "文件" ? "select" : "")>文件</option>
-                            <option @(Model.Belonger.ToString() == "资源链接" ? "select" : "")>资源链接</option>
-                            <option @(Model.Belonger.ToString() == "电子书" ? "select" : "")>电子书</option>
-                            <option @(Model.Belonger.ToString() == "课程" ? "select" : "")>课程</option>
+                            <option @(Model.Belonger.ToString() == "新闻" ? "selected" : "")>新闻</option>
+                            <option @(Model.Belonger.ToString() == "文件" ? "selected" : "")>文件</option>
+                            <option @(Model.Belonger.ToString() == "资源链接" ? "selected" : "")>资源链接</option>
+                            <option @(Model.Belonger.ToString() == "电子书" ? "selected" : "")>电子书</option>
+                            <option @(Model.Belonger.ToString() == "课程" ? "selected" : "")>课程</option>
                         </select>
                     </td>
                 </tr>
@@ -30,7 +32,7 @@
                         内容
                     </td>
                     <td>
-                        <input type="text" name="TypeValue" class="textbox"  value="@Model.TypeValue" />
+                        <input type="text" name="TypeValue" class="textbox" value="@Model.TypeValue" />
                     </td>
                 </tr>
                 <tr>
@@ -39,7 +41,7 @@
                     </td>
                     <td>
                         <select name="NeedAuthorize" class="textbox">
-                            <option value="false"  @(Model.NeedAuthorize?"selected":"")>否</option>
+                            <option value="false" @(Model.NeedAuthorize ? "selected" : "")>否</option>
                             <option value="true" @(Model.NeedAuthorize ? "selected" : "")>是</option>
                         </select>
                     </td>
@@ -50,11 +52,19 @@
                     </td>
                     <td>
                         <select name="FatherID" id="lsFatherID" class="textbox">
+                            <option value="0">无上级分类</option>
+                            @if (lstFather != null)
+                            {
+                                foreach (var item in lstFather)
+                                {
+                                    <option value="@item.ID" @(item.ID==Model.FatherID?"selected":"")>@item.TypeValue</option>
+                                }
+                            }
                         </select>
                     </td>
                 </tr>
             </table>
-         <p><input type="submit" value="保存" class="button blue" /></p>
+            <p><input type="submit" value="保存" class="button blue" /></p>
         }
 
     </div>
