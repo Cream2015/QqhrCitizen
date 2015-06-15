@@ -20,14 +20,14 @@
                 </td>
             </tr>
             <tr>
-                <td class="row-title">密码</td>
+                <td class="row-title">角色</td>
                 <td>
                     <select name="role" class="textbox">
-                        <option value="Admin">超级管理员</option>
-                        <option value="NewsManager">新闻管理员</option>
-                        <option value="EBookManager">图书管理员</option>
-                        <option value="CourseManager">课程管理员</option>
-                        <option value="LinkManager">资源连接管理员</option>
+                        <option value="Admin" @(user.Role == Role.Admin?"selected":"")>超级管理员</option>
+                        <option value="NewsManager" @(user.Role == Role.NewsManager ? "selected" : "")>新闻管理员</option>
+                        <option value="EBookManager" @(user.Role == Role.EBookManager ? "selected" : "")>图书管理员</option>
+                        <option value="CourseManager" @(user.Role == Role.CourseManager ? "selected" : "")>课程管理员</option>
+                        <option value="LinkManager" @(user.Role == Role.LinkManager ? "selected" : "")>资源连接管理员</option>
                     </select>
                 </td>
         </table>
