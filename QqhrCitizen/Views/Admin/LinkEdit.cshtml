@@ -10,11 +10,12 @@
     <div class="result-title">
         <h1>资源链接修改</h1>
     </div>
-    @using (Html.BeginForm("LinkEdit", "Admin", new { ID = link.ID }, FormMethod.Post, new { enctype = "multipart/form-data" }))
+    @using (Html.BeginForm("LinkEdit", "Admin", new { ID = link.ID }, FormMethod.Post, new { enctype = "multipart/form-data",id="frmEditLink" }))
     {
         @Html.AntiForgerySID()
-         <input type="hidden" name="ID" value="@link.ID" />
+        <input type="hidden" name="ID" value="@link.ID" />
         <input type="hidden" name="FileID" value="@link.FileID" />
+    <input type="hidden" value="@(link.IsHaveFile==false?"false":"true")" id="hdIsHaveFile" />
         <table class="detail-table">
             <tr>
                 <td class="row-title">链接类型</td>
@@ -32,7 +33,7 @@
             <tr>
                 <td class="row-title">标题</td>
                 <td>
-                    <input class="textbox w-3" name="Title" value="@link.Title" />
+                    <input class="textbox w-3" name="Title" type="text" value="@link.Title" />
                 </td>
             </tr>
             <tr>
@@ -48,7 +49,7 @@
                     是否上传文件
                 </td>
                 <td>
-                    <select name="IsHaveFile">
+                    <select name="IsHaveFile" id="slEditLink">
                         <option value="false" @(link.IsHaveFile==false?"selected":"")>否</option>
                         <option value="true" @(link.IsHaveFile==true? "selected" : "")>是</option>
                     </select>
@@ -68,7 +69,7 @@
                     请选择文件:
                 </td>
                 <td>
-                    <input type="file" name="file" class="textbox nullable" />
+                    <input type="file" name="file" id="fileEditLink" class="textbox nullable" />
                 </td>
             </tr>
         </table>

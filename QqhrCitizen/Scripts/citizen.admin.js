@@ -151,6 +151,14 @@ $(document).ready(function () {
         }
     })
     
+    $("#frmEditLink").submit(function () {
+        if ($("#slEditLink").val() == "true") {
+            if ($("#hdIsHaveFile").val() == "false" && $("#fileEditLink").val() == "") {
+                $("#fileEditLink").addClass("error");
+                return false;
+            }
+        }
+    });
 });
 
 
