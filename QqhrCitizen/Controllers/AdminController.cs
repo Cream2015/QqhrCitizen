@@ -96,13 +96,13 @@ namespace QqhrCitizen.Controllers
         /// <param name="id"></param>
         /// <returns></returns>
         [ValidateSID]
-        [HttpGet]
+        [HttpPost]
         public ActionResult TypeDictionaryDelete(int id)
         {
             var TypeDictionary = db.TypeDictionaries.Find(id);
             db.TypeDictionaries.Remove(TypeDictionary);
             db.SaveChanges();
-            return RedirectToAction("TypeManager");
+            return Content("ok");
         }
         #endregion
 
@@ -356,7 +356,7 @@ namespace QqhrCitizen.Controllers
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        [HttpGet]
+        [HttpPost]
         [ValidateSID]
 
         public ActionResult CoursesDelete(int id)
@@ -365,7 +365,7 @@ namespace QqhrCitizen.Controllers
             course = db.Courses.Find(id);
             db.Courses.Remove(course);
             db.SaveChanges();
-            return RedirectToAction("CourseManager");
+            return Content("ok");
         }
         #endregion
 
@@ -466,7 +466,6 @@ namespace QqhrCitizen.Controllers
         /// <param name="model"></param>
         /// <returns></returns>
         [HttpPost]
-
         [ValidateSID]
         public ActionResult AddLink(ResourceLink model, HttpPostedFileBase file)
         {
@@ -506,6 +505,8 @@ namespace QqhrCitizen.Controllers
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
+        [HttpPost]
+        [ValidateSID]
         public ActionResult LinkDelete(int id)
         {
             ResourceLink link = new ResourceLink();
@@ -520,7 +521,7 @@ namespace QqhrCitizen.Controllers
                 db.Files.Remove(file);
             }
             db.SaveChanges();
-            return RedirectToAction("LinkManager");
+            return Content("ok");
         }
         #endregion
 
@@ -607,17 +608,6 @@ namespace QqhrCitizen.Controllers
             link.IsHaveFile = model.IsHaveFile;
             link.LinkTypeID = model.LinkTypeID;
             link.Title = model.Title;
-            if(link.URL.Contains("http"))
-            {
-                if (link.URL.Contains("https://"))
-                {
-                    link.URL = model.URL.Substring(0,7);
-                }
-                else 
-                {
-                    link.URL = model.URL.Substring(0, 6);
-                }
-            }
             link.URL = model.URL;
             link.FileID = fileId;
             db.SaveChanges();
@@ -732,7 +722,7 @@ namespace QqhrCitizen.Controllers
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        [HttpGet]
+        [HttpPost]
         [ValidateSID]
         public ActionResult EBookDelete(int id)
         {
@@ -745,7 +735,7 @@ namespace QqhrCitizen.Controllers
             db.Files.Remove(file);
             db.EBooks.Remove(book);
             db.SaveChanges();
-            return RedirectToAction("EBookManager");
+            return Content("ok");
         }
 
         #endregion
@@ -880,7 +870,7 @@ namespace QqhrCitizen.Controllers
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        [HttpGet]
+        [HttpPost]
         [ValidateSID]
         public ActionResult LessionDelete(int id)
         {
@@ -1086,7 +1076,7 @@ namespace QqhrCitizen.Controllers
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        [HttpGet]
+        [HttpPost]
         [ValidateSID]
         public ActionResult ManagerDelete(int id)
         {
@@ -1094,7 +1084,7 @@ namespace QqhrCitizen.Controllers
             user = db.Users.Find(id);
             db.Users.Remove(user);
             db.SaveChanges();
-            return Redirect("/Admin/ManagerManage");
+            return Content("ok");
         }
         #endregion
 

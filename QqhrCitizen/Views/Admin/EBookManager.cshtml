@@ -28,7 +28,7 @@
                 {
                     foreach (var item in Model)
                     {
-                        <tr>
+                        <tr id="@item.ID">
                             <td>@item.ID</td>
                             <td>@item.Title</td>
                             <td>@item.TypeDictionary.TypeValue</td>
@@ -36,7 +36,7 @@
                             <td>@item.User.Username</td>
                             <td>
                                 <a href="/Admin/EBookShow/@item.ID">查看详细</a>
-                                <a href="javascript:Delete(@item.ID);">删除</a>
+                                <a href="javascript:deleteDialog('/Admin/EBookDelete/' + @item.ID + '?sid=@ViewBag.SID',@item.ID);">删除</a>
                                 <a href="/Admin/EBookEdit/@item.ID">编辑</a>
                             </td>
                         </tr>
@@ -47,13 +47,6 @@
         @Html.PagedListPager((IPagedList)Model, page => Url.Action("EBookManager", new { page }))
     </div>
 </div>
-
-
-<script>
-    function Delete(id) {
-        window.location = '/Admin/EBookDelete/' + id + '?sid=@ViewBag.SID';
-    }
-</script>
 
 
 

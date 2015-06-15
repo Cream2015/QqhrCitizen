@@ -7,7 +7,7 @@
 
 <div>
     <div class="result-title">
-        <h1>增加图书</h1>
+        <h1>修改图书</h1>
     </div>
     @using (Html.BeginForm("EBookEdit", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
     {
@@ -17,7 +17,7 @@
             <tr>
                 <td class="row-title">一级分类</td>
                 <td>
-                    <select name="oneType" class="textbox w-0-8" id="lsOneType">
+                    <select name="oneType" class="textbox w-3" id="lsOneType">
                         <option value="0">选择分类</option>
                         @foreach (var item in ViewBag.Types)
                         {
@@ -29,7 +29,7 @@
             <tr>
                 <td class="row-title">二级分类</td>
                 <td>
-                    <select name="EBookTypeID" class="textbox w-0-8" id="lsSecondType">
+                    <select name="EBookTypeID" class="textbox w-3" id="lsSecondType">
                         @foreach (var item in ViewBag.Second)
                 {
                             <option value="@item.ID" @(book.TypeDictionary.ID == item.ID ? "selected" : "")>@item.TypeValue</option>
@@ -39,7 +39,7 @@
             </tr>
             <tr>
                 <td class="row-title">标题</td>
-                <td><input type="text" name="Title" class="textbox" value="@book.Title" /></td>
+                <td><input type="text" name="Title" class="textbox w-3" value="@book.Title" /></td>
             </tr>
             <tr>
                 <td class="row-title">
@@ -53,7 +53,7 @@
             <tr>
                 <td class="row-title">图书文件</td>
                 <td> 
-                    <input type="file" name="file" value="@book.File.FileName" />
+                    <input type="file" name="file" value="@book.File.FileName" />（不修改，请留空）
                 </td>
             </tr>
         </table>

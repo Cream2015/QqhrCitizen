@@ -29,14 +29,14 @@
                 {
                     foreach (var item in Model)
                     {
-                        <tr>
+                        <tr id="@item.ID">
                             <td>@item.ID</td>
                             <td>@item.TypeValue</td>
                             <td>@(item.NeedAuthorize?"是":"否")</td>
                             <td>@item.Belonger</td>
                             <td>@item.Time</td>
                             <td>
-                                <a href="javascript:Delete(@item.ID);">删除</a>
+                                <a href="javascript:deleteDialog('/Admin/TypeDictionaryDelete/' + @item.ID + '?sid=@ViewBag.SID',@item.ID);">删除</a>
                                 <a href="/Admin/TypeDictionaryEdit/@item.ID">编辑</a>
                             </td>
                         </tr>
@@ -47,10 +47,3 @@
         @Html.PagedListPager((IPagedList)Model, page => Url.Action("TypeManager", new { page }))
     </div>
 </div>
-
-
-<script>
-    function Delete(id) {
-        window.location = '/Admin/TypeDictionaryDelete/' + id + '?sid=@ViewBag.SID';
-    }
-</script>

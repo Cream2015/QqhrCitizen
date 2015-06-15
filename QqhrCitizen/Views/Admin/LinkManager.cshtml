@@ -29,7 +29,7 @@
                 {
                     foreach (var item in Model)
                     {
-                        <tr>
+                        <tr id="@item.ID">
                             <td>@item.ID</td>
                             <td>@item.Title</td>
                             <td>@item.URL</td>
@@ -38,7 +38,7 @@
                             <td>@item.User.Username</td>
                             <td>
                                 <a href="/Admin/LinkShow/@item.ID">资源链接详情</a>
-                                <a href="javascript:Delete(@item.ID);">删除</a>
+                                <a href="javascript:deleteDialog('/Admin/LinkDelete/' + @item.ID + '?sid=@ViewBag.SID',@item.ID);">删除</a>
                                 <a href="/Admin/LinkEdit/@item.ID">编辑</a>
                             </td>
                         </tr>
@@ -49,11 +49,4 @@
         @Html.PagedListPager((IPagedList)Model, page => Url.Action("TypeManager", new { page }))
     </div>
 </div>
-
-
-<script>
-    function Delete(id) {
-        window.location = '/Admin/LinkDelete/' + id + '?sid=@ViewBag.SID';
-    }
-</script>
 

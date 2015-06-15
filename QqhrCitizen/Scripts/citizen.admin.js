@@ -140,6 +140,17 @@ $(document).ready(function () {
         }
         return true;
     });
+
+    $("#IsHaveFile").change(function () {
+        if ($("#IsHaveFile").val() == "true") {
+            $("#file").removeClass("nullable");
+        }
+        if ($("#IsHaveFile").val() == "false") {
+            $("#file").addClass("nullable");
+            $("#file").removeClass("error");
+        }
+    })
+    
 });
 
 

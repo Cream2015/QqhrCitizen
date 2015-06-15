@@ -27,7 +27,7 @@
                 {
                     foreach (var item in Model)
                     {
-                        <tr>
+                        <tr id="@item.ID">
                             <td>@item.ID</td>
                             <td>@item.Title</td>
                             <td>@item.TypeDictionary.TypeValue</td>
@@ -35,7 +35,7 @@
                             <td>@item.User.Username</td>
                             <td>
                                 <a href="/Admin/CourseShow/@item.ID">查看详细</a>
-                                <a href="javascript:Delete(@item.ID);">删除</a>
+                                <a href="javascript:deleteDialog('/Admin/CoursesDelete/' + @item.ID + '?sid=@ViewBag.SID',@item.ID);">删除</a>
                                 <a href="/Admin/CoursesEdit/@item.ID">编辑</a>
                                 <a href="/Admin/AddLession/@item.ID">添加课时</a>
 </td>
@@ -47,13 +47,6 @@
         @Html.PagedListPager((IPagedList)Model, page => Url.Action("TypeManager", new { page }))
     </div>
 </div>
-
-
-<script>
-    function Delete(id) {
-        window.location = '/Admin/CoursesDelete/' + id + '?sid=@ViewBag.SID';
-    }
-</script>
 
 
 
