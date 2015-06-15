@@ -231,7 +231,7 @@ namespace QqhrCitizen.Controllers
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        [HttpGet]
+        [HttpPost]
         [ValidateSID]
 
         public ActionResult NewsDelete(int id)
@@ -240,7 +240,7 @@ namespace QqhrCitizen.Controllers
             news = db.News.Find(id);
             db.News.Remove(news);
             db.SaveChanges();
-            return RedirectToAction("NewsManager");
+            return Content("ok");
         }
         #endregion
 
