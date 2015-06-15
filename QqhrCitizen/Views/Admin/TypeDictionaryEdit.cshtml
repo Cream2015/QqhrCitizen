@@ -6,7 +6,7 @@
 
 <div>
     <div class="result-title">
-        <h1>类型管理 <a href="/Admin/AddType">增加</a></h1>
+        <h1>类型修改</a></h1>
     </div>
     <div class="result-content">
         @using (Html.BeginForm("TypeDictionaryEdit", "Admin", new { id = Model.ID }, FormMethod.Post, new { id = "frmTypeDictionaryEdit" }))
@@ -17,11 +17,11 @@
                     <td class="row-title">所属类别</td>
                     <td>
                         <select name="Belonger" id="lsBelonger">
-                            <option value="News" @Model.Belonger.ToString()= ="News" ?"select":"">新闻</option>
-                            <option value="File">文件</option>
-                            <option value="ResourceLink">资源链接</option>
-                            <option value="EBook">电子书</option>
-                            <option value="Course">课程</option>
+                            <option  @(Model.Belonger.ToString() == "新闻" ? "select" : "")>新闻</option>
+                            <option @(Model.Belonger.ToString() == "文件" ? "select" : "")>文件</option>
+                            <option @(Model.Belonger.ToString() == "资源链接" ? "select" : "")>资源链接</option>
+                            <option @(Model.Belonger.ToString() == "电子书" ? "select" : "")>电子书</option>
+                            <option @(Model.Belonger.ToString() == "课程" ? "select" : "")>课程</option>
                         </select>
                     </td>
                 </tr>
