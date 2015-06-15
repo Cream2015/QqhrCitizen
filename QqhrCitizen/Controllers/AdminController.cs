@@ -1064,6 +1064,7 @@ namespace QqhrCitizen.Controllers
         /// <returns></returns>
         public ActionResult AddManager(User model)
         {
+            model.Password = Helpers.Encryt.GetMD5(model.Password);
             db.Users.Add(model);
             db.SaveChanges();
             return Redirect("/Admin/ManagerManage");

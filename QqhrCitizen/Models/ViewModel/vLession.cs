@@ -13,7 +13,7 @@ namespace QqhrCitizen.Models.ViewModel
         public string Description { get; set; }
 
         public int CourseID { get; set; }
-        public  Course Course { get; set; }
+        public Course Course { get; set; }
         public DateTime Time { get; set; }
         public string Remark { get; set; }
         public string ContentType { set; get; }
@@ -24,7 +24,7 @@ namespace QqhrCitizen.Models.ViewModel
 
         public vLession(Lession model)
         {
-            DB db  =new DB();
+            DB db = new DB();
             this.ID = model.ID;
             this.Title = model.Title;
             this.Description = model.Description;
@@ -32,14 +32,21 @@ namespace QqhrCitizen.Models.ViewModel
             this.Course = model.Course;
             this.Time = model.Time;
             this.Remark = model.Remark;
-            this.Questions = db.Questions.Where(c=>c.LessionID==model.ID).ToList();
+            this.Questions = db.Questions.Where(c => c.LessionID == model.ID).ToList();
         }
 
         public void SetDate(int uid)
         {
             DB db = new DB();
             LessionScore lessionScore = db.LessionScore.Where(ls => ls.UserId == uid && ls.LessionId == this.ID).OrderByDescending(ls => ls.ID).FirstOrDefault();
-            this.Rate = lessionScore.Rate;
+            if (lessionScore == null)
+            {
+                this.Rate = 0;
+            }
+            else
+            {
+                this.Rate = lessionScore.Rate;
+            }
         }
     }
 }

@@ -24,7 +24,18 @@
                     {
                         <li>
                             <div>
-                                <h3><a href="/Course/LessionDetails/@item.ID">@item.Title</a> 当前用户问题正确率:@item.Rate</h3>
+                                <h3>
+                                    <a href="/Course/LessionDetails/@item.ID">@item.Title</a>
+                                    @if (ViewBag.CurrentUser == null)
+                                    {
+                                        <span></span>
+                                    }
+                                    else
+                                    {
+                                        <span style="font-size:6px;"> 答题正确率:@item.Rate  </span>
+                                    }
+
+                                </h3>
                                 <p>@item.Description</p>
                             </div>
                         </li>
@@ -42,5 +53,5 @@
         }
     </div>
 
-    <div  class="clr"></div>
+    <div class="clr"></div>
 </div>
