@@ -277,6 +277,7 @@ namespace QqhrCitizen.Controllers
         /// <returns></returns>
         [HttpPost]
         [ValidateSID]
+        [ValidateInput(false)]
 
         public ActionResult NewsEdit(News model)
         {
