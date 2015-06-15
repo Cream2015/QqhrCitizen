@@ -10,34 +10,31 @@
 <div class="container wrap-cont">
     <p>当前位置：/<a href="/Course/Show/@lession.CourseID" class="pos">@lession.Course.Title</a>/<a href="#" class="pos">@lession.Title</a></p>
     <div class="block main">
-        <div id="div_Video">
+        <div id="div_video">
             <video id="video" src="/Course/PlayLession/@lession.ID" controls="controls"></video>
         </div>
-        <div id="div_Right">
-            <div id="div_Question"></div>
-            <div id="div_Note">
-                <h5 style="padding-top:8px;">课堂笔记</h5>
-                @using (Html.BeginForm("AddNote", "Course", FormMethod.Post, new { id = "frmAddNote" }))
-                {
-                    <input type="hidden" id="userId" name="UserID" value="@(ViewBag.CurrentUser==null?"":@ViewBag.CurrentUser.ID)" />
-                    <input type="hidden" name="LessionID" id="LessionID" value="@lession.ID" />
-                    <textarea name="Content" class="textbox"></textarea>
-                    <p><input type="submit" value="保存" class="button blue" style="margin-left:10px;" /></p>
-                }
-                <hr />
-                <div style="padding-top:10px;"><h5>历史笔记</h5></div>
+        <div id="div_note">
+            <h5 style="padding-top:8px;">课堂笔记</h5>
+            @using (Html.BeginForm("AddNote", "Course", FormMethod.Post, new { id = "frmAddNote" }))
+            {
+                <input type="hidden" id="userId" name="UserID" value="@(ViewBag.CurrentUser==null?"":@ViewBag.CurrentUser.ID)" />
+                <input type="hidden" name="LessionID" id="LessionID" value="@lession.ID" />
+                <textarea name="Content" class="textbox"></textarea>
+                <p><input type="submit" value="保存" class="button blue" style="margin-left:10px;" /></p>
+            }
+            <hr />
+            <div style="padding-top:10px;"><h5>历史笔记</h5></div>
 
-                @if (listNote.Count > 0)
+            @if (listNote.Count > 0)
+            {
+                foreach (var note in listNote)
                 {
-                    foreach (var note in listNote)
-                    {
-                        <div class="div_HisNote">
-                            <p>@note.Time</p>
-                            @note.Content
-                        </div>
-                    }
+                    <div class="div_HisNote">
+                        <p>@note.Time</p>
+                        @note.Content
+                    </div>
                 }
-            </div>
+            }
         </div>
     </div>
 
@@ -101,11 +98,13 @@
 </div>
 
 <style type="text/css">
-    #video {
-        width: 100%;
-        height: 100%;
+    #dev_video {
+        width:100%;
+       margin:0px auto;
     }
-
+    #video {
+      width:820px;
+    }
     .textbox {
         width: 94%;
         height: 80px;

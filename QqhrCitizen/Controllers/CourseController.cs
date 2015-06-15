@@ -105,7 +105,7 @@ namespace QqhrCitizen.Controllers
             var vLessions = new List<vLession>();
             Lession Lession = db.Lessions.Find(id);
             ViewBag.Lession = Lession;
-            var listNote = db.Notes.Where(note => note.LessionID == Lession.ID).ToList();
+            var listNote = db.Notes.Where(note => note.LessionID == Lession.ID).OrderByDescending(n=>n.Time).ToList();
             ViewBag.ListNote = listNote;
             var listQuestions = db.Questions.Where(question => question.LessionID == id).ToList();
             lessions = db.Lessions.Where(l => l.CourseID == Lession.CourseID).ToList();
