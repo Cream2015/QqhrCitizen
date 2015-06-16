@@ -25,7 +25,18 @@
                         <li>
                             <div>
                                 <h3>
-                                    <a href="/Course/LessionDetails/@item.ID">@item.Title</a>
+                                    @if (ViewBag.CurrentUser == null)
+                                    {
+                                        <a href="javascript:Msg('请先登录，再观看教程！')">@item.Title</a>
+                                    }
+                                    else if (HttpContext.Current.User.Identity.IsAuthenticated && ViewBag.CurrentUser.Role >= item.Course.Authority)
+                                    {
+                                        <a href="/Course/LessionDetails/@item.ID">@item.Title</a>
+                                    }
+                                    else
+                                    {
+                                        <a href="javascript:Msg('观看此视屏的权限！')">@item.Title</a>
+                                    }
                                     @if (ViewBag.CurrentUser == null)
                                     {
                                         <span></span>
@@ -55,3 +66,8 @@
 
     <div class="clr"></div>
 </div>
+<script>
+    function Msg(data) {
+        popMsg(data);
+    }
+</script>
