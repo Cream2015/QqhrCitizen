@@ -1,0 +1,41 @@
+﻿@using QqhrCitizen.Models;
+@{
+    ViewBag.Title = "搜索";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container wrap-cont">
+    <div class="block">
+        <h2>新闻</h2>
+        <div>
+            @foreach (var item in ViewBag.LstNews as List<News>)
+            {
+                <div>[@item.Time.ToString("yyyy-MM-dd")] @item.Title </div>
+            }
+        </div>
+        <div><a href="/Home/SearchResultMore?type=news&key=@ViewBag.Key">查看更多</a></div>
+    </div>
+
+    <div class="block">
+        <h2>课程</h2>
+        <div>
+            @foreach (var item in ViewBag.LstCourse as List<Course>)
+            {
+                <div>[@item.Time.ToString("yyyy-MM-dd")] <a href="/">@item.Title</a>  </div>
+            }
+        </div>
+        <div><a href="/Home/SearchResultMore?type=course&key=@ViewBag.Key">查看更多</a></div>
+    </div>
+
+    <div class="block">
+        <h2>电子书</h2>
+        <div>
+            @foreach (var item in ViewBag.LstEBook as List<EBook>)
+            {
+                <div>[@item.Time.ToString("yyyy-MM-dd")] @item.Title </div>
+            }
+        </div>
+        <div><a href="/Home/SearchResultMore?type=ebook&key=@ViewBag.Key">查看更多</a></div>
+    </div>
+
+</div>

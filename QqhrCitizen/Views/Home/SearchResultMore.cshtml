@@ -1,0 +1,25 @@
+﻿
+@{
+    ViewBag.Title = "搜索";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container" style="min-height:500px;">
+    <p>
+        当前位置：搜索/@ViewBag.Type/<a href="/Home/SearchResultMore?type=news&key=@ViewBag.Key" class="pos">@ViewBag.Key</a>
+    </p>
+    <div class="block main">
+        <input type="hidden" value="@ViewBag.Type" id="hdType"/>
+        <input type="hidden" value="@ViewBag.Key" id="hdKey" />
+        <div class="result">
+
+        </div>
+        <div><p class="loadMore">下拉加载更多</p></div>
+    </div>
+    <div class="clr"></div>
+</div>
+
+
+
+
+

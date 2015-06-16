@@ -10,7 +10,7 @@ namespace QqhrCitizen.Controllers
 {
     public class HomeController : BaseController
     {
-        
+
         //
         // GET: /Home/
         public ActionResult Index()
@@ -73,6 +73,64 @@ namespace QqhrCitizen.Controllers
             return View();
         }
 
+        public ActionResult Search(string key)
+        {
+            List<News> lstNews = new List<News>();
+            List<Course> lstCourse = new List<Course>();
+            List<EBook> lstEBook = new List<EBook>();
+            lstNews = db.News.Where(n => n.Title.Contains(key) || n.Content.Contains(key)).ToList();
+            lstCourse = db.Courses.Where(c => c.Title.Contains(key)).ToList();
+            lstEBook = db.EBooks.Where(eb => eb.Title.Contains(key)).ToList();
+            ViewBag.LstNews = lstNews;
+            ViewBag.LstCourse = lstCourse;
+            ViewBag.LstEBook = lstEBook;
+            ViewBag.Key = key;
+            return View();
+        }
 
-	}
+        [HttpGet]
+        public ActionResult SearchResultMore(string type,string key)
+        {
+            ViewBag.Type = type;
+            ViewBag.Key = key;
+            return View();
+        }
+
+        [HttpGet]
+        public ActionResult GetSearchResultMore(string type, string key, int page)
+        {
+            int index = page * 10;
+            if (type == "news")
+            {
+                var result = db.News.Where(n => n.Title.Contains(key) || n.Content.Contains(key)).OrderByDescending(n => n.Time).Skip(index).Take(10).ToList();
+                List<vSearchResultModel> _result = new List<vSearchResultModel>();
+                foreach (var item in result)
+                {
+                    _result.Add(new vSearchResultModel(item));
+                }
+                return Json(_result,JsonRequestBehavior.AllowGet);
+            }
+            if (type == "course")
+            {
+                var result = db.Courses.Where(c => c.Title.Contains(key)).OrderByDescending(n => n.Time).Skip(index).Take(10).ToList();
+                List<vSearchResultModel> _result = new List<vSearchResultModel>();
+                foreach (var item in result)
+                {
+                    _result.Add(new vSearchResultModel(item));
+                }
+                return Json(_result, JsonRequestBehavior.AllowGet);
+            }
+            else if (type == "ebook")
+            {
+                var result = db.EBooks.Where(e => e.Title.Contains(key)).OrderByDescending(n => n.Time).Skip(index).Take(10).ToList();
+                List<vSearchResultModel> _result = new List<vSearchResultModel>();
+                foreach (var item in result)
+                {
+                    _result.Add(new vSearchResultModel(item));
+                }
+                return Json(_result, JsonRequestBehavior.AllowGet);
+            }
+            return Json(null);
+        }
+    }
 }

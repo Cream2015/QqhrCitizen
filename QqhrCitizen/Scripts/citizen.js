@@ -100,6 +100,36 @@ function LoadEBooks() {
     }
 }
 
+// 加载搜索结果
+function LoadSearchRessult() {
+    if (lock) {
+        return;
+    }
+    else {
+        lock = true;
+        $(".loadMore").text("正在加载~~");
+        $.ajax({
+            url: "/Home/GetSearchResultMore",
+            type: "get",
+            data: { "type": $("#hdType").val(), "key": $("#hdKey").val(), "page": page },
+        }).done(function (data) {
+            var str = "";
+            for (var i = 0 ; i < data.length; i++) {
+                str += "<div class='Q-pList'><h2><a  href='"+data[i].URL+"' style='color:#000;' class='show'>" + data[i].Title + " </a></h2><p class='sub_title'>时间：" + moment(data[i].Time).format("YYYY-MM-DD HH:mm:ss") + "</p><p>" + data[i].Sumamry + "</p></div>";
+            }
+            $(".result").append(str);
+            if (data.length == 10) {
+                lock = false;
+                page++;
+                $(".loadMore").text("下拉加载更多！");
+            } else {
+                $(".loadMore").text("没有更多数据了！");
+            }
+        });
+    }
+}
+
+
 function Load() {
     if ($(".lstNews").length > 0) {
         LoadNews();
@@ -109,6 +139,9 @@ function Load() {
     }
     if ($(".lstEBook").length > 0) {
         LoadEBooks();
+    }
+    if ($(".result").length > 0) {
+        LoadSearchRessult();
     }
 }
 

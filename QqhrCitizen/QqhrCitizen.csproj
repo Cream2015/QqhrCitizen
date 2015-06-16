@@ -222,6 +222,7 @@
     <Compile Include="Models\ViewModel\vRegister.cs" />
     <Compile Include="Helpers\MvcHtmlHelperExt.cs" />
     <Compile Include="Models\ViewModel\vResourceLink.cs" />
+    <Compile Include="Models\ViewModel\vSearchResultModel.cs" />
     <Compile Include="Models\ViewModel\vTypeDictionary.cs" />
     <Compile Include="Models\ViewModel\vUser.cs" />
     <Compile Include="Models\ViewModel\vUserEdit.cs" />
@@ -286,6 +287,8 @@
     <Content Include="Views\Admin\RoleUpdate.cshtml" />
     <Content Include="Views\Live\Index.cshtml" />
     <Content Include="Views\Live\Channel.cshtml" />
+    <Content Include="Views\Home\Search.cshtml" />
+    <Content Include="Views\Home\SearchResultMore.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
