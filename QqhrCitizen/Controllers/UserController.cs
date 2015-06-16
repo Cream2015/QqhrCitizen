@@ -199,9 +199,9 @@ namespace QqhrCitizen.Controllers
         /// </summary>
         /// <param name="model"></param>
         /// <returns></returns>
-        [BaseAuth(Roles = "User")]
+        [Authorize]
         [HttpPost]
-        [ValidateAntiForgeryToken]
+        [ValidateSID]
         public ActionResult PwdEdit(vUserPwdEdit model)
         {
             User user = db.Users.Find(model.ID);

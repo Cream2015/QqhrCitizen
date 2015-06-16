@@ -31,7 +31,7 @@
                         onsubmit = "return UserPwdEditCheck();"
                     }))
 {
-    @Html.AntiForgeryToken()
+    @Html.AntiForgerySID()
     <fieldset>
         @Html.HiddenFor(model => model.ID, new { @value = user.ID })
         <div class="container wrap-cont">
