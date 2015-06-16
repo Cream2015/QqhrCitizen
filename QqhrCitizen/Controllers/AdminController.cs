@@ -413,6 +413,7 @@ namespace QqhrCitizen.Controllers
             course.CourseTypeID = model.CourseTypeID;
             course.Title = model.Title;
             course.Description = model.Description;
+            course.Authority = model.Authority;
             db.SaveChanges();
             return RedirectToAction("CourseManager");
         }

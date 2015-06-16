@@ -51,6 +51,18 @@
                     <textarea class="textbox" style="height:100px;" name="Description">@course.Description</textarea>
                 </td>
             </tr>
+
+            <tr>
+                <td class="row-title">
+                    观看权限
+                </td>
+                <td>
+                    <select name="Authority" class="textbox">
+                        <option value="User" @(course.Authority == Authority.User ? "selected" : "")>普通用户</option>
+                        <option value="Admin" @(course.Authority == Authority.Admin ? "selected" : "")>管理员</option>
+                    </select>
+                </td>
+            </tr>
         </table>
 
         <p><input type="submit" value="保存" class="button blue" /></p>

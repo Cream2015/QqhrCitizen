@@ -1,4 +1,5 @@
-﻿using QqhrCitizen.Models;
+﻿using QqhrCitizen.Filters;
+using QqhrCitizen.Models;
 using QqhrCitizen.Models.ViewModel;
 using System;
 using System.Collections.Generic;
@@ -98,6 +99,7 @@ namespace QqhrCitizen.Controllers
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpGet]
+        [AccessToLession]
         public ActionResult LessionDetails(int id)
         {
             var questions = new List<vQuestion>();

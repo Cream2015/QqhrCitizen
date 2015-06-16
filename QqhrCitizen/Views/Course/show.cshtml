@@ -29,22 +29,15 @@
                                     {
                                         <a href="javascript:Msg('请先登录，再观看教程！')">@item.Title</a>
                                     }
-                                    else if (HttpContext.Current.User.Identity.IsAuthenticated && ViewBag.CurrentUser.Role >= item.Course.Authority)
+                                    else if (HttpContext.Current.User.Identity.IsAuthenticated && ViewBag.CurrentUser.RoleAsInt >= item.Course.AuthorityAsInt)
                                     {
                                         <a href="/Course/LessionDetails/@item.ID">@item.Title</a>
-                                    }
-                                    else
-                                    {
-                                        <a href="javascript:Msg('观看此视屏的权限！')">@item.Title</a>
-                                    }
-                                    @if (ViewBag.CurrentUser == null)
-                                    {
-                                        <span></span>
-                                    }
-                                    else
-                                    {
                                         <span style="font-size:6px;"> 答题正确率:@item.Rate  </span>
                                     }
+                                    else
+                                    {
+                                        <a href="javascript:Msg('没有观看此视屏的权限！')">@item.Title</a>
+                                    } 
 
                                 </h3>
                                 <p>@item.Description</p>
