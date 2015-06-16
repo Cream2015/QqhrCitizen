@@ -100,6 +100,12 @@ namespace QqhrCitizen.Controllers
         public ActionResult TypeDictionaryDelete(int id)
         {
             var TypeDictionary = db.TypeDictionaries.Find(id);
+            List<TypeDictionary> lstType = new List<Models.TypeDictionary>();
+            lstType = db.TypeDictionaries.Where(td => td.FatherID == id).ToList();
+            foreach(var item in lstType)
+            {
+                db.TypeDictionaries.Remove(item);
+            }
             db.TypeDictionaries.Remove(TypeDictionary);
             db.SaveChanges();
             return Content("ok");
