@@ -98,5 +98,17 @@ namespace QqhrCitizen.Controllers
             return View();
         } 
         #endregion
+
+
+        public ActionResult WordShow(int id)
+        {
+            EBook book = new EBook();
+            book = db.EBooks.Find(id);
+            ViewBag.EBook  = book;
+            string host = Request.Url.Host;
+            string port = Request.Url.Port.ToString();
+            ViewBag.Address = host + ":" + port;
+            return View();
+        }
     }
-}
+} 

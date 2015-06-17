@@ -11,7 +11,19 @@
     <p>当前位置：/<a href="#" class="pos">@book.TypeDictionary.TypeValue</a>/<a href="#" class="pos">@book.Title</a></p>
     <div class="block main">
         <h2>@book.Title</h2>
-        <div class="subtitle">时间：@book.Time.ToShortDateString() 浏览：@book.Browses 次 分类：<a href="#">@book.TypeDictionary.TypeValue</a>  操作:<a href="/Upload/@book.File.Path">在线预览</a> <a href="/EBook/Download/@book.ID">下载</a></div>
+        <div class="subtitle">时间：@book.Time.ToShortDateString() 浏览：@book.Browses 次 分类：<a href="#">@book.TypeDictionary.TypeValue</a>  操作:
+        @{
+            string extension = book.File.Path.Substring(book.File.Path.LastIndexOf(".") + 1, (book.File.Path.Length - book.File.Path.LastIndexOf(".") - 1));  
+            if (extension == "doc" || extension == "docx")
+            { 
+             <a href="/EBook/WordShow/@book.ID">在线预览</a> 
+            }
+            if (extension == "pdf")
+            { 
+              <a href="/Upload/@book.File.Path">在线预览</a> 
+            }
+         }
+        <a href="/EBook/Download/@book.ID">下载</a></div>
         <p>@book.Description</p>
         <hr />
         <h3>评论</h3>

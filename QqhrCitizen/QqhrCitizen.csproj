@@ -290,6 +290,7 @@
     <Content Include="Views\Live\Channel.cshtml" />
     <Content Include="Views\Home\Search.cshtml" />
     <Content Include="Views\Home\SearchResultMore.cshtml" />
+    <Content Include="Views\EBook\WordShow.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
