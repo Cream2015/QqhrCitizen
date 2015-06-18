@@ -42,7 +42,7 @@ namespace QqhrCitizen.Models.ViewModel
             this.Time = model.Time;
             this.Remark = model.Remark;
             Lessions = (from l in db.Lessions where l.CourseID == model.ID select l).ToList();
-            this.Sumamry = Helpers.String.SubString(model.Description, 50, "...");
+            this.Sumamry = Helpers.String.SubString(QqhrCitizen.Helpers.HtmlFilter.Instance.SanitizeHtml(model.Description), 50, "...");
         }
 
     }
