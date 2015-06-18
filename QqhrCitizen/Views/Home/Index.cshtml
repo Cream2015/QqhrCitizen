@@ -7,9 +7,9 @@
     <p>当前位置：/<a href="#" class="pos">首页</a></p>
     <p>
         <ul class="rslides">
-            <li><img src="~/Images/banner.png" /></li>
-            <li><img src="~/Images/header_bg.jpg" /></li>
-            <li><img src="~/Images/banner.png" /></li>
+            <li><img src="~/Images/banner.png" class="banner_img" /></li>
+            <li><img src="~/Images/header_bg.jpg" class="banner_img" /></li>
+            <li><img src="~/Images/banner.png" class="banner_img" /></li>
         </ul>
     </p>
     <div class="block">
@@ -63,6 +63,6 @@
 
 <script>
     $(function () {
-        $(".rslides").responsiveSlides();
+        $(".rslides").responsiveSlides({ speed: 1000 });
     });
 </script>

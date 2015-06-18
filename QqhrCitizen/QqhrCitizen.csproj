@@ -144,6 +144,7 @@
     <Content Include="Scripts\ckeditor\CHANGES.md" />
     <Content Include="Scripts\ckeditor\LICENSE.md" />
     <Content Include="Scripts\ckeditor\README.md" />
+    <None Include="Properties\PublishProfiles\qqrtvu.pubxml" />
     <None Include="Scripts\jquery-1.11.2.intellisense.js" />
     <Content Include="Images\bg.jpg" />
     <Content Include="Images\header_bg.jpg" />
