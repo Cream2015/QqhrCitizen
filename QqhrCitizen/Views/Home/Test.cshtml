@@ -1,0 +1,27 @@
+﻿@{
+    ViewBag.Title = "Test";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<script src="http://api.html5media.info/1.1.6/html5media.min.js"></script>
+
+<video src="http://media.html5media.info/video.mp4" id="myVideo" width="800" height="600" controls preload></video>
+<script>
+    var myVideo = document.getElementById('myVideo');//获取video元素
+    myVideo.currentTime = 10;
+    //播放时间点更新时
+    //myVideo.addEventListener("timeupdate", function () {
+    //    var currentTime = myVideo.currentTime;//获取当前播放时间
+    //    console.log(currentTime);//在调试器中打印
+    //});
+    window.onbeforeunload = onbeforeunload_handler;
+    window.onunload = onunload_handler;
+    function onbeforeunload_handler() {
+        var warning = "确认退出?";
+        return warning;
+    }
+    function onunload_handler() {
+        $.post("/Home/Msg", function (data) {
+             
+        });
+    }
+</script>

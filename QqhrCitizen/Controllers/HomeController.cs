@@ -132,5 +132,16 @@ namespace QqhrCitizen.Controllers
             }
             return Json(null);
         }
+
+        public ActionResult Test()
+        {
+            return View();
+        }
+
+        
+        public ActionResult Msg()
+        {
+            return View();
+        }
     }
 }
