@@ -164,6 +164,7 @@
     <Content Include="Scripts\flproto0.1.0.js" />
     <Content Include="Scripts\h.js" />
     <Content Include="Scripts\home.default_v1_01s.js" />
+    <Content Include="Scripts\home.login.js" />
     <Content Include="Scripts\init.js" />
     <Content Include="Scripts\jquery-1.11.2.js" />
     <Content Include="Scripts\jquery-1.11.2.min.js" />
