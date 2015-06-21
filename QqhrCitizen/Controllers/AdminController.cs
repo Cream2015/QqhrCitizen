@@ -690,7 +690,7 @@ namespace QqhrCitizen.Controllers
         /// <returns></returns>
         [HttpPost]
 
-        public ActionResult AddEBook(EBook model, HttpPostedFileBase file)
+        public ActionResult AddEBook(EBook model, HttpPostedFileBase file, HttpPostedFileBase file1)
         {
             int fileId = 0;
             if (file != null)
@@ -707,7 +707,7 @@ namespace QqhrCitizen.Controllers
                 db.Files.Add(_file);
                 db.SaveChanges();
                 fileId = _file.ID;
-
+                 
                 EBook Ebook = new EBook();
                 Ebook.Browses = 0;
                 Ebook.Title = model.Title;
@@ -717,7 +717,7 @@ namespace QqhrCitizen.Controllers
                 Ebook.Time = DateTime.Now;
                 Ebook.UserID = CurrentUser.ID;
 
-                System.IO.Stream stream = file.InputStream;
+                System.IO.Stream stream = file1.InputStream;
                 byte[] buffer = new byte[stream.Length];
                 stream.Read(buffer, 0, (int)stream.Length);
                 stream.Close();
