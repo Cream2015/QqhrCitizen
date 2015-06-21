@@ -77,8 +77,8 @@ namespace QqhrCitizen.Controllers
             Course.Browses += 1;
             db.SaveChanges();
             var listLessions = db.Lessions.Where(lession => lession.CourseID == id).ToList();
-            int uid = CurrentUser==null?0:CurrentUser.ID;
-            foreach(var item in listLessions)
+            int uid = CurrentUser == null ? 0 : CurrentUser.ID;
+            foreach (var item in listLessions)
             {
                 vLession vlession = new vLession(item);
                 vlession.SetDate(uid);
@@ -107,7 +107,7 @@ namespace QqhrCitizen.Controllers
             var vLessions = new List<vLession>();
             Lession Lession = db.Lessions.Find(id);
             ViewBag.Lession = Lession;
-            var listNote = db.Notes.Where(note => note.LessionID == Lession.ID).OrderByDescending(n=>n.Time).ToList();
+            var listNote = db.Notes.Where(note => note.LessionID == Lession.ID).OrderByDescending(n => n.Time).ToList();
             ViewBag.ListNote = listNote;
             var listQuestions = db.Questions.Where(question => question.LessionID == id).ToList();
             lessions = db.Lessions.Where(l => l.CourseID == Lession.CourseID).ToList();
@@ -150,7 +150,7 @@ namespace QqhrCitizen.Controllers
             Lession lession = new Lession();
             lession = db.Lessions.Find(id);
             return File("/Lessions/" + lession.Path, lession.ContentType);
-        } 
+        }
         #endregion
 
 
@@ -160,7 +160,7 @@ namespace QqhrCitizen.Controllers
         /// <param name="lid"></param>
         /// <param name="rate"></param>
         /// <returns></returns>
-        public ActionResult RecordScore(int lid,double rate)
+        public ActionResult RecordScore(int lid, double rate)
         {
             LessionScore lessionScore = new LessionScore();
             lessionScore.UserId = CurrentUser.ID;
@@ -169,6 +169,19 @@ namespace QqhrCitizen.Controllers
             db.LessionScore.Add(lessionScore);
             db.SaveChanges();
             return Content("ok");
+        }
+
+
+        /// <summary>
+        /// 显示课程截图
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public ActionResult ShowPicture(int id)
+        {
+            Course course = new Course();
+            course = db.Courses.Find(id);
+            return File(course.Picture, "image/jpg");
         }
 
     }

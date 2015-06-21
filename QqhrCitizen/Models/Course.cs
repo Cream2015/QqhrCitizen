@@ -25,6 +25,11 @@ namespace QqhrCitizen.Models
         public DateTime Time { get; set; }
         public string Remark { get; set; }
 
+        /// <summary>
+        /// 封面截图
+        /// </summary>
+        public byte[] Picture { get; set; }
+
         public int AuthorityAsInt { set; get; }
 
         public int Browses { get; set; }

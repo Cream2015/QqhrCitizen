@@ -110,5 +110,19 @@ namespace QqhrCitizen.Controllers
             ViewBag.Address = host + ":" + port;
             return View();
         }
+
+        #region 图书截图
+        /// <summary>
+        /// 图书截图
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public ActionResult ShowPicture(int id)
+        {
+            EBook book = new EBook();
+            book = db.EBooks.Find(id);
+            return File(book.Picture, "image/jpg");
+        } 
+        #endregion
     }
 } 
