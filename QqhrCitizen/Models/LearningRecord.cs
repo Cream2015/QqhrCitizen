@@ -20,5 +20,10 @@ namespace QqhrCitizen.Models
         public int UserID { get; set; }
 
         public virtual User User { get; set; }
+
+        /// <summary>
+        /// 视屏学习到那个时间点
+        /// </summary>
+        public double VideoTime { set; get; }
     }
 }

@@ -36,5 +36,9 @@ namespace QqhrCitizen.Models
             get { return (Authority)AuthorityAsInt; }
         }
 
+        /// <summary>
+        ///   学分
+        /// </summary>
+        public int Credit { get; set; }
     }
 }
