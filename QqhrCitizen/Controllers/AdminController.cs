@@ -113,7 +113,7 @@ namespace QqhrCitizen.Controllers
         #endregion
 
 
-        #region MyReg修改类型字典ion
+        #region 修改类型字典
 
         /// <summary>
         ///   修改类型字典
