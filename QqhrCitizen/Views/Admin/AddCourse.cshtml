@@ -7,7 +7,7 @@
     <div class="result-title">
         <h1>增加课程</h1>
     </div>
-    @using (Html.BeginForm("AddCourse", "Admin", FormMethod.Post))
+    @using (Html.BeginForm("AddCourse", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
     {
         @Html.AntiForgerySID()
         <table class="detail-table">
@@ -49,15 +49,22 @@
                     <textarea class="textbox" style="height:100px;width:300px;" name="Description"></textarea>
                 </td>
             </tr>
-
+            <tr>
+                <td class="row-title">
+                    上传截图
+                </td>
+                <td>
+                    <input type="file" name="file" id="file" class="textbox" />
+                </td>
+            </tr>
             <tr>
                 <td class="row-title">
                     观看权限
                 </td>
                 <td>
                     <select name="Authority" class="textbox">
-                        <option value="User">普通用户</option>
-                        <option value="Admin">管理员</option>
+                        <option value="All">直接观看</option>
+                        <option value="Login">登录观看</option>
                     </select>
                 </td>
             </tr>

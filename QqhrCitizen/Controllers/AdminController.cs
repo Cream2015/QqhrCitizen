@@ -102,7 +102,7 @@ namespace QqhrCitizen.Controllers
             var TypeDictionary = db.TypeDictionaries.Find(id);
             List<TypeDictionary> lstType = new List<Models.TypeDictionary>();
             lstType = db.TypeDictionaries.Where(td => td.FatherID == id).ToList();
-            foreach(var item in lstType)
+            foreach (var item in lstType)
             {
                 db.TypeDictionaries.Remove(item);
             }
@@ -347,11 +347,18 @@ namespace QqhrCitizen.Controllers
         [HttpPost]
         [ValidateSID]
 
-        public ActionResult AddCourse(Course model)
+        public ActionResult AddCourse(Course model, HttpPostedFileBase file)
         {
             model.UserID = CurrentUser.ID;
             model.Time = DateTime.Now;
+
+            System.IO.Stream stream = file.InputStream;
+            byte[] buffer = new byte[stream.Length];
+            stream.Read(buffer, 0, (int)stream.Length);
+            stream.Close();
+            model.Picture = buffer;
             db.Courses.Add(model);
+
             db.SaveChanges();
             return RedirectToAction("CourseManager");
         }
@@ -709,6 +716,13 @@ namespace QqhrCitizen.Controllers
                 Ebook.FileID = fileId;
                 Ebook.Time = DateTime.Now;
                 Ebook.UserID = CurrentUser.ID;
+
+                System.IO.Stream stream = file.InputStream;
+                byte[] buffer = new byte[stream.Length];
+                stream.Read(buffer, 0, (int)stream.Length);
+                stream.Close();
+                Ebook.Picture = buffer;
+                 
                 db.EBooks.Add(Ebook);
                 db.SaveChanges();
                 return RedirectToAction("EBookManager");
@@ -866,7 +880,7 @@ namespace QqhrCitizen.Controllers
             model.Path = path;
             db.Lessions.Add(model);
             db.SaveChanges();
-            return Redirect("/Admin/CourseShow/"+model.CourseID);
+            return Redirect("/Admin/CourseShow/" + model.CourseID);
         }
         #endregion
 
@@ -883,7 +897,7 @@ namespace QqhrCitizen.Controllers
         {
             Lession lession = new Lession();
             lession = db.Lessions.Find(id);
-            var path = Server.MapPath("~/Lessions"+lession.Path);
+            var path = Server.MapPath("~/Lessions" + lession.Path);
             System.IO.File.Delete(path);
             db.Lessions.Remove(lession);
             db.SaveChanges();
