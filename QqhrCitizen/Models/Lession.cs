@@ -29,10 +29,13 @@ namespace QqhrCitizen.Models
 
         public string ContentType { set; get; }
 
+        public bool IsPassTest { get; set; }
 
         public vLession ToVLesssion()
         {
             return new vLession(this);
         }
+
+       
     }
 }

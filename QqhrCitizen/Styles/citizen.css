@@ -3584,15 +3584,15 @@ div {
 
                 .d-maprecommend .body .slidecontainer .item .star40 {
                     background-position: 0 -22px;
-                }logo
-
-                .d-maprecommend .body .slidecontainer .item .star45 {
-                    background-position: 0 -11px;
                 }
 
-                .d-maprecommend .body .slidecontainer .item .star50 {
-                    background-position: 0 0;
-                }
+logo .d-maprecommend .body .slidecontainer .item .star45 {
+    background-position: 0 -11px;
+}
+
+.d-maprecommend .body .slidecontainer .item .star50 {
+    background-position: 0 0;
+}
 
 .d-sharerecentshared {
     width: 548px;

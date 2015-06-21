@@ -1,167 +1,57 @@
-﻿
-<div id="d_bottom" class="d-bottom" style="visibility: hidden;">
-    <div class="d-bottom-c">
-        <div id="d_scrolltop" class="d-scrolltop" style="right: -70px;">
-            <span class="t" onclick="$(document.body).ScrollTo();">顶部</span>
-        </div>
-    </div>
-</div><div class="d-row" style="margin-bottom:20px;padding:20px 0 20px 0;">
-    <div class="d-row-c">
-        <div class="d-col-1">
-            <div class="contentarea">
-                <!-- region start: 登录 --><div class="d-signin">
-                    <div class="head">
-                        欢迎回来
-                    </div><div class="body"><div class="d-username"><span class="i">&nbsp;</span><input type="text" class="int-hs_s logElm" id="username" name="username" maxlength="30" autocorrect="off" autocapitalize="off" placeholder="用户名"><div class="clear"></div><div class="formcheck"><span>“用户名”为必填项!</span></div></div><div class="d-password"><span class="i">&nbsp;</span><input type="password" class="int-hs logElm" id="password" name="password" maxlength="20" autocorrect="off" autocapitalize="off" placeholder="密码"><div class="clear"></div></div><div class="d-vcode" style="line-height: 100%; display: none;"><span class="i">&nbsp;</span><input type="text" class="int-hs logElm" id="vcode" style="width:140px;" name="vcode" maxlength="4" autocorrect="off" autocapitalize="off" value="" placeholder="验证码"><img id="refreshValidate" style="cursor:pointer; width:80px;" title="看不清，点击换一张" src="./登录_上海学习网_files/Validate"><input type="hidden" id="isf" name="isf" value="1"><div class="clear"></div></div><div class="d-olduser"><label><input type="checkbox" class="chk-1" id="olduser" name="olduser" checked="checked"> 是</label></div><div class="d-forgot"><a href="http://member.shlll.net/home/forgotpwd">忘记密码？</a></div><div class="d-submit"><input id="int_submit" type="button" class="btn btn-orange btn-big" value="登录" style="width:300px;"></div><div class="d-knowme"><label><input id="check_knowme" type="checkbox"> 记住我(在公共场上网所请勿勾选此项)</label></div><div class="d-sign"><a href="http://member.shlll.net/home/signup">不是学习网用户？请注册。</a></div></div>
-                </div><!-- region end: 登录 -->
-            </div>
-        </div>
-    </div>
-</div>
+﻿@model  QqhrCitizen.Models.ViewModel.vLogin
+@{
+    ViewBag.Title = "用户登录 - 齐齐哈尔市民学习网";
+}
 <script>
-    $proto.login = function (from) {
-        var isf = $$('isf').value;
-        var vcode = $$('vcode') ? $$('vcode').value : '';
-        if (isf != '1') {
-            var exp = new RegExp('^[0-9a-zA-Z]+$');
-            if (!exp.test(vcode)) {
-                Alert('验证码不能输入特殊字符');
-                km_valid.initForm('fields_login', '', 'int_submit', '', function () {
-                    $proto.login('login');
-                });
-                return;
-            }
-        }
-        if (!from) { from = 'top'; }
-        var _olduser = 0;
-        if ($$('olduser')) { _olduser = ($$('olduser').checked) ? '1' : '0'; }
-        var data = {
-            username: $$('username').value
-            //, passwordfake: md5($$('password').value)
-          , passwordfake: $$('password').value
-                , from: from
-                , olduser: _olduser
-                , vcode: vcode
-        };
-        var posting = $.ajax({
-            type: "POST"
-                , url: $proto.basepath.loginaction
-                , cache: false
-                , data: data
-        });
-        posting.done(function (msg) {
-            msg = JSON.parse(msg);
-            if (msg.rturl == 'stop') {
-                Alert(msg.rtmsg);
-                if (from == 'login') {
-                    km_valid.initForm('fields_login', '', 'int_submit', '', function () {
-                        $proto.login('login');
-                    });
-                } else if (from == 'home') {
-                    km_valid.initForm('fields_login', '', 'int_submit', '', function () {
-                        $proto.login('home');
-                    });
-                }
-                $('#isf').val('0');
-                $('.d-vcode').show();
-                return;
-            }
-            if (__isLocalStorageNameSupported) {
-                if ($$('check_knowme').checked) {
-                    var username = $$('username').value;
-                    var password = $$('password').value;
-                    var s = username + ',' + password;
-                    s = sjcl.encrypt("shlll", s);
-                    store.set('knowme', s);
-                } else {
-                    store.set('knowme', '');
-                }
-            }
-            if (from == 'login') {
-                km_valid.initForm('fields_login', '', 'int_submit', '', function () {
-                    $proto.login('login');
-                });
-                // 从当前页面的 url 获取 `redirect` 参数的值，当用户登录成功后跳转到 `redirect` 中所指定的页面
-                var dir = sub_getPa('redirect');
+    function LoginCheck() {
+        if (!CheckUsername()) return false;
+        if (!CheckPassword()) return false;
 
-                if (dir != '') {
-                    location = decodeURIComponent(dir);
-                } else {
-                    location = $proto.basepath.personalhome;
-                }
-            } else if (from == 'home') {
-                km_valid.initForm('fields_login', '', 'int_submit', '', function () {
-                    $proto.login('home');
-                });
-                location.reload();
-            } else {
-                location.reload();
-            }
-        });
-        posting.fail(function (msg) {
-            Alert(JSON.stringify(msg), "location='" + $proto.basepath.home + "';");
-        });
-    };
-
-</script>
-<script>
-    $(function () {
-        if (__isLocalStorageNameSupported) {
-            var s = store.get('knowme');
-            if (typeof s == 'undefined') { s = ''; }
-            try { s = sjcl.decrypt("shlll", s); } catch (e) { s = ''; store.set('knowme', ''); }
-            if (s) {
-                s = s.split(',');
-                $('#username').val(s[0]);
-                $('#password').val(s[1]);
-                $('#check_knowme').attr('checked', 'checked');
-            }
+    }
+    function CheckUsername() {
+        if ($("#Username").val() == "") {
+            CastMsg("用户名不能为空");
+            return false;
         }
-    });
+        return true;
+    }
+    function CheckPassword() {
+        if ($('#Password').val() == "") {
+            CastMsg("密码不能为空！");
+            return false;
+        }
+        return true;
+    }
 </script>
-<div class="d-row" style="background-color:#ececec;border-top:2px solid #474747;">
-    <div class="d-row-c">
-        <div class="d-col-1">
-            <div class="contentarea">
-                <!-- region start: 帮助导航 --><div class="d-help">
-                    <div class="head"></div><div class="body">
-                        <div class="item" style="width:158px;">
-                            <div style="text-align:left;">
-                                <a href="http://weibo.com/shlll" target="_blank" class="ha">
-                                    <img src="./登录_上海学习网_files/qrcode-weibo.jpg" width="125" height="125" border="0"><br>
-                                    &nbsp;&nbsp;关注上海学习网微博
-                                </a>
-                            </div>
-                        </div><div class="item" style="width:158px;border-right:1px solid #a1a1a1;">
-                            <div style="text-align:left;">
-                                <a href="javascript:;" class="ha">
-                                    <img src="./登录_上海学习网_files/qrcode-weixin.jpg" width="125" height="125" border="0"><br>
-                                    &nbsp;&nbsp;关注上海学习网微信
-                                </a>
-                            </div>
-                        </div><div class="item" style="width:140px;border-right:1px solid #a1a1a1;border-left:1px solid #f9f9f9;"><div class="h">关于我们</div><a href="http://www.shlll.net/home/intro" target="_blank">网站介绍</a><a href="http://www.shlll.net/home/history" target="_blank">发展历程</a><a href="http://www.shlll.net/home/contactus" target="_blank">联系方式</a><a href="http://www.shlll.net/home/legal" target="_blank">法律声明</a></div><div class="item" style="width:140px;border-right:1px solid #a1a1a1;border-left:1px solid #f9f9f9;"><div class="h">新手指南</div><a href="http://member.shlll.net/home/signup?redirect=http://www.shlll.net/main/index.html" target="_blank">网站注册</a><a href="http://member.shlll.net/home/login?redirect=http://www.shlll.net/main/index.html#" target="_blank">个人资料</a><a href="http://member.shlll.net/home/login?redirect=http://www.shlll.net/main/index.html#" target="_blank">课程学习</a><a href="http://member.shlll.net/home/login?redirect=http://www.shlll.net/main/index.html#" target="_blank">图书阅读</a></div><div class="item" style="width:140px;border-right:1px solid #a1a1a1;border-left:1px solid #f9f9f9;"><div class="h">支持服务</div><a href="http://www.shlll.net/home/cooperation" target="_blank">机构合作</a><a href="http://www.shlll.net/home/sitemap" target="_blank">网站地图</a><a href="http://learning.shlll.net/home/book/index4.html" target="_blank">电子期刊</a><a href="http://online.sherc.net:8080/VisionIM/livechat/chat.html" target="_blank">在线客服</a></div><div class="item" style="width:216px;padding:0 0 0 40px;border-left:1px solid #f9f9f9;"><div class="h2">移动学习：上海乐学</div><a class="icon-mobile-apple"><div style="color:#9ca0ac;">iPhone 客户端</div><div style="color:#9ca0ac;"><b>App Store</b></div></a><a href="http://member.shlll.net/file/Download/shequ.1.0.apk" class="icon-mobile-android" target="_blank"><div style="color:#9ca0ac;">Android 客户端</div><div style="color:#60636c;"><b>本地下载</b></div></a></div><div class="clear"></div>
-                    </div>
-                </div><!-- region end: 帮助导航 -->
-            </div>
+@using (Html.BeginForm("Login", "User", FormMethod.Post, new
+                    {
+                        onsubmit = "return LoginCheck();"
+                    }))
+{
+    @Html.AntiForgerySID()
+    <div class="container wrap-cont">
+        <div class="narrow block">
+            <h2>用户登录</h2>
+            <table class="detail-table">
+                <tr>
+                    <td class="row-title">用户名</td>
+                    <td>
+                        @Html.TextBoxFor(model => model.Username, new { @class = "textbox w-3" })<br>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="row-title">密码</td>
+                    <td>
+                        @Html.PasswordFor(model => model.Password, new { @class = "textbox w-3" })<br />
+
+                    </td>
+                </tr>
+            </table>
+            <p><input type="submit" value="登录" class="button blue" />  记住我 @Html.EditorFor(model => model.RememberMe, "1")</p>
+            @Html.ValidationSummary(true)
         </div>
     </div>
-</div>
-<script>
-    //$proto.basepath.loginaction = '/home/action/login';//登录ajax的请求地址
-    $(function () {
-        $('#refreshValidate').on('click', function () {
-            $(this).prop('src', '/common/action/validate?r=' + (new Date()).getTime());
-        });
-        $('.logElm').on('keydown', function (event) {
-            if (event.keyCode == 13) {
-                $('#int_submit').click();
-            }
-        });
-        var _isf = $('#isf').val();
-        if (_isf == '1') {
-            $('.d-vcode').hide();
-        } else {
-            $('.d-vcode').show();
-        }
-    });
-</script>
+}
+
+
