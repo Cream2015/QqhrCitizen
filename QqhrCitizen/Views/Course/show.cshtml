@@ -1,66 +1,221 @@
-﻿@using QqhrCitizen.Models
-@using QqhrCitizen.Models.ViewModel
-@{
-
-    List<vLession> lessions = ViewBag.Lessions as List<vLession>;
-    Course course = ViewBag.Course as Course;
-    ViewBag.Title = course.Title;
+﻿@{
+    ViewBag.Title = "课程";
 }
-
-<div class="container wrap-cont">
-    <p>当前位置：/<a href="/Course/Index?tid=@course.CourseTypeID" class="pos">@course.TypeDictionary.TypeValue</a>/<a href="#" class="pos">@course.Title</a></p>
-    <div class="block main">
-        <h3>@course.Title</h3>
-        <div>
-            <h4>课程简介</h4>
-            <p>@course.Description</p>
+<div id="d_menu" class="d-menu menu-cou">
+    <div id="d_menu_c" class="d-menu-c">
+        <!-- region start: menu -->
+        <div id="d_headmenu" class="d-headmenu">
+            <div class="body">
+                <a id="headmenu_default" class="item_selected" href="./Course/Index">课程首页</a>
+                <a id="headmenu_discovery" class="item" href="./Course/Discovery">发现课程</a>
+            </div>
         </div>
-        <div>
-            <h4>课程提纲</h4>
-            <ul class="">
-                @if (@lessions.Count > 0)
-                {
-                    foreach (var item in lessions)
-                    {
-                        <li>
-                            <div>
-                                <h3>
-                                    @if (ViewBag.CurrentUser == null)
-                                    {
-                                        <a href="javascript:Msg('请先登录，再观看教程！')">@item.Title</a>
-                                    }
-                                    else if (HttpContext.Current.User.Identity.IsAuthenticated && ViewBag.CurrentUser.RoleAsInt >= item.Course.AuthorityAsInt)
-                                    {
-                                        <a href="/Course/LessionDetails/@item.ID">@item.Title</a>
-                                        <span style="font-size:6px;"> 答题正确率:@item.Rate  </span>
-                                    }
-                                    else
-                                    {
-                                        <a href="javascript:Msg('没有观看此视屏的权限！')">@item.Title</a>
-                                    } 
-
-                                </h3>
-                                <p>@item.Description</p>
-                            </div>
-                        </li>
-                    }
-                }
-            </ul>
-        </div>
+        <!-- region end: menu -->
     </div>
-
-    <div class="block sidebar">
-        <h3>相关课程</h3>
-        @foreach (var item in ViewBag.lstCourse)
-        {
-            <p><a href="/Course/Show/@item.ID">[@item.Time.ToString("yyyy-MM-dd")] @item.Title</a></p>
-        }
-    </div>
-
-    <div class="clr"></div>
 </div>
-<script>
-    function Msg(data) {
-        popMsg(data);
-    }
-</script>
+<div id="d_bottom" class="d-bottom" style="visibility: hidden; position: fixed;">
+    <div class="d-bottom-c">
+        <div id="d_scrolltop" class="d-scrolltop" style="right: -70px;">
+            <span class="t" onclick="$(document.body).ScrollTo();">顶部</span>
+        </div>
+    </div>
+</div>
+<div class="d-row" style="margin-bottom: 20px; padding: 20px 0 0 0;">
+    <div class="d-row-c">
+        <div class="d-col-2-8">
+            <div class="contentarea">
+            <!-- region start: banner -->
+            <div id="d_coursebanner" class="d-coursebanner" data-km-url="/course/coursebanner_jcarousel">
+                <iframe id="frm_coursebanner" name="frm_coursebanner" scrolling="no" width="100%" height="220" src="/course/coursebanner_jcarousel" style="border: none; visibility: visible; width: 100%; height: 220px; min-height: 220px;"></iframe>
+                </div>
+            <!-- region end: banner -->
+            </div>
+        </div>
+    <div class="d-col-2-4">
+        <div class="contentarea">
+            <div id="d_ad_event_default_2" class="d-ad-323x264" style="padding: 0;">
+                <div class="container">
+                <a href="#" rel="nofollow" target="_blank"></a>
+                </div>
+            </div><!-- region start: 培训机构 --><!-- region end: 培训机构 -->
+        </div>
+    </div>
+    <div class="clear"></div>
+    </div>
+</div>
+<div class="d-row">
+    <div class="d-row-c">
+        <div class="d-col-2-8">
+            <div class="contentarea">
+                <!-- region start: 推荐课程 -->
+                <div id="d_courserecommend" class="d-courserecommend">
+                    <div class="head">
+                        推荐课程
+                        <span class="turn">
+                            <span class="dot_select" onclick="km_slide.dottran('slide_courserecommend',0,498)"></span>
+                            <span class="dot" onclick="km_slide.dottran('slide_courserecommend',1,498)"></span>
+                            <span class="dot" onclick="km_slide.dottran('slide_courserecommend',2,498)"></span>
+                        </span>
+                    </div>
+                    <div class="body">
+                        <div id="slide_courserecommend" class="slidecontainer" style="top: 0px;">
+                            <div class="item">
+                                <a class="cover" href="/Course/Course8701.html" title="可乐球" target="_blank">
+                                <img class="imgCoursePic" src="/File/Course/CoursePic/2015/2/17/201502171033404194.jpg" data-echo="/File/Course/CoursePic/2015/2/17/201502171033404194.jpg" data-error="/file/Images/Default/course_default_184_184.jpg">
+                                </a>
+                                <div class="title">
+                                    <a class="trim" style="max-width:184px; display:normal;" href="/Course/Course8701.html" title="可乐球" target="_blank">
+                                        可乐球
+                                    </a>
+                                </div>
+                                <span class="signed">16</span>
+                                <span class="star star0"></span>
+                            </div>
+                            <!--
+                                <div class="item">
+                                <a class="cover" href="" title="（标题名）" target="_blank">
+                                <img class="imgCoursePic" src="" data-echo="" data-error="">
+                                </a>
+                                <div class="title">
+                                    <a class="trim" style="max-width:184px; display:normal;" href="" title="（标题名）" target="_blank">
+                                        （标题名）
+                                    </a>
+                                </div>
+                                <span class="signed">16</span>
+                                <span class="star star0"></span>
+                            </div>
+                            -->
+                        </div>
+                    </div>
+                </div>
+                <!-- region end: 推荐课程 -->
+                <!-- region start: 你可能会喜欢的 -->
+                <div id="d_courseforyou" class="d-courseforyou">
+                    <div class="head">
+                        您可能会喜欢的
+                    </div>
+                    <div class="body">
+                            <div id="slide_courseforyou" class="slidecontainer">
+                                <div class="item">
+                                    <div class="title">
+                                    <a href="/Course/Course9079.html" title="刑事诉讼法(全程)（中）" target="_blank">刑事诉讼法(全程)（中）</a>
+                                    </div>
+                                    <span class="signed">
+                                        6
+                                    </span>
+                                    <a class="cover" href="/Course/Course9079.html" title="刑事诉讼法(全程)（中）" target="_blank">
+                                        <img class="imgCoursePicM" src="/file/Course/CoursePic/Import/20150318/AD00127.png" data-echo="/file/Course/CoursePic/Import/20150318/AD00127.png" data-error="/file/Images/Default/course_default_184_184.jpg">
+                                    </a>
+                                </div>
+                                <!--
+                                     <div class="item">
+                                        <div class="title">
+                                            <a href="..." title="..." target="_blank">...</a>
+                                    </div>
+                                    <span class="signed">
+                                        （点赞人数）
+                                    </span>
+                                    <a class="cover" href="..." title="..." target="_blank">
+                                        <img class="imgCoursePicM" src="..." data-echo="..." data-error="...">
+                                    </a>
+                                </div>
+                                -->
+                            </div>
+                        </div>
+                </div><!-- region end: 你可能会喜欢的 --><hr style="border: none; height: 1px; background-color: #ccc; margin: 20px 25px 20px 0;">
+                <!-- region start: 学习明星 -->
+                <div id="d_learnerpopular" class="d-learnerpopular">
+                    <div class="head">学习明星</div>
+                    <div class="body">
+                        <div class="item">
+                            <div class="name">
+                                <a href="#">白玉兰</a>
+                            </div>
+                            <span class="learned">学习了49门课程</span>
+                            <a class="portrait" href="#">
+                                <img class="imgMemberPic" src="/file/Images/Predefine/Icon/136.jpg" onerror="this.onerror='';this.src='/file/Images/Default/member_default_120_120.jpg';">
+                            </a>
+                        </div>
+                        <!--
+                            <div class="item">
+                            <div class="name">
+                                <a href="#">(用户昵称)</a>
+                            </div>
+                            <span class="learned">学习课程数量</span>
+                            <a class="portrait" href="#">
+                                <img class="imgMemberPic" src="（用户头像）" onerror="this.onerror='';this.src='（用户头像）';">
+                            </a>
+                        </div>
+                        -->
+                     </div>
+                </div><!-- region end: 学习明星 -->
+            </div>
+        </div>
+        <div class="d-col-2-4">
+            <div class="contentarea">
+                <!-- region start: 热门分类 -->
+                <div id="d_coursehotcategory" class="d-coursehotcategory">
+                    <div class="head">
+                    热门分类
+                        <a href="/Course/Discovery">浏览更多&nbsp;&gt;&gt;</a>
+                    </div>
+                <div class="body">
+                    <a class="item" href="/course/discovery/12FF2473CE16B988/?parm=12FF2473CE16B988" title="终身教育">终身教育</a>
+                    <!--
+                        <a class="item" href="..." title="...">...</a>
+                    -->
+                </div>
+            </div>
+                <!-- region end: 热门分类 -->
+                <!-- region start: 学员动态 -->
+                <div id="d_learningactivityfeed" class="d-learningactivityfeed">
+                    <div class="head">
+                        学习动态
+                    </div>
+                    <div class="body">
+                        <div id="feed_learningactivity" class="feedcontainer" data-km-url="" style="top: 0px;">
+                            <div class="item">
+                                <a class="userportrait" href="#">
+                                    <img class="imgMemberPicS" style="height:20px;width:20px;vertical-align:baseline;" src="/file/Images/Predefine/Icon/115.jpg" onerror="this.onerror='';this.src='/file/Images/Default/member_default_120_120.jpg'">
+                                </a>
+                                <span class="gender male"></span>
+                                <span class="createtime">1天前</span>
+                                <a class="owner" href="#">
+                                    <span title="江毅乐悠悠">江毅乐悠悠</span>
+                                </a>
+                                <div class="content">
+                                    观看了在线课程
+                                    <a href="/Course/Course8052.html" title="中华养生宝典" target="_blank">中华养生宝典</a>
+                                    中的：
+                                    <a href="/Ware/Ware915.html" title="近代现代养生文化曲折前行" target="_blank">近代现代养生文化曲折前行</a>
+                                </div>
+                            </div>
+                            <!--
+                                <div class="item">
+                                    <a class="userportrait" href="#"> 
+                                        <img class="imgMemberPicS" style="height:20px;width:20px;vertical-align:baseline;" src="..." onerror="this.onerror='';this.src='...'">
+                                     </a>
+                                    <span class="gender male"></span>
+                                    <span class="createtime">...</span>
+                                    <a class="owner" href="#">
+                                        <span title="...">...</span>
+                                    </a>
+                                    <div class="content">
+                                        ...
+                                        <a href="..." title="..." target="_blank">...</a>
+                                        ...
+                                        <a href="..." title="..." target="_blank">..</a>
+                                    </div>
+                                </div>
+                            -->
+
+                        </div>
+                    </div>
+                </div>
+                <!-- region end: 学员动态 -->
+                <!-- region start: 课程发布 -->
+                <!-- region end: 课程发布 -->
+            </div>
+        </div><div class="clear"></div>
+    </div>
+</div>
