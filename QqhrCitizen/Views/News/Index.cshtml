@@ -1,28 +1,80 @@
 ﻿@{
-    ViewBag.Title = "新闻首页";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "新闻首页_齐齐哈尔市民学习网";
 }
-
-<input type="hidden" name="name" id="tid" value="@ViewBag.Tid" />
-
-
-<div class="container" style="min-height:500px;">
-    <p>当前位置：/<a href="/News/Index?tid=0" class="pos">新闻</a>/<a href="/News/Index?tid=@ViewBag.Tid" class="pos">@ViewBag.Type</a>
-</p>
-    <div class='block main'>
-        <div class="lstNews"></div>
-        <div><p class="loadMore">下拉加载更多</p></div>
+<div id="d_menu" class="d-menu menu-msg">
+    <div id="d_menu_c" class="d-menu-c">
+        <!-- region start: menu -->
+        <div id="d_headmenu" class="d-headmenu">
+            <div class="body">
+                <a id="headmenu_default" class="item_selected" style="cursor:pointer" href="/News/Index">资讯首页</a>
+            </div>
+        </div>
+        <!-- region end: menu -->
     </div>
-    <div class='block sidebar'>
-        <h3>热门新闻</h3>
-        @foreach (var item in ViewBag.LstNews)
-        {
-            <p><a href="/News/Show/@item.ID">[@item.Time.ToString("yyyy-MM-dd")] @item.Title</a></p>
-        }
-    </div>
-    <div class="clr"></div>
 </div>
-
-<script>
-    tid = $("#tid").val();
-</script>
+<div class="d-row" style="padding: 0 0 40px 0">
+    <div class="d-row-c">
+        <div class="d-col-2-8">
+            <div class="contentarea">
+                <!-- region start: 新闻列表 -->
+                <div id="d_articlelist" class="d-articlelist">
+                    <div class="body">
+                        <div class="item">
+                            <div class="title">
+                                <a href="/News/News1203.html" target="_blank">
+                                    北新泾街道社区学校开展2015年上海社区网上读书活动培训
+                                </a>
+                            </div>
+                            <div class="info">
+                                <span class="date">2015年06月19日</span>
+                                <span class="from"></span>
+                                <span class="view">浏览次数: 3</span>
+                            </div>
+                            <div class="desc txt-justify">
+                                <p>为了继承和弘扬民族传统文化，培育和践行社会主义核心价值观，提升市民人文素养，上海市学习型社会建设与终身教育促进委员会办公室会同上海市学习型社会建设服务指导中心、上海开放大学举办“弘扬传统文化，营造书香社区”——2015年上海社区网上读书活动，北新泾街道社区学校也积极响应。</p>
+                            </div>
+                        </div>
+                        <!--
+                            <div class="item">
+                            <div class="title">
+                                <a href="（新闻详细页面）" target="_blank">
+                                    （新闻标题）
+                                </a>
+                            </div>
+                            <div class="info">
+                                <span class="date">（发布时间）</span>
+                                <span class="from">（来源）</span>
+                                <span class="view">（浏览次数）</span>
+                            </div>
+                            <div class="desc txt-justify">
+                                <p>（新闻内容）</p>
+                            </div>
+                        </div>
+                        -->
+                    </div>
+                </div>
+                <!-- region end: 资讯列表 -->
+            </div>
+        </div>
+        <div class="d-col-2-4">
+            <div class="contentarea">
+                <div id="d_ad1" class="d-ad-323x264" style="padding: 30px 0 0 0;" data-km-url="">
+                    <a href="http://city.shlll.net/" rel="nofollow" target="_blank">
+                        <img src="http://res.shlll.net/resource/ad/ad_zhcs_300x250.jpg" width="300" height="250" alt="建智慧城市，做智慧市民">
+                    </a>
+                </div>
+                <!-- region start: 推荐资讯 -->
+                <div id="d_articlehot" class="d-articlehot">
+                    <div class="head">推荐资讯</div>
+                    <div class="body">
+                        <a class="item trim" href="/News/News23.html" target="_blank" title="【闸北】护牙健齿 乐享生活">【闸北】护牙健齿 乐享生活</a>
+                       <!--
+                           <a class="item trim" href="（新闻详细页面）" target="_blank" title="（新闻标题）">（新闻标题）</a>
+                       -->
+                    </div>
+                </div>
+                <!-- region end: 推荐资讯 -->
+            </div>
+        </div><div class="clear"></div>
+    </div>
+</div>
