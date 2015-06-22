@@ -3,14 +3,14 @@
  * For licensing, see LICENSE.html or http://ckeditor.com/license
  */
 
-CKEDITOR.editorConfig = function( config ) {
-	// Define changes to default configuration here.
-	// For the complete reference:
-	// http://docs.ckeditor.com/#!/api/CKEDITOR.config
+CKEDITOR.editorConfig = function (config) {
+    // Define changes to default configuration here.
+    // For the complete reference:
+    // http://docs.ckeditor.com/#!/api/CKEDITOR.config
 
-	// The toolbar groups arrangement, optimized for two toolbar rows.
-	
-	config.toolbarGroups = [
+    // The toolbar groups arrangement, optimized for two toolbar rows.
+
+    config.toolbarGroups = [
 		{ name: 'editing', groups: ['find', 'selection', 'spellchecker'] },
 		{ name: 'links' },
 		{ name: 'insert' },
@@ -23,12 +23,15 @@ CKEDITOR.editorConfig = function( config ) {
 		{ name: 'paragraph', groups: ['list', 'indent', 'blocks', 'align'] },
 		{ name: 'styles' },
 		{ name: 'colors' },
-	];
-    
-	config.filebrowserUploadUrl = '/CKEditor/Upload';
-	config.extraPlugins = 'equation,syntaxhighlight';
+    ];
 
-	// Remove some buttons, provided by the standard plugins, which we don't
-	// need to have in the Standard(s) toolbar.
-	//config.removeButtons = 'Underline,Subscript,Superscript';
+    config.filebrowserUploadUrl = '/Admin/UploadNewsImg';
+
+    config.image_previewText = ' '; // 去掉图片预览中的鸟语，这里注意里面一定要有个空格  
+    config.extraPlugins = 'equation,syntaxhighlight';
+
+    // Remove some buttons, provided by the standard plugins, which we don't
+    // need to have in the Standard(s) toolbar.
+    //config.removeButtons = 'Underline,Subscript,Superscript';
+
 };

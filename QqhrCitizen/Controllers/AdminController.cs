@@ -164,6 +164,19 @@ namespace QqhrCitizen.Controllers
         #endregion
 
 
+        public ActionResult UploadNewsImg(HttpPostedFileBase upload)
+        {
+            string callback = Request.QueryString["CKEditorFuncNum"];
+            string imgPath = DateHelper.GetTimeStamp() + Path.GetExtension(upload.FileName);
+            string fileName = Path.Combine(Request.MapPath("~/NewsImages"), imgPath);
+            upload.SaveAs(fileName);
+            string path = "/NewsImages/" + imgPath;
+            string url = Request.Url.Host + ":" + Request.Url.Port;
+            // 返回“图像”选项卡并显示图片  
+            return Content("<script type=\"text/javascript\">window.parent.CKEDITOR.tools.callFunction(" + callback + ",'" + path + "')</script>");
+
+        }
+
         #region 新闻管理
         /// <summary>
         /// 新闻管理
@@ -230,7 +243,7 @@ namespace QqhrCitizen.Controllers
                 model.FirstImgUrl = imgs[0];
             }
             db.News.Add(model);
-            
+
             db.SaveChanges();
             return RedirectToAction("NewsManager");
         }
@@ -713,7 +726,7 @@ namespace QqhrCitizen.Controllers
                 db.Files.Add(_file);
                 db.SaveChanges();
                 fileId = _file.ID;
-                 
+
                 EBook Ebook = new EBook();
                 Ebook.Browses = 0;
                 Ebook.Title = model.Title;
@@ -728,7 +741,7 @@ namespace QqhrCitizen.Controllers
                 stream.Read(buffer, 0, (int)stream.Length);
                 stream.Close();
                 Ebook.Picture = buffer;
-                 
+
                 db.EBooks.Add(Ebook);
                 db.SaveChanges();
                 return RedirectToAction("EBookManager");

@@ -324,6 +324,7 @@
     <Folder Include="App_Data\" />
     <Folder Include="Content\" />
     <Folder Include="Lessions\" />
+    <Folder Include="NewsImages\" />
     <Folder Include="Upload\" />
   </ItemGroup>
   <PropertyGroup>
