@@ -96,7 +96,67 @@ var $proto={
 			}
 		}
 
+		var s='';
+		if($proto.userinfo===null){
+			s+='<div class="body">';
+				//s+='<a href="javascript:;" onclick="toggleToolBar()" class="item last" title="无障碍辅助工具条" style="color:orange;">无障碍辅助工具</a>';
+				if($('.d-top-nav').text().indexOf('返回')==-1){
+					s+='<span class="txt">欢迎来到上海学习网</span>';
+				}
+				s+='<a class="item" href="'+$proto.basepath.login+'" target="'+$proto.basetarget+'">登录</a>';
+				//if(location.href.indexOf('read.shlll.net')!=-1||location.href.indexOf('act.shlll.net')!=-1){
+					//s+='<a class="item last" href="http://www.shlll.net/home/login/register.jsp" target="'+$proto.basetarget+'">注册</a>';
+				//}else{
+					s+='<a class="item last" href="'+$proto.basepath.signup+'" target="'+$proto.basetarget+'">注册</a>';
+				//}
+			s+='</div>';
+		}else{
+			s+='<div class="body">';
+				//s+='<a href="javascript:;" onclick="toggleToolBar()" class="item last" title="无障碍辅助工具条" style="color:orange;">无障碍辅助工具</a>';
+				if(top.location.href.indexOf('shlll.net')==-1 || top.location.href.indexOf('beta.shlll.net')!=-1){
+					s+='<span class="item icon-drop-white" onclick="sub_domenu(\'d_hmenu4\')" style="cursor:pointer;">';
+					s+='消息(3)';
+					s+='<div id="d_hmenu4" class="d-hpanel" style="display:none;">';
+						s+='<div class="hitem txt-justify">您加入学圈 <a href="/group/groupdetail" target="_blank">科学松鼠会读者花园</a> 的申请已经通过审核，您可以在学圈中发布信息了<span class="close">&#215;</span></div>';
+						s+='<div class="hitem txt-justify"><a href="/share/public" target="_blank">张飞</a> 已经确认了您的好友申请，<a href="/share/myfriend" target="_blank">查看我的好友</a><span class="close">&#215;</span></div>';
+						//s+='<div class="hitem txt-justify"><a href="/share/public" target="_blank">李明</a> 申请成为您的好友，您可以进入<a href="/share/myfriend" target="_blank">我的好友</a>处理所有申请<span class="close">&#215;</span></div>';
+						//s+='<div class="hitem txt-justify">您的实名认证信息已经通过审核<span class="close">&#215;</span></div>';
+					s+='</div>';
+					s+='</span>';
+				}
 
+				var m=0;
+				//if($proto.userinfo.verify!=1){m++;}
+				if($proto.userinfo.userprofile!=1){m++;}
+				var cls=(m>0)?'icon-drop-dot':'icon-drop-white';
+
+				s+='<span class="item last '+cls+'" onclick="sub_domenu(\'d_hmenu3\')" style="cursor:pointer;">';
+                    var name=($proto.userinfo.nickname=='')?$proto.userinfo.username:$proto.userinfo.nickname;
+                   	s+=''+name+'';
+                    if(m>0){
+                    	s+='<span class="bi1"><span>&nbsp;</span></span>';
+                    	s+='<span class="bi2"><span>'+(m)+'</span></span>';
+                    }
+                    s+='<div id="d_hmenu3" class="d-hmenu" style="display:none;">';
+                        s+='<a class="item" href="'+$proto.basepath.verify+'" target="'+$proto.basetarget+'">实名认证';
+                        //if($proto.userinfo.verify!=1){
+                        //	s+='<div class="i"></div>';
+                        //}
+                        s+='</a>';
+                        s+='<a class="item" href="'+$proto.basepath.useraccount+'" target="'+$proto.basetarget+'">个人信息';
+                        if($proto.userinfo.userprofile!=1){
+                        	s+='<div class="i"></div>';
+                        }
+                        s+='</a>';
+	                    s+='<a class="item" href="'+$proto.basepath.personalhome+'" target="'+$proto.basetarget+'">学习档案</a>';
+						s+='<a class="item" href="'+$proto.basepath.cj+'" target="'+$proto.basetarget+'">抽奖记录</a>';
+						s+='<a class="item" href="'+$proto.basepath.logoutaction+'" target="'+$proto.basetarget+'">退出</a>';
+                    s+='</div>';
+                s+='</span>';
+				//s+='<a class="item last" href="'+$proto.basepath.personalhome+'">学习档案</a>';
+			s+='</div>';
+		}
+		$("#d_top_sign").html(s);
 
 		setTimeout(function (){
 			return;
@@ -113,8 +173,7 @@ var $proto={
 		if(!PF_ie6 && km_st.show && top==window){
 
 			var s1='';
-			var n = km_st.list.length;
-			
+			var n=km_st.list.length;
 			for(var k=0;k<n;k++){
 				s1+='<span>'+km_st.list[k].text+'</span>';
 			}
