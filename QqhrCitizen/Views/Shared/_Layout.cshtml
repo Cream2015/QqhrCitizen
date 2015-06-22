@@ -1,101 +1,111 @@
-﻿<html xmlns="http://www.w3.org/1999/xhtml">
+﻿<!DOCTYPE html>
+<!-- saved from url=(0036)http://www.shlll.net/main/index.html -->
+<html class=" js flexbox canvas canvastext webgl no-touch geolocation postmessage websqldatabase indexeddb hashchange history draganddrop websockets rgba hsla multiplebgs backgroundsize borderimage borderradius boxshadow textshadow opacity cssanimations csscolumns cssgradients cssreflections csstransforms no-csstransforms3d csstransitions fontface generatedcontent video audio localstorage sessionstorage webworkers applicationcache svg inlinesvg smil svgclippaths" style="">
+<!--<![endif]-->
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - 齐齐哈尔市民学习网 </title>
-
-    <link href="~/Styles/datetimepicker.css" rel="stylesheet" />
-    <link href="~/Styles/citizen.css" rel="stylesheet" />
-    <script src="~/Scripts/jquery-1.11.3.min.js"></script>
-    <script src="~/Scripts/moment.js"></script>
-    <script src="~/Scripts/citizen.js"></script>
-    <script src="~/Scripts/qqhrcitizen.base.js"></script>
-    @*@RenderSection()*@
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1,requiresActiveX=true">
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <link href="~/Styles/app_course.css" rel="stylesheet" media="screen">
+    <script src="~/Scripts/jquery.js"></script>
+    <script src="~/Scripts/plugins.js"></script>
+    <script src="~/Scripts/flproto0.1.0.js"></script>
+    <script src="~/Scripts/proto.js"></script>
+    <!--[if lt IE 8]><script src="http://res.shlll.net/vendor/ie7-2.1-beta4/src/IE8.js"></script><![endif]-->
+    <script src="~/Scripts/modernizr-2.6.2.min.js"></script>
+    <script src="~/Scripts//spin.min.js"></script>
+    <style type="text/css"></style>
+    <!--<script src="http://res.shlll.net/vendor/ifvisible/src/ifvisible.js"></script>-->
+    <script src="~/Scripts/km_adtran.js"></script>
+    <script src="~/Scripts/home.default_v1_01s.js"></script>
+    <style>
+        .avatar img {
+            width: 48px;
+            height: 48px;
+        }
+    </style>
 </head>
 <body>
-    <div class="header">
-        <div class="container">
-            <a href="#"><img class="logo" src="~/Images/logo.png" /></a>
-            <div class="search">
-                <form action="/Home/Search" method="post">
-                    <input type="submit" class="search-btn" id="searchKey" value="" />
-                    <input type="text" class="search-box" name="key" placeholder="搜索" />
-                </form>
+    <div id="d_main" class="d-main" style="min-width: 1000px;">
+        <div class="Container">
+            <!-- region start: top -->
+            <div id="d_top" class="d-top">
+                <div id="d_top_c" class="d-top-c">
+                    <div id="d_topmenu" class="d-topmenu">
+                        <div class="d-top-nav">
+                            <div class="body">
+                                <a id="topmenu_home" class="item" href="/Home/index" target="_parent">学习网首页</a>
+                                <!--选中-->
+                                <!--<a id="topmenu_course" class="item_selected" href="#" target="_parent">课程</a>-->
+                                <a id="topmenu_event" class="item" href="/News/Index" target="_parent">新闻</a>
+                                <a id="topmenu_book" class="item" href="/Course/Index" target="_parent">课程</a>
+                                <a id="topmenu_group" class="item" href="/Ebook/Index" target="_parent">电子书</a>
+                                <a id="topmenu_news" class="item" href="/Live/Index" target="_parent">直播</a>
+                            </div>
+                        </div>
+                        <div class="d-top-weather">
+                            <div class="body">
+
+                            </div>
+                        </div>
+                        <div id="d_top_sign" class="d-top-sign">
+                            <div class="body">
+                                <span class="txt">欢迎来到齐齐哈尔市民学习网</span>
+                                <a class="item" href="/User/Login" target="_self">登录</a>
+                                <a class="item last" href="/User/Register" target="_self">注册</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
+            <!-- region end: top -->
+            <!-- region start: header -->
+            <div id="d_header" class="d-header">
+                <div id="d_header_c" class="d-header-c">
+                    <div id="d_headerdefault" class="d-headerdefault">
+                        <a class="d-logo logo-cou" href="./Home/index" target="_parent"><div class="ver">测试版</div></a><div class="d-search">
+                            @using (Ajax.BeginForm("Search", "Home", null, new AjaxOptions { HttpMethod = "post", UpdateTargetId = "SearchForm", OnBegin = "ChickSearch" }))
+                            {
+                                <input id="txtSearch" maxlength="30" name="Search" onkeydown="if(event.keyCode==13){dosearch();}" type="text" value="" placeholder="课程名称、标签" autocomplete="off" autocorrect="off" autocapitalize="off">
+                                <span id="icon-search" class="icon-search" onclick="dosearch();"></span>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- region end: header -->
+            @RenderBody();
+            <!--region start:footer-->
+            <div id="d_footer" class="d-footer footer-cou">
+                <div id="d_footer_c" class="d-footer-c">
+                    <!-- region start: 页脚 --><div class="l" style="display: block;">
+                        <img src="~/Images/kf.jpg" width="33" height="29" style="vertical-align: middle;">
+                        &nbsp;客服：021-25653066
+                        <span style="color: #999;">工作日（8:00-20:00）双休日（8:00-16:40）</span>
+                    </div><div class="r"><div class="lnk">上海市学习型社会建设与终身教育促进委员会主管</div><div class="lnk">上海开放大学承建</div><div class="lnk">2014 © 版权所有</div><div class="lnk">沪ICP备09027389号</div><div class="lnk">1.5.2015.420</div></div><div class="clear"></div><!-- region end: 页脚 -->
+                </div>
+            </div>
+            <!-- region end: footer -->
         </div>
     </div>
-    <div class="nav">
-        <div class="container">
-            <a href="/Home/Index"><div class="nav-item">首页</div></a>
-            <a href="#" data-toggle="NewsPopMenu"><div class="nav-item">新闻</div></a>
-            <div id="NewsPopMenu" class="pop-menu" style="width: 300px;">
-                @foreach (var item in ViewBag.NewsTypes)
-                {
-                    <strong>@item.TypeValue</strong>
-                    <br />
-                    foreach (var _item in item.Children)
-                    { 
-                      <a href="/News/Index?tid=@_item.ID">@_item.TypeValue</a>
-                    }
-                    <br />
-                    <br />
-                }
-            </div>
-            <a href="#" data-toggle="TestPopMenu"><div class="nav-item">课程</div></a>
-            <div id="TestPopMenu" class="pop-menu" style="width: 300px;">
-                @foreach (var item in ViewBag.CourseTypes)
-                {
-                    <strong>@item.TypeValue</strong>
-                    <br />
-                    foreach (var _item in item.Children)
-                    {
-                        <a href="/Course/Index?tid=@_item.ID">@_item.TypeValue</a>
-                    }
-                    <br />
-                    <br />
-                }
-            </div>
-
-            <a href="#" data-toggle="EBookPopMenu"><div class="nav-item">图书</div></a>
-            <div id="EBookPopMenu" class="pop-menu" style="width: 300px;">
-                @foreach (var item in ViewBag.EbookTypes)
-                {
-                    <strong>@item.TypeValue</strong>
-                    <br />
-                    foreach (var _item in item.Children)
-                    {
-                        <a href="/EBook/Index?tid=@_item.ID">@_item.TypeValue</a>
-                    }
-                    <br />
-                    <br />
-                }
-            </div>
-
-            <a href="/Live"><div class="nav-item">直播</div></a>
-            @{
-                if (User.Identity.IsAuthenticated)
-                {
-                    <a href="/User/Logout"><div class="nav-item flt-r">退出</div></a>
-                    <a href="/User/Show/@ViewBag.CurrentUser.ID"><div class="nav-item flt-r">@ViewBag.CurrentUser.Username</div></a>
-                    if (ViewBag.CurrentUser.RoleAsInt >= 1)
-                    {
-                     <a href="/Admin/Index"><div class="nav-item flt-r">管理</div></a>
-                    }
-                }
-                else
-                {
-                    <a href="/User/Login"><div class="nav-item flt-r">登录</div></a>
-                    <a href="/User/Register"><div class="nav-item flt-r">注册</div></a>
-                }
-            }
-            <div class="clr"></div>
-        </div>
-    </div>
-    @RenderBody()
-    <div class="footer">
-        <div class="container">
-            <div class="copyright">©2015 哈尔滨市码锋科技有限责任公司</div>
-        </div>
+    <script>
+        //var RecordsCount = 12;
+        // setInterval("GetWareRecordsData()", 3000);
+        GetWareRecordsDataInIndex();
+        //$proto.scriptLoad["jsMorph"] = { load: false, path: "http://res.shlll.net/vendor/jsMorph-0.5.0.js" };
+        $proto.scriptLoad["course__default"] = { load: false, path: "http://res.shlll.net/common/v1/js/course/course.default.js?ver=[v]" };
+        //$proto.basepath.loginaction = '/default/action/login';//登录ajax的请求地址
+    </script>
+    <script src="~/Scripts/init.js"></script>
+    <div style="display:none;">
+        <script type="text/javascript">
+            var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+            document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F6ca93febbe5f3e3b14f8ee9b8ef13802' type='text/javascript'%3E%3C/script%3E"));
+        </script>
+        <script src=" http://hm.baidu.com/h.js?6ca93febbe5f3e3b14f8ee9b8ef13802" type="text/javascript"></script>
+        <script src="~/Scripts/h.js" type="text/javascript"></script>
     </div>
 </body>
 </html>

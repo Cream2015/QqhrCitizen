@@ -15,7 +15,7 @@ namespace QqhrCitizen.Controllers
         // GET: /Course/
         public ActionResult Index()
         {
-            string tid = HttpContext.Request.QueryString["tid"].ToString();
+            /*string tid = HttpContext.Request.QueryString["tid"].ToString();
             List<Course> courses = new List<Course>();
             courses = db.Courses.OrderByDescending(c => c.Browses).Take(8).ToList();
             ViewBag.Tid = tid;
@@ -26,7 +26,7 @@ namespace QqhrCitizen.Controllers
                 type = db.TypeDictionaries.Find(id);
             }
             ViewBag.Type = type.TypeValue;
-            ViewBag.Courses = courses;
+            ViewBag.Courses = courses;*/
             return View();
         }
 
@@ -183,6 +183,13 @@ namespace QqhrCitizen.Controllers
             course = db.Courses.Find(id);
             return File(course.Picture, "image/jpg");
         }
-
+        /// <summary>
+        /// 课程列表显示
+        /// </summary>
+        /// <returns></returns>
+        public ActionResult Discovery()
+        {
+            return View();
+        }
     }
 }
