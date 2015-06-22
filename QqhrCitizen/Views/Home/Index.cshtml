@@ -115,34 +115,44 @@
                     </li>
                 }
             </ul><div id="d_banner_c" class="d-banner-c" style="visibility: visible;">
-                <div id="d_banner_thumb" class="d-banner-thumb">
-                    @foreach (News n in ViewBag.News)
-                    {
-                        <a href="/News/Show/@n.ID" target="_blank" style="background-image: url(@n.ImgUrl.First()); margin-top: 0px;">
-                            <p><span style="width: 0px;"></span></p>
-                        </a>
-                    }</div><div id="d_board" class="d-board">
-                    <div class="tabbar">
-                        <div class="tab_select" style="width:144px;" onmouseover="sub_t(42);km_tab.tabclk(0,'d_board');">今日历史</div><div class="tab" style="width:144px;" onmouseover="sub_t(186);km_tab.tabclk(1,'d_board');">学习资讯</div><div class="bar" style="left: 42px;"></div>
-                    </div>
-                    <div class="tabcontent">
-                        <div id="d_board2" style="padding-top:10px;" class="">
-                            <div class="scroll-wrapper external-scroll tis-container" style="position: relative;">
-                                <div class="external-scroll tis-container scroll-content" style="height: auto; margin-bottom: 0px; margin-right: 0px;">
-                                    <div id="tih" style="height: 314px;">
-                                        <div class="tis-item">
-                                            <div><span class="tis-type">[历史文化]</span></div>
-                                            <div class="tis-ed"><a href="javascript:;" title="格致书院开院" class="tis-title">[1876] 格致书院开院</a></div>
-                                            <div class="tis-content" style="color:#fff; font-size:12px;">&nbsp; &nbsp; &nbsp; 1875年底，格致书院完工，位于上海北门外西北隅八仙桥北、英租界正丰街。李鸿章题写了匾额。1879年正式招生。该院经常进行科技知识的演讲，并创办《格致汇编》。1913年改办工部局华人学校。1933年秋分为光启（徐光启）院科学系，炎武（顾炎武）院地理系，念孙院（王念孙）语言学及经学系，有光（归有光）院文学系四院，各设高中、初中及小学。1945年10月更名格致中学。</div>
-                                        </div>
-                                        <div style="height:6px; overflow:hidden;">&nbsp;</div>
-                                    </div>
-                                </div><div class="scroll-element scroll-element_show-arrows scroll-x" style="display: none; width: 290px;"><div class="scroll-arrow scroll-arrow_less"></div><div class="scroll-arrow scroll-arrow_more"></div><div class="scroll-element_outer">    <div class="scroll-element_size"></div>    <div class="scroll-element_inner-wrapper">        <div class="scroll-element_inner">            <div class="scroll-element_inner-bottom"></div>        </div>    </div>    <div class="scroll-bar">        <div class="scroll-bar_body">            <div class="scroll-bar_body-inner"></div>        </div>        <div class="scroll-bar_bottom"></div>        <div class="scroll-bar_center"></div>    </div></div></div>
-                            </div><div class="external-scroll_x"><div class="scroll-element_outer"><div class="scroll-element_size"></div><div class="scroll-element_inner"></div><div class="scroll-bar"></div></div></div><div class="external-scroll_y scroll-element_show-arrows scroll-y" style="display: none; height: 320px;"><div class="scroll-element_outer"><div class="scroll-element_size"></div><div class="scroll-element_inner"></div><div class="scroll-bar" style="height: 100px;"></div></div></div>
-                        </div><div class="clsHide"><!-- region start: 学习资讯 --><ul class="d-board-e"><li><a href="http://news.shlll.net/News/News1183.html" title="文化艺术体验基地市民体验手册6月刊">文化艺术体验基地市民体验手册6月刊</a></li><li><a href="http://news.shlll.net/News/News1153.html" title="教师如何做课题研究">教师如何做课题研究</a></li><li><a href="http://news.shlll.net/News/News1184.html" title="“常青树杯”上海市第十届老年教育艺术节合唱比赛成功举办">“常青树杯”上海市第十届老年教育艺术节合唱比赛成功举办</a></li><li><a href="http://news.shlll.net/News/News1158.html" title="驴又火了，不要做工作中的驴！">驴又火了，不要做工作中的驴！</a></li><li><a href="http://news.shlll.net/News/News1150.html" title="孩子别太优秀，停一停！">孩子别太优秀，停一停！</a></li><li><a href="http://news.shlll.net/News/News1174.html" title="睡觉永远不失眠的方法秘籍，值得收藏！">睡觉永远不失眠的方法秘籍，值得收藏！</a></li><li><a href="http://news.shlll.net/News/News1180.html" title="婴幼儿正确喂药，捏鼻子喂药致幼儿窒息死亡">婴幼儿正确喂药，捏鼻子喂药致幼儿窒息死亡</a></li><li><a href="http://news.shlll.net/News/News1197.html" title="组织开展“乐学申城.精彩人生” 2015上海社区学习团队成果展示活动的通知">组织开展“乐学申城.精彩人生” 2015上海社区学习团队成果展示活动的通知</a></li><li><a href="http://news.shlll.net/News/News1182.html" title="高考临近，家长如何稳定心态？">高考临近，家长如何稳定心态？</a></li><li><a href="http://news.shlll.net/News/News348.html" title="上海开放大学2014“学习改变命运、阅读成就梦想”主题读书节活动">上海开放大学2014“学习改变命运、阅读成就梦想”主题读书节活动</a></li></ul><!-- region end: 学习资讯 --></div>
-                    </div>
-                </div>
+    <div id="d_banner_thumb" class="d-banner-thumb">
+        @foreach (News n in ViewBag.News)
+        {
+            <a href="/News/Show/@n.ID" target="_blank" style="background-image: url(@n.ImgUrl.First()); margin-top: 0px;">
+                <p><span style="width: 0px;"></span></p>
+            </a>
+        }
+    </div><div id="d_board" class="d-board">
+        <div class="tabbar">
+            <div class="tab_select" style="width:144px;" onmouseover="sub_t(42);km_tab.tabclk(0,'d_board');">今日历史</div><div class="tab" style="width:144px;" onmouseover="sub_t(186);km_tab.tabclk(1,'d_board');">最近新闻</div><div class="bar" style="left: 42px;"></div>
+        </div>
+        <div class="tabcontent">
+            <div id="d_board2" style="padding-top:10px;" class="">
+                <div class="scroll-wrapper external-scroll tis-container" style="position: relative;">
+                    <div class="external-scroll tis-container scroll-content" style="height: auto; margin-bottom: 0px; margin-right: 0px;">
+                        <div id="tih" style="height: 314px;">
+                            <div class="tis-item">
+                                <div><span class="tis-type">[历史文化]</span></div>
+                                <div class="tis-ed"><a href="javascript:;" title="格致书院开院" class="tis-title">[1876] 格致书院开院</a></div>
+                                <div class="tis-content" style="color:#fff; font-size:12px;">&nbsp; &nbsp; &nbsp; 1875年底，格致书院完工，位于上海北门外西北隅八仙桥北、英租界正丰街。李鸿章题写了匾额。1879年正式招生。该院经常进行科技知识的演讲，并创办《格致汇编》。1913年改办工部局华人学校。1933年秋分为光启（徐光启）院科学系，炎武（顾炎武）院地理系，念孙院（王念孙）语言学及经学系，有光（归有光）院文学系四院，各设高中、初中及小学。1945年10月更名格致中学。</div>
+                            </div>
+                            <div style="height:6px; overflow:hidden;">&nbsp;</div>
+                        </div>
+                    </div><div class="scroll-element scroll-element_show-arrows scroll-x" style="display: none; width: 290px;"><div class="scroll-arrow scroll-arrow_less"></div><div class="scroll-arrow scroll-arrow_more"></div><div class="scroll-element_outer">    <div class="scroll-element_size"></div>    <div class="scroll-element_inner-wrapper">        <div class="scroll-element_inner">            <div class="scroll-element_inner-bottom"></div>        </div>    </div>    <div class="scroll-bar">        <div class="scroll-bar_body">            <div class="scroll-bar_body-inner"></div>        </div>        <div class="scroll-bar_bottom"></div>        <div class="scroll-bar_center"></div>    </div></div></div>
+                </div><div class="external-scroll_x"><div class="scroll-element_outer"><div class="scroll-element_size"></div><div class="scroll-element_inner"></div><div class="scroll-bar"></div></div></div><div class="external-scroll_y scroll-element_show-arrows scroll-y" style="display: none; height: 320px;"><div class="scroll-element_outer"><div class="scroll-element_size"></div><div class="scroll-element_inner"></div><div class="scroll-bar" style="height: 100px;"></div></div></div>
+            </div><div class="clsHide">
+                <!-- region start: 学习资讯 -->
+                <ul class="d-board-e">
+            @foreach (News n in ViewBag.News)
+            {
+                <li><a href="/News/Show/@n.ID" title="@n.Title">@n.Title</a></li>
+            }
+                </ul><!-- region end: 学习资讯 -->
             </div>
+        </div>
+    </div>
+</div>
+
         </div>
         <div id="d_row_news" class="d-row" style="padding: 20px 0 20px 0; background-color: #f7f7f7;">
             <div class="d-row-c">
