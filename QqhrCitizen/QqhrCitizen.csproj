@@ -251,6 +251,7 @@
     <Compile Include="Models\LearningRecord.cs" />
     <Compile Include="Models\Lession.cs" />
     <Compile Include="Models\LessionScore.cs" />
+    <Compile Include="Models\Live.cs" />
     <Compile Include="Models\News.cs" />
     <Compile Include="Models\Note.cs" />
     <Compile Include="Models\Question.cs" />
