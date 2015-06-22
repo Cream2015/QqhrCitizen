@@ -136,11 +136,11 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Global.asax" />
-    <Content Include="Images\.DS_Store" />
     <Content Include="Images\banner.png" />
     <Content Include="Images\board-bodybg.png" />
     <Content Include="Images\hot.gif" />
     <Content Include="Images\icon-arrow-round.png" />
+    <Content Include="Images\icon-search.png" />
     <Content Include="Images\icon-title.jpg" />
     <Content Include="Images\lab.jpg" />
     <Content Include="Images\logo.psd" />
