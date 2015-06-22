@@ -83,54 +83,51 @@
                                     欢迎回来
                                 </div>
                                 <div class="body">
-                                    @using (Html.BeginForm("Login", "User", FormMethod.Post))
-                                    {
-                                        @Html.AntiForgerySID()
-                                        <div class="d-username">
-                                            <span class="i">&nbsp;</span>
-                                            @Html.TextBoxFor(m => m.Username, new { @class = "int-hs logElm" })
-                                            <div class="clear"></div>
-                                        </div>
-                                        <div class="d-password">
-                                            <span class="i">&nbsp;</span>
-                                            @Html.PasswordFor(x => x.Password, new { @class = "int-hs logElm" })
-                                            <div class="clear"></div>
-                                        </div>
+                                    <div class="d-username">
+                                        <span class="i">&nbsp;</span>
+                                        @Html.TextBoxFor(m => m.Username, new { @class = "int-hs logElm" })
                                         <script>
                                             $("#Username").attr("placeholder", "用户名");
-                                            $("#Password").attr("placeholder", "密码");
                                         </script>
-                                        <div class="d-vcode" style="line-height: 100%; display: none;">
-                                            <span class="i">&nbsp;</span>
-                                            <input type="text" class="int-hs logElm" id="vcode" style="width:140px;" name="vcode" maxlength="4" autocorrect="off" autocapitalize="off" value="" placeholder="验证码">
-                                            <img id="refreshValidate" style="cursor:pointer; width:80px;" title="看不清，点击换一张" src="">
-                                            <input type="hidden" id="isf" name="isf" value="1">
-                                            <div class="clear"></div>
-                                        </div>
-                                        <div class="d-olduser">
-                                            <label>
-                                                <input type="checkbox" class="chk-1" id="olduser" name="olduser" checked="checked"> 是
-                                            </label>
-                                        </div>
-                                        <!--
-                                        <div class="d-forgot">
-                                            <a href="Home/Forgotpwd">忘记密码？</a>
-                                        </div>
-                                        -->
-                                        <div class="d-submit">
-                                            <input type="submit" class="btn btn-orange btn-big" value="登录" style="width:300px;">
-                                        </div>
-                                        <div class="d-knowme">
-                                            <!--<label>
-                                                <input id="check_knowme" type="checkbox"> 记住我(在公共场上网所请勿勾选此项)
-                                            </label>-->
-                                            记住我 @Html.EditorFor(model => model.RememberMe, "1")
-                                            @Html.ValidationSummary(true)
-                                        </div>
-                                        <div class="d-sign">
-                                            <a href="/User/Register">不是学习网用户？请注册。</a>
-                                        </div>
-                                    }
+                                        @Html.ValidationMessageFor(model => model.Username)
+
+                                        <div class="clear"></div>
+                                    </div>
+                                    <div class="d-password">
+                                        <span class="i">&nbsp;</span>
+                                        @Html.PasswordFor(x=>x.Password,new { @class = "int-hs logElm" })
+                                        <div class="clear"></div>
+                                    </div>
+                                    <div class="d-vcode" style="line-height: 100%; display: none;">
+                                        <span class="i">&nbsp;</span>
+                                        <input type="text" class="int-hs logElm" id="vcode" style="width:140px;" name="vcode" maxlength="4" autocorrect="off" autocapitalize="off" value="" placeholder="验证码">
+                                        <img id="refreshValidate" style="cursor:pointer; width:80px;" title="看不清，点击换一张" src="">
+                                        <input type="hidden" id="isf" name="isf" value="1">
+                                        <div class="clear"></div>
+                                    </div>
+                                    <div class="d-olduser">
+                                        <label>
+                                            <input type="checkbox" class="chk-1" id="olduser" name="olduser" checked="checked"> 是
+                                        </label>
+                                    </div>
+                                    <!--
+                                    <div class="d-forgot">
+                                        <a href="Home/Forgotpwd">忘记密码？</a>
+                                    </div>
+                                    -->
+                                    <div class="d-submit">
+                                        <input id="int_submit" type="button" class="btn btn-orange btn-big" value="登录" style="width:300px;">
+                                    </div>
+                                    <div class="d-knowme">
+                                        <!--<label>
+                                            <input id="check_knowme" type="checkbox"> 记住我(在公共场上网所请勿勾选此项)
+                                        </label>-->
+                                        记住我 @Html.EditorFor(model => model.RememberMe, "1")
+                                        @Html.ValidationSummary(true)
+                                    </div>
+                                    <div class="d-sign">
+                                        <a href="/User/Register">不是学习网用户？请注册。</a>
+                                    </div>
                                 </div>
                             </div><!-- region end: 登录 -->
                         </div>
@@ -337,3 +334,4 @@
     </div>
 </body>
 </html>
+
