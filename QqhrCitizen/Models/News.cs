@@ -4,6 +4,8 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
+using System.Text;
+using System.Text.RegularExpressions;
 
 namespace QqhrCitizen.Models
 {
@@ -50,6 +52,15 @@ namespace QqhrCitizen.Models
                     return ret;
                 }
                 else return Content;
+            }
+        }
+
+        [NotMapped]
+        public List<string> ImgUrl
+        {
+            get
+            {
+                return Helpers.ImgSrcFilter.GetHtmlImageUrlList(Content);
             }
         }
     }

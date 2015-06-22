@@ -241,6 +241,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helpers\HtmlFilter.cs" />
+    <Compile Include="Helpers\ImgSrcFilter.cs" />
     <Compile Include="Models\Channel.cs" />
     <Compile Include="Models\Common.cs" />
     <Compile Include="Models\Course.cs" />

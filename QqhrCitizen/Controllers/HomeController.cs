@@ -10,14 +10,32 @@ namespace QqhrCitizen.Controllers
 {
     public class HomeController : BaseController
     {
+        private List<News> GetTop5News()
+        {
+            var ret = new List<News>();
+            var i = 0;
+            foreach (var n in db.News.AsNoTracking())
+            {
+                if (n.ImgUrl.Count > 0)
+                {
+                    ret.Add(n);
+                    if (ret.Count > 5)
+                        break;
+                }
+            }
+            return ret;
+        }
 
         //
         // GET: /Home/
         public ActionResult Index()
         {
             ViewBag.CourseTypes = db.TypeDictionaries.Where(x => x.Belonger == TypeBelonger.课程 && x.FatherID != null).Take(5).ToList();
+            ViewBag.Courses = db.Courses.OrderByDescending(x => x.Time).Take(6).ToList();
             ViewBag.NewsTypes = db.TypeDictionaries.Where(x => x.Belonger == TypeBelonger.新闻 && x.FatherID != null).Take(5).ToList();
-            ViewBag.BookTypes = db.TypeDictionaries.Where(x => x.Belonger == TypeBelonger.电子书 && x.FatherID != null).Take(5).ToList();
+            ViewBag.News = GetTop5News();
+            ViewBag.BookTypes = db.TypeDictionaries.Where(x => x.Belonger == TypeBelonger.电子书 && x.FatherID == null).Take(6).ToList();
+            ViewBag.Books = db.EBooks.OrderByDescending(x => x.Time).Take(10).ToList();
             return View();
         }
 
