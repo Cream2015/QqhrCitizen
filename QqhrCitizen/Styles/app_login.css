@@ -886,7 +886,7 @@ select {
     padding: 1px 1px 1px 5px;
     width: 100%;
     height: 27px;
-    background-image: url(../images/dropdown-arrow-small.png);
+    background-image: url(/images/dropdown-arrow-small.png);
     background-repeat: no-repeat;
     background-position: right center;
     border-color: #ccc;
@@ -1343,7 +1343,7 @@ label.block {
             margin: 0;
             padding: 0 0 0 2px;
             height: 20px;
-            background-image: url(../images/dropdown-arrow-small.png);
+            background-image: url(/images/dropdown-arrow-small.png);
             background-repeat: no-repeat;
             background-position: right center;
             border: 0;
@@ -1484,7 +1484,7 @@ div, p, span, a {
     width: 100%;
     z-index: 4;
     text-align: center;
-    background-image: url(../images/header-a.jpg);
+    background-image: url(/images/header-a.jpg);
     background-repeat: repeat-x;
 }
 
@@ -1503,7 +1503,7 @@ div, p, span, a {
     width: 100%;
     z-index: 4;
     text-align: center;
-    background-image: url(../images/header-b.jpg);
+    background-image: url(/images/header-b.jpg);
     background-repeat: repeat-x;
 }
 
@@ -1681,7 +1681,7 @@ div, p, span, a {
                 padding: 30px 0 0;
                 height: 29px;
                 line-height: 29px;
-                background-image: url(../images/top.gif);
+                background-image: url(/images/top.gif);
                 background-repeat: no-repeat;
                 background-position: 0 0;
             }
@@ -1694,7 +1694,7 @@ div, p, span, a {
             .d-bottom .d-bottom-c .d-scrolltop .exp {
                 height: 30px;
                 line-height: 30px;
-                background-image: url(../images/exp.gif);
+                background-image: url(/images/exp.gif);
                 background-repeat: no-repeat;
                 background-position: 0 0;
             }
@@ -1974,7 +1974,7 @@ div, p, span, a {
         line-height: 17px;
         font-size: 0;
         overflow: hidden;
-        background-image: url(../images/midstars-big.gif);
+        background-image: url(/images/midstars-big.gif);
         background-repeat: no-repeat;
     }
 
@@ -2074,7 +2074,7 @@ div, p, span, a {
         width: 42px;
         height: 34px;
         cursor: pointer;
-        background-image: url(../images/sprite/icon-search.png);
+        background-image: url(/images/sprite/icon-search.png);
     }
 
     .f-searchbox .clsdrop {
@@ -2096,7 +2096,7 @@ div, p, span, a {
 .f-headerdefault {
     width: 1000px;
     height: 100px;
-    background-image: url(../images/logo2.jpg);
+    background-image: url(/images/logo2.jpg);
     background-repeat: no-repeat;
     background-position: 189px 0;
 }
@@ -2132,67 +2132,67 @@ div, p, span, a {
     }
 
     .f-headerdefault .logo-cou {
-        background-image: url(../images/shlll-logo-course.jpg);
+        background-image: url(/images/shlll-logo-course.jpg);
     }
 
     .f-headerdefault .logo-eve {
-        background-image: url(../images/shlll-logo-event.jpg);
+        background-image: url(/images/shlll-logo-event.jpg);
     }
 
     .f-headerdefault .logo-gro {
-        background-image: url(../images/shlll-logo-group.jpg);
+        background-image: url(/images/shlll-logo-group.jpg);
     }
 
     .f-headerdefault .logo-bok {
-        background-image: url(../images/shlll-logo-book.jpg);
+        background-image: url(/images/shlll-logo-book.jpg);
     }
 
     .f-headerdefault .logo-map {
-        background-image: url(../images/shlll-logo-map.jpg);
+        background-image: url(/images/shlll-logo-map.jpg);
     }
 
     .f-headerdefault .logo-cha {
-        background-image: url(../images/shlll-logo-channel.jpg);
+        background-image: url(/images/shlll-logo-channel.jpg);
     }
 
     .f-headerdefault .logo-sha {
-        background-image: url(../images/shlll-logo-share.jpg);
+        background-image: url(/images/shlll-logo-share.jpg);
     }
 
     .f-headerdefault .logo-msg {
-        background-image: url(../images/shlll-logo-news.jpg);
+        background-image: url(/images/shlll-logo-news.jpg);
     }
 
     .f-headerdefault .logo-use {
-        background-image: url(../images/shlll-logo.jpg);
+        background-image: url(/images/shlll-logo.jpg);
         width: 275px;
         height: 90px;
         top: 5px;
     }
 
     .f-headerdefault .logo-stu {
-        background-image: url(../images/shlll-logo.jpg);
+        background-image: url(/images/shlll-logo.jpg);
         width: 275px;
         height: 90px;
         top: 5px;
     }
 
     .f-headerdefault .logo-site-aged {
-        background-image: url(../images/shlll-logo-site-aged.jpg);
+        background-image: url(/images/shlll-logo-site-aged.jpg);
     }
 
     .f-headerdefault .logo-site-whitecollar {
-        background-image: url(../images/shlll-logo-site-whitecollar.png);
+        background-image: url(/images/shlll-logo-site-whitecollar.png);
         width: 500px;
     }
 
     .f-headerdefault .logo-site-workers {
-        background-image: url(../images/shlll-logo-site-workers.png);
+        background-image: url(/images/shlll-logo-site-workers.png);
         width: 500px;
     }
 
     .f-headerdefault .logo-site-parents {
-        background-image: url(../images/shlll-logo-site-parents.png);
+        background-image: url(/images/shlll-logo-site-parents.png);
         width: 500px;
     }
 
@@ -2225,7 +2225,7 @@ div, p, span, a {
             width: 42px;
             height: 34px;
             cursor: pointer;
-            background-image: url(../images/sprite/icon-search.png);
+            background-image: url(/images/sprite/icon-search.png);
         }
 
         .f-headerdefault .d-search .clsdrop {
@@ -2381,7 +2381,7 @@ div, p, span, a {
                     width: 10px;
                     height: 10px;
                     overflow: hidden;
-                    background-image: url(../images/reddot.png);
+                    background-image: url(/images/reddot.png);
                     font-size: 0;
                 }
 
@@ -2512,7 +2512,7 @@ div, p, span, a {
         height: 65px;
         line-height: 65px;
         font-size: 2.5em;
-        background-image: url(../images/sprite/icon-title.png);
+        background-image: url(/images/sprite/icon-title.png);
         background-repeat: no-repeat;
     }
 
@@ -2558,7 +2558,7 @@ div, p, span, a {
             line-height: 40px;
             font-size: 15px;
             padding: 0 0 0 15px;
-            background-image: url(../images/sprite/icon-subtitle.png);
+            background-image: url(/images/sprite/icon-subtitle.png);
             background-repeat: no-repeat;
         }
 
@@ -2773,7 +2773,7 @@ div, p, span, a {
 .i-official {
     display: inline-block;
     width: 27px;
-    background-image: url(../images/sprite/icon-ut.gif);
+    background-image: url(/images/sprite/icon-ut.gif);
     background-position: 0 -48px;
     background-repeat: no-repeat;
 }
@@ -2783,7 +2783,7 @@ div, p, span, a {
     width: 30px;
     height: 24px;
     line-height: 24px;
-    background-image: url(../images/sprite/icon-back.png);
+    background-image: url(/images/sprite/icon-back.png);
     background-repeat: no-repeat;
     background-position: center center;
 }
@@ -2795,7 +2795,7 @@ div, p, span, a {
     width: 357px;
     height: 117px;
     z-index: 9999;
-    background-image: url(../images/guide1.png);
+    background-image: url(/images/guide1.png);
 }
 
     .d-guide-guide1 .close {
@@ -2805,7 +2805,7 @@ div, p, span, a {
         height: 35px;
         left: 176px;
         top: 63px;
-        background-image: url(../images/guide-close.png);
+        background-image: url(/images/guide-close.png);
     }
 
 .d-topmenu {
@@ -2945,7 +2945,7 @@ div, p, span, a {
                     width: 10px;
                     height: 10px;
                     overflow: hidden;
-                    background-image: url(../images/reddot.png);
+                    background-image: url(/images/reddot.png);
                     font-size: 0;
                 }
 
@@ -2993,7 +2993,7 @@ div, p, span, a {
 .d-headerdefault {
     width: 1000px;
     height: 100px;
-    background-image: url(../images/logo2.jpg);
+    background-image: url(/images/logo2.jpg);
     background-repeat: no-repeat;
     background-position: 189px 0;
 }
@@ -3029,67 +3029,67 @@ div, p, span, a {
     }
 
     .d-headerdefault .logo-cou {
-        background-image: url(../images/shlll-logo-course.jpg);
+        background-image: url(/images/shlll-logo-course.jpg);
     }
 
     .d-headerdefault .logo-eve {
-        background-image: url(../images/shlll-logo-event.jpg);
+        background-image: url(/images/shlll-logo-event.jpg);
     }
 
     .d-headerdefault .logo-gro {
-        background-image: url(../images/shlll-logo-group.jpg);
+        background-image: url(/images/shlll-logo-group.jpg);
     }
 
     .d-headerdefault .logo-bok {
-        background-image: url(../images/shlll-logo-book.jpg);
+        background-image: url(/images/shlll-logo-book.jpg);
     }
 
     .d-headerdefault .logo-map {
-        background-image: url(../images/shlll-logo-map.jpg);
+        background-image: url(/images/shlll-logo-map.jpg);
     }
 
     .d-headerdefault .logo-cha {
-        background-image: url(../images/shlll-logo-channel.jpg);
+        background-image: url(/images/shlll-logo-channel.jpg);
     }
 
     .d-headerdefault .logo-sha {
-        background-image: url(../images/shlll-logo-share.jpg);
+        background-image: url(/images/shlll-logo-share.jpg);
     }
 
     .d-headerdefault .logo-msg {
-        background-image: url(../images/shlll-logo-news.jpg);
+        background-image: url(/images/shlll-logo-news.jpg);
     }
 
     .d-headerdefault .logo-use {
-        background-image: url(../images/shlll-logo.jpg);
+        background-image: url(/images/shlll-logo.jpg);
         width: 275px;
         height: 90px;
         top: 5px;
     }
 
     .d-headerdefault .logo-stu {
-        background-image: url(../images/shlll-logo.jpg);
+        background-image: url(/images/shlll-logo.jpg);
         width: 275px;
         height: 90px;
         top: 5px;
     }
 
     .d-headerdefault .logo-site-aged {
-        background-image: url(../images/shlll-logo-site-aged.jpg);
+        background-image: url(/images/shlll-logo-site-aged.jpg);
     }
 
     .d-headerdefault .logo-site-whitecollar {
-        background-image: url(../images/shlll-logo-site-whitecollar.png);
+        background-image: url(/images/shlll-logo-site-whitecollar.png);
         width: 500px;
     }
 
     .d-headerdefault .logo-site-workers {
-        background-image: url(../images/shlll-logo-site-workers.png);
+        background-image: url(/images/shlll-logo-site-workers.png);
         width: 500px;
     }
 
     .d-headerdefault .logo-site-parents {
-        background-image: url(../images/shlll-logo-site-parents.png);
+        background-image: url(/images/shlll-logo-site-parents.png);
         width: 500px;
     }
 
@@ -3122,7 +3122,7 @@ div, p, span, a {
             width: 42px;
             height: 34px;
             cursor: pointer;
-            background-image: url(../images/sprite/icon-search.png);
+            background-image: url(/images/sprite/icon-search.png);
         }
 
         .d-headerdefault .d-search .clsdrop {
@@ -3410,7 +3410,7 @@ div, p, span, a {
     }
 
 .d-topmenu .body .icon-drop-white, .d-courseplayer .icon-drop-white {
-    background-image: url(../images/icon-drop-white.gif);
+    background-image: url(/images/icon-drop-white.gif);
     background-repeat: no-repeat;
     background-position: right center;
     padding-right: 20px;
@@ -3430,7 +3430,7 @@ div, p, span, a {
     }
 
     .d-topmenu .body .icon-drop-dot .bi1, .d-topmenu .body .icon-drop-dot .bi2 {
-        background-image: url(../images/bigreddot.png);
+        background-image: url(/images/bigreddot.png);
         background-repeat: no-repeat;
     }
 

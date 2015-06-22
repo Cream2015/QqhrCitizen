@@ -847,7 +847,7 @@ select {
     padding: 1px 1px 1px 5px;
     width: 100%;
     height: 27px;
-    background-image: url(../images/dropdown-arrow-small.png);
+    background-image: url(/images/dropdown-arrow-small.png);
     background-repeat: no-repeat;
     background-position: right center;
     border-color: #ccc;
@@ -1554,7 +1554,7 @@ div {
                 padding: 30px 0 0;
                 height: 29px;
                 line-height: 29px;
-                background-image: url(../images/top.gif);
+                background-image: url(/images/top.gif);
                 background-repeat: no-repeat;
                 background-position: 0 0;
             }
@@ -1567,7 +1567,7 @@ div {
             .d-bottom .d-bottom-c .d-scrolltop .exp {
                 height: 30px;
                 line-height: 30px;
-                background-image: url(../images/exp.gif);
+                background-image: url(/images/exp.gif);
                 background-repeat: no-repeat;
                 background-position: 0 0;
             }
@@ -1880,7 +1880,7 @@ div {
     width: 357px;
     height: 117px;
     z-index: 9999;
-    background-image: url(../images/guide1.png);
+    background-image: url(/images/guide1.png);
 }
 
     .d-guide-guide1 .close {
@@ -1890,7 +1890,7 @@ div {
         height: 35px;
         left: 176px;
         top: 63px;
-        background-image: url(../images/guide-close.png);
+        background-image: url(/images/guide-close.png);
     }
 
 .d-topmenu {
@@ -2026,7 +2026,7 @@ div {
                     width: 10px;
                     height: 10px;
                     overflow: hidden;
-                    background-image: url(../images/reddot.png);
+                    background-image: url(/images/reddot.png);
                     font-size: 0;
                 }
 
@@ -2123,7 +2123,7 @@ div {
             width: 42px;
             height: 34px;
             cursor: pointer;
-            background-image: url(../Images/icon-search.png);
+            background-image: url(/Images/icon-search.png);
         }
 
         .d-headerhome .d-search .clsdrop {
@@ -2201,7 +2201,7 @@ div {
                 right: 49px;
                 width: 21px;
                 height: 11px;
-                background-image: url(../images/submenu-arrow.png);
+                background-image: url(/images/submenu-arrow.png);
             }
 
         .d-headmenu .body .aitem, .d-headmenu .body .aitem_over {
@@ -2263,7 +2263,7 @@ div {
             font-weight: 700;
             text-align: left;
             color: #fff;
-            background-image: url(../Images/lab.jpg);
+            background-image: url(/Images/lab.jpg);
         }
 
         .d-headmenusub .body .box {
@@ -2294,7 +2294,7 @@ div {
             .d-headmenusub .body .box .hot {
                 background-position: right 2px;
                 background-repeat: no-repeat;
-                background-image: url(../Images/hot.gif);
+                background-image: url(/Images/hot.gif);
             }
 
     .d-headmenusub .w2 {
@@ -2466,7 +2466,7 @@ div {
     right: 0;
     width: 290px;
     height: 400px;
-    background-image: url(../Images/board-bodybg.png);
+    background-image: url(/Images/board-bodybg.png);
     background-repeat: repeat;
     overflow: hidden;
 }
@@ -2690,7 +2690,7 @@ div {
     .d-menu-vertical .head {
         width: 90px;
         height: 45px;
-        background-image: url(../Images/icon-title.jpg);
+        background-image: url(/Images/icon-title.jpg);
         background-repeat: no-repeat;
     }
 
@@ -2766,7 +2766,7 @@ div {
                 height: 16px;
                 margin: 26px 0 0;
                 cursor: pointer;
-                background-image: url(../Images/icon-turndot.png);
+                background-image: url(/Images/icon-turndot.png);
                 background-repeat: no-repeat;
             }
 
@@ -2820,7 +2820,7 @@ div {
                     line-height: 16px;
                     padding: 0 10px 0 22px;
                     font-size: 13px;
-                    background-image: url(../Images/icon-courserecommendbyday.png);
+                    background-image: url(/Images/icon-courserecommendbyday.png);
                     background-position: 0 0;
                     background-repeat: no-repeat;
                 }
@@ -2831,7 +2831,7 @@ div {
                     height: 11px;
                     line-height: 11px;
                     font-size: 0;
-                    background-image: url(../images/midstars.gif);
+                    background-image: url(/images/midstars.gif);
                     background-repeat: no-repeat;
                 }
 
@@ -2907,7 +2907,7 @@ div {
                 height: 16px;
                 margin: 26px 0 0;
                 cursor: pointer;
-                background-image: url(../Images/icon-turndot.png);
+                background-image: url(/Images/icon-turndot.png);
                 background-repeat: no-repeat;
             }
 
@@ -2972,7 +2972,7 @@ div {
                     margin: 0 0 0 10px;
                     font-size: 12px;
                     color: #ebdb01;
-                    background-image: url(../Images/icon-courserecommendbyday.png);
+                    background-image: url(/Images/icon-courserecommendbyday.png);
                     background-position: 0 0;
                     background-repeat: no-repeat;
                 }
@@ -3042,7 +3042,7 @@ div {
                     padding: 0 10px 0 22px;
                     font-size: 12px;
                     color: #999;
-                    background-image: url(../Images/icon-courserecommendbyday.png);
+                    background-image: url(/Images/icon-courserecommendbyday.png);
                     background-position: 0 0;
                     background-repeat: no-repeat;
                 }
@@ -3209,7 +3209,7 @@ div {
                 height: 27px;
                 line-height: 27px;
                 padding: 0 10px;
-                background-image: url(../images/sfrm_grey.png);
+                background-image: url(/images/sfrm_grey.png);
                 color: #fff;
             }
 
@@ -3236,7 +3236,7 @@ div {
                 padding: 0 10px;
                 font-size: 12px;
                 color: #fff;
-                background-image: url(../images/sfrm_grey.png);
+                background-image: url(/images/sfrm_grey.png);
             }
 
 .lt-ie7 .d-grouprecommend .body .item .name {
@@ -3266,7 +3266,7 @@ div {
         height: 139px;
         text-decoration: none;
         padding: 20px 15px;
-        background-image: url(../images/tbg.jpg);
+        background-image: url(/images/tbg.jpg);
     }
 
         .d-topicrecommend .body .itemhot .title {
@@ -3357,7 +3357,7 @@ div {
                 height: 16px;
                 margin: 26px 0 0;
                 cursor: pointer;
-                background-image: url(../Images/icon-turndot.png);
+                background-image: url(/Images/icon-turndot.png);
                 background-repeat: no-repeat;
             }
 
@@ -3422,7 +3422,7 @@ div {
                     margin: 0 0 0 10px;
                     font-size: 12px;
                     color: #c87b2d;
-                    background-image: url(../Images/icon-courserecommendbyday.png);
+                    background-image: url(/Images/icon-courserecommendbyday.png);
                     background-position: 0 0;
                     background-repeat: no-repeat;
                 }
@@ -3443,7 +3443,7 @@ div {
                     height: 11px;
                     line-height: 11px;
                     font-size: 0;
-                    background-image: url(../images/midstars.gif);
+                    background-image: url(/images/midstars.gif);
                     background-repeat: no-repeat;
                 }
 
@@ -3533,7 +3533,7 @@ div {
                     padding: 0 10px 0 22px;
                     font-size: 12px;
                     color: #999;
-                    background-image: url(../Images/icon-courserecommendbyday.png);
+                    background-image: url(/Images/icon-courserecommendbyday.png);
                     background-position: 0 0;
                     background-repeat: no-repeat;
                 }
@@ -3548,7 +3548,7 @@ div {
                     height: 11px;
                     line-height: 11px;
                     font-size: 0;
-                    background-image: url(../images/midstars.gif);
+                    background-image: url(/images/midstars.gif);
                     background-repeat: no-repeat;
                 }
 
@@ -3785,7 +3785,7 @@ div {
     height: 65px;
     line-height: 65px;
     font-size: 2.5em;
-    background-image: url(../Images/icon-help.png);
+    background-image: url(/Images/icon-help.png);
     background-repeat: no-repeat;
 }
 
@@ -3850,7 +3850,7 @@ div {
             height: 40px;
             padding: 8px 0 7px 73px;
             margin: 0 0 5px;
-            background-image: url(../images/icon-mobile-apple.jpg);
+            background-image: url(/images/icon-mobile-apple.jpg);
         }
 
             .d-help .body .item .icon-mobile-apple div {
@@ -3863,7 +3863,7 @@ div {
             width: 143px;
             height: 40px;
             padding: 8px 0 7px 73px;
-            background-image: url(../images/icon-mobile-android.jpg);
+            background-image: url(/images/icon-mobile-android.jpg);
         }
 
             .d-help .body .item .icon-mobile-android div {
@@ -3873,7 +3873,7 @@ div {
             }
 
 .d-topmenu .body .icon-drop-white {
-    background-image: url(../images/icon-drop-white.gif);
+    background-image: url(/images/icon-drop-white.gif);
     background-repeat: no-repeat;
     background-position: right center;
     padding-right: 20px;
@@ -3897,7 +3897,7 @@ div {
     }
 
     .d-topmenu .body .icon-drop-dot .bi1, .d-topmenu .body .icon-drop-dot .bi2 {
-        background-image: url(../images/bigreddot.png);
+        background-image: url(/images/bigreddot.png);
         background-repeat: no-repeat;
     }
 
@@ -4041,7 +4041,7 @@ div {
         }
 
             .d-signin .body .d-username .i {
-                background-image: url(../images/signin-username.jpg);
+                background-image: url(/images/signin-username.jpg);
             }
 
             .d-signin .body .d-username input {
@@ -4056,7 +4056,7 @@ div {
         }
 
             .d-signin .body .d-password .i {
-                background-image: url(../images/signin-password.jpg);
+                background-image: url(/images/signin-password.jpg);
             }
 
             .d-signin .body .d-password input {
@@ -4070,7 +4070,7 @@ div {
         }
 
             .d-signin .body .d-vcode .i {
-                background-image: url(../images/signin-vcode.jpg);
+                background-image: url(/images/signin-vcode.jpg);
             }
 
             .d-signin .body .d-vcode input {
