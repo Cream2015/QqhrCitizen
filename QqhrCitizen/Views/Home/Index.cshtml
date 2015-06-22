@@ -141,13 +141,12 @@
                     </div><div class="scroll-element scroll-element_show-arrows scroll-x" style="display: none; width: 290px;"><div class="scroll-arrow scroll-arrow_less"></div><div class="scroll-arrow scroll-arrow_more"></div><div class="scroll-element_outer">    <div class="scroll-element_size"></div>    <div class="scroll-element_inner-wrapper">        <div class="scroll-element_inner">            <div class="scroll-element_inner-bottom"></div>        </div>    </div>    <div class="scroll-bar">        <div class="scroll-bar_body">            <div class="scroll-bar_body-inner"></div>        </div>        <div class="scroll-bar_bottom"></div>        <div class="scroll-bar_center"></div>    </div></div></div>
                 </div><div class="external-scroll_x"><div class="scroll-element_outer"><div class="scroll-element_size"></div><div class="scroll-element_inner"></div><div class="scroll-bar"></div></div></div><div class="external-scroll_y scroll-element_show-arrows scroll-y" style="display: none; height: 320px;"><div class="scroll-element_outer"><div class="scroll-element_size"></div><div class="scroll-element_inner"></div><div class="scroll-bar" style="height: 100px;"></div></div></div>
             </div><div class="clsHide">
-                <!-- region start: 学习资讯 -->
                 <ul class="d-board-e">
             @foreach (News n in ViewBag.News)
             {
                 <li><a href="/News/Show/@n.ID" title="@n.Title">@n.Title</a></li>
             }
-                </ul><!-- region end: 学习资讯 -->
+                </ul>
             </div>
         </div>
     </div>
@@ -174,7 +173,21 @@
                 <div class="d-col-2-11">
                     <div class="contentarea">
                         <!-- region start: 首页推荐课程 --><div id="d_courserecommend" class="d-courserecommend">
-                            <div class="body"><div id="slide_courserecommend" class="slidecontainer"><div class="item"><a class="course-cover cover" href="http://course.shlll.net/Course/Course9239.html" title="杨萃先职场新人简历与面试指导"><img src="/File/Portal/SpecialRecommendCover/2015/6/17/201506171409039300.jpg" data-echo="/File/Portal/SpecialRecommendCover/2015/6/17/201506171409039300.jpg" onerror="this.onerror='';this.src='/file/Images/Default/public_default_200_150.jpg';"></a><div class="title trim"><a href="http://course.shlll.net/Course/Course9239.html" title="杨萃先职场新人简历与面试指导">杨萃先职场新人简历与面试指导</a></div><span class="signed">11人学习</span><span class="star star0"></span></div><div class="item"><a class="course-cover cover" href="http://course.shlll.net/Course/Course8054.html" title="中医手诊"><img src="/File/Portal/SpecialRecommendCover/2015/6/17/201506171409382500.jpg" data-echo="/File/Portal/SpecialRecommendCover/2015/6/17/201506171409382500.jpg" onerror="this.onerror='';this.src='/file/Images/Default/public_default_200_150.jpg';"></a><div class="title trim"><a href="http://course.shlll.net/Course/Course8054.html" title="中医手诊">中医手诊</a></div><span class="signed">23067人学习</span><span class="star star40"></span></div><div class="item"><a class="course-cover cover" href="http://course.shlll.net/Course/Course8688.html" title="父母大课堂"><img src="/File/Portal/SpecialRecommendCover/2015/6/17/201506171408280343.jpg" data-echo="/File/Portal/SpecialRecommendCover/2015/6/17/201506171408280343.jpg" onerror="this.onerror='';this.src='/file/Images/Default/public_default_200_150.jpg';"></a><div class="title trim"><a href="http://course.shlll.net/Course/Course8688.html" title="父母大课堂">父母大课堂</a></div><span class="signed">21人学习</span><span class="star star0"></span></div><div class="item"><a class="course-cover cover" href="http://course.shlll.net/Course/Course8496.html" title="野外生存体验"><img src="/File/Portal/SpecialRecommendCover/2015/6/17/201506171409551604.jpg" data-echo="/File/Portal/SpecialRecommendCover/2015/6/17/201506171409551604.jpg" onerror="this.onerror='';this.src='/file/Images/Default/public_default_200_150.jpg';"></a><div class="title trim"><a href="http://course.shlll.net/Course/Course8496.html" title="野外生存体验">野外生存体验</a></div><span class="signed">31人学习</span><span class="star star0"></span></div><div class="item"><a class="course-cover cover" href="http://course.shlll.net/Course/Course9240.html" title="许岑看电影学英语"><img src="/File/Portal/SpecialRecommendCover/2015/6/17/201506171409189060.jpg" data-echo="/File/Portal/SpecialRecommendCover/2015/6/17/201506171409189060.jpg" onerror="this.onerror='';this.src='/file/Images/Default/public_default_200_150.jpg';"></a><div class="title trim"><a href="http://course.shlll.net/Course/Course9240.html" title="许岑看电影学英语">许岑看电影学英语</a></div><span class="signed">67人学习</span><span class="star star0"></span></div><div class="item"><a class="course-cover cover" href="http://course.shlll.net/Course/Course9256.html" title="六级425分全程提分班"><img src="/File/Portal/SpecialRecommendCover/2015/6/17/201506171455340885.jpg" data-echo="/File/Portal/SpecialRecommendCover/2015/6/17/201506171455340885.jpg" onerror="this.onerror='';this.src='/file/Images/Default/public_default_200_150.jpg';"></a><div class="title trim"><a href="http://course.shlll.net/Course/Course9256.html" title="六级425分全程提分班">六级425分全程提分班</a></div><span class="signed">269人学习</span><span class="star star0"></span></div></div></div>
+                            <div class="body">
+                                <div id="slide_courserecommend" class="slidecontainer">
+                                    @foreach (Course c in ViewBag.Courses)
+                                    {
+                                        <div class="item">
+                                            <a class="course-cover cover" href="/Course/Show/@c.ID" title="@c.Title">
+                                                <img src="/Course/ShowPicture/@c.ID" data-echo="/Course/ShowPicture/@c.ID" onerror="this.onerror='';this.src='/Course/ShowPicture/@c.ID';">
+                                            </a>
+                                            <div class="title trim">
+                                                <a href="/Course/Show/@c.ID" title="@c.Title">@c.Title</a>
+                                            </div><span class="signed">NaN 人学习</span>
+                                        </div>
+                                    }
+                                     </div>
+                            </div>
                         </div><!-- region end: 首页推荐课程 -->
                     </div>
                 </div><div class="clear"></div>
