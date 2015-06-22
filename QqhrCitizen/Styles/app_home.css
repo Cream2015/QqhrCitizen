@@ -2120,7 +2120,7 @@ div {
             width: 42px;
             height: 34px;
             cursor: pointer;
-            background-image: url(../images/sprite/icon-search.png);
+            background-image: url(../Images/icon-search.png);
         }
 
         .d-headerhome .d-search .clsdrop {
@@ -2260,7 +2260,7 @@ div {
             font-weight: 700;
             text-align: left;
             color: #fff;
-            background-image: url(../images/sprite/lab.jpg);
+            background-image: url(../Images/lab.jpg);
         }
 
         .d-headmenusub .body .box {
@@ -2291,7 +2291,7 @@ div {
             .d-headmenusub .body .box .hot {
                 background-position: right 2px;
                 background-repeat: no-repeat;
-                background-image: url(../images/sprite/hot.gif);
+                background-image: url(../Images/hot.gif);
             }
 
     .d-headmenusub .w2 {
@@ -2463,7 +2463,7 @@ div {
     right: 0;
     width: 290px;
     height: 400px;
-    background-image: url(../images/sprite/board-bodybg.png);
+    background-image: url(../Images/board-bodybg.png);
     background-repeat: repeat;
     overflow: hidden;
 }
@@ -2687,7 +2687,7 @@ div {
     .d-menu-vertical .head {
         width: 90px;
         height: 45px;
-        background-image: url(../images/sprite/icon-title.jpg);
+        background-image: url(../Images/icon-title.jpg);
         background-repeat: no-repeat;
     }
 
@@ -2763,7 +2763,7 @@ div {
                 height: 16px;
                 margin: 26px 0 0;
                 cursor: pointer;
-                background-image: url(../images/sprite/icon-turndot.png);
+                background-image: url(../Images/icon-turndot.png);
                 background-repeat: no-repeat;
             }
 
@@ -2817,7 +2817,7 @@ div {
                     line-height: 16px;
                     padding: 0 10px 0 22px;
                     font-size: 13px;
-                    background-image: url(../images/sprite/icon-courserecommendbyday.png);
+                    background-image: url(../Images/icon-courserecommendbyday.png);
                     background-position: 0 0;
                     background-repeat: no-repeat;
                 }
@@ -2904,7 +2904,7 @@ div {
                 height: 16px;
                 margin: 26px 0 0;
                 cursor: pointer;
-                background-image: url(../images/sprite/icon-turndot.png);
+                background-image: url(../Images/icon-turndot.png);
                 background-repeat: no-repeat;
             }
 
@@ -2969,7 +2969,7 @@ div {
                     margin: 0 0 0 10px;
                     font-size: 12px;
                     color: #ebdb01;
-                    background-image: url(../images/sprite/icon-courserecommendbyday.png);
+                    background-image: url(../Images/icon-courserecommendbyday.png);
                     background-position: 0 0;
                     background-repeat: no-repeat;
                 }
@@ -3039,7 +3039,7 @@ div {
                     padding: 0 10px 0 22px;
                     font-size: 12px;
                     color: #999;
-                    background-image: url(../images/sprite/icon-courserecommendbyday.png);
+                    background-image: url(../Images/icon-courserecommendbyday.png);
                     background-position: 0 0;
                     background-repeat: no-repeat;
                 }
@@ -3354,7 +3354,7 @@ div {
                 height: 16px;
                 margin: 26px 0 0;
                 cursor: pointer;
-                background-image: url(../images/sprite/icon-turndot.png);
+                background-image: url(../Images/icon-turndot.png);
                 background-repeat: no-repeat;
             }
 
@@ -3419,7 +3419,7 @@ div {
                     margin: 0 0 0 10px;
                     font-size: 12px;
                     color: #c87b2d;
-                    background-image: url(../images/sprite/icon-courserecommendbyday.png);
+                    background-image: url(../Images/icon-courserecommendbyday.png);
                     background-position: 0 0;
                     background-repeat: no-repeat;
                 }
@@ -3530,7 +3530,7 @@ div {
                     padding: 0 10px 0 22px;
                     font-size: 12px;
                     color: #999;
-                    background-image: url(../images/sprite/icon-courserecommendbyday.png);
+                    background-image: url(../Images/icon-courserecommendbyday.png);
                     background-position: 0 0;
                     background-repeat: no-repeat;
                 }
@@ -3782,7 +3782,7 @@ div {
     height: 65px;
     line-height: 65px;
     font-size: 2.5em;
-    background-image: url(../images/sprite/icon-help.png);
+    background-image: url(../Images/icon-help.png);
     background-repeat: no-repeat;
 }
 

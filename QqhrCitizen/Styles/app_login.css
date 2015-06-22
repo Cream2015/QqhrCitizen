@@ -2074,7 +2074,7 @@ div, p, span, a {
         width: 42px;
         height: 34px;
         cursor: pointer;
-        background-image: url(../images/sprite/icon-search.png);
+        background-image: url(../Images/icon-search.png);
     }
 
     .f-searchbox .clsdrop {
@@ -2225,7 +2225,7 @@ div, p, span, a {
             width: 42px;
             height: 34px;
             cursor: pointer;
-            background-image: url(../images/sprite/icon-search.png);
+            background-image: url(../Images/icon-search.png);
         }
 
         .f-headerdefault .d-search .clsdrop {
@@ -2512,7 +2512,7 @@ div, p, span, a {
         height: 65px;
         line-height: 65px;
         font-size: 2.5em;
-        background-image: url(../images/sprite/icon-title.png);
+        background-image: url(../Images/icon-title.png);
         background-repeat: no-repeat;
     }
 
@@ -2558,7 +2558,7 @@ div, p, span, a {
             line-height: 40px;
             font-size: 15px;
             padding: 0 0 0 15px;
-            background-image: url(../images/sprite/icon-subtitle.png);
+            background-image: url(../Images/icon-subtitle.png);
             background-repeat: no-repeat;
         }
 
@@ -2773,7 +2773,7 @@ div, p, span, a {
 .i-official {
     display: inline-block;
     width: 27px;
-    background-image: url(../images/sprite/icon-ut.gif);
+    background-image: url(../Images/icon-ut.gif);
     background-position: 0 -48px;
     background-repeat: no-repeat;
 }
@@ -2783,7 +2783,7 @@ div, p, span, a {
     width: 30px;
     height: 24px;
     line-height: 24px;
-    background-image: url(../images/sprite/icon-back.png);
+    background-image: url(../Images/icon-back.png);
     background-repeat: no-repeat;
     background-position: center center;
 }
@@ -3045,7 +3045,7 @@ div, p, span, a {
             width: 42px;
             height: 34px;
             cursor: pointer;
-            background-image: url(../images/sprite/icon-search.png);
+            background-image: url(../Images/icon-search.png);
         }
 
         .d-headerhome .d-search .clsdrop {
@@ -3180,7 +3180,7 @@ div, p, span, a {
         .d-homenav .body .hot {
             background-position: right top;
             background-repeat: no-repeat;
-            background-image: url(../images/sprite/hot.gif);
+            background-image: url(../Images/hot.gif);
         }
 
     .d-homenav .body-last {
@@ -3253,7 +3253,7 @@ div, p, span, a {
         height: 65px;
         line-height: 65px;
         font-size: 2.5em;
-        background-image: url(../images/sprite/icon-title.png);
+        background-image: url(../Images/icon-title.png);
         background-repeat: no-repeat;
         background-position: 0 0;
     }
@@ -3319,7 +3319,7 @@ div, p, span, a {
 
     .d-homemessage .body {
         padding: 0 0 0 130px;
-        background-image: url(../images/sprite/icon-msgtitle.png);
+        background-image: url(../Images/icon-msgtitle.png);
         background-repeat: no-repeat;
     }
 
@@ -3364,7 +3364,7 @@ div, p, span, a {
         height: 50px;
         padding: 50px 0 0;
         text-align: center;
-        background-image: url(../images/sprite/icon-dashboardsimple.png);
+        background-image: url(../Images/icon-dashboardsimple.png);
         background-repeat: no-repeat;
     }
 
@@ -3479,7 +3479,7 @@ div, p, span, a {
         height: 65px;
         line-height: 65px;
         font-size: 2.5em;
-        background-image: url(../images/sprite/icon-title.png);
+        background-image: url(../Images/icon-title.png);
         background-repeat: no-repeat;
         background-position: 0 -65px;
     }
@@ -3572,7 +3572,7 @@ div, p, span, a {
         height: 65px;
         line-height: 65px;
         font-size: 2.5em;
-        background-image: url(../images/sprite/icon-title.png);
+        background-image: url(../Images/icon-title.png);
         background-repeat: no-repeat;
     }
 
@@ -3618,7 +3618,7 @@ div, p, span, a {
             line-height: 40px;
             font-size: 15px;
             padding: 0 0 0 15px;
-            background-image: url(../images/sprite/icon-subtitle.png);
+            background-image: url(../Images/icon-subtitle.png);
             background-repeat: no-repeat;
         }
 
@@ -3690,7 +3690,7 @@ div, p, span, a {
                 height: 16px;
                 margin: 26px 0 0;
                 cursor: pointer;
-                background-image: url(../images/sprite/icon-turndot.png);
+                background-image: url(../Images/icon-turndot.png);
                 background-repeat: no-repeat;
             }
 
@@ -3890,7 +3890,7 @@ div, p, span, a {
                 height: 16px;
                 margin: 26px 0 0;
                 cursor: pointer;
-                background-image: url(../images/sprite/icon-turndot.png);
+                background-image: url(../Images/icon-turndot.png);
                 background-repeat: no-repeat;
             }
 
@@ -4161,7 +4161,7 @@ div, p, span, a {
                 height: 16px;
                 margin: 26px 0 0;
                 cursor: pointer;
-                background-image: url(../images/sprite/icon-turndot.png);
+                background-image: url(../Images/icon-turndot.png);
                 background-repeat: no-repeat;
             }
 
@@ -4216,7 +4216,7 @@ div, p, span, a {
                     line-height: 16px;
                     padding: 0 0 0 22px;
                     font-size: 13px;
-                    background-image: url(../images/sprite/icon-courserecommendbyday.png);
+                    background-image: url(../Images/icon-courserecommendbyday.png);
                     background-position: 0 0;
                     background-repeat: no-repeat;
                 }
@@ -4356,7 +4356,7 @@ div, p, span, a {
                 height: 16px;
                 margin: 26px 0 0;
                 cursor: pointer;
-                background-image: url(../images/sprite/icon-turndot.png);
+                background-image: url(../Images/icon-turndot.png);
                 background-repeat: no-repeat;
             }
 
@@ -4679,7 +4679,7 @@ div, p, span, a {
     height: 65px;
     line-height: 65px;
     font-size: 2.5em;
-    background-image: url(../images/sprite/icon-help.png);
+    background-image: url(../Images/icon-help.png);
     background-repeat: no-repeat;
 }
 
