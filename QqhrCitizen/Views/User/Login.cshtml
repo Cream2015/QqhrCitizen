@@ -95,9 +95,7 @@
                                     </div>
                                     <div class="d-password">
                                         <span class="i">&nbsp;</span>
-                                        <input t>
-                                        <input type="password" class="int-hs logElm" id="password" name="password" maxlength="20" autocorrect="off" autocapitalize="off" placeholder="密码">
-                                        <!--@Html.PasswordFor(x=>x.Password)-->
+                                        @Html.PasswordFor(x=>x.Password,new { @class = "int-hs logElm" })
                                         <div class="clear"></div>
                                     </div>
                                     <div class="d-vcode" style="line-height: 100%; display: none;">
@@ -128,7 +126,7 @@
                                         @Html.ValidationSummary(true)
                                     </div>
                                     <div class="d-sign">
-                                        <a href="/Home/Register">不是学习网用户？请注册。</a>
+                                        <a href="/User/Register">不是学习网用户？请注册。</a>
                                     </div>
                                 </div>
                             </div><!-- region end: 登录 -->
