@@ -3125,7 +3125,7 @@ div, p, span, a {
             width: 42px;
             height: 34px;
             cursor: pointer;
-            background-image: url(../Images/icon-search.png);
+            background-image: url(/Images/icon-search.png);
         }
 
         .d-headerdefault .d-search .clsdrop {
