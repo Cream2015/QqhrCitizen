@@ -205,13 +205,11 @@
                                 <div class="head ebook">
                                 </div>
                             </a>
-                            <div class="body">
-                                <a class="item" href="http://read.shlll.net/Book/Find?parms=8009A97B9D0780C5" title="文学">文学</a>
-                                <a class="item" href="http://read.shlll.net/Book/Find?parms=EE0AB87B08CE6F86" title="小说">小说</a>
-                                <a class="item" href="http://read.shlll.net/Book/Find?parms=A13621ECE4325078" title="文化">文化</a>
-                                <a class="item" href="http://read.shlll.net/Book/Find?parms=40034964ED7B7D3D" title="艺术">艺术</a>
-                                <a class="item" href="http://read.shlll.net/Book/Find?parms=662120BCAAA7D2AA" title="时尚">时尚</a>
-                                <a class="item" href="http://read.shlll.net/Book/Find?parms=300B459192C5DD93" title="经济">经济</a>
+                            <div class="body">                                
+                                @foreach (TypeDictionary td in ViewBag.BookTypes)
+                                {
+                                    <a class="item" href="/Course?tid=@td.ID">@td.TypeValue</a>
+                                }
                             </div>
                         </div>
                     </div>
@@ -288,53 +286,6 @@
                         </div><!-- region end: ad2 -->
                     </div>
                 </div>
-            </div>
-        </div>
-        <div id="d_row_live" class="d-row" style="padding: 20px 0 20px 0;">
-            <div class="d-row-c">
-                <div class="d-col-2-1">
-                    <div class="contentarea">
-                        <div class="d-menu-vertical">
-                            <a href="http://group.shlll.net/">
-                                <div class="head live"></div>
-                            </a>
-                            <div class="body">
-                                <a class="item" href="http://group.shlll.net/home/discovery?tid=44B6D952D9787094&amp;rid=8E32A307C609F25A" title="摄影">摄影</a>
-                                <a class="item" href="http://group.shlll.net/home/discovery?tid=9F93E0D7D4903760&amp;rid=8E32A307C609F25A" title="舞蹈">舞蹈</a>
-                                <a class="item" href="http://group.shlll.net/home/discovery?tid=7B7F9795A9E641A4&amp;rid=8E32A307C609F25A" title="读书">读书</a>
-                                <a class="item" href="http://group.shlll.net/home/discovery?tid=9D91141097345C24&amp;rid=8E32A307C609F25A" title="音乐">音乐</a>
-                                <a class="item" href="http://group.shlll.net/home/discovery?tid=12FF2473CE16B988&amp;rid=8E32A307C609F25A" title="健身">健身</a>
-                                <a class="item" href="http://group.shlll.net/home/discovery?tid=94757066CB8E6EF4&amp;rid=8E32A307C609F25A" title="生活">生活</a>
-                                <a class="item" href="http://group.shlll.net/home/discovery?tid=9E2D1044552827FF&amp;rid=8E32A307C609F25A" title="绘画">绘画</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="d-col-2-11">
-                    <div class="contentarea">
-                        <!-- region start: 首页推荐团队 --><div id="d_grouprecommend" class="d-grouprecommend"><div class="body"><span class="item"><a class="portrait" href="http://group.shlll.net/home/detail?tid=36C1834727D3D32A" title="甘柏村老年文化团队"><img src="/File/Team/Logo/2015/6/18/201506181048253885.jpg" data-echo="/File/Team/Logo/2015/6/18/201506181048253885.jpg" onerror="this.onerror='';this.src='/file/Images/Default/public_default_200_200.jpg';"></a><span class="name trim"><a href="http://group.shlll.net/home/detail?tid=36C1834727D3D32A" title="甘柏村老年文化团队">甘柏村老年文化团队</a></span><span class="users">8位成员</span></span><span class="item"><a class="portrait" href="http://group.shlll.net/home/detail?tid=A3F55488386852D0" title="外冈新苑社区唱响新生活歌唱队"><img src="/File/Team/Logo/2015/6/11/201506111057056678.jpg" data-echo="/File/Team/Logo/2015/6/11/201506111057056678.jpg" onerror="this.onerror='';this.src='/file/Images/Default/public_default_200_200.jpg';"></a><span class="name trim"><a href="http://group.shlll.net/home/detail?tid=A3F55488386852D0" title="外冈新苑社区唱响新生活歌唱队">外冈新苑社区唱响新生活歌唱队</a></span><span class="users">6位成员</span></span><span class="item"><a class="portrait" href="http://group.shlll.net/home/detail?tid=B44677CE412E055E" title="圆梦书香屋"><img src="/File/Team/Logo/2015/6/19/201506191443063350.jpg" data-echo="/File/Team/Logo/2015/6/19/201506191443063350.jpg" onerror="this.onerror='';this.src='/file/Images/Default/public_default_200_200.jpg';"></a><span class="name trim"><a href="http://group.shlll.net/home/detail?tid=B44677CE412E055E" title="圆梦书香屋">圆梦书香屋</a></span><span class="users">1位成员</span></span><span class="item"><a class="portrait" href="http://group.shlll.net/home/detail?tid=8A2C0DD618B2CD4E" title="古韵书香读书团队"><img src="/File/Team/Logo/2015/6/17/201506171346286120.jpg" data-echo="/File/Team/Logo/2015/6/17/201506171346286120.jpg" onerror="this.onerror='';this.src='/file/Images/Default/public_default_200_200.jpg';"></a><span class="name trim"><a href="http://group.shlll.net/home/detail?tid=8A2C0DD618B2CD4E" title="古韵书香读书团队">古韵书香读书团队</a></span><span class="users">15位成员</span></span><span class="item"><a class="portrait" href="http://group.shlll.net/home/detail?tid=2D50DC381410567E" title="希望社区曦望悦读社"><img src="/File/Team/Logo/2015/6/8/201506080819081119.jpg" data-echo="/File/Team/Logo/2015/6/8/201506080819081119.jpg" onerror="this.onerror='';this.src='/file/Images/Default/public_default_200_200.jpg';"></a><span class="name trim"><a href="http://group.shlll.net/home/detail?tid=2D50DC381410567E" title="希望社区曦望悦读社">希望社区曦望悦读社</a></span><span class="users">19位成员</span></span><span class="item"><a class="portrait" href="http://group.shlll.net/home/detail?tid=98ADEA0188BA8D38" title="聚能量团队"><img src="/File/Team/Logo/2015/6/17/201506171011364997.jpg" data-echo="/File/Team/Logo/2015/6/17/201506171011364997.jpg" onerror="this.onerror='';this.src='/file/Images/Default/public_default_200_200.jpg';"></a><span class="name trim"><a href="http://group.shlll.net/home/detail?tid=98ADEA0188BA8D38" title="聚能量团队">聚能量团队</a></span><span class="users">6位成员</span></span></div></div><!-- region end: 首页推荐团队 --><!-- region start: 首页热门话题 --><div id="d_topicrecommend" class="d-topicrecommend">
-                            <div class="body">
-                                <a class="itemhot" href="http://group.shlll.net/home/work"><span class="title">最新成果</span><span class="info">更多成果</span></a><a class="item" style="background-color: #08777e;" href="http://group.shlll.net/home/workdetail/E22BA4330B7F8A4D">
-                                    <!--<span class="title">
-                                      <a href="http://group.shlll.net/home/workdetail/E22BA4330B7F8A4D" title="郑小云书法作品">郑小云书法作品</a>
-                                    </span>-->
-                                    <span class="title">郑小云书法作品</span><span class="info"><span class="reply">1人回应</span><span class="like">2人喜欢</span></span>
-                                </a>
-                                <a class="item" style="background-color: #097980;" href="http://group.shlll.net/home/workdetail/928A8AC0C6CC3D02">
-                                    <!--<span class="title">
-                                      <a href="http://group.shlll.net/home/workdetail/928A8AC0C6CC3D02" title="【疾病护理】夏天宝宝防痱子锦囊">【疾病护理】夏天宝宝防痱子锦囊</a>
-                                    </span>-->
-                                    <span class="title">【疾病护理】夏天宝宝防痱子锦囊</span><span class="info"><span class="reply">1人回应</span><span class="like">6人喜欢</span></span>
-                                </a><a class="item" style="background-color: #18858c;" href="http://group.shlll.net/home/workdetail/D94343F2DDA4A663">
-                                    <!--<span class="title">
-                                      <a href="http://group.shlll.net/home/workdetail/D94343F2DDA4A663" title="【亲子教育】日记画的6大好处">【亲子教育】日记画的6大好处</a>
-                                    </span>-->
-                                    <span class="title">【亲子教育】日记画的6大好处</span><span class="info"><span class="reply">0人回应</span><span class="like">3人喜欢</span></span>
-                                </a>
-                            </div>
-                        </div><!-- region end: 首页热门话题 -->
-                    </div>
-                </div><div class="clear"></div>
             </div>
         </div>
         <div class="d-row" style="background-color: #ececec; border-top: 2px solid #474747;">
