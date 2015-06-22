@@ -1902,7 +1902,7 @@ div {
 
     .d-topmenu .d-top-sign {
         position: absolute;
-        right: 120px;
+        right: 0;
         top: 0;
         width: 500px;
     }
@@ -2095,7 +2095,7 @@ div {
         position: absolute;
         top: 28px;
         right: 0;
-        width: 390px;
+        width: 440px!important;
         height: 34px;
     }
 
