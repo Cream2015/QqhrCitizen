@@ -29,6 +29,10 @@ namespace QqhrCitizen.Models
         /// </summary>
         public int Browses { get; set; }
 
+        public bool IsHaveImg { get; set; }
+
+        public string FirstImgUrl { get; set; }
+
         [NotMapped]
         public string Sumamry
         {

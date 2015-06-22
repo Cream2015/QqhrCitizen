@@ -22,6 +22,10 @@ namespace QqhrCitizen.Models.ViewModel
         public string Username { get; set; }
         public string Sumamry { set; get; }
 
+        public bool IsHaveImg { get; set; }
+
+        public string FirstImgUrl { get; set; }
+
         public vNews() { }
 
         public vNews(News model)
@@ -36,6 +40,8 @@ namespace QqhrCitizen.Models.ViewModel
             this.Username = model.User.Username;
             this.Browses = model.Browses;
             this.Sumamry = QqhrCitizen.Helpers.HtmlFilter.Instance.SanitizeHtml(model.Sumamry);
+            this.IsHaveImg = model.IsHaveImg;
+            this.FirstImgUrl = model.FirstImgUrl;
         }
     }
 }

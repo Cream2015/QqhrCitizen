@@ -224,7 +224,13 @@ namespace QqhrCitizen.Controllers
             model.UserID = CurrentUser.ID;
             model.Time = DateTime.Now;
             model.Browses = 0;
+            if (model.IsHaveImg)
+            {
+                string[] imgs = Helpers.String.GetHtmlImageUrlList(model.Content);
+                model.FirstImgUrl = imgs[0];
+            }
             db.News.Add(model);
+            
             db.SaveChanges();
             return RedirectToAction("NewsManager");
         }
