@@ -20,6 +20,7 @@ namespace QqhrCitizen.Models
         public DbSet<Question> Questions { get; set; }
         public DbSet<ResourceLink> ResourceLinks { get; set; }
         public DbSet<TypeDictionary> TypeDictionaries { get; set; }
+        public DbSet<Live> Lives { get; set; }
 
         public DbSet<LessionScore> LessionScore { set; get; }
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
