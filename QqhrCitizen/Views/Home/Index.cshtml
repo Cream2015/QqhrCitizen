@@ -273,7 +273,7 @@
                             @{ string[] bookcolors = { "#23a532", "#169425", "#189727", "#11851e", "#23a532", "#189727" }; var bi = 0; }
                             @foreach (TypeDictionary td in ViewBag.BookTypes)
                             {
-                                <div class="item" style="background-color: @(bookcolors[i++]);">
+                                <div class="item" style="background-color: @(bookcolors[bi++]);">
                                     <a href="#" title="@td.TypeValue">@td.TypeValue</a>
                                     <div>
                                         @foreach (TypeDictionary td2 in td.Children.Take(6).ToList())
@@ -287,39 +287,19 @@
                     </div><div id="d_bookrecommend" class="d-bookrecommend">
                         <div class="body">
                             <div id="slide_bookrecommend" class="slidecontainer">
-                                <div class="item">
-                                    <a class="cover readingCover" href="http://read.shlll.net/Reading/Reading12615.html" title="何以笙箫默：精装版"><img src="/File/Reading/BookPic/2015/2/4/201502041425228823.png" data-echo="/File/Reading/BookPic/2015/2/4/201502041425228823.png" onerror="this.onerror='';this.src='/file/Images/Default/public_default_150_200.jpg';"></a><div class="title trim"><a href="http://read.shlll.net/Reading/Reading12615.html" title="何以笙箫默：精装版">何以笙箫默：精装版</a></div><div class="author trim">
-                                        顾漫
+                                @foreach (EBook eb in ViewBag.Books)
+                                {
+                                    <div class="item">
+                                        <a class="cover readingCover" href="/EBook/Show/@eb.ID" title="@eb.Title">
+                                            <img src="/EBook/ShowPicture/@eb.ID" data-echo="/EBook/ShowPicture/@eb.ID" onerror="this.onerror='';this.src='/EBook/ShowPicture/@eb.ID';">
+                                        </a>
+                                        <div class="title trim">
+                                            <a href="/EBook/Show/@eb.ID" title="@eb.Title">@eb.Title</a>
+                                        </div><div class="author trim">
+                                            @eb.Author
+                                        </div>
                                     </div>
-                                </div><div class="item">
-                                    <a class="cover readingCover" href="http://read.shlll.net/Reading/Reading12683.html" title="时间都去哪儿了：我和老爸30年"><img src="/file/reading/EBook/20150108/RYXX00-60437937.jpg" data-echo="/file/reading/EBook/20150108/RYXX00-60437937.jpg" onerror="this.onerror='';this.src='/file/Images/Default/public_default_150_200.jpg';"></a><div class="title trim"><a href="http://read.shlll.net/Reading/Reading12683.html" title="时间都去哪儿了：我和老爸30年">时间都去哪儿了：我和老爸30年</a></div><div class="author trim">
-                                        大萌子
-                                    </div>
-                                </div><div class="item">
-                                    <a class="cover readingCover" href="http://read.shlll.net/Reading/Reading27750.html" title="迷失在古堡与田园之间"><img src="/file/reading/EBook/20150205/ZGQG00-60444174.jpg" data-echo="/file/reading/EBook/20150205/ZGQG00-60444174.jpg" onerror="this.onerror='';this.src='/file/Images/Default/public_default_150_200.jpg';"></a><div class="title trim"><a href="http://read.shlll.net/Reading/Reading27750.html" title="迷失在古堡与田园之间">迷失在古堡与田园之间</a></div><div class="author trim">
-                                        王冰冰等著
-                                    </div>
-                                </div><div class="item">
-                                    <a class="cover readingCover" href="http://read.shlll.net/Reading/Reading9771.html" title="培训创新思维"><img src="/File/Reading/BookPic/2014/6/24/201406241623357499.jpg" data-echo="/File/Reading/BookPic/2014/6/24/201406241623357499.jpg" onerror="this.onerror='';this.src='/file/Images/Default/public_default_150_200.jpg';"></a><div class="title trim"><a href="http://read.shlll.net/Reading/Reading9771.html" title="培训创新思维">培训创新思维</a></div><div class="author trim">
-                                        财政部干部教育中心
-                                    </div>
-                                </div><div class="item">
-                                    <a class="cover readingCover" href="http://read.shlll.net/Reading/Reading8577.html" title="四大名著-三国演义（上下）"><img src="/file/reading/EBook/20140421/BJRZT22000-3001815254.jpg" data-echo="/file/reading/EBook/20140421/BJRZT22000-3001815254.jpg" onerror="this.onerror='';this.src='/file/Images/Default/public_default_150_200.jpg';"></a><div class="title trim"><a href="http://read.shlll.net/Reading/Reading8577.html" title="四大名著-三国演义（上下）">四大名著-三国演义（上下）</a></div><div class="author trim">
-                                        《图说天下·古典名著系列》编委会
-                                    </div>
-                                </div><div class="item">
-                                    <a class="cover readingCover" href="http://read.shlll.net/Reading/Reading11622.html" title="每天读点中国历史"><img src="/File/20140513/Reading/BookPic/201405131615160152.jpg" data-echo="/File/20140513/Reading/BookPic/201405131615160152.jpg" onerror="this.onerror='';this.src='/file/Images/Default/public_default_150_200.jpg';"></a><div class="title trim"><a href="http://read.shlll.net/Reading/Reading11622.html" title="每天读点中国历史">每天读点中国历史</a></div><div class="author trim">
-                                        罗宾邓多
-                                    </div>
-                                </div><div class="item">
-                                    <a class="cover readingCover" href="http://read.shlll.net/Reading/Reading10343.html" title="问道名师——王国元名师工作室的教学实践与研究"><img src="/file/reading/EBook/20140421/NBCB00-60032250.jpg" data-echo="/file/reading/EBook/20140421/NBCB00-60032250.jpg" onerror="this.onerror='';this.src='/file/Images/Default/public_default_150_200.jpg';"></a><div class="title trim"><a href="http://read.shlll.net/Reading/Reading10343.html" title="问道名师——王国元名师工作室的教学实践与研究">问道名师——王国元名师工作室的教学实践与研究</a></div><div class="author trim">
-                                        余姚日报报业有限公司图书音像编辑中心
-                                    </div>
-                                </div><div class="item"><a class="cover readingCover" href="http://read.shlll.net/Reading/Reading9622.html" title="打败12个商业坏习惯"><img src="/file/reading/EBook/20140421/GTBY00-327598.jpg" data-echo="/file/reading/EBook/20140421/GTBY00-327598.jpg" onerror="this.onerror='';this.src='/file/Images/Default/public_default_150_200.jpg';"></a><div class="title trim"><a href="http://read.shlll.net/Reading/Reading9622.html" title="打败12个商业坏习惯">打败12个商业坏习惯</a></div><div class="author trim"></div></div><div class="item"><a class="cover readingCover" href="http://read.shlll.net/Reading/Reading4628.html" title="把话说到心坎里"><img src="/File/Reading/BookPic/2014/6/24/201406240924382714.jpg" data-echo="/File/Reading/BookPic/2014/6/24/201406240924382714.jpg" onerror="this.onerror='';this.src='/file/Images/Default/public_default_150_200.jpg';"></a><div class="title trim"><a href="http://read.shlll.net/Reading/Reading4628.html" title="把话说到心坎里">把话说到心坎里</a></div><div class="author trim"></div></div><div class="item">
-                                    <a class="cover readingCover" href="http://read.shlll.net/Reading/Reading27793.html" title="人气快炒便当菜"><img src="/file/reading/EBook/20150205/ZGQG00-60444355.jpg" data-echo="/file/reading/EBook/20150205/ZGQG00-60444355.jpg" onerror="this.onerror='';this.src='/file/Images/Default/public_default_150_200.jpg';"></a><div class="title trim"><a href="http://read.shlll.net/Reading/Reading27793.html" title="人气快炒便当菜">人气快炒便当菜</a></div><div class="author trim">
-                                        胡维勤主编
-                                    </div>
-                                </div>
+                                }
                             </div>
                         </div>
                     </div><!-- region end: 首页推荐悦读 -->
@@ -328,18 +308,6 @@
         </div>
     </div>
 
-    <div class="d-row" style="padding: 20px 0 0 0;">
-        <div class="d-row-c">
-            <div class="d-col-1">
-                <div class="contentarea">
-                    <!-- region start: ad2 --><!--<div id="d_ad_home_default_2" class="d-ad-1000x90" data-km-url="http://res.shlll.net//widget/home/ad_home_default_2?wb=d:ad_home_default_2(getad)"></div>-->
-                    <div id="d_ad_home_default_2" class="d-ad-1000x90" data-km-url="">
-                        <a href="http://photo.shlll.net/group.html" rel="nofollow" target="_blank"></a>
-                    </div><!-- region end: ad2 -->
-                </div>
-            </div>
-        </div>
-    </div>
     <div class="d-row" style="background-color: #ececec; border-top: 2px solid #474747;">
         <div class="d-row-c">
             <div class="d-col-1">

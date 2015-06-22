@@ -18,6 +18,7 @@ namespace QqhrCitizen.Models
         public string Description { get; set; }
         [ForeignKey("TypeDictionary")]
         public int EBookTypeID { get; set; }
+        public string Author { get; set; }
         public virtual TypeDictionary TypeDictionary { get; set; }
         public DateTime Time { get; set; }
         [ForeignKey("User")]
