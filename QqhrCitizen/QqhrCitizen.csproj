@@ -208,7 +208,7 @@
     <Content Include="Scripts\spin.min.js" />
     <None Include="Scripts\_references.js" />
     <Content Include="Styles\admin.css" />
-    <Content Include="Styles\app_course.css" />
+    <Content Include="Styles\app_main.css" />
     <Content Include="Styles\app_home.css" />
     <Content Include="Styles\app_login.css" />
     <Content Include="Styles\citizen.css" />
