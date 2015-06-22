@@ -1,0 +1,13 @@
+﻿
+    .tis-container { /*width: 260px;*/ height:320px; overflow:auto; }
+    .tis-item { width:250px; line-height:150%; margin-bottom:10px; padding:0 15px; }
+    .tis-item div { margin:6px 0; font-size:12px; width:100%; }
+    .tis-item a,.tis-ed { cursor:text; color:#48dffc; font-size:12px; text-decoration:none; }
+    .tis-item a:hover { text-decoration:none; }
+    .tis-content { word-break:break-all; word-wrap:break-word; }
+    .tis-type { color:#f5ff00; }
+    .tis-content { color:#fff; }
+    .d-board .tabcontent ul li pre { padding:0; border:none; background:none; color:#fff; margin:0; }
+    .external-scroll_x { display:none; }
+    .external-scroll_y { right:10px; max-height:300px; }
+    .external-scroll_x, .external-scroll_y, .external-scroll_y .scroll-bar { background-color:#979797; }
