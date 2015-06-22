@@ -13,7 +13,7 @@ namespace QqhrCitizen.Controllers
         // GET: EBook
         public ActionResult Index()
         {
-            string tid = HttpContext.Request.QueryString["tid"].ToString();
+            /*string tid = HttpContext.Request.QueryString["tid"].ToString();
             ViewBag.Tid = tid;
             var lstBooks = db.EBooks.OrderByDescending(b => b.Browses).Take(8).ToList();
             var type = new TypeDictionary();
@@ -23,7 +23,7 @@ namespace QqhrCitizen.Controllers
                 type = db.TypeDictionaries.Find(id);
             }
             ViewBag.Type = type.TypeValue;
-            ViewBag.EBooks = lstBooks;
+            ViewBag.EBooks = lstBooks;*/
             return View();
         }
 
