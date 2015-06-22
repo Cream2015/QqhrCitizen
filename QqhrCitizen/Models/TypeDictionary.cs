@@ -33,8 +33,12 @@ namespace QqhrCitizen.Models
         /// </summary>
         public TypeBelonger Belonger { get; set; }
 
-        
+        [ForeignKey("Father")]
         public int? FatherID { get; set; }
+
+        public virtual TypeDictionary Father { get; set; }
+
+        public virtual ICollection<TypeDictionary> Children { get; set; }
  
     }
 

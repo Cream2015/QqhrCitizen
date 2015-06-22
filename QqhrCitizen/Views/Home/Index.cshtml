@@ -78,7 +78,6 @@
                         <div class="body channel">
                             <div class="lab">频道</div>
                             <div class="box">
-
                             </div>
                         </div>
                         <div class="clear"></div>
@@ -115,42 +114,42 @@
                     </li>
                 }
             </ul><div id="d_banner_c" class="d-banner-c" style="visibility: visible;">
-    <div id="d_banner_thumb" class="d-banner-thumb">
-        @foreach (News n in ViewBag.News)
-        {
-            <a href="/News/Show/@n.ID" target="_blank" style="background-image: url(@n.ImgUrl.First()); margin-top: 0px;">
-                <p><span style="width: 0px;"></span></p>
-            </a>
-        }
-    </div><div id="d_board" class="d-board">
-        <div class="tabbar">
-            <div class="tab_select" style="width:144px;" onmouseover="sub_t(42);km_tab.tabclk(0,'d_board');">今日历史</div><div class="tab" style="width:144px;" onmouseover="sub_t(186);km_tab.tabclk(1,'d_board');">最近新闻</div><div class="bar" style="left: 42px;"></div>
-        </div>
-        <div class="tabcontent">
-            <div id="d_board2" style="padding-top:10px;" class="">
-                <div class="scroll-wrapper external-scroll tis-container" style="position: relative;">
-                    <div class="external-scroll tis-container scroll-content" style="height: auto; margin-bottom: 0px; margin-right: 0px;">
-                        <div id="tih" style="height: 314px;">
-                            <div class="tis-item">
-                                <div><span class="tis-type">[历史文化]</span></div>
-                                <div class="tis-ed"><a href="javascript:;" title="格致书院开院" class="tis-title">[1876] 格致书院开院</a></div>
-                                <div class="tis-content" style="color:#fff; font-size:12px;">&nbsp; &nbsp; &nbsp; 1875年底，格致书院完工，位于上海北门外西北隅八仙桥北、英租界正丰街。李鸿章题写了匾额。1879年正式招生。该院经常进行科技知识的演讲，并创办《格致汇编》。1913年改办工部局华人学校。1933年秋分为光启（徐光启）院科学系，炎武（顾炎武）院地理系，念孙院（王念孙）语言学及经学系，有光（归有光）院文学系四院，各设高中、初中及小学。1945年10月更名格致中学。</div>
-                            </div>
-                            <div style="height:6px; overflow:hidden;">&nbsp;</div>
-                        </div>
-                    </div><div class="scroll-element scroll-element_show-arrows scroll-x" style="display: none; width: 290px;"><div class="scroll-arrow scroll-arrow_less"></div><div class="scroll-arrow scroll-arrow_more"></div><div class="scroll-element_outer">    <div class="scroll-element_size"></div>    <div class="scroll-element_inner-wrapper">        <div class="scroll-element_inner">            <div class="scroll-element_inner-bottom"></div>        </div>    </div>    <div class="scroll-bar">        <div class="scroll-bar_body">            <div class="scroll-bar_body-inner"></div>        </div>        <div class="scroll-bar_bottom"></div>        <div class="scroll-bar_center"></div>    </div></div></div>
-                </div><div class="external-scroll_x"><div class="scroll-element_outer"><div class="scroll-element_size"></div><div class="scroll-element_inner"></div><div class="scroll-bar"></div></div></div><div class="external-scroll_y scroll-element_show-arrows scroll-y" style="display: none; height: 320px;"><div class="scroll-element_outer"><div class="scroll-element_size"></div><div class="scroll-element_inner"></div><div class="scroll-bar" style="height: 100px;"></div></div></div>
-            </div><div class="clsHide">
-                <ul class="d-board-e">
-            @foreach (News n in ViewBag.News)
+                <div id="d_banner_thumb" class="d-banner-thumb">
+                    @foreach (News n in ViewBag.News)
+                    {
+                        <a href="/News/Show/@n.ID" target="_blank" style="background-image: url(@n.ImgUrl.First()); margin-top: 0px;">
+                            <p><span style="width: 0px;"></span></p>
+                        </a>
+                    }
+                </div><div id="d_board" class="d-board">
+                    <div class="tabbar">
+                        <div class="tab_select" style="width:144px;" onmouseover="sub_t(42);km_tab.tabclk(0,'d_board');">今日历史</div><div class="tab" style="width:144px;" onmouseover="sub_t(186);km_tab.tabclk(1,'d_board');">最近新闻</div><div class="bar" style="left: 42px;"></div>
+                    </div>
+                    <div class="tabcontent">
+                        <div id="d_board2" style="padding-top:10px;" class="">
+                            <div class="scroll-wrapper external-scroll tis-container" style="position: relative;">
+                                <div class="external-scroll tis-container scroll-content" style="height: auto; margin-bottom: 0px; margin-right: 0px;">
+                                    <div id="tih" style="height: 314px;">
+                                        <div class="tis-item">
+                                            <div><span class="tis-type">[历史文化]</span></div>
+                                            <div class="tis-ed"><a href="javascript:;" title="格致书院开院" class="tis-title">[1876] 格致书院开院</a></div>
+                                            <div class="tis-content" style="color:#fff; font-size:12px;">&nbsp; &nbsp; &nbsp; 1875年底，格致书院完工，位于上海北门外西北隅八仙桥北、英租界正丰街。李鸿章题写了匾额。1879年正式招生。该院经常进行科技知识的演讲，并创办《格致汇编》。1913年改办工部局华人学校。1933年秋分为光启（徐光启）院科学系，炎武（顾炎武）院地理系，念孙院（王念孙）语言学及经学系，有光（归有光）院文学系四院，各设高中、初中及小学。1945年10月更名格致中学。</div>
+                                        </div>
+                                        <div style="height:6px; overflow:hidden;">&nbsp;</div>
+                                    </div>
+                                </div><div class="scroll-element scroll-element_show-arrows scroll-x" style="display: none; width: 290px;"><div class="scroll-arrow scroll-arrow_less"></div><div class="scroll-arrow scroll-arrow_more"></div><div class="scroll-element_outer">    <div class="scroll-element_size"></div>    <div class="scroll-element_inner-wrapper">        <div class="scroll-element_inner">            <div class="scroll-element_inner-bottom"></div>        </div>    </div>    <div class="scroll-bar">        <div class="scroll-bar_body">            <div class="scroll-bar_body-inner"></div>        </div>        <div class="scroll-bar_bottom"></div>        <div class="scroll-bar_center"></div>    </div></div></div>
+                            </div><div class="external-scroll_x"><div class="scroll-element_outer"><div class="scroll-element_size"></div><div class="scroll-element_inner"></div><div class="scroll-bar"></div></div></div><div class="external-scroll_y scroll-element_show-arrows scroll-y" style="display: none; height: 320px;"><div class="scroll-element_outer"><div class="scroll-element_size"></div><div class="scroll-element_inner"></div><div class="scroll-bar" style="height: 100px;"></div></div></div>
+                        </div><div class="clsHide">
+                            <ul class="d-board-e">
+                                @foreach (News n in ViewBag.News)
             {
-                <li><a href="/News/Show/@n.ID" title="@n.Title">@n.Title</a></li>
-            }
-                </ul>
+                                    <li><a href="/News/Show/@n.ID" title="@n.Title">@n.Title</a></li>
+                                }
+                            </ul>
+                        </div>
+                    </div>
+                </div>
             </div>
-        </div>
-    </div>
-</div>
 
         </div>
         <div id="d_row_news" class="d-row" style="padding: 20px 0 20px 0; background-color: #f7f7f7;">
@@ -186,7 +185,7 @@
                                             </div><span class="signed">NaN 人学习</span>
                                         </div>
                                     }
-                                     </div>
+                                </div>
                             </div>
                         </div><!-- region end: 首页推荐课程 -->
                     </div>
@@ -202,190 +201,218 @@
                                 <div class="head course"></div>
                             </a>
                             <div class="body">
-                                <a class="item" href="http://act.shlll.net/event/discovery/p_1/43E46B44CFDCA611/A63B73AEB3B95A63" title="读书">读书</a>
-                                <a class="item" href="http://act.shlll.net/event/discovery/p_1/5F5044B8D82D55DD/A63B73AEB3B95A63" title="摄影">摄影</a>
-                                <a class="item" href="http://act.shlll.net/event/discovery/p_1/3C3EDA700307444B/A63B73AEB3B95A63" title="绿叶TV">绿叶TV</a>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="d-col-2-11">
                     <div class="contentarea">
-                        <!-- region start: 首页推荐活动 --><div id="d_eventrecommend" class="d-eventrecommend">
-                            <!--
-                            <div class="head">本月热门活动
-                              <span class="turn">
-                                <span class="dot_select" onclick="km_slide.dottran('slide_eventrecommend',0,330)"></span>
-                                <span class="dot" onclick="km_slide.dottran('slide_eventrecommend',1,330)"></span>
-                                <span class="dot" onclick="km_slide.dottran('slide_eventrecommend',2,330)"></span>
-                              </span>
-                            </div>
-                            -->
-                            <div class="body"><div id="slide_eventrecommend" class="slidecontainer"><span class="itemhot"><a class="act-cover cover" href="http://act.shlll.net/Activities/Activities134.html" title="第5届上海社区网上读书活动"><img src="/File/Portal/SpecialRecommendCover/2015/5/4/201505041716130846.jpg" data-echo="/File/Portal/SpecialRecommendCover/2015/5/4/201505041716130846.jpg" onerror="this.onerror='';this.src='/file/Images/Default/public_default_200_150.jpg';"></a><div class="title trim"><a href="http://act.shlll.net/Activities/Activities134.html" title="第5届上海社区网上读书活动">第5届上海社区网上读书活动</a></div><span class="participant">2931</span><span class="date">2015.04.22-2015.09.30</span><div class="desc"><p>第5届上海社区网上读书活动以“弘扬传统文化，营造书香社区”为主题，旨在培育网上学习交流的良好氛围，丰富和活跃市民的精神文化生活，营造良好的终身学习氛围，激励更多的市民参与学习，全面推进学习型城市建设。</p><p>本届活动积极整合、盘活现有阅读资源，着眼“弘扬民族传统文化”的阅读与指导，创新开展四个微系列阅读活动，涵盖“微点评”“微朗诵”“微编剧”“微报道”，构建无微不至网上读书体验，以多种渠道展示市民的学习成果。</p><p><img src="/file/20150428/ueditor/6356581720995433928136739.jpg" title="学习网微信二维码.jpg"></p><p>参与“微朗诵”活动请扫描二维码关注公众微信账号~</p></div></span><span class="item"><a class="act-cover cover" href="http://act.shlll.net/Activities/Activities137.html" title="上海市民诗歌节暨第九届上海市民诗歌创作活动"><img src="/File/Portal/SpecialRecommendCover/2015/5/4/201505041715349269.jpg" data-echo="/File/Portal/SpecialRecommendCover/2015/5/4/201505041715349269.jpg" onerror="this.onerror='';this.src='/file/Images/Default/public_default_200_150.jpg';"></a><div class="title trim"><a href="http://act.shlll.net/Activities/Activities137.html" title="上海市民诗歌节暨第九届上海市民诗歌创作活动">上海市民诗歌节暨第九届上海市民诗歌创作活动</a></div><span class="participant">217</span><span class="date">2015.04.22-2015.09.15</span><div class="desc"><p>上海市民诗歌节暨第九届上海市民诗歌创作活动以“传承中华优秀传统文化，弘扬社会主义核心价值观”为主题，通过组织广大市民参加诗歌创作活动，弘扬和传承祖国诗歌文化，践行社会主义核心价值观。<br></p><p>上海市民诗歌节是上海“全民终身学习活动周”系列活动的重要组成部分，以“诗歌创作和优秀诗歌作品评选”为主线，包括市民诗歌作品征集与评选、专家讲座、名诗诵读和赏析活动等。</p></div></span><span class="item"><a class="act-cover cover" href="http://act.shlll.net/Activities/Activities135.html" title="上海开放大学2015主题读书节活动"><img src="/File/Portal/SpecialRecommendCover/2015/5/4/201505041716489334.jpg" data-echo="/File/Portal/SpecialRecommendCover/2015/5/4/201505041716489334.jpg" onerror="this.onerror='';this.src='/file/Images/Default/public_default_200_150.jpg';"></a><div class="title trim"><a href="http://act.shlll.net/Activities/Activities135.html" title="上海开放大学2015主题读书节活动">上海开放大学2015主题读书节活动</a></div><span class="participant">81</span><span class="date">2015.04.22-2015.09.30</span><div class="desc"><p>为了更好地拓展师生阅读视野，提升师生综合素养，上海开放大学在历年全系统开展读书节活动的基础上，2015年拟开展以“放飞我的中国梦”为主题的读书节活动。</p><p>活动一：读书感言</p><p>读者可结合纪念中国工会成立90周年、纪念世界反法西斯战争和中国抗日战争胜利70周年等重大历史事件，从自己教学、工作、学习、生活等各个方面的感悟着手，畅谈读书的体会或对某本书的感受，阐述个人梦与中国梦的关系，探讨有限生命与无限知识的融合。</p><p>活动二：摄影大赛<br></p><p>读者可选择美丽家园、智慧生活、幸福一家、菁菁校园等角度提交作品，展现社会生活、智慧城市、家庭个人、校园文化等多个方面的变化与发展。请您先点击上方“参与活动”参与本次活动后，再<a href="http://photo.shlll.net/activityshow.html?id=51" target="_blank">点此进入摄影大赛页面</a>。</p><p>活动三：知识竞赛</p><p>通过微信开展知识竞赛，推动碎片化学习、主动性学习，提高阅读兴趣，提升读者素养，也增加大家对中国梦的认知与认同。扫描下方二维码手机答题或<a href="http://www.wenjuan.com/s/BVjiqa/" target="_blank">点此进入电脑版开大知识竞赛</a></p><p><img src="/file/20150424/ueditor/6356546696428284024270136.png" title="QQ截图20150424101004.png" style="width: 146px; height: 164px;"></p></div></span><span class="item"><a class="act-cover cover" href="http://act.shlll.net/Activities/Activities136.html" title="上海市进城务工人员读书活动"><img src="/File/Portal/SpecialRecommendCover/2015/5/4/201505041716331774.jpg" data-echo="/File/Portal/SpecialRecommendCover/2015/5/4/201505041716331774.jpg" onerror="this.onerror='';this.src='/file/Images/Default/public_default_200_150.jpg';"></a><div class="title trim"><a href="http://act.shlll.net/Activities/Activities136.html" title="上海市进城务工人员读书活动">上海市进城务工人员读书活动</a></div><span class="participant">23</span><span class="date">2015.04.22-2015.09.30</span><div class="desc"><p>活动主题是“悦读城市 融入上海”，进城务工人员读书活动通过线上和线下联动的方式展开，线上活动依托上海学习网开展活动，主要是以个人或团队形式参加“微点评”和“微朗诵”；线下活动以进城务工人员技能文化培训为载体，通过集体学习的方式进行。</p></div></span><span class="item"><a class="act-cover cover" href="http://act.shlll.net/Activities/Activities76.html" title="康复教育进社区活动"><img src="/File/Activity/ActivityPic/2014/8/18/201408181359341402.jpg" data-echo="/File/Activity/ActivityPic/2014/8/18/201408181359341402.jpg" onerror="this.onerror='';this.src='/file/Images/Default/public_default_200_150.jpg';"></a><div class="title trim"><a href="http://act.shlll.net/Activities/Activities76.html" title="康复教育进社区活动">康复教育进社区活动</a></div><span class="participant">7</span><span class="date">2014.05.01-2014.10.31</span><div class="desc"><p>　　《中共中央国务院关于促进残疾人事业发展的意见》（中发〔2008〕7号）提出：“大力开展社区康复，推进康复进社区、服务到家庭”。《中国残疾人事业“十二五”发展纲要》提出：“普遍开展社区康复服务，初步实现残疾人‘人人享有康复服务’目标。”社区康复是实现这一目标的重要手段和途径，也是国际上开展残疾人康复的主要形式。</p><p>　　本次上海第十届全民终身学习活动期间，《康复》杂志社将组织“健康进社区”和“健康进学校”等系列活动，通过专家讲解、现场理疗体验、互动咨询、刊物学习、展板浏览、微信关注等多种形式，将中医日常保健知识以及日常使用的方式、方法，立体、多元化的传授与居民，提升居民保健科学性、实效性，普及居民治未病概念。</p></div></span></div></div>
-                        </div><!-- region end: 首页推荐活动 -->
-                    </div>
-                </div><div class="clear"></div>
-            </div>
-        </div>
-        <div id="d_row_ebook" class="d-row" style="padding: 20px 0 20px 0; background-color: #f7f7f7;">
-            <div class="d-row-c">
-                <div class="d-col-2-1">
-                    <div class="contentarea">
-                        <div class="d-menu-vertical">
-                            <a href="http://read.shlll.net/">
-                                <div class="head ebook">
-                                </div>
-                            </a>
-                            <div class="body">
-                                @foreach (TypeDictionary td in ViewBag.BookTypes)
+                        <div class="body">
+                            <div id="slide_eventrecommend" class="slidecontainer">
+                                @{ var index = 0; }
+                                @foreach (Live l in ViewBag.Lives)
                                 {
-                                    <a class="item" href="/Course?tid=@td.ID">@td.TypeValue</a>
+                                    if (index++ == 0)
+                                    {
+                                        <div class="itemhot">
+                                            <a class="act-cover cover" href="/Live/Show/@l.ID" title="@l.Title">
+                                                <img src="/Live/ShowPicture/@l.ID" data-echo="/Live/ShowPicture/@l.ID" onerror="this.onerror='';this.src='/Live/ShowPicture/@l.ID';">
+                                            </a>
+                                            <div class="title trim"><a href="/Live/Show/@l.ID" title="@l.Title">@l.Title</a></div>
+                                            <span class="date">@l.Begin.ToString("yyyy.MM.dd HH:mm") ~ @l.End.ToString("yyyy.MM.dd HH:mm")</span>
+                                            <div class="desc">
+                                                @Html.Sanitized(@l.Description)
+                                            </div>
+                                        </div>
+                                    }
+                                    else
+                                    {
+                                        <div class="item">
+                                            <a class="act-cover cover" href="/Live/Show/@l.ID" title="@l.Title">
+                                                <img src="/Live/Show/@l.ID" data-echo="/Live/Show/@l.ID" onerror="this.onerror='';this.src='/Live/Show/@l.ID';">
+                                            </a>
+                                            <div class="title trim">
+                                                <a href="/Live/Show/@l.ID" title="@l.Title">@l.Title</a>
+                                            </div>
+                                            <span class="date">@l.Begin.ToString("yyyy.MM.dd HH:mm") ~ @l.End.ToString("yyyy.MM.dd HH:mm")</span>
+                                            <div class="desc">
+                                                @Html.Sanitized(@l.Description)
+                                            </div>
+                                        </div>
+                                    }
                                 }
                             </div>
                         </div>
                     </div>
-                </div><div class="d-col-2-11">
-                    <div class="contentarea">
-                        <!-- region start: 热门标签 -->
-                        <div id="d_booktaghot" class="d-booktaghot">
-                            <div class="body">
-                                <div class="item" style="background-color: #23a532;">
-                                    <a href="http://read.shlll.net/Book/Find?parms=8009A97B9D0780C5" title="文学">文学</a><div>
-                                        <a class="" href="http://read.shlll.net/Book/Find?parms=7ADFA067762EA910" title="中国近当代诗歌">中国近当代诗歌</a><a class="" href="http://read.shlll.net/Book/Find?parms=7589A4CB150F3A94" title="中国古诗词">中国古诗词</a><a class="" href="http://read.shlll.net/Book/Find?parms=A21442BA1394F1B6" title="文学理论">文学理论</a><a class="" href="http://read.shlll.net/Book/Find?parms=DE3543AC7EF606CF" title="文学作品集">文学作品集</a><a class="" href="http://read.shlll.net/Book/Find?parms=51D7CB0DC482BE22" title="外国散文随笔">外国散文随笔</a><a class="" href="http://read.shlll.net/Book/Find?parms=861AAF35DAEBF590" title="中国散文随笔">中国散文随笔</a>
+                </div>
+            </div><div class="clear"></div>
+        </div>
+    </div>
+    <div id="d_row_ebook" class="d-row" style="padding: 20px 0 20px 0; background-color: #f7f7f7;">
+        <div class="d-row-c">
+            <div class="d-col-2-1">
+                <div class="contentarea">
+                    <div class="d-menu-vertical">
+                        <a href="http://read.shlll.net/">
+                            <div class="head ebook">
+                            </div>
+                        </a>
+                        <div class="body">
+                            @foreach (TypeDictionary td in ViewBag.BookTypes)
+                            {
+                                <a class="item" href="/Course?tid=@td.ID">@td.TypeValue</a>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div><div class="d-col-2-11">
+                <div class="contentarea">
+                    <!-- region start: 热门标签 -->
+                    <div id="d_booktaghot" class="d-booktaghot">
+                        <div class="body">
+                            <div class="item" style="background-color: #23a532;">
+                                <a href="http://read.shlll.net/Book/Find?parms=8009A97B9D0780C5" title="文学">文学</a>
+                                <div>
+                                    <a class="" href="http://read.shlll.net/Book/Find?parms=7ADFA067762EA910" title="中国近当代诗歌">中国近当代诗歌</a>
+                                    <a class="" href="http://read.shlll.net/Book/Find?parms=7589A4CB150F3A94" title="中国古诗词">中国古诗词</a>
+                                    <a class="" href="http://read.shlll.net/Book/Find?parms=A21442BA1394F1B6" title="文学理论">文学理论</a>
+                                    <a class="" href="http://read.shlll.net/Book/Find?parms=DE3543AC7EF606CF" title="文学作品集">文学作品集</a>
+                                    <a class="" href="http://read.shlll.net/Book/Find?parms=51D7CB0DC482BE22" title="外国散文随笔">外国散文随笔</a>
+                                    <a class="" href="http://read.shlll.net/Book/Find?parms=861AAF35DAEBF590" title="中国散文随笔">中国散文随笔</a>
+                                </div>
+                            </div><div class="item" style="background-color: #169425;"><a href="http://read.shlll.net/Book/Find?parms=EE0AB87B08CE6F86" title="小说">小说</a><div><a class="" href="http://read.shlll.net/Book/Find?parms=D248050B0A42062A" title="推理小说">推理小说</a><a class="" href="http://read.shlll.net/Book/Find?parms=A7425B165A35B4B9" title="悬疑">悬疑</a><a class="" href="http://read.shlll.net/Book/Find?parms=3014EA7563114A26" title="军事小说">军事小说</a><a class="" href="http://read.shlll.net/Book/Find?parms=1E5E1112B3836C19" title="中国当代小说">中国当代小说</a><a class="" href="http://read.shlll.net/Book/Find?parms=BA58AC71185B1FEA" title="小说集">小说集</a><a class="" href="http://read.shlll.net/Book/Find?parms=46C6836487BF2BEA" title="历史小说">历史小说</a></div></div><div class="item" style="background-color: #189727;"><a href="http://read.shlll.net/Book/Find?parms=A13621ECE4325078" title="文化">文化</a><div><a class="" href="http://read.shlll.net/Book/Find?parms=3013993E1A4437F3" title="民族文化">民族文化</a><a class="" href="http://read.shlll.net/Book/Find?parms=B7DE4EAF5F852E38" title="地域文化">地域文化</a><a class="" href="http://read.shlll.net/Book/Find?parms=BA0FB26233B73150" title="文化交流">文化交流</a><a class="" href="http://read.shlll.net/Book/Find?parms=209E9BE09CDF0B3F" title="中国文化">中国文化</a><a class="" href="http://read.shlll.net/Book/Find?parms=6FF1CD32D5B92874" title="文化理论">文化理论</a><a class="" href="http://read.shlll.net/Book/Find?parms=2E8D7492EB7FE37B" title="世界文化">世界文化</a></div></div><div class="item" style="background-color: #11851e;"><a href="http://read.shlll.net/Book/Find?parms=40034964ED7B7D3D" title="艺术">艺术</a><div><a class="" href="http://read.shlll.net/Book/Find?parms=EF4DCC6835AE4F3C" title="艺术理论与评论">艺术理论与评论</a><a class="" href="http://read.shlll.net/Book/Find?parms=21D5BB81F5266233" title="影视">影视</a><a class="" href="http://read.shlll.net/Book/Find?parms=E5465BFB56D93E9A" title="舞台艺术">舞台艺术</a><a class="" href="http://read.shlll.net/Book/Find?parms=277024D1528F9844" title="艺术史">艺术史</a><a class="" href="http://read.shlll.net/Book/Find?parms=B0A3A65D211C89C5" title="音乐">音乐</a><a class="" href="http://read.shlll.net/Book/Find?parms=F12DA7B8B7677130" title="书画艺术">书画艺术</a></div></div><div class="item" style="background-color: #23a532;"><a href="http://read.shlll.net/Book/Find?parms=662120BCAAA7D2AA" title="时尚">时尚</a><div><a class="" href="http://read.shlll.net/Book/Find?parms=7C1FA2E8F4E5BDAF" title="血型">血型</a><a class="" href="http://read.shlll.net/Book/Find?parms=D8C2E38745B93DB1" title="运程">运程</a><a class="" href="http://read.shlll.net/Book/Find?parms=C89B532820DA06CB" title="风水">风水</a><a class="" href="http://read.shlll.net/Book/Find?parms=32CCEE272AC90094" title="时尚生活">时尚生活</a><a class="" href="http://read.shlll.net/Book/Find?parms=68014FF33638DD54" title="美容妆扮">美容妆扮</a><a class="" href="http://read.shlll.net/Book/Find?parms=D480E42505874546" title="娱乐">娱乐</a></div></div><div class="item" style="background-color: #189727;"><a href="http://read.shlll.net/Book/Find?parms=300B459192C5DD93" title="经济">经济</a><div><a class="" href="http://read.shlll.net/Book/Find?parms=8F0AF03F08B3FAA3" title="区域经济">区域经济</a><a class="" href="http://read.shlll.net/Book/Find?parms=CC75BB5CE254C59C" title="经济学理论与学说">经济学理论与学说</a><a class="" href="http://read.shlll.net/Book/Find?parms=D8C9D09CFA1E32A5" title="投资理财">投资理财</a><a class="" href="http://read.shlll.net/Book/Find?parms=95827D121D02502C" title="国际经济">国际经济</a><a class="" href="http://read.shlll.net/Book/Find?parms=4FAFBD93897E1543" title="中国经济">中国经济</a><a class="" href="http://read.shlll.net/Book/Find?parms=7DA63B43859E5D24" title="会计">会计</a></div></div>
+                        </div>
+                    </div><!-- region end: 热门标签 --><!-- region start: 首页推荐悦读 --><div id="d_bookrecommend" class="d-bookrecommend">
+                        <!--
+                        <div class="head">热门图书
+                          <span class="turn">
+                            <span class="dot_select" onclick="km_slide.dottran('slide_bookrecommend',0,484)"></span>
+                            <span class="dot" onclick="km_slide.dottran('slide_bookrecommend',1,484)"></span>
+                            <span class="dot" onclick="km_slide.dottran('slide_bookrecommend',2,484)"></span>
+                          </span>
+                        </div>
+                        -->
+                        <div class="body">
+                            <div id="slide_bookrecommend" class="slidecontainer">
+                                <div class="item">
+                                    <a class="cover readingCover" href="http://read.shlll.net/Reading/Reading12615.html" title="何以笙箫默：精装版"><img src="/File/Reading/BookPic/2015/2/4/201502041425228823.png" data-echo="/File/Reading/BookPic/2015/2/4/201502041425228823.png" onerror="this.onerror='';this.src='/file/Images/Default/public_default_150_200.jpg';"></a><div class="title trim"><a href="http://read.shlll.net/Reading/Reading12615.html" title="何以笙箫默：精装版">何以笙箫默：精装版</a></div><div class="author trim">
+                                        顾漫
                                     </div>
-                                </div><div class="item" style="background-color: #169425;"><a href="http://read.shlll.net/Book/Find?parms=EE0AB87B08CE6F86" title="小说">小说</a><div><a class="" href="http://read.shlll.net/Book/Find?parms=D248050B0A42062A" title="推理小说">推理小说</a><a class="" href="http://read.shlll.net/Book/Find?parms=A7425B165A35B4B9" title="悬疑">悬疑</a><a class="" href="http://read.shlll.net/Book/Find?parms=3014EA7563114A26" title="军事小说">军事小说</a><a class="" href="http://read.shlll.net/Book/Find?parms=1E5E1112B3836C19" title="中国当代小说">中国当代小说</a><a class="" href="http://read.shlll.net/Book/Find?parms=BA58AC71185B1FEA" title="小说集">小说集</a><a class="" href="http://read.shlll.net/Book/Find?parms=46C6836487BF2BEA" title="历史小说">历史小说</a></div></div><div class="item" style="background-color: #189727;"><a href="http://read.shlll.net/Book/Find?parms=A13621ECE4325078" title="文化">文化</a><div><a class="" href="http://read.shlll.net/Book/Find?parms=3013993E1A4437F3" title="民族文化">民族文化</a><a class="" href="http://read.shlll.net/Book/Find?parms=B7DE4EAF5F852E38" title="地域文化">地域文化</a><a class="" href="http://read.shlll.net/Book/Find?parms=BA0FB26233B73150" title="文化交流">文化交流</a><a class="" href="http://read.shlll.net/Book/Find?parms=209E9BE09CDF0B3F" title="中国文化">中国文化</a><a class="" href="http://read.shlll.net/Book/Find?parms=6FF1CD32D5B92874" title="文化理论">文化理论</a><a class="" href="http://read.shlll.net/Book/Find?parms=2E8D7492EB7FE37B" title="世界文化">世界文化</a></div></div><div class="item" style="background-color: #11851e;"><a href="http://read.shlll.net/Book/Find?parms=40034964ED7B7D3D" title="艺术">艺术</a><div><a class="" href="http://read.shlll.net/Book/Find?parms=EF4DCC6835AE4F3C" title="艺术理论与评论">艺术理论与评论</a><a class="" href="http://read.shlll.net/Book/Find?parms=21D5BB81F5266233" title="影视">影视</a><a class="" href="http://read.shlll.net/Book/Find?parms=E5465BFB56D93E9A" title="舞台艺术">舞台艺术</a><a class="" href="http://read.shlll.net/Book/Find?parms=277024D1528F9844" title="艺术史">艺术史</a><a class="" href="http://read.shlll.net/Book/Find?parms=B0A3A65D211C89C5" title="音乐">音乐</a><a class="" href="http://read.shlll.net/Book/Find?parms=F12DA7B8B7677130" title="书画艺术">书画艺术</a></div></div><div class="item" style="background-color: #23a532;"><a href="http://read.shlll.net/Book/Find?parms=662120BCAAA7D2AA" title="时尚">时尚</a><div><a class="" href="http://read.shlll.net/Book/Find?parms=7C1FA2E8F4E5BDAF" title="血型">血型</a><a class="" href="http://read.shlll.net/Book/Find?parms=D8C2E38745B93DB1" title="运程">运程</a><a class="" href="http://read.shlll.net/Book/Find?parms=C89B532820DA06CB" title="风水">风水</a><a class="" href="http://read.shlll.net/Book/Find?parms=32CCEE272AC90094" title="时尚生活">时尚生活</a><a class="" href="http://read.shlll.net/Book/Find?parms=68014FF33638DD54" title="美容妆扮">美容妆扮</a><a class="" href="http://read.shlll.net/Book/Find?parms=D480E42505874546" title="娱乐">娱乐</a></div></div><div class="item" style="background-color: #189727;"><a href="http://read.shlll.net/Book/Find?parms=300B459192C5DD93" title="经济">经济</a><div><a class="" href="http://read.shlll.net/Book/Find?parms=8F0AF03F08B3FAA3" title="区域经济">区域经济</a><a class="" href="http://read.shlll.net/Book/Find?parms=CC75BB5CE254C59C" title="经济学理论与学说">经济学理论与学说</a><a class="" href="http://read.shlll.net/Book/Find?parms=D8C9D09CFA1E32A5" title="投资理财">投资理财</a><a class="" href="http://read.shlll.net/Book/Find?parms=95827D121D02502C" title="国际经济">国际经济</a><a class="" href="http://read.shlll.net/Book/Find?parms=4FAFBD93897E1543" title="中国经济">中国经济</a><a class="" href="http://read.shlll.net/Book/Find?parms=7DA63B43859E5D24" title="会计">会计</a></div></div>
-                            </div>
-                        </div><!-- region end: 热门标签 --><!-- region start: 首页推荐悦读 --><div id="d_bookrecommend" class="d-bookrecommend">
-                            <!--
-                            <div class="head">热门图书
-                              <span class="turn">
-                                <span class="dot_select" onclick="km_slide.dottran('slide_bookrecommend',0,484)"></span>
-                                <span class="dot" onclick="km_slide.dottran('slide_bookrecommend',1,484)"></span>
-                                <span class="dot" onclick="km_slide.dottran('slide_bookrecommend',2,484)"></span>
-                              </span>
-                            </div>
-                            -->
-                            <div class="body">
-                                <div id="slide_bookrecommend" class="slidecontainer">
-                                    <div class="item">
-                                        <a class="cover readingCover" href="http://read.shlll.net/Reading/Reading12615.html" title="何以笙箫默：精装版"><img src="/File/Reading/BookPic/2015/2/4/201502041425228823.png" data-echo="/File/Reading/BookPic/2015/2/4/201502041425228823.png" onerror="this.onerror='';this.src='/file/Images/Default/public_default_150_200.jpg';"></a><div class="title trim"><a href="http://read.shlll.net/Reading/Reading12615.html" title="何以笙箫默：精装版">何以笙箫默：精装版</a></div><div class="author trim">
-                                            顾漫
-                                        </div>
-                                    </div><div class="item">
-                                        <a class="cover readingCover" href="http://read.shlll.net/Reading/Reading12683.html" title="时间都去哪儿了：我和老爸30年"><img src="/file/reading/EBook/20150108/RYXX00-60437937.jpg" data-echo="/file/reading/EBook/20150108/RYXX00-60437937.jpg" onerror="this.onerror='';this.src='/file/Images/Default/public_default_150_200.jpg';"></a><div class="title trim"><a href="http://read.shlll.net/Reading/Reading12683.html" title="时间都去哪儿了：我和老爸30年">时间都去哪儿了：我和老爸30年</a></div><div class="author trim">
-                                            大萌子
-                                        </div>
-                                    </div><div class="item">
-                                        <a class="cover readingCover" href="http://read.shlll.net/Reading/Reading27750.html" title="迷失在古堡与田园之间"><img src="/file/reading/EBook/20150205/ZGQG00-60444174.jpg" data-echo="/file/reading/EBook/20150205/ZGQG00-60444174.jpg" onerror="this.onerror='';this.src='/file/Images/Default/public_default_150_200.jpg';"></a><div class="title trim"><a href="http://read.shlll.net/Reading/Reading27750.html" title="迷失在古堡与田园之间">迷失在古堡与田园之间</a></div><div class="author trim">
-                                            王冰冰等著
-                                        </div>
-                                    </div><div class="item">
-                                        <a class="cover readingCover" href="http://read.shlll.net/Reading/Reading9771.html" title="培训创新思维"><img src="/File/Reading/BookPic/2014/6/24/201406241623357499.jpg" data-echo="/File/Reading/BookPic/2014/6/24/201406241623357499.jpg" onerror="this.onerror='';this.src='/file/Images/Default/public_default_150_200.jpg';"></a><div class="title trim"><a href="http://read.shlll.net/Reading/Reading9771.html" title="培训创新思维">培训创新思维</a></div><div class="author trim">
-                                            财政部干部教育中心
-                                        </div>
-                                    </div><div class="item">
-                                        <a class="cover readingCover" href="http://read.shlll.net/Reading/Reading8577.html" title="四大名著-三国演义（上下）"><img src="/file/reading/EBook/20140421/BJRZT22000-3001815254.jpg" data-echo="/file/reading/EBook/20140421/BJRZT22000-3001815254.jpg" onerror="this.onerror='';this.src='/file/Images/Default/public_default_150_200.jpg';"></a><div class="title trim"><a href="http://read.shlll.net/Reading/Reading8577.html" title="四大名著-三国演义（上下）">四大名著-三国演义（上下）</a></div><div class="author trim">
-                                            《图说天下·古典名著系列》编委会
-                                        </div>
-                                    </div><div class="item">
-                                        <a class="cover readingCover" href="http://read.shlll.net/Reading/Reading11622.html" title="每天读点中国历史"><img src="/File/20140513/Reading/BookPic/201405131615160152.jpg" data-echo="/File/20140513/Reading/BookPic/201405131615160152.jpg" onerror="this.onerror='';this.src='/file/Images/Default/public_default_150_200.jpg';"></a><div class="title trim"><a href="http://read.shlll.net/Reading/Reading11622.html" title="每天读点中国历史">每天读点中国历史</a></div><div class="author trim">
-                                            罗宾邓多
-                                        </div>
-                                    </div><div class="item">
-                                        <a class="cover readingCover" href="http://read.shlll.net/Reading/Reading10343.html" title="问道名师——王国元名师工作室的教学实践与研究"><img src="/file/reading/EBook/20140421/NBCB00-60032250.jpg" data-echo="/file/reading/EBook/20140421/NBCB00-60032250.jpg" onerror="this.onerror='';this.src='/file/Images/Default/public_default_150_200.jpg';"></a><div class="title trim"><a href="http://read.shlll.net/Reading/Reading10343.html" title="问道名师——王国元名师工作室的教学实践与研究">问道名师——王国元名师工作室的教学实践与研究</a></div><div class="author trim">
-                                            余姚日报报业有限公司图书音像编辑中心
-                                        </div>
-                                    </div><div class="item"><a class="cover readingCover" href="http://read.shlll.net/Reading/Reading9622.html" title="打败12个商业坏习惯"><img src="/file/reading/EBook/20140421/GTBY00-327598.jpg" data-echo="/file/reading/EBook/20140421/GTBY00-327598.jpg" onerror="this.onerror='';this.src='/file/Images/Default/public_default_150_200.jpg';"></a><div class="title trim"><a href="http://read.shlll.net/Reading/Reading9622.html" title="打败12个商业坏习惯">打败12个商业坏习惯</a></div><div class="author trim"></div></div><div class="item"><a class="cover readingCover" href="http://read.shlll.net/Reading/Reading4628.html" title="把话说到心坎里"><img src="/File/Reading/BookPic/2014/6/24/201406240924382714.jpg" data-echo="/File/Reading/BookPic/2014/6/24/201406240924382714.jpg" onerror="this.onerror='';this.src='/file/Images/Default/public_default_150_200.jpg';"></a><div class="title trim"><a href="http://read.shlll.net/Reading/Reading4628.html" title="把话说到心坎里">把话说到心坎里</a></div><div class="author trim"></div></div><div class="item">
-                                        <a class="cover readingCover" href="http://read.shlll.net/Reading/Reading27793.html" title="人气快炒便当菜"><img src="/file/reading/EBook/20150205/ZGQG00-60444355.jpg" data-echo="/file/reading/EBook/20150205/ZGQG00-60444355.jpg" onerror="this.onerror='';this.src='/file/Images/Default/public_default_150_200.jpg';"></a><div class="title trim"><a href="http://read.shlll.net/Reading/Reading27793.html" title="人气快炒便当菜">人气快炒便当菜</a></div><div class="author trim">
-                                            胡维勤主编
-                                        </div>
+                                </div><div class="item">
+                                    <a class="cover readingCover" href="http://read.shlll.net/Reading/Reading12683.html" title="时间都去哪儿了：我和老爸30年"><img src="/file/reading/EBook/20150108/RYXX00-60437937.jpg" data-echo="/file/reading/EBook/20150108/RYXX00-60437937.jpg" onerror="this.onerror='';this.src='/file/Images/Default/public_default_150_200.jpg';"></a><div class="title trim"><a href="http://read.shlll.net/Reading/Reading12683.html" title="时间都去哪儿了：我和老爸30年">时间都去哪儿了：我和老爸30年</a></div><div class="author trim">
+                                        大萌子
+                                    </div>
+                                </div><div class="item">
+                                    <a class="cover readingCover" href="http://read.shlll.net/Reading/Reading27750.html" title="迷失在古堡与田园之间"><img src="/file/reading/EBook/20150205/ZGQG00-60444174.jpg" data-echo="/file/reading/EBook/20150205/ZGQG00-60444174.jpg" onerror="this.onerror='';this.src='/file/Images/Default/public_default_150_200.jpg';"></a><div class="title trim"><a href="http://read.shlll.net/Reading/Reading27750.html" title="迷失在古堡与田园之间">迷失在古堡与田园之间</a></div><div class="author trim">
+                                        王冰冰等著
+                                    </div>
+                                </div><div class="item">
+                                    <a class="cover readingCover" href="http://read.shlll.net/Reading/Reading9771.html" title="培训创新思维"><img src="/File/Reading/BookPic/2014/6/24/201406241623357499.jpg" data-echo="/File/Reading/BookPic/2014/6/24/201406241623357499.jpg" onerror="this.onerror='';this.src='/file/Images/Default/public_default_150_200.jpg';"></a><div class="title trim"><a href="http://read.shlll.net/Reading/Reading9771.html" title="培训创新思维">培训创新思维</a></div><div class="author trim">
+                                        财政部干部教育中心
+                                    </div>
+                                </div><div class="item">
+                                    <a class="cover readingCover" href="http://read.shlll.net/Reading/Reading8577.html" title="四大名著-三国演义（上下）"><img src="/file/reading/EBook/20140421/BJRZT22000-3001815254.jpg" data-echo="/file/reading/EBook/20140421/BJRZT22000-3001815254.jpg" onerror="this.onerror='';this.src='/file/Images/Default/public_default_150_200.jpg';"></a><div class="title trim"><a href="http://read.shlll.net/Reading/Reading8577.html" title="四大名著-三国演义（上下）">四大名著-三国演义（上下）</a></div><div class="author trim">
+                                        《图说天下·古典名著系列》编委会
+                                    </div>
+                                </div><div class="item">
+                                    <a class="cover readingCover" href="http://read.shlll.net/Reading/Reading11622.html" title="每天读点中国历史"><img src="/File/20140513/Reading/BookPic/201405131615160152.jpg" data-echo="/File/20140513/Reading/BookPic/201405131615160152.jpg" onerror="this.onerror='';this.src='/file/Images/Default/public_default_150_200.jpg';"></a><div class="title trim"><a href="http://read.shlll.net/Reading/Reading11622.html" title="每天读点中国历史">每天读点中国历史</a></div><div class="author trim">
+                                        罗宾邓多
+                                    </div>
+                                </div><div class="item">
+                                    <a class="cover readingCover" href="http://read.shlll.net/Reading/Reading10343.html" title="问道名师——王国元名师工作室的教学实践与研究"><img src="/file/reading/EBook/20140421/NBCB00-60032250.jpg" data-echo="/file/reading/EBook/20140421/NBCB00-60032250.jpg" onerror="this.onerror='';this.src='/file/Images/Default/public_default_150_200.jpg';"></a><div class="title trim"><a href="http://read.shlll.net/Reading/Reading10343.html" title="问道名师——王国元名师工作室的教学实践与研究">问道名师——王国元名师工作室的教学实践与研究</a></div><div class="author trim">
+                                        余姚日报报业有限公司图书音像编辑中心
+                                    </div>
+                                </div><div class="item"><a class="cover readingCover" href="http://read.shlll.net/Reading/Reading9622.html" title="打败12个商业坏习惯"><img src="/file/reading/EBook/20140421/GTBY00-327598.jpg" data-echo="/file/reading/EBook/20140421/GTBY00-327598.jpg" onerror="this.onerror='';this.src='/file/Images/Default/public_default_150_200.jpg';"></a><div class="title trim"><a href="http://read.shlll.net/Reading/Reading9622.html" title="打败12个商业坏习惯">打败12个商业坏习惯</a></div><div class="author trim"></div></div><div class="item"><a class="cover readingCover" href="http://read.shlll.net/Reading/Reading4628.html" title="把话说到心坎里"><img src="/File/Reading/BookPic/2014/6/24/201406240924382714.jpg" data-echo="/File/Reading/BookPic/2014/6/24/201406240924382714.jpg" onerror="this.onerror='';this.src='/file/Images/Default/public_default_150_200.jpg';"></a><div class="title trim"><a href="http://read.shlll.net/Reading/Reading4628.html" title="把话说到心坎里">把话说到心坎里</a></div><div class="author trim"></div></div><div class="item">
+                                    <a class="cover readingCover" href="http://read.shlll.net/Reading/Reading27793.html" title="人气快炒便当菜"><img src="/file/reading/EBook/20150205/ZGQG00-60444355.jpg" data-echo="/file/reading/EBook/20150205/ZGQG00-60444355.jpg" onerror="this.onerror='';this.src='/file/Images/Default/public_default_150_200.jpg';"></a><div class="title trim"><a href="http://read.shlll.net/Reading/Reading27793.html" title="人气快炒便当菜">人气快炒便当菜</a></div><div class="author trim">
+                                        胡维勤主编
                                     </div>
                                 </div>
                             </div>
-                        </div><!-- region end: 首页推荐悦读 -->
-                    </div>
-                </div><div class="clear"></div>
-            </div>
+                        </div>
+                    </div><!-- region end: 首页推荐悦读 -->
+                </div>
+            </div><div class="clear"></div>
         </div>
-        <div class="d-row" style="padding: 20px 0 0 0;">
-            <div class="d-row-c">
-                <div class="d-col-1">
-                    <div class="contentarea">
-                        <!-- region start: ad2 --><!--<div id="d_ad_home_default_2" class="d-ad-1000x90" data-km-url="http://res.shlll.net//widget/home/ad_home_default_2?wb=d:ad_home_default_2(getad)"></div>-->
-                        <div id="d_ad_home_default_2" class="d-ad-1000x90" data-km-url="">
-                            <a href="http://photo.shlll.net/group.html" rel="nofollow" target="_blank"></a>
-                        </div><!-- region end: ad2 -->
-                    </div>
+    </div>
+
+    <div class="d-row" style="padding: 20px 0 0 0;">
+        <div class="d-row-c">
+            <div class="d-col-1">
+                <div class="contentarea">
+                    <!-- region start: ad2 --><!--<div id="d_ad_home_default_2" class="d-ad-1000x90" data-km-url="http://res.shlll.net//widget/home/ad_home_default_2?wb=d:ad_home_default_2(getad)"></div>-->
+                    <div id="d_ad_home_default_2" class="d-ad-1000x90" data-km-url="">
+                        <a href="http://photo.shlll.net/group.html" rel="nofollow" target="_blank"></a>
+                    </div><!-- region end: ad2 -->
                 </div>
             </div>
         </div>
-        <div class="d-row" style="background-color: #ececec; border-top: 2px solid #474747;">
-            <div class="d-row-c">
-                <div class="d-col-1">
-                    <div class="contentarea">
-                        <!-- region start: 帮助导航 --><div class="d-help">
-                            <div class="head"></div>
-                            <div class="body">
-                                <!--                                    <div class="item" style="width: 158px; border-right: 1px solid #a1a1a1;">
-                                    <div style="text-align: left;">
-                                        <a href="javascript:;" class="ha">
-                                            <img src="http://res.shlll.net//common/v1/images/qrcode-weixin.jpg" width="125" height="125" border="0"><br>
-                                            &nbsp;&nbsp;关注上海学习网微信
-                                        </a>
-                                    </div> -->
-                            </div>
-
-                            <div class="item" style="width: 140px; border-right: 1px solid #a1a1a1; border-left: 1px solid #f9f9f9;">
-                                <!--<div class="h">关于我们</div>
-
-                                        <a href="/home/intro" target="_blank">网站介绍</a>
-
+    </div>
+    <div class="d-row" style="background-color: #ececec; border-top: 2px solid #474747;">
+        <div class="d-row-c">
+            <div class="d-col-1">
+                <div class="contentarea">
+                    <!-- region start: 帮助导航 --><div class="d-help">
+                        <div class="head"></div>
+                        <div class="body">
+                            <!--                                    <div class="item" style="width: 158px; border-right: 1px solid #a1a1a1;">
+                                <div style="text-align: left;">
+                                    <a href="javascript:;" class="ha">
+                                        <img src="http://res.shlll.net//common/v1/images/qrcode-weixin.jpg" width="125" height="125" border="0"><br>
+                                        &nbsp;&nbsp;关注上海学习网微信
+                                    </a>
                                 </div> -->
-                                <div class="item" style="width: 140px; border-right: 1px solid #a1a1a1; border-left: 1px solid #f9f9f9;">
-                                    <!--<div class="h">新手指南</div>
-                                            <a href="http://member.shlll.net/home/signup" target="_blank">网站注册</a>
+                        </div>
+                        <div class="item" style="width: 140px; border-right: 1px solid #a1a1a1; border-left: 1px solid #f9f9f9;">
+                            <!--<div class="h">关于我们</div>
 
+                                    <a href="/home/intro" target="_blank">网站介绍</a>
+
+                            </div> -->
+                            <div class="item" style="width: 140px; border-right: 1px solid #a1a1a1; border-left: 1px solid #f9f9f9;">
+                                <!--<div class="h">新手指南</div>
+                                        <a href="http://member.shlll.net/home/signup" target="_blank">网站注册</a>
+
+                                </div>-->
+                                <div class="item" style="width: 140px; border-right: 1px solid #a1a1a1; border-left: 1px solid #f9f9f9;">
+                                    <!--<div class="h">支持服务</div>
+                                        <a href="/home/cooperation" target="_blank">机构合作</a>
+                                        <a href="/home/sitemap" target="_blank">网站地图</a>
+                                        <a href="http://learning.shlll.net/home/book/index4.html" target="_blank">电子期刊</a>
+                                        <a href="http://online.sherc.net:8080/VisionIM/livechat/chat.html" target="_blank">在线客服</a>
+                                        -->
+                                </div>
+                                <div class="item" style="width: 216px; padding: 0 0 0 40px; border-left: 1px solid #f9f9f9;">
+                                    <!--<div class="h2">移动学习：上海乐学</div>
+                                        <a class="icon-mobile-apple">
+                                            <div style="color: #9ca0ac;">iPhone 客户端</div>
+                                            <div style="color: #9ca0ac;"><b>App Store</b></div>
+                                        </a>
+                                        <a href="/file/Download/shequ.1.0.apk" class="icon-mobile-android" target="_blank">
+                                            <div style="color: #9ca0ac;">Android 客户端</div>
+                                            <div style="color: #60636c;"><b>本地下载</b></div>
+                                        </a>
                                     </div>-->
-                                    <div class="item" style="width: 140px; border-right: 1px solid #a1a1a1; border-left: 1px solid #f9f9f9;">
-                                        <!--<div class="h">支持服务</div>
-                                            <a href="/home/cooperation" target="_blank">机构合作</a>
-                                            <a href="/home/sitemap" target="_blank">网站地图</a>
-                                            <a href="http://learning.shlll.net/home/book/index4.html" target="_blank">电子期刊</a>
-                                            <a href="http://online.sherc.net:8080/VisionIM/livechat/chat.html" target="_blank">在线客服</a>
-                                            -->
-                                    </div>
-                                    <div class="item" style="width: 216px; padding: 0 0 0 40px; border-left: 1px solid #f9f9f9;">
-                                        <!--<div class="h2">移动学习：上海乐学</div>
-                                            <a class="icon-mobile-apple">
-                                                <div style="color: #9ca0ac;">iPhone 客户端</div>
-                                                <div style="color: #9ca0ac;"><b>App Store</b></div>
-                                            </a>
-                                            <a href="/file/Download/shequ.1.0.apk" class="icon-mobile-android" target="_blank">
-                                                <div style="color: #9ca0ac;">Android 客户端</div>
-                                                <div style="color: #60636c;"><b>本地下载</b></div>
-                                            </a>
-                                        </div>-->
-                                        <div class="clear"></div>
-                                    </div>
-                                </div><!-- region end: 帮助导航 -->
-                            </div>
+                                    <div class="clear"></div>
+                                </div>
+                            </div><!-- region end: 帮助导航 -->
                         </div>
-                    </div>
-                </div>
-                <div id="d_footer" class="d-footer">
-                    <div id="d_footer_c" class="d-footer-c">
-                        <!-- region start: 页脚 --><div class="l" style="display: block;">
-                            <img src="http://res.shlll.net//common/v1/images/kf.jpg" width="33" height="29" style="vertical-align: middle;">&nbsp;客服：021-25653066
-                            <span style="color: #999;">工作日（8:00—20:00）双休日（8:00—16:40）</span>
-                        </div>
-                        <div class="r">
-                            <div class="lnk">上海市学习型社会建设与终身教育促进委员会主管</div>
-                            <div class="lnk">上海开放大学承建</div><div class="lnk">2015 © 版权所有</div><div class="lnk">沪ICP备09027389号</div>
-                        </div><div class="clear"></div><!-- region end: 页脚 --><!--<div>v1_01</div>-->
                     </div>
                 </div>
             </div>
+            <div id="d_footer" class="d-footer">
+                <div id="d_footer_c" class="d-footer-c">
+                    <!-- region start: 页脚 --><div class="l" style="display: block;">
+                        <img src="http://res.shlll.net//common/v1/images/kf.jpg" width="33" height="29" style="vertical-align: middle;">&nbsp;客服：021-25653066
+                        <span style="color: #999;">工作日（8:00—20:00）双休日（8:00—16:40）</span>
+                    </div>
+                    <div class="r">
+                        <div class="lnk">上海市学习型社会建设与终身教育促进委员会主管</div>
+                        <div class="lnk">上海开放大学承建</div><div class="lnk">2015 © 版权所有</div><div class="lnk">沪ICP备09027389号</div>
+                    </div><div class="clear"></div><!-- region end: 页脚 --><!--<div>v1_01</div>-->
+                </div>
+            </div>
         </div>
+    </div>
     </div>
     </div>
     <script>
@@ -562,7 +589,6 @@
         }
         /*#videoWrapper { width:800px;  }*/
     </style><!--<script src="http://course.shlll.net/resources/jwplayer6/jwplayer.js"></script>--><!--<script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>--><!--<script src="//cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>-->
-
     <script>
         var opt = {
             videoPath: '/file/video/shlll30.mp4',
