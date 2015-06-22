@@ -6308,3 +6308,192 @@ div, p, span, a {
 .clearfix {
     *zoom: 1;
 }
+.d-articlelist {
+    padding: 20px 0 0;
+}
+
+    .d-articlelist .body {
+        width: 652px;
+    }
+
+        .d-articlelist .body .item {
+            padding: 10px 0;
+            border-bottom: 1px dotted #aaa;
+        }
+
+            .d-articlelist .body .item .title {
+                padding: 10px 0;
+                line-height: 24px;
+                font-size: 18px;
+            }
+
+                .d-articlelist .body .item .title a {
+                    font-size: 18px;
+                }
+
+            .d-articlelist .body .item .cover {
+                display: block;
+                width: 652px;
+                text-align: center;
+                padding: 20px 0;
+                background-color: #f0f0f0;
+            }
+
+            .d-articlelist .body .item .info {
+                display: block;
+                text-align: left;
+                font-size: 13px;
+                padding: 0 0 10px;
+            }
+
+                .d-articlelist .body .item .info .from {
+                    display: inline-block;
+                    height: 20px;
+                    line-height: 20px;
+                    color: #999;
+                    padding: 0 10px 0 0;
+                }
+
+                .d-articlelist .body .item .info .date {
+                    display: inline-block;
+                    height: 20px;
+                    line-height: 20px;
+                    color: #999;
+                    padding: 0 10px 0 0;
+                }
+
+                .d-articlelist .body .item .info .view {
+                    display: inline-block;
+                    height: 20px;
+                    line-height: 20px;
+                    color: #999;
+                    padding: 0 10px 0 0;
+                }
+
+            .d-articlelist .body .item .desc {
+                width: 652px;
+                overflow-x: hidden;
+                display: block;
+                line-height: 20px;
+                font-size: 14px;
+            }
+
+                .d-articlelist .body .item .desc p {
+                    line-height: 24px;
+                    color: #222;
+                    font-size: 14px;
+                }
+
+            .d-articlelist .body .item:first-child {
+                padding-top: 0;
+            }
+
+.d-article {
+    padding: 20px 0 0;
+}
+
+    .d-article .body {
+        width: 652px;
+    }
+
+        .d-article .body .item {
+            padding: 10px 0;
+        }
+
+            .d-article .body .item .title {
+                padding: 10px 0;
+                line-height: 24px;
+                font-size: 18px;
+            }
+
+                .d-article .body .item .title a {
+                    font-size: 18px;
+                }
+
+            .d-article .body .item .cover {
+                display: block;
+                width: 652px;
+                text-align: center;
+                padding: 20px 0;
+                background-color: #f0f0f0;
+            }
+
+            .d-article .body .item .info {
+                display: block;
+                text-align: left;
+                font-size: 13px;
+                padding: 0 0 10px;
+            }
+
+                .d-article .body .item .info .from {
+                    display: inline-block;
+                    height: 20px;
+                    line-height: 20px;
+                    color: #999;
+                    padding: 0 10px 0 0;
+                }
+
+                .d-article .body .item .info .date {
+                    display: inline-block;
+                    height: 20px;
+                    line-height: 20px;
+                    color: #999;
+                    padding: 0 10px 0 0;
+                }
+
+                .d-article .body .item .info .view {
+                    display: inline-block;
+                    height: 20px;
+                    line-height: 20px;
+                    color: #999;
+                    padding: 0 10px 0 0;
+                }
+
+            .d-article .body .item .desc {
+                width: 652px;
+                overflow-x: hidden;
+                display: block;
+                line-height: 20px;
+                font-size: 14px;
+            }
+
+                .d-article .body .item .desc p {
+                    line-height: 24px;
+                    color: #222;
+                    font-size: 14px;
+                    text-indent: 28px;
+                }
+
+            .d-article .body .item:first-child {
+                padding-top: 0;
+            }
+
+.d-articlehot {
+    padding: 20px 0 0;
+}
+
+    .d-articlehot .head {
+        height: 45px;
+        line-height: 45px;
+        font-size: 16px;
+        color: #00a000;
+    }
+
+        .d-articlehot .head a {
+            height: 45px;
+            line-height: 45px;
+            display: block;
+            position: absolute;
+            top: 0;
+            right: 0;
+            font-size: 13px;
+            color: #999;
+        }
+
+    .d-articlehot .body .item {
+        display: block;
+        width: 300px;
+        height: 27px;
+        line-height: 27px;
+        font-size: 13px;
+    }

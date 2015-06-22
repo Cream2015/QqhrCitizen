@@ -2074,7 +2074,7 @@ div, p, span, a {
         width: 42px;
         height: 34px;
         cursor: pointer;
-        background-image: url(../Images/icon-search.png);
+        background-image: url(../images/sprite/icon-search.png);
     }
 
     .f-searchbox .clsdrop {
@@ -2225,7 +2225,7 @@ div, p, span, a {
             width: 42px;
             height: 34px;
             cursor: pointer;
-            background-image: url(../Images/icon-search.png);
+            background-image: url(../images/sprite/icon-search.png);
         }
 
         .f-headerdefault .d-search .clsdrop {
@@ -2512,7 +2512,7 @@ div, p, span, a {
         height: 65px;
         line-height: 65px;
         font-size: 2.5em;
-        background-image: url(../Images/icon-title.png);
+        background-image: url(../images/sprite/icon-title.png);
         background-repeat: no-repeat;
     }
 
@@ -2558,7 +2558,7 @@ div, p, span, a {
             line-height: 40px;
             font-size: 15px;
             padding: 0 0 0 15px;
-            background-image: url(../Images/icon-subtitle.png);
+            background-image: url(../images/sprite/icon-subtitle.png);
             background-repeat: no-repeat;
         }
 
@@ -2773,7 +2773,7 @@ div, p, span, a {
 .i-official {
     display: inline-block;
     width: 27px;
-    background-image: url(../Images/icon-ut.gif);
+    background-image: url(../images/sprite/icon-ut.gif);
     background-position: 0 -48px;
     background-repeat: no-repeat;
 }
@@ -2783,7 +2783,7 @@ div, p, span, a {
     width: 30px;
     height: 24px;
     line-height: 24px;
-    background-image: url(../Images/icon-back.png);
+    background-image: url(../images/sprite/icon-back.png);
     background-repeat: no-repeat;
     background-position: center center;
 }
@@ -2990,22 +2990,25 @@ div, p, span, a {
         text-align: right;
     }
 
-.d-headerhome {
+.d-headerdefault {
     width: 1000px;
     height: 100px;
+    background-image: url(../images/logo2.jpg);
+    background-repeat: no-repeat;
+    background-position: 189px 0;
 }
 
-    .d-headerhome .d-logo {
+    .d-headerdefault .d-logo {
         display: block;
         position: absolute;
-        top: 5px;
+        top: 0;
         left: 0;
-        width: 275px;
-        height: 90px;
-        background-image: url(../images/shlll-logo.jpg);
+        width: 179px;
+        height: 100px;
     }
 
-        .d-headerhome .d-logo .ver {
+        .d-headerdefault .d-logo .ver {
+            display: none;
             position: absolute;
             left: 240px;
             top: 0;
@@ -3016,15 +3019,89 @@ div, p, span, a {
             color: #aaa;
         }
 
-    .d-headerhome .d-search {
+    .d-headerdefault .d-logo2 {
+        display: none;
         position: absolute;
-        top: 37px;
-        left: 310px;
+        top: 0;
+        left: 189px;
+        width: 200px;
+        height: 100px;
+    }
+
+    .d-headerdefault .logo-cou {
+        background-image: url(../images/shlll-logo-course.jpg);
+    }
+
+    .d-headerdefault .logo-eve {
+        background-image: url(../images/shlll-logo-event.jpg);
+    }
+
+    .d-headerdefault .logo-gro {
+        background-image: url(../images/shlll-logo-group.jpg);
+    }
+
+    .d-headerdefault .logo-bok {
+        background-image: url(../images/shlll-logo-book.jpg);
+    }
+
+    .d-headerdefault .logo-map {
+        background-image: url(../images/shlll-logo-map.jpg);
+    }
+
+    .d-headerdefault .logo-cha {
+        background-image: url(../images/shlll-logo-channel.jpg);
+    }
+
+    .d-headerdefault .logo-sha {
+        background-image: url(../images/shlll-logo-share.jpg);
+    }
+
+    .d-headerdefault .logo-msg {
+        background-image: url(../images/shlll-logo-news.jpg);
+    }
+
+    .d-headerdefault .logo-use {
+        background-image: url(../images/shlll-logo.jpg);
+        width: 275px;
+        height: 90px;
+        top: 5px;
+    }
+
+    .d-headerdefault .logo-stu {
+        background-image: url(../images/shlll-logo.jpg);
+        width: 275px;
+        height: 90px;
+        top: 5px;
+    }
+
+    .d-headerdefault .logo-site-aged {
+        background-image: url(../images/shlll-logo-site-aged.jpg);
+    }
+
+    .d-headerdefault .logo-site-whitecollar {
+        background-image: url(../images/shlll-logo-site-whitecollar.png);
+        width: 500px;
+    }
+
+    .d-headerdefault .logo-site-workers {
+        background-image: url(../images/shlll-logo-site-workers.png);
+        width: 500px;
+    }
+
+    .d-headerdefault .logo-site-parents {
+        background-image: url(../images/shlll-logo-site-parents.png);
+        width: 500px;
+    }
+
+    .d-headerdefault .d-search {
+        position: absolute;
+        top: 35px;
+        right: 0;
         width: 390px;
         height: 34px;
     }
 
-        .d-headerhome .d-search input {
+        .d-headerdefault .d-search input {
             position: absolute;
             top: 0;
             left: 0;
@@ -3037,7 +3114,7 @@ div, p, span, a {
             font-size: 14px;
         }
 
-        .d-headerhome .d-search .icon-search {
+        .d-headerdefault .d-search .icon-search {
             position: absolute;
             top: 0;
             right: 0;
@@ -3045,10 +3122,10 @@ div, p, span, a {
             width: 42px;
             height: 34px;
             cursor: pointer;
-            background-image: url(../Images/icon-search.png);
+            background-image: url(../images/sprite/icon-search.png);
         }
 
-        .d-headerhome .d-search .clsdrop {
+        .d-headerdefault .d-search .clsdrop {
             display: none;
             position: absolute;
             left: 0;
@@ -3058,2777 +3135,279 @@ div, p, span, a {
             border: 1px solid #aaa;
         }
 
-            .d-headerhome .d-search .clsdrop .item {
+            .d-headerdefault .d-search .clsdrop .item {
                 padding: 10px;
                 cursor: pointer;
                 font-size: 13px;
             }
 
-    .d-headerhome .d-nav {
-        position: absolute;
-        top: 35px;
-        right: 0;
-        width: 397px;
-        height: 35px;
-        text-align: right;
-    }
-
-        .d-headerhome .d-nav a.menu {
-            display: inline-block;
-            height: 35px;
-            line-height: 35px;
-            font-size: 2.1em;
-            padding: 0 0 0 12px;
-            font-style: '黑体' Arial;
-            cursor: pointer;
-        }
-
-            .d-headerhome .d-nav a.menu:hover {
-                text-decoration: none;
-            }
-
-        .d-headerhome .d-nav a.cou {
-            color: #3169ea;
-        }
-
-        .d-headerhome .d-nav a.eve {
-            color: #e77c14;
-        }
-
-        .d-headerhome .d-nav a.bok {
-            color: #9c5512;
-        }
-
-        .d-headerhome .d-nav a.gro {
-            color: #399777;
-        }
-
-        .d-headerhome .d-nav a.map {
-            color: #6d4723;
-        }
-
-        .d-headerhome .d-nav a.cha {
-            color: #54caa7;
-        }
-
-        .d-headerhome .d-nav a.com {
-            color: #ab4fc6;
-        }
-
-.d-homenav {
-    background-color: #eaeaea;
-    padding: 15px 0;
-}
-
-    .d-homenav .body {
-        float: left;
-        border-left: 1px solid #fff;
-        border-right: 1px solid #c5c5c5;
-        width: 218px;
-        height: 48px;
-        overflow: hidden;
-    }
-
-        .d-homenav .body .lab {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 60px;
-            height: 48px;
-            line-height: 48px;
-            font-size: 15px;
-            font-weight: 700;
-            text-align: right;
-            color: #666;
-        }
-
-        .d-homenav .body ul {
-            display: block;
-            padding: 0 0 0 60px;
-            margin: 0;
-            font-size: 0;
-        }
-
-        .d-homenav .body .item {
-            list-style-type: none;
-            display: inline-block;
-            margin: 0 0 12px;
-            width: 77px;
-            height: 18px;
-            line-height: 18px;
-            text-align: center;
-            border-right: 1px solid #666;
-        }
-
-            .d-homenav .body .item a {
-                font-size: 14px;
-                color: #666;
-            }
-
-        .d-homenav .body .last {
-            border-right: 0;
-        }
-
-        .d-homenav .body .w3 {
-            width: 82px;
-        }
-
-        .d-homenav .body .act a {
-            color: #eb7f00;
-        }
-
-        .d-homenav .body .hot {
-            background-position: right top;
-            background-repeat: no-repeat;
-            background-image: url(../Images/hot.gif);
-        }
-
-    .d-homenav .body-last {
-        border-right: 0;
-        width: 779px;
-    }
-
-.d-homesignsmall {
-    padding: 0 0 10px;
-    font-size: 0;
-    visibility: hidden;
-}
-
-    .d-homesignsmall a {
-        display: inline-block;
-        width: 161px;
-        height: 37px;
-        line-height: 37px;
-        color: #fff;
-        background-color: #f3c500;
-        text-align: center;
-        text-decoration: none;
-        font-size: 15px;
-    }
-
-        .d-homesignsmall a:first-child {
-            width: 162px;
-            background-color: #00be9c;
-        }
-
-    .d-homesignsmall .body {
-        height: 37px;
-        line-height: 37px;
-        background-color: #f3c500;
-        padding: 0 10px;
-    }
-
-        .d-homesignsmall .body .name {
-            font-size: 13px;
-            color: #fff;
-        }
-
-        .d-homesignsmall .body .btn {
-            font-size: 13px;
-            position: absolute;
-            top: 5px;
-            right: 10px;
-        }
-
-            .d-homesignsmall .body .btn:first-child {
-                font-size: 13px;
-                position: absolute;
-                top: 5px;
-                right: 65px;
-            }
-
-.d-homebanner {
-    width: 652px;
-    height: 324px;
-    overflow: hidden;
-}
-
-.d-homespecial {
-    width: 652px;
-    height: 361px;
-    overflow: hidden;
-}
-
-    .d-homespecial .head {
-        height: 65px;
-        line-height: 65px;
-        font-size: 2.5em;
-        background-image: url(../Images/icon-title.png);
-        background-repeat: no-repeat;
-        background-position: 0 0;
-    }
-
-        .d-homespecial .head a {
-            height: 65px;
-            line-height: 65px;
-            display: block;
-            position: absolute;
-            top: 0;
-            right: 0;
-            font-size: 56%;
-            color: #999;
-        }
-
-    .d-homespecial .body {
-        width: 673px;
-        height: 337px;
-    }
-
-        .d-homespecial .body .item {
-            width: 316px;
-            height: 128px;
-            margin: 0 20px 40px 0;
-            float: left;
-            overflow: hidden;
-        }
-
-            .d-homespecial .body .item .title {
-                position: relative;
-                line-height: 24px;
-                padding: 0 0 0 140px;
-            }
-
-                .d-homespecial .body .item .title a {
-                    font-size: 14px;
-                }
-
-            .d-homespecial .body .item .content {
-                position: relative;
-                line-height: 20px;
-                padding: 0 0 0 140px;
-                overflow: hidden;
-                font-size: 13px;
-                color: #666;
-                text-align: justify;
-                text-justify: inter-ideograph;
-            }
-
-            .d-homespecial .body .item a.cover {
-                display: block;
-                position: absolute;
-                top: 0;
-                left: 0;
-                width: 126px;
-                height: 126px;
-            }
-
-.d-homemessage {
-    height: 40px;
-    background-color: #f1f1f1;
-}
-
-    .d-homemessage .body {
-        padding: 0 0 0 130px;
-        background-image: url(../Images/icon-msgtitle.png);
-        background-repeat: no-repeat;
-    }
-
-        .d-homemessage .body ul {
-            display: block;
-            margin: 0;
-            padding: 0;
-            height: 40px;
-            line-height: 40px;
-        }
-
-        .d-homemessage .body li {
-            list-style-type: none;
-            display: inline-block;
-            padding: 0 10px 0 20px;
-            width: 259px;
-            height: 40px;
-            line-height: 40px;
-        }
-
-            .d-homemessage .body li a {
-                font-size: 13px;
-                color: #666;
-            }
-
-            .d-homemessage .body li .i {
-                color: #e27d06;
-                padding: 0 10px 0 0;
-            }
-
-.d-dashboardsimple {
-    width: 300px;
-    height: 110px;
-    z-index: 3;
-    padding: 10px 0 0;
-    background-color: #f6f6f6;
-}
-
-    .d-dashboardsimple .item {
-        float: left;
-        width: 80px;
-        height: 50px;
-        padding: 50px 0 0;
-        text-align: center;
-        background-image: url(../Images/icon-dashboardsimple.png);
-        background-repeat: no-repeat;
-    }
-
-        .d-dashboardsimple .item div {
-            color: #3f3f3f;
-            height: 25px;
-            line-height: 25px;
-            font-size: 14px;
-        }
-
-        .d-dashboardsimple .item .num {
-            color: #ef3600;
-            height: 25px;
-            line-height: 25px;
-            font-size: 14px;
-        }
-
-    .d-dashboardsimple .u {
-        background-position: 0 0;
-    }
-
-    .d-dashboardsimple .c {
-        background-position: -80px 0;
-    }
-
-    .d-dashboardsimple .e {
-        background-position: -160px 0;
-    }
-
-    .d-dashboardsimple .g {
-        background-position: -240px 0;
-    }
-
-.d-weather {
-    position: absolute;
-    top: 47px;
-    left: 0;
-    width: 300px;
-    height: 120px;
-    z-index: 2;
-    background-color: #fff;
-    cursor: text;
-}
-
-    .d-weather .days {
-        float: left;
-        width: 99px;
-        height: 118px;
-        border-top: 1px solid #ccc;
-        border-bottom: 1px solid #ccc;
-        border-left: 1px solid #ccc;
-    }
-
-        .d-weather .days .date {
-            height: 27px;
-            line-height: 27px;
-            font-size: 13px;
-            color: #999;
-            text-align: center;
-        }
-
-            .d-weather .days .date:first-child {
-                color: red;
-            }
-
-        .d-weather .days .pic {
-            height: 43px;
-            line-height: 43px;
-            color: #999;
-            text-align: center;
-        }
-
-        .d-weather .days .weather {
-            height: 24px;
-            line-height: 24px;
-            color: #999;
-            text-align: center;
-            font-size: 13px;
-        }
-
-        .d-weather .days .temperature {
-            height: 24px;
-            line-height: 24px;
-            color: #999;
-            text-align: center;
-            font-size: 13px;
-        }
-
-        .d-weather .days:first-child {
-            width: 98px;
-        }
-
-    .d-weather .vbar {
-        position: absolute;
-        top: 0;
-        right: -27px;
-        width: 27px;
-        height: 110px;
-        padding: 5px 0;
-        background-color: #09c;
-        font-size: 12px;
-        color: #fff;
-        cursor: default;
-        text-align: center;
-    }
-
-.d-learningactivityfeed {
-    height: 515px;
-}
-
-    .d-learningactivityfeed .head {
-        height: 65px;
-        line-height: 65px;
-        font-size: 2.5em;
-        background-image: url(../Images/icon-title.png);
-        background-repeat: no-repeat;
-        background-position: 0 -65px;
-    }
-
-        .d-learningactivityfeed .head a {
-            height: 65px;
-            line-height: 65px;
-            display: block;
-            position: absolute;
-            top: 0;
-            right: 0;
-            font-size: 56%;
-            color: #999;
-        }
-
-    .d-learningactivityfeed .body {
-        height: 450px;
-        overflow: hidden;
-    }
-
-        .d-learningactivityfeed .body .feedcontainer {
-            position: absolute;
-            top: 0;
-            left: 0;
-        }
-
-            .d-learningactivityfeed .body .feedcontainer .item {
-                width: 300px;
-                height: 75px;
-                margin-top: -1px;
-                padding: 14px 0 0;
-                border-top: 1px solid #e2e2e2;
-                border-bottom: 1px solid #e2e2e2;
-            }
-
-                .d-learningactivityfeed .body .feedcontainer .item a.userportrait {
-                    display: inline-block;
-                    width: 20px;
-                    height: 20px;
-                    line-height: 20px;
-                }
-
-                .d-learningactivityfeed .body .feedcontainer .item .gender {
-                    display: inline-block;
-                    width: 10px;
-                    height: 20px;
-                    line-height: 20px;
-                    font-size: 0;
-                    overflow: hidden;
-                }
-
-                .d-learningactivityfeed .body .feedcontainer .item .male {
-                    background-position: 0 0;
-                }
-
-                .d-learningactivityfeed .body .feedcontainer .item .female {
-                    background-position: 0 -20px;
-                }
-
-                .d-learningactivityfeed .body .feedcontainer .item a.owner {
-                    line-height: 20px;
-                    vertical-align: top;
-                    font-size: 13px;
-                }
-
-                .d-learningactivityfeed .body .feedcontainer .item .content {
-                    height: 55px;
-                    line-height: 20px;
-                    color: #666;
-                    font-size: 13px;
-                    text-align: justify;
-                    text-justify: inter-ideograph;
-                }
-
-                .d-learningactivityfeed .body .feedcontainer .item .createtime {
-                    position: absolute;
-                    top: 14px;
-                    right: 0;
-                    height: 20px;
-                    line-height: 20px;
-                    font-size: 13px;
-                    color: #999;
-                }
-
-.d-menu-vertical {
-    width: 104px;
-}
-
-    .d-menu-vertical .head {
-        height: 65px;
-        line-height: 65px;
-        font-size: 2.5em;
-        background-image: url(../Images/icon-title.png);
-        background-repeat: no-repeat;
-    }
-
-    .d-menu-vertical .cou {
-        background-position: 0 -130px;
-    }
-
-    .d-menu-vertical .eve {
-        background-position: 0 -195px;
-    }
-
-    .d-menu-vertical .bok {
-        background-position: 0 -195px;
-    }
-
-    .d-menu-vertical .gro {
-        background-position: 0 -260px;
-    }
-
-    .d-menu-vertical .map {
-        background-position: 0 -325px;
-    }
-
-    .d-menu-vertical .cha {
-        background-position: 0 -390px;
-    }
-
-    .d-menu-vertical .com {
-        background-position: 0 -455px;
-    }
-
-    .d-menu-vertical .sub {
-        background-position: 0 -585px;
-    }
-
-    .d-menu-vertical .body {
-        width: 104px;
-    }
-
-        .d-menu-vertical .body a.item {
-            display: block;
-            height: 40px;
-            line-height: 40px;
-            font-size: 15px;
-            padding: 0 0 0 15px;
-            background-image: url(../Images/icon-subtitle.png);
-            background-repeat: no-repeat;
-        }
-
-        .d-menu-vertical .body a.cou {
-            color: #3169ea;
-            background-position: 0 0;
-        }
-
-        .d-menu-vertical .body a.eve {
-            color: #e77c14;
-            background-position: 0 -40px;
-        }
-
-        .d-menu-vertical .body a.bok {
-            color: #9c5512;
-            background-position: 0 -40px;
-        }
-
-        .d-menu-vertical .body a.gro {
-            color: #399777;
-            background-position: 0 -80px;
-        }
-
-        .d-menu-vertical .body a.map {
-            color: #6d4723;
-            background-position: 0 -120px;
-        }
-
-        .d-menu-vertical .body a.cha {
-            color: #54caa7;
-            background-position: 0 -160px;
-        }
-
-        .d-menu-vertical .body a.com {
-            color: #ab4fc6;
-            background-position: 0 -200px;
-        }
-
-        .d-menu-vertical .body a.sub {
-            color: #54caa7;
-            background-position: 0 -160px;
-        }
-
-.d-courserecommendbyday {
-    width: 548px;
-}
-
-    .d-courserecommendbyday .head {
-        height: 65px;
-        line-height: 65px;
-        font-size: 15px;
-        color: #00a000;
-    }
-
-        .d-courserecommendbyday .head span.turn {
-            height: 65px;
-            line-height: 65px;
-            display: block;
-            position: absolute;
-            top: 0;
-            right: 0;
-            width: 49px;
-        }
-
-            .d-courserecommendbyday .head span.turn .dot, .d-courserecommendbyday .head span.turn .dot_select {
-                display: block;
-                float: left;
-                width: 16px;
-                height: 16px;
-                margin: 26px 0 0;
-                cursor: pointer;
-                background-image: url(../Images/icon-turndot.png);
-                background-repeat: no-repeat;
-            }
-
-            .d-courserecommendbyday .head span.turn .dot {
-                background-position: -16px center;
-            }
-
-            .d-courserecommendbyday .head span.turn .dot_select {
-                background-position: 0 center;
-            }
-
-    .d-courserecommendbyday .body {
-        width: 548px;
-        height: 392px;
-        overflow: hidden;
-    }
-
-        .d-courserecommendbyday .body .slidecontainer {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 553px;
-            height: 413px;
-        }
-
-            .d-courserecommendbyday .body .slidecontainer .item {
-                width: 272px;
-                height: 186px;
-                margin: 0 4px 20px 0;
-                float: left;
-            }
-
-                .d-courserecommendbyday .body .slidecontainer .item .cover {
-                    display: block;
-                    width: 272px;
-                    height: 136px;
-                }
-
-                .d-courserecommendbyday .body .slidecontainer .item .title {
-                    height: 34px;
-                    line-height: 34px;
-                }
-
-                    .d-courserecommendbyday .body .slidecontainer .item .title a {
-                        font-size: 14px;
-                    }
-
-                .d-courserecommendbyday .body .slidecontainer .item .signed {
-                    display: inline-block;
-                    height: 16px;
-                    line-height: 16px;
-                    padding: 0 10px 0 0;
-                    font-size: 13px;
-                    color: #999;
-                }
-
-                .d-courserecommendbyday .body .slidecontainer .item .star {
-                    display: inline-block;
-                    width: 55px;
-                    height: 11px;
-                    line-height: 11px;
-                    font-size: 0;
-                    overflow: hidden;
-                    background-image: url(../images/midstars.gif);
-                    background-repeat: no-repeat;
-                }
-
-                .d-courserecommendbyday .body .slidecontainer .item .star0 {
-                    background-position: 0 -110px;
-                }
-
-                .d-courserecommendbyday .body .slidecontainer .item .star5 {
-                    background-position: 0 -99px;
-                }
-
-                .d-courserecommendbyday .body .slidecontainer .item .star10 {
-                    background-position: 0 -88px;
-                }
-
-                .d-courserecommendbyday .body .slidecontainer .item .star15 {
-                    background-position: 0 -77px;
-                }
-
-                .d-courserecommendbyday .body .slidecontainer .item .star20 {
-                    background-position: 0 -66px;
-                }
-
-                .d-courserecommendbyday .body .slidecontainer .item .star25 {
-                    background-position: 0 -55px;
-                }
-
-                .d-courserecommendbyday .body .slidecontainer .item .star30 {
-                    background-position: 0 -44px;
-                }
-
-                .d-courserecommendbyday .body .slidecontainer .item .star35 {
-                    background-position: 0 -33px;
-                }
-
-                .d-courserecommendbyday .body .slidecontainer .item .star40 {
-                    background-position: 0 -22px;
-                }
-
-                .d-courserecommendbyday .body .slidecontainer .item .star45 {
-                    background-position: 0 -11px;
-                }
-
-                .d-courserecommendbyday .body .slidecontainer .item .star50 {
-                    background-position: 0 0;
-                }
-
-.d-coursehotcategory .head {
-    height: 65px;
-    line-height: 65px;
-    font-size: 15px;
-    color: #00a000;
-}
-
-    .d-coursehotcategory .head a {
-        height: 65px;
-        line-height: 65px;
-        display: block;
-        position: absolute;
-        top: 0;
-        right: 0;
-        font-size: 13px;
-        color: #999;
-    }
-
-.d-coursehotcategory .body a.item {
-    display: inline-block;
-    height: 27px;
-    line-height: 27px;
-    margin: 0 20px 0 0;
-    font-size: 13px;
-}
-
-.d-courserecenthot .head {
-    height: 65px;
-    line-height: 65px;
-    font-size: 15px;
-    color: #00a000;
-}
-
-    .d-courserecenthot .head a {
-        height: 65px;
-        line-height: 65px;
-        display: block;
-        position: absolute;
-        top: 0;
-        right: 0;
-        font-size: 13px;
-        color: #999;
-    }
-
-.d-courserecenthot ol.body {
-    margin: 0;
-    padding: 0;
-    list-style-type: decimal;
-}
-
-    .d-courserecenthot ol.body li.item {
-        height: 27px;
-        line-height: 27px;
-        display: list-item;
-        list-style-position: inside;
-        padding: 0;
-        font-size: 13px;
-        color: #0082cd;
-    }
-
-.d-eventhotthismonth {
-    width: 548px;
-}
-
-    .d-eventhotthismonth .head {
-        height: 65px;
-        line-height: 65px;
-        font-size: 15px;
-        color: #00a000;
-    }
-
-        .d-eventhotthismonth .head span.turn {
-            height: 65px;
-            line-height: 65px;
-            display: block;
-            position: absolute;
-            top: 0;
-            right: 0;
-            width: 49px;
-        }
-
-            .d-eventhotthismonth .head span.turn .dot, .d-eventhotthismonth .head span.turn .dot_select {
-                display: block;
-                float: left;
-                width: 16px;
-                height: 16px;
-                margin: 26px 0 0;
-                cursor: pointer;
-                background-image: url(../Images/icon-turndot.png);
-                background-repeat: no-repeat;
-            }
-
-            .d-eventhotthismonth .head span.turn .dot {
-                background-position: -16px center;
-            }
-
-            .d-eventhotthismonth .head span.turn .dot_select {
-                background-position: 0 center;
-            }
-
-    .d-eventhotthismonth .body {
-        width: 548px;
-        height: 326px;
-        overflow: hidden;
-    }
-
-        .d-eventhotthismonth .body .slidecontainer {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 553px;
-            height: 331px;
-        }
-
-            .d-eventhotthismonth .body .slidecontainer .item {
-                width: 272px;
-                height: 106px;
-                padding: 0 4px 4px 0;
-                float: left;
-            }
-
-                .d-eventhotthismonth .body .slidecontainer .item .title {
-                    position: relative;
-                    padding: 0 0 0 120px;
-                    line-height: 27px;
-                    max-height: 54px;
-                    overflow: hidden;
-                }
-
-                    .d-eventhotthismonth .body .slidecontainer .item .title a {
-                        font-size: 14px;
-                    }
-
-                .d-eventhotthismonth .body .slidecontainer .item .participant {
-                    display: block;
-                    position: relative;
-                    margin: 0 0 0 120px;
-                    height: 16px;
-                    line-height: 16px;
-                    font-size: 13px;
-                    color: #999;
-                }
-
-                .d-eventhotthismonth .body .slidecontainer .item .date {
-                    display: block;
-                    position: relative;
-                    padding: 0 0 0 120px;
-                    line-height: 30px;
-                    color: #999;
-                    font-size: 12px;
-                }
-
-                .d-eventhotthismonth .body .slidecontainer .item .loc {
-                    display: block;
-                    position: relative;
-                    padding: 0 0 0 120px;
-                    line-height: 30px;
-                    color: #999;
-                    font-size: 12px;
-                }
-
-                .d-eventhotthismonth .body .slidecontainer .item .cover {
-                    display: block;
-                    position: absolute;
-                    top: 0;
-                    left: 0;
-                    width: 106px;
-                    height: 106px;
-                }
-
-.d-eventhotcategory .head {
-    height: 65px;
-    line-height: 65px;
-    font-size: 15px;
-    color: #00a000;
-}
-
-    .d-eventhotcategory .head a {
-        height: 65px;
-        line-height: 65px;
-        display: block;
-        position: absolute;
-        top: 0;
-        right: 0;
-        font-size: 13px;
-        color: #999;
-    }
-
-.d-eventhotcategory .body .item {
-    height: 40px;
-    line-height: 27px;
-    margin: 20px 0 0;
-    vertical-align: top;
-}
-
-    .d-eventhotcategory .body .item a {
-        font-size: 14px;
-        color: #666;
-    }
-
-    .d-eventhotcategory .body .item:first-child {
-        margin-top: 0;
-    }
-
-.d-eventhotcategory .body a.subitem {
-    display: inline-block;
-    height: 27px;
-    line-height: 27px;
-    margin: 0 30px 0 0;
-    font-size: 13px;
-}
-
-.d-grouphot {
-    width: 548px;
-    height: 391px;
-    overflow: hidden;
-}
-
-    .d-grouphot .head {
-        height: 65px;
-        line-height: 65px;
-        font-size: 15px;
-        color: #00a000;
-    }
-
-    .d-grouphot .body {
-        width: 553px;
-        height: 331px;
-    }
-
-        .d-grouphot .body .item {
-            width: 272px;
-            height: 106px;
-            padding: 0 4px 4px 0;
-            float: left;
-        }
-
-            .d-grouphot .body .item .name {
-                position: relative;
-                padding: 0 0 0 120px;
-                line-height: 27px;
-                height: 27px;
-            }
-
-                .d-grouphot .body .item .name a {
-                    font-size: 14px;
-                }
-
-            .d-grouphot .body .item .desc {
-                display: block;
-                position: relative;
-                margin: 0 0 0 120px;
-                height: 48px;
-                line-height: 24px;
-                font-size: 13px;
-                overflow: hidden;
-            }
-
-            .d-grouphot .body .item .users {
-                display: block;
-                position: relative;
-                margin: 0 0 0 120px;
-                height: 24px;
-                line-height: 24px;
-                font-size: 13px;
-                color: #999;
-            }
-
-            .d-grouphot .body .item .portrait {
-                display: block;
-                position: absolute;
-                top: 0;
-                left: 0;
-                width: 106px;
-                height: 106px;
-            }
-
-.d-grouphottopic .head {
-    height: 65px;
-    line-height: 65px;
-    font-size: 15px;
-    color: #00a000;
-}
-
-    .d-grouphottopic .head a {
-        height: 65px;
-        line-height: 65px;
-        display: block;
-        position: absolute;
-        top: 0;
-        right: 0;
-        font-size: 13px;
-        color: #999;
-    }
-
-.d-grouphottopic .body .item {
-    margin: 0 0 10px;
-}
-
-    .d-grouphottopic .body .item .title a {
-        height: 27px;
-        line-height: 27px;
-        font-size: 14px;
-    }
-
-    .d-grouphottopic .body .item .from {
-        height: 20px;
-        line-height: 20px;
-        font-size: 13px;
-        color: #666;
-    }
-
-    .d-grouphottopic .body .item .info {
-        height: 20px;
-        line-height: 20px;
-    }
-
-        .d-grouphottopic .body .item .info .reply {
-            display: inline-block;
-            padding: 0 10px 0 0;
-            color: #999;
-            font-size: 13px;
-        }
-
-        .d-grouphottopic .body .item .info .like {
-            display: inline-block;
-            padding: 0 10px 0 0;
-            color: #999;
-            font-size: 13px;
-        }
-
-.d-maphotinstitution {
-    width: 548px;
-}
-
-    .d-maphotinstitution .head {
-        height: 65px;
-        line-height: 65px;
-        font-size: 15px;
-        color: #00a000;
-    }
-
-        .d-maphotinstitution .head span.turn {
-            height: 65px;
-            line-height: 65px;
-            display: block;
-            position: absolute;
-            top: 0;
-            right: 0;
-            width: 49px;
-        }
-
-            .d-maphotinstitution .head span.turn .dot, .d-maphotinstitution .head span.turn .dot_select {
-                display: block;
-                float: left;
-                width: 16px;
-                height: 16px;
-                margin: 26px 0 0;
-                cursor: pointer;
-                background-image: url(../Images/icon-turndot.png);
-                background-repeat: no-repeat;
-            }
-
-            .d-maphotinstitution .head span.turn .dot {
-                background-position: -16px center;
-            }
-
-            .d-maphotinstitution .head span.turn .dot_select {
-                background-position: 0 center;
-            }
-
-    .d-maphotinstitution .body {
-        width: 548px;
-        height: 364px;
-        overflow: hidden;
-    }
-
-        .d-maphotinstitution .body .slidecontainer {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 553px;
-            height: 369px;
-        }
-
-            .d-maphotinstitution .body .slidecontainer .item {
-                width: 180px;
-                height: 180px;
-                margin: 0 4px 4px 0;
-                float: left;
-            }
-
-                .d-maphotinstitution .body .slidecontainer .item .cover {
-                    display: block;
-                    width: 180px;
-                    height: 109px;
-                }
-
-                .d-maphotinstitution .body .slidecontainer .item .title {
-                    height: 36px;
-                    line-height: 36px;
-                }
-
-                    .d-maphotinstitution .body .slidecontainer .item .title a {
-                        font-size: 14px;
-                    }
-
-                .d-maphotinstitution .body .slidecontainer .item .signed {
-                    display: inline-block;
-                    width: 50px;
-                    height: 16px;
-                    line-height: 16px;
-                    padding: 0 0 0 22px;
-                    font-size: 13px;
-                    background-image: url(../Images/icon-courserecommendbyday.png);
-                    background-position: 0 0;
-                    background-repeat: no-repeat;
-                }
-
-                .d-maphotinstitution .body .slidecontainer .item .star {
-                    display: inline-block;
-                    width: 55px;
-                    height: 11px;
-                    line-height: 11px;
-                    font-size: 0;
-                    overflow: hidden;
-                    background-image: url(../images/midstars.gif);
-                    background-repeat: no-repeat;
-                }
-
-                .d-maphotinstitution .body .slidecontainer .item .star0 {
-                    background-position: 0 -110px;
-                }
-
-                .d-maphotinstitution .body .slidecontainer .item .star5 {
-                    background-position: 0 -99px;
-                }
-
-                .d-maphotinstitution .body .slidecontainer .item .star10 {
-                    background-position: 0 -88px;
-                }
-
-                .d-maphotinstitution .body .slidecontainer .item .star15 {
-                    background-position: 0 -77px;
-                }
-
-                .d-maphotinstitution .body .slidecontainer .item .star20 {
-                    background-position: 0 -66px;
-                }
-
-                .d-maphotinstitution .body .slidecontainer .item .star25 {
-                    background-position: 0 -55px;
-                }
-
-                .d-maphotinstitution .body .slidecontainer .item .star30 {
-                    background-position: 0 -44px;
-                }
-
-                .d-maphotinstitution .body .slidecontainer .item .star35 {
-                    background-position: 0 -33px;
-                }
-
-                .d-maphotinstitution .body .slidecontainer .item .star40 {
-                    background-position: 0 -22px;
-                }
-
-                .d-maphotinstitution .body .slidecontainer .item .star45 {
-                    background-position: 0 -11px;
-                }
-
-                .d-maphotinstitution .body .slidecontainer .item .star50 {
-                    background-position: 0 0;
-                }
-
-.d-maphotlandmark .head {
-    height: 65px;
-    line-height: 65px;
-    font-size: 15px;
-    color: #00a000;
-}
-
-    .d-maphotlandmark .head a {
-        height: 65px;
-        line-height: 65px;
-        display: block;
-        position: absolute;
-        top: 0;
-        right: 0;
-        font-size: 13px;
-        color: #999;
-    }
-
-.d-maphotlandmark .body a.item {
-    display: inline-block;
-    height: 27px;
-    line-height: 27px;
-    margin: 0 20px 0 0;
-    font-size: 13px;
-}
-
-.d-maphotclass .head {
-    height: 65px;
-    line-height: 65px;
-    font-size: 15px;
-    color: #00a000;
-}
-
-    .d-maphotclass .head a {
-        height: 65px;
-        line-height: 65px;
-        display: block;
-        position: absolute;
-        top: 0;
-        right: 0;
-        font-size: 13px;
-        color: #999;
-    }
-
-.d-maphotclass .body a.item {
-    display: inline-block;
-    height: 27px;
-    line-height: 27px;
-    margin: 0 20px 0 0;
-    font-size: 13px;
-}
-
-.d-channelhotresource {
-    width: 548px;
-}
-
-    .d-channelhotresource .head {
-        height: 65px;
-        line-height: 65px;
-        font-size: 15px;
-        color: #00a000;
-    }
-
-        .d-channelhotresource .head span.turn {
-            height: 65px;
-            line-height: 65px;
-            display: block;
-            position: absolute;
-            top: 0;
-            right: 0;
-            width: 49px;
-        }
-
-            .d-channelhotresource .head span.turn .dot, .d-channelhotresource .head span.turn .dot_select {
-                display: block;
-                float: left;
-                width: 16px;
-                height: 16px;
-                margin: 26px 0 0;
-                cursor: pointer;
-                background-image: url(../Images/icon-turndot.png);
-                background-repeat: no-repeat;
-            }
-
-            .d-channelhotresource .head span.turn .dot {
-                background-position: -16px center;
-            }
-
-            .d-channelhotresource .head span.turn .dot_select {
-                background-position: 0 center;
-            }
-
-    .d-channelhotresource .body {
-        width: 548px;
-        height: 392px;
-        overflow: hidden;
-    }
-
-        .d-channelhotresource .body .slidecontainer {
-            width: 553px;
-            height: 413px;
-        }
-
-            .d-channelhotresource .body .slidecontainer .item {
-                width: 272px;
-                height: 186px;
-                margin: 0 4px 20px 0;
-                float: left;
-            }
-
-                .d-channelhotresource .body .slidecontainer .item .cover {
-                    display: block;
-                    width: 272px;
-                    height: 136px;
-                }
-
-                .d-channelhotresource .body .slidecontainer .item .title {
-                    height: 34px;
-                    line-height: 34px;
-                }
-
-                    .d-channelhotresource .body .slidecontainer .item .title a {
-                        font-size: 14px;
-                    }
-
-                .d-channelhotresource .body .slidecontainer .item .photos {
-                    display: inline-block;
-                    height: 16px;
-                    line-height: 16px;
-                    font-size: 13px;
-                    color: #999;
-                    padding: 0 5px 0 0;
-                }
-
-                .d-channelhotresource .body .slidecontainer .item .comments {
-                    display: inline-block;
-                    height: 16px;
-                    line-height: 16px;
-                    font-size: 13px;
-                    color: #999;
-                    padding: 0 5px 0 0;
-                }
-
-                .d-channelhotresource .body .slidecontainer .item .view {
-                    display: inline-block;
-                    height: 16px;
-                    line-height: 16px;
-                    font-size: 13px;
-                    color: #999;
-                    padding: 0 5px 0 0;
-                }
-
-                .d-channelhotresource .body .slidecontainer .item .up {
-                    display: inline-block;
-                    height: 16px;
-                    line-height: 16px;
-                    font-size: 13px;
-                    color: #999;
-                    padding: 0 10px 0 0;
-                }
-
-.d-channelhotexpert .head {
-    height: 65px;
-    line-height: 65px;
-    font-size: 15px;
-    color: #00a000;
-}
-
-    .d-channelhotexpert .head a {
-        height: 65px;
-        line-height: 65px;
-        display: block;
-        position: absolute;
-        top: 0;
-        right: 0;
-        font-size: 13px;
-        color: #999;
-    }
-
-.d-channelhotexpert .body .item {
-    width: 300px;
-    height: 48px;
-    padding: 0 0 20px;
-}
-
-    .d-channelhotexpert .body .item .name {
-        height: 20px;
-        line-height: 20px;
-        padding: 0 0 0 58px;
-    }
-
-        .d-channelhotexpert .body .item .name a {
-            font-size: 14px;
-        }
-
-    .d-channelhotexpert .body .item .desc {
-        display: block;
-        height: 28px;
-        line-height: 14px;
-        font-size: 13px;
-        color: #999;
-        padding: 0 0 0 58px;
-        text-align: justify;
-        text-justify: inter-ideograph;
-    }
-
-    .d-channelhotexpert .body .item .portrait {
-        position: absolute;
-        left: 0;
-        top: 0;
-        width: 48px;
-        height: 48px;
-    }
-
-.d-sharerecentshared {
-    width: 548px;
-}
-
-    .d-sharerecentshared .head {
-        height: 65px;
-        line-height: 65px;
-        font-size: 15px;
-        color: #00a000;
-    }
-
-    .d-sharerecentshared .body .item {
-        padding: 20px 0;
-        border-top: 1px dotted #b9b9b9;
-    }
-
-        .d-sharerecentshared .body .item .owner {
-            height: 27px;
-            line-height: 27px;
-            padding: 0 0 0 58px;
-        }
-
-            .d-sharerecentshared .body .item .owner a {
-                font-size: 14px;
-            }
-
-        .d-sharerecentshared .body .item .post {
-            display: block;
-            padding: 0 0 0 58px;
-            line-height: 20px;
-            font-size: 13px;
-            text-align: justify;
-            text-justify: inter-ideograph;
-        }
-
-        .d-sharerecentshared .body .item .createtime {
-            display: block;
-            color: #999;
-            padding: 0 0 0 58px;
-            height: 20px;
-            line-height: 20px;
-            font-size: 13px;
-        }
-
-        .d-sharerecentshared .body .item .portrait {
-            position: absolute;
-            top: 20px;
-            left: 0;
-            width: 48px;
-            height: 48px;
-        }
-
-        .d-sharerecentshared .body .item:first-child {
-            border-top: 0;
-            padding-top: 0;
-        }
-
-            .d-sharerecentshared .body .item:first-child .portrait {
-                position: absolute;
-                top: 0;
-                left: 0;
-                width: 48px;
-                height: 48px;
-            }
-
-.d-sharehotexpert .head {
-    height: 65px;
-    line-height: 65px;
-    font-size: 15px;
-    color: #00a000;
-}
-
-    .d-sharehotexpert .head a {
-        height: 65px;
-        line-height: 65px;
-        display: block;
-        position: absolute;
-        top: 0;
-        right: 0;
-        font-size: 13px;
-        color: #999;
-    }
-
-.d-sharehotexpert .body .item {
-    width: 300px;
-    height: 48px;
-    padding: 0 0 20px;
-}
-
-    .d-sharehotexpert .body .item .name {
-        height: 20px;
-        line-height: 20px;
-        padding: 0 0 0 58px;
-    }
-
-        .d-sharehotexpert .body .item .name a {
-            font-size: 14px;
-        }
-
-    .d-sharehotexpert .body .item .friends {
-        display: block;
-        height: 14px;
-        line-height: 14px;
-        font-size: 13px;
-        color: #999;
-        padding: 0 0 0 58px;
-    }
-
-    .d-sharehotexpert .body .item .shared {
-        display: block;
-        height: 14px;
-        line-height: 14px;
-        font-size: 13px;
-        color: #999;
-        padding: 0 0 0 58px;
-    }
-
-    .d-sharehotexpert .body .item .portrait {
-        position: absolute;
-        left: 0;
-        top: 0;
-        width: 48px;
-        height: 48px;
-    }
-
-.d-sharehotuser .head {
-    height: 65px;
-    line-height: 65px;
-    font-size: 15px;
-    color: #00a000;
-}
-
-    .d-sharehotuser .head a {
-        height: 65px;
-        line-height: 65px;
-        display: block;
-        position: absolute;
-        top: 0;
-        right: 0;
-        font-size: 13px;
-        color: #999;
-    }
-
-.d-sharehotuser .body .item {
-    width: 300px;
-    height: 48px;
-    padding: 0 0 20px;
-}
-
-    .d-sharehotuser .body .item .name {
-        height: 30px;
-        line-height: 30px;
-        padding: 0 0 0 58px;
-    }
-
-        .d-sharehotuser .body .item .name a {
-            font-size: 14px;
-        }
-
-    .d-sharehotuser .body .item .shared {
-        display: inline-block;
-        height: 14px;
-        line-height: 14px;
-        font-size: 13px;
-        color: #999;
-        padding: 0 0 0 58px;
-        margin: 0 10px 0 0;
-    }
-
-    .d-sharehotuser .body .item .friends {
-        display: inline-block;
-        height: 14px;
-        line-height: 14px;
-        font-size: 13px;
-        color: #999;
-    }
-
-    .d-sharehotuser .body .item .portrait {
-        position: absolute;
-        left: 0;
-        top: 0;
-        width: 48px;
-        height: 48px;
-    }
-
-.d-help .head {
-    height: 65px;
-    line-height: 65px;
-    font-size: 2.5em;
-    background-image: url(../Images/icon-help.png);
-    background-repeat: no-repeat;
-}
-
-.d-help .body {
+.d-headmenu {
     width: 1000px;
-    padding: 0 0 20px;
-    line-height: 18px;
+    margin: 0 auto;
+    text-align: left;
 }
 
-    .d-help .body .item {
-        float: left;
+    .d-headmenu .body {
+        padding: 0;
+        margin: 0;
+        height: 38px;
+        font-size: 0;
     }
 
-        .d-help .body .item img {
-            margin: 0 0 2px;
-        }
-
-        .d-help .body .item a {
+        .d-headmenu .body .item, .d-headmenu .body .item_selected {
+            position: relative;
             display: block;
-            height: 30px;
-            line-height: 30px;
-            text-align: center;
-            font-size: 13px;
-            color: #474747;
+            float: left;
+            height: 37px;
+            line-height: 37px;
+            color: #555;
+            font-size: 14px;
+            cursor: pointer;
+            background-color: transparent;
+            margin: 0 40px 0 0;
             text-decoration: none;
         }
 
-            .d-help .body .item a div {
-                text-align: left;
-            }
+        .d-headmenu .body a.item:hover {
+            color: #222;
+            text-decoration: none;
+        }
 
-            .d-help .body .item a.ha {
+        .d-headmenu .body .item_selected {
+            cursor: text;
+            color: #2933e2;
+        }
+
+        .d-headmenu .body a.item_selected:hover {
+            text-decoration: none;
+        }
+
+        .d-headmenu .body .r {
+            float: right;
+        }
+
+        .d-headmenu .body .d-hmenu {
+            position: absolute;
+            top: 38px;
+            left: -1px;
+            width: 124px;
+            background-color: #fff;
+            border-left: 1px solid #777;
+            border-right: 1px solid #777;
+            border-bottom: 1px solid #777;
+        }
+
+            .d-headmenu .body .d-hmenu .item, .d-headmenu .body .d-hmenu .item_selected {
+                width: 84px;
+                height: 30px;
+                line-height: 30px;
+                margin: 0;
                 display: block;
-                height: 18px;
-                line-height: 18px;
-                text-align: left;
-                font-size: 12px;
-            }
-
-        .d-help .body .item .h {
-            height: 16px;
-            line-height: 16px;
-            padding: 0 0 12px;
-            text-align: center;
-            color: #474747;
-            font-size: 14px;
-            font-weight: 700;
-        }
-
-        .d-help .body .item .h2 {
-            height: 16px;
-            line-height: 16px;
-            padding: 0 0 10px;
-            text-align: center;
-            color: #828282;
-            font-size: 14px;
-            font-weight: 700;
-        }
-
-        .d-help .body .item .icon-mobile-apple {
-            width: 143px;
-            height: 40px;
-            padding: 8px 0 7px 73px;
-            margin: 0 0 5px;
-            background-image: url(../images/icon-mobile-apple.jpg);
-        }
-
-            .d-help .body .item .icon-mobile-apple div {
-                font-size: 12px;
-                height: 20px;
-                line-height: 20px;
-            }
-
-        .d-help .body .item .icon-mobile-android {
-            width: 143px;
-            height: 40px;
-            padding: 8px 0 7px 73px;
-            background-image: url(../images/icon-mobile-android.jpg);
-        }
-
-            .d-help .body .item .icon-mobile-android div {
-                font-size: 12px;
-                height: 20px;
-                line-height: 20px;
-            }
-
-.d-signin {
-    width: 382px;
-    margin: 0 auto;
-}
-
-    .d-signin .head {
-        height: 65px;
-        line-height: 65px;
-        font-size: 22px;
-        color: #00a000;
-        text-align: center;
-    }
-
-    .d-signin .body {
-        background-color: #eee;
-        padding: 40px;
-    }
-
-        .d-signin .body label {
-            width: 80px;
-            font-size: 14px;
-            cursor: pointer;
-        }
-
-        .d-signin .body a {
-            font-size: 14px;
-        }
-
-        .d-signin .body .i {
-            display: block;
-            width: 40px;
-            height: 40px;
-            float: left;
-            overflow: hidden;
-        }
-
-        .d-signin .body .int-hs, .d-signin .body .int-hs_s {
-            display: block;
-            float: left;
-            height: 30px;
-            line-height: 30px;
-            padding: 4px 8px;
-            border: 1px solid #fff;
-            zoom: 1;
-            font-size: 16px;
-        }
-
-        .d-signin .body .formcheck {
-            position: absolute;
-            left: 330px;
-            top: 0;
-            width: 200px;
-            height: 40px;
-            line-height: 40px;
-            text-align: left;
-        }
-
-        .d-signin .body .d-username {
-            padding: 0 0 20px;
-            font-size: 0;
-            height: 45px;
-            line-height: 45px;
-        }
-
-            .d-signin .body .d-username .i {
-                background-image: url(../images/signin-username.jpg);
-            }
-
-            .d-signin .body .d-username input {
-                width: 240px;
-            }
-
-        .d-signin .body .d-password {
-            padding: 0 0 20px;
-            font-size: 0;
-            height: 45px;
-            line-height: 45px;
-        }
-
-            .d-signin .body .d-password .i {
-                background-image: url(../images/signin-password.jpg);
-            }
-
-            .d-signin .body .d-password input {
-                width: 240px;
-            }
-
-        .d-signin .body .d-vcode {
-            font-size: 0;
-            height: 45px;
-            line-height: 45px;
-        }
-
-            .d-signin .body .d-vcode .i {
-                background-image: url(../images/signin-vcode.jpg);
-            }
-
-            .d-signin .body .d-vcode input {
-                width: 110px;
-            }
-
-            .d-signin .body .d-vcode img {
-                width: 110px;
-                height: 40px;
+                font-size: 13px;
+                cursor: pointer;
                 border: 0;
-                margin-left: 18px;
+                color: #777;
+                padding: 0 20px;
             }
 
-        .d-signin .body .d-olduser {
-            height: 1px;
-            overflow: hidden;
-            visibility: hidden;
-        }
-
-        .d-signin .body .d-knowme {
-            text-align: left;
-        }
-
-        .d-signin .body .d-forgot {
-            height: 30px;
-            line-height: 30px;
-            text-align: right;
-        }
-
-        .d-signin .body .d-submit {
-            height: 50px;
-            line-height: 50px;
-            text-align: center;
-        }
-
-            .d-signin .body .d-submit .btn {
-                font-size: 15px;
-            }
-
-        .d-signin .body .d-sign {
-            height: 40px;
-            line-height: 40px;
-            text-align: left;
-        }
-
-.d-signup .head {
-    height: 65px;
-    line-height: 65px;
-    font-size: 15px;
-    color: #00a000;
-}
-
-.d-signup .body .tbl td div {
-    line-height: 40px;
-    font-size: 13px;
-}
-
-    .d-signup .body .tbl td div .text {
-        line-height: 40px;
-        font-size: 1em;
-        color: #999;
-    }
-
-    .d-signup .body .tbl td div .btn {
-        font-size: 1em;
-    }
-
-    .d-signup .body .tbl td div label {
-        width: 80px;
-        font-size: 1em;
-        cursor: pointer;
-    }
-
-    .d-signup .body .tbl td div input {
-        margin-right: 5px;
-    }
-
-    .d-signup .body .tbl td div select {
-        margin-right: 5px;
-    }
-
-    .d-signup .body .tbl td div a {
-        font-size: 1em;
-    }
-
-.d-signup .body .tbl td:first-child {
-    width: 100px;
-}
-
-.d-forgotpwd .head {
-    height: 65px;
-    line-height: 65px;
-    font-size: 15px;
-    color: #00a000;
-}
-
-.d-forgotpwd .body .tbl td {
-    width: 510px;
-}
-
-    .d-forgotpwd .body .tbl td div {
-        line-height: 40px;
-        font-size: 13px;
-    }
-
-        .d-forgotpwd .body .tbl td div .text {
-            line-height: 40px;
-            font-size: 1em;
-            color: #999;
-        }
-
-        .d-forgotpwd .body .tbl td div .btn {
-            font-size: 1em;
-        }
-
-        .d-forgotpwd .body .tbl td div label {
-            width: 80px;
-            font-size: 1em;
-            cursor: pointer;
-        }
-
-        .d-forgotpwd .body .tbl td div input {
-            margin-right: 5px;
-        }
-
-        .d-forgotpwd .body .tbl td div select {
-            margin-right: 5px;
-        }
-
-        .d-forgotpwd .body .tbl td div a {
-            font-size: 1em;
-        }
-
-    .d-forgotpwd .body .tbl td:first-child {
-        width: 100px;
-    }
-
-.d-forgotpwd .body .info p {
-    font-size: 13px;
-}
-
-.d-searchtabs {
-    height: 40px;
-    padding: 20px 0 0;
-    font-size: 0;
-}
-
-    .d-searchtabs .tab, .d-searchtabs .tab_select {
-        display: inline-block;
-        height: 40px;
-        line-height: 40px;
-        padding: 0 10px;
-        text-align: center;
-        font-size: 15px;
-        cursor: pointer;
-        text-decoration: none;
-    }
-
-        .d-searchtabs .tab .baget, .d-searchtabs .tab_select .baget {
-            display: inline-block;
-            height: 16px;
-            line-height: 16px;
-            padding: 0 4px;
-            margin: 0 0 0 5px;
-            text-align: center;
-            font-size: 12px;
-            background-color: #ddd;
-            color: #b94a48;
-            text-shadow: 0 -1px 0 rgba(0,0,0,.25);
-            -webkit-border-radius: 8px;
-            -moz-border-radius: 8px;
-            border-radius: 8px;
-        }
-
-    .d-searchtabs .tab {
-        background-color: transparent;
-    }
-
-    .d-searchtabs .tab_select {
-        background-color: #eee;
-    }
-
-.d-searchcondition .head {
-    height: 65px;
-    line-height: 65px;
-    font-size: 15px;
-    color: #00a000;
-}
-
-.d-searchhot .head {
-    height: 65px;
-    line-height: 65px;
-    font-size: 15px;
-    color: #00a000;
-}
-
-.d-searchhot .body .item {
-    display: inline-block;
-    height: 30px;
-    line-height: 30px;
-    padding: 0 20px 0 0;
-    text-align: left;
-    font-size: 13px;
-}
-
-.d-searchresultcourse {
-    width: 652px;
-}
-
-    .d-searchresultcourse .body .item {
-        display: block;
-        padding: 20px 0;
-        border-top: 1px solid #ccc;
-    }
-
-        .d-searchresultcourse .body .item div {
-            position: relative;
-        }
-
-        .d-searchresultcourse .body .item .cover {
-            position: absolute;
-            width: 106px;
-            height: 106px;
-            top: 20px;
-            left: 0;
-        }
-
-        .d-searchresultcourse .body .item .title {
-            padding: 0 0 0 130px;
-        }
-
-            .d-searchresultcourse .body .item .title a {
-                font-size: 15px;
-            }
-
-        .d-searchresultcourse .body .item .info {
-            display: block;
-            padding: 0 0 0 130px;
-            height: 40px;
-            line-height: 40px;
-        }
-
-            .d-searchresultcourse .body .item .info .vendor {
-                display: inline-block;
-                background-color: #eee;
-                height: 27px;
-                line-height: 27px;
-                padding: 0 10px;
-                margin: 0 20px 0 0;
-                font-size: 13px;
-                text-decoration: none;
-            }
-
-            .d-searchresultcourse .body .item .info .star {
-                display: inline-block;
-                width: 55px;
-                height: 11px;
-                line-height: 11px;
-                font-size: 0;
-                overflow: hidden;
-                background-image: url(../images/midstars.gif);
-                background-repeat: no-repeat;
-            }
-
-            .d-searchresultcourse .body .item .info .star0 {
-                background-position: 0 -110px;
-            }
-
-            .d-searchresultcourse .body .item .info .star5 {
-                background-position: 0 -99px;
-            }
-
-            .d-searchresultcourse .body .item .info .star10 {
-                background-position: 0 -88px;
-            }
-
-            .d-searchresultcourse .body .item .info .star15 {
-                background-position: 0 -77px;
-            }
-
-            .d-searchresultcourse .body .item .info .star20 {
-                background-position: 0 -66px;
-            }
-
-            .d-searchresultcourse .body .item .info .star25 {
-                background-position: 0 -55px;
-            }
-
-            .d-searchresultcourse .body .item .info .star30 {
-                background-position: 0 -44px;
-            }
-
-            .d-searchresultcourse .body .item .info .star35 {
-                background-position: 0 -33px;
-            }
-
-            .d-searchresultcourse .body .item .info .star40 {
-                background-position: 0 -22px;
-            }
-
-            .d-searchresultcourse .body .item .info .star45 {
-                background-position: 0 -11px;
-            }
-
-            .d-searchresultcourse .body .item .info .star50 {
-                background-position: 0 0;
-            }
-
-        .d-searchresultcourse .body .item .desc {
-            display: block;
-            padding: 0 0 0 130px;
-            line-height: 24px;
-            font-size: 13px;
-        }
-
-        .d-searchresultcourse .body .item .add {
-            display: block;
-            padding: 0 0 0 130px;
-            height: 40px;
-            line-height: 40px;
-        }
-
-            .d-searchresultcourse .body .item .add .btn-add {
-                border: 0;
-                padding: 0 10px;
-                height: 24px;
-                line-height: 24px;
-                font-size: 13px;
-            }
-
-        .d-searchresultcourse .body .item:first-child {
-            margin: -1px 0 0 0;
-        }
-
-.d-searchresultlearningmap {
-    width: 652px;
-}
-
-    .d-searchresultlearningmap .body .item {
-        display: block;
-        padding: 20px 0;
-        border-top: 1px solid #ccc;
-    }
-
-        .d-searchresultlearningmap .body .item div {
-            position: relative;
-        }
-
-        .d-searchresultlearningmap .body .item .cover {
-            position: absolute;
-            width: 106px;
-            height: 106px;
-            top: 20px;
-            left: 0;
-        }
-
-        .d-searchresultlearningmap .body .item .title {
-            padding: 0 0 0 130px;
-        }
-
-            .d-searchresultlearningmap .body .item .title a {
-                font-size: 15px;
-            }
-
-        .d-searchresultlearningmap .body .item .info {
-            display: block;
-            padding: 0 0 0 130px;
-            height: 40px;
-            line-height: 40px;
-        }
-
-            .d-searchresultlearningmap .body .item .info .vendor {
-                display: inline-block;
-                background-color: #eee;
-                height: 27px;
-                line-height: 27px;
-                padding: 0 10px;
-                margin: 0 20px 0 0;
-                font-size: 13px;
-                text-decoration: none;
-            }
-
-            .d-searchresultlearningmap .body .item .info .star {
-                display: inline-block;
-                width: 55px;
-                height: 11px;
-                line-height: 11px;
-                font-size: 0;
-                overflow: hidden;
-                background-image: url(../images/midstars.gif);
-                background-repeat: no-repeat;
-            }
-
-            .d-searchresultlearningmap .body .item .info .star0 {
-                background-position: 0 -110px;
-            }
-
-            .d-searchresultlearningmap .body .item .info .star5 {
-                background-position: 0 -99px;
-            }
-
-            .d-searchresultlearningmap .body .item .info .star10 {
-                background-position: 0 -88px;
-            }
-
-            .d-searchresultlearningmap .body .item .info .star15 {
-                background-position: 0 -77px;
-            }
-
-            .d-searchresultlearningmap .body .item .info .star20 {
-                background-position: 0 -66px;
-            }
-
-            .d-searchresultlearningmap .body .item .info .star25 {
-                background-position: 0 -55px;
-            }
-
-            .d-searchresultlearningmap .body .item .info .star30 {
-                background-position: 0 -44px;
-            }
-
-            .d-searchresultlearningmap .body .item .info .star35 {
-                background-position: 0 -33px;
-            }
-
-            .d-searchresultlearningmap .body .item .info .star40 {
-                background-position: 0 -22px;
-            }
-
-            .d-searchresultlearningmap .body .item .info .star45 {
-                background-position: 0 -11px;
-            }
-
-            .d-searchresultlearningmap .body .item .info .star50 {
-                background-position: 0 0;
-            }
-
-        .d-searchresultlearningmap .body .item .desc {
-            display: block;
-            padding: 0 0 0 130px;
-            line-height: 24px;
-            font-size: 13px;
-        }
-
-        .d-searchresultlearningmap .body .item .add {
-            display: block;
-            padding: 0 0 0 130px;
-            height: 40px;
-            line-height: 40px;
-        }
-
-            .d-searchresultlearningmap .body .item .add .btn-add {
-                border: 0;
-                padding: 0 10px;
-                height: 24px;
-                line-height: 24px;
-                font-size: 13px;
-            }
-
-        .d-searchresultlearningmap .body .item:first-child {
-            margin: -1px 0 0 0;
-        }
-
-.d-searchresultbook .body .item {
-    display: block;
-    padding: 20px 0;
-    margin: -1px 0 0 0;
-    border-top: 1px solid #ccc;
-    border-bottom: 1px solid #ccc;
-}
-
-    .d-searchresultbook .body .item div {
-        position: relative;
-    }
-
-    .d-searchresultbook .body .item .cover {
-        position: absolute;
-        width: 90px;
-        height: 127px;
-        top: 20px;
-        left: 0;
-    }
-
-    .d-searchresultbook .body .item .title {
-        padding: 0 0 0 110px;
-    }
-
-        .d-searchresultbook .body .item .title a {
-            font-size: 15px;
-        }
-
-    .d-searchresultbook .body .item .info {
-        display: block;
-        padding: 0 0 0 110px;
-        height: 30px;
-        line-height: 30px;
-    }
-
-        .d-searchresultbook .body .item .info .author {
-            display: inline-block;
-            height: 27px;
-            line-height: 27px;
-            padding: 0 10px 0 0;
-            margin: 0 20px 0 0;
-            font-size: 13px;
-        }
-
-        .d-searchresultbook .body .item .info .price {
-            display: inline-block;
-            height: 27px;
-            line-height: 27px;
-            padding: 0 10px;
-            margin: 0 20px 0 0;
-            font-size: 13px;
-        }
-
-        .d-searchresultbook .body .item .info .amount {
-            display: inline-block;
-            height: 27px;
-            line-height: 27px;
-            padding: 0 10px 0 0;
-            margin: 0 20px 0 0;
-            font-size: 12px;
-            color: #999;
-        }
-
-        .d-searchresultbook .body .item .info .star {
-            display: inline-block;
-            width: 55px;
-            height: 11px;
-            line-height: 11px;
-            font-size: 0;
-            overflow: hidden;
-            background-image: url(../images/midstars.gif);
-            background-repeat: no-repeat;
-        }
-
-        .d-searchresultbook .body .item .info .star0 {
-            background-position: 0 -110px;
-        }
-
-        .d-searchresultbook .body .item .info .star5 {
-            background-position: 0 -99px;
-        }
-
-        .d-searchresultbook .body .item .info .star10 {
-            background-position: 0 -88px;
-        }
-
-        .d-searchresultbook .body .item .info .star15 {
-            background-position: 0 -77px;
-        }
-
-        .d-searchresultbook .body .item .info .star20 {
-            background-position: 0 -66px;
-        }
-
-        .d-searchresultbook .body .item .info .star25 {
-            background-position: 0 -55px;
-        }
-
-        .d-searchresultbook .body .item .info .star30 {
-            background-position: 0 -44px;
-        }
-
-        .d-searchresultbook .body .item .info .star35 {
-            background-position: 0 -33px;
-        }
-
-        .d-searchresultbook .body .item .info .star40 {
-            background-position: 0 -22px;
-        }
-
-        .d-searchresultbook .body .item .info .star45 {
-            background-position: 0 -11px;
-        }
-
-        .d-searchresultbook .body .item .info .star50 {
-            background-position: 0 0;
-        }
-
-        .d-searchresultbook .body .item .info .star {
-            margin: 0 20px 0 0;
-        }
-
-    .d-searchresultbook .body .item .brief {
-        display: block;
-        padding: 0 0 0 110px;
-        line-height: 24px;
-        font-size: 13px;
-    }
-
-    .d-searchresultbook .body .item .add {
-        display: block;
-        padding: 0 0 0 110px;
-        height: 40px;
-        line-height: 40px;
-    }
-
-        .d-searchresultbook .body .item .add .btn-add {
-            border: 0;
-            padding: 0 10px;
-            height: 24px;
-            line-height: 24px;
-            font-size: 13px;
-        }
-
-.d-searchresultevent {
-    width: 652px;
-}
-
-    .d-searchresultevent .body .item {
-        padding: 20px 0;
-        border-top: 1px solid #aaa;
-    }
-
-        .d-searchresultevent .body .item .title {
-            padding: 0 0 0 130px;
-            line-height: 25px;
-        }
-
-            .d-searchresultevent .body .item .title a {
-                font-size: 15px;
-            }
-
-        .d-searchresultevent .body .item .desc {
-            display: block;
-            padding: 0 0 0 130px;
-            max-height: 60px;
-            line-height: 20px;
-        }
-
-        .d-searchresultevent .body .item .date {
-            display: block;
-            padding: 0 0 0 130px;
-            height: 20px;
-            line-height: 20px;
-            color: #999;
-        }
-
-        .d-searchresultevent .body .item .location {
-            display: block;
-            padding: 0 0 0 130px;
-            height: 20px;
-            line-height: 20px;
-            color: #999;
-        }
-
-        .d-searchresultevent .body .item .fee {
-            display: block;
-            padding: 0 0 0 130px;
-            height: 20px;
-            line-height: 20px;
-            color: #999;
-        }
-
-        .d-searchresultevent .body .item .sponsor {
-            display: block;
-            padding: 0 0 0 130px;
-            height: 20px;
-            line-height: 20px;
-            color: #999;
-        }
-
-        .d-searchresultevent .body .item .info {
-            padding: 0 0 0 130px;
-        }
-
-            .d-searchresultevent .body .item .info .follow {
-                display: inline-block;
-                height: 20px;
-                line-height: 20px;
-                color: #999;
-                padding: 0 10px 0 0;
-            }
-
-            .d-searchresultevent .body .item .info .participant {
-                display: inline-block;
-                height: 20px;
-                line-height: 20px;
-                color: #999;
-            }
-
-        .d-searchresultevent .body .item .cover {
-            position: absolute;
-            top: 20px;
-            left: 0;
-            width: 106px;
-            height: 106px;
-        }
-
-.d-searchresultgroup .body .item {
-    padding: 20px 0;
-    border-top: 1px solid #ccc;
-}
-
-    .d-searchresultgroup .body .item .name {
-        padding: 0 0 0 58px;
-        height: 27px;
-        line-height: 27px;
-    }
-
-        .d-searchresultgroup .body .item .name a {
-            font-size: 14px;
-        }
-
-    .d-searchresultgroup .body .item .users {
-        display: block;
-        padding: 0 0 0 58px;
-        height: 21px;
-        line-height: 21px;
-        font-size: 13px;
-    }
-
-    .d-searchresultgroup .body .item .desc {
-        display: block;
-        padding: 0 0 0 58px;
-        max-height: 80px;
-        line-height: 20px;
-        font-size: 13px;
-        color: #999;
-    }
-
-    .d-searchresultgroup .body .item .add {
-        display: block;
-        padding: 0 0 0 58px;
-        height: 40px;
-        line-height: 40px;
-    }
-
-        .d-searchresultgroup .body .item .add .btn-add {
-            border: 0;
-            padding: 0 10px;
-            height: 24px;
-            line-height: 24px;
-            font-size: 13px;
-        }
-
-    .d-searchresultgroup .body .item a.portrait {
-        position: absolute;
-        top: 20px;
-        left: 0;
-        width: 48px;
-        height: 48px;
-    }
-
-.d-searchresulttopic .body {
-    width: 652px;
-}
-
-    .d-searchresulttopic .body .item {
-        padding: 20px 0;
-        border-top: 1px solid #aaa;
-    }
-
-        .d-searchresulttopic .body .item .title {
-            height: 40px;
-            line-height: 40px;
-        }
-
-            .d-searchresulttopic .body .item .title a {
-                font-size: 14px;
-            }
-
-        .d-searchresulttopic .body .item .desc {
-            display: block;
-            max-height: 60px;
-            line-height: 20px;
-            font-size: 13px;
-        }
-
-        .d-searchresulttopic .body .item .info {
-            display: block;
-            text-align: right;
-            font-size: 12px;
-        }
-
-            .d-searchresulttopic .body .item .info .reply {
-                display: inline-block;
-                height: 20px;
-                line-height: 20px;
-                color: #999;
-                padding: 0 10px 0 0;
-            }
-
-            .d-searchresulttopic .body .item .info .like {
-                display: inline-block;
-                height: 20px;
-                line-height: 20px;
-                color: #999;
-            }
-
-        .d-searchresulttopic .body .item .from {
-            display: block;
-            text-align: right;
-            height: 20px;
-            line-height: 20px;
-            color: #999;
-            font-size: 12px;
-        }
-
-        .d-searchresulttopic .body .item:first-child {
-            padding-top: 0;
-        }
-
-.d-searchresultmember {
-    width: 652px;
-    width: 663px;
-    overflow-x: hidden;
-}
-
-    .d-searchresultmember .head {
-        height: 65px;
-        line-height: 65px;
-        font-size: 15px;
-        color: #00a000;
-    }
-
-    .d-searchresultmember .body {
-        padding: 20px 0;
-        border-top: 1px solid #aaa;
-        width: 679px;
-    }
-
-        .d-searchresultmember .body .info {
-            height: 50px;
-            line-height: 50px;
-            display: block;
-            color: #999;
-            font-size: 13px;
-        }
-
-        .d-searchresultmember .body .item {
-            width: 324px;
-            height: 98px;
-            margin: 0 15px 20px 0;
-            float: left;
-            overflow: hidden;
-        }
-
-            .d-searchresultmember .body .item .portrait {
-                position: absolute;
-                top: 0;
-                left: 0;
-                display: block;
-                width: 48px;
-                height: 48px;
-            }
-
-            .d-searchresultmember .body .item .name {
-                padding: 0 0 0 60px;
-                height: 24px;
-                line-height: 24px;
-            }
-
-                .d-searchresultmember .body .item .name a {
-                    font-size: 13px;
+                .d-headmenu .body .d-hmenu .item:hover, .d-headmenu .body .d-hmenu .item_selected:hover {
+                    background-color: #777;
+                    color: #fff;
                 }
 
-            .d-searchresultmember .body .item .signature {
-                padding: 0 0 0 60px;
-                min-height: 40px;
-                line-height: 20px;
-                font-size: 13px;
-                color: #999;
-            }
+                .d-headmenu .body .d-hmenu .item:first-child {
+                    padding: 0 20px;
+                }
 
-            .d-searchresultmember .body .item .shared {
-                display: inline-block;
-                height: 20px;
-                line-height: 20px;
-                font-size: 13px;
-                color: #999;
-                padding: 0 0 0 60px;
-                margin: 0 10px 0 0;
-            }
-
-            .d-searchresultmember .body .item .friends {
-                display: inline-block;
-                height: 20px;
-                line-height: 20px;
-                font-size: 13px;
-                color: #999;
-            }
-
-            .d-searchresultmember .body .item .action {
-                position: absolute;
-                top: 0;
-                right: 0;
-                width: 20px;
-                height: 20px;
-                line-height: 20px;
-                cursor: pointer;
-                font-size: 15px;
-                color: #999;
-            }
-
-.d-terms {
-    margin: 30px 60px;
-    padding: 10px 30px;
-    border: 1px solid #ddd;
-    background-color: #f0f0f0;
+.d-articlelist {
+    padding: 20px 0 0;
 }
 
-    .d-terms p {
-        margin: 15px 0;
-        line-height: 20px;
-        font-size: 13px;
-        text-indent: 28px;
-        text-align: justify;
-        text-justify: inter-ideograph;
+    .d-articlelist .body {
+        width: 652px;
     }
 
-    .d-terms .header {
-        text-align: center;
-        font-size: 16px;
-    }
-
-    .d-terms .h1 {
-        font-weight: 700;
-    }
-
-.d-special {
-    width: 652px;
-}
-
-    .d-special .head {
-        height: 65px;
-        line-height: 65px;
-        font-size: 15px;
-        color: #00a000;
-    }
-
-    .d-special .body .item {
-        height: 126px;
-        padding: 20px 0;
-        border-top: 1px solid #ddd;
-    }
-
-        .d-special .body .item .title {
-            position: relative;
-            line-height: 24px;
-            padding: 0 0 0 140px;
+        .d-articlelist .body .item {
+            padding: 10px 0;
+            border-bottom: 1px dotted #aaa;
         }
 
-            .d-special .body .item .title a {
+            .d-articlelist .body .item .title {
+                padding: 10px 0;
+                line-height: 24px;
+                font-size: 18px;
+            }
+
+                .d-articlelist .body .item .title a {
+                    font-size: 18px;
+                }
+
+            .d-articlelist .body .item .cover {
+                display: block;
+                width: 652px;
+                text-align: center;
+                padding: 20px 0;
+                background-color: #f0f0f0;
+            }
+
+            .d-articlelist .body .item .info {
+                display: block;
+                text-align: left;
+                font-size: 13px;
+                padding: 0 0 10px;
+            }
+
+                .d-articlelist .body .item .info .from {
+                    display: inline-block;
+                    height: 20px;
+                    line-height: 20px;
+                    color: #999;
+                    padding: 0 10px 0 0;
+                }
+
+                .d-articlelist .body .item .info .date {
+                    display: inline-block;
+                    height: 20px;
+                    line-height: 20px;
+                    color: #999;
+                    padding: 0 10px 0 0;
+                }
+
+                .d-articlelist .body .item .info .view {
+                    display: inline-block;
+                    height: 20px;
+                    line-height: 20px;
+                    color: #999;
+                    padding: 0 10px 0 0;
+                }
+
+            .d-articlelist .body .item .desc {
+                width: 652px;
+                overflow-x: hidden;
+                display: block;
+                line-height: 20px;
                 font-size: 14px;
             }
 
-        .d-special .body .item .content {
-            position: relative;
-            line-height: 20px;
-            padding: 0 0 0 140px;
-            overflow: hidden;
-            font-size: 13px;
-            color: #666;
-            text-align: justify;
-            text-justify: inter-ideograph;
+                .d-articlelist .body .item .desc p {
+                    line-height: 24px;
+                    color: #222;
+                    font-size: 14px;
+                }
+
+            .d-articlelist .body .item:first-child {
+                padding-top: 0;
+            }
+
+.d-article {
+    padding: 20px 0 0;
+}
+
+    .d-article .body {
+        width: 652px;
+    }
+
+        .d-article .body .item {
+            padding: 10px 0;
         }
 
-        .d-special .body .item a.cover {
+            .d-article .body .item .title {
+                padding: 10px 0;
+                line-height: 24px;
+                font-size: 18px;
+            }
+
+                .d-article .body .item .title a {
+                    font-size: 18px;
+                }
+
+            .d-article .body .item .cover {
+                display: block;
+                width: 652px;
+                text-align: center;
+                padding: 20px 0;
+                background-color: #f0f0f0;
+            }
+
+            .d-article .body .item .info {
+                display: block;
+                text-align: left;
+                font-size: 13px;
+                padding: 0 0 10px;
+            }
+
+                .d-article .body .item .info .from {
+                    display: inline-block;
+                    height: 20px;
+                    line-height: 20px;
+                    color: #999;
+                    padding: 0 10px 0 0;
+                }
+
+                .d-article .body .item .info .date {
+                    display: inline-block;
+                    height: 20px;
+                    line-height: 20px;
+                    color: #999;
+                    padding: 0 10px 0 0;
+                }
+
+                .d-article .body .item .info .view {
+                    display: inline-block;
+                    height: 20px;
+                    line-height: 20px;
+                    color: #999;
+                    padding: 0 10px 0 0;
+                }
+
+            .d-article .body .item .desc {
+                width: 652px;
+                overflow-x: hidden;
+                display: block;
+                line-height: 20px;
+                font-size: 14px;
+            }
+
+                .d-article .body .item .desc p {
+                    line-height: 24px;
+                    color: #222;
+                    font-size: 14px;
+                    text-indent: 28px;
+                }
+
+            .d-article .body .item:first-child {
+                padding-top: 0;
+            }
+
+.d-articlehot {
+    padding: 20px 0 0;
+}
+
+    .d-articlehot .head {
+        height: 45px;
+        line-height: 45px;
+        font-size: 16px;
+        color: #00a000;
+    }
+
+        .d-articlehot .head a {
+            height: 45px;
+            line-height: 45px;
             display: block;
             position: absolute;
-            top: 20px;
-            left: 0;
-            width: 126px;
-            height: 126px;
+            top: 0;
+            right: 0;
+            font-size: 13px;
+            color: #999;
         }
+
+    .d-articlehot .body .item {
+        display: block;
+        width: 300px;
+        height: 27px;
+        line-height: 27px;
+        font-size: 13px;
+    }
 
 .d-topmenu .body .icon-drop-white, .d-courseplayer .icon-drop-white {
     background-image: url(../images/icon-drop-white.gif);
