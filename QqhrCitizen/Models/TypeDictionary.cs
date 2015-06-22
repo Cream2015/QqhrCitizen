@@ -39,7 +39,7 @@ namespace QqhrCitizen.Models
         public virtual TypeDictionary Father { get; set; }
 
         public virtual ICollection<TypeDictionary> Children { get; set; }
- 
+
     }
 
 
