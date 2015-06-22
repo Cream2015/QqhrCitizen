@@ -270,28 +270,21 @@
                     <!-- region start: 热门标签 -->
                     <div id="d_booktaghot" class="d-booktaghot">
                         <div class="body">
-                            <div class="item" style="background-color: #23a532;">
-                                <a href="http://read.shlll.net/Book/Find?parms=8009A97B9D0780C5" title="文学">文学</a>
-                                <div>
-                                    <a class="" href="http://read.shlll.net/Book/Find?parms=7ADFA067762EA910" title="中国近当代诗歌">中国近当代诗歌</a>
-                                    <a class="" href="http://read.shlll.net/Book/Find?parms=7589A4CB150F3A94" title="中国古诗词">中国古诗词</a>
-                                    <a class="" href="http://read.shlll.net/Book/Find?parms=A21442BA1394F1B6" title="文学理论">文学理论</a>
-                                    <a class="" href="http://read.shlll.net/Book/Find?parms=DE3543AC7EF606CF" title="文学作品集">文学作品集</a>
-                                    <a class="" href="http://read.shlll.net/Book/Find?parms=51D7CB0DC482BE22" title="外国散文随笔">外国散文随笔</a>
-                                    <a class="" href="http://read.shlll.net/Book/Find?parms=861AAF35DAEBF590" title="中国散文随笔">中国散文随笔</a>
+                            @{ string[] bookcolors = { "#23a532", "#169425", "#189727", "#11851e", "#23a532", "#189727" }; var bi = 0; }
+                            @foreach (TypeDictionary td in ViewBag.BookTypes)
+                            {
+                                <div class="item" style="background-color: @(bookcolors[i++]);">
+                                    <a href="#" title="@td.TypeValue">@td.TypeValue</a>
+                                    <div>
+                                        @foreach (TypeDictionary td2 in td.Children.Take(6).ToList())
+                                        {
+                                            <a class="" href="/EBook/Index?tid=@td2.ID" title="@td2.TypeValue">@td2.TypeValue</a>
+                                        }
+                                    </div>
                                 </div>
-                            </div><div class="item" style="background-color: #169425;"><a href="http://read.shlll.net/Book/Find?parms=EE0AB87B08CE6F86" title="小说">小说</a><div><a class="" href="http://read.shlll.net/Book/Find?parms=D248050B0A42062A" title="推理小说">推理小说</a><a class="" href="http://read.shlll.net/Book/Find?parms=A7425B165A35B4B9" title="悬疑">悬疑</a><a class="" href="http://read.shlll.net/Book/Find?parms=3014EA7563114A26" title="军事小说">军事小说</a><a class="" href="http://read.shlll.net/Book/Find?parms=1E5E1112B3836C19" title="中国当代小说">中国当代小说</a><a class="" href="http://read.shlll.net/Book/Find?parms=BA58AC71185B1FEA" title="小说集">小说集</a><a class="" href="http://read.shlll.net/Book/Find?parms=46C6836487BF2BEA" title="历史小说">历史小说</a></div></div><div class="item" style="background-color: #189727;"><a href="http://read.shlll.net/Book/Find?parms=A13621ECE4325078" title="文化">文化</a><div><a class="" href="http://read.shlll.net/Book/Find?parms=3013993E1A4437F3" title="民族文化">民族文化</a><a class="" href="http://read.shlll.net/Book/Find?parms=B7DE4EAF5F852E38" title="地域文化">地域文化</a><a class="" href="http://read.shlll.net/Book/Find?parms=BA0FB26233B73150" title="文化交流">文化交流</a><a class="" href="http://read.shlll.net/Book/Find?parms=209E9BE09CDF0B3F" title="中国文化">中国文化</a><a class="" href="http://read.shlll.net/Book/Find?parms=6FF1CD32D5B92874" title="文化理论">文化理论</a><a class="" href="http://read.shlll.net/Book/Find?parms=2E8D7492EB7FE37B" title="世界文化">世界文化</a></div></div><div class="item" style="background-color: #11851e;"><a href="http://read.shlll.net/Book/Find?parms=40034964ED7B7D3D" title="艺术">艺术</a><div><a class="" href="http://read.shlll.net/Book/Find?parms=EF4DCC6835AE4F3C" title="艺术理论与评论">艺术理论与评论</a><a class="" href="http://read.shlll.net/Book/Find?parms=21D5BB81F5266233" title="影视">影视</a><a class="" href="http://read.shlll.net/Book/Find?parms=E5465BFB56D93E9A" title="舞台艺术">舞台艺术</a><a class="" href="http://read.shlll.net/Book/Find?parms=277024D1528F9844" title="艺术史">艺术史</a><a class="" href="http://read.shlll.net/Book/Find?parms=B0A3A65D211C89C5" title="音乐">音乐</a><a class="" href="http://read.shlll.net/Book/Find?parms=F12DA7B8B7677130" title="书画艺术">书画艺术</a></div></div><div class="item" style="background-color: #23a532;"><a href="http://read.shlll.net/Book/Find?parms=662120BCAAA7D2AA" title="时尚">时尚</a><div><a class="" href="http://read.shlll.net/Book/Find?parms=7C1FA2E8F4E5BDAF" title="血型">血型</a><a class="" href="http://read.shlll.net/Book/Find?parms=D8C2E38745B93DB1" title="运程">运程</a><a class="" href="http://read.shlll.net/Book/Find?parms=C89B532820DA06CB" title="风水">风水</a><a class="" href="http://read.shlll.net/Book/Find?parms=32CCEE272AC90094" title="时尚生活">时尚生活</a><a class="" href="http://read.shlll.net/Book/Find?parms=68014FF33638DD54" title="美容妆扮">美容妆扮</a><a class="" href="http://read.shlll.net/Book/Find?parms=D480E42505874546" title="娱乐">娱乐</a></div></div><div class="item" style="background-color: #189727;"><a href="http://read.shlll.net/Book/Find?parms=300B459192C5DD93" title="经济">经济</a><div><a class="" href="http://read.shlll.net/Book/Find?parms=8F0AF03F08B3FAA3" title="区域经济">区域经济</a><a class="" href="http://read.shlll.net/Book/Find?parms=CC75BB5CE254C59C" title="经济学理论与学说">经济学理论与学说</a><a class="" href="http://read.shlll.net/Book/Find?parms=D8C9D09CFA1E32A5" title="投资理财">投资理财</a><a class="" href="http://read.shlll.net/Book/Find?parms=95827D121D02502C" title="国际经济">国际经济</a><a class="" href="http://read.shlll.net/Book/Find?parms=4FAFBD93897E1543" title="中国经济">中国经济</a><a class="" href="http://read.shlll.net/Book/Find?parms=7DA63B43859E5D24" title="会计">会计</a></div></div>
+                            }
                         </div>
-                    </div><!-- region end: 热门标签 --><!-- region start: 首页推荐悦读 --><div id="d_bookrecommend" class="d-bookrecommend">
-                        <!--
-                        <div class="head">热门图书
-                          <span class="turn">
-                            <span class="dot_select" onclick="km_slide.dottran('slide_bookrecommend',0,484)"></span>
-                            <span class="dot" onclick="km_slide.dottran('slide_bookrecommend',1,484)"></span>
-                            <span class="dot" onclick="km_slide.dottran('slide_bookrecommend',2,484)"></span>
-                          </span>
-                        </div>
-                        -->
+                    </div><div id="d_bookrecommend" class="d-bookrecommend">
                         <div class="body">
                             <div id="slide_bookrecommend" class="slidecontainer">
                                 <div class="item">
