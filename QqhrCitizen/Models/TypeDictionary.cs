@@ -41,7 +41,7 @@ namespace QqhrCitizen.Models
             get
             {
                 var ret = new List<TypeDictionary>();
-                if (FatherID != null) return ret;
+                if (FatherID != 0) return ret;
                 using (DB db = new DB())
                 {
                     ret = (from td in db.TypeDictionaries
