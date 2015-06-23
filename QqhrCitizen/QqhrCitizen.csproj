@@ -217,6 +217,7 @@
     <Content Include="Styles\history.css" />
     <Content Include="Styles\jarousel_coursebanner.css" />
     <Content Include="Styles\jhelper_tool_style.css" />
+    <Content Include="Styles\jQuery-File-Upload.css" />
     <Content Include="Styles\jquery.scrollbar.css" />
     <Content Include="Styles\PagedList.css" />
     <Content Include="Web.config" />
