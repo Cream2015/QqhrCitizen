@@ -1,656 +1,115 @@
-﻿@{
-    Layout = null;
-    ViewBag.Title = "首页_齐齐哈尔市民学习网";
-}
-<!DOCTYPE html>
-<html class=" js flexbox canvas canvastext webgl no-touch geolocation postmessage websqldatabase indexeddb hashchange history draganddrop websockets rgba hsla multiplebgs backgroundsize borderimage borderradius boxshadow textshadow opacity cssanimations csscolumns cssgradients cssreflections csstransforms no-csstransforms3d csstransitions fontface generatedcontent video audio localstorage sessionstorage webworkers applicationcache svg inlinesvg smil svgclippaths" style="">
-<head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1,requiresActiveX=true">
-    <meta name="viewport" content="width=device-width" />
-    <title>齐齐哈尔市民学习网</title>
-    <link href="~/Styles/app_home.css" rel="stylesheet" media="screen">
-    <link href="~/Styles/history.css" rel="stylesheet" media="screen">
-    <script src="~/Scripts/jquery.js"></script>
-    <script src="~/Scripts/plugins.js"></script>
-    <script src="~/Scripts/flproto0.1.0.js"></script>
-    <script src="~/Scripts/proto.js"></script>
-    <!--[if lt IE 8]><script src="http://res.shlll.net/vendor/ie7-2.1-beta4/src/IE8.js"></script><![endif]-->
-    <!--<script src="~/Scripts/ss?si=portal&sd=1398044857827668"></script>-->
-    <script src="~/Scripts/modernizr-2.6.2.min.js"></script>
-    <script src="~/Scripts/spin.min.js"></script>
-    <style type="text/css"></style>
-    <!--<script src="http://res.shlll.net/vendor/ifvisible/src/ifvisible.js"></script>-->
-    <script src="~/Scripts/km_adtran.js"></script>
-    <script src="~/Scripts/home.default_v1_01s.js"></script>
-    <style>
-        .avatar img {
-            width: 48px;
-            height: 48px;
-        }
-    </style>
-</head>
-<body class="home__default_v1_01">
-    <div id="d_main" class="d-main" style="min-width: 1000px;">
-        <div class="container">
-            <div id="d_top" class="d-top">
-                <div id="d_top_c" class="d-top-c">
-                    <!-- region start: top --><div id="d_topmenu" class="d-topmenu">
-                        <div class="d-top-nav">
-                            <div class="body">
-                            </div>
-                        </div>
-                        <div id="d_top_sign" class="d-top-sign">
-                            <div class="body">
-                                <span class="txt">欢迎来到齐齐哈尔市民学习网</span>
-                                <a class="item" href="/User/Login" target="_self">登录</a>
-                                <a class="item last" href="/User/Register" target="_self">注册</a>
-                            </div>
-                        </div>
-                        <div class="clear"></div>
-                    </div><!-- region end: top -->
-                </div>
-            </div>
-            <div id="d_header" class="d-header">
-                <div id="d_header_c" class="d-header-c">
-                    <!-- region start: header --><div id="d_headerhome" class="d-headerhome">
-                        <a class="d-logo" href="http://www.shlll.net/"><div class="ver" style="left: 900px; top: 65px; text-align: right;display:none;">Beta 2014</div></a><div class="d-search" style="background-color: #fff;"><input id="__int_entry" type="text" value="" placeholder="课程、新闻、电子书" maxlength="30" autocomplete="off" autocorrect="off" autocapitalize="off" name="entry_selitem_list_pg"><span class="site-search header-search" id="home_search" style="left: 348px; border-left: none;">站内搜索</span><input type="hidden" id="__int_entry_uid" name="entry_selitem_pg"></div>
-                    </div><!-- region end: header -->
-                </div>
-            </div>
-            <div id="d_menu" class="d-menu menu-home">
-                <div id="d_menu_c" class="d-menu-c">
-                    <!-- region start: menu --><div id="d_headmenu" class="d-headmenu">
-                        <div class="body">
-                            <a class="item" href="/Home/Index">首页</a>
-                            <a class="item" href="/News/Index">新闻</a>
-                            <a class="item" href="/Course/Index">课程</a>
-                            <a class="item" href="/EBook/Index">电子书</a>
-                        </div>
-                    </div><!-- region end: menu -->
-                </div>
-            </div>
-            <div id="d_menusub" class="d-menusub">
-                <div id="d_menusub_c" class="d-menusub-c">
-                    <!-- region start: menusub -->
-                    <div class="d-headmenusub">
-                        <div class="body channel">
-                            <div class="lab">频道</div>
-                            <div class="box">
-                            </div>
-                        </div>
-                        <div class="clear"></div>
-                    </div>
-                    <!-- region end: menusub -->
-                </div>
-            </div>
-        </div>
-        <div id="d_bottom" class="d-bottom" style="visibility: hidden;">
-            <div class="d-bottom-c">
-                <div id="d_scrolltop" class="d-scrolltop" style="right: -70px;">
-                    <span class="exp" onclick="km_st.expend()">&nbsp;</span>
-                    <span>新闻</span>
-                    <span>课程</span>
-                    <span>电子书</span>
-                    <span>直播</span>
-                    <span class="t" onclick="$(document.body).ScrollTo();">顶部</span>
-                </div>
-            </div>
-        </div>
-        <div style="background: #000; position: relative; background: url(/file/video/video_wrapper_bg.gif) repeat-x;">
-            <div id="wrapper" style="width: 802px; margin: 0 auto; position: relative; display: none; padding-top: 20px; height: 471px;"><div id="v_c" style="position: absolute; right: -90px; top: 20px; display: none;"><a href="javascript:;" id="v_close">关闭</a><p><input type="checkbox" id="v_never" style="margin: 0; padding: 0; height: 13px;"><label for="v_never" style="color: #f2f2f2; font-size: 14px;">&nbsp;不再显示</label></p></div><div id="videoWrapper"></div></div>
-        </div>
-        <div id="d_banner" class="d-banner" style="background-color: rgb(42, 145, 212);">
-            <ul id="d_homebanner" class="d-homebanner" style="display: block;">
-                @{
-                    string[] bgcolor = { "rgb(42, 145, 212)", "rgb(219, 170, 85)", "rgb(249, 220, 140)", "rgb(207, 180, 115)", "rgb(215, 205, 191)" };
-                    var i = 1;
-                }
-                @foreach (News n in ViewBag.News)
-                {
-                    <li id="bb@(i)" style="background-color: @(bgcolor[i++ -1]); z-index: 9; display: block;">
-                        <a href="/News/Show/@n.ID" target="_blank" style="background-image: url(@n.ImgUrl.First());"><p class="t" style="display: none;"></p><p class="h" style="color: rgb(255, 255, 255);">@n.Title</p><p class="p" style="color: rgb(255, 255, 255);">@n.Title</p></a>
-                    </li>
-                }
-            </ul><div id="d_banner_c" class="d-banner-c" style="visibility: visible;">
-                <div id="d_banner_thumb" class="d-banner-thumb">
-                    @foreach (News n in ViewBag.News)
-                    {
-                        <a href="/News/Show/@n.ID" target="_blank" style="background-image: url(@n.ImgUrl.First()); margin-top: 0px;">
-                            <p><span style="width: 0px;"></span></p>
-                        </a>
-                    }
-                </div><div id="d_board" class="d-board">
-                    <div class="tabbar">
-                        <div class="tab_select" style="width:144px;" onmouseover="sub_t(42);km_tab.tabclk(0,'d_board');">今日历史</div><div class="tab" style="width:144px;" onmouseover="sub_t(186);km_tab.tabclk(1,'d_board');">最近新闻</div><div class="bar" style="left: 42px;"></div>
-                    </div>
-                    <div class="tabcontent">
-                        <div id="d_board2" style="padding-top:10px;" class="">
-                            <div class="scroll-wrapper external-scroll tis-container" style="position: relative;">
-                                <div class="external-scroll tis-container scroll-content" style="height: auto; margin-bottom: 0px; margin-right: 0px;">
-                                    <div id="tih" style="height: 314px;">
-                                        <div class="tis-item">
-                                            <div><span class="tis-type">[历史文化]</span></div>
-                                            <div class="tis-ed"><a href="javascript:;" title="格致书院开院" class="tis-title">[1876] 格致书院开院</a></div>
-                                            <div class="tis-content" style="color:#fff; font-size:12px;">&nbsp; &nbsp; &nbsp; 1875年底，格致书院完工，位于上海北门外西北隅八仙桥北、英租界正丰街。李鸿章题写了匾额。1879年正式招生。该院经常进行科技知识的演讲，并创办《格致汇编》。1913年改办工部局华人学校。1933年秋分为光启（徐光启）院科学系，炎武（顾炎武）院地理系，念孙院（王念孙）语言学及经学系，有光（归有光）院文学系四院，各设高中、初中及小学。1945年10月更名格致中学。</div>
-                                        </div>
-                                        <div style="height:6px; overflow:hidden;">&nbsp;</div>
-                                    </div>
-                                </div><div class="scroll-element scroll-element_show-arrows scroll-x" style="display: none; width: 290px;"><div class="scroll-arrow scroll-arrow_less"></div><div class="scroll-arrow scroll-arrow_more"></div><div class="scroll-element_outer">    <div class="scroll-element_size"></div>    <div class="scroll-element_inner-wrapper">        <div class="scroll-element_inner">            <div class="scroll-element_inner-bottom"></div>        </div>    </div>    <div class="scroll-bar">        <div class="scroll-bar_body">            <div class="scroll-bar_body-inner"></div>        </div>        <div class="scroll-bar_bottom"></div>        <div class="scroll-bar_center"></div>    </div></div></div>
-                            </div><div class="external-scroll_x"><div class="scroll-element_outer"><div class="scroll-element_size"></div><div class="scroll-element_inner"></div><div class="scroll-bar"></div></div></div><div class="external-scroll_y scroll-element_show-arrows scroll-y" style="display: none; height: 320px;"><div class="scroll-element_outer"><div class="scroll-element_size"></div><div class="scroll-element_inner"></div><div class="scroll-bar" style="height: 100px;"></div></div></div>
-                        </div><div class="clsHide">
-                            <ul class="d-board-e">
-                                @foreach (News n in ViewBag.News)
+﻿using QqhrCitizen.Models;
+using QqhrCitizen.Models.ViewModel;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.Mvc;
+
+namespace QqhrCitizen.Controllers
+{
+    public class HomeController : BaseController
+    {
+        private List<News> GetTop5News()
+        {
+            var ret = new List<News>();
+            var i = 0;
+            foreach (var n in db.News.AsNoTracking())
             {
-                                    <li><a href="/News/Show/@n.ID" title="@n.Title">@n.Title</a></li>
-                                }
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-        <div id="d_row_news" class="d-row" style="padding: 20px 0 20px 0; background-color: #f7f7f7;">
-            <div class="d-row-c">
-                <div class="d-col-2-1">
-                    <div class="contentarea">
-                        <div class="d-menu-vertical">
-                            <a href="/Course">
-                                <div class="head news"></div>
-                            </a>
-                            <div class="body">
-                                @foreach (TypeDictionary td in ViewBag.CourseTypes)
-                                {
-                                    <a class="item" href="/Course?tid=@td.ID">@td.TypeValue</a>
-                                }
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="d-col-2-11">
-                    <div class="contentarea">
-                        <!-- region start: 首页推荐课程 --><div id="d_courserecommend" class="d-courserecommend">
-                            <div class="body">
-                                <div id="slide_courserecommend" class="slidecontainer">
-                                    @foreach (Course c in ViewBag.Courses)
-                                    {
-                                        <div class="item">
-                                            <a class="course-cover cover" href="/Course/Show/@c.ID" title="@c.Title">
-                                                <img src="/Course/ShowPicture/@c.ID" data-echo="/Course/ShowPicture/@c.ID" onerror="this.onerror='';this.src='/Course/ShowPicture/@c.ID';">
-                                            </a>
-                                            <div class="title trim">
-                                                <a href="/Course/Show/@c.ID" title="@c.Title">@c.Title</a>
-                                            </div><span class="signed">NaN 人学习</span>
-                                        </div>
-                                    }
-                                </div>
-                            </div>
-                        </div><!-- region end: 首页推荐课程 -->
-                    </div>
-                </div><div class="clear"></div>
-            </div>
-        </div>
-        <div id="d_row_course" class="d-row" style="padding: 20px 0 20px 0;">
-            <div class="d-row-c">
-                <div class="d-col-2-1">
-                    <div class="contentarea">
-                        <div class="d-menu-vertical">
-                            <a href="/Live">
-                                <div class="head course"></div>
-                            </a>
-                            <div class="body">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="d-col-2-11">
-                    <div class="contentarea">
-                        <div class="body">
-                            <div id="slide_eventrecommend" class="slidecontainer">
-                                @{ var index = 0; }
-                                @foreach (Live l in ViewBag.Lives)
-                                {
-                                    if (index++ == 0)
-                                    {
-                                        <div class="itemhot">
-                                            <a class="act-cover cover" href="/Live/Show/@l.ID" title="@l.Title">
-                                                <img src="/Live/ShowPicture/@l.ID" data-echo="/Live/ShowPicture/@l.ID" onerror="this.onerror='';this.src='/Live/ShowPicture/@l.ID';">
-                                            </a>
-                                            <div class="title trim"><a href="/Live/Show/@l.ID" title="@l.Title">@l.Title</a></div>
-                                            <span class="date">@l.Begin.ToString("yyyy.MM.dd HH:mm") ~ @l.End.ToString("yyyy.MM.dd HH:mm")</span>
-                                            <div class="desc">
-                                                @Html.Sanitized(@l.Description)
-                                            </div>
-                                        </div>
-                                    }
-                                    else
-                                    {
-                                        <div class="item">
-                                            <a class="act-cover cover" href="/Live/Show/@l.ID" title="@l.Title">
-                                                <img src="/Live/Show/@l.ID" data-echo="/Live/Show/@l.ID" onerror="this.onerror='';this.src='/Live/Show/@l.ID';">
-                                            </a>
-                                            <div class="title trim">
-                                                <a href="/Live/Show/@l.ID" title="@l.Title">@l.Title</a>
-                                            </div>
-                                            <span class="date">@l.Begin.ToString("yyyy.MM.dd HH:mm") ~ @l.End.ToString("yyyy.MM.dd HH:mm")</span>
-                                            <div class="desc">
-                                                @Html.Sanitized(@l.Description)
-                                            </div>
-                                        </div>
-                                    }
-                                }
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div><div class="clear"></div>
-        </div>
-    </div>
-    <div id="d_row_ebook" class="d-row" style="padding: 20px 0 20px 0; background-color: #f7f7f7;">
-        <div class="d-row-c">
-            <div class="d-col-2-1">
-                <div class="contentarea">
-                    <div class="d-menu-vertical">
-                        <a href="/EBook">
-                            <div class="head ebook">
-                            </div>
-                        </a>
-                        <div class="body">
-                            @foreach (TypeDictionary td in ViewBag.BookTypes)
-                            {
-                                <a class="item" href="/Course?tid=@td.ID">@td.TypeValue</a>
-                            }
-                        </div>
-                    </div>
-                </div>
-            </div><div class="d-col-2-11">
-                <div class="contentarea">
-                    <!-- region start: 热门标签 -->
-                    <div id="d_booktaghot" class="d-booktaghot">
-                        <div class="body">
-                            @{ string[] bookcolors = { "#23a532", "#169425", "#189727", "#11851e", "#23a532", "#189727" }; var bi = 0; }
-                            @foreach (TypeDictionary td in ViewBag.BookTypes)
-                            {
-                                <div class="item" style="background-color: @(bookcolors[bi++]);">
-                                    <a href="#" title="@td.TypeValue">@td.TypeValue</a>
-                                    <div>
-                                        @foreach (TypeDictionary td2 in td.Children.Take(6).ToList())
-                                        {
-                                            <a class="" href="/EBook/Index?tid=@td2.ID" title="@td2.TypeValue">@td2.TypeValue</a>
-                                        }
-                                    </div>
-                                </div>
-                            }
-                        </div>
-                    </div><div id="d_bookrecommend" class="d-bookrecommend">
-                        <div class="body">
-                            <div id="slide_bookrecommend" class="slidecontainer">
-                                @foreach (EBook eb in ViewBag.Books)
-                                {
-                                    <div class="item">
-                                        <a class="cover readingCover" href="/EBook/Show/@eb.ID" title="@eb.Title">
-                                            <img src="/EBook/ShowPicture/@eb.ID" data-echo="/EBook/ShowPicture/@eb.ID" onerror="this.onerror='';this.src='/EBook/ShowPicture/@eb.ID';">
-                                        </a>
-                                        <div class="title trim">
-                                            <a href="/EBook/Show/@eb.ID" title="@eb.Title">@eb.Title</a>
-                                        </div><div class="author trim">
-                                            @eb.Author
-                                        </div>
-                                    </div>
-                                }
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div><div class="clear"></div>
-        </div>
-    </div>
-
-    <div class="d-row" style="background-color: #ececec; border-top: 2px solid #474747;">
-        <div class="d-row-c">
-            <div class="d-col-1">
-                <div class="contentarea"></div>
-            </div>
-            <div id="d_footer" class="d-footer">
-                <div id="d_footer_c" class="d-footer-c">
-                    <div class="l" style="display: block;">
-                        Copyright © 2015 齐齐哈尔市广播电视大学. All Rights Reserved. 哈尔滨市码锋科技有限责任公司提供技术支持.
-                    </div><div class="clear"></div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <script>
-
-        var adtranObj = new km_adtran();
-        adtranObj.afterinit = function () {
-            $('#div_spin').remove();
-            $('.d-banner .loading').remove();
-            $('#d_banner_c').css({
-                visibility: 'visible'
-            });
-            $('#' + adtranObj.thumb).children().each(function (i) {
-                var _i = i;
-                $(this).on('mouseover', function () {
-                    adtranObj.dotran(i);
-                });
-            });
-            $('#d_homebanner').children().eq(0).css('z-index', '11');
-            $('#d_homebanner').css('display', 'block');
-            adtranObj.start();
-
-            $proto.pageloaded = true;
-        };
-        adtranObj.beforetran = function (oidx, nidx) {
-            if (oidx == -1) { return; }
-            $('#' + adtranObj.thumb).children().eq(oidx).stop();
-            $('#' + adtranObj.thumb).children().eq(nidx).stop();
-            $('#' + adtranObj.thumb).children().eq(oidx).find('span').stop();
-            $('#' + adtranObj.thumb).children().eq(nidx).find('span').stop();
-            $('#' + adtranObj.thumb).children().eq(oidx).find('span').css({ 'width': '0' });
-            $('#' + adtranObj.thumb).children().eq(nidx).find('span').css({ 'width': '0' });
-            $('#' + adtranObj.thumb).children().eq(oidx).animate({ 'margin-top': '7px' }, 100);
-            $('#' + adtranObj.thumb).children().eq(nidx).animate({ 'margin-top': '0' }, 100);
-        }
-        adtranObj.aftertran = function (nidx) {
-            return;
-            var it = adtranObj.list[nidx].interval;
-            $('#' + adtranObj.thumb).children().eq(nidx).find('span').animate({ 'width': '100%' }, it, function () {
-                $(this).css({ 'width': '0' });
-            });
-        }
-        adtranObj.container = 'd_homebanner';
-        adtranObj.thumb = 'd_banner_thumb';
-        adtranObj.himgs = [
-          { id: 'bb1', bg: '/File/Portal/EspeciallyPlan/2015/6/8/m/201506080930030132.jpg', thumb: '/File/Portal/EspeciallyPlan/2015/6/8/S/201506080930116089.jpg', bgcolor: '#2a91d4', fgcolor: '#fff' }, { id: 'bb2', bg: '/File/Portal/EspeciallyPlan/2015/6/17/m/201506171354498753.jpg', thumb: '/File/Portal/EspeciallyPlan/2015/6/17/S/201506171354536973.jpg', bgcolor: '#dbaa55', fgcolor: '#fff' }, { id: 'bb3', bg: '/File/Portal/EspeciallyPlan/2015/6/19/m/201506191648243815.jpg', thumb: '/File/Portal/EspeciallyPlan/2015/6/19/S/201506191649414612.jpg', bgcolor: '#f9dc8c', fgcolor: '#fff' }, { id: 'bb4', bg: '/File/Portal/EspeciallyPlan/2015/4/21/m/201504211752250361.jpg', thumb: '/File/Portal/EspeciallyPlan/2015/4/21/S/201504211752416502.jpg', bgcolor: '#cfb473', fgcolor: '#fff' }, { id: 'bb5', bg: '/File/Portal/EspeciallyPlan/2015/4/28/m/201504281459086481.jpg', thumb: '/File/Portal/EspeciallyPlan/2015/4/22/S/201504221655457619.jpg', bgcolor: '#d7cdbf', fgcolor: '#fff' }, { id: 'bb6', bg: '/File/Portal/EspeciallyPlan/2015/5/19/m/201505191727598100.jpg', thumb: '/File/Portal/EspeciallyPlan/2015/5/19/S/201505191703048749.jpg', bgcolor: '#759e2d', fgcolor: '#fff' }, { id: 'bb7', bg: '/File/Portal/EspeciallyPlan/2015/4/21/m/201504211750366159.jpg', thumb: '/File/Portal/EspeciallyPlan/2015/4/21/S/201504211751112012.jpg', bgcolor: '#018b50', fgcolor: '#fff' }, { id: 'bb8', bg: '/File/Portal/EspeciallyPlan/2015/4/21/m/201504211748570098.jpg', thumb: '/File/Portal/EspeciallyPlan/2015/4/21/S/201504211749244502.jpg', bgcolor: '#bf0e06', fgcolor: '#fff' }, { id: 'bb9', bg: '/File/Portal/EspeciallyPlan/2015/3/20/m/201503201353090083.jpg', thumb: '/File/Portal/EspeciallyPlan/2015/3/20/S/201503201353176819.jpg', bgcolor: '#000000', fgcolor: '#fff' }, { id: 'bb10', bg: '/File/Portal/EspeciallyPlan/2015/3/17/m/201503171713454814.jpg', thumb: '/File/Portal/EspeciallyPlan/2015/3/17/S/201503171713512690.jpg', bgcolor: '#cabca2', fgcolor: '#fff' }, { id: 'bb11', bg: '/File/Portal/EspeciallyPlan/2015/1/9/m/201501091313199043.jpg', thumb: '/File/Portal/EspeciallyPlan/2015/1/9/S/201501091313295763.jpg', bgcolor: '#c3bc9f', fgcolor: '#fff' }, { id: 'bb12', bg: '/File/Portal/EspeciallyPlan/2015/1/9/m/201501091314304632.jpg', thumb: '/File/Portal/EspeciallyPlan/2015/1/9/S/201501091314373116.jpg', bgcolor: '#433626', fgcolor: '#fff' }
-        ];
-        var adtranObjList = [];
-        for (var i = 0; i < adtranObj.himgs.length; i++) {
-            var _id = 'bb' + (i + 1);
-            var _d = { d: _id, interval: i == 0 ? 10000 : 5000 };
-            adtranObjList.push(_d);
-        }
-        adtranObj.list = adtranObjList;
-        /*
-        adtranObj.list = [
-          {
-            d: "bb1", interval: 5000}
-          , { d: "bb2", interval: 5000 }
-          , { d: "bb3", interval: 5000 }
-          , { d: "bb4", interval: 5000 }
-          , { d: "bb5", interval: 5000 }
-        ];
-        */
-    </script>
-    <!-- <script>
-         var thisLocation = window.location.href;
-         var memberSiteURL = 'http://member.shlll.net/';
-         $proto.basepath.home = memberSiteURL + 'usercenter/useraccount';
-         $proto.basepath.personalhome = memberSiteURL + 'usercenter/historycourse';
-         $proto.basepath.useraccount = memberSiteURL + 'usercenter/useraccount';
-         $proto.basepath.verify = memberSiteURL + 'usercenter/verify';
-         $proto.basepath.login = memberSiteURL + 'home/login?redirect=' + thisLocation;//登录页面
-         $proto.basepath.signup = memberSiteURL + 'home/signup?redirect=' + thisLocation;//注册页面
-         //$proto.basepath.signup = 'http://www.shlll.net/home/login/register.jsp';//注册页面
-         //$proto.basepath.loginaction='...';//登录ajax的请求地址
-         $proto.basepath.logoutaction = memberSiteURL + 'home/action/logout?redirect=' + thisLocation;//退出系统的请求地址
-     </script>-->
-    <script src="http://res.shlll.net/common/v1/js/init.js?ver=20140224"></script>
-    <style>
-        .readingCover img {
-            width: 106px;
-            height: 158px;
-        }
-
-        .item .act-cover img {
-            width: 222px;
-            height: 125px;
-        }
-
-        .item .course-cover img {
-            width: 297px;
-            height: 167px;
-        }
-
-        .itemhot .act-cover img {
-            width: 448px;
-            height: 252px;
-        }
-    </style>
-    <script>
-        /*km_st.list = [
-            { id: 'd_row_cou', text: '新闻' }
-            , { id: 'd_row_eve', text: '课程' }
-            , { id: 'd_row_bok', text: '电子书' }
-            , { id: 'd_row_gro', text: '直播' }
-        ];*/
-        km_st.list = [
-            { id: 'd_row_news', text: '新闻' }
-            , { id: 'd_row_course', text: '课程' }
-            , { id: 'd_row_ebook', text: '电子书' }
-        ];
-    </script><div style="display: none;">
-        <script type="text/javascript">
-            var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
-            document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F6ca93febbe5f3e3b14f8ee9b8ef13802' type='text/javascript'%3E%3C/script%3E"));
-        </script>
-        <script src=" http://hm.baidu.com/h.js?6ca93febbe5f3e3b14f8ee9b8ef13802" type="text/javascript"></script>
-    </div>
-    <script>
-        function addFavorite() {
-            if (document.all) {
-                try {
-                    window.external.addFavorite(window.location.href, document.title);
-                } catch (e) {
-                    alert("加入收藏失败，请使用Ctrl+D进行添加");
+                if (n.ImgUrl.Count > 0)
+                {
+                    ret.Add(n);
+                    if (ret.Count > 5)
+                        break;
                 }
-
-            } else if (window.sidebar) {
-                window.sidebar.addPanel(document.title, window.location.href, "");
-            } else {
-                alert("加入收藏失败，请使用Ctrl+D进行添加");
             }
+            return ret;
         }
-        $(function () {
-            $('.channel').find('a').on('click', function () {
-                var href = $(this).data('href');
-                var fix = '';
-                if ($proto.userinfo) {
-                    var un = $proto.userinfo.encodeusername;
-                    fix = '?n=' + un;
+
+        //
+        // GET: /Home/
+        public ActionResult Index()
+        {
+            ViewBag.CourseTypes = db.TypeDictionaries.Where(x => x.Belonger == TypeBelonger.课程 && x.FatherID != null).Take(5).ToList();
+            ViewBag.Courses = db.Courses.OrderByDescending(x => x.Time).Take(6).ToList();
+            ViewBag.NewsTypes = db.TypeDictionaries.Where(x => x.Belonger == TypeBelonger.新闻 && x.FatherID != null).Take(5).ToList();
+            ViewBag.News = GetTop5News();
+            ViewBag.MoreNews = db.News.OrderByDescending(x => x.Time).Take(10).ToList();
+            ViewBag.BookTypes = db.TypeDictionaries.Where(x => x.Belonger == TypeBelonger.电子书 && x.FatherID == null).Take(6).ToList();
+            ViewBag.Books = db.EBooks.OrderByDescending(x => x.Time).Take(10).ToList();
+            ViewBag.Lives = db.Lives.OrderByDescending(x => x.End).Take(5).ToList();
+            return View();
+        }
+
+        public ActionResult Search(string key)
+        {
+            List<News> lstNews = new List<News>();
+            List<Course> lstCourse = new List<Course>();
+            List<EBook> lstEBook = new List<EBook>();
+            lstNews = db.News.Where(n => n.Title.Contains(key) || n.Content.Contains(key)).ToList();
+            lstCourse = db.Courses.Where(c => c.Title.Contains(key)).ToList();
+            lstEBook = db.EBooks.Where(eb => eb.Title.Contains(key)).ToList();
+            ViewBag.LstNews = lstNews;
+            ViewBag.LstCourse = lstCourse;
+            ViewBag.LstEBook = lstEBook;
+            ViewBag.Key = key;
+            return View();
+        }
+
+        [HttpGet]
+        public ActionResult SearchResultMore(string type,string key)
+        {
+            ViewBag.Type = type;
+            ViewBag.Key = key;
+            return View();
+        }
+
+        [HttpGet]
+        public ActionResult GetSearchResultMore(string type, string key, int page)
+        {
+            int index = page * 10;
+            if (type == "news")
+            {
+                var result = db.News.Where(n => n.Title.Contains(key) || n.Content.Contains(key)).OrderByDescending(n => n.Time).Skip(index).Take(10).ToList();
+                List<vSearchResultModel> _result = new List<vSearchResultModel>();
+                foreach (var item in result)
+                {
+                    _result.Add(new vSearchResultModel(item));
                 }
-                $(this).attr('href', href + fix);
-            });
-        });
-    </script>
-    <style>
-        .d-banner-thumb, .d-homebanner li a .h, .d-homebanner li a .p {
-            left: 20px;
-        }
-    </style>
-    <style>
-        #v_close {
-            width: 70px;
-            text-align: right;
-            height: 25px;
-            line-height: 25px;
-            background: url(/file/video/close.jpg) no-repeat;
-            font-size: 16px;
-            color: #f2f2f2;
-            display: block;
-        }
-
-        .header-search {
-            width: 92px;
-            height: 32px;
-            line-height: 32px;
-            text-align: center;
-            display: block;
-            font-size: 14px;
-            border: 1px solid #ddd;
-            position: absolute;
-            color: #888;
-            cursor: pointer;
-        }
-        /*#videoWrapper { width:800px;  }*/
-    </style><!--<script src="http://course.shlll.net/resources/jwplayer6/jwplayer.js"></script>--><!--<script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>--><!--<script src="//cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>-->
-    <script>
-        var opt = {
-            videoPath: '/file/video/shlll30.mp4',
-            width: 800,
-            height: 450,
-            fuid: 0,
-            onlyPlayer: 1,
-            playPrimary: 'flash'/*,
-        backColor: '#000000',
-        screenColor: '#000000',
-        bgColor: '#000000'
-        */
-        };
-        var jwPlayerObj;
-        function LoadVideo(opt) {
-            jwPlayerObj = jwplayer("videoWrapper").setup({
-                file: opt.videoPath,
-                /*
-                playlist: [{
-                  //image: "/assets/sintel.jpg",
-                  sources: [{
-                    file: opt.videoPath
-                  }]
-                }],
-                */
-                width: opt.width,
-                height: opt.height,
-                controls: false,
-                linkfromdisplay: false,
-                /*
-                controlbar:{
-                  visible: false
-                },
-                player: {
-                  modes: {
-                    linear: {
-                      controls: { visible: false }
-                    }
-                  }
-                },
-                */
-                autostart: false,
-                primary: opt.playPrimary//,
-                /*
-                screencolor: opt.screenColor,
-                backcolor: opt.backColor,
-                bgcolor: opt.bgColor
-                */
-
-            })
-            .onPlay(function () {
-            })
-            .onPlaylistComplete(function () {
-                //console.log('complete');
-                //window.setTimeout(function(){
-                v_close();
-                //},500);
-            });
-        }
-        function v_close() {
-            jwPlayerObj.stop();
-            $('#wrapper').slideUp(1000, function () {
-                $('#videoWrapper').html('');
-            });
-        }
-        $(function () {
-            /*
-              var b = $.browser.msie && parseInt($.browser.version) == 6;
-              if (!b){
-                  var showV = $.cookie('xxw_portal_v');
-                  if (showV == undefined || showV == '1'){
-                      LoadVideo(opt);
-                      window.setTimeout(function(){
-                          $('#wrapper').slideDown(1000, function(){
-                            $('#v_c').fadeIn();
-                            $('#videoWrapper').css('border', '1px solid #9b9b9b');
-                            jwPlayerObj.play();
-                          });
-                      },3000);
-                  }
-                  $('#v_never').change(function(){
-                      //alert($(this).prop('checked'));
-                      var chk = $(this).prop('checked');
-                      if(chk){
-                          $.cookie('xxw_portal_v', '0', { expires: 360 });
-                      } else {
-                          $.cookie('xxw_portal_v', '1', { expires: 360 });
-                      }
-                  });
-                  $('#v_close').on('click', function(){
-                      v_close();
-                  });
-              }
-              */
-        });
-    </script><link href="http://res.shlll.net/common/v1/css/jquery.scrollbar.css" rel="stylesheet" media="screen"><link href="~/Styles/history.css" rel="stylesheet" media="screen">
-    <script src="http://res.shlll.net/common/v1/js/read/jquery.scrollbar.js"></script>
-    <script src="~/Scripts/history.js"></script>
-    <script>
-        $(function () {
-            initHistory();
-            /*
-            $('.external-scroll').scrollbar({
-              //"autoScrollSize": true,
-              //"scrollx": $('.external-scroll_x'),
-              "scrolly": $('.external-scroll_y')
-            });
-            */
-        });
-    </script>
-    <style>
-        .esplan-sp-item {
-            float: left;
-            height: 430px;
-            width: 310px;
-            margin-right: 35px;
+                return Json(_result,JsonRequestBehavior.AllowGet);
+            }
+            if (type == "course")
+            {
+                var result = db.Courses.Where(c => c.Title.Contains(key)).OrderByDescending(n => n.Time).Skip(index).Take(10).ToList();
+                List<vSearchResultModel> _result = new List<vSearchResultModel>();
+                foreach (var item in result)
+                {
+                    _result.Add(new vSearchResultModel(item));
+                }
+                return Json(_result, JsonRequestBehavior.AllowGet);
+            }
+            else if (type == "ebook")
+            {
+                var result = db.EBooks.Where(e => e.Title.Contains(key)).OrderByDescending(n => n.Time).Skip(index).Take(10).ToList();
+                List<vSearchResultModel> _result = new List<vSearchResultModel>();
+                foreach (var item in result)
+                {
+                    _result.Add(new vSearchResultModel(item));
+                }
+                return Json(_result, JsonRequestBehavior.AllowGet);
+            }
+            return Json(null);
         }
 
-            .esplan-sp-item .esplan-cover, .esplan-sp-item .esplan-cover img {
-                width: 310px;
-                height: 230px;
-            }
+        public ActionResult Test()
+        {
+            return View();
+        }
 
-            .esplan-sp-item .esplan-cover {
-                margin-bottom: 10px;
-            }
-
-            .esplan-sp-item .esplan-title {
-                margin-bottom: 10px;
-                color: #d10f1a;
-                font-size: 18px;
-            }
-
-            .esplan-sp-item .esplan-content {
-                height: 105px;
-                word-break: break-all;
-                font-size: 14px;
-                line-height: 1.5em;
-            }
-
-            .esplan-sp-item .esplan-enter {
-                position: absolute;
-                right: 0;
-                bottom: 0;
-                width: 100px;
-            }
-    </style>
-    <script>
-        $(function () {
-            if ($('.esplan-sp-item').length > 0) {
-                $('.esplan-sp-item:eq(2)').css('margin-right', '0');
-            } else {
-                $('#esplan_sp').remove();
-            }
-        });
-    </script>
-</body>
-</html>
+        
+        public ActionResult Msg()
+        {
+            return View();
+        }
+    }
+}

@@ -57,7 +57,7 @@ namespace QqhrCitizen.Controllers
         }
 
         [HttpGet]
-        public ActionResult SearchResultMore(string type,string key)
+        public ActionResult SearchResultMore(string type, string key)
         {
             ViewBag.Type = type;
             ViewBag.Key = key;
@@ -76,7 +76,7 @@ namespace QqhrCitizen.Controllers
                 {
                     _result.Add(new vSearchResultModel(item));
                 }
-                return Json(_result,JsonRequestBehavior.AllowGet);
+                return Json(_result, JsonRequestBehavior.AllowGet);
             }
             if (type == "course")
             {
@@ -106,7 +106,7 @@ namespace QqhrCitizen.Controllers
             return View();
         }
 
-        
+
         public ActionResult Msg()
         {
             return View();
