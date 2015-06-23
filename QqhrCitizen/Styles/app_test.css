@@ -2828,7 +2828,7 @@ div, p, span, a {
         font-size: 15px;
         cursor: pointer;
         text-decoration: none;
-        background-image: url(../images/sprite/icon-sharemenu.png);
+        background-image: url(images/sprite/icon-sharemenu.png);
         background-repeat: no-repeat;
     }
 
@@ -3286,7 +3286,7 @@ div, p, span, a {
         font-size: 15px;
         cursor: pointer;
         text-decoration: none;
-        background-image: url(../images/sprite/icon-sharemenu.png);
+        background-image: url(images/sprite/icon-sharemenu.png);
         background-repeat: no-repeat;
     }
 
@@ -3350,7 +3350,7 @@ div, p, span, a {
                 height: 16px;
                 margin: 26px 0 0;
                 cursor: pointer;
-                background-image: url(../images/sprite/icon-turndot.png);
+                background-image: url(images/sprite/icon-turndot.png);
                 background-repeat: no-repeat;
             }
 
@@ -3445,7 +3445,7 @@ div, p, span, a {
                 height: 16px;
                 margin: 26px 0 0;
                 cursor: pointer;
-                background-image: url(../images/sprite/icon-turndot.png);
+                background-image: url(images/sprite/icon-turndot.png);
                 background-repeat: no-repeat;
             }
 
@@ -3513,7 +3513,7 @@ div, p, span, a {
                     line-height: 11px;
                     font-size: 0;
                     overflow: hidden;
-                    background-image: url(../images/midstars.gif);
+                    background-image: url(images/midstars.gif);
                     background-repeat: no-repeat;
                 }
 
@@ -4109,7 +4109,7 @@ div, p, span, a {
             line-height: 11px;
             font-size: 0;
             overflow: hidden;
-            background-image: url(../images/midstars.gif);
+            background-image: url(images/midstars.gif);
             background-repeat: no-repeat;
         }
 
@@ -4295,7 +4295,7 @@ div, p, span, a {
                 line-height: 11px;
                 font-size: 0;
                 overflow: hidden;
-                background-image: url(../images/midstars.gif);
+                background-image: url(images/midstars.gif);
                 background-repeat: no-repeat;
             }
 
@@ -4479,7 +4479,7 @@ div, p, span, a {
                 line-height: 11px;
                 font-size: 0;
                 overflow: hidden;
-                background-image: url(../images/midstars.gif);
+                background-image: url(images/midstars.gif);
                 background-repeat: no-repeat;
             }
 
@@ -4663,7 +4663,7 @@ div, p, span, a {
                 line-height: 11px;
                 font-size: 0;
                 overflow: hidden;
-                background-image: url(../images/midstars.gif);
+                background-image: url(images/midstars.gif);
                 background-repeat: no-repeat;
             }
 
@@ -4810,7 +4810,7 @@ div, p, span, a {
             line-height: 11px;
             font-size: 0;
             overflow: hidden;
-            background-image: url(../images/midstars.gif);
+            background-image: url(images/midstars.gif);
             background-repeat: no-repeat;
         }
 
@@ -4933,49 +4933,49 @@ div, p, span, a {
                 }
 
                 .d-bookdetail .action .r .d-dropdown-share .sina {
-                    background-image: url(../images/social/sina.jpg);
+                    background-image: url(images/social/sina.jpg);
                     background-position: 10px center;
                     background-repeat: no-repeat;
                 }
 
                 .d-bookdetail .action .r .d-dropdown-share .sohu {
-                    background-image: url(../images/social/sohu.jpg);
+                    background-image: url(images/social/sohu.jpg);
                     background-position: 10px center;
                     background-repeat: no-repeat;
                 }
 
                 .d-bookdetail .action .r .d-dropdown-share .douban {
-                    background-image: url(../images/social/douban.jpg);
+                    background-image: url(images/social/douban.jpg);
                     background-position: 10px center;
                     background-repeat: no-repeat;
                 }
 
                 .d-bookdetail .action .r .d-dropdown-share .renren {
-                    background-image: url(../images/social/renren.jpg);
+                    background-image: url(images/social/renren.jpg);
                     background-position: 10px center;
                     background-repeat: no-repeat;
                 }
 
                 .d-bookdetail .action .r .d-dropdown-share .kaixin {
-                    background-image: url(../images/social/kaixin.jpg);
+                    background-image: url(images/social/kaixin.jpg);
                     background-position: 10px center;
                     background-repeat: no-repeat;
                 }
 
                 .d-bookdetail .action .r .d-dropdown-share .qq_t {
-                    background-image: url(../images/social/qq_t.jpg);
+                    background-image: url(images/social/qq_t.jpg);
                     background-position: 10px center;
                     background-repeat: no-repeat;
                 }
 
                 .d-bookdetail .action .r .d-dropdown-share .qq_zone {
-                    background-image: url(../images/social/qq_zone.jpg);
+                    background-image: url(images/social/qq_zone.jpg);
                     background-position: 10px center;
                     background-repeat: no-repeat;
                 }
 
                 .d-bookdetail .action .r .d-dropdown-share .netease {
-                    background-image: url(../images/social/netease.jpg);
+                    background-image: url(images/social/netease.jpg);
                     background-position: 10px center;
                     background-repeat: no-repeat;
                 }
@@ -5323,7 +5323,7 @@ label.inline {
         line-height: 17px;
         font-size: 0;
         overflow: hidden;
-        background-image: url(../images/midstars-big.gif);
+        background-image: url(images/midstars-big.gif);
         background-repeat: no-repeat;
     }
 
