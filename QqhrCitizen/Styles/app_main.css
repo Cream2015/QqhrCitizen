@@ -6500,3 +6500,1997 @@ div, p, span, a {
         line-height: 27px;
         font-size: 13px;
     }
+    
+.d-bookbanner {
+    width: 652px;
+    height: 205px;
+    overflow: hidden;
+}
+
+.d-bookhot {
+    width: 646px;
+}
+
+    .d-bookhot .head {
+        height: 65px;
+        line-height: 65px;
+        font-size: 15px;
+        color: #00a000;
+    }
+
+        .d-bookhot .head span.turn {
+            height: 65px;
+            line-height: 65px;
+            display: block;
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 49px;
+        }
+
+            .d-bookhot .head span.turn .dot, .d-bookhot .head span.turn .dot_select {
+                display: block;
+                float: left;
+                width: 16px;
+                height: 16px;
+                margin: 26px 0 0;
+                cursor: pointer;
+                background-image: url(../images/sprite/icon-turndot.png);
+                background-repeat: no-repeat;
+            }
+
+            .d-bookhot .head span.turn .dot {
+                background-position: -16px center;
+            }
+
+            .d-bookhot .head span.turn .dot_select {
+                background-position: 0 center;
+            }
+
+    .d-bookhot .body {
+        width: 671px;
+        height: 474px;
+        overflow: hidden;
+    }
+
+        .d-bookhot .body .slidecontainer {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 676px;
+            height: 495px;
+            font-size: 0;
+        }
+
+            .d-bookhot .body .slidecontainer .item {
+                width: 106px;
+                height: 227px;
+                margin: 0 29px 20px 0;
+                float: left;
+                font-size: 13px;
+            }
+
+                .d-bookhot .body .slidecontainer .item .cover {
+                    display: block;
+                    width: 106px;
+                    height: 158px;
+                    overflow: hidden;
+                }
+
+                .d-bookhot .body .slidecontainer .item .title {
+                    width: 106px;
+                    height: 32px;
+                    line-height: 32px;
+                    padding: 10px 0 0;
+                    margin: 0;
+                    text-overflow: ellipsis;
+                    white-space: nowrap;
+                    overflow: hidden;
+                    font-size: 14px;
+                }
+
+                    .d-bookhot .body .slidecontainer .item .title a {
+                        font-size: 14px;
+                    }
+
+                .d-bookhot .body .slidecontainer .item .author {
+                    display: block;
+                    width: 106px;
+                    height: 16px;
+                    line-height: 16px;
+                    font-size: 13px;
+                    color: #222;
+                }
+
+.d-booknew {
+    width: 648px;
+}
+
+    .d-booknew .head {
+        height: 65px;
+        line-height: 65px;
+        font-size: 15px;
+        color: #00a000;
+    }
+
+        .d-booknew .head span.turn {
+            height: 65px;
+            line-height: 65px;
+            display: block;
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 49px;
+        }
+
+            .d-booknew .head span.turn .dot, .d-booknew .head span.turn .dot_select {
+                display: block;
+                float: left;
+                width: 16px;
+                height: 16px;
+                margin: 26px 0 0;
+                cursor: pointer;
+                background-image: url(../images/sprite/icon-turndot.png);
+                background-repeat: no-repeat;
+            }
+
+            .d-booknew .head span.turn .dot {
+                background-position: -16px center;
+            }
+
+            .d-booknew .head span.turn .dot_select {
+                background-position: 0 center;
+            }
+
+    .d-booknew .body {
+        width: 648px;
+        height: 348px;
+        overflow: hidden;
+    }
+
+        .d-booknew .body .slidecontainer {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 657px;
+            height: 379px;
+            font-size: 0;
+        }
+
+            .d-booknew .body .slidecontainer .item {
+                width: 320px;
+                height: 96px;
+                line-height: 0;
+                margin: 0 8px 30px 0;
+                float: left;
+                overflow: hidden;
+            }
+
+                .d-booknew .body .slidecontainer .item .cover {
+                    display: block;
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 68px;
+                    height: 96px;
+                }
+
+                .d-booknew .body .slidecontainer .item .title {
+                    width: 230px;
+                    padding: 0 0 0 90px;
+                    line-height: 29px;
+                    height: 29px;
+                    margin: 0;
+                    text-overflow: ellipsis;
+                    white-space: nowrap;
+                    overflow: hidden;
+                    font-size: 14px;
+                }
+
+                    .d-booknew .body .slidecontainer .item .title a {
+                        font-size: 14px;
+                    }
+
+                .d-booknew .body .slidecontainer .item .star {
+                    display: inline-block;
+                    width: 55px;
+                    height: 11px;
+                    line-height: 11px;
+                    font-size: 0;
+                    overflow: hidden;
+                    background-image: url(../images/midstars.gif);
+                    background-repeat: no-repeat;
+                }
+
+                .d-booknew .body .slidecontainer .item .star0 {
+                    background-position: 0 -110px;
+                }
+
+                .d-booknew .body .slidecontainer .item .star5 {
+                    background-position: 0 -99px;
+                }
+
+                .d-booknew .body .slidecontainer .item .star10 {
+                    background-position: 0 -88px;
+                }
+
+                .d-booknew .body .slidecontainer .item .star15 {
+                    background-position: 0 -77px;
+                }
+
+                .d-booknew .body .slidecontainer .item .star20 {
+                    background-position: 0 -66px;
+                }
+
+                .d-booknew .body .slidecontainer .item .star25 {
+                    background-position: 0 -55px;
+                }
+
+                .d-booknew .body .slidecontainer .item .star30 {
+                    background-position: 0 -44px;
+                }
+
+                .d-booknew .body .slidecontainer .item .star35 {
+                    background-position: 0 -33px;
+                }
+
+                .d-booknew .body .slidecontainer .item .star40 {
+                    background-position: 0 -22px;
+                }
+
+                .d-booknew .body .slidecontainer .item .star45 {
+                    background-position: 0 -11px;
+                }
+
+                .d-booknew .body .slidecontainer .item .star50 {
+                    background-position: 0 0;
+                }
+
+                .d-booknew .body .slidecontainer .item .star {
+                    margin: 0 0 0 90px;
+                }
+
+                .d-booknew .body .slidecontainer .item .author {
+                    width: 230px;
+                    padding: 0 0 0 90px;
+                    line-height: 30px;
+                    height: 30px;
+                    font-size: 13px;
+                    margin: 0;
+                }
+
+                .d-booknew .body .slidecontainer .item .classification {
+                    width: 230px;
+                    padding: 0 0 0 90px;
+                    line-height: 26px;
+                    height: 26px;
+                    font-size: 13px;
+                    margin: 0;
+                }
+
+.d-booktaghot .head {
+    height: 65px;
+    line-height: 65px;
+    font-size: 15px;
+    color: #00a000;
+}
+
+    .d-booktaghot .head a {
+        height: 65px;
+        line-height: 65px;
+        display: block;
+        position: absolute;
+        top: 0;
+        right: 0;
+        font-size: 13px;
+        color: #999;
+    }
+
+.d-booktaghot .body .item {
+    height: 30px;
+    line-height: 27px;
+    margin: 10px 0 0;
+    vertical-align: top;
+}
+
+    .d-booktaghot .body .item a {
+        font-size: 14px;
+        color: #666;
+    }
+
+    .d-booktaghot .body .item:first-child {
+        margin-top: 0;
+    }
+
+.d-booktaghot .body a.subitem {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    display: inline-block;
+    width: 90px;
+    height: 22px;
+    line-height: 22px;
+    margin: 0 9px 0 0;
+    font-size: 13px;
+}
+
+.d-bookactivity .head {
+    height: 65px;
+    line-height: 65px;
+    font-size: 15px;
+    color: #00a000;
+}
+
+    .d-bookactivity .head a {
+        height: 65px;
+        line-height: 65px;
+        display: block;
+        position: absolute;
+        top: 0;
+        right: 0;
+        font-size: 13px;
+        color: #999;
+    }
+
+.d-bookactivity .body {
+    height: 540px;
+    overflow: hidden;
+}
+
+    .d-bookactivity .body .feedcontainer {
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+
+        .d-bookactivity .body .feedcontainer .item {
+            width: 300px;
+            padding: 0 0 20px;
+        }
+
+            .d-bookactivity .body .feedcontainer .item .name {
+                width: 231px;
+                padding: 0 0 0 68px;
+                height: 15px;
+                line-height: 15px;
+            }
+
+                .d-bookactivity .body .feedcontainer .item .name a {
+                    font-size: 13px;
+                }
+
+            .d-bookactivity .body .feedcontainer .item .book {
+                width: 231px;
+                padding: 0 0 0 68px;
+                height: 15px;
+                line-height: 15px;
+            }
+
+                .d-bookactivity .body .feedcontainer .item .book a {
+                    font-size: 13px;
+                }
+
+            .d-bookactivity .body .feedcontainer .item .trends {
+                width: 231px;
+                padding: 0 0 0 68px;
+                height: 18px;
+                line-height: 18px;
+                font-size: 12px;
+                color: #999;
+            }
+
+            .d-bookactivity .body .feedcontainer .item a.avatar {
+                position: absolute;
+                top: 0;
+                left: 0;
+                display: block;
+                width: 48px;
+                height: 48px;
+            }
+
+.d-bookactivityfriend .head {
+    height: 65px;
+    line-height: 65px;
+    font-size: 15px;
+    color: #00a000;
+}
+
+    .d-bookactivityfriend .head a {
+        height: 65px;
+        line-height: 65px;
+        display: block;
+        position: absolute;
+        top: 0;
+        right: 0;
+        font-size: 13px;
+        color: #999;
+    }
+
+.d-bookactivityfriend .body {
+    height: 350px;
+    overflow: hidden;
+}
+
+    .d-bookactivityfriend .body .feedcontainer {
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+
+        .d-bookactivityfriend .body .feedcontainer .item {
+            padding: 10px 0 0;
+        }
+
+            .d-bookactivityfriend .body .feedcontainer .item .name {
+                padding: 0 0 0 68px;
+                height: 20px;
+                line-height: 20px;
+            }
+
+                .d-bookactivityfriend .body .feedcontainer .item .name a {
+                    font-size: 13px;
+                }
+
+            .d-bookactivityfriend .body .feedcontainer .item .book {
+                padding: 0 0 0 68px;
+                height: 20px;
+                line-height: 20px;
+            }
+
+                .d-bookactivityfriend .body .feedcontainer .item .book a {
+                    font-size: 13px;
+                }
+
+            .d-bookactivityfriend .body .feedcontainer .item .trends {
+                padding: 0 0 0 68px;
+                height: 20px;
+                line-height: 20px;
+                font-size: 13px;
+                color: #999;
+            }
+
+            .d-bookactivityfriend .body .feedcontainer .item a.avatar {
+                position: absolute;
+                top: 10px;
+                left: 0;
+                display: block;
+                width: 48px;
+                height: 48px;
+            }
+
+.d-bookcategory .head {
+    height: 40px;
+    line-height: 40px;
+    font-size: 15px;
+    color: #00a000;
+}
+
+.d-bookcategory .body {
+    border-top: 1px solid #ddd;
+    margin: 0 30px 0 0;
+    padding: 10px 0;
+}
+
+    .d-bookcategory .body .item {
+        display: block;
+        padding: 8px 0 8px 10px;
+        height: 20px;
+        line-height: 20px;
+        font-size: 14px;
+        text-decoration: none;
+    }
+
+        .d-bookcategory .body .item:hover {
+            background-color: #f0f0f0;
+        }
+
+    .d-bookcategory .body .sel {
+        background-color: #f0f0f0;
+    }
+
+.d-bookcategory .fselect .select-hid {
+    display: none;
+}
+
+.d-bookcategory .fselect .cfp3, .d-bookcategory .fselect .cfp3_s {
+    display: block;
+    padding: 8px 0 8px 10px;
+    height: 20px;
+    line-height: 20px;
+    font-size: 14px;
+    text-decoration: none;
+    cursor: pointer;
+    color: #0082cd;
+}
+
+    .d-bookcategory .fselect .cfp3:hover {
+        background-color: #f0f0f0;
+    }
+
+.d-bookcategory .fselect .cfp3_s {
+    background-color: #ee6b01;
+    color: #fff;
+}
+
+.d-bookcategory .fselect .cfp3 {
+    color: #0082cd;
+}
+
+.d-bookcategory2 .body {
+    border-top: 1px solid #ddd;
+    margin: 0 30px 0 0;
+    padding: 10px 0;
+}
+
+    .d-bookcategory2 .body .item {
+        display: block;
+        padding: 8px 0 8px 10px;
+        height: 20px;
+        line-height: 20px;
+        font-size: 14px;
+        text-decoration: none;
+    }
+
+        .d-bookcategory2 .body .item:hover {
+            background-color: #f0f0f0;
+        }
+
+    .d-bookcategory2 .body .sel {
+        background-color: #f0f0f0;
+    }
+
+.d-bookcategory2 .fselect .select-hid {
+    display: none;
+}
+
+.d-bookcategory2 .fselect .cfp3, .d-bookcategory2 .fselect .cfp3_s {
+    display: block;
+    padding: 8px 0 8px 10px;
+    height: 20px;
+    line-height: 20px;
+    font-size: 14px;
+    text-decoration: none;
+    cursor: pointer;
+    color: #0082cd;
+}
+
+    .d-bookcategory2 .fselect .cfp3:hover {
+        background-color: #f0f0f0;
+    }
+
+.d-bookcategory2 .fselect .cfp3_s {
+    background-color: #ee6b01;
+    color: #fff;
+}
+
+.d-bookcategory2 .fselect .cfp3 {
+    color: #0082cd;
+}
+
+.d-booktagall .body {
+    padding: 10px;
+    background-color: #f6f6f6;
+}
+
+    .d-booktagall .body a.item {
+        display: inline-block;
+        height: 27px;
+        line-height: 27px;
+        margin: 0 20px 0 0;
+        font-size: 13px;
+    }
+
+        .d-booktagall .body a.item .num {
+            color: #999;
+        }
+
+.d-booktagall .fselect .select-hid {
+    display: none;
+}
+
+.d-booktagall .fselect .cff3 {
+    line-height: 24px;
+}
+
+.d-booktagall .fselect .cfp3, .d-booktagall .fselect .cfp3_s {
+    display: inline-block;
+    *display: inline;
+    zoom: 1;
+    height: 24px;
+    line-height: 24px;
+    margin: 5px 0 0 10px;
+    padding: 0 5px;
+    font-size: 13px;
+    cursor: pointer;
+    color: #0082cd;
+}
+
+    .d-booktagall .fselect .cfp3 .num, .d-booktagall .fselect .cfp3_s .num {
+        font-size: 13px;
+        color: #999;
+    }
+
+    .d-booktagall .fselect .cfp3:hover {
+        background-color: #f0f0f0;
+    }
+
+.d-booktagall .fselect .cfp3_s {
+    background-color: #ee6b01;
+    color: #fff;
+}
+
+    .d-booktagall .fselect .cfp3_s .num {
+        color: #fff;
+    }
+
+.d-booktagall .fselect .cfp3 {
+    color: #0082cd;
+}
+
+.d-booktagall .fselect .cflabel3 {
+    display: inline-block;
+    *display: inline;
+    zoom: 1;
+}
+
+.d-booktagall .fselect .rm {
+    display: inline-block;
+    *display: inline;
+    zoom: 1;
+    height: 24px;
+    line-height: 24px;
+    margin: 5px 0 0;
+    padding: 0 2px;
+    font-size: 15px;
+    cursor: pointer;
+    color: #0082cd;
+}
+
+.d-booksearch .head {
+    height: 50px;
+    line-height: 50px;
+}
+
+    .d-booksearch .head .tag {
+        display: inline-block;
+        padding: 0 8px;
+        height: 20px;
+        line-height: 20px;
+        font-size: 13px;
+        color: #666;
+        cursor: pointer;
+    }
+
+    .d-booksearch .head .sel {
+        background-color: orange;
+        color: #fff;
+    }
+
+    .d-booksearch .head .type {
+        position: absolute;
+        top: 12px;
+        left: 0;
+        width: 300px;
+        height: 26px;
+        line-height: 26px;
+        text-align: left;
+    }
+
+    .d-booksearch .head .sort {
+        position: absolute;
+        top: 12px;
+        right: 0;
+        width: 300px;
+        height: 26px;
+        line-height: 26px;
+        text-align: right;
+    }
+
+    .d-booksearch .head .fselect .select-hid {
+        display: none;
+    }
+
+    .d-booksearch .head .fselect .cfp3, .d-booksearch .head .fselect .cfp3_s {
+        display: inline-block;
+        *display: inline;
+        zoom: 1;
+        height: 26px;
+        line-height: 26px;
+        padding: 0 10px;
+        font-size: 13px;
+        cursor: pointer;
+        color: #0082cd;
+    }
+
+        .d-booksearch .head .fselect .cfp3:hover {
+            background-color: #f0f0f0;
+        }
+
+    .d-booksearch .head .fselect .cfp3_s {
+        background-color: #ee6b01;
+        color: #fff;
+    }
+
+    .d-booksearch .head .fselect .cfp3 {
+        color: #0082cd;
+    }
+
+    .d-booksearch .head .fselect .cflabel3 {
+        display: inline-block;
+        *display: inline;
+        zoom: 1;
+    }
+
+.d-booksearch .body .item {
+    width: 725px;
+    display: block;
+    padding: 20px 0;
+    margin: -1px 0 0 0;
+    border-top: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+}
+
+    .d-booksearch .body .item div {
+        position: relative;
+    }
+
+    .d-booksearch .body .item .cover {
+        position: absolute;
+        width: 90px;
+        height: 127px;
+        top: 20px;
+        left: 0;
+    }
+
+    .d-booksearch .body .item .title {
+        width: 615px;
+        padding: 0 0 0 110px;
+    }
+
+        .d-booksearch .body .item .title a {
+            font-size: 15px;
+        }
+
+    .d-booksearch .body .item .info {
+        width: 615px;
+        display: block;
+        padding: 0 0 0 110px;
+        height: 30px;
+        line-height: 30px;
+    }
+
+        .d-booksearch .body .item .info .author {
+            display: inline-block;
+            height: 27px;
+            line-height: 27px;
+            padding: 0 10px 0 0;
+            margin: 0 20px 0 0;
+            font-size: 13px;
+        }
+
+        .d-booksearch .body .item .info .price {
+            display: inline-block;
+            height: 27px;
+            line-height: 27px;
+            padding: 0 10px;
+            margin: 0 20px 0 0;
+            font-size: 13px;
+        }
+
+        .d-booksearch .body .item .info .amount {
+            display: inline-block;
+            height: 27px;
+            line-height: 27px;
+            padding: 0 10px 0 0;
+            margin: 0 20px 0 0;
+            font-size: 12px;
+            color: #999;
+        }
+
+        .d-booksearch .body .item .info .star {
+            display: inline-block;
+            width: 55px;
+            height: 11px;
+            line-height: 11px;
+            font-size: 0;
+            overflow: hidden;
+            background-image: url(../images/midstars.gif);
+            background-repeat: no-repeat;
+        }
+
+        .d-booksearch .body .item .info .star0 {
+            background-position: 0 -110px;
+        }
+
+        .d-booksearch .body .item .info .star5 {
+            background-position: 0 -99px;
+        }
+
+        .d-booksearch .body .item .info .star10 {
+            background-position: 0 -88px;
+        }
+
+        .d-booksearch .body .item .info .star15 {
+            background-position: 0 -77px;
+        }
+
+        .d-booksearch .body .item .info .star20 {
+            background-position: 0 -66px;
+        }
+
+        .d-booksearch .body .item .info .star25 {
+            background-position: 0 -55px;
+        }
+
+        .d-booksearch .body .item .info .star30 {
+            background-position: 0 -44px;
+        }
+
+        .d-booksearch .body .item .info .star35 {
+            background-position: 0 -33px;
+        }
+
+        .d-booksearch .body .item .info .star40 {
+            background-position: 0 -22px;
+        }
+
+        .d-booksearch .body .item .info .star45 {
+            background-position: 0 -11px;
+        }
+
+        .d-booksearch .body .item .info .star50 {
+            background-position: 0 0;
+        }
+
+        .d-booksearch .body .item .info .star {
+            margin: 0 20px 0 0;
+        }
+
+    .d-booksearch .body .item .brief {
+        display: block;
+        width: 615px;
+        padding: 0 0 0 110px;
+        line-height: 24px;
+        font-size: 13px;
+    }
+
+    .d-booksearch .body .item .add {
+        display: block;
+        width: 615px;
+        padding: 0 0 0 110px;
+        height: 40px;
+        line-height: 40px;
+    }
+
+        .d-booksearch .body .item .add .btn-add {
+            border: 0;
+            padding: 0 10px;
+            height: 24px;
+            line-height: 24px;
+            font-size: 13px;
+        }
+
+.d-mybookshelf {
+    width: 548px;
+}
+
+    .d-mybookshelf .head {
+        height: 50px;
+        line-height: 50px;
+    }
+
+        .d-mybookshelf .head .tag {
+            display: inline-block;
+            padding: 0 10px;
+            font-size: 14px;
+            color: #00a000;
+        }
+
+        .d-mybookshelf .head .filter {
+            position: absolute;
+            top: 0;
+            right: 0;
+            height: 50px;
+            line-height: 50px;
+            text-align: right;
+        }
+
+            .d-mybookshelf .head .filter .item, .d-mybookshelf .head .filter .item_select, .d-mybookshelf .head .filter .item:hover, .d-mybookshelf .head .filter .item_select:hover {
+                display: inline-block;
+                padding: 0 10px;
+                margin: 12px 0 0;
+                height: 26px;
+                line-height: 26px;
+                text-decoration: none;
+                font-size: 13px;
+            }
+
+            .d-mybookshelf .head .filter .item_select {
+                background-color: #ee6b01;
+                color: #fff;
+            }
+
+    .d-mybookshelf .body .item {
+        display: block;
+        padding: 20px 0;
+        margin: -1px 0 0 0;
+        border-top: 1px solid #ccc;
+        border-bottom: 1px solid #ccc;
+    }
+
+        .d-mybookshelf .body .item div {
+            position: relative;
+        }
+
+        .d-mybookshelf .body .item .cover {
+            position: absolute;
+            width: 90px;
+            height: 127px;
+            top: 20px;
+            left: 0;
+        }
+
+        .d-mybookshelf .body .item .title {
+            padding: 0 0 0 110px;
+        }
+
+            .d-mybookshelf .body .item .title a {
+                font-size: 15px;
+            }
+
+        .d-mybookshelf .body .item .info {
+            display: block;
+            padding: 0 0 0 110px;
+            height: 30px;
+            line-height: 30px;
+        }
+
+            .d-mybookshelf .body .item .info .author {
+                display: inline-block;
+                height: 27px;
+                line-height: 27px;
+                padding: 0 10px 0 0;
+                margin: 0 20px 0 0;
+                font-size: 13px;
+            }
+
+            .d-mybookshelf .body .item .info .price {
+                display: inline-block;
+                height: 27px;
+                line-height: 27px;
+                padding: 0 10px;
+                margin: 0 20px 0 0;
+                font-size: 13px;
+            }
+
+            .d-mybookshelf .body .item .info .amount {
+                display: inline-block;
+                height: 27px;
+                line-height: 27px;
+                padding: 0 10px 0 0;
+                margin: 0 20px 0 0;
+                font-size: 12px;
+                color: #999;
+            }
+
+            .d-mybookshelf .body .item .info .star {
+                display: inline-block;
+                width: 55px;
+                height: 11px;
+                line-height: 11px;
+                font-size: 0;
+                overflow: hidden;
+                background-image: url(../images/midstars.gif);
+                background-repeat: no-repeat;
+            }
+
+            .d-mybookshelf .body .item .info .star0 {
+                background-position: 0 -110px;
+            }
+
+            .d-mybookshelf .body .item .info .star5 {
+                background-position: 0 -99px;
+            }
+
+            .d-mybookshelf .body .item .info .star10 {
+                background-position: 0 -88px;
+            }
+
+            .d-mybookshelf .body .item .info .star15 {
+                background-position: 0 -77px;
+            }
+
+            .d-mybookshelf .body .item .info .star20 {
+                background-position: 0 -66px;
+            }
+
+            .d-mybookshelf .body .item .info .star25 {
+                background-position: 0 -55px;
+            }
+
+            .d-mybookshelf .body .item .info .star30 {
+                background-position: 0 -44px;
+            }
+
+            .d-mybookshelf .body .item .info .star35 {
+                background-position: 0 -33px;
+            }
+
+            .d-mybookshelf .body .item .info .star40 {
+                background-position: 0 -22px;
+            }
+
+            .d-mybookshelf .body .item .info .star45 {
+                background-position: 0 -11px;
+            }
+
+            .d-mybookshelf .body .item .info .star50 {
+                background-position: 0 0;
+            }
+
+            .d-mybookshelf .body .item .info .star {
+                margin: 0 20px 0 0;
+            }
+
+        .d-mybookshelf .body .item .brief {
+            display: block;
+            padding: 0 0 0 110px;
+            line-height: 24px;
+            font-size: 13px;
+        }
+
+        .d-mybookshelf .body .item .add {
+            display: block;
+            padding: 0 0 0 110px;
+            height: 40px;
+            line-height: 40px;
+        }
+
+            .d-mybookshelf .body .item .add .btn-add {
+                border: 0;
+                padding: 0 10px;
+                height: 24px;
+                line-height: 24px;
+                font-size: 13px;
+            }
+
+.d-mybookwant {
+    width: 548px;
+}
+
+    .d-mybookwant .head {
+        height: 50px;
+        line-height: 50px;
+    }
+
+        .d-mybookwant .head .tag {
+            display: inline-block;
+            padding: 0 10px;
+            font-size: 14px;
+            color: #00a000;
+        }
+
+        .d-mybookwant .head .filter {
+            position: absolute;
+            top: 0;
+            right: 0;
+            height: 50px;
+            line-height: 50px;
+            text-align: right;
+        }
+
+            .d-mybookwant .head .filter .item, .d-mybookwant .head .filter .item_select, .d-mybookwant .head .filter .item:hover, .d-mybookwant .head .filter .item_select:hover {
+                display: inline-block;
+                padding: 0 10px;
+                margin: 12px 0 0;
+                height: 26px;
+                line-height: 26px;
+                text-decoration: none;
+                font-size: 13px;
+            }
+
+            .d-mybookwant .head .filter .item_select {
+                background-color: #ee6b01;
+                color: #fff;
+            }
+
+    .d-mybookwant .body .item {
+        display: block;
+        padding: 20px 0;
+        margin: -1px 0 0 0;
+        border-top: 1px solid #ccc;
+        border-bottom: 1px solid #ccc;
+    }
+
+        .d-mybookwant .body .item div {
+            position: relative;
+        }
+
+        .d-mybookwant .body .item .cover {
+            position: absolute;
+            width: 90px;
+            height: 127px;
+            top: 20px;
+            left: 0;
+        }
+
+        .d-mybookwant .body .item .title {
+            padding: 0 0 0 110px;
+        }
+
+            .d-mybookwant .body .item .title a {
+                font-size: 15px;
+            }
+
+        .d-mybookwant .body .item .info {
+            display: block;
+            padding: 0 0 0 110px;
+            height: 30px;
+            line-height: 30px;
+        }
+
+            .d-mybookwant .body .item .info .author {
+                display: inline-block;
+                height: 27px;
+                line-height: 27px;
+                padding: 0 10px 0 0;
+                margin: 0 20px 0 0;
+                font-size: 13px;
+            }
+
+            .d-mybookwant .body .item .info .price {
+                display: inline-block;
+                height: 27px;
+                line-height: 27px;
+                padding: 0 10px;
+                margin: 0 20px 0 0;
+                font-size: 13px;
+            }
+
+            .d-mybookwant .body .item .info .amount {
+                display: inline-block;
+                height: 27px;
+                line-height: 27px;
+                padding: 0 10px 0 0;
+                margin: 0 20px 0 0;
+                font-size: 12px;
+                color: #999;
+            }
+
+            .d-mybookwant .body .item .info .star {
+                display: inline-block;
+                width: 55px;
+                height: 11px;
+                line-height: 11px;
+                font-size: 0;
+                overflow: hidden;
+                background-image: url(../images/midstars.gif);
+                background-repeat: no-repeat;
+            }
+
+            .d-mybookwant .body .item .info .star0 {
+                background-position: 0 -110px;
+            }
+
+            .d-mybookwant .body .item .info .star5 {
+                background-position: 0 -99px;
+            }
+
+            .d-mybookwant .body .item .info .star10 {
+                background-position: 0 -88px;
+            }
+
+            .d-mybookwant .body .item .info .star15 {
+                background-position: 0 -77px;
+            }
+
+            .d-mybookwant .body .item .info .star20 {
+                background-position: 0 -66px;
+            }
+
+            .d-mybookwant .body .item .info .star25 {
+                background-position: 0 -55px;
+            }
+
+            .d-mybookwant .body .item .info .star30 {
+                background-position: 0 -44px;
+            }
+
+            .d-mybookwant .body .item .info .star35 {
+                background-position: 0 -33px;
+            }
+
+            .d-mybookwant .body .item .info .star40 {
+                background-position: 0 -22px;
+            }
+
+            .d-mybookwant .body .item .info .star45 {
+                background-position: 0 -11px;
+            }
+
+            .d-mybookwant .body .item .info .star50 {
+                background-position: 0 0;
+            }
+
+            .d-mybookwant .body .item .info .star {
+                margin: 0 20px 0 0;
+            }
+
+        .d-mybookwant .body .item .brief {
+            display: block;
+            padding: 0 0 0 110px;
+            line-height: 24px;
+            font-size: 13px;
+        }
+
+        .d-mybookwant .body .item .add {
+            display: block;
+            padding: 0 0 0 110px;
+            height: 40px;
+            line-height: 40px;
+        }
+
+            .d-mybookwant .body .item .add .btn-add {
+                border: 0;
+                padding: 0 10px;
+                height: 24px;
+                line-height: 24px;
+                font-size: 13px;
+            }
+
+.d-bookfriend {
+    width: 548px;
+}
+
+    .d-bookfriend .head {
+        height: 50px;
+        line-height: 50px;
+    }
+
+        .d-bookfriend .head .tag {
+            display: inline-block;
+            padding: 0 10px;
+            font-size: 14px;
+            color: #00a000;
+        }
+
+        .d-bookfriend .head .filter {
+            position: absolute;
+            top: 0;
+            right: 0;
+            height: 50px;
+            line-height: 50px;
+            text-align: right;
+        }
+
+            .d-bookfriend .head .filter .item, .d-bookfriend .head .filter .item_select, .d-bookfriend .head .filter .item:hover, .d-bookfriend .head .filter .item_select:hover {
+                display: inline-block;
+                padding: 0 10px;
+                margin: 12px 0 0;
+                height: 26px;
+                line-height: 26px;
+                text-decoration: none;
+                font-size: 13px;
+            }
+
+            .d-bookfriend .head .filter .item_select {
+                background-color: #ee6b01;
+                color: #fff;
+            }
+
+    .d-bookfriend .body .item {
+        display: block;
+        padding: 20px 0;
+        margin: -1px 0 0 0;
+        border-top: 1px solid #ccc;
+        border-bottom: 1px solid #ccc;
+    }
+
+        .d-bookfriend .body .item div {
+            position: relative;
+        }
+
+        .d-bookfriend .body .item .cover {
+            position: absolute;
+            width: 90px;
+            height: 127px;
+            top: 20px;
+            left: 0;
+        }
+
+        .d-bookfriend .body .item .title {
+            padding: 0 0 0 110px;
+        }
+
+            .d-bookfriend .body .item .title a {
+                font-size: 15px;
+            }
+
+        .d-bookfriend .body .item .info {
+            display: block;
+            padding: 0 0 0 110px;
+            height: 30px;
+            line-height: 30px;
+        }
+
+            .d-bookfriend .body .item .info .author {
+                display: inline-block;
+                height: 27px;
+                line-height: 27px;
+                padding: 0 10px 0 0;
+                margin: 0 20px 0 0;
+                font-size: 13px;
+            }
+
+            .d-bookfriend .body .item .info .price {
+                display: inline-block;
+                height: 27px;
+                line-height: 27px;
+                padding: 0 10px;
+                margin: 0 20px 0 0;
+                font-size: 13px;
+            }
+
+            .d-bookfriend .body .item .info .amount {
+                display: inline-block;
+                height: 27px;
+                line-height: 27px;
+                padding: 0 10px 0 0;
+                margin: 0 20px 0 0;
+                font-size: 12px;
+                color: #999;
+            }
+
+            .d-bookfriend .body .item .info .star {
+                display: inline-block;
+                width: 55px;
+                height: 11px;
+                line-height: 11px;
+                font-size: 0;
+                overflow: hidden;
+                background-image: url(../images/midstars.gif);
+                background-repeat: no-repeat;
+            }
+
+            .d-bookfriend .body .item .info .star0 {
+                background-position: 0 -110px;
+            }
+
+            .d-bookfriend .body .item .info .star5 {
+                background-position: 0 -99px;
+            }
+
+            .d-bookfriend .body .item .info .star10 {
+                background-position: 0 -88px;
+            }
+
+            .d-bookfriend .body .item .info .star15 {
+                background-position: 0 -77px;
+            }
+
+            .d-bookfriend .body .item .info .star20 {
+                background-position: 0 -66px;
+            }
+
+            .d-bookfriend .body .item .info .star25 {
+                background-position: 0 -55px;
+            }
+
+            .d-bookfriend .body .item .info .star30 {
+                background-position: 0 -44px;
+            }
+
+            .d-bookfriend .body .item .info .star35 {
+                background-position: 0 -33px;
+            }
+
+            .d-bookfriend .body .item .info .star40 {
+                background-position: 0 -22px;
+            }
+
+            .d-bookfriend .body .item .info .star45 {
+                background-position: 0 -11px;
+            }
+
+            .d-bookfriend .body .item .info .star50 {
+                background-position: 0 0;
+            }
+
+            .d-bookfriend .body .item .info .star {
+                margin: 0 20px 0 0;
+            }
+
+        .d-bookfriend .body .item .brief {
+            display: block;
+            padding: 0 0 0 110px;
+            line-height: 24px;
+            font-size: 13px;
+        }
+
+        .d-bookfriend .body .item .add {
+            display: block;
+            padding: 0 0 0 110px;
+            height: 40px;
+            line-height: 40px;
+        }
+
+            .d-bookfriend .body .item .add .btn-add {
+                border: 0;
+                padding: 0 10px;
+                height: 24px;
+                line-height: 24px;
+                font-size: 13px;
+            }
+
+.d-bookdetail {
+    width: 652px;
+    z-index: 22;
+}
+
+    .d-bookdetail .title {
+        font-size: 18px;
+        font-weight: 700;
+        line-height: 30px;
+        padding: 15px 0;
+    }
+
+    .d-bookdetail .cover {
+        float: left;
+        width: 102px;
+        height: 144px;
+        margin-right: 20px;
+    }
+
+    .d-bookdetail .info {
+        float: left;
+        width: 380px;
+    }
+
+        .d-bookdetail .info .author {
+            height: 22px;
+            line-height: 22px;
+            font-size: 13px;
+        }
+
+        .d-bookdetail .info .publisher {
+            height: 22px;
+            line-height: 22px;
+            font-size: 13px;
+        }
+
+        .d-bookdetail .info .year {
+            height: 22px;
+            line-height: 22px;
+            font-size: 13px;
+        }
+
+        .d-bookdetail .info .price {
+            height: 22px;
+            line-height: 22px;
+            font-size: 13px;
+        }
+
+        .d-bookdetail .info .isbn {
+            height: 22px;
+            line-height: 22px;
+            font-size: 13px;
+        }
+
+        .d-bookdetail .info .readbtn {
+            height: 30px;
+            line-height: 30px;
+            font-size: 13px;
+        }
+
+    .d-bookdetail .social {
+        float: right;
+        width: 130px;
+        text-align: right;
+    }
+
+        .d-bookdetail .social .star {
+            display: inline-block;
+            width: 55px;
+            height: 11px;
+            line-height: 11px;
+            font-size: 0;
+            overflow: hidden;
+            background-image: url(../images/midstars.gif);
+            background-repeat: no-repeat;
+        }
+
+        .d-bookdetail .social .star0 {
+            background-position: 0 -110px;
+        }
+
+        .d-bookdetail .social .star5 {
+            background-position: 0 -99px;
+        }
+
+        .d-bookdetail .social .star10 {
+            background-position: 0 -88px;
+        }
+
+        .d-bookdetail .social .star15 {
+            background-position: 0 -77px;
+        }
+
+        .d-bookdetail .social .star20 {
+            background-position: 0 -66px;
+        }
+
+        .d-bookdetail .social .star25 {
+            background-position: 0 -55px;
+        }
+
+        .d-bookdetail .social .star30 {
+            background-position: 0 -44px;
+        }
+
+        .d-bookdetail .social .star35 {
+            background-position: 0 -33px;
+        }
+
+        .d-bookdetail .social .star40 {
+            background-position: 0 -22px;
+        }
+
+        .d-bookdetail .social .star45 {
+            background-position: 0 -11px;
+        }
+
+        .d-bookdetail .social .star50 {
+            background-position: 0 0;
+        }
+
+        .d-bookdetail .social .amount {
+            height: 30px;
+            line-height: 30px;
+            color: #999;
+            font-size: 12px;
+            text-align: right;
+        }
+
+    .d-bookdetail .action {
+        padding: 10px 0 0;
+        z-index: 7;
+        height: 30px;
+        line-height: 30px;
+    }
+
+        .d-bookdetail .action .l {
+            float: left;
+            height: 30px;
+            line-height: 30px;
+            text-align: left;
+        }
+
+            .d-bookdetail .action .l .btn {
+                margin-right: 10px;
+            }
+
+        .d-bookdetail .action .r {
+            float: right;
+            height: 30px;
+            line-height: 30px;
+            text-align: right;
+        }
+
+            .d-bookdetail .action .r a {
+                font-size: 13px;
+                margin-left: 20px;
+            }
+
+            .d-bookdetail .action .r .dropdown {
+                position: relative;
+                display: inline-block;
+            }
+
+            .d-bookdetail .action .r .d-dropdown-share {
+                width: 110px;
+                border: 1px solid #ddd;
+                background-color: #fff;
+                position: absolute;
+                top: 40px;
+                right: 0;
+            }
+
+                .d-bookdetail .action .r .d-dropdown-share a {
+                    margin: -1px 0 0 0;
+                    padding: 0 10px 0 40px;
+                    width: 60px;
+                    display: inline-block;
+                    height: 27px;
+                    line-height: 27px;
+                    border-top: 1px solid #ddd;
+                    font-size: 12px;
+                    text-decoration: none;
+                    text-align: left;
+                }
+
+                    .d-bookdetail .action .r .d-dropdown-share a:hover {
+                        background-color: #eee;
+                    }
+
+                .d-bookdetail .action .r .d-dropdown-share .lexiang {
+                    padding: 0 10px;
+                    width: 90px;
+                }
+
+                .d-bookdetail .action .r .d-dropdown-share .sina {
+                    background-image: url(../images/social/sina.jpg);
+                    background-position: 10px center;
+                    background-repeat: no-repeat;
+                }
+
+                .d-bookdetail .action .r .d-dropdown-share .sohu {
+                    background-image: url(../images/social/sohu.jpg);
+                    background-position: 10px center;
+                    background-repeat: no-repeat;
+                }
+
+                .d-bookdetail .action .r .d-dropdown-share .douban {
+                    background-image: url(../images/social/douban.jpg);
+                    background-position: 10px center;
+                    background-repeat: no-repeat;
+                }
+
+                .d-bookdetail .action .r .d-dropdown-share .renren {
+                    background-image: url(../images/social/renren.jpg);
+                    background-position: 10px center;
+                    background-repeat: no-repeat;
+                }
+
+                .d-bookdetail .action .r .d-dropdown-share .kaixin {
+                    background-image: url(../images/social/kaixin.jpg);
+                    background-position: 10px center;
+                    background-repeat: no-repeat;
+                }
+
+                .d-bookdetail .action .r .d-dropdown-share .qq_t {
+                    background-image: url(../images/social/qq_t.jpg);
+                    background-position: 10px center;
+                    background-repeat: no-repeat;
+                }
+
+                .d-bookdetail .action .r .d-dropdown-share .qq_zone {
+                    background-image: url(../images/social/qq_zone.jpg);
+                    background-position: 10px center;
+                    background-repeat: no-repeat;
+                }
+
+                .d-bookdetail .action .r .d-dropdown-share .netease {
+                    background-image: url(../images/social/netease.jpg);
+                    background-position: 10px center;
+                    background-repeat: no-repeat;
+                }
+
+    .d-bookdetail .brief .head, .d-bookdetail .authorbrief .head, .d-bookdetail .desc .head {
+        height: 45px;
+        line-height: 45px;
+        font-size: 15px;
+        color: #00a000;
+    }
+
+    .d-bookdetail .brief .area, .d-bookdetail .authorbrief .area, .d-bookdetail .desc .area {
+        position: relative;
+        padding: 0;
+        background-color: transparent;
+        border: 0;
+        line-height: 24px;
+        font-size: 13px;
+    }
+
+        .d-bookdetail .brief .area p, .d-bookdetail .authorbrief .area p, .d-bookdetail .desc .area p {
+            line-height: 24px;
+            font-size: 13px;
+        }
+
+.d-booklike {
+    width: 646px;
+    height: 260px;
+    overflow: hidden;
+}
+
+    .d-booklike .head {
+        height: 65px;
+        line-height: 65px;
+        font-size: 15px;
+        color: #00a000;
+    }
+
+    .d-booklike .body {
+        width: 676px;
+        height: 216px;
+    }
+
+        .d-booklike .body .item {
+            width: 106px;
+            height: 195px;
+            margin: 0 29px 20px 0;
+            float: left;
+        }
+
+            .d-booklike .body .item .cover {
+                display: block;
+                width: 106px;
+                height: 158px;
+                overflow: hidden;
+            }
+
+            .d-booklike .body .item .title {
+                width: 106px;
+                height: 32px;
+                line-height: 32px;
+                padding: 8px 0 0;
+                margin: 0;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+                overflow: hidden;
+                font-size: 13px;
+            }
+
+                .d-booklike .body .item .title a {
+                    font-size: 13px;
+                }
+
+.d-bookcomment {
+    width: 652px;
+}
+
+    .d-bookcomment .head {
+        height: 65px;
+        line-height: 65px;
+        font-size: 15px;
+        color: #00a000;
+    }
+
+        .d-bookcomment .head a {
+            display: block;
+            position: absolute;
+            top: 20px;
+            right: 0;
+            font-size: 13px;
+        }
+
+    .d-bookcomment .body .dv {
+        height: 1px;
+        line-height: 0;
+        overflow: hidden;
+    }
+
+    .d-bookcomment .body .item {
+        width: 652px;
+        padding: 0 0 20px;
+    }
+
+        .d-bookcomment .body .item .cover {
+            position: absolute;
+            top: 0;
+            left: 0;
+            display: block;
+            width: 48px;
+            height: 48px;
+        }
+
+        .d-bookcomment .body .item .title {
+            margin: 0 0 0 60px;
+            padding: 0 8px;
+            width: 576px;
+            height: 32px;
+            line-height: 32px;
+            background-color: #f0f0f0;
+            font-size: 14px;
+        }
+
+            .d-bookcomment .body .item .title a {
+                font-size: 14px;
+            }
+
+        .d-bookcomment .body .item .name {
+            padding: 0 0 0 68px;
+            width: 584px;
+            height: 30px;
+            line-height: 30px;
+            font-size: 13px;
+        }
+
+            .d-bookcomment .body .item .name a {
+                font-size: 13px;
+            }
+
+        .d-bookcomment .body .item .review {
+            padding: 0 0 0 68px;
+            width: 584px;
+            line-height: 24px;
+            font-size: 13px;
+            color: #222;
+        }
+
+            .d-bookcomment .body .item .review pre.preComment {
+                background-color: transparent;
+                border: 0;
+                margin: 0;
+                padding: 5px 0;
+                font-size: 13px;
+            }
+
+        .d-bookcomment .body .item .info {
+            padding: 0 0 0 68px;
+            width: 584px;
+            line-height: 27px;
+            font-size: 13px;
+            color: #999;
+        }
+
+    .d-bookcomment .more {
+        display: block;
+        height: 33px;
+        line-height: 33px;
+        background-color: #f0f0f0;
+        text-align: center;
+        font-size: 13px;
+        color: #0082cd;
+        cursor: pointer;
+    }
+
+        .d-bookcomment .more:hover {
+            background-color: #ddd;
+            text-decoration: none;
+        }
+
+.lt-ie7 .d-bookcomment .body .item .title a {
+    display: block;
+    width: 576px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    font-size: 14px;
+}
+
+.d-booktagrelated .head {
+    height: 65px;
+    line-height: 65px;
+    font-size: 15px;
+    color: #00a000;
+}
+
+.d-booktagrelated .body .item {
+    display: inline-block;
+    line-height: 30px;
+    margin: 0 15px 0 0;
+}
+
+    .d-booktagrelated .body .item a {
+        font-size: 13px;
+    }
+
+    .d-booktagrelated .body .item span {
+        font-size: 13px;
+        color: #222;
+    }
+
+.d-bookread .head {
+    height: 65px;
+    line-height: 65px;
+    font-size: 15px;
+    color: #00a000;
+}
+
+    .d-bookread .head a {
+        height: 65px;
+        line-height: 65px;
+        display: block;
+        position: absolute;
+        top: 0;
+        right: 0;
+        font-size: 13px;
+        color: #999;
+    }
+
+.d-bookread .body .item {
+    padding: 0 0 30px;
+}
+
+    .d-bookread .body .item .name {
+        padding: 0 0 0 68px;
+        height: 20px;
+        line-height: 20px;
+    }
+
+        .d-bookread .body .item .name a {
+            font-size: 13px;
+        }
+
+    .d-bookread .body .item .status {
+        padding: 0 0 0 68px;
+        height: 20px;
+        line-height: 20px;
+        font-size: 13px;
+        color: #999;
+    }
+
+    .d-bookread .body .item a.cover {
+        position: absolute;
+        top: 0;
+        left: 0;
+        display: block;
+        width: 48px;
+        height: 48px;
+    }
+
+.d-bookadd {
+    padding: 10px 0;
+    text-align: center;
+    background-color: #ffffe1;
+    border: 1px solid #ffeea2;
+}
+
+    .d-bookadd .btn {
+        width: 130px;
+    }
+
+.form-field {
+    width: 1000px;
+}
+
+label.inline {
+    font-size: 13px;
+}
+
+.headtitle {
+    height: 27px;
+    line-height: 27px;
+    font-size: 14px;
+    font-weight: 700;
+}
+
+    .headtitle .label {
+        font-size: 14px;
+        font-weight: 700;
+    }
+
+.righthint {
+    padding: 24px 0 0;
+}
+
+    .righthint p {
+        margin: 0;
+        line-height: 30px;
+        color: #999;
+        font-size: 13px;
+    }
+
+        .righthint p.red {
+            color: red;
+        }
+
+.form-action {
+    width: 1000px;
+    padding: 20px 0 30px;
+    border-top: 1px solid #ddd;
+    text-align: center;
+}
+
+.d-bookinfo-simple {
+    border-bottom: 1px solid #ddd;
+}
+
+    .d-bookinfo-simple .head {
+        line-height: 45px;
+        font-size: 16px;
+        color: #00a000;
+    }
+
+    .d-bookinfo-simple .body {
+        padding: 0 0 10px;
+    }
+
+        .d-bookinfo-simple .body .item {
+            float: left;
+            margin: 0 30px 0 0;
+            display: block;
+            height: 27px;
+            line-height: 27px;
+            font-size: 13px;
+        }
