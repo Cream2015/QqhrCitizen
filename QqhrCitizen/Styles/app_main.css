@@ -6311,6 +6311,7 @@ div, p, span, a {
 .clearfix {
     *zoom: 1;
 }
+
 .d-articlelist {
     padding: 20px 0 0;
 }
@@ -6500,7 +6501,7 @@ div, p, span, a {
         line-height: 27px;
         font-size: 13px;
     }
-    
+
 .d-bookbanner {
     width: 652px;
     height: 205px;
@@ -8494,3 +8495,1257 @@ label.inline {
             line-height: 27px;
             font-size: 13px;
         }
+
+.d-dashboard {
+    position: absolute;
+    top: 60px;
+    left: 0;
+    width: 1000px;
+    padding-left: 1000px;
+}
+
+    .d-dashboard .loading {
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        width: 1000px;
+        background-color: #fff;
+    }
+
+        .d-dashboard .loading .spin {
+            text-align: center;
+            padding: 40px 0 0;
+            height: 40px;
+        }
+
+    .d-dashboard .body {
+        width: 1011px;
+        border-top: 3px solid #666;
+        padding: 10px 0 0;
+    }
+
+        .d-dashboard .body .box {
+            float: left;
+            background-color: #fff3e8;
+            margin: 0 10px 10px 0;
+            padding: 5px 15px;
+        }
+
+            .d-dashboard .body .box .title {
+                font-size: 18px;
+                height: 40px;
+                line-height: 40px;
+            }
+
+            .d-dashboard .body .box .subtitle {
+                font-size: 13px;
+                height: 27px;
+                line-height: 27px;
+            }
+
+                .d-dashboard .body .box .subtitle .num {
+                    font-size: 13px;
+                    color: #f60;
+                }
+
+        .d-dashboard .body .box1 {
+            width: 280px;
+            height: 350px;
+        }
+
+            .d-dashboard .body .box1 .board {
+                padding: 10px;
+            }
+
+                .d-dashboard .body .box1 .board .track {
+                    position: absolute;
+                    top: 60px;
+                    left: 60px;
+                    width: 160px;
+                    height: 160px;
+                    text-align: center;
+                }
+
+                    .d-dashboard .body .box1 .board .track div {
+                        font-size: 13px;
+                        color: #999;
+                        height: 24px;
+                        line-height: 24px;
+                    }
+
+                    .d-dashboard .body .box1 .board .track .title {
+                        font-size: 18px;
+                        color: #222;
+                        height: 40px;
+                        line-height: 40px;
+                    }
+
+                    .d-dashboard .body .box1 .board .track .num {
+                        font-size: 18px;
+                        color: #f60;
+                        height: 30px;
+                        line-height: 30px;
+                    }
+
+        .d-dashboard .body .box2 {
+            width: 650px;
+            height: 350px;
+        }
+
+            .d-dashboard .body .box2 .board .item {
+                width: 480px;
+                padding: 0 120px 0 50px;
+                height: 33px;
+                line-height: 33px;
+                border-bottom: 1px solid #ccc;
+                background-image: url(../images/icon-bar_33x33.png);
+                background-repeat: no-repeat;
+            }
+
+                .d-dashboard .body .box2 .board .item a {
+                    font-size: 14px;
+                }
+
+                .d-dashboard .body .box2 .board .item .info {
+                    position: absolute;
+                    top: 0;
+                    right: 0;
+                    width: 120px;
+                    height: 33px;
+                    line-height: 33px;
+                    text-align: right;
+                }
+
+            .d-dashboard .body .box2 .board .block {
+                float: left;
+                cursor: pointer;
+                width: 100px;
+                margin: 0 9px 0 0;
+                background-color: #999;
+                height: 69px;
+                line-height: 69px;
+                text-align: center;
+                color: #fff;
+                font-size: 15px;
+            }
+
+            .d-dashboard .body .box2 .board .block-last {
+                margin-right: 0;
+            }
+
+            .d-dashboard .body .box2 .board .block-g {
+                background-color: #0c0;
+            }
+
+        .d-dashboard .body .box3 {
+            width: 280px;
+            height: 250px;
+        }
+
+            .d-dashboard .body .box3 .board .item {
+                width: 180px;
+                padding: 0 60px 0 40px;
+                height: 27px;
+                line-height: 27px;
+                border-bottom: 1px solid #ccc;
+                background-image: url(../images/icon-bar_27x27.png);
+                background-repeat: no-repeat;
+            }
+
+                .d-dashboard .body .box3 .board .item a {
+                    font-size: 13px;
+                }
+
+                .d-dashboard .body .box3 .board .item .info {
+                    position: absolute;
+                    top: 0;
+                    right: 0;
+                    width: 60px;
+                    height: 27px;
+                    line-height: 27px;
+                    text-align: right;
+                }
+
+            .d-dashboard .body .box3 .board .block {
+                float: left;
+                cursor: pointer;
+                width: 130px;
+                margin: 0 19px 0 0;
+                background-color: #999;
+                height: 40px;
+                line-height: 40px;
+                text-align: center;
+                color: #fff;
+                font-size: 15px;
+            }
+
+            .d-dashboard .body .box3 .board .block-last {
+                margin-right: 0;
+            }
+
+            .d-dashboard .body .box3 .board .block-g {
+                background-color: #0c0;
+            }
+
+        .d-dashboard .body .box4 {
+            width: 305px;
+            height: 250px;
+        }
+
+            .d-dashboard .body .box4 .board .item {
+                width: 180px;
+                padding: 0 60px 0 40px;
+                height: 27px;
+                line-height: 27px;
+                border-bottom: 1px solid #ccc;
+                background-image: url(../images/icon-bar_27x27.png);
+                background-repeat: no-repeat;
+            }
+
+                .d-dashboard .body .box4 .board .item a {
+                    font-size: 13px;
+                }
+
+                .d-dashboard .body .box4 .board .item .info {
+                    position: absolute;
+                    top: 0;
+                    right: 0;
+                    width: 60px;
+                    height: 27px;
+                    line-height: 27px;
+                    text-align: right;
+                }
+
+        .d-dashboard .body .box5 {
+            width: 305px;
+            height: 250px;
+        }
+
+            .d-dashboard .body .box5 .board .block {
+                float: left;
+                cursor: pointer;
+                width: 100px;
+                background-color: #999;
+                height: 80px;
+                line-height: 80px;
+                text-align: center;
+                color: #fff;
+                font-size: 15px;
+            }
+
+            .d-dashboard .body .box5 .board .block-g {
+                background-color: #0c0;
+            }
+
+            .d-dashboard .body .box5 .board .block-b {
+                background-color: #09c;
+            }
+
+            .d-dashboard .body .box5 .board .block-o {
+                background-color: #f90;
+            }
+
+            .d-dashboard .body .box5 .board .block-gl {
+                background-color: #80ff80;
+            }
+
+            .d-dashboard .body .box5 .board .block-ol {
+                background-color: #cc9;
+            }
+
+            .d-dashboard .body .box5 .board .block-bl {
+                background-color: #0cf;
+            }
+
+.d-verify {
+    width: 652px;
+}
+
+    .d-verify .head {
+        height: 65px;
+        line-height: 65px;
+        font-size: 15px;
+        color: #00a000;
+    }
+
+    .d-verify .info {
+        line-height: 40px;
+        text-align: left;
+        font-size: 13px;
+    }
+
+    .d-verify .tbl td {
+        width: 510px;
+    }
+
+        .d-verify .tbl td div {
+            line-height: 40px;
+            font-size: 13px;
+        }
+
+            .d-verify .tbl td div .text {
+                line-height: 40px;
+                font-size: 1em;
+                color: #999;
+            }
+
+            .d-verify .tbl td div .btn {
+                font-size: 1em;
+            }
+
+            .d-verify .tbl td div label {
+                width: 92px;
+                font-size: 13px;
+                cursor: pointer;
+            }
+
+            .d-verify .tbl td div input {
+                margin-right: 5px;
+            }
+
+            .d-verify .tbl td div select {
+                margin-right: 5px;
+            }
+
+        .d-verify .tbl td:first-child {
+            width: 100px;
+        }
+
+.d-personalinfo {
+    width: 652px;
+}
+
+    .d-personalinfo .head {
+        height: 65px;
+        line-height: 65px;
+        font-size: 15px;
+        color: #00a000;
+    }
+
+    .d-personalinfo .info {
+        line-height: 40px;
+        text-align: left;
+        font-size: 13px;
+    }
+
+    .d-personalinfo .tbl {
+        width: 100%;
+    }
+
+        .d-personalinfo .tbl td div {
+            line-height: 40px;
+            font-size: 13px;
+        }
+
+            .d-personalinfo .tbl td div .text {
+                line-height: 40px;
+                font-size: 1em;
+                color: #999;
+            }
+
+            .d-personalinfo .tbl td div .btn {
+                font-size: 1em;
+            }
+
+            .d-personalinfo .tbl td div label {
+                width: 92px;
+                font-size: 13px;
+                cursor: pointer;
+            }
+
+            .d-personalinfo .tbl td div input {
+                margin-right: 5px;
+            }
+
+            .d-personalinfo .tbl td div select {
+                margin-right: 5px;
+            }
+
+        .d-personalinfo .tbl td .portrait {
+            display: block;
+            width: 90px;
+            height: 90px;
+            background-color: #ddd;
+        }
+
+.d-settings .head {
+    height: 65px;
+    line-height: 65px;
+    font-size: 15px;
+    color: #00a000;
+}
+
+.d-settings .body {
+    background-color: #f0f0f0;
+}
+
+    .d-settings .body .item {
+        position: relative;
+        padding: 0 20px;
+        height: 40px;
+        line-height: 40px;
+    }
+
+        .d-settings .body .item a {
+            display: inline-block;
+            font-size: 14px;
+        }
+
+        .d-settings .body .item .i {
+            display: inline-block;
+            margin-left: 10px;
+            width: 10px;
+            height: 10px;
+            overflow: hidden;
+            background-image: url(../images/reddot.png);
+            font-size: 0;
+        }
+
+.d-attention .head {
+    height: 65px;
+    line-height: 65px;
+    font-size: 15px;
+    color: #00a000;
+}
+
+.d-attention .body {
+    background-color: #f0f0f0;
+}
+
+.d-rightmenu {
+    padding: 20px 0 0;
+}
+
+    .d-rightmenu .head {
+        height: 65px;
+        line-height: 65px;
+        font-size: 15px;
+        color: #00a000;
+    }
+
+    .d-rightmenu .body {
+        background-color: #f0f0f0;
+    }
+
+        .d-rightmenu .body .item {
+            padding: 0 20px;
+            height: 40px;
+            line-height: 40px;
+        }
+
+            .d-rightmenu .body .item a, .d-rightmenu .body .item span {
+                font-size: 14px;
+            }
+
+            .d-rightmenu .body .item .badge {
+                display: inline-block;
+                margin: 0 0 0 20px;
+                top: 15px;
+                right: 20px;
+                width: 20px;
+                height: 20px;
+                line-height: 20px;
+                text-align: center;
+                font-size: 12px;
+                color: #fff;
+                text-shadow: 0 -1px 0 rgba(0,0,0,.25);
+                background-color: #b94a48;
+                padding: 0 5px;
+                -webkit-border-radius: 10px;
+                -moz-border-radius: 10px;
+                border-radius: 10px;
+            }
+
+.d-message {
+    width: 652px;
+}
+
+    .d-message .head {
+        height: 65px;
+        line-height: 65px;
+        font-size: 15px;
+        color: #00a000;
+    }
+
+        .d-message .head .action {
+            position: absolute;
+            top: 10px;
+            right: 0;
+            width: 200px;
+            height: 45px;
+            line-height: 45px;
+            text-align: right;
+        }
+
+            .d-message .head .action button {
+                font-size: 13px;
+            }
+
+    .d-message .body .item {
+        display: block;
+        padding: 0 0 10px;
+        border-top: 1px solid #ddd;
+    }
+
+        .d-message .body .item .t {
+            line-height: 40px;
+            padding: 0 30px 0 0;
+            color: #777;
+            font-size: 13px;
+        }
+
+        .d-message .body .item .msg {
+            padding: 10px 15px;
+            border-left: 5px solid #ddd;
+            background-color: #fff;
+            font-size: 13px;
+        }
+
+            .d-message .body .item .msg p {
+                padding: 0;
+                margin: 0;
+                min-height: 24px;
+                line-height: 24px;
+            }
+
+        .d-message .body .item .close {
+            display: inline-block;
+            position: absolute;
+            top: 8px;
+            right: 5px;
+            width: 20px;
+            height: 20px;
+            line-height: 20px;
+            cursor: pointer;
+            font-size: 20px;
+        }
+
+        .d-message .body .item a, .d-message .body .item p {
+            font-size: 1em;
+        }
+
+.d-usercardlearning {
+    background-color: #ffffe1;
+    border: 1px solid #ffeea2;
+    padding: 10px 8px 10px 9px;
+}
+
+    .d-usercardlearning .portrait {
+        display: block;
+        float: left;
+        width: 120px;
+        height: 120px;
+    }
+
+    .d-usercardlearning .name {
+        display: block;
+        float: right;
+        width: 140px;
+        line-height: 20px;
+        padding: 5px 0;
+        font-size: 16px;
+        font-weight: 700;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+    }
+
+    .d-usercardlearning .district {
+        display: block;
+        float: right;
+        width: 140px;
+        line-height: 20px;
+        padding: 5px 0;
+        font-size: 13px;
+        color: #999;
+    }
+
+    .d-usercardlearning .score {
+        display: block;
+        float: right;
+        width: 140px;
+        height: 30px;
+        line-height: 30px;
+        font-size: 13px;
+        color: #999;
+    }
+
+    .d-usercardlearning .shared {
+        text-decoration: none;
+        display: block;
+        width: 91px;
+        float: left;
+        text-align: center;
+        border-right: 1px solid #ecd76e;
+        font-size: 13px;
+    }
+
+        .d-usercardlearning .shared .num {
+            display: block;
+            height: 36px;
+            line-height: 36px;
+            font-size: 2em;
+            color: #666;
+        }
+
+    .d-usercardlearning .friends {
+        text-decoration: none;
+        display: block;
+        width: 92px;
+        float: left;
+        text-align: center;
+        border-right: 1px solid #ecd76e;
+        font-size: 13px;
+    }
+
+        .d-usercardlearning .friends .num {
+            display: block;
+            height: 36px;
+            line-height: 36px;
+            font-size: 2em;
+            color: #666;
+        }
+
+    .d-usercardlearning .following {
+        text-decoration: none;
+        display: block;
+        width: 92px;
+        float: left;
+        text-align: center;
+        font-size: 13px;
+    }
+
+        .d-usercardlearning .following .num {
+            display: block;
+            height: 36px;
+            line-height: 36px;
+            font-size: 2em;
+            color: #666;
+        }
+
+.d-historyteam {
+    width: 652px;
+}
+
+    .d-historyteam .head {
+        height: 50px;
+        line-height: 50px;
+        font-size: 0;
+    }
+
+        .d-historyteam .head .item, .d-historyteam .head .item_select, .d-historyteam .head .item:hover, .d-historyteam .head .item_select:hover {
+            display: inline-block;
+            padding: 0 20px;
+            margin: 12px 0 0;
+            height: 30px;
+            line-height: 30px;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .d-historyteam .head .item_select {
+            background-color: #ee6b01;
+            color: #fff;
+        }
+
+    .d-historyteam .bar {
+        height: 27px;
+        line-height: 27px;
+        overflow: hidden;
+        padding: 20px 0;
+        text-align: right;
+        border-top: 1px solid #ccc;
+    }
+
+    .d-historyteam .body .item {
+        display: block;
+        padding: 20px 0;
+        margin: -1px 0 0 0;
+        border-bottom: 1px solid #ccc;
+    }
+
+        .d-historyteam .body .item div {
+            position: relative;
+        }
+
+        .d-historyteam .body .item .cover {
+            position: absolute;
+            width: 106px;
+            height: 106px;
+            top: 20px;
+            left: 0;
+            overflow: hidden;
+        }
+
+        .d-historyteam .body .item .title {
+            padding: 0 0 0 130px;
+        }
+
+            .d-historyteam .body .item .title a {
+                font-size: 15px;
+            }
+
+        .d-historyteam .body .item .info {
+            display: block;
+            padding: 0 0 0 130px;
+            height: 40px;
+            line-height: 40px;
+        }
+
+            .d-historyteam .body .item .info .t {
+                display: inline-block;
+                padding: 0 20px 0 0;
+                font-size: 14px;
+            }
+
+            .d-historyteam .body .item .info .member {
+                background-image: url(../images/sprite/icon-courserecommendbyday.png);
+                background-position: 0 11px;
+                background-repeat: no-repeat;
+                padding: 0 20px;
+            }
+
+            .d-historyteam .body .item .info .join {
+                position: absolute;
+                top: -2px;
+                right: 0;
+                height: 40px;
+                line-height: 40px;
+            }
+
+                .d-historyteam .body .item .info .join a {
+                    font-size: 14px;
+                }
+
+        .d-historyteam .body .item .desc {
+            display: block;
+            padding: 0 0 0 130px;
+            line-height: 24px;
+            font-size: 14px;
+            color: #777;
+        }
+
+.d-historywork {
+    width: 652px;
+}
+
+    .d-historywork .head {
+        height: 50px;
+        line-height: 50px;
+        font-size: 0;
+    }
+
+        .d-historywork .head .item, .d-historywork .head .item_select, .d-historywork .head .item:hover, .d-historywork .head .item_select:hover {
+            display: inline-block;
+            padding: 0 20px;
+            margin: 12px 0 0;
+            height: 30px;
+            line-height: 30px;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .d-historywork .head .item_select {
+            background-color: #ee6b01;
+            color: #fff;
+        }
+
+    .d-historywork .bar {
+        height: 27px;
+        line-height: 27px;
+        overflow: hidden;
+        padding: 20px 0;
+        border-top: 1px solid #ccc;
+    }
+
+    .d-historywork .body .item {
+        font-size: 14px;
+        padding: 20px 0;
+        margin-bottom: 20px;
+        border-bottom: 1px solid #ddd;
+    }
+
+        .d-historywork .body .item .like {
+            position: absolute;
+            top: 20px;
+            left: 0;
+            width: 60px;
+            padding: 5px 0;
+            line-height: 25px;
+            text-align: center;
+            font-size: 18px;
+            color: #fff;
+            background-color: #f7c468;
+        }
+
+        .d-historywork .body .item .title {
+            display: inline-block;
+            padding: 0 15px 10px 70px;
+            line-height: 20px;
+            font-size: 15px;
+        }
+
+        .d-historywork .body .item .desc {
+            margin-left: 70px;
+            padding: 5px 15px 10px;
+            background-color: #f0f0f0;
+        }
+
+        .d-historywork .body .item .info {
+            padding: 10px 15px 0 70px;
+            line-height: 20px;
+            color: #999;
+        }
+
+.d-historylearning {
+    width: 652px;
+}
+
+    .d-historylearning .head {
+        height: 50px;
+        line-height: 50px;
+        font-size: 0;
+    }
+
+        .d-historylearning .head .item, .d-historylearning .head .item_select, .d-historylearning .head .item:hover, .d-historylearning .head .item_select:hover {
+            display: inline-block;
+            padding: 0 20px;
+            margin: 12px 0 0;
+            height: 30px;
+            line-height: 30px;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .d-historylearning .head .item_select {
+            background-color: #ee6b01;
+            color: #fff;
+        }
+
+    .d-historylearning .body .book {
+        width: 652px;
+        display: block;
+        padding: 20px 0;
+        margin: -1px 0 0 0;
+        border-top: 1px solid #ccc;
+        border-bottom: 1px solid #ccc;
+    }
+
+        .d-historylearning .body .book div {
+            position: relative;
+        }
+
+        .d-historylearning .body .book .cover {
+            position: absolute;
+            width: 90px;
+            height: 127px;
+            top: 20px;
+            left: 0;
+        }
+
+        .d-historylearning .body .book .title {
+            width: 542px;
+            padding: 0 0 0 110px;
+        }
+
+            .d-historylearning .body .book .title a {
+                font-size: 15px;
+            }
+
+        .d-historylearning .body .book .info {
+            width: 542px;
+            display: block;
+            padding: 0 0 0 110px;
+            height: 30px;
+            line-height: 30px;
+        }
+
+            .d-historylearning .body .book .info .author {
+                display: inline-block;
+                height: 27px;
+                line-height: 27px;
+                padding: 0 10px 0 0;
+                margin: 0 20px 0 0;
+                font-size: 13px;
+            }
+
+            .d-historylearning .body .book .info .price {
+                display: inline-block;
+                height: 27px;
+                line-height: 27px;
+                padding: 0 10px;
+                margin: 0 20px 0 0;
+                font-size: 13px;
+            }
+
+            .d-historylearning .body .book .info .amount {
+                display: inline-block;
+                height: 27px;
+                line-height: 27px;
+                padding: 0 10px 0 0;
+                margin: 0 20px 0 0;
+                font-size: 12px;
+                color: #999;
+            }
+
+            .d-historylearning .body .book .info .star {
+                display: inline-block;
+                width: 55px;
+                height: 11px;
+                line-height: 11px;
+                font-size: 0;
+                overflow: hidden;
+                background-image: url(../images/midstars.gif);
+                background-repeat: no-repeat;
+            }
+
+            .d-historylearning .body .book .info .star0 {
+                background-position: 0 -110px;
+            }
+
+            .d-historylearning .body .book .info .star5 {
+                background-position: 0 -99px;
+            }
+
+            .d-historylearning .body .book .info .star10 {
+                background-position: 0 -88px;
+            }
+
+            .d-historylearning .body .book .info .star15 {
+                background-position: 0 -77px;
+            }
+
+            .d-historylearning .body .book .info .star20 {
+                background-position: 0 -66px;
+            }
+
+            .d-historylearning .body .book .info .star25 {
+                background-position: 0 -55px;
+            }
+
+            .d-historylearning .body .book .info .star30 {
+                background-position: 0 -44px;
+            }
+
+            .d-historylearning .body .book .info .star35 {
+                background-position: 0 -33px;
+            }
+
+            .d-historylearning .body .book .info .star40 {
+                background-position: 0 -22px;
+            }
+
+            .d-historylearning .body .book .info .star45 {
+                background-position: 0 -11px;
+            }
+
+            .d-historylearning .body .book .info .star50 {
+                background-position: 0 0;
+            }
+
+            .d-historylearning .body .book .info .star {
+                margin: 0 20px 0 0;
+            }
+
+        .d-historylearning .body .book .brief {
+            display: block;
+            width: 542px;
+            padding: 0 0 0 110px;
+            line-height: 24px;
+            font-size: 13px;
+        }
+
+        .d-historylearning .body .book .add {
+            display: block;
+            width: 542px;
+            padding: 0 0 0 110px;
+            height: 40px;
+            line-height: 40px;
+        }
+
+            .d-historylearning .body .book .add .btn-add {
+                border: 0;
+                padding: 0 10px;
+                height: 24px;
+                line-height: 24px;
+                font-size: 13px;
+            }
+
+    .d-historylearning .body .course {
+        padding: 20px 0;
+        border-top: 1px solid #aaa;
+    }
+
+        .d-historylearning .body .course .infopic {
+            position: absolute;
+            top: 20px;
+            left: 0;
+            width: 106px;
+            height: 106px;
+        }
+
+        .d-historylearning .body .course .content {
+            padding: 0 0 0 130px;
+        }
+
+        .d-historylearning .body .course .info {
+            display: block;
+            padding: 0 190px 0 0;
+        }
+
+            .d-historylearning .body .course .info .title {
+                display: inline-block;
+                font-size: 15px;
+                line-height: 20px;
+                padding: 0 0 10px;
+            }
+
+            .d-historylearning .body .course .info .versign {
+                display: inline-block;
+                font-size: 13px;
+                line-height: 20px;
+                padding: 0 0 10px 20px;
+            }
+
+        .d-historylearning .body .course .stat {
+            display: block;
+            padding: 0 190px 0 0;
+            height: 30px;
+            line-height: 30px;
+        }
+
+            .d-historylearning .body .course .stat .stat_time {
+                display: inline-block;
+                padding: 0 5px 0 0;
+                color: #999;
+                font-size: 13px;
+            }
+
+            .d-historylearning .body .course .stat .stat_count {
+                display: inline-block;
+                padding: 0 5px 0 0;
+                color: #999;
+                font-size: 13px;
+            }
+
+            .d-historylearning .body .course .stat .stat_status {
+                display: inline-block;
+                padding: 0 5px 0 0;
+                color: #999;
+                font-size: 13px;
+            }
+
+        .d-historylearning .body .course .action {
+            display: block;
+            padding: 20px 190px 0 0;
+        }
+
+            .d-historylearning .body .course .action a {
+                display: inline-block;
+                margin-right: 20px;
+                text-decoration: none;
+                font-size: 13px;
+            }
+
+        .d-historylearning .body .course .date {
+            display: block;
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 185px;
+        }
+
+            .d-historylearning .body .course .date .signdate {
+                display: block;
+                padding: 0 5px 0 0;
+                color: #999;
+                font-size: 13px;
+            }
+
+            .d-historylearning .body .course .date .completedate {
+                display: block;
+                padding: 0 5px 0 0;
+                color: #999;
+                font-size: 13px;
+            }
+
+            .d-historylearning .body .course .date .totalscore {
+                display: block;
+                padding: 0 5px 0 0;
+                color: #999;
+                font-size: 13px;
+            }
+
+        .d-historylearning .body .course .cw {
+            padding: 10px 0;
+            font-size: 13px;
+        }
+
+            .d-historylearning .body .course .cw .t1 {
+                width: 300px;
+            }
+
+            .d-historylearning .body .course .cw .t2 {
+                width: 100px;
+            }
+
+            .d-historylearning .body .course .cw .t3 {
+                width: 100px;
+            }
+
+            .d-historylearning .body .course .cw .t4 {
+                width: 100px;
+            }
+
+    .d-historylearning .body .event {
+        padding: 20px 0;
+        border-top: 1px solid #aaa;
+    }
+
+        .d-historylearning .body .event .title {
+            padding: 0 0 0 130px;
+            line-height: 25px;
+        }
+
+            .d-historylearning .body .event .title a {
+                font-size: 15px;
+            }
+
+        .d-historylearning .body .event .desc {
+            display: block;
+            padding: 0 0 0 130px;
+            line-height: 20px;
+            font-size: 13px;
+        }
+
+        .d-historylearning .body .event .date {
+            display: block;
+            padding: 0 0 0 130px;
+            line-height: 20px;
+            color: #999;
+            font-size: 13px;
+        }
+
+        .d-historylearning .body .event .location {
+            display: block;
+            padding: 0 0 0 130px;
+            line-height: 20px;
+            color: #999;
+            font-size: 13px;
+        }
+
+        .d-historylearning .body .event .fee {
+            display: block;
+            padding: 0 0 0 130px;
+            line-height: 20px;
+            color: #999;
+            font-size: 13px;
+        }
+
+        .d-historylearning .body .event .sponsor {
+            display: block;
+            padding: 0 0 0 130px;
+            line-height: 20px;
+            color: #999;
+            font-size: 13px;
+        }
+
+        .d-historylearning .body .event .info {
+            padding: 0 0 0 130px;
+        }
+
+            .d-historylearning .body .event .info .follow {
+                display: inline-block;
+                line-height: 20px;
+                color: #999;
+                padding: 0 10px 0 0;
+                font-size: 13px;
+            }
+
+            .d-historylearning .body .event .info .participant {
+                display: inline-block;
+                line-height: 20px;
+                color: #999;
+                font-size: 13px;
+            }
+
+        .d-historylearning .body .event .cover {
+            position: absolute;
+            top: 20px;
+            left: 0;
+            width: 106px;
+            height: 106px;
+        }
+
+    .d-historylearning .body .group {
+        padding: 20px 0;
+        border-top: 1px solid #aaa;
+    }
+
+        .d-historylearning .body .group .name {
+            padding: 0 0 10px 58px;
+            line-height: 27px;
+        }
+
+            .d-historylearning .body .group .name a {
+                font-size: 14px;
+            }
+
+        .d-historylearning .body .group .users {
+            display: block;
+            padding: 0 0 0 58px;
+            height: 21px;
+            line-height: 21px;
+            font-size: 13px;
+        }
+
+        .d-historylearning .body .group .desc {
+            display: block;
+            padding: 0 0 0 58px;
+            line-height: 20px;
+            font-size: 13px;
+            color: #999;
+        }
+
+        .d-historylearning .body .group .add {
+            display: block;
+            padding: 0 0 0 58px;
+            height: 40px;
+            line-height: 40px;
+        }
+
+            .d-historylearning .body .group .add .btn-add {
+                border: 0;
+                padding: 0 10px;
+                height: 24px;
+                line-height: 24px;
+                font-size: 13px;
+            }
+
+        .d-historylearning .body .group a.portrait {
+            position: absolute;
+            top: 20px;
+            left: 0;
+            width: 48px;
+            height: 48px;
+        }
+
+.d-statlearning .head {
+    height: 65px;
+    line-height: 65px;
+    font-size: 15px;
+    color: #00a000;
+}
+
+.d-statlearning .body {
+    width: 300px;
+}
+
+    .d-statlearning .body .tbl {
+        width: 100%;
+    }
+
+    .d-statlearning .body td {
+        font-size: 13px;
+    }
