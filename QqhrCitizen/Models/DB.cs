@@ -34,8 +34,6 @@ namespace QqhrCitizen.Models
 
             modelBuilder.Entity<Note>().HasRequired(n => n.User).WithMany().WillCascadeOnDelete(false);
             modelBuilder.Entity<LessionScore>().HasRequired(ls => ls.User).WithMany().WillCascadeOnDelete(false);
-
-            modelBuilder.Entity<TypeDictionary>().HasOptional(td => td.Father).WithMany(x => x.Children);
         }
 
     }

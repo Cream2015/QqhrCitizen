@@ -38,9 +38,21 @@ namespace QqhrCitizen.Models
 
         public virtual TypeDictionary Father { get; set; }
 
-        public virtual ICollection<TypeDictionary> Children { get; set; }
- 
+        [NotMapped]
+        public List<TypeDictionary> Children
+        {
+            get
+            {
+                var ret = new List<TypeDictionary>();
+                if (FatherID != null) return ret;
+                using (DB db = new DB())
+                {
+                    ret = (from td in db.TypeDictionaries
+                           where td.FatherID == ID
+                           select td).ToList();
+                    return ret;
+                }
+            }
+        }
     }
-
-
 }
