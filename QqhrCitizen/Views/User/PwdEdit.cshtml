@@ -1,71 +1,112 @@
-﻿@model QqhrCitizen.Models.ViewModel.vUserPwdEdit
-@using QqhrCitizen.Models.ViewModel
-@{
+﻿@{
     ViewBag.Title = "修改用户密码信息 - 齐齐哈尔市民学习网";
-    vUserPwdEdit user = @ViewBag.user as vUserPwdEdit;
 }
-<script>
-    function UserPwdEditCheck() {
-        if (!CheckPassword()) return false;
-    }
-    function CheckPassword() {
-        if ($("#PasswordNew").val() != "") {
-            if ($("#PasswordNew").val().length < 4) {
-                CastMsg("至少输入4位密码");
-                return false;
-            }
-        }
-        if ($('#PasswordNew').val() != $('#NewPassword').val()) {
-            CastMsg("两次输入密码不一致");
-            $("#ConfirmInfo").css("color:red");
-            return false;
-        }
-        
-        return true;
-    }
-    
-
-</script>
-@using (Html.BeginForm("PwdEdit", "User", FormMethod.Post, new
-                    {
-                        onsubmit = "return UserPwdEditCheck();"
-                    }))
-{
-    @Html.AntiForgerySID()
-    <fieldset>
-        @Html.HiddenFor(model => model.ID, new { @value = user.ID })
-        <div class="container wrap-cont">
-            <div class="narrow block">
-                <h2>修改用户信息</h2>
-                <table class="detail-table">
-                    <tr>
-                        <td class="row-title">用户名</td>
-                        <td>
-                            @user.Username
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="row-title">原始密码</td>
-                        <td>
-                            @Html.PasswordFor(model=>model.Password, new { @class = "textbox w-3" })
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="row-title">新密码</td>
-                        <td>@Html.PasswordFor(model=>model.PasswordNew,  new { @class = "textbox w-3" })
-                    </tr>
-                    <tr>
-                        <td class="row-title">确认新密码</td>
-                        <td>@Html.Password("NewPassword", "", new { @class = "textbox w-3" })</td>
-                    </tr>
-                   
-                </table>
-                <div align="center"><input type="submit" value="保存" class="button blue" /><input type="reset" value="重置" class="button blue "></div>
-                @Html.ValidationSummary(true)
+<div id="d_menu" class="d-menu menu-use">
+    <div id="d_menu_c" class="d-menu-c">
+        <!-- region start: menu -->
+        <div id="d_headmenu" class="d-headmenu">
+            <div class="body">
+                <a id="headmenu_useraccount" class="item" href="/User/Show">个人信息</a>
+                <a id="headmenu_history" class="item" href="/usercenter/historycourse">学习档案</a>
+                <a id="headmenu_activation" class="item" href="/usercenter/activation">激活码兑换</a><a id="headmenu_lottery" class="item" href="/usercenter/lottery">抽奖记录</a>
+            </div>
+        </div><!-- region end: menu -->
+    </div>
+</div>
+<div id="d_bottom" class="d-bottom" style="visibility: hidden;">
+    <div class="d-bottom-c">
+        <div id="d_scrolltop" class="d-scrolltop">
+            <span class="t" onclick="$(document.body).ScrollTo();">顶部</span>
+        </div>
+    </div>
+</div>
+<div class="d-row" style="padding:0 0 40px 0">
+    <div class="d-row-c">
+        <div class="d-col-2-8">
+            <div class="contentarea">
+                <!-- region start: 修改密码 -->
+                <div id="d_personalinfo" class="d-personalinfo" data-km-url="">
+                    <div class="head">
+                        修改密码
+                    </div>
+                    <div class="info"></div>
+                    <table class="tbl">
+                        <tr>
+                            <td style="width:100px;">
+                                <div>
+                                    旧密码
+                                </div>
+                            </td>
+                            <td>
+                                <div>
+                                    <input type="password" class="int-hs" name="oldpwd" style="width:250px;" maxlength="20" autocorrect="off" autocapitalize="off">
+                                    <span class="text"></span>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div>
+                                    新密码
+                                </div>
+                            </td>
+                            <td>
+                                <div>
+                                    <input type="password" class="int-hs" name="password" style="width:250px;" maxlength="20" autocorrect="off" autocapitalize="off">
+                                    <span class="text"></span>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div>
+                                    确认密码
+                                </div>
+                            </td>
+                            <td>
+                                <div>
+                                    <input type="password" class="int-hs" name="confirmpwd" style="width:250px;" maxlength="20" autocorrect="off" autocapitalize="off">
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div>
+                                    &nbsp;
+                                </div>
+                            </td>
+                            <td>
+                                <div>
+                                    <input type="hidden" id="backurl" name="backurl"><button type="button" id="int_submit" class="btn btn-big btn-orange" style="width:120px;">
+                                        保存修改
+                                    </button>&nbsp;&nbsp;
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                    <div class="info"></div>
+                </div><!-- region end: 修改密码 -->
             </div>
         </div>
-    </fieldset>
-}
-
-
-
+        <div class="d-col-2-4">
+            <div class="contentarea">
+                <!-- region start: 个人设置 -->
+                <div id="d_settings" class="d-settings">
+                    <div class="head">
+                        &nbsp;
+                    </div><div class="body">
+                        <div class="item">
+                            <a href="/User/PwdEdit">修改密码</a>
+                        </div>
+                        <div class="item">
+                            <a href="/User/Edit">修改个人信息</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- region end: 个人设置 -->
+                <input type="hidden" id="redirect" name="redirect">
+            </div>
+        </div>
+        <div class="clear"></div>
+    </div>
+</div>

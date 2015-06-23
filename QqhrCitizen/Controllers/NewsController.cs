@@ -86,7 +86,6 @@ namespace QqhrCitizen.Controllers
         } 
         #endregion
 
-
-        getNewsByPage
+        
     }
 }
