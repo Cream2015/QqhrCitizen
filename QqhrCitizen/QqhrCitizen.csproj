@@ -210,7 +210,7 @@
     <Content Include="Styles\admin.css" />
     <Content Include="Styles\app_main.css" />
     <Content Include="Styles\app_home.css" />
-    <Content Include="Styles\app_login.css" />
+    <Content Include="Styles\app_test.css" />
     <Content Include="Styles\citizen.css" />
     <Content Include="Styles\common.css" />
     <Content Include="Styles\datetimepicker.css" />
