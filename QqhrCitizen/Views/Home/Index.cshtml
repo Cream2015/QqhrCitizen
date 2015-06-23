@@ -44,8 +44,20 @@
                         <div id="d_top_sign" class="d-top-sign">
                             <div class="body">
                                 <span class="txt">欢迎来到齐齐哈尔市民学习网</span>
-                                <a class="item" href="/User/Login" target="_self">登录</a>
-                                <a class="item last" href="/User/Register" target="_self">注册</a>
+                                @if (!User.Identity.IsAuthenticated)
+                                {
+                                    <a class="item" href="/User/Login" target="_self">登录</a>
+                                    <a class="item last" href="/User/Register" target="_self">注册</a>
+                                }
+                                else
+                                {
+                                    if (User.Identity.IsAuthenticated && ViewBag.CurrentUser.RoleAsInt >= 1)
+                                    {
+                                        <a class="item" href="/Admin/Index" target="_self">管理</a>
+                                    }
+                                    <a class="item" href="/User/Show/@ViewBag.CurrentUser.ID" target="_self">@ViewBag.CurrentUser.Username</a>
+                                    <a class="item last" href="/User/Logout?sid=@ViewBag.SID" target="_self">注销</a>
+                                }
                             </div>
                         </div>
                         <div class="clear"></div>

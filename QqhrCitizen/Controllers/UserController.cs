@@ -36,7 +36,7 @@ namespace QqhrCitizen.Controllers
             user1 = db.Users.Where(u => u.Username == model.Username).SingleOrDefault();
             if (user1 == null)
             {
-                User user = new User { Username = model.Username, Password = Helpers.Encryt.GetMD5(model.Password), Role = Role.User, Realname = model.Realname, Email = model.Email, Phone = model.Phone,Address=model.Address };
+                User user = new User { Username = model.Username, Password = Helpers.Encryt.GetMD5(model.Password), Role = Role.User, Realname = model.Realname, Email = model.Email, Phone = model.Phone, Address = model.Address };
                 db.Users.Add(user);
                 int result = db.SaveChanges();
                 if (result > 0)
@@ -53,7 +53,7 @@ namespace QqhrCitizen.Controllers
                 ModelState.AddModelError("", "用户名不可用！");
             }
             return View();
-        } 
+        }
         #endregion
 
         [HttpGet]
@@ -107,7 +107,7 @@ namespace QqhrCitizen.Controllers
             notes = db.Notes.Where(n => n.UserID == id).ToList();
             ViewBag.Notes = notes;
             return View();
-        } 
+        }
         #endregion
 
         #region 修改个人信息
@@ -123,8 +123,8 @@ namespace QqhrCitizen.Controllers
             User user = db.Users.Find(id);
             ViewBag.user = user;
             List<SelectListItem> ListSex = new List<SelectListItem>();
-          
-            ListSex.Add(new SelectListItem { Text = "女", Value = "0", Selected = user.SexAsInt==0?true:false });
+
+            ListSex.Add(new SelectListItem { Text = "女", Value = "0", Selected = user.SexAsInt == 0 ? true : false });
             ListSex.Add(new SelectListItem { Text = "男", Value = "1", Selected = user.SexAsInt == 1 ? true : false });
             ViewBag.Sex = ListSex;
             return View();
@@ -140,7 +140,7 @@ namespace QqhrCitizen.Controllers
         [Authorize]
         [HttpPost]
         [ValidateSID]
-        public ActionResult Edit(vUserEdit model,HttpPostedFileBase file)
+        public ActionResult Edit(vUserEdit model, HttpPostedFileBase file)
         {
             User user = db.Users.Find(model.ID);
             if (ModelState.IsValid)
@@ -173,7 +173,7 @@ namespace QqhrCitizen.Controllers
             ViewBag.user = user;
             return View(model);
         }
-       #endregion
+        #endregion
 
 
         #region 修改个人密码信息
@@ -189,7 +189,7 @@ namespace QqhrCitizen.Controllers
             User user = db.Users.Find(id);
             ViewBag.user = new vUserPwdEdit(user);
             return View();
-        } 
+        }
 
         #endregion
 
@@ -207,7 +207,7 @@ namespace QqhrCitizen.Controllers
             User user = db.Users.Find(model.ID);
             if (ModelState.IsValid)
             {
-              FormsAuthentication.SetAuthCookie(model.Username, false);
+                FormsAuthentication.SetAuthCookie(model.Username, false);
 
                 if (!string.IsNullOrEmpty(model.Password))
                 {
@@ -234,21 +234,22 @@ namespace QqhrCitizen.Controllers
             }
             ViewBag.user = new vUserPwdEdit(user);
             return View(model);
-        } 
+        }
         #endregion
 
-         #region 注销
+        #region 注销
 
         /// <summary>
         ///  注销 
         /// </summary>
         /// <returns></returns>
         [HttpGet]
+        [ValidateSID]
         public ActionResult Logout()
         {
             FormsAuthentication.SignOut();
             return RedirectToAction("Index", "Home");
-        } 
+        }
         #endregion
 
 
@@ -260,6 +261,6 @@ namespace QqhrCitizen.Controllers
             return File(user.Picture, "image/jpg");
         }
 
-        
+
     }
 }
