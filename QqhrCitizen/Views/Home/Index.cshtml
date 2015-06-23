@@ -109,9 +109,11 @@
                 }
                 @foreach (News n in ViewBag.News)
                 {
-                    <li id="bb@(i)" style="background-color: @(bgcolor[i++ -1]); z-index: 9; display: block;">
+                    if (i > 5) { break; }
+                    <li id="bb@(i)" style="background-color: @(bgcolor[i - 1]); z-index: 9; display: block;">
                         <a href="/News/Show/@n.ID" target="_blank" style="background-image: url(@n.ImgUrl.First());"><p class="t" style="display: none;"></p><p class="h" style="color: rgb(255, 255, 255);">@n.Title</p><p class="p" style="color: rgb(255, 255, 255);">@n.Title</p></a>
                     </li>
+                    { i++; }
                 }
             </ul><div id="d_banner_c" class="d-banner-c" style="visibility: visible;">
                 <div id="d_banner_thumb" class="d-banner-thumb">
