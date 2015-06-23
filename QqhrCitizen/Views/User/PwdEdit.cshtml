@@ -1,5 +1,8 @@
-﻿@{
+﻿@model QqhrCitizen.Models.ViewModel.vUserPwdEdit
+@using QqhrCitizen.Models.ViewModel
+@{
     ViewBag.Title = "修改用户密码信息 - 齐齐哈尔市民学习网";
+    vUserPwdEdit user = @ViewBag.user as vUserPwdEdit;
 }
 <div id="d_menu" class="d-menu menu-use">
     <div id="d_menu_c" class="d-menu-c">
@@ -19,11 +22,34 @@
         </div>
     </div>
 </div>
+<script>
+    function UserPwdEditCheck() {
+        if (!CheckPassword()) return false;
+    }
+    function CheckPassword() {
+        if ($("#PasswordNew").val() != "") {
+            if ($("#PasswordNew").val().length < 4) {
+                CastMsg("至少输入4位密码");
+                return false;
+            }
+        }
+        if ($('#PasswordNew').val() != $('#NewPassword').val()) {
+            CastMsg("两次输入密码不一致");
+            $("#ConfirmInfo").css("color:red");
+            return false;
+        }
+
+        return true;
+    }
+
+
+</script>
 <div class="d-row" style="padding:0 0 40px 0">
     <div class="d-row-c">
         <div class="d-col-2-8">
             <div class="contentarea">
                 <!-- region start: 修改密码 -->
+                @Html.HiddenFor(model => model.ID, new { @value = user.ID })
                 <div id="d_personalinfo" class="d-personalinfo" data-km-url="">
                     <div class="head">
                         修改密码
@@ -38,7 +64,7 @@
                             </td>
                             <td>
                                 <div>
-                                    <input type="password" class="int-hs" name="oldpwd" style="width:250px;" maxlength="20" autocorrect="off" autocapitalize="off">
+                                    @Html.PasswordFor(model => model.Password, new { @class = "int-hs", @style = "width:250px;" })
                                     <span class="text"></span>
                                 </div>
                             </td>
@@ -51,7 +77,7 @@
                             </td>
                             <td>
                                 <div>
-                                    <input type="password" class="int-hs" name="password" style="width:250px;" maxlength="20" autocorrect="off" autocapitalize="off">
+                                    @Html.PasswordFor(model => model.PasswordNew, new { @class = "int-hs", @style = "width:250px;" })
                                     <span class="text"></span>
                                 </div>
                             </td>
@@ -64,7 +90,7 @@
                             </td>
                             <td>
                                 <div>
-                                    <input type="password" class="int-hs" name="confirmpwd" style="width:250px;" maxlength="20" autocorrect="off" autocapitalize="off">
+                                    @Html.Password("NewPassword", "", new { @class = "int-hs", @style = "width:250px;" })
                                 </div>
                             </td>
                         </tr>
@@ -80,6 +106,7 @@
                                         保存修改
                                     </button>&nbsp;&nbsp;
                                 </div>
+                                @Html.ValidationSummary(true)
                             </td>
                         </tr>
                     </table>
@@ -99,6 +126,9 @@
                         </div>
                         <div class="item">
                             <a href="/User/Edit">修改个人信息</a>
+                        </div>
+                        <div class="item">
+                            <a href="/User/Notes\@user.ID">个人课程笔记</a>
                         </div>
                     </div>
                 </div>
