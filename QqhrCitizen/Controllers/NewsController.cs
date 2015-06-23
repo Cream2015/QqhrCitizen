@@ -16,18 +16,18 @@ namespace QqhrCitizen.Controllers
         /// <returns></returns>
         public ActionResult Index()
         {
-            /*string tid =HttpContext.Request.QueryString["tid"].ToString();
-            List<News> lstNews = new List<News>();
-            lstNews = db.News.OrderByDescending(n => n.Browses).Take(8).ToList();
-            ViewBag.Tid = tid;
+            /*string tid =HttpContext.Request.QueryString["tid"].ToString();*/
+             List<News> lstNews = new List<News>();
+             lstNews = db.News.OrderByDescending(n => n.Browses).ThenByDescending(n=>n.Time).Take(8).ToList();
+             /*ViewBag.Tid = tid;
             var type = new TypeDictionary();
             if (tid != "0")
             {
                 int id = Convert.ToInt32(tid);
                 type = db.TypeDictionaries.Find(id);
             }
-            ViewBag.Type = type.TypeValue;
-            ViewBag.LstNews = lstNews;*/
+            ViewBag.Type = type.TypeValue;*/
+            ViewBag.LstNews = lstNews;
             return View();
         }
 
@@ -38,17 +38,17 @@ namespace QqhrCitizen.Controllers
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpGet]
-        public ActionResult Show()
+        public ActionResult Show(int id)
         {
-            /*News news = new News();
+            News news = new News();
             news = db.News.Find(id);
             news.Browses = news.Browses + 1;
             db.SaveChanges();
             vNews _news = new vNews(news);
             List<News> lstNews = new List<News>();
-            lstNews = db.News.Where(n =>n.NewsTypeID ==news.NewsTypeID && n.ID!=id).OrderByDescending(n=>n.Time).Take(8).ToList();
+            lstNews = db.News.Where(n =>n.NewsTypeID ==news.NewsTypeID && n.ID!=id).OrderByDescending(n=>n.Browses).ThenByDescending(n=>n.Time).Take(8).ToList();
             ViewBag.News = _news;
-            ViewBag.LstNews = lstNews;*/
+            ViewBag.LstNews = lstNews;
             return View();
         }
         #endregion

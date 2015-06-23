@@ -1,6 +1,6 @@
-﻿
+﻿@using QqhrCitizen.Models.ViewModel;
 @{
-
+    vNews news = ViewBag.News as vNews;
     ViewBag.Title = "新闻详细_齐齐哈尔市民学习网";
 }
 <div id="d_menu" class="d-menu menu-eve"><div id="d_menu_c" class="d-menu-c"><!-- region start: menu --><div id="d_headmenu" class="d-headmenu"><div class="body"><a id="headmenu_default" class="item_selected" href="/News/Index" style="cursor:pointer" target="_parent">资讯首页</a></div></div><!-- region end: menu --></div></div>
@@ -32,22 +32,14 @@
                 <div id="d_article" class="d-article">
                     <div class="body">
                         <div class="item">
-                            <div class="title">北新泾街道社区学校开展2015年上海社区网上读书活动培训</div>
+                            <div class="title">@news.Title</div>
                             <div class="info">
-                                <span class="date">发布时间:2015年06月19日</span>
+                                <span class="date">发布时间:@news.Time</span>
                                 <span class="from"></span>
-                                <span class="view">浏览次数:<span id="viewCountNum">4</span></span>
+                                <span class="view">浏览次数:<span id="viewCountNum">@news.Browses</span></span>
                             </div>
                             <div class="desc txt-justify">
-                                <p>为了继承和弘扬民族传统文化，培育和践行社会主义核心价值观，提升市民人文素养，上海市学习型社会建设与终身教育促进委员会办公室会同上海市学习型社会建设服务指导中心、上海开放大学举办“弘扬传统文化，营造书香社区”——2015年上海社区网上读书活动，北新泾街道社区学校也积极响应，组织居民参与上海社区网上读书活动。</p>
-                                <p style="text-align: center">
-                                    <img src="/file/20150619/ueditor/6357032505972324822037125.png" title="QQ截图20150619154009.png">
-                                </p>
-                                <p>2015年5月26日上午，在北新泾街道社区学校电脑教室开展了“弘扬传统文化，营造书香社区”——2015年上海社区网上读书活动培训活动，活动首先由方利华老师作了“弘扬传统文化，营造书香社区”具体操作步骤培训，随后大家围绕“弘扬传统文化，营造书香社区”材料内容进行了认真仔细的分析、解读、研究和讨论，活动最后对2015年社区网上活动相关工作做布置和安排。</p>
-                                <p style="text-align: center">
-                                    <img src="/file/20150619/ueditor/6357032506613485953917094.png" title="QQ截图20150619154024.png">
-                                </p>
-                                <p><br></p>
+                              @Html.Sanitized(@news.Content)
                             </div>
                         </div>
                     </div>
@@ -55,27 +47,25 @@
             </div>
         </div>
         <div class="d-col-2-4">
-        <div class="contentarea">
-            <div id="d_ad1" class="d-ad-323x264" style="padding: 30px 0 0 0;" data-km-url="">
-            <a href="http://city.shlll.net/" rel="nofollow" target="_blank">
-                <img src="http://res.shlll.net/resource/ad/ad_zhcs_300x250.jpg" width="300" height="250" alt="建智慧城市，做智慧市民"></a>
-            </div>
-            <!-- region start: 推荐资讯 -->
-            <div id="d_articlehot" class="d-articlehot">
-                <div class="head">推荐资讯</div>
-                <div class="body">
-                    <a class="item trim" href="/News/News23.html" target="_blank" title="【闸北】护牙健齿 乐享生活">【闸北】护牙健齿 乐享生活</a>
-                    <!--
-                        <a class="item trim" href="（新闻详细页面）" target="_blank" title="（新闻标题）">（新闻标题）</a>
-                    -->
+            <div class="contentarea">
+                <div id="d_ad1" class="d-ad-323x264" style="padding: 30px 0 0 0;" data-km-url="">
+                    <a href="http://city.shlll.net/" rel="nofollow" target="_blank">
+                        <img src="http://res.shlll.net/resource/ad/ad_zhcs_300x250.jpg" width="300" height="250" alt="建智慧城市，做智慧市民">
+                    </a>
                 </div>
-            </div>
-            <!-- region end: 推荐资讯 -->
+                <!-- region start: 推荐资讯 -->
+                <div id="d_articlehot" class="d-articlehot">
+                    <div class="head">相关新闻</div>
+                    <div class="body">
+                        @foreach (var item in ViewBag.LstNews as List<News>)
+                        {
+                            <a class="item trim" href="/News/Show/@item.ID" target="_blank" title="@item.Title">@item.Title</a>
+                        }
+                    </div>
+                </div>
+                <!-- region end: 推荐资讯 -->
             </div>
         </div>
         <div class="clear"></div>
     </div>
 </div>
-
-
-

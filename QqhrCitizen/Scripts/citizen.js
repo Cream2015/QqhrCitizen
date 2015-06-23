@@ -129,6 +129,34 @@ function LoadSearchRessult() {
     }
 }
 
+// 加载新闻首页的新闻
+function LoadIndexNews() {
+    if (lock) {
+        return;
+    }
+    else {
+        lock = true;
+        $(".loadMore").text("正在加载~~");
+        $.ajax({
+            url: "/News/getNewsByPage",
+            type: "get",
+            data: { "page": page },
+        }).done(function (data) {
+            var str = "";
+            for (var i = 0 ; i < data.length; i++) {
+                str += "<div class='Q-pList'><h2><a  href='" + data[i].URL + "' style='color:#000;' class='show'>" + data[i].Title + " </a></h2><p class='sub_title'>时间：" + moment(data[i].Time).format("YYYY-MM-DD HH:mm:ss") + "</p><p>" + data[i].Sumamry + "</p></div>";
+            }
+            $("#lstNews").append(str);
+            if (data.length == 10) {
+                lock = false;
+                page++;
+                $(".loadMore").text("下拉加载更多！");
+            } else {
+                $(".loadMore").text("没有更多数据了！");
+            }
+        });
+    }
+}
 
 function Load() {
     if ($(".lstNews").length > 0) {
@@ -142,6 +170,11 @@ function Load() {
     }
     if ($(".result").length > 0) {
         LoadSearchRessult();
+    }
+
+    ///新闻首页加载新闻
+    if ($("#lstNews").length > 0) {
+
     }
 }
 

@@ -1,4 +1,5 @@
-﻿@{
+﻿@using QqhrCitizen.Models;
+@{
     ViewBag.Title = "新闻首页_齐齐哈尔市民学习网";
 }
 <div id="d_menu" class="d-menu menu-msg">
@@ -18,7 +19,7 @@
             <div class="contentarea">
                 <!-- region start: 新闻列表 -->
                 <div id="d_articlelist" class="d-articlelist">
-                    <div class="body">
+                    <div class="body" id="lstNews">
                         <div class="item">
                             <div class="title">
                                 <a href="/News/News1203.html" target="_blank">
@@ -65,12 +66,12 @@
                 </div>
                 <!-- region start: 推荐资讯 -->
                 <div id="d_articlehot" class="d-articlehot">
-                    <div class="head">推荐资讯</div>
+                    <div class="head">热门新闻</div>
                     <div class="body">
-                        <a class="item trim" href="/News/News23.html" target="_blank" title="【闸北】护牙健齿 乐享生活">【闸北】护牙健齿 乐享生活</a>
-                       <!--
-                           <a class="item trim" href="（新闻详细页面）" target="_blank" title="（新闻标题）">（新闻标题）</a>
-                       -->
+                        @foreach (var item in ViewBag.LstNews as List<News>)
+                        { 
+                        <a class="item trim" href="/News/Show/@item.ID" target="_blank" title="@item.Title">@item.Title</a>
+                        }    
                     </div>
                 </div>
                 <!-- region end: 推荐资讯 -->
