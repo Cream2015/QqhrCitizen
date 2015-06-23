@@ -1,65 +1,198 @@
-﻿@using QqhrCitizen.Models.ViewModel;
-@using QqhrCitizen.Models;
-@model  QqhrCitizen.Models.ViewModel.vUser
-@{
+﻿@{
     ViewBag.Title = "用户信息 - 齐齐哈尔市民学习网";
-    vUser user = @ViewBag.user as vUser;
 }
-
-<div class="container wrap-cont">
-    <div class="block">
-        <h2>用户信息</h2>
-        <div class="detail-table">
-            <p>
-                <br />
-                @if (user.Picture == null)
-                {
-                    <img src="/Images/userphoto.png" width="100" height="100" style="border-radius:50%;" />
-                }
-                else
-                {
-                    <img src="/User/ShowPicture/@user.ID" width="100" height="100" style="border-radius:50%;" alt="图像" />
-                }
-            </p>
-            <div style="margin-left: 20px"><a href="/User/PwdEdit/@user.ID">修改密码</a></div>
-            <div style="margin-left: 150px; margin-top: -150px" >
-                <p>用户名：@user.Username</p>
-                <p>性别：@user.Sex</p>
-                @if (user.Birthday != null)
-                {
-                    <p>生日：@user.Birthday.Value.ToShortDateString()</p>
-                }
-                else
-                {
-                    <p>生日：1990/01/01</p>
-                }
-                <p>真实姓名:@user.Realname</p>
-                <p>电话:@user.Phone</p>
-                <p>邮箱:@user.Email</p>
-                <p>住址:@user.Address</p>
-                <div>
-                    @if (user != null && ViewBag.CurrentUser != null && ViewBag.CurrentUser.Username == user.Username)
-                    {
-                        <div>
-                            <a href="/User/Edit/@user.ID">修改用户信息</a>
-                        </div>
-                    }
-                </div>
+<div id="d_menu" class="d-menu menu-use">
+    <div id="d_menu_c" class="d-menu-c">
+        <!-- region start: menu -->
+        <div id="d_headmenu" class="d-headmenu">
+            <div class="body">
+                <a id="headmenu_useraccount" class="item_selected" href="/User/Show">个人信息</a>
+                <a id="headmenu_history" class="item" href="/User/Study">学习档案</a>
             </div>
         </div>
+        <!-- region end: menu -->
     </div>
-
-    <div class="block">
-        <h2>课程笔记</h2>
-        <div>
-            @foreach(var item in ViewBag.Notes as List<Note>)
-            {
-                <div>
-                    所属课程：<span>@item.Lession.Course.Title</span>  所属课时：<span>@item.Lession.Title</span>
-                    添加时间：<span>@item.Time</span> 
-                    内容:<span>@item.Content</span>
+</div>
+<div id="d_bottom" class="d-bottom" style="visibility: hidden; position: fixed;"><div class="d-bottom-c"><div id="d_scrolltop" class="d-scrolltop" style="right: -70px;"><span class="t" onclick="$(document.body).ScrollTo();">顶部</span></div></div></div>
+<div class="d-row" style="padding:0 0 40px 0">
+    <div class="d-row-c">
+        <div class="d-col-2-8">
+            <div class="contentarea">
+                <form action="/usercenter/useraccount" method="post" id="1245184624">
+                    <input name="__RequestVerificationToken" type="hidden" value="F98fhUNXNuQiotNdDT3Zkqx304y8xXZgJFuF-4BP-lyu9NrD4eqF2HVpbScJiFPYmB-oFGagku7Rmz4dyXaC4RySPP5-bDWMY-yOuVc6Sm81"><!-- region start: 个人信息 --><div id="d_personalinfo" class="d-personalinfo">
+                        <div class="head">
+                            修改个人信息
+                        </div><table class="tbl">
+                            <tbody>
+                                <tr>
+                                    <td style="width:100px;">
+                                        <div>
+                                            用户名
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div>
+                                            fanfzj
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr><td><div><label for="NickName">昵称</label></div></td><td><div><input value="幸福的拾荒者" autocapitalize="off" autocorrect="off" class="int-hs" id="NickName" maxlength="20" name="NickName" style="width:250px;" type="text"><br><span class="text">仅用于显示，不用于用户登录。长度为20个字符，一个汉字为2个字符。</span></div></td></tr>
+                                <tr><td><div><label for="Email">电子邮箱</label></div></td><td><div><input value="1009137312@qq.com" autocapitalize="off" autocorrect="off" class="int-hs" id="Email" maxlength="100" name="Email" style="width:250px;" type="text"><span class="text"></span></div></td></tr>
+                                <tr>
+                                    <td>
+                                        <div>
+                                            所属地区
+                                        </div>
+                                    </td>
+                                    <td><div><select id="ProvinceId" name="ProvinceId" class="sltProvince" style="width:120px;"><option value="-1">--选择省份--</option><option value="1">北京 </option><option value="2">天津 </option><option value="3">上海</option><option value="4">重庆 </option><option value="5">河北</option><option value="6">河南 </option><option value="7">云南</option><option value="8">辽宁 </option><option value="9">黑龙江</option><option value="10">湖南</option><option value="11">安徽 </option><option value="12">山东</option><option value="13">新疆 </option><option value="14">江苏</option><option value="15">浙江</option><option value="16">江西 </option><option value="17">湖北 </option><option value="18">广西 </option><option value="19">甘肃 </option><option value="20">山西</option><option value="21">内蒙古</option><option value="22">陕西 </option><option value="23">吉林</option><option value="24">福建 </option><option value="25">贵州</option><option value="26">广东 </option><option value="27">青海 </option><option value="28">西藏 </option><option value="29">四川 </option><option value="30">宁夏 </option><option value="31">海南</option><option value="32">台湾</option><option value="33">香港</option><option value="34">澳门</option><option value="35">海外</option><option value="36">其他</option></select><select id="RegionId" name="RegionId" class="sltRegion" style="width: 120px;"><option value="-1">--选择区县--</option><option value="1">黄浦区</option><option value="3">徐汇区</option><option value="4">长宁区</option><option value="5">静安区</option><option value="6">普陀区</option><option value="7">闸北区</option><option value="8">虹口区</option><option value="9">杨浦区</option><option value="10">闵行区</option><option value="11">宝山区</option><option value="12">嘉定区</option><option value="13">浦东新区</option><option value="14">金山区</option><option value="15">松江区</option><option value="16">青浦区</option><option value="17">奉贤区</option><option value="18">崇明县</option></select><select id="StreetId" name="StreetId" class="sltStreet" style="width: 120px;"><option value="-1">--选择街道--</option><option value="2">外滩街道</option><option value="4">南京东路街道</option><option value="5">半淞园路街道</option><option value="6">小东门街道</option><option value="7">老西门街道</option><option value="8">豫园街道</option><option value="9">打浦桥街道</option><option value="10">淮海中路街道</option><option value="11">瑞金二路街道</option><option value="12">五里桥街道</option></select></div></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div>
+                                            头像<br>(图片限制：<br>不超过<span class="lmt">1024KB</span>，<br>宽120px，高120px)
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div id="avatarContainer">
+                                            <img id="avatar" alt="" src="/File/Images/Predefine/icon/120.jpg"><input value="/File/Images/Predefine/icon/120.jpg" id="Pic" name="Pic" type="hidden"><div>
+                                                <span class="btn btn-orange sltAvatar">选择头像</span>&nbsp;&nbsp;
+                                                <span class="btn btn-orange fileinput-button"><span style="font-size:13px;">本地上传</span><!-- The file input field used as target for the file upload widget --><input id="fileupload" type="file" name="files[]" multiple=""></span>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table><table class="tbl" style="display:none;">
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <div>
+                                            密码问题
+                                        </div>
+                                    </td>
+                                    <td><div><input type="text" class="int-hs" id="question" name="question" style="width:264px;" maxlength="50" autocorrect="off" autocapitalize="off" value=""><br><span class="text">密码问题长度在1-50个字之间；</span></div></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div>
+                                            问题答案
+                                        </div>
+                                    </td>
+                                    <td><div><input type="text" class="int-hs" id="answer" name="answer" style="width:264px;" maxlength="20" autocorrect="off" autocapitalize="off" value=""><br><span class="text">密码问题与密码答案用于取回密码。长度在1-20个字之间；</span></div></td>
+                                </tr>
+                            </tbody>
+                        </table><div class="info">
+                            完成以下内容，有助于我们在“学习中心”为你进行个性化推荐
+                        </div><table class="tbl">
+                            <tbody>
+                                <tr><td style="width:100px;"><div><label for="EduLvl">教育程度</label></div></td><td><div><select id="EduLvl" name="EduLvl" style="width:300px;"><option value="">--选择--</option><option value="1">小学</option><option value="2">初中</option><option value="3">高中</option><option value="4">高职</option><option value="5">专科</option><option value="6" selected="&quot;selected&quot;">本科</option><option value="7">研究生</option><option value="8">博士</option><option value="9">博士后</option></select><span class="text"></span></div></td></tr>
+                                <tr><td><div><label for="School">毕业院校</label></div></td><td><div><input value="齐齐哈尔大学" autocapitalize="off" autocorrect="off" class="int-hs" id="School" maxlength="50" name="School" style="width:250px;" type="text"><span class="text"></span></div></td></tr>
+                                <tr>
+                                    <td>
+                                        <div>
+                                            职业类型
+                                        </div>
+                                    </td>
+                                    <td><div><select id="OccupationId" name="OccupationId" style="width:300px;"><option value="">--选择--</option><option value="1" selected="&quot;selected&quot;">学生</option><option value="2">离退休人员</option><option value="3">农民</option><option value="4">来沪务工人员</option><option value="5">其他</option><option value="6">国家公务员</option><option value="7">事业单位职工</option><option value="8">企业单位职工</option><option value="9">军人/警察</option><option value="10">下岗/失业/待业</option><option value="11">自由职业者</option></select><span class="text"></span></div></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div>
+                                            阅读兴趣
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div>
+                                            <label class="inline">
+                                                <input type="checkbox" class="chk-1" name="interest" value="1">
+                                                文学
+                                            </label><label class="inline">
+                                                <input type="checkbox" class="chk-1" name="interest" value="2">
+                                                绘画
+                                            </label><label class="inline">
+                                                <input type="checkbox" class="chk-1" name="interest" value="3">
+                                                体育运动
+                                            </label><label class="inline">
+                                                <input type="checkbox" class="chk-1" name="interest" value="4">
+                                                摄影
+                                            </label><label class="inline">
+                                                <input type="checkbox" class="chk-1" name="interest" value="5">
+                                                旅游
+                                            </label><label class="inline">
+                                                <input type="checkbox" class="chk-1" name="interest" value="6">
+                                                电影
+                                            </label><label class="inline">
+                                                <input type="checkbox" class="chk-1" name="interest" value="7">
+                                                音乐
+                                            </label><label class="inline">
+                                                <input type="checkbox" class="chk-1" name="interest" value="8">
+                                                戏剧
+                                            </label><label class="inline">
+                                                <input type="checkbox" class="chk-1" name="interest" value="9">
+                                                生活保健
+                                            </label><label class="inline">
+                                                <input type="checkbox" class="chk-1" name="interest" value="10">
+                                                科学/科技
+                                            </label><label class="inline">
+                                                <input type="checkbox" class="chk-1" name="interest" value="11">
+                                                语言文字
+                                            </label><label class="inline">
+                                                <input type="checkbox" class="chk-1" name="interest" value="12">
+                                                经济/金融
+                                            </label><label class="inline">
+                                                <input type="checkbox" class="chk-1" name="interest" value="13">
+                                                家政/理财
+                                            </label><label class="inline">
+                                                <input type="checkbox" class="chk-1" name="interest" value="14">
+                                                休闲技艺
+                                            </label><label class="inline">
+                                                <input type="checkbox" class="chk-1" name="interest" value="15">
+                                                道德修养
+                                            </label><label class="inline">
+                                                <input type="checkbox" class="chk-1" name="interest" value="16">
+                                                教育
+                                            </label><label class="inline">
+                                                <input type="checkbox" class="chk-1" name="interest" value="17">
+                                                职业发展
+                                            </label><label class="inline">
+                                                <input type="checkbox" class="chk-1" name="interest" value="18">
+                                                就业指导
+                                            </label><input value="1,4,6,7,10,17" id="InterestTypeIDs" name="InterestTypeIDs" type="hidden"><span class="text"></span>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div>
+                                            &nbsp;
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div>
+                                            <button type="submit" id="int_submit" class="btn btn-big btn-orange" onclick="return sortInterestTypeData();" style="width:120px;">
+                                                保存修改
+                                            </button>&nbsp;&nbsp;
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table><div class="info">
+                            我们保证以上信息仅用于上海学习网用户实名身份认证，不会用于其他商业用途。
+                        </div>
+                    </div><!-- region end: 个人信息 -->
+                </form>
+            </div>
+        </div><div class="d-col-2-4">
+            <div class="contentarea">
+                <!-- region start: 个人设置 -->
+                <!--<div id="d_settings" class="d-settings">
+                    <div class="head">
+                        &nbsp;
+                    </div><div class="body"><div class="item"><a href="/usercenter/modifypass">修改密码</a></div><div class="item"><a href="/usercenter/useraccount">修改个人信息</a></div><div class="item"><a href="/usercenter/verify">实名认证</a></div></div>
                 </div>
-            }
+                    --><!-- region end: 个人设置 --><!--<input type="hidden" id="redirect" name="redirect">-->
+            </div>
         </div>
+        <div class="clear"></div>
     </div>
 </div>
