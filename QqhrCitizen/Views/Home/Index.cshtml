@@ -209,43 +209,45 @@
                 </div>
                 <div class="d-col-2-11">
                     <div class="contentarea">
-                        <div class="body">
-                            <div id="slide_eventrecommend" class="slidecontainer">
-                                @{ var index = 0; }
-                                @foreach (Live l in ViewBag.Lives)
-                                {
-                                    if (index++ == 0)
+                        <div id="d_eventrecommend" class="d-eventrecommend">
+                            <div class="body">
+                                <div id="slide_eventrecommend" class="slidecontainer">
+                                    @{ var index = 0; }
+                                    @foreach (Live l in ViewBag.Lives)
                                     {
-                                        <div class="itemhot">
-                                            <a class="act-cover cover" href="/Live/Show/@l.ID" title="@l.Title">
-                                                <img src="/Live/ShowPicture/@l.ID" data-echo="/Live/ShowPicture/@l.ID" onerror="this.onerror='';this.src='/Live/ShowPicture/@l.ID';">
-                                            </a>
-                                            <div class="title trim"><a href="/Live/Show/@l.ID" title="@l.Title">@l.Title</a></div>
-                                            <span class="date">@l.Begin.ToString("yyyy.MM.dd HH:mm") ~ @l.End.ToString("yyyy.MM.dd HH:mm")</span>
-                                            <div class="desc">
-                                                @Html.Sanitized(@l.Description)
-                                            </div>
-                                        </div>
+                                        if (index++ == 0)
+                                        {
+                                            <span class="itemhot">
+                                                <a class="act-cover cover" href="/Live/Show/@l.ID" title="@l.Title">
+                                                    <img src="/Live/ShowPicture/@l.ID" data-echo="/Live/ShowPicture/@l.ID" onerror="this.onerror='';this.src='/Live/ShowPicture/@l.ID';">
+                                                </a>
+                                                <div class="title trim"><a href="/Live/Show/@l.ID" title="@l.Title">@l.Title</a></div>
+                                                <span class="date">@l.Begin.ToString("yyyy.MM.dd HH:mm") ~ @l.End.ToString("yyyy.MM.dd HH:mm")</span>
+                                                <div class="desc">
+                                                    @Html.Sanitized(@l.Description)
+                                                </div>
+                                            </span>
+                                        }
+                                        else
+                                        {
+                                            <span class="item">
+                                                <a class="act-cover cover" href="/Live/Show/@l.ID" title="@l.Title">
+                                                    <img src="/Live/Show/@l.ID" data-echo="/Live/Show/@l.ID" onerror="this.onerror='';this.src='/Live/Show/@l.ID';">
+                                                </a>
+                                                <div class="title trim">
+                                                    <a href="/Live/Show/@l.ID" title="@l.Title">@l.Title</a>
+                                                </div>
+                                                <span class="date">@l.Begin.ToString("yyyy.MM.dd HH:mm") ~ @l.End.ToString("yyyy.MM.dd HH:mm")</span>
+                                                <div class="desc">
+                                                    @Html.Sanitized(@l.Description)
+                                                </div>
+                                            </span>
+                                        }
                                     }
-                                    else
-                                    {
-                                        <div class="item">
-                                            <a class="act-cover cover" href="/Live/Show/@l.ID" title="@l.Title">
-                                                <img src="/Live/Show/@l.ID" data-echo="/Live/Show/@l.ID" onerror="this.onerror='';this.src='/Live/Show/@l.ID';">
-                                            </a>
-                                            <div class="title trim">
-                                                <a href="/Live/Show/@l.ID" title="@l.Title">@l.Title</a>
-                                            </div>
-                                            <span class="date">@l.Begin.ToString("yyyy.MM.dd HH:mm") ~ @l.End.ToString("yyyy.MM.dd HH:mm")</span>
-                                            <div class="desc">
-                                                @Html.Sanitized(@l.Description)
-                                            </div>
-                                        </div>
-                                    }
-                                }
+                                </div>
                             </div>
                         </div>
-                    </div>
+                        </div>
                 </div>
             </div><div class="clear"></div>
         </div>
