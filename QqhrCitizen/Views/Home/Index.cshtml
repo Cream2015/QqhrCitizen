@@ -144,7 +144,7 @@
                         </div><div class="clsHide">
                             <ul class="d-board-e">
                                 @foreach (News n in ViewBag.News)
-            {
+                                {
                                     <li><a href="/News/Show/@n.ID" title="@n.Title">@n.Title</a></li>
                                 }
                             </ul>
@@ -366,7 +366,13 @@
         adtranObj.container = 'd_homebanner';
         adtranObj.thumb = 'd_banner_thumb';
         adtranObj.himgs = [
-          { id: 'bb1', bg: '/File/Portal/EspeciallyPlan/2015/6/8/m/201506080930030132.jpg', thumb: '/File/Portal/EspeciallyPlan/2015/6/8/S/201506080930116089.jpg', bgcolor: '#2a91d4', fgcolor: '#fff' }, { id: 'bb2', bg: '/File/Portal/EspeciallyPlan/2015/6/17/m/201506171354498753.jpg', thumb: '/File/Portal/EspeciallyPlan/2015/6/17/S/201506171354536973.jpg', bgcolor: '#dbaa55', fgcolor: '#fff' }, { id: 'bb3', bg: '/File/Portal/EspeciallyPlan/2015/6/19/m/201506191648243815.jpg', thumb: '/File/Portal/EspeciallyPlan/2015/6/19/S/201506191649414612.jpg', bgcolor: '#f9dc8c', fgcolor: '#fff' }, { id: 'bb4', bg: '/File/Portal/EspeciallyPlan/2015/4/21/m/201504211752250361.jpg', thumb: '/File/Portal/EspeciallyPlan/2015/4/21/S/201504211752416502.jpg', bgcolor: '#cfb473', fgcolor: '#fff' }, { id: 'bb5', bg: '/File/Portal/EspeciallyPlan/2015/4/28/m/201504281459086481.jpg', thumb: '/File/Portal/EspeciallyPlan/2015/4/22/S/201504221655457619.jpg', bgcolor: '#d7cdbf', fgcolor: '#fff' }, { id: 'bb6', bg: '/File/Portal/EspeciallyPlan/2015/5/19/m/201505191727598100.jpg', thumb: '/File/Portal/EspeciallyPlan/2015/5/19/S/201505191703048749.jpg', bgcolor: '#759e2d', fgcolor: '#fff' }, { id: 'bb7', bg: '/File/Portal/EspeciallyPlan/2015/4/21/m/201504211750366159.jpg', thumb: '/File/Portal/EspeciallyPlan/2015/4/21/S/201504211751112012.jpg', bgcolor: '#018b50', fgcolor: '#fff' }, { id: 'bb8', bg: '/File/Portal/EspeciallyPlan/2015/4/21/m/201504211748570098.jpg', thumb: '/File/Portal/EspeciallyPlan/2015/4/21/S/201504211749244502.jpg', bgcolor: '#bf0e06', fgcolor: '#fff' }, { id: 'bb9', bg: '/File/Portal/EspeciallyPlan/2015/3/20/m/201503201353090083.jpg', thumb: '/File/Portal/EspeciallyPlan/2015/3/20/S/201503201353176819.jpg', bgcolor: '#000000', fgcolor: '#fff' }, { id: 'bb10', bg: '/File/Portal/EspeciallyPlan/2015/3/17/m/201503171713454814.jpg', thumb: '/File/Portal/EspeciallyPlan/2015/3/17/S/201503171713512690.jpg', bgcolor: '#cabca2', fgcolor: '#fff' }, { id: 'bb11', bg: '/File/Portal/EspeciallyPlan/2015/1/9/m/201501091313199043.jpg', thumb: '/File/Portal/EspeciallyPlan/2015/1/9/S/201501091313295763.jpg', bgcolor: '#c3bc9f', fgcolor: '#fff' }, { id: 'bb12', bg: '/File/Portal/EspeciallyPlan/2015/1/9/m/201501091314304632.jpg', thumb: '/File/Portal/EspeciallyPlan/2015/1/9/S/201501091314373116.jpg', bgcolor: '#433626', fgcolor: '#fff' }
+            @{ var iii = 0; }
+            @foreach (News n in ViewBag.News)
+            {
+                if (iii >= 5) { break; }
+                @MvcHtmlString.Create("{ id: 'bb" + (iii + 1) + "', bg: '" + n.ImgUrl.First() + "', thumb: '" + n.ImgUrl.First() + "', bgcolor: '" + bgcolor[iii] + "', fgcolor: '#fff' },")
+                { i++; }
+            }
         ];
         var adtranObjList = [];
         for (var i = 0; i < adtranObj.himgs.length; i++) {
