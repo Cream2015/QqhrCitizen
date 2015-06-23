@@ -144,7 +144,8 @@ function LoadIndexNews() {
         }).done(function (data) {
             var str = "";
             for (var i = 0 ; i < data.length; i++) {
-                str += "<div class='Q-pList'><h2><a  href='" + data[i].URL + "' style='color:#000;' class='show'>" + data[i].Title + " </a></h2><p class='sub_title'>时间：" + moment(data[i].Time).format("YYYY-MM-DD HH:mm:ss") + "</p><p>" + data[i].Sumamry + "</p></div>";
+                str += '<div class="item"><div class="title"><a href="/News/Show/' + data[i].URL + '" target="_blank">' + data[i].Title + '</a></div><div class="info"><span class="date">' + moment(data[i].Time).format("YYYY-MM-DD HH:mm:ss") + '</span> <span class="from"></span><span class="view">浏览次数: ' + data[i].Browers + '</span></div><div class="desc txt-justify"><p></p></div></div>';
+                //str += "<div class='Q-pList'><h2><a  href='" + data[i].URL + "' style='color:#000;' class='show'>" + data[i].Title + " </a></h2><p class='sub_title'>时间：" + moment(data[i].Time).format("YYYY-MM-DD HH:mm:ss") + "</p><p>" + data[i].Sumamry + "</p></div>";
             }
             $("#lstNews").append(str);
             if (data.length == 10) {
@@ -174,7 +175,7 @@ function Load() {
 
     ///新闻首页加载新闻
     if ($("#lstNews").length > 0) {
-
+        LoadIndexNews();
     }
 }
 

@@ -12,23 +12,6 @@
                 <!-- region start: 资讯文章 -->
                 <input type="hidden" id="hiddenID" name="hiddenID" value="1203">
                 <input type="hidden" id="hiddenIsPreview" name="hiddenID" value="[#hiddenIsPreviewID]">
-                <script type="text/ecmascript">
-                    if ($("#hiddenIsPreview").val() != "true") {
-                        $.ajax({
-                            url: '/Ajax/ajaxAddCountNewsHot',
-                            type: 'POST',
-                            data: JSON.stringify({ hiddenID: $("#hiddenID").val() }),
-                            contentType: 'application/json; charset=utf-8',
-                            dataType: 'json',
-                            error: function (m) {
-                                // alert("error");
-                            },
-                            success: function (a) {
-                                $("#viewCountNum").html(a);
-                            }
-                        });
-                    }
-                </script>
                 <div id="d_article" class="d-article">
                     <div class="body">
                         <div class="item">
