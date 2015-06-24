@@ -22,7 +22,7 @@
     <div class="d-row-c">
         <div class="d-col-2-8">
             <div class="contentarea">
-                @using (Html.BeginForm("Edit", "User", new { ID = Model.ID }, FormMethod.Post, null))
+                @using (Html.BeginForm("Edit", "User", new { ID = user.ID }, FormMethod.Post, null))
                 {
                     @Html.AntiForgerySID()
                 <div id="d_personalinfo" class="d-personalinfo">

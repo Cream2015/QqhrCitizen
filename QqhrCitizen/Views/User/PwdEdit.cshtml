@@ -48,70 +48,72 @@
     <div class="d-row-c">
         <div class="d-col-2-8">
             <div class="contentarea">
+                @using (Html.BeginForm("PwdEdit", "User", new { ID = Model.ID }, FormMethod.Post, new { onsubmit= "UserPwdEditCheck()" }))
+                {
                 <!-- region start: 修改密码 -->
-                @Html.HiddenFor(model => model.ID, new { @value = user.ID })
-                <div id="d_personalinfo" class="d-personalinfo" data-km-url="">
-                    <div class="head">
-                        修改密码
-                    </div>
-                    <div class="info"></div>
-                    <table class="tbl">
-                        <tr>
-                            <td style="width:100px;">
-                                <div>
-                                    旧密码
-                                </div>
-                            </td>
-                            <td>
-                                <div>
-                                    @Html.PasswordFor(model => model.Password, new { @class = "int-hs", @style = "width:250px;" })
-                                    <span class="text"></span>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div>
-                                    新密码
-                                </div>
-                            </td>
-                            <td>
-                                <div>
-                                    @Html.PasswordFor(model => model.PasswordNew, new { @class = "int-hs", @style = "width:250px;" })
-                                    <span class="text"></span>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div>
-                                    确认密码
-                                </div>
-                            </td>
-                            <td>
-                                <div>
-                                    @Html.Password("NewPassword", "", new { @class = "int-hs", @style = "width:250px;" })
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div>
-                                    &nbsp;
-                                </div>
-                            </td>
-                            <td>
-                                <div>
-                                    <input type="hidden" id="backurl" name="backurl"><button type="button" id="int_submit" class="btn btn-big btn-orange" style="width:120px;">
-                                        保存修改
-                                    </button>&nbsp;&nbsp;
-                                </div>
-                                @Html.ValidationSummary(true)
-                            </td>
-                        </tr>
-                    </table>
-                    <div class="info"></div>
-                </div><!-- region end: 修改密码 -->
+                    <div id="d_personalinfo" class="d-personalinfo" data-km-url="">
+                        <div class="head">
+                            修改密码
+                        </div>
+                        <div class="info"></div>
+                        <table class="tbl">
+                            <tr>
+                                <td style="width:100px;">
+                                    <div>
+                                        旧密码
+                                    </div>
+                                </td>
+                                <td>
+                                    <div>
+                                        @Html.PasswordFor(model => model.Password, new { @class = "int-hs", @style = "width:250px;" })
+                                        <span class="text"></span>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div>
+                                        新密码
+                                    </div>
+                                </td>
+                                <td>
+                                    <div>
+                                        @Html.PasswordFor(model => model.PasswordNew, new { @class = "int-hs", @style = "width:250px;" })
+                                        <span class="text"></span>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div>
+                                        确认密码
+                                    </div>
+                                </td>
+                                <td>
+                                    <div>
+                                        @Html.Password("NewPassword", "", new { @class = "int-hs", @style = "width:250px;" })
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div>
+                                        &nbsp;
+                                    </div>
+                                </td>
+                                <td>
+                                    <div>
+                                        <input type="hidden" id="backurl" name="backurl"><button type="button" id="int_submit" class="btn btn-big btn-orange" style="width:120px;">
+                                            保存修改
+                                        </button>&nbsp;&nbsp;
+                                    </div>
+                                    @Html.ValidationSummary(true)
+                                </td>
+                            </tr>
+                        </table>
+                        <div class="info"></div>
+                    </div><!-- region end: 修改密码 -->
+                }
             </div>
         </div>
         <div class="d-col-2-4">
