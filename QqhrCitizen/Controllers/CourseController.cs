@@ -15,25 +15,12 @@ namespace QqhrCitizen.Controllers
         // GET: /Course/
         public ActionResult Index()
         {
-            /*string tid = HttpContext.Request.QueryString["tid"].ToString();
-            List<Course> courses = new List<Course>();
-            courses = db.Courses.OrderByDescending(c => c.Browses).Take(8).ToList();
-            ViewBag.Tid = tid;
-            var type = new TypeDictionary();
-            if (tid != "0")
-            {
-                int id = Convert.ToInt32(tid);
-                type = db.TypeDictionaries.Find(id);
-            }
-            ViewBag.Type = type.TypeValue;
-            ViewBag.Courses = courses;*/
-
             List<Course> LstNewCourse = new List<Course>();
             List<TypeDictionary> LstHotType = new List<TypeDictionary>();
             List<vCourse> _LstNewCourse = new List<vCourse>();
             List<TypeDictionary> LstType = new List<TypeDictionary>();
 
-            LstNewCourse = db.Courses.OrderByDescending(c => c.Time).Take(10).ToList();
+            LstNewCourse = db.Courses.OrderByDescending(c => c.Time).Take(12).ToList();
             foreach (var item in LstNewCourse)
             {
                 _LstNewCourse.Add(new vCourse(item));

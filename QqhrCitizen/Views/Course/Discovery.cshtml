@@ -23,7 +23,7 @@
                             <div id="d_select_category_a" class="cff3">
                                 @foreach (var type in @item.Children)
                                 {
-                                    <div data-txt="道德修养" class="cfp3">@type.TypeValue</div>
+                                    <div data-txt="道德修养" class="cfp3"><a href="/Course/Discovery/@item.ID">@type.TypeValue</a></div>
                                 }
                             </div>
                         </div>
@@ -37,32 +37,37 @@
                 <!-- region end: 课程标签 -->
                 <!-- region start: 课程列表 -->
                 <div id="d_coursesearch" class="d-coursesearch">
-                    <div id="d_main" class="d-main" style="width: 725px; min-width: 1000px;">
-                        <div class="d-row" style="width: 725px; margin-bottom: 20px; padding: 1px 0 0 0;">
-                            <div class="d-row-c" style="width: 725px;">
-                                <div class="container" style="width: 725px;">
-                                    <div class="d-col-2-9" style="width: 725px;">
-                                        <div class="contentarea">
-                                            <!-- region start: 课程列表 -->
-                                            <div id="d_coursesearch" class="d-coursesearch">
-                                                <div class="body lstCourse">
-                                                  
-                                                    
-                                                </div>
+                    <div class="head">
+                        <div class="filter fselect">
+                            <h4>课程列表</h4>
+                        </div>
+                    </div>
+                </div>
+                <div id="d_main" class="d-main" style="width: 725px; min-width: 1000px;">
+                    <div class="d-row" style="width: 725px; margin-bottom: 20px; padding: 1px 0 0 0;">
+                        <div class="d-row-c" style="width: 725px;">
+                            <div class="container" style="width: 725px;">
+                                <div class="d-col-2-9" style="width: 725px;">
+                                    <div class="contentarea">
+                                        <!-- region start: 课程列表 -->
+                                        <div id="d_coursesearch" class="d-coursesearch">
+                                            <div class="body lstCourse">
                                             </div>
-                                            <!-- region end: 课程列表 -->
+                                            <div class="loadMore"></div>
                                         </div>
+                                        <!-- region end: 课程列表 -->
                                     </div>
-                                    <div class="clear"></div>
                                 </div>
+                                <div class="clear"></div>
                             </div>
                         </div>
                     </div>
-                    <input id="SearchItem" type="hidden" value="">
                 </div>
-            </div><div class="clear"></div>
+                <input id="SearchItem" type="hidden" value="">
+            </div>
         </div><div class="clear"></div>
-    </div>
+    </div><div class="clear"></div>
+</div>
 </div>
 <script>
     function dosearch() {
