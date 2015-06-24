@@ -10,7 +10,7 @@
         <div id="d_headmenu" class="d-headmenu">
             <div class="body">
                 <a id="headmenu_default" class="item" href="/Course/Index" target="_parent">课程首页</a>
-                <a id="headmenu_discovery" class="item" href="/Course/Discovery" target="_parent">发现课程</a>
+                <a id="headmenu_discovery" class="item" href="/Course/Discovery/0" target="_parent">发现课程</a>
             </div>
         </div>
         <!-- region end: menu -->
@@ -32,54 +32,25 @@
                         <!-- region start: 课程信息 -->
                         <div id="d_coursedetail" class="d-coursedetail">
                             <div class="cover">
-                                <img src="/File/Course/CoursePic/Import/20140704/ZSE0M12021.jpg" data-echo="/File/Course/CoursePic/Import/20140704/ZSE0M12021.jpg" class="imgCoursePic" data-error="/file/Images/Default/course_default_184_184.jpg">
+                                <img src="/Course/ShowPicture/@course.ID" />
                             </div>
                             <div class="info">
-                                <div class="title">中华养生宝典</div><div class="owner">
-
+                                <div class="title">@course.Title</div>
+                                <div class="owner">
                                     <span class="star star30" id="star"></span>
                                 </div>
                                 <div class="stat">
-                                    <span id="info1">学习人次：2458693</span>
-                                </div>
-                                <div class="stat">
-                                    <span id="info3">21人关注了该课程</span>
-                                </div>
-                                <div id="pushStar" class="star-comment" style="margin-top: 5px;">
-                                    <span class="txt">评价：</span>
-                                    <span class="star star0" data-km-star="0"></span>
-                                    <span class="comment">&nbsp;</span>
-                                    <input type="hidden" name="Level" value="">
+                                    <span id="info1">学习人次：@course.Browses</span>
                                 </div>
                             </div>
                             <div class="clear"></div>
-                            <div class="action">
-                                <div class="l">
-                                    <button type="button" class="btn btn-green" onclick="Attention('A299ECE37655D262')">关注课程</button>
-                                </div>
-                                <div class="r">
-                                    <span class="dropdown">
-                                        <a href="javascript:void('');" onclick="km_kb._set($$('d_dropdown_share'),null,function (){});">分享到</a>
-                                        <div id="d_dropdown_share" class="d-dropdown-share" style="display: none; left: -65px;">
-                                            <a class="share sina" href="#" data-service="sina">新浪微博</a>
-                                            <a class="share qq_t" href="#" data-service="qq_t">腾讯微博</a>
-                                            <a class="share douban" href="#" data-service="douban">豆瓣</a>
-                                            <a class="share netease" href="#" data-service="netease">网易微博</a>
-                                            <a class="share renren" href="#" data-service="renren">人人网</a>
-                                            <a class="share kaixin" href="#" data-service="kaixin">开心网</a>
-                                            <a class="share sohu" href="#" data-service="sohu">搜狐微博</a>
-                                        </div>
-                                    </span>
-                                </div>
-                                <div class="clear"></div>
-                            </div>
                         </div>
                         <!-- region end: 课程信息 -->
                         <!-- region start: 课程简介 -->
                         <div id="d_courseintro" class="d-courseintro">
                             <div class="head">课程简介</div><div class="body">
                                 <div class="area txt-justify">
-                                    随着人们物质生活水平和精神文化生活的日益丰富，健康和长寿将日益成为举世关注的重要问题。特别是在竞争与压力并重的今天，人们越来越渴望健康，盼望长寿。但是怎样才能健康？又如何能达到天年？本课程将为您细述养生之道，展现中国养生文化这棵充满东方神秘色彩的智慧之树。
+                                   @course.Description;
                                 </div>
                                 <!--<div class="bot">
                                     <a href="javascript:;" onclick="sub_showhidepart('d_courseintro',168)">显示全部</a>
