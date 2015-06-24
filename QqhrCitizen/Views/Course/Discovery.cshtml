@@ -1,4 +1,6 @@
-﻿@{
+﻿@using QqhrCitizen.Models;
+@{
+
     ViewBag.Title = "发现课程_齐齐哈尔市民学习网";
 }
 <div id="d_menu" class="d-menu menu-cou"><div id="d_menu_c" class="d-menu-c"><!-- region start: menu --><div id="d_headmenu" class="d-headmenu"><div class="body"><a id="headmenu_default" class="item" href="/Course/index">课程首页</a><a id="headmenu_discovery" class="item_selected" href="/Course/Discovery">发现课程</a></div></div><!-- region end: menu --></div></div>
@@ -6,33 +8,28 @@
 <div class="d-row" style="margin-bottom: 20px; padding: 30px 0 0 0;">
     <div class="d-row-c">
         <div class="d-col-2-3">
+            <input type="hidden" value="@ViewBag.Type" id="tid" />
             <div class="contentarea" style="border-right: 1px solid #ddd;">
-                <div id="d_12FF2473CE16B988" class="d-coursecategory">
-                    <div class="head">
-                        <span onclick="doSubmit(0,'12FF2473CE16B988')">
-                            终身教育
-                        </span>
-                    </div><div class="body fselect"><select class="select-hid" id="select_category_a" name="_SecondeTagList" onchange="SearchWithTag()"><option selected="selected" value="">-</option><option value="94757066CB8E6EF4">道德修养</option><option value="9E2D1044552827FF">科学素养</option><option value="1684162F3D5B80CC">文化涵养</option><option value="9FD0B348E7815F41">公民意识</option><option value="14466E1865D8F7B5">生活保健</option><option value="CA38AF8354615727">家庭安全</option><option value="A3FD01D12E35342C">家庭教育</option><option value="E77A4BFBC80437F9">休闲技艺</option><option value="2F3C7E81FA0FC3C6">家庭理财</option><option value="7EA2617DDC8BCCA8">法律维权</option><option value="65B54C61082B0A14">生活环境</option><option value="07FCC4B0637758A8">语言文字</option><option value="2493AB3EABDCAF79">信息技术</option><option value="02962D588EB6C731">就业指导</option><option value="2D50DC381410567E">职业发展</option></select><div id="d_select_category_a" class="cff3"><div data-txt="道德修养" class="cfp3" onclick="km_fselect.clk('select_category_a','94757066CB8E6EF4','道德修养','');">道德修养</div><div data-txt="科学素养" class="cfp3" onclick="km_fselect.clk('select_category_a','9E2D1044552827FF','科学素养','');">科学素养</div><div data-txt="文化涵养" class="cfp3" onclick="km_fselect.clk('select_category_a','1684162F3D5B80CC','文化涵养','');">文化涵养</div><div data-txt="公民意识" class="cfp3" onclick="km_fselect.clk('select_category_a','9FD0B348E7815F41','公民意识','');">公民意识</div><div data-txt="生活保健" class="cfp3" onclick="km_fselect.clk('select_category_a','14466E1865D8F7B5','生活保健','');">生活保健</div><div data-txt="家庭安全" class="cfp3" onclick="km_fselect.clk('select_category_a','CA38AF8354615727','家庭安全','');">家庭安全</div><div data-txt="家庭教育" class="cfp3" onclick="km_fselect.clk('select_category_a','A3FD01D12E35342C','家庭教育','');">家庭教育</div><div data-txt="休闲技艺" class="cfp3" onclick="km_fselect.clk('select_category_a','E77A4BFBC80437F9','休闲技艺','');">休闲技艺</div><div data-txt="家庭理财" class="cfp3" onclick="km_fselect.clk('select_category_a','2F3C7E81FA0FC3C6','家庭理财','');">家庭理财</div><div data-txt="法律维权" class="cfp3" onclick="km_fselect.clk('select_category_a','7EA2617DDC8BCCA8','法律维权','');">法律维权</div><div data-txt="生活环境" class="cfp3" onclick="km_fselect.clk('select_category_a','65B54C61082B0A14','生活环境','');">生活环境</div><div data-txt="语言文字" class="cfp3" onclick="km_fselect.clk('select_category_a','07FCC4B0637758A8','语言文字','');">语言文字</div><div data-txt="信息技术" class="cfp3" onclick="km_fselect.clk('select_category_a','2493AB3EABDCAF79','信息技术','');">信息技术</div><div data-txt="就业指导" class="cfp3" onclick="km_fselect.clk('select_category_a','02962D588EB6C731','就业指导','');">就业指导</div><div data-txt="职业发展" class="cfp3" onclick="km_fselect.clk('select_category_a','2D50DC381410567E','职业发展','');">职业发展</div><div class="clear"></div></div></div>
-                </div><div id="d_DBE05079A4AF427A" class="d-coursecategory">
-                    <div class="head">
-                        <span onclick="doSubmit(0,'DBE05079A4AF427A')">
-                            基础教育
-                        </span>
-                    </div><div class="body fselect"><select class="select-hid" id="select_category_b" name="_SecondeTagList" onchange="SearchWithTag()"><option selected="selected" value="">-</option><option value="230BCA114088ECB4">学前阶段</option><option value="A260BDB8CB3560A7">小学阶段</option><option value="84417DAFF7E6CF99">初中阶段</option><option value="A3F55488386852D0">高中阶段</option></select><div id="d_select_category_b" class="cff3"><div data-txt="学前阶段" class="cfp3" onclick="km_fselect.clk('select_category_b','230BCA114088ECB4','学前阶段','');">学前阶段</div><div data-txt="小学阶段" class="cfp3" onclick="km_fselect.clk('select_category_b','A260BDB8CB3560A7','小学阶段','');">小学阶段</div><div data-txt="初中阶段" class="cfp3" onclick="km_fselect.clk('select_category_b','84417DAFF7E6CF99','初中阶段','');">初中阶段</div><div data-txt="高中阶段" class="cfp3" onclick="km_fselect.clk('select_category_b','A3F55488386852D0','高中阶段','');">高中阶段</div><div class="clear"></div></div></div>
-                </div><div id="d_C3E60BAC491015EB" class="d-coursecategory">
-                    <div class="head">
-                        <span onclick="doSubmit(0,'C3E60BAC491015EB')">
-                            职业教育
-                        </span>
-                    </div><div class="body fselect"><select class="select-hid" id="select_category_c" name="_SecondeTagList" onchange="SearchWithTag()"><option selected="selected" value="">-</option></select><div id="d_select_category_c" class="cff3"><div class="clear"></div></div></div>
-                </div><div id="d_BF0612F5B717A903" class="d-coursecategory">
-                    <div class="head">
-                        <span onclick="doSubmit(0,'BF0612F5B717A903')">
-                            高等教育
-                        </span>
-                    </div><div class="body fselect"><select class="select-hid" id="select_category_d" name="_SecondeTagList" onchange="SearchWithTag()"><option selected="selected" value="">-</option></select><div id="d_select_category_d" class="cff3"><div class="clear"></div></div></div>
-                </div>
-            </div><div><select id="select_category" style="display: none"><option value="">-</option><option value="12FF2473CE16B988">终身教育</option><option value="DBE05079A4AF427A">基础教育</option><option value="C3E60BAC491015EB">职业教育</option><option value="BF0612F5B717A903">高等教育</option><option value="CF7FD68D3AB9C7F7">主题资源</option></select></div>
+                @foreach (var item in ViewBag.Types as List<TypeDictionary>)
+                {
+                    <div id="d_12FF2473CE16B988" class="d-coursecategory">
+                        <div class="head">
+                            <span onclick="doSubmit(0,'12FF2473CE16B988')">
+                                @item.TypeValue
+                            </span>
+                        </div>
+                        <div class="body fselect">
+
+                            <div id="d_select_category_a" class="cff3">
+                                @foreach (var type in @item.Children)
+                                {
+                                    <div data-txt="道德修养" class="cfp3">@type.TypeValue</div>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
         </div>
         <div class="d-col-2-9">
             <div class="contentarea" style="padding: 0 0 0 25px;">
@@ -40,19 +37,6 @@
                 <!-- region end: 课程标签 -->
                 <!-- region start: 课程列表 -->
                 <div id="d_coursesearch" class="d-coursesearch">
-                    <div class="head">
-                        <div class="filter fselect">
-                            <select id="select_category_sort" class="select-hid">
-                                <option value="1" selected="selected">最热门</option>
-                                <option value="2">最新</option>
-                            </select>
-                            <div id="d_select_category_sort" class="cff3">
-                                <div data-txt="最热门" class="cfp3_s" onclick="km_fselect.clk('select_category_sort','1','最热门','');">最热门</div>
-                                <div data-txt="最新" class="cfp3" onclick="km_fselect.clk('select_category_sort','2','最新','');">最新</div>
-                                <div class="clear"></div>
-                            </div>
-                        </div>
-                    </div>
                     <div id="d_main" class="d-main" style="width: 725px; min-width: 1000px;">
                         <div class="d-row" style="width: 725px; margin-bottom: 20px; padding: 1px 0 0 0;">
                             <div class="d-row-c" style="width: 725px;">
@@ -61,66 +45,9 @@
                                         <div class="contentarea">
                                             <!-- region start: 课程列表 -->
                                             <div id="d_coursesearch" class="d-coursesearch">
-                                                <div class="body">
-                                                    <div class="item">
-                                                        <div class="title">
-                                                            <a href="/Course/Course8052.html" target="_blank">中华养生宝典</a>
-                                                        </div>
-                                                        <div class="info">
-                                                            <span class="star star30"></span>
-                                                        </div>
-                                                        <div class="desc">
-                                                            随着人们物质生活水平和精神文化生活的日益丰富，健康和长寿将日益成为举世关注的重要问题。特别是在竞争与压力并重的今天，人们越来越渴望健康，盼望长寿。但是怎样才能健...
-                                                        </div>
-                                                        <div class="add"></div>
-                                                        <div class="cover">
-                                                            <a href="/Course/Course8052.html" target="_blank">
-                                                                <img class="imgCoursePicM" src="/File/Course/CoursePic/Import/20140704/ZSE0M12021.jpg" data-echo="/File/Course/CoursePic/Import/20140704/ZSE0M12021.jpg" data-error="/file/Images/Default/course_default_184_184.jpg">
-                                                            </a>
-                                                        </div>
-                                                    </div>
-                                                    <!--
-                                                        <div class="item">
-                                                        <div class="title">
-                                                            <a href="..." target="_blank">...</a>
-                                                        </div>
-                                                        <div class="info">
-                                                            <span class="star star30"></span>
-                                                        </div>
-                                                        <div class="desc">
-                                                            ...
-                                                        </div>
-                                                        <div class="add"></div>
-                                                        <div class="cover">
-                                                            <a href="..." target="_blank">
-                                                                <img class="imgCoursePicM" src="..." data-echo="..." data-error="...">
-                                                            </a>
-                                                        </div>
-                                                    </div>
-                                                    -->
-                                                    <!--region start:page-->
-                                                    <div id="d_pagination" class="pagination" style="display: block;">
-                                                        <span>共 8655 条记录</span>
-                                                        <a href="javascript:;" class="s">1</a>
-                                                        <a href="javascript:;" class="c" onclick="km_pageno.gopage(2,1,866)">2</a>
-                                                        <!--<a href="javascript:;" class="c" onclick="km_pageno.gopage(3,1,866)">3</a>
-                                                        <a href="javascript:;" class="c" onclick="km_pageno.gopage(4,1,866)">4</a>
-                                                        <a href="javascript:;" class="c" onclick="km_pageno.gopage(5,1,866)">5</a>
-                                                        <a href="javascript:;" class="c" onclick="km_pageno.gopage(6,1,866)">6</a>
-                                                        <a href="javascript:;" class="c" onclick="km_pageno.gopage(7,1,866)">7</a>
-                                                        <a href="javascript:;" class="c" onclick="km_pageno.gopage(8,1,866)">8</a>
-                                                        <a href="javascript:;" class="c" onclick="km_pageno.gopage(9,1,866)">9</a>
-                                                        <a href="javascript:;" class="c" onclick="km_pageno.gopage(10,1,866)">10</a>-->
-                                                        <a href="javascript:;" class="c" onclick="km_pageno.gopage(2,1,866)">
-                                                            下一页
-                                                            <i class="icon-angle-right"></i>
-                                                        </a>
-                                                        <span>跳转到第</span>&nbsp;
-                                                        <input id="int_pageno" type="text" style="width:20px;" class="int" maxlength="5">&nbsp;
-                                                        <span>页</span>&nbsp;
-                                                        <button type="button" class="btn" style="padding-left:2px;padding-right:2px;" onclick="km_pageno.gopage($('#int_pageno').val(),1,866)">Go</button>
-                                                    </div>
-                                                    <!--region end:page-->
+                                                <div class="body lstCourse">
+                                                  
+                                                    
                                                 </div>
                                             </div>
                                             <!-- region end: 课程列表 -->

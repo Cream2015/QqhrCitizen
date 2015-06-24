@@ -242,6 +242,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\EnumerableExt.cs" />
     <Compile Include="Helpers\HtmlFilter.cs" />
     <Compile Include="Helpers\ImgSrcFilter.cs" />
     <Compile Include="Models\Channel.cs" />

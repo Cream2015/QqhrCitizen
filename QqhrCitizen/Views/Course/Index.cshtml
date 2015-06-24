@@ -198,10 +198,10 @@
                         <a href="/Course/Discovery">浏览更多&nbsp;&gt;&gt;</a>
                     </div>
                     <div class="body">
-                        <a class="item" href="/course/discovery/12FF2473CE16B988/?parm=12FF2473CE16B988" title="终身教育">终身教育</a>
-                        <!--
-                            <a class="item" href="..." title="...">...</a>
-                        -->
+                        @foreach (var item in ViewBag.LstHotType as List<TypeDictionary>)
+                        {
+                            <a class="item" href="/Course/Discovery/@item.ID" title="@item.TypeValue">@item.TypeValue</a>
+                        }
                     </div>
                 </div>
                 <!-- region end: 热门分类 -->

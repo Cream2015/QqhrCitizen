@@ -29,7 +29,7 @@ namespace QqhrCitizen.Controllers
             ViewBag.Courses = courses;*/
 
             List<Course> LstNewCourse = new List<Course>();
-            List<Course> LstHotCourse = new List<Course>();
+            List<TypeDictionary> LstHotType = new List<TypeDictionary>();
             List<vCourse> _LstNewCourse = new List<vCourse>();
             List<TypeDictionary> LstType = new List<TypeDictionary>();
 
@@ -39,9 +39,10 @@ namespace QqhrCitizen.Controllers
                 _LstNewCourse.Add(new vCourse(item));
             }
 
-            LstHotCourse =db.Courses.Distinct(c=>c)
+            LstHotType = db.Courses.OrderByDescending(c => c.Browses).Select(x => x.TypeDictionary).DistinctBy(x => new { x.ID }).ToList();
 
             ViewBag.LstNewCourse = _LstNewCourse;
+            ViewBag.LstHotType = LstHotType;
             return View();
         }
 
@@ -198,12 +199,25 @@ namespace QqhrCitizen.Controllers
             course = db.Courses.Find(id);
             return File(course.Picture, "image/jpg");
         }
+
+
         /// <summary>
         /// 课程列表显示
         /// </summary>
         /// <returns></returns>
-        public ActionResult Discovery()
+        public ActionResult Discovery(int id)
         {
+            List<TypeDictionary> types = new List<TypeDictionary>();
+            types = db.TypeDictionaries.Where(t => t.Belonger == TypeBelonger.课程 && t.FatherID == 0).ToList();
+            ViewBag.Tid = id;
+            var type = new TypeDictionary();
+            if (id != 0)
+            {
+                type = db.TypeDictionaries.Find(id);
+            }
+            ViewBag.Type = id;
+
+            ViewBag.Types = types;
             return View();
         }
     }
