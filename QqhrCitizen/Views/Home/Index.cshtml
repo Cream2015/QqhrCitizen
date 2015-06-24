@@ -332,7 +332,7 @@
                         <p>
                             @foreach (ResourceLink rl in ViewBag.ImgLinks)
                             {
-                                <a href="@rl.URL"><img src="/Upload/@(new QqhrCitizen.Models.ViewModel.vResourceLink(rl)).File.Path" class="cc-link-img" /></a>
+                                <a href="@rl.URL"><img src="/Upload/@((new QqhrCitizen.Models.ViewModel.vResourceLink(rl)).File.Path)" class="cc-link-img" /></a>
                             }
                         </p>
                         <p style="font-size: 20px;">
