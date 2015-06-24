@@ -80,14 +80,17 @@ namespace QqhrCitizen.Controllers
             var Course = db.Courses.Find(id);
             Course.Browses += 1;
             db.SaveChanges();
-            var listLessions = db.Lessions.Where(lession => lession.CourseID == id).ToList();
             int uid = CurrentUser == null ? 0 : CurrentUser.ID;
+
+            //课程下面的课时
+            var listLessions = db.Lessions.Where(lession => lession.CourseID == id).OrderBy(l=>l.Time).ToList();
             foreach (var item in listLessions)
             {
                 vLession vlession = new vLession(item);
-                vlession.SetDate(uid);
                 lessions.Add(vlession);
             }
+
+            //相关的课程
             var lstCourse = db.Courses.Where(c => c.CourseTypeID == Course.CourseTypeID && c.ID != id).OrderByDescending(n => n.Time).Take(8).ToList();
             ViewBag.Lessions = lessions;
 
