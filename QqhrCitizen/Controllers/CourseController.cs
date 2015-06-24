@@ -32,6 +32,11 @@ namespace QqhrCitizen.Controllers
             List<vCourse> _LstNewCourse = new List<vCourse>();
 
             LstNewCourse = db.Courses.OrderByDescending(c => c.Time).Take(10).ToList();
+            foreach (var item in LstNewCourse)
+            {
+                _LstNewCourse.Add(new vCourse(item));
+            }
+            ViewBag.LstNewCourse = _LstNewCourse;
             return View();
         }
 
