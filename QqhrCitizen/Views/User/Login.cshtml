@@ -118,7 +118,7 @@
                                         </div>
                                         -->
                                         <div class="d-submit">
-                                            <input  type="submit" class="btn btn-orange btn-big" value="登录" style="width:300px;">
+                                            <input type="submit" class="btn btn-orange btn-big" value="登录" style="width:300px;">
                                         </div>
                                         <div class="d-knowme">
                                             <!--<label>
@@ -137,203 +137,18 @@
                     </div>
                 </div>
             </div>
-            <script>
-                $proto.login = function (from) {
-                    var isf = $$('isf').value;
-                    var vcode = $$('vcode') ? $$('vcode').value : '';
-                    if (isf != '1') {
-                        var exp = new RegExp('^[0-9a-zA-Z]+$');
-                        if (!exp.test(vcode)) {
-                            Alert('验证码不能输入特殊字符');
-                            km_valid.initForm('fields_login', '', 'int_submit', '', function () {
-                                $proto.login('login');
-                            });
-                            return;
-                        }
-                    }
-                    if (!from) { from = 'top'; }
-                    var _olduser = 0;
-                    if ($$('olduser')) { _olduser = ($$('olduser').checked) ? '1' : '0'; }
-                    var data = {
-                        username: $$('username').value
-                        //, passwordfake: md5($$('password').value)
-                      , passwordfake: $$('password').value
-                            , from: from
-                            , olduser: _olduser
-                            , vcode: vcode
-                    };
-                    var posting = $.ajax({
-                        type: "POST"
-                            , url: $proto.basepath.loginaction
-                            , cache: false
-                            , data: data
-                    });
-                    posting.done(function (msg) {
-                        msg = JSON.parse(msg);
-                        if (msg.rturl == 'stop') {
-                            Alert(msg.rtmsg);
-                            if (from == 'login') {
-                                km_valid.initForm('fields_login', '', 'int_submit', '', function () {
-                                    $proto.login('login');
-                                });
-                            } else if (from == 'home') {
-                                km_valid.initForm('fields_login', '', 'int_submit', '', function () {
-                                    $proto.login('home');
-                                });
-                            }
-                            $('#isf').val('0');
-                            $('.d-vcode').show();
-                            return;
-                        }
-                        if (__isLocalStorageNameSupported) {
-                            if ($$('check_knowme').checked) {
-                                var username = $$('username').value;
-                                var password = $$('password').value;
-                                var s = username + ',' + password;
-                                s = sjcl.encrypt("shlll", s);
-                                store.set('knowme', s);
-                            } else {
-                                store.set('knowme', '');
-                            }
-                        }
-                        if (from == 'login') {
-                            km_valid.initForm('fields_login', '', 'int_submit', '', function () {
-                                $proto.login('login');
-                            });
-                            // 从当前页面的 url 获取 `redirect` 参数的值，当用户登录成功后跳转到 `redirect` 中所指定的页面
-                            var dir = sub_getPa('redirect');
-
-                            if (dir != '') {
-                                location = decodeURIComponent(dir);
-                            } else {
-                                location = $proto.basepath.personalhome;
-                            }
-                        } else if (from == 'home') {
-                            km_valid.initForm('fields_login', '', 'int_submit', '', function () {
-                                $proto.login('home');
-                            });
-                            location.reload();
-                        } else {
-                            location.reload();
-                        }
-                    });
-                    posting.fail(function (msg) {
-                        Alert(JSON.stringify(msg), "location='" + $proto.basepath.home + "';");
-                    });
-                };
-
-            </script>
-            <script>
-                $(function () {
-                    if (__isLocalStorageNameSupported) {
-                        var s = store.get('knowme');
-                        if (typeof s == 'undefined') { s = ''; }
-                        try { s = sjcl.decrypt("shlll", s); } catch (e) { s = ''; store.set('knowme', ''); }
-                        if (s) {
-                            s = s.split(',');
-                            $('#username').val(s[0]);
-                            $('#password').val(s[1]);
-                            $('#check_knowme').attr('checked', 'checked');
-                        }
-                    }
-                });
-            </script><div class="d-row" style="background-color:#ececec;border-top:2px solid #474747;">
+            <div class="d-row" style="background-color:#ececec;border-top:2px solid #474747;">
                 <div class="d-row-c">
                     <div class="d-col-1">
                         <div class="contentarea">
                             <!-- region start: 帮助导航 --><div class="d-help">
-                                <div class="head"></div>
-                                <div class="body">
-                                    <!--                                    <div class="item" style="width: 158px; border-right: 1px solid #a1a1a1;">
-                                    <div style="text-align: left;">
-                                        <a href="javascript:;" class="ha">
-                                            <img src="http://res.shlll.net//common/v1/images/qrcode-weixin.jpg" width="125" height="125" border="0"><br>
-                                            &nbsp;&nbsp;关注上海学习网微信
-                                        </a>
-                                    </div> -->
-                                </div>
-
-
-                                <div class="item" style="width: 140px; border-right: 1px solid #a1a1a1; border-left: 1px solid #f9f9f9;">
-                                    <!--<div class="h">关于我们</div>
-
-                                            <a href="/home/intro" target="_blank">网站介绍</a>
-
-                                    </div> -->
-                                    <div class="item" style="width: 140px; border-right: 1px solid #a1a1a1; border-left: 1px solid #f9f9f9;">
-                                        <!--<div class="h">新手指南</div>
-                                                <a href="http://member.shlll.net/home/signup" target="_blank">网站注册</a>
-
-                                        </div>-->
-                                        <div class="item" style="width: 140px; border-right: 1px solid #a1a1a1; border-left: 1px solid #f9f9f9;">
-                                            <!--<div class="h">支持服务</div>
-                                            <a href="/home/cooperation" target="_blank">机构合作</a>
-                                            <a href="/home/sitemap" target="_blank">网站地图</a>
-                                            <a href="http://learning.shlll.net/home/book/index4.html" target="_blank">电子期刊</a>
-                                            <a href="http://online.sherc.net:8080/VisionIM/livechat/chat.html" target="_blank">在线客服</a>
-                                            -->
-                                        </div>
-                                        <div class="item" style="width: 216px; padding: 0 0 0 40px; border-left: 1px solid #f9f9f9;">
-                                            <!--<div class="h2">移动学习：上海乐学</div>
-                                                <a class="icon-mobile-apple">
-                                                    <div style="color: #9ca0ac;">iPhone 客户端</div>
-                                                    <div style="color: #9ca0ac;"><b>App Store</b></div>
-                                                </a>
-                                                <a href="/file/Download/shequ.1.0.apk" class="icon-mobile-android" target="_blank">
-                                                    <div style="color: #9ca0ac;">Android 客户端</div>
-                                                    <div style="color: #60636c;"><b>本地下载</b></div>
-                                                </a>
-                                            </div>-->
-                                            <div class="clear"></div>
-                                        </div>
-                                    </div><!-- region end: 帮助导航 -->
-                                </div>
-                            </div>
+                                <div style="padding: 25px;">Copyright © 2015 齐齐哈尔市广播电视大学. All Rights Reserved. 哈尔滨市码锋科技有限责任公司提供技术支持.</div>
+                            </div><!-- region end: 帮助导航 -->
                         </div>
                     </div>
                 </div>
             </div>
-            <script>
-                //$proto.basepath.loginaction = '/home/action/login';//登录ajax的请求地址
-                $(function () {
-                    $('#refreshValidate').on('click', function () {
-                        $(this).prop('src', '/common/action/validate?r=' + (new Date()).getTime());
-                    });
-                    $('.logElm').on('keydown', function (event) {
-                        if (event.keyCode == 13) {
-                            $('#int_submit').click();
-                        }
-                    });
-                    var _isf = $('#isf').val();
-                    if (_isf == '1') {
-                        $('.d-vcode').hide();
-                    } else {
-                        $('.d-vcode').show();
-                    }
-                });
-            </script><div id="d_footer" class="d-footer footer-use">
-                <div id="d_footer_c" class="d-footer-c">
-                    <!-- region start: 页脚 --><div class="l">
-                        <img src="~/Images/kf.jpg" width="33" height="29" style="vertical-align:middle;">
-                        &nbsp;客服：021-25653066 <span style="color:#999;">工作日（8:00—20:00）双休日（8:00—16:40）</span>
-                    </div><div class="r"><div class="lnk">上海市学习型社会建设与终身教育促进委员会主管</div><div class="lnk">上海开放大学承建</div><div class="lnk">2014 © 版权所有</div><div class="lnk">沪ICP备09027389号</div><div class="lnk">1.7.2015.420</div></div><div class="clear"></div><!-- region end: 页脚 --><!--<div>v1_01</div>-->
-                </div>
-            </div>
-            <script>
-                var jsName = 'home.login';
-                $proto.scriptLoad[jsName] = {
-                    load: false,
-                    path: "http://res.shlll.net/common/v1/js/home/" + jsName + ".js?ver=[v]"
-                };
-            </script>
         </div>
-    </div>
-    <script src="~/Scripts/init.js"></script><div style="display:none;">
-        <script type="text/javascript">
-            var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
-            document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F6ca93febbe5f3e3b14f8ee9b8ef13802' type='text/javascript'%3E%3C/script%3E"));
-        </script>
-        <script src="~/Scripts/h.js" type="text/javascript"></script>
     </div>
 </body>
 </html>
