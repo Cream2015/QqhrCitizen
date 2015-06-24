@@ -17,16 +17,16 @@ namespace QqhrCitizen.Controllers
         public ActionResult Index()
         {
             /*string tid =HttpContext.Request.QueryString["tid"].ToString();*/
-             List<News> lstNews = new List<News>();
-             lstNews = db.News.OrderByDescending(n => n.Browses).ThenByDescending(n=>n.Time).Take(8).ToList();
-             /*ViewBag.Tid = tid;
-            var type = new TypeDictionary();
-            if (tid != "0")
-            {
-                int id = Convert.ToInt32(tid);
-                type = db.TypeDictionaries.Find(id);
-            }
-            ViewBag.Type = type.TypeValue;*/
+            List<News> lstNews = new List<News>();
+            lstNews = db.News.OrderByDescending(n => n.Browses).ThenByDescending(n => n.Time).Take(8).ToList();
+            /*ViewBag.Tid = tid;
+           var type = new TypeDictionary();
+           if (tid != "0")
+           {
+               int id = Convert.ToInt32(tid);
+               type = db.TypeDictionaries.Find(id);
+           }
+           ViewBag.Type = type.TypeValue;*/
             ViewBag.LstNews = lstNews;
             return View();
         }
@@ -46,7 +46,7 @@ namespace QqhrCitizen.Controllers
             db.SaveChanges();
             vNews _news = new vNews(news);
             List<News> lstNews = new List<News>();
-            lstNews = db.News.Where(n =>n.NewsTypeID ==news.NewsTypeID && n.ID!=id).OrderByDescending(n=>n.Browses).ThenByDescending(n=>n.Time).Take(8).ToList();
+            lstNews = db.News.Where(n => n.NewsTypeID == news.NewsTypeID && n.ID != id).OrderByDescending(n => n.Browses).ThenByDescending(n => n.Time).Take(8).ToList();
             ViewBag.News = _news;
             ViewBag.LstNews = lstNews;
             return View();
@@ -83,9 +83,30 @@ namespace QqhrCitizen.Controllers
             }
 
             return Json(_lstNews);
-        } 
+        }
         #endregion
 
-        
+        #region 获取新闻首页的新闻
+        /// <summary>
+        ///  获取新闻首页的新闻
+        /// </summary>
+        /// <param name="page"></param>
+        /// <returns></returns>
+        [HttpGet]
+        public ActionResult getNewsByPage(int page)
+        {
+            List<News> lstNews = new List<News>();
+            List<vNews> _lstNews = new List<vNews>();
+            int index = page * 10;
+
+            lstNews = db.News.OrderByDescending(n => n.Time).Skip(index).Take(10).ToList();
+
+            foreach (var item in lstNews)
+            {
+                _lstNews.Add(new vNews(item));
+            }
+            return Json(_lstNews,JsonRequestBehavior.AllowGet);
+        } 
+        #endregion
     }
 }

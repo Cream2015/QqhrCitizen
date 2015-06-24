@@ -27,6 +27,11 @@ namespace QqhrCitizen.Controllers
             }
             ViewBag.Type = type.TypeValue;
             ViewBag.Courses = courses;*/
+
+            List<Course> LstNewCourse = new List<Course>();
+            List<vCourse> _LstNewCourse = new List<vCourse>();
+
+            LstNewCourse = db.Courses.OrderByDescending(c => c.Time).Take(10).ToList();
             return View();
         }
 
