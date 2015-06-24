@@ -6,113 +6,44 @@
     List<vQuestion> questions = ViewBag.Questions as List<vQuestion>;
     ViewBag.Title = lession.Title;
 }
-
-<div class="container wrap-cont">
-    <p>当前位置：/<a href="/Course/Show/@lession.CourseID" class="pos">@lession.Course.Title</a>/<a href="#" class="pos">@lession.Title</a></p>
-    <div class="block main">
-        <div id="div_video">
-            <video id="video" src="/Course/PlayLession/@lession.ID" controls="controls"></video>
+<div id="d_menu" class="d-menu menu-cou">
+    <div id="d_menu_c" class="d-menu-c">
+        <!-- region start: menu -->
+        <div id="d_headmenu" class="d-headmenu">
+            <div class="body">
+                <a id="headmenu_default" class="item" href="/Course/Index" target="_parent">课程首页</a>
+                <a id="headmenu_discovery" class="item" href="/Course/Discovery/0" target="_parent">发现课程</a>
+            </div>
         </div>
-        <div id="div_note">
-            <h5 style="padding-top:8px;">课堂笔记</h5>
-            @using (Html.BeginForm("AddNote", "Course", FormMethod.Post, new { id = "frmAddNote" }))
-            {
-                <input type="hidden" id="userId" name="UserID" value="@(ViewBag.CurrentUser==null?"":@ViewBag.CurrentUser.ID)" />
-                <input type="hidden" name="LessionID" id="LessionID" value="@lession.ID" />
-                <textarea name="Content" class="textbox"></textarea>
-                <p><input type="submit" value="保存" class="button blue" style="margin-left:10px;" /></p>
-            }
-            <hr />
-            <div style="padding-top:10px;"><h5>历史笔记</h5></div>
-
-            @if (listNote.Count > 0)
-            {
-                foreach (var note in listNote)
-                {
-                    <div class="div_HisNote">
-                        <p>@note.Time</p>
-                        @note.Content
+        <!-- region end: menu -->
+    </div>
+</div>
+<div id="d_main" class="d-main" style="min-width: 1000px;">
+    <div class="container">
+        <div class="d-row" style="padding: 20px 0 0 0;">
+            <div class="d-row-c">
+                <div class="d-col-2-8">
+                    <div class="contentarea">
+                        <!-- region start: 课程信息 -->
+                        <div id="d_coursedetail" class="d-coursedetail">
+                            <video id="video"  src="/Course/PlayLession/@lession.ID" controls="controls"></video>
+                        </div>
                     </div>
-                }
-            }
-        </div>
-    </div>
-
-    <div class="block sidebar">
-        <h2>课时</h2>
-        @foreach (var item in ViewBag.Lessions as List<vLession>)
-        {
-            <p><a href="/Course/LessionDetails/@item.ID">[@item.Time.ToString("yyyy-MM-dd")] @item.Title</a></p>
-        }
-    </div>
-    <div class="clr"></div>
-    <div class="block main">
-        <h5>课后问题</h5>
-        <div>
-            @if (questions.Count() == 0)
-            {
-                <div>暂无课后问题</div>
-            }
-            else
-            {
-                for (int i = 0; i < questions.Count(); i++)
-                {
-                    <div class="question">
-                        @(i + 1)<span>.</span>@questions[i].Content <br />
-                        <input value="@questions[i].RightAnswer" type="hidden" class="roghtanswer" />
-                        @for (int j = 0; j < questions[i].Answers.Count(); j++)
-                        {
-                            <input name="answer@(i+1)" type="radio" value="@j" class="answer" />@CommonEnums.Answers[j]<span>:</span>@questions[i].Answers[j] <br />
-                        }
+                </div>
+                <div class="d-col-2-4">
+                    <div class="contentarea">
+                        <div id="Record" class="d-courseaction well">
+                            <h2>课时</h2>
+                            @foreach (var item in ViewBag.Lessions as List<vLession>)
+                            {
+                                <p><a href="/Course/LessionDetails/@item.ID">[@item.Time.ToString("yyyy-MM-dd")] @item.Title</a></p>
+                            }
+                        </div>
                     </div>
 
-                }
-                <input type="button" class="button blue" value="提交" id="btnAnswerQuestion" />
-            }
-
-            <div class="warning">
+                </div>
+                <div class="clear"></div>
             </div>
         </div>
     </div>
-    <div class="clr"></div>
-    <div class="block main">
-        <h3>评论</h3>
-        <!-- 多说评论框 start -->
-        <div class="ds-thread" data-thread-key="@lession.Course.CourseTypeID+@lession.ID" data-title="@lession.Title" data-url="@HttpContext.Current.Request.Url.ToString()"></div>
-        <!-- 多说评论框 end -->
-        <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
-        <script type="text/javascript">
-            var duoshuoQuery = { short_name: "qqhrcitizen" };
-            (function () {
-                var ds = document.createElement('script');
-                ds.type = 'text/javascript'; ds.async = true;
-                ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-                ds.charset = 'UTF-8';
-                (document.getElementsByTagName('head')[0]
-					|| document.getElementsByTagName('body')[0]).appendChild(ds);
-            })();
-        </script>
-        <!-- 多说公共JS代码 end -->
-    </div>
-    <div class="clr"></div>
 </div>
-
-<style type="text/css">
-    #dev_video {
-        width:100%;
-       margin:0px auto;
-    }
-    #video {
-      width:820px;
-    }
-    .textbox {
-        width: 94%;
-        height: 80px;
-        margin: auto;
-    }
-
-    .div_HisNote {
-        margin-bottom: 10px;
-        margin-left: 10px;
-    }
-</style>

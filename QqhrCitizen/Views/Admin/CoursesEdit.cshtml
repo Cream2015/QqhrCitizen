@@ -58,8 +58,8 @@
                 </td>
                 <td>
                     <select name="Authority" class="textbox">
-                        <option value="User" @(course.Authority == Authority.User ? "selected" : "")>普通用户</option>
-                        <option value="Admin" @(course.Authority == Authority.Admin ? "selected" : "")>管理员</option>
+                        <option value="All" @(course.Authority == Authority.All ? "selected" : "")>直接观看</option>
+                        <option value="Login" @(course.Authority == Authority.Login ? "selected" : "")>登录观看</option>
                     </select>
                 </td>
             </tr>

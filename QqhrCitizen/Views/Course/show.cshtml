@@ -33,6 +33,8 @@
                     <div class="contentarea">
                         <!-- region start: 课程信息 -->
                         <div id="d_coursedetail" class="d-coursedetail">
+                            <input type="hidden" id="hdPlayAuthority" value="@course.AuthorityAsInt" />
+                            <input type="hidden" id="hdCurrentuser" value="@(ViewBag.CurrentUser!=null? @ViewBag.CurrentUser.Username:"")" />
                             <div class="cover">
                                 <img src="/Course/ShowPicture/@course.ID" />
                             </div>
@@ -66,7 +68,7 @@
                                 @foreach (var item in lessions)
                                 {
                                     <div class="item" id="Ware_908">
-                                        <a class="name" target="_blank" href="/Course/LessionDetails/@item.ID" title="@item.Title">@item.Title</a>
+                                        <a class="name lession" target="_blank" href="javascript:learnLession(@item.ID)" title="@item.Title">@item.Title</a>
                                         <span class="hour"></span><span class="sign">@item.Browses 人学过</span>
                                     </div>
                                 }
@@ -92,7 +94,7 @@
                                                     <a href="/Course/Show/@item.ID" target="_blank">@item.Title</a>
                                                 </div>
                                                 <span class="signed">@item.Browses</span>
-                                                <a class="cover" href="/Course/Course8000.html" target="_blank">
+                                                <a class="cover" href="javascript:learnLession(@item.ID)" target="_blank">
                                                     <img class="imgCoursePicM" src="/Course/ShowPicture/@item.ID">
                                                 </a>
                                             </div>
@@ -115,11 +117,11 @@
                 <div class="d-col-2-4">
                     <div class="contentarea">
                         <div id="Record" class="d-courseaction well">
-                            @if (lessions != null)
+                            @if (lessions.Count>0)
                             {
                                 <p> 开始学习课程：@lessions[0].Title</p>
                                 <p style="text-align: center; border-top: 1px solid #ccc; padding-top: 20px;">
-                                    <a href="/Course/LessionDetails/@lessions[0].ID" class="btn btn-big btn-orange" style="width: 150px;" target="_blank">开始学习</a>
+                                    <a href="javascript:learnLession(@lessions[0].ID)" class="btn btn-big btn-orange" style="width: 150px;" target="_blank">开始学习</a>
                                 </p>
                             }
                         </div>

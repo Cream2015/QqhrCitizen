@@ -80,7 +80,6 @@ namespace QqhrCitizen.Controllers
             var Course = db.Courses.Find(id);
             Course.Browses += 1;
             db.SaveChanges();
-            int uid = CurrentUser == null ? 0 : CurrentUser.ID;
 
             //课程下面的课时
             var listLessions = db.Lessions.Where(lession => lession.CourseID == id).OrderBy(l=>l.Time).ToList();

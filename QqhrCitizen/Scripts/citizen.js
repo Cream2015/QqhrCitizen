@@ -86,7 +86,7 @@ function LoadEBooks() {
         }).done(function (data) {
             var str = "";
             for (var i = 0 ; i < data.length; i++) {
-                str += "<div class='Q-pList'><h2><a  href='/EBook/Show/" + data[i].ID + "' style='color:#000;' class='show'>" + data[i].Title + " </a></h2><p class='sub_title'>时间：" + moment(data[i].Time).format("YYYY-MM-DD HH:mm:ss") + "分类：" + data[i].TypeDictionary.TypeValue + "   <a href='/Upload/" + data[i].File.Path + "'>在线预览</a> <a href='/EBook/Download/" + data[i].ID + "'>下载</a></p><p>"+data[i].Sumamry+"</p></div>";
+                str += "<div class='Q-pList'><h2><a  href='/EBook/Show/" + data[i].ID + "' style='color:#000;' class='show'>" + data[i].Title + " </a></h2><p class='sub_title'>时间：" + moment(data[i].Time).format("YYYY-MM-DD HH:mm:ss") + "分类：" + data[i].TypeDictionary.TypeValue + "   <a href='/Upload/" + data[i].File.Path + "'>在线预览</a> <a href='/EBook/Download/" + data[i].ID + "'>下载</a></p><p>" + data[i].Sumamry + "</p></div>";
             }
             $(".lstEBook").append(str);
             if (data.length == 10) {
@@ -115,7 +115,7 @@ function LoadSearchRessult() {
         }).done(function (data) {
             var str = "";
             for (var i = 0 ; i < data.length; i++) {
-                str += "<div class='Q-pList'><h2><a  href='"+data[i].URL+"' style='color:#000;' class='show'>" + data[i].Title + " </a></h2><p class='sub_title'>时间：" + moment(data[i].Time).format("YYYY-MM-DD HH:mm:ss") + "</p><p>" + data[i].Sumamry + "</p></div>";
+                str += "<div class='Q-pList'><h2><a  href='" + data[i].URL + "' style='color:#000;' class='show'>" + data[i].Title + " </a></h2><p class='sub_title'>时间：" + moment(data[i].Time).format("YYYY-MM-DD HH:mm:ss") + "</p><p>" + data[i].Sumamry + "</p></div>";
             }
             $(".result").append(str);
             if (data.length == 10) {
@@ -144,7 +144,7 @@ function LoadIndexNews() {
         }).done(function (data) {
             var str = "";
             for (var i = 0 ; i < data.length; i++) {
-                str += '<div class="item"><div class="title"><a href="/News/Show/' + data[i].ID+ '" target="_blank">' + data[i].Title + '</a></div><div class="info"><span class="date">' + moment(data[i].Time).format("YYYY-MM-DD HH:mm:ss") + '</span> <span class="from"></span><span class="view">浏览次数: ' + data[i].Browses + '</span></div><div class="desc txt-justify"><p>' + data[i].Sumamry + '</p></div></div>';
+                str += '<div class="item"><div class="title"><a href="/News/Show/' + data[i].ID + '" target="_blank">' + data[i].Title + '</a></div><div class="info"><span class="date">' + moment(data[i].Time).format("YYYY-MM-DD HH:mm:ss") + '</span> <span class="from"></span><span class="view">浏览次数: ' + data[i].Browses + '</span></div><div class="desc txt-justify"><p>' + data[i].Sumamry + '</p></div></div>';
                 //str += "<div class='Q-pList'><h2><a  href='" + data[i].URL + "' style='color:#000;' class='show'>" + data[i].Title + " </a></h2><p class='sub_title'>时间：" + moment(data[i].Time).format("YYYY-MM-DD HH:mm:ss") + "</p><p>" + data[i].Sumamry + "</p></div>";
             }
             $("#lstNews").append(str);
@@ -226,7 +226,7 @@ $(document).ready(function () {
             var answer = $(item).val();
             var rightAnswer = $(item).parents(".question").children(".roghtanswer").val();
             if (options[answer] != rightAnswer) {
-                str = str + "第" + (i + 1) + "题错误，答案应该是" + rightAnswer+"  ";
+                str = str + "第" + (i + 1) + "题错误，答案应该是" + rightAnswer + "  ";
                 questionCount++;
             }
             else {
@@ -234,7 +234,7 @@ $(document).ready(function () {
                 count++;
                 questionCount++;
             }
-            
+
         });
         rate = rate * (count * 1.0 / questionCount);
         $.post("/Course/RecordScore", { lid: $("#LessionID").val(), rate: rate }, function (data) {
@@ -242,6 +242,8 @@ $(document).ready(function () {
         })
         $(".warning").html(str);
     });
+
+
 
 });
 
@@ -252,3 +254,13 @@ $(document).on('click', function (e) {
     if ($(e.target).parents('.pop-menu').length > 0) return;
     $('.pop-menu').slideUp();
 });
+
+function learnLession(data) {
+    var authority = $("#hdPlayAuthority").val();
+    var user = $("#hdCurrentuser").val();
+    if (authority == '1' && user == '') {
+        CastMsg("该视屏需要登录之后查看！");
+        return false;
+    }
+    window.location.href = "/Course/LessionDetails/"+data;
+}
