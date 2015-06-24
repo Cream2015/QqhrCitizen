@@ -24,6 +24,14 @@ namespace QqhrCitizen.Controllers
             }
             ViewBag.Type = type.TypeValue;
             ViewBag.EBooks = lstBooks;*/
+
+            List<EBook> HotBooks = new List<EBook>();
+            List<EBook> NewBooks = new List<EBook>();
+
+            HotBooks = db.EBooks.OrderByDescending(b => b.Browses).Take(10).ToList();
+            NewBooks = db.EBooks.OrderByDescending(b => b.Time).Take(12).ToList();
+            ViewBag.HotBooks = HotBooks;
+            ViewBag.NewBooks = NewBooks;
             return View();
         }
 
@@ -122,7 +130,18 @@ namespace QqhrCitizen.Controllers
             EBook book = new EBook();
             book = db.EBooks.Find(id);
             return File(book.Picture, "image/jpg");
-        } 
+        }
         #endregion
+
+
+        /// <summary>
+        ///  发现电子书
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public ActionResult Discovery(int id)
+        {
+            return View();
+        }
     }
 } 
