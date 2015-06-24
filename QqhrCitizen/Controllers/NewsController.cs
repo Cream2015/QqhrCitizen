@@ -108,5 +108,12 @@ namespace QqhrCitizen.Controllers
             return Json(_lstNews,JsonRequestBehavior.AllowGet);
         } 
         #endregion
+
+        #region
+        public ActionResult Discovery()
+        {
+            return View();
+        }
+        #endregion
     }
 }

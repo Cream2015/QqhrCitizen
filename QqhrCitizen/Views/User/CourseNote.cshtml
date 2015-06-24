@@ -30,25 +30,32 @@
                     </div>
                     <!--<p style="text-align: center; font-size:13px;">对不起，未找到相关课程记录。</p>-->
                     <div class="body ctnt" style="display: block;">
-                        @foreach (var item in ViewBag.Notes as List<Note>)
+                        @if (ViewBag.Notes == null)
                         {
-                            <div class="item course">
-                                <div class="content">
-                                    <div class="info">
-                                        <span class="title">@item.Lession.Course.Title</span>
-                                        所属课程：<span></span>
-                                    </div>
-                                    <div class="stat">
-                                        所属课时：<span>@item.Lession.Title</span>
-                                    </div>
-                                    <div class="date">
-                                        添加时间：<span>@item.Time</span>
-                                    </div>
-                                    <div class="action">
-                                        内容:<span class="cert">@item.Content</span>
+                            <p style="text-align: center; font-size:13px;">对不起，未找到相关课程记录。</p>
+                        }
+                        else
+                        {
+                            foreach (var item in ViewBag.Notes as List<Note>)
+                            {
+                                <div class="item course">
+                                    <div class="content">
+                                        <div class="info">
+                                            <span class="title">@item.Lession.Course.Title</span>
+                                            所属课程：<span></span>
+                                        </div>
+                                        <div class="stat">
+                                            所属课时：<span>@item.Lession.Title</span>
+                                        </div>
+                                        <div class="date">
+                                            添加时间：<span>@item.Time</span>
+                                        </div>
+                                        <div class="action">
+                                            内容:<span class="cert">@item.Content</span>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
+                            }
                         }
                     </div>
                     <!-- region end: historycourse -->
