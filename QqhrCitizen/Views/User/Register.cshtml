@@ -83,7 +83,7 @@
                                 <div class="head">
                                     齐齐哈尔市民学习网用户注册
                                 </div>
-                            @Html.BeginForm("Register", "User", FormMethod.Post)
+                            @using (Html.BeginForm("Register", "User", FormMethod.Post))
                             {
                                 @Html.AntiForgerySID()
                                                          <div class="body">
