@@ -17,23 +17,27 @@
 <div class="d-row" style="margin-bottom: 20px; padding: 30px 0 0 0;">
     <div class="d-row-c">
         <div class="d-col-2-3">
+            <input type="hidden" value="@ViewBag.Type" id="tid" />
             <div class="contentarea" style="border-right: 1px solid #ddd;">
-                <div id=" " class="d-coursecategory">
-                    <div class="head">
-                        <span>
-                            (大类名)
-                        </span>
-                    </div>
-                    <div class="body fselect">
-                        <select class="select-hid" id="select_category_a" name="_SecondeTagList" onchange="SearchWithTag()">
-                            <option selected="selected" value="">-</option>
-                            <option value="（小类名）">（小类名）</option>
-                        </select>
-                        <div id="d_select_category_a" class="cff3">
-                            <div data-txt="（小类名）" class="cfp3">（小类名）</div>
+                @foreach (var item in ViewBag.Types as List<TypeDictionary>)
+                {
+                    <div id="d_12FF2473CE16B988" class="d-coursecategory">
+                        <div class="head">
+                            <span onclick="doSubmit(0,'12FF2473CE16B988')">
+                                @item.TypeValue
+                            </span>
+                        </div>
+                        <div class="body fselect">
+
+                            <div id="d_select_category_a" class="cff3">
+                                @foreach (var type in @item.Children)
+                                {
+                                    <div data-txt="@item.TypeValue" class="cfp3"><a href="/Course/Discovery/@item.ID">@type.TypeValue</a></div>
+                                }
+                            </div>
                         </div>
                     </div>
-                </div>
+                }
             </div>
         </div>
         <div class="d-col-2-9">
