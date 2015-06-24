@@ -30,6 +30,8 @@ namespace QqhrCitizen.Models.ViewModel
         public byte[] Picture { set; get; }
         public vUser() { }
 
+        public int Sccore { set; get; }
+
         public vUser(User user)
         {
             this.ID = user.ID;
@@ -44,6 +46,8 @@ namespace QqhrCitizen.Models.ViewModel
             this.Realname = user.Realname;
             this.Sex = user.Sex;
             this.Picture = user.Picture;
+
+            this.Sccore = user.Score;
         }
     }
 }

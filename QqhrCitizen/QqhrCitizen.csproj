@@ -258,7 +258,9 @@
     <Compile Include="Models\News.cs" />
     <Compile Include="Models\Note.cs" />
     <Compile Include="Models\Question.cs" />
+    <Compile Include="Models\ReadRecord.cs" />
     <Compile Include="Models\ResourceLink.cs" />
+    <Compile Include="Models\StudyRecord.cs" />
     <Compile Include="Models\TypeDictionary.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Models\ViewModel\vAdminModel.cs" />

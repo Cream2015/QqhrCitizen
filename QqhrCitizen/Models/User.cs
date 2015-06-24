@@ -28,6 +28,8 @@ namespace QqhrCitizen.Models
         public int SexAsInt { set; get; }
         public int RoleAsInt { set; get; }
 
+        public int Score { set; get; }
+
         [NotMapped]
         public Sex Sex
         {

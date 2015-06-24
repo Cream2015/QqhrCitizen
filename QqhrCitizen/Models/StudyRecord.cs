@@ -6,11 +6,9 @@ using System.Web;
 
 namespace QqhrCitizen.Models
 {
-    public class LearningRecord
+    public class StudyRecord
     {
-        public int ID { set; get; }
-
-        public DateTime Time { get; set; }
+        public int ID { get; set; }
 
         [ForeignKey("Lession")]
         public int LessionInt { get; set; }
@@ -21,11 +19,8 @@ namespace QqhrCitizen.Models
 
         public virtual User User { get; set; }
 
-        /// <summary>
-        /// 视屏学习到那个时间点
-        /// </summary>
-        public double? VideoTime { set; get; }
+        public DateTime Time { get; set; }
 
- 
+        public bool isFinishCourse { get; set; }
     }
 }
