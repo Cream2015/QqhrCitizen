@@ -1833,7 +1833,7 @@ div {
 }
 
 .menu-home {
-    background-color: rgb(0, 192, 255);
+    background-color: rgb(17,133,30);
 }
 
 .d-ad-1000x128 {
@@ -2164,17 +2164,17 @@ div {
             color: #fff;
             font-size: 16px;
             cursor: pointer;
-            background-color: rgb(0, 192, 255);
+            background-color: rgb(17,133,30);
             text-decoration: none;
         }
 
         .d-headmenu .body a:hover {
-            background-color: rgb(64, 203, 249);
+            background-color: #23a532;
             text-decoration: none;
         }
 
         .d-headmenu .body .item:first-child {
-            background-color: rgb(64, 203, 249);
+            background-color: #23a532;
         }
 
         .d-headmenu .body .apptab, .d-headmenu .body .apptab_over {
