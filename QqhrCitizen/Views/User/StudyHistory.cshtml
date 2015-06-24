@@ -1,0 +1,78 @@
+﻿@using QqhrCitizen.Models.ViewModel;
+@using QqhrCitizen.Models;
+@{
+    vUser user = ViewBag.User as vUser;
+    ViewBag.Title = "用户个人档案 - 齐齐哈尔市民学习网";
+}
+<div id="d_menu" class="d-menu menu-use">
+    <div id="d_menu_c" class="d-menu-c">
+        <!-- region start: menu -->
+        <div id="d_headmenu" class="d-headmenu">
+            <div class="body">
+                <a id="headmenu_useraccount" class="item" href="/User/Show/@user.ID">个人信息</a>
+                <a id="headmenu_history" class="item_selected" href="/User/Course/@user.ID">学习档案</a>
+            </div>
+        </div>
+        <!-- region end: menu -->
+    </div>
+</div>
+<div id="d_bottom" class="d-bottom" style="visibility: hidden;"><div class="d-bottom-c"><div id="d_scrolltop" class="d-scrolltop" style="right: -70px;"><span class="t" onclick="$(document.body).ScrollTo();">顶部</span></div></div></div>
+<div class="d-row" style="padding:20px 0 40px 0">
+    <div class="d-row-c">
+        <div class="d-col-2-8">
+            <div class="contentarea">
+                <!-- region start: historycourse -->
+                <div id="d_historylearning" class="d-historylearning">
+                    <div class="head">
+                        <a id="navi_event" href="/User/HistoryCourse/@user.ID" class="item his-navi">课程</a>
+                        <a id="navi_course" href="/User/StudyHistory/@user.ID" class="item his-navi item_select">学习记录</a>
+                        <a id="navi_event" href="/User/CourseNote/@user.ID" class="item his-navi">课程笔记</a>
+                    </div>
+                    <!--<p style="text-align: center; font-size:13px;">对不起，未找到相关学习记录。</p>-->
+                </div><!-- region end: historycourse -->
+            </div>
+        </div><div class="d-col-2-4">
+            <div class="contentarea">
+                <!-- region start: usercardlearning -->
+                <div id="d_usercardlearning" class="d-usercardlearning" style="*width:280px;">
+                    <a href="/User/Show" class="portrait">
+                        @if (user.Picture == null)
+                        {
+                            <img src="/Images/userphoto.png" width="100" height="100" style="width:120px; height:120px;" />
+                        }
+                        else
+                        {
+                            <img src="/User/ShowPicture/@user.ID" width="100" height="100" tyle="width:120px; height:120px;" alt="图像" />
+                        }
+                    </a>
+                    @if (user.Realname == null)
+                    {
+                        <a href="/User/Show" class="name">@user.Username</a>
+                    }
+                    else
+                    {
+                        <a href="/User/Show" class="name">@user.Realname</a>
+                    }
+                    <div class="district">
+                        @user.Address
+                    </div>
+                    <div class="score">
+
+                    </div>
+                    <div class="clear" style="height:10px;"></div>
+                    <a href="/User/HistoryCourse" class="shared">
+                        <span class="num"></span>课程
+                    </a>
+                    <a href="/User/CourseNote" class="friends">
+                        <span class="num"></span>课程笔记
+                    </a>
+                    <a href="/User/StudyHistory" class="following">
+                        <span class="num"></span>学习记录
+                    </a>
+                    <div class="clear"></div>
+                </div>
+                <!-- region end: usercardlearning -->
+            </div>
+        </div><div class="clear"></div>
+    </div>
+</div>

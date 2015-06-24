@@ -103,9 +103,6 @@ namespace QqhrCitizen.Controllers
             User user = new User();
             user = db.Users.Find(id);
             ViewBag.user = new vUser(user);
-            List<Note> notes = new List<Note>();
-            notes = db.Notes.Where(n => n.UserID == id).ToList();
-            ViewBag.Notes = notes;
             return View();
         }
         #endregion
@@ -260,7 +257,29 @@ namespace QqhrCitizen.Controllers
             user = db.Users.Find(id);
             return File(user.Picture, "image/jpg");
         }
-
-
+        public ActionResult StudyHistory(int id)
+        {
+            User user = new User();
+            user = db.Users.Find(id);
+            ViewBag.user = new vUser(user);
+            return View();
+        }
+        public ActionResult HistoryCourse(int id)
+        {
+            User user = new User();
+            user = db.Users.Find(id);
+            ViewBag.user = new vUser(user);
+            return View();
+        }
+        public ActionResult CourseNote(int id)
+        {
+            User user = new User();
+            user = db.Users.Find(id);
+            ViewBag.user = new vUser(user);
+            List<Note> notes = new List<Note>();
+            notes = db.Notes.Where(n => n.UserID == id).ToList();
+            ViewBag.Notes = notes;
+            return View();
+        }
     }
 }

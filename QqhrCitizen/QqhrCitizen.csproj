@@ -167,7 +167,6 @@
     <Content Include="Scripts\ckeditor\contents.css" />
     <Content Include="Scripts\ckeditor\styles.js" />
     <Content Include="Scripts\course.default.js" />
-    <Content Include="Scripts\Course.js" />
     <Content Include="Scripts\flproto0.1.0.js" />
     <Content Include="Scripts\h.js" />
     <Content Include="Scripts\history.js" />
@@ -342,6 +341,9 @@
     <Content Include="Scripts\ss" />
     <Content Include="Views\Home\ViewPage1.cshtml" />
     <Content Include="Views\Course\Discovery.cshtml" />
+    <Content Include="Views\User\StudyHistory.cshtml" />
+    <Content Include="Views\User\HistoryCourse.cshtml" />
+    <Content Include="Views\User\CourseNote.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
