@@ -136,6 +136,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Global.asax" />
+    <Content Include="Helpers\toto.txt" />
     <Content Include="Images\banner.png" />
     <Content Include="Images\board-bodybg.png" />
     <Content Include="Images\hot.gif" />

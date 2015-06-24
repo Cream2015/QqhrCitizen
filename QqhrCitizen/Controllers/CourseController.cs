@@ -29,13 +29,18 @@ namespace QqhrCitizen.Controllers
             ViewBag.Courses = courses;*/
 
             List<Course> LstNewCourse = new List<Course>();
+            List<Course> LstHotCourse = new List<Course>();
             List<vCourse> _LstNewCourse = new List<vCourse>();
+            List<TypeDictionary> LstType = new List<TypeDictionary>();
 
             LstNewCourse = db.Courses.OrderByDescending(c => c.Time).Take(10).ToList();
             foreach (var item in LstNewCourse)
             {
                 _LstNewCourse.Add(new vCourse(item));
             }
+
+            LstHotCourse =db.Courses.Distinct(c=>c)
+
             ViewBag.LstNewCourse = _LstNewCourse;
             return View();
         }
