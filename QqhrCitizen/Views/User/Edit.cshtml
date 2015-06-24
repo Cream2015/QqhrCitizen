@@ -22,8 +22,10 @@
     <div class="d-row-c">
         <div class="d-col-2-8">
             <div class="contentarea">
-                <form action="/usercenter/useraccount" method="post" id="1245184624">
-                    <input name="__RequestVerificationToken" type="hidden" value="F98fhUNXNuQiotNdDT3Zkqx304y8xXZgJFuF-4BP-lyu9NrD4eqF2HVpbScJiFPYmB-oFGagku7Rmz4dyXaC4RySPP5-bDWMY-yOuVc6Sm81"><!-- region start: 个人信息 --><div id="d_personalinfo" class="d-personalinfo">
+                @using (Html.BeginForm("Edit", "User", new { ID = Model.ID }, FormMethod.Post, null))
+                {
+                    @Html.AntiForgerySID()
+                <div id="d_personalinfo" class="d-personalinfo">
                         <div class="head">
                             修改个人信息
                         </div><table class="tbl">
@@ -62,7 +64,6 @@
                                     <div>
                                         @Html.DropDownListFor(model => model.Sex, ViewBag.Sex as IEnumerable<SelectListItem>, new { @class = "int-hs" })<br>
                                         <span class="text"></span>
-
                                     </div>
                                 </td>
                             </tr>
@@ -87,7 +88,7 @@
                                 </td>
                                 <td>
                                     <div>
-                                       @Html.TextBoxFor(model => model.Birthday, new { @Value = user.Birthday, @class = "int-hs" })<br />
+                                        @Html.TextBoxFor(model => model.Birthday, new { @Value = user.Birthday, @class = "int-hs" })<br />
                                         <span class="text"></span>
                                     </div>
                                 </td>
@@ -100,7 +101,7 @@
                                 </td>
                                 <td>
                                     <div>
-                                        @Html.TextBoxFor(model => model.Phone, new {@class = "int-hs"})<br />
+                                        @Html.TextBoxFor(model => model.Phone, new { @class = "int-hs" })<br />
                                         <span class="text"></span>
                                     </div>
                                 </td>
@@ -136,7 +137,6 @@
                                         }
                                         <input value="/User/ShowPicture/@user.ID" id="Pic" name="Pic" type="hidden">
                                         <div>
-
                                             <span class="btn btn-orange sltAvatar">选择头像</span>&nbsp;&nbsp;
                                             <span class="btn btn-orange fileinput-button">
                                                 <span style="font-size:13px;">本地上传</span>
@@ -166,7 +166,7 @@
                             我们保证以上信息仅用于齐齐哈尔市民学习网用户实名身份认证，不会用于其他商业用途。
                         </div>
                     </div><!-- region end: 个人信息 -->
-                </form>
+                }
             </div>
         </div><div class="d-col-2-4">
             <div class="contentarea">
