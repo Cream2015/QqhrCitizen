@@ -53,6 +53,7 @@ namespace QqhrCitizen.Controllers
         /// <param name="page"></param>
         /// <param name="tid"></param>
         /// <returns></returns>
+        [HttpGet]
         public ActionResult getCourses(int page, int tid)
         {
             List<Course> lstCourse = new List<Course>();
@@ -74,7 +75,7 @@ namespace QqhrCitizen.Controllers
                 _lstCourse.Add(new vCourse(item));
             }
 
-            return Json(_lstCourse);
+            return Json(_lstCourse,JsonRequestBehavior.AllowGet);
         }
         #endregion
 
