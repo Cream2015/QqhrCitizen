@@ -4159,3 +4159,15 @@ div {
 .d-signup .body .tbl td:first-child {
     width: 100px;
 }
+
+
+.cc-container {
+    padding: 20px;
+    font-size: 24px;
+}
+
+.cc-link-img {
+    width: 120px;
+    height: 60px;
+    margin-right: 10px;
+}
