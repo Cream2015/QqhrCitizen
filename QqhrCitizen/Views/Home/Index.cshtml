@@ -326,7 +326,6 @@
 
     <div class="d-row">
         <div class="d-row-c">
-            <div class="d-col-2-1">
                 <div class="contentarea">
                     <div class="cc-container">
                         <p><img src="/Images/links.png" /></p>
@@ -336,13 +335,12 @@
                                 <a href="@rl.URL"><img src="/Upload/@(new QqhrCitizen.Models.ViewModel.vResourceLink(rl)).File.Path" class="cc-link-img" /></a>
                             }
                         </p>
-                        <p>
+                        <p style="font-size: 20px;">
                             @foreach (ResourceLink rl in ViewBag.TextLinks)
                             {
-                                <a href="@rl.URL">@rl.Title</a>
+                                <a href="@rl.URL">@rl.Title</a>@MvcHtmlString.Create("&nbsp;&nbsp;")
                             }
                         </p>
-                    </div>
                 </div>
             </div>
         <div class="clear"></div>
