@@ -1,4 +1,5 @@
 ﻿@using QqhrCitizen.Models
+@using QqhrCitizen.Models.ViewModel
 @{
     ViewBag.Title = "课程首页_齐齐哈尔市民学习网";
 }
@@ -33,11 +34,6 @@
                             <div id="d_coursebanner" class="jcarousel-wrapper">
                                 <div class="jcarousel" data-jcarousel="true" data-jcarouselautoscroll="true">
                                     <ul style="left: -1304px; top: 0px;">
-
-
-
-
-
 
                                         <li>
                                             <a href="/Course/Course8382.html" target="_parent">
@@ -96,18 +92,23 @@
                     </div>
                     <div class="body">
                         <div id="slide_courserecommend" class="slidecontainer" style="top: 0px;">
-                            <div class="item">
-                                <a class="cover" href="/Course/Course8701.html" title="可乐球" target="_blank">
-                                    <img class="imgCoursePic" src="/File/Course/CoursePic/2015/2/17/201502171033404194.jpg" data-echo="/File/Course/CoursePic/2015/2/17/201502171033404194.jpg" data-error="/file/Images/Default/course_default_184_184.jpg">
-                                </a>
-                                <div class="title">
-                                    <a class="trim" style="max-width:184px; display:normal;" href="/Course/Course8701.html" title="可乐球" target="_blank">
-                                        可乐球
+
+                            @foreach (var item in ViewBag.LstNewCourse as List<vCourse>)
+                            {
+                                <div class="item">
+                                    <a class="cover" href="/Course/Show/@item.ID" title="@item.Title" target="_blank">
+                                        <img class="imgCoursePic" src="/Course/ShowPicture/@item.ID">
                                     </a>
+                                    <div class="title">
+                                        <a class="trim" style="max-width:184px; display:normal;" href="/Course/Show/@item.ID" title="可乐球" target="_blank">
+                                            @item.Title
+                                        </a>
+                                    </div>
+                                    <span class="signed">16</span>
+                                    <span class="star star0"></span>
                                 </div>
-                                <span class="signed">16</span>
-                                <span class="star star0"></span>
-                            </div>
+                            }
+
                             <!--
                                 <div class="item">
                                 <a class="cover" href="" title="（标题名）" target="_blank">
