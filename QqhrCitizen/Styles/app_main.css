@@ -9749,3 +9749,13 @@ label.inline {
     .d-statlearning .body td {
         font-size: 13px;
     }
+
+.cc-container {
+    padding: 20px;
+    font-size: 16px;
+}
+
+.cc-link-img {
+    width: 280px;
+    height: 90px;
+}

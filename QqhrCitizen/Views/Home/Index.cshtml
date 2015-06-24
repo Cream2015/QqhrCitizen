@@ -164,7 +164,6 @@
                     </div>
                 </div>
             </div>
-
         </div>
         <div id="d_row_news" class="d-row" style="padding: 20px 0 20px 0; background-color: #f7f7f7;">
             <div class="d-row-c">
@@ -259,7 +258,7 @@
                                 </div>
                             </div>
                         </div>
-                        </div>
+                    </div>
                 </div>
             </div><div class="clear"></div>
         </div>
@@ -281,7 +280,8 @@
                         </div>
                     </div>
                 </div>
-            </div><div class="d-col-2-11">
+            </div>
+            <div class="d-col-2-11">
                 <div class="contentarea">
                     <!-- region start: 热门标签 -->
                     <div id="d_booktaghot" class="d-booktaghot">
@@ -324,6 +324,31 @@
         </div>
     </div>
 
+    <div class="d-row">
+        <div class="d-row-c">
+            <div class="d-col-2-1">
+                <div class="contentarea">
+                    <div class="cc-container">
+                        <p><img src="/Images/links.png" /></p>
+                        <p>
+                            @foreach (ResourceLink rl in ViewBag.ImgLinks)
+                            {
+                                <a href="@rl.URL"><img src="/Upload/@(new QqhrCitizen.Models.ViewModel.vResourceLink(rl)).File.Path" class="cc-link-img" /></a>
+                            }
+                        </p>
+                        <p>
+                            @foreach (ResourceLink rl in ViewBag.TextLinks)
+                            {
+                                <a href="@rl.URL">@rl.Title</a>
+                            }
+                        </p>
+                    </div>
+                </div>
+            </div>
+        <div class="clear"></div>
+        </div>
+    </div>
+
     <div class="d-row" style="background-color: #ececec; border-top: 2px solid #474747;">
         <div class="d-row-c">
             <div class="d-col-1">
@@ -340,86 +365,63 @@
     </div>
     <script>
 
-        var adtranObj = new km_adtran();
-        adtranObj.afterinit = function () {
-            $('#div_spin').remove();
-            $('.d-banner .loading').remove();
-            $('#d_banner_c').css({
-                visibility: 'visible'
-            });
-            $('#' + adtranObj.thumb).children().each(function (i) {
-                var _i = i;
-                $(this).on('mouseover', function () {
-                    adtranObj.dotran(i);
-                });
-            });
-            $('#d_homebanner').children().eq(0).css('z-index', '11');
-            $('#d_homebanner').css('display', 'block');
-            adtranObj.start();
+                    var adtranObj = new km_adtran();
+                    adtranObj.afterinit = function () {
+                        $('#div_spin').remove();
+                        $('.d-banner .loading').remove();
+                        $('#d_banner_c').css({
+                            visibility: 'visible'
+                        });
+                        $('#' + adtranObj.thumb).children().each(function (i) {
+                            var _i = i;
+                            $(this).on('mouseover', function () {
+                                adtranObj.dotran(i);
+                            });
+                        });
+                        $('#d_homebanner').children().eq(0).css('z-index', '11');
+                        $('#d_homebanner').css('display', 'block');
+                        adtranObj.start();
 
-            $proto.pageloaded = true;
-        };
-        adtranObj.beforetran = function (oidx, nidx) {
-            if (oidx == -1) { return; }
-            $('#' + adtranObj.thumb).children().eq(oidx).stop();
-            $('#' + adtranObj.thumb).children().eq(nidx).stop();
-            $('#' + adtranObj.thumb).children().eq(oidx).find('span').stop();
-            $('#' + adtranObj.thumb).children().eq(nidx).find('span').stop();
-            $('#' + adtranObj.thumb).children().eq(oidx).find('span').css({ 'width': '0' });
-            $('#' + adtranObj.thumb).children().eq(nidx).find('span').css({ 'width': '0' });
-            $('#' + adtranObj.thumb).children().eq(oidx).animate({ 'margin-top': '7px' }, 100);
-            $('#' + adtranObj.thumb).children().eq(nidx).animate({ 'margin-top': '0' }, 100);
-        }
-        adtranObj.aftertran = function (nidx) {
-            return;
-            var it = adtranObj.list[nidx].interval;
-            $('#' + adtranObj.thumb).children().eq(nidx).find('span').animate({ 'width': '100%' }, it, function () {
-                $(this).css({ 'width': '0' });
-            });
-        }
-        adtranObj.container = 'd_homebanner';
-        adtranObj.thumb = 'd_banner_thumb';
-        adtranObj.himgs = [
-            @{ var iii = 0; }
-            @foreach (News n in ViewBag.News)
+                        $proto.pageloaded = true;
+                    };
+                    adtranObj.beforetran = function (oidx, nidx) {
+                        if (oidx == -1) { return; }
+                        $('#' + adtranObj.thumb).children().eq(oidx).stop();
+                        $('#' + adtranObj.thumb).children().eq(nidx).stop();
+                        $('#' + adtranObj.thumb).children().eq(oidx).find('span').stop();
+                        $('#' + adtranObj.thumb).children().eq(nidx).find('span').stop();
+                        $('#' + adtranObj.thumb).children().eq(oidx).find('span').css({ 'width': '0' });
+                        $('#' + adtranObj.thumb).children().eq(nidx).find('span').css({ 'width': '0' });
+                        $('#' + adtranObj.thumb).children().eq(oidx).animate({ 'margin-top': '7px' }, 100);
+                        $('#' + adtranObj.thumb).children().eq(nidx).animate({ 'margin-top': '0' }, 100);
+                    }
+                    adtranObj.aftertran = function (nidx) {
+                        return;
+                        var it = adtranObj.list[nidx].interval;
+                        $('#' + adtranObj.thumb).children().eq(nidx).find('span').animate({ 'width': '100%' }, it, function () {
+                            $(this).css({ 'width': '0' });
+                        });
+                    }
+                    adtranObj.container = 'd_homebanner';
+                    adtranObj.thumb = 'd_banner_thumb';
+                    adtranObj.himgs = [
+                        @{ var iii = 0; }
+                        @foreach (News n in ViewBag.News)
             {
                 if (iii >= 5) { break; }
                 @MvcHtmlString.Create("{ id: 'bb" + (iii + 1) + "', bg: '" + n.ImgUrl.First() + "', thumb: '" + n.ImgUrl.First() + "', bgcolor: '" + bgcolor[iii] + "', fgcolor: '#fff' },")
                 { i++; }
             }
-        ];
-        var adtranObjList = [];
-        for (var i = 0; i < adtranObj.himgs.length; i++) {
-            var _id = 'bb' + (i + 1);
-            var _d = { d: _id, interval: i == 0 ? 10000 : 5000 };
-            adtranObjList.push(_d);
-        }
-        adtranObj.list = adtranObjList;
-        /*
-        adtranObj.list = [
-          {
-            d: "bb1", interval: 5000}
-          , { d: "bb2", interval: 5000 }
-          , { d: "bb3", interval: 5000 }
-          , { d: "bb4", interval: 5000 }
-          , { d: "bb5", interval: 5000 }
-        ];
-        */
+                    ];
+                    var adtranObjList = [];
+                    for (var i = 0; i < adtranObj.himgs.length; i++) {
+                        var _id = 'bb' + (i + 1);
+                        var _d = { d: _id, interval: i == 0 ? 10000 : 5000 };
+                        adtranObjList.push(_d);
+                    }
+                    adtranObj.list = adtranObjList;
     </script>
-    <!-- <script>
-         var thisLocation = window.location.href;
-         var memberSiteURL = 'http://member.shlll.net/';
-         $proto.basepath.home = memberSiteURL + 'usercenter/useraccount';
-         $proto.basepath.personalhome = memberSiteURL + 'usercenter/historycourse';
-         $proto.basepath.useraccount = memberSiteURL + 'usercenter/useraccount';
-         $proto.basepath.verify = memberSiteURL + 'usercenter/verify';
-         $proto.basepath.login = memberSiteURL + 'home/login?redirect=' + thisLocation;//登录页面
-         $proto.basepath.signup = memberSiteURL + 'home/signup?redirect=' + thisLocation;//注册页面
-         //$proto.basepath.signup = 'http://www.shlll.net/home/login/register.jsp';//注册页面
-         //$proto.basepath.loginaction='...';//登录ajax的请求地址
-         $proto.basepath.logoutaction = memberSiteURL + 'home/action/logout?redirect=' + thisLocation;//退出系统的请求地址
-     </script>-->
-    <script src="http://res.shlll.net/common/v1/js/init.js?ver=20140224"></script>
+
     <style>
         .readingCover img {
             width: 106px;
@@ -442,50 +444,25 @@
         }
     </style>
     <script>
-        /*km_st.list = [
-            { id: 'd_row_cou', text: '新闻' }
-            , { id: 'd_row_eve', text: '课程' }
-            , { id: 'd_row_bok', text: '电子书' }
-            , { id: 'd_row_gro', text: '直播' }
-        ];*/
-        km_st.list = [
-            { id: 'd_row_news', text: '新闻' }
-            , { id: 'd_row_course', text: '课程' }
-            , { id: 'd_row_ebook', text: '电子书' }
-        ];
+                    km_st.list = [
+                        { id: 'd_row_news', text: '新闻' }
+                        , { id: 'd_row_course', text: '课程' }
+                        , { id: 'd_row_ebook', text: '电子书' }
+                    ];
     </script><div style="display: none;">
-        <script type="text/javascript">
-            var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
-            document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F6ca93febbe5f3e3b14f8ee9b8ef13802' type='text/javascript'%3E%3C/script%3E"));
-        </script>
-        <script src=" http://hm.baidu.com/h.js?6ca93febbe5f3e3b14f8ee9b8ef13802" type="text/javascript"></script>
     </div>
     <script>
-        function addFavorite() {
-            if (document.all) {
-                try {
-                    window.external.addFavorite(window.location.href, document.title);
-                } catch (e) {
-                    alert("加入收藏失败，请使用Ctrl+D进行添加");
-                }
-
-            } else if (window.sidebar) {
-                window.sidebar.addPanel(document.title, window.location.href, "");
-            } else {
-                alert("加入收藏失败，请使用Ctrl+D进行添加");
-            }
-        }
-        $(function () {
-            $('.channel').find('a').on('click', function () {
-                var href = $(this).data('href');
-                var fix = '';
-                if ($proto.userinfo) {
-                    var un = $proto.userinfo.encodeusername;
-                    fix = '?n=' + un;
-                }
-                $(this).attr('href', href + fix);
-            });
-        });
+                    $(function () {
+                        $('.channel').find('a').on('click', function () {
+                            var href = $(this).data('href');
+                            var fix = '';
+                            if ($proto.userinfo) {
+                                var un = $proto.userinfo.encodeusername;
+                                fix = '?n=' + un;
+                            }
+                            $(this).attr('href', href + fix);
+                        });
+                    });
     </script>
     <style>
         .d-banner-thumb, .d-homebanner li a .h, .d-homebanner li a .p {
@@ -517,117 +494,9 @@
             cursor: pointer;
         }
         /*#videoWrapper { width:800px;  }*/
-    </style><!--<script src="http://course.shlll.net/resources/jwplayer6/jwplayer.js"></script>--><!--<script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>--><!--<script src="//cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>-->
-    <script>
-        var opt = {
-            videoPath: '/file/video/shlll30.mp4',
-            width: 800,
-            height: 450,
-            fuid: 0,
-            onlyPlayer: 1,
-            playPrimary: 'flash'/*,
-        backColor: '#000000',
-        screenColor: '#000000',
-        bgColor: '#000000'
-        */
-        };
-        var jwPlayerObj;
-        function LoadVideo(opt) {
-            jwPlayerObj = jwplayer("videoWrapper").setup({
-                file: opt.videoPath,
-                /*
-                playlist: [{
-                  //image: "/assets/sintel.jpg",
-                  sources: [{
-                    file: opt.videoPath
-                  }]
-                }],
-                */
-                width: opt.width,
-                height: opt.height,
-                controls: false,
-                linkfromdisplay: false,
-                /*
-                controlbar:{
-                  visible: false
-                },
-                player: {
-                  modes: {
-                    linear: {
-                      controls: { visible: false }
-                    }
-                  }
-                },
-                */
-                autostart: false,
-                primary: opt.playPrimary//,
-                /*
-                screencolor: opt.screenColor,
-                backcolor: opt.backColor,
-                bgcolor: opt.bgColor
-                */
-
-            })
-            .onPlay(function () {
-            })
-            .onPlaylistComplete(function () {
-                //console.log('complete');
-                //window.setTimeout(function(){
-                v_close();
-                //},500);
-            });
-        }
-        function v_close() {
-            jwPlayerObj.stop();
-            $('#wrapper').slideUp(1000, function () {
-                $('#videoWrapper').html('');
-            });
-        }
-        $(function () {
-            /*
-              var b = $.browser.msie && parseInt($.browser.version) == 6;
-              if (!b){
-                  var showV = $.cookie('xxw_portal_v');
-                  if (showV == undefined || showV == '1'){
-                      LoadVideo(opt);
-                      window.setTimeout(function(){
-                          $('#wrapper').slideDown(1000, function(){
-                            $('#v_c').fadeIn();
-                            $('#videoWrapper').css('border', '1px solid #9b9b9b');
-                            jwPlayerObj.play();
-                          });
-                      },3000);
-                  }
-                  $('#v_never').change(function(){
-                      //alert($(this).prop('checked'));
-                      var chk = $(this).prop('checked');
-                      if(chk){
-                          $.cookie('xxw_portal_v', '0', { expires: 360 });
-                      } else {
-                          $.cookie('xxw_portal_v', '1', { expires: 360 });
-                      }
-                  });
-                  $('#v_close').on('click', function(){
-                      v_close();
-                  });
-              }
-              */
-        });
-    </script><link href="http://res.shlll.net/common/v1/css/jquery.scrollbar.css" rel="stylesheet" media="screen"><link href="~/Styles/history.css" rel="stylesheet" media="screen">
-    <script src="http://res.shlll.net/common/v1/js/read/jquery.scrollbar.js"></script>
+    </style>
+    <script src="~/Scripts/init.js"></script>
     <script src="~/Scripts/history.js"></script>
-    <script>
-        $(function () {
-            initHistory();
-            /*
-            $('.external-scroll').scrollbar({
-              //"autoScrollSize": true,
-              //"scrollx": $('.external-scroll_x'),
-              "scrolly": $('.external-scroll_y')
-            });
-            */
-        });
-    </script>
     <style>
         .esplan-sp-item {
             float: left;
@@ -666,13 +535,13 @@
             }
     </style>
     <script>
-        $(function () {
-            if ($('.esplan-sp-item').length > 0) {
-                $('.esplan-sp-item:eq(2)').css('margin-right', '0');
-            } else {
-                $('#esplan_sp').remove();
-            }
-        });
+                    $(function () {
+                        if ($('.esplan-sp-item').length > 0) {
+                            $('.esplan-sp-item:eq(2)').css('margin-right', '0');
+                        } else {
+                            $('#esplan_sp').remove();
+                        }
+                    });
     </script>
 </body>
 </html>

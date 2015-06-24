@@ -38,6 +38,8 @@ namespace QqhrCitizen.Controllers
             ViewBag.BookTypes = db.TypeDictionaries.Where(x => x.Belonger == TypeBelonger.电子书 && x.FatherID == 0).Take(6).ToList();
             ViewBag.Books = db.EBooks.OrderByDescending(x => x.Time).Take(10).ToList();
             ViewBag.Lives = db.Lives.OrderByDescending(x => x.End).Take(5).ToList();
+            ViewBag.TextLinks = db.ResourceLinks.Where(x => !x.IsHaveFile).ToList();
+            ViewBag.ImgLinks = db.ResourceLinks.Where(x => x.IsHaveFile).ToList();
             return View();
         }
 
