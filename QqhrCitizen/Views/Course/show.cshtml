@@ -2,6 +2,8 @@
 @using QqhrCitizen.Models.ViewModel
 @{
     Course course = ViewBag.Course as Course;
+    List<vLession> lessions = ViewBag.Lessions as List<vLession>;
+    List<Lession> lstLession = ViewBag.lstCourse as List<Lession>;
     ViewBag.Title = "课程简介_齐齐哈尔市民学习网";
 }
 <div id="d_menu" class="d-menu menu-cou">
@@ -36,11 +38,11 @@
                             </div>
                             <div class="info">
                                 <div class="title">@course.Title</div>
-                                <div class="owner">
-                                    <span class="star star30" id="star"></span>
-                                </div>
                                 <div class="stat">
                                     <span id="info1">学习人次：@course.Browses</span>
+                                </div>
+                                <div class="stat">
+                                    <span id="info1">分类：@course.TypeDictionary.TypeValue </span>
                                 </div>
                             </div>
                             <div class="clear"></div>
@@ -50,7 +52,7 @@
                         <div id="d_courseintro" class="d-courseintro">
                             <div class="head">课程简介</div><div class="body">
                                 <div class="area txt-justify">
-                                   @course.Description;
+                                    @course.Description;
                                 </div>
                                 <!--<div class="bot">
                                     <a href="javascript:;" onclick="sub_showhidepart('d_courseintro',168)">显示全部</a>
@@ -59,68 +61,48 @@
                         </div><!-- region end: 课程简介 --><!-- region start: 课件列表 -->
                         <hr style="border: none; height: 1px; background-color: #ccc; margin: 20px 25px 0 0;">
                         <div id="d_courseware" class="d-courseware">
-                            <div class="head">课件列表</div>
+                            <div class="head">课时列表</div>
                             <div class="body">
-                                <div class="item" id="Ware_908">
-                                    <a class="name" target="_blank" href="/Ware/Ware908.html" title="先秦时期诸子百家养生之论（一）">先秦时期诸子百家养生之论（一）</a>
-                                    <span class="hour"></span><span class="sign">822727人学过</span>
-                                </div>
-                                <!--
-                                     <div class="item" id="Ware_908">
-                                    <a class="name" target="_blank" href="（课程页面）" title="（课程名）">（课程名）</a>
-                                    <span class="hour"></span><span class="sign">（学习人数）</span>
-                                </div>
-                                -->
+                                @foreach (var item in lessions)
+                                {
+                                    <div class="item" id="Ware_908">
+                                        <a class="name" target="_blank" href="/Course/LessionDetails/@item.ID" title="@item.Title">@item.Title</a>
+                                        <span class="hour"></span><span class="sign">@item.Browses 人学过</span>
+                                    </div>
+                                }
                             </div>
                         </div><!-- region end: 课件列表 -->
                         <!-- region start: 课程附件 -->
                         <!-- region end: 课程附件 -->
-                        <!-- region start: 课程标签 -->
-                        <hr style="border: none; height: 1px; background-color: #ccc; margin: 20px 25px 0 0;">
-                        <div id="d_coursetag" class="d-coursetag">
-                            <div class="head">课程标签</div>
-                            <div class="body">
-                                <a class="item" href="/course/discovery/12FF2473CE16B988/?parm=12FF2473CE16B988">终身教育</a>
-                                <!--
-                                    <a class="item" href="(标签页面)">（标签名）</a>
-                                -->
-                            </div>
-                        </div>
-                        <!-- region end: 课程标签 -->
                         <!-- region start: 系列课程 --><!-- region end: 系列课程 -->
                         <hr style="border: none; height: 1px; background-color: #ccc; margin: 20px 25px 0 0;">
                         <!-- region start: 大家还喜欢的课程 -->
                         <div id="d_courselikebyuser" class="d-courselikebyuser">
                             <div class="head">
-                                大家还喜欢的课程
-                                <span class="turn">
-                                    <span class="dot_select" onclick="km_slide.dottran('slide_courselikebyuser',0,330)"></span>
-                                    <span class="dot" onclick="km_slide.dottran('slide_courselikebyuser',1,330)"></span>
-                                    <span class="dot" onclick="km_slide.dottran('slide_courselikebyuser',2,330)"></span>
-                                </span>
+                                相关课程
                             </div>
                             <div class="body">
                                 <div id="slide_courselikebyuser" class="slidecontainer">
-                                    <div class="item">
-                                        <div class="title">
-                                            <a href="/Course/Course8000.html" target="_blank">谁误读了贝多芬</a>
-                                        </div>
-                                        <span class="signed">34883</span>
-                                        <a class="cover" href="/Course/Course8000.html" target="_blank">
-                                            <img class="imgCoursePicM" src="http://res.shlll.net/common/v1/images/transparent.png" data-echo="/File/Course/CoursePic/Import/20140704/ZSH0M12003.jpg" data-error="/file/Images/Default/course_default_184_184.jpg" title="谁误读了贝多芬">
-                                        </a>
-                                    </div>
-                                    <!--
-                                        <div class="item">
-                                        <div class="title">
-                                            <a href="（课程页面）" target="_blank">课程名</a>
-                                        </div>
-                                        <span class="signed">34883</span>
-                                        <a class="cover" href="（课程页面）" target="_blank">
-                                            <img class="imgCoursePicM" src="（课程图片路径）" data-echo="（课程图片路径）" data-error="（错误图片路径）" title="（课程名）">
-                                        </a>
-                                    </div>
-                                    -->
+                                    @if (lstLession != null)
+                                    {
+                                        foreach (var item in lstLession)
+                                        {
+                                            <div class="item">
+                                                <div class="title">
+                                                    <a href="/Course/Show/@item.ID" target="_blank">@item.Title</a>
+                                                </div>
+                                                <span class="signed">@item.Browses</span>
+                                                <a class="cover" href="/Course/Course8000.html" target="_blank">
+                                                    <img class="imgCoursePicM" src="/Course/ShowPicture/@item.ID">
+                                                </a>
+                                            </div>
+                                        }
+                                    }
+                                    else
+                                    {
+                                        <span>暂不相关信息</span>
+                                    }
+
                                 </div>
                             </div>
                         </div>
@@ -133,10 +115,13 @@
                 <div class="d-col-2-4">
                     <div class="contentarea">
                         <div id="Record" class="d-courseaction well">
-                            <p> 开始学习课件：先秦时期诸子百家养生之论（一）</p>
-                            <p style="text-align: center; border-top: 1px solid #ccc; padding-top: 20px;">
-                                <a href="/Ware/Ware908.html" class="btn btn-big btn-orange" style="width: 150px;" target="_blank">开始学习</a>
-                            </p>
+                            @if (lessions != null)
+                            {
+                                <p> 开始学习课程：@lessions[0].Title</p>
+                                <p style="text-align: center; border-top: 1px solid #ccc; padding-top: 20px;">
+                                    <a href="/Course/LessionDetails/@lessions[0].ID" class="btn btn-big btn-orange" style="width: 150px;" target="_blank">开始学习</a>
+                                </p>
+                            }
                         </div>
                         <!-- region start: 学习动态 -->
                         <div id="d_learningactivitybycourse" class="d-learningactivitybycourse">

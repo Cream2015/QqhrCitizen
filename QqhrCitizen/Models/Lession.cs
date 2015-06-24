@@ -31,6 +31,8 @@ namespace QqhrCitizen.Models
 
         public bool IsPassTest { get; set; }
 
+        public int Browses { set; get; }
+
         public vLession ToVLesssion()
         {
             return new vLession(this);

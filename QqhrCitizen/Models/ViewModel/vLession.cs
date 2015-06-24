@@ -19,6 +19,7 @@ namespace QqhrCitizen.Models.ViewModel
         public string ContentType { set; get; }
         public List<Question> Questions { get; set; }
 
+        public int Browses { set; get; }
         public double Rate { set; get; }
         public vLession() { }
 
@@ -33,6 +34,7 @@ namespace QqhrCitizen.Models.ViewModel
             this.Time = model.Time;
             this.Remark = model.Remark;
             this.Questions = db.Questions.Where(c => c.LessionID == model.ID).ToList();
+            this.Browses = model.Browses;
         }
 
         public void SetDate(int uid)

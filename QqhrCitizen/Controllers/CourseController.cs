@@ -113,6 +113,8 @@ namespace QqhrCitizen.Controllers
             var lessions = new List<Lession>();
             var vLessions = new List<vLession>();
             Lession Lession = db.Lessions.Find(id);
+            Lession.Browses = Lession.Browses+1;
+            db.SaveChanges();
             ViewBag.Lession = Lession;
             var listNote = db.Notes.Where(note => note.LessionID == Lession.ID).OrderByDescending(n => n.Time).ToList();
             ViewBag.ListNote = listNote;

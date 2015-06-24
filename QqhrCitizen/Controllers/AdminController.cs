@@ -897,6 +897,7 @@ namespace QqhrCitizen.Controllers
             model.Time = DateTime.Now;
             model.ContentType = file.ContentType;
             model.Path = path;
+            model.Browses = 0;
             db.Lessions.Add(model);
             db.SaveChanges();
             return Redirect("/Admin/CourseShow/" + model.CourseID);
