@@ -1,4 +1,5 @@
 ﻿@using QqhrCitizen.Models
+@using QqhrCitizen.Models.ViewModel
 @{
     EBook ebook = ViewBag.Ebook as EBook;
     ViewBag.Title = "图书简介_齐齐哈尔市民学习网";
@@ -156,7 +157,36 @@
                 <!-- region start: 也读过这本书 -->
                 <div id="d_bookread" class="d-bookread">
                     <div class="head">读书动态</div>
-                    <div class="body" id="divRecordList">
+                    <div class="head">读者动态</div>
+                    <div class="body">
+                        <div id="feed_bookactivity" class="feedcontainer" style="top: 0px;">
+                            @foreach (var item in ViewBag.LstRecord as List<vReadRecord>)
+                            {
+                                <div class="item">
+                                    <div class="name trim">
+                                        <a href="#" title="@item.User.Username">@item.User.Username</a>
+                                    </div>
+                                    <div class="trends trim">@item.Time 阅读了</div>
+                                    <div class="book trim">
+                                        <a href="/EBook/Show/@item.EBookID" title="@item.EBook.Title" target="_blank">
+                                            @item.EBook.Title
+                                        </a>
+                                    </div>
+                                    <a class="avatar" href="#">
+                                        @if (item.User.Picture != null)
+                                        {
+                                            <img src="/User/ShowPicture/@item.UserID" style="width:48px;height:48px;">
+                                        }
+                                        else
+                                        {
+                                            <img src="~/Images/userphoto.png" style="width:48px;height:48px;">
+                                        }
+                                    </a>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                    <!--  <div class="body" id="divRecordList">
                         <div class="item">
                             <div class="name trim">
                                 <a href="#">Miss咯咯</a>
@@ -167,7 +197,8 @@
                             </a>
                         </div>
                     </div>
-                </div><!-- region end: 也读过这本书 -->
+                </div>-->
+                <!-- region end: 也读过这本书 -->
             </div>
         </div><div class="clear"></div>
     </div>

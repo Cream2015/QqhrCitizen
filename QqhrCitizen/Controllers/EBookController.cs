@@ -103,11 +103,21 @@ namespace QqhrCitizen.Controllers
         {
             List<EBook> LstNewEBook = new List<EBook>();
             List<TypeDictionary> lstType = new List<TypeDictionary>();
+            List<ReadRecord> lstRecord = new List<ReadRecord>();
+            List<vReadRecord> _lstRecord = new List<vReadRecord>();
+
             var Ebook = db.EBooks.Find(id);
             Ebook.Browses += 1;
             db.SaveChanges();
             LstNewEBook = db.EBooks.OrderByDescending(c => c.Time).Take(12).ToList();
             lstType = db.TypeDictionaries.Where(tp => tp.FatherID == Ebook.TypeDictionary.FatherID && tp.ID != Ebook.TypeDictionary.ID).ToList();
+            lstRecord = db.ReadRecords.OrderByDescending(r => r.Time).Take(12).ToList();
+
+            foreach (var item in lstRecord)
+            {
+                _lstRecord.Add(new vReadRecord(item));
+            }
+            ViewBag.LstRecord = lstRecord;
             ViewBag.LstNewEBook = LstNewEBook;
             ViewBag.Ebook = Ebook;
             ViewBag.LstType = lstType;
