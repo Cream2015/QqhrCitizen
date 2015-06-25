@@ -11,7 +11,6 @@
             <div class="body">
                 <a class="item_selected" href="/EBook/Index" id="headmenu_default">图书首页</a>
                 <a class="item" href="/EBook/Discovery/0" id="headmenu_discovery">发现图书</a>
-                <!--<a id="headmenu_bookshelf" class="item" href="/book/bookshelf">我的藏书</a>-->
             </div>
         </div><!-- region end: menu -->
     </div>
@@ -48,10 +47,8 @@
                         </div>
                     </div>
                 </div>
-                <!-- region end: 热门图书 -->
-                <!-- region start: ad1 -->
-                <!-- region end: ad1 -->
-                <!-- region start: 最受关注 -->
+                <!-- region start: 图书推荐 -->
+                <hr style="border: none; height: 1px; background-color: #ccc; margin: 20px 25px 0 0;">
                 <div id="d_booknew" class="d-booknew">
                     <div class="head">
                         图书推荐
@@ -64,7 +61,6 @@
                                     <div class="title trim">
                                         <a href="/EBook/Show/@item.ID" title="@item.Title" target="_blank">@item.Title</a>
                                     </div>
-                                    <div class="star star40"></div>
                                     <div title="@item.Author" class="author trim">作者：@item.Author</div>
                                     <div class="classification  trim" title="@item.TypeDictionary.TypeValue">@item.TypeDictionary.TypeValue</div>
                                     <div class="type">&nbsp;</div>
@@ -75,27 +71,25 @@
                             }
                         </div>
                     </div>
-                </div><!-- region end: 最受关注 --><!-- region start: 图书评论 -->
-
+                </div>
+                <!-- region end: 图书推荐 -->
             </div>
         </div>
         <div class="d-col-2-4">
             <div class="contentarea" style="padding: 0px 0 30px 0;">
-                <!-- region start: 热门标签 -->
-                <div id="d_booktaghot" class="d-booktaghot">
-                    <!-- region start: 热门分类 -->
-                    <div id="d_coursehotcategory" class="d-coursehotcategory">
-                        <div class="head">
-                            热门分类
-                            <a href="/EBook/Discovery/0">浏览更多&nbsp;&gt;&gt;</a>
-                        </div>
-                        <div class="body">
-                            @foreach (var item in ViewBag.LstHotType as List<TypeDictionary>)
-                            {
-                                <a class="item" href="/EBook/Discovery/@item.ID" title="@item.TypeValue">@item.TypeValue</a>
-                            }
-                        </div>
+                <!-- region start: 热门分类 -->
+                <div id="d_coursehotcategory" class="d-coursehotcategory">
+                    <div class="head">
+                        热门分类
+                        <a href="/EBook/Discovery/0">浏览更多&nbsp;&gt;&gt;</a>
                     </div>
+                    <div class="body">
+                        @foreach (var item in ViewBag.LstHotType as List<TypeDictionary>)
+                        {
+                            <a class="item" href="/EBook/Discovery/@item.ID" title="@item.TypeValue">@item.TypeValue</a>
+                        }
+                    </div>
+
                 </div>
                 <!-- region end: 热门标签 --><!-- region start: 读者动态 -->
 
