@@ -102,7 +102,7 @@ namespace QqhrCitizen.Controllers
             List<StudyRecord> records = new List<StudyRecord>();
             List<vStudyRecord> LstRecord = new List<vStudyRecord>();
 
-            records = db.StudyRecords.OrderByDescending(sr => sr.Time).DistinctBy(x => new { x.UserID }).Take(12).ToList();
+            records = db.StudyRecords.Where(sr=>sr.Lession.CourseID == id).OrderByDescending(sr => sr.Time).DistinctBy(x => new { x.UserID }).Take(8).ToList();
             foreach (var item in records)
             {
                 LstRecord.Add(new vStudyRecord(item));
