@@ -163,6 +163,7 @@ namespace QqhrCitizen.Controllers
             Directory.CreateDirectory(filepath);
             
             d.Save("D:/ASP_MVC/QqhrCitizen/QqhrCitizen" + setfileload,SaveFormat.Html);
+            d.SaveToPdf("D:/ASP_MVC/QqhrCitizen/QqhrCitizen/"+filePhysicalPath+"1.pdf");
             return setfileload;
         }
     }
