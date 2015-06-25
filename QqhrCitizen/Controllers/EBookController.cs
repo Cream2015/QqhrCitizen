@@ -95,11 +95,13 @@ namespace QqhrCitizen.Controllers
  
         public ActionResult Show(int id)
         {
+            List<EBook> LstNewEBook = new List<EBook>();
             List<vLession> lessions = new List<vLession>();
             var Ebook = db.EBooks.Find(id);
             Ebook.Browses += 1;
             db.SaveChanges();
-
+            LstNewEBook = db.EBooks.OrderByDescending(c => c.Time).Take(12).ToList();
+            ViewBag.LstNewEBook = LstNewEBook;
             ViewBag.Ebook = Ebook;
             return View();
         }
