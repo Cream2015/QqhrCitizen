@@ -159,7 +159,7 @@
                 <div id="d_bookread" class="d-bookread">
                     <div class="head">读者动态</div>
                     <div class="body">
-                        <div id="feed_bookactivity" class="feedcontainer" style="top: 0px;">
+                        <div id="divRecordList" class="body">
                             @if (recoreds.Count != 0)
                             {
                                 foreach (var item in recoreds)
@@ -168,13 +168,9 @@
                                         <div class="name trim">
                                             <a href="#" title="@item.User.Username">@item.User.Username</a>
                                         </div>
-                                        <div class="trends trim">@item.Time 阅读了</div>
-                                        <div class="book trim">
-                                            <a href="/EBook/Show/@item.EBookID" title="@item.EBook.Title" target="_blank">
-                                                @item.EBook.Title
-                                            </a>
-                                        </div>
-                                        <a class="avatar" href="#">
+                                        <div class="status trim">@item.Time 阅读了本书</div>
+                                        
+                                        <a class="cover" href="#">
                                             @if (item.User.Picture != null)
                                             {
                                                 <img src="/User/ShowPicture/@item.UserID" style="width:48px;height:48px;">

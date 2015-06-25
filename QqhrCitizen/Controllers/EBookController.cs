@@ -121,7 +121,7 @@ namespace QqhrCitizen.Controllers
             db.SaveChanges();
             LstNewEBook = db.EBooks.OrderByDescending(c => c.Time).Take(12).ToList();
             lstType = db.TypeDictionaries.Where(tp => tp.FatherID == Ebook.TypeDictionary.FatherID && tp.ID != Ebook.TypeDictionary.ID).ToList();
-            lstRecord = db.ReadRecords.OrderByDescending(r => r.Time).Take(12).ToList();
+            lstRecord = db.ReadRecords.Where(r=>r.EBookID==id).OrderByDescending(r => r.Time).Take(12).ToList();
 
             foreach (var item in lstRecord)
             {
