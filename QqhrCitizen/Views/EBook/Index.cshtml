@@ -16,7 +16,13 @@
         </div><!-- region end: menu -->
     </div>
 </div>
-<div id="d_bottom" class="d-bottom" style="visibility: hidden; position: relative;"><div class="d-bottom-c"><div id="d_scrolltop" class="d-scrolltop" style="right: -70px;"><span class="t" onclick="$(document.body).ScrollTo();">顶部</span></div></div></div>
+<div id="d_bottom" class="d-bottom" style="visibility: hidden; position: relative;">
+    <div class="d-bottom-c">
+        <div id="d_scrolltop" class="d-scrolltop" style="right: -70px;">
+            <span class="t" onclick="$(document.body).ScrollTo();">顶部</span>
+        </div>
+    </div>
+</div>
 <div class="d-row">
     <div class="d-row-c">
         <div class="d-col-2-8">
@@ -99,23 +105,22 @@
             <div class="contentarea" style="padding: 0px 0 30px 0;">
                 <!-- region start: 热门标签 -->
                 <div id="d_booktaghot" class="d-booktaghot">
-                    <div class="head">
-                        热门标签
-                        <a href="/EBook/Dis" target="_parent">浏览更多 »</a>
-                    </div>
-                    <div class="body">
-                        <div class="item">
-                            <a href="/Book/Find?parms=8009A97B9D0780C5" target="_parent">文学 »</a>
+                    <!-- region start: 热门分类 -->
+                    <div id="d_coursehotcategory" class="d-coursehotcategory">
+                        <div class="head">
+                            热门分类
+                            <a href="/EBook/Discovery/0">浏览更多&nbsp;&gt;&gt;</a>
                         </div>
-                        <a class="subitem" href="/Book/Find?parms=1484B3909CE98454" target="_parent" title="经史子集">经史子集</a>
-                        <!--
-                             <div class="item">
-                                 <a href="（标签页面）" target="_parent">（标签名） »</a>
-                            </div>
-                             <a class="subitem" href="（书详细页面路径）" target="_parent" title="（书名）">（书名）</a>
-                        -->
+                        <div class="body">
+                            @foreach (var item in ViewBag.LstHotType as List<TypeDictionary>)
+                            {
+                                <a class="item" href="/EBook/Discovery/@item.ID" title="@item.TypeValue">@item.TypeValue</a>
+                            }
+                        </div>
                     </div>
-                </div><!-- region end: 热门标签 --><!-- region start: 读者动态 -->
+                </div>
+                <!-- region end: 热门标签 --><!-- region start: 读者动态 -->
+
                 <div id="d_bookactivity" class="d-bookactivity">
                     <div class="head">读者动态</div>
                     <div class="body">
@@ -150,6 +155,4 @@
             </div><div class="clear"></div>
         </div>
     </div>
-
-
-
+</div>

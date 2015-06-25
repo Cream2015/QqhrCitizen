@@ -15,24 +15,14 @@ namespace QqhrCitizen.Controllers
         // GET: EBook
         public ActionResult Index()
         {
-            /*string tid = HttpContext.Request.QueryString["tid"].ToString();
-            ViewBag.Tid = tid;
-            var lstBooks = db.EBooks.OrderByDescending(b => b.Browses).Take(8).ToList();
-            var type = new TypeDictionary();
-            if (tid != "0")
-            {
-                int id = Convert.ToInt32(tid);
-                type = db.TypeDictionaries.Find(id);
-            }
-            ViewBag.Type = type.TypeValue;
-            ViewBag.EBooks = lstBooks;*/
+
 
             List<EBook> HotBooks = new List<EBook>();
             List<EBook> NewBooks = new List<EBook>();
 
             List<ReadRecord> lstRecord = new List<ReadRecord>();
             List<vReadRecord> _lstRecord = new List<vReadRecord>();
-
+            List<TypeDictionary> lstHotType = new List<TypeDictionary>();
 
 
             HotBooks = db.EBooks.OrderByDescending(b => b.Browses).Take(10).ToList();
@@ -43,11 +33,11 @@ namespace QqhrCitizen.Controllers
             {
                 _lstRecord.Add(new vReadRecord(item));
             }
-
+            lstHotType = db.EBooks.OrderByDescending(c => c.Browses).Select(x => x.TypeDictionary).DistinctBy(x => new { x.ID }).ToList();
             ViewBag.HotBooks = HotBooks;
             ViewBag.NewBooks = NewBooks;
             ViewBag.LstRecord = _lstRecord;
-
+            ViewBag.LstHotType = lstHotType;
             return View();
         }
 
@@ -97,7 +87,7 @@ namespace QqhrCitizen.Controllers
             EBook book = new EBook();
             book = db.EBooks.Find(id);
             var path = Server.MapPath("~/Upload/" + book.File.Path);
-            return File(path,book.File.ContentType, Url.Encode(book.File.FileName));
+            return File(path, book.File.ContentType, Url.Encode(book.File.FileName));
         }
         #endregion
 
@@ -108,7 +98,7 @@ namespace QqhrCitizen.Controllers
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
- 
+
         public ActionResult Show(int id)
         {
             List<EBook> LstNewEBook = new List<EBook>();
@@ -161,7 +151,7 @@ namespace QqhrCitizen.Controllers
         {
             //存放word文件的完整路径
             var Ebook = db.EBooks.Find(id);
-            if (Ebook.FileID.ToString()!="null")
+            if (Ebook.FileID.ToString() != "null")
             {
                 var File = db.Files.Find(Ebook.FileID);
                 Ebook.Browses += 1;
@@ -188,9 +178,9 @@ namespace QqhrCitizen.Controllers
             string filepath = Server.MapPath(filePhysicalPath);
             string setfileload = filePhysicalPath + fileName + ".html";
             Directory.CreateDirectory(filepath);
-            d.Save(Server.MapPath(setfileload),SaveFormat.Html);
+            d.Save(Server.MapPath(setfileload), SaveFormat.Html);
             //d.SaveToPdf(Server.MapPath(filePhysicalPath+"1.pdf"));
             return setfileload;
         }
     }
-} 
+}
