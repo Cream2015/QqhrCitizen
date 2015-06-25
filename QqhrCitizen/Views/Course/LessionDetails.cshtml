@@ -28,6 +28,7 @@
                     <div class="contentarea">
                         <!-- region start: 课程信息 -->
                         <div id="d_coursedetail" class="d-coursedetail">
+                            <h2>@lession.Title</h2>
                             <input type="hidden" id="hdCurrentuser" value="@(ViewBag.CurrentUser!=null? @ViewBag.CurrentUser.Username:"")" />
                             <script type="text/javascript">
                                 player("/Lessions/@lession.Path", 600, 400, 1, "start.jpg");
@@ -55,13 +56,15 @@
 </div>
 
 <script>
-    myVideo.currentTime = 10;
-
     window.onbeforeunload = onbeforeunload_handler;
     window.onunload = onunload_handler;
-
+    function onbeforeunload_handler() {
+        var warning = "确认退出?";
+        return warning;
+    }
     function onunload_handler() {
         var user = $("#hdCurrentuser").val();
+        alert(user);
         if (user != null && user != "") {
             $.post("/Course/LearningRecord/@lession.ID", function (data) {
             });

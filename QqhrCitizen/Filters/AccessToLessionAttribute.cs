@@ -9,6 +9,7 @@ namespace QqhrCitizen.Filters
 {
     public class AccessToLessionAttribute : AuthorizeAttribute
     {
+        public static string msg = "";
         protected override bool AuthorizeCore(HttpContextBase httpContext)
         {
             using (var db = new DB())
@@ -19,11 +20,30 @@ namespace QqhrCitizen.Filters
                 else
                     id = Convert.ToInt32(httpContext.Request.Form["id"]);
                 var lession = db.Lessions.Find(id);
+                var course = db.Courses.Find(lession.CourseID);
+
                 if (lession.Course.Authority == Authority.Login)
                 {
                     if (!httpContext.User.Identity.IsAuthenticated)
                     {
+                        msg = "请先登陆在学习该节内容";
                         return false;
+                    }
+                    List<Lession> lessions = db.Lessions.Where(c => c.CourseID == lession.CourseID).OrderBy(c => c.Time).ToList();
+                    for (int i = 0; i < lessions.Count; i++)
+                    {
+                        if (lession.ID == lessions[i].ID)
+                        {
+                            if (i == 0)
+                            {
+                                break;
+                            }
+                            if (!lessions[i - 1].IsPassTest)
+                            {
+                                msg = "请先完成上一节的测试，在学习该节";
+                                return false;
+                            }
+                        }
                     }
                 }
             }
@@ -33,7 +53,7 @@ namespace QqhrCitizen.Filters
 
         protected override void HandleUnauthorizedRequest(AuthorizationContext filterContext)
         {
-            filterContext.Result = new RedirectResult("/Shared/Info?msg=请登录之后再观看");
+            filterContext.Result = new RedirectResult("/Shared/Info?msg=" + msg);
         }
     }
 }

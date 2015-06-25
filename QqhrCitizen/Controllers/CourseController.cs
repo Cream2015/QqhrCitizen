@@ -228,7 +228,7 @@ namespace QqhrCitizen.Controllers
                 record.Time = DateTime.Now;
                 record.UserID = CurrentUser.ID;
                 db.LearningRecords.Add(record);
-                db.SaveChanges();
+                //db.SaveChanges();
             }
             return Content("");
         }
