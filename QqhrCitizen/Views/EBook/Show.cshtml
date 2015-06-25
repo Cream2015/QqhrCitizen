@@ -18,10 +18,7 @@
                     </div>
                     <div class="info">
                         <div class="author">作者：@ebook.Author</div>
-                        <div class="publisher">出版社：</div>
-                        <div class="year">出版时间：</div>
-                        <!--<div class="price">定价：29.00元</div>-->
-                        <div class="isbn">ISBN：</div>
+                        <div class="classification">分类：@ebook.TypeDictionary.TypeValue</div>
                         <div class="readbtn">
                             @if (@ebook.FileID.ToString() != null)
                             {
