@@ -160,7 +160,7 @@ namespace QqhrCitizen.Controllers
             string setfileload = filePhysicalPath + fileName + ".html";
             Directory.CreateDirectory(filepath);
             d.Save(Server.MapPath(setfileload),SaveFormat.Html);
-            d.SaveToPdf(Server.MapPath(filePhysicalPath+"1.pdf"));
+            //d.SaveToPdf(Server.MapPath(filePhysicalPath+"1.pdf"));
             return setfileload;
         }
     }

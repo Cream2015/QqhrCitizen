@@ -3,7 +3,17 @@
     vNews news = ViewBag.News as vNews;
     ViewBag.Title = "新闻详细_齐齐哈尔市民学习网";
 }
-<div id="d_menu" class="d-menu menu-eve"><div id="d_menu_c" class="d-menu-c"><!-- region start: menu --><div id="d_headmenu" class="d-headmenu"><div class="body"><a id="headmenu_default" class="item_selected" href="/News/Index" style="cursor:pointer" target="_parent">资讯首页</a></div></div><!-- region end: menu --></div></div>
+<div id="d_menu" class="d-menu menu-eve">
+    <div id="d_menu_c" class="d-menu-c">
+        <!-- region start: menu -->
+        <div id="d_headmenu" class="d-headmenu">
+            <div class="body">
+                <a id="headmenu_default" class="item_selected" href="/News/Index" style="cursor:pointer" target="_parent">资讯首页</a>
+                <a id="headmenu_discovery" class="item" href="/News/Discovery/0">发现新闻</a>
+             </div>
+        </div><!-- region end: menu -->
+    </div>
+</div>
 <div id="d_bottom" class="d-bottom" style="visibility: hidden; position: fixed;"><div class="d-bottom-c"><div id="d_scrolltop" class="d-scrolltop" style="right: -70px;"><span class="t" onclick="$(document.body).ScrollTo();">顶部</span></div></div></div>
 <div class="d-row" style="padding: 0 0 40px 0">
     <div class="d-row-c">
@@ -22,7 +32,7 @@
                                 <span class="view">浏览次数:<span id="viewCountNum">@news.Browses</span></span>
                             </div>
                             <div class="desc txt-justify">
-                              @Html.Sanitized(@news.Content)
+                                @Html.Sanitized(@news.Content)
                             </div>
                         </div>
                     </div>
