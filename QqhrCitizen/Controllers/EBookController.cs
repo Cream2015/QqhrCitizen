@@ -101,6 +101,16 @@ namespace QqhrCitizen.Controllers
 
         public ActionResult Show(int id)
         {
+            ReadRecord recored = new ReadRecord();
+            if (CurrentUser != null)
+            {
+                recored.EBookID = id;
+                recored.UserID = CurrentUser.ID;
+                recored.Time = DateTime.Now;
+                db.ReadRecords.Add(recored);
+            }
+
+
             List<EBook> LstNewEBook = new List<EBook>();
             List<TypeDictionary> lstType = new List<TypeDictionary>();
             List<ReadRecord> lstRecord = new List<ReadRecord>();
@@ -199,6 +209,6 @@ namespace QqhrCitizen.Controllers
             //d.SaveToPdf(Server.MapPath(filePhysicalPath+"1.pdf"));
             return setfileload;
         }
-        
+
     }
 }
