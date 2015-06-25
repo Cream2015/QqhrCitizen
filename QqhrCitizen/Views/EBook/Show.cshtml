@@ -3,7 +3,18 @@
     EBook ebook = ViewBag.Ebook as EBook;
     ViewBag.Title = "图书简介_齐齐哈尔市民学习网";
 }
-<div id="d_menu" class="d-menu menu-bok"><div id="d_menu_c" class="d-menu-c"><!-- region start: menu --><div id="d_headmenu" class="d-headmenu"><div class="body"><a class="item" href="/EBook/Index" id="headmenu_default">图书首页</a><a class="item" href="/Book/Discovery/0" id="headmenu_discovery">发现图书</a><!--<a id="headmenu_bookshelf" class="item" href="/book/bookshelf">我的藏书</a>--></div></div><!-- region end: menu --></div></div>
+<div id="d_menu" class="d-menu menu-bok">
+    <div id="d_menu_c" class="d-menu-c">
+        <!-- region start: menu -->
+        <div id="d_headmenu" class="d-headmenu">
+            <div class="body">
+                <a class="item" href="/EBook/Index" id="headmenu_default">图书首页</a>
+                <a class="item" href="/EBook/Discovery/0" id="headmenu_discovery">发现图书</a>
+                <!--<a id="headmenu_bookshelf" class="item" href="/book/bookshelf">我的藏书</a>-->
+            </div>
+        </div><!-- region end: menu -->
+    </div>
+</div>
 <div id="d_bottom" class="d-bottom" style="visibility: hidden; position: relative;"><div class="d-bottom-c"><div id="d_scrolltop" class="d-scrolltop" style="right: -70px;"><span class="t" onclick="$(document.body).ScrollTo();">顶部</span></div></div></div>
 <div class="d-row" style="padding: 0 0 40px 0;">
     <div class="d-row-c">
@@ -131,7 +142,13 @@
                 <div id="d_booktagrelated" class="d-booktagrelated">
                     <div class="head">相关分类</div>
                     <div class="body">
-
+                        @foreach (var item in ViewBag.LstType as List<TypeDictionary>)
+                        {
+                            <span class="item">
+                                <a href="/EBook/Dis/?parms=D374021AC4C0AED2">哲学</a>
+                                <span></span>
+                            </span>
+                        }
                     </div>
                 </div><!-- region end: 相关标签 -->
                 <!-- region start: 相关推荐 -->
