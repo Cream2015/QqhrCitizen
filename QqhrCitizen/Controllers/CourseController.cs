@@ -146,15 +146,16 @@ namespace QqhrCitizen.Controllers
         /// <returns></returns>
         [ValidateSID]
         [HttpPost]
-        public ActionResult AddNote(string content)
+        public ActionResult AddNote(string content, int lid)
         {
             Note note = new Note();
             note.Time = DateTime.Now;
             note.UserID = CurrentUser.ID;
             note.Content = content;
+            note.LessionID = lid;
             db.Notes.Add(note);
             db.SaveChanges();
-            return Json(note);
+            return Json(new vNote(note));
         }
 
         #region 播放课时视屏

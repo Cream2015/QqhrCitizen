@@ -29,7 +29,7 @@ namespace QqhrCitizen.Models.ViewModel
             this.User = model.User;
             this.Lession = model.Lession;
             this.Time = model.Time;
-            this.Content = QqhrCitizen.Helpers.HtmlFilter.Instance.SanitizeHtml(Content);
+            this.Content = QqhrCitizen.Helpers.HtmlFilter.Instance.SanitizeHtml(model.Content);
         }
     }
 }
