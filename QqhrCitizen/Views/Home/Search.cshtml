@@ -4,41 +4,64 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<div class="container wrap-cont">
-    <p>
-        当前位置：搜索/<a href="/Home/Search?key=@ViewBag.Key" class="pos">@ViewBag.Key</a>
-    </p>
-    <div class="block">
-        <h2>新闻</h2>
-        <div>
-            @foreach (var item in ViewBag.LstNews as List<News>)
-            {
-                <div>[@item.Time.ToString("yyyy-MM-dd")]  <a href="/News/Show/@item.ID">@item.Title</a>  </div>
-            }
-        </div>
-        <div><a href="/Home/SearchResultMore?type=news&key=@ViewBag.Key">查看更多</a></div>
-    </div>
 
-    <div class="block">
-        <h2>课程</h2>
-        <div>
-            @foreach (var item in ViewBag.LstCourse as List<Course>)
-            {
-                <div>[@item.Time.ToString("yyyy-MM-dd")] <a href="/Course/Show/@item.ID">@item.Title</a> </div>
-            }
+<div id="d_main" class="d-main" style="min-width: 1000px;">
+    <div class="container">
+        <div id="d_bottom" class="d-bottom" style="visibility: hidden; position: relative;">
+            <div class="d-bottom-c">
+                <div id="d_scrolltop" class="d-scrolltop" style="right: -70px;">
+                    <span class="t" onclick="$(document.body).ScrollTo();">顶部</span>
+                </div>
+            </div>
         </div>
-        <div><a href="/Home/SearchResultMore?type=course&key=@ViewBag.Key">查看更多</a></div>
-    </div>
+        <div class="d-row" style="padding: 20px 0 0 0;">
+            <div class="d-row-c">
+                <div class="d-col-2-8">
+                    <div class="contentarea">
+                        <div class="d_searchresultcourse">
+                            <div class="head">新闻</div>
+                            <div>
+                                @foreach (var item in ViewBag.LstNews as List<News>)
+                                {
+                                    <div>[@item.Time.ToString("yyyy-MM-dd")]  <a href="/News/Show/@item.ID">@item.Title</a>  </div>
+                                }
+                            </div>
+                            <div><a href="/Home/SearchResultMore?type=news&key=@ViewBag.Key">查看更多</a></div>
+                        </div>
+                        <hr style="border: none; height: 1px; background-color: #ccc; margin: 20px 25px 0 0;">
 
-    <div class="block">
-        <h2>电子书</h2>
-        <div>
-            @foreach (var item in ViewBag.LstEBook as List<EBook>)
-            {
-                <div>[@item.Time.ToString("yyyy-MM-dd")]  <a href="/EBook/Show/@item.ID">@item.Title</a></div>
-            }
+                        <div class="d_searchresultcourse">
+                            <div class="head">课程</div>
+                            <div>
+                                @foreach (var item in ViewBag.LstCourse as List<Course>)
+                                {
+                                    <div>[@item.Time.ToString("yyyy-MM-dd")] <a href="/Course/Show/@item.ID">@item.Title</a> </div>
+                                }
+                            </div>
+                            <div><a href="/Home/SearchResultMore?type=course&key=@ViewBag.Key">查看更多</a></div>
+                        </div>
+
+                        <hr style="border: none; height: 1px; background-color: #ccc; margin: 20px 25px 0 0;">
+                        <div class="d_searchresultcourse">
+                            <div class="head">电子书</div>
+                            <div>
+                                @foreach (var item in ViewBag.LstEBook as List<EBook>)
+                                {
+                                    <div>[@item.Time.ToString("yyyy-MM-dd")]  <a href="/EBook/Show/@item.ID">@item.Title</a></div>
+                                }
+                            </div>
+                            <div><a href="/Home/SearchResultMore?type=ebook&key=@ViewBag.Key">查看更多</a></div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="d-col-2-4">
+                    <div class="contentarea">
+                    </div>
+
+                </div>
+                <div class="clear"></div>
+            </div>
         </div>
-        <div><a href="/Home/SearchResultMore?type=ebook&key=@ViewBag.Key">查看更多</a></div>
     </div>
-
 </div>

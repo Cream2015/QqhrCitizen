@@ -1,23 +1,39 @@
-﻿
-@{
+﻿@{
     ViewBag.Title = "搜索";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<div class="container" style="min-height:500px;">
-    <p>
-        当前位置：搜索/@ViewBag.Type/<a href="/Home/SearchResultMore?type=news&key=@ViewBag.Key" class="pos">@ViewBag.Key</a>
-    </p>
-    <div class="block main">
-        <input type="hidden" value="@ViewBag.Type" id="hdType"/>
-        <input type="hidden" value="@ViewBag.Key" id="hdKey" />
-        <div class="result">
-
+<div id="d_main" class="d-main" style="min-width: 1000px;">
+    <div class="container">
+        <div id="d_bottom" class="d-bottom" style="visibility: hidden; position: relative;">
+            <div class="d-bottom-c">
+                <div id="d_scrolltop" class="d-scrolltop" style="right: -70px;">
+                    <span class="t" onclick="$(document.body).ScrollTo();">顶部</span>
+                </div>
+            </div>
         </div>
-        <div><p class="loadMore">下拉加载更多</p></div>
+        <div class="d-row" style="padding: 20px 0 0 0;">
+            <div class="d-row-c">
+                <div class="d-col-2-8">
+                    <div class="contentarea">
+
+                        <input type="hidden" value="@ViewBag.Type" id="hdType" />
+                        <input type="hidden" value="@ViewBag.Key" id="hdKey" />
+                        <div class="result">
+
+                        </div>
+                        <div><p class="loadMore">下拉加载更多</p></div>
+                    </div>
+                </div>
+                <div class="d-col-2-4">
+
+                </div>
+                <div class="clear"></div>
+            </div>
+        </div>
     </div>
-    <div class="clr"></div>
 </div>
+
 
 
 

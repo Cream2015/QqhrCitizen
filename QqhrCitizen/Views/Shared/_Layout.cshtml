@@ -19,12 +19,12 @@
     <!--[if lt IE 8]><script src="http://res.shlll.net/vendor/ie7-2.1-beta4/src/IE8.js"></script><![endif]-->
     <script src="~/Scripts/modernizr-2.6.2.min.js"></script>
     <script src="~/Scripts//spin.min.js"></script>
-    
+
     <!--<script src="http://res.shlll.net/vendor/ifvisible/src/ifvisible.js"></script>-->
     <script src="~/Scripts/km_adtran.js"></script>
     <script src="~/Scripts/home.default_v1_01s.js"></script>
     <script src="~/Scripts/moment.js"></script>
-    
+
     <script src="~/Scripts/qqhrcitizen.base.js"></script>
     <script src="~/Scripts/citizen.js"></script>
     <style>
@@ -85,9 +85,10 @@
                 <div id="d_header_c" class="d-header-c">
                     <div id="d_headerdefault" class="d-headerdefault">
                         <a class="d-logo logo-cou" href="./Home/index" target="_parent"><div class="ver">测试版</div></a><div class="d-search">
-                            @using (Ajax.BeginForm("Search", "Home", null, new AjaxOptions { HttpMethod = "post", UpdateTargetId = "SearchForm", OnBegin = "ChickSearch" }))
+                            @using (Html.BeginForm("Search", "Home", FormMethod.Post, new { id = "frmSearch" }))
                             {
-                                <input id="txtSearch" maxlength="30" name="Search" onkeydown="if(event.keyCode==13){dosearch();}" type="text" value="" placeholder="课程名称、标签" autocomplete="off" autocorrect="off" autocapitalize="off">
+                                @Html.AntiForgerySID()
+                                <input id="txtSearch" maxlength="30" name="key" onkeydown="if(event.keyCode==13){dosearch();}" type="text" value="" placeholder="课程名称、标签" autocomplete="off" autocorrect="off" autocapitalize="off">
                                 <span id="icon-search" class="icon-search" onclick="dosearch();"></span>
                             }
                         </div>
