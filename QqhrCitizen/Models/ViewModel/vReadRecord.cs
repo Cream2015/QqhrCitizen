@@ -27,6 +27,7 @@ namespace QqhrCitizen.Models.ViewModel
         {
             this.ID = model.ID;
             this.EBookID = model.EBookID;
+            this.EBook = model.EBook;
             this.UserID = model.UserID;
             this.User = model.User;
             this.Time = Helpers.Time.ToTimeTip(model.Time);

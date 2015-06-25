@@ -127,7 +127,7 @@ namespace QqhrCitizen.Controllers
             {
                 _lstRecord.Add(new vReadRecord(item));
             }
-            ViewBag.LstRecord = lstRecord;
+            ViewBag.LstRecord = _lstRecord;
             ViewBag.LstNewEBook = LstNewEBook;
             ViewBag.Ebook = Ebook;
             ViewBag.LstType = lstType;
