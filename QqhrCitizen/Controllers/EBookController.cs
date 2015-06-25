@@ -27,7 +27,7 @@ namespace QqhrCitizen.Controllers
 
             HotBooks = db.EBooks.OrderByDescending(b => b.Browses).Take(10).ToList();
             NewBooks = db.EBooks.OrderByDescending(b => b.Time).Take(12).ToList();
-            lstRecord = db.ReadRecords.OrderByDescending(r => r.Time).Take(12).ToList();
+            lstRecord = db.ReadRecords.OrderByDescending(r => r.Time).Take(8).ToList();
 
             foreach (var item in lstRecord)
             {
@@ -115,14 +115,16 @@ namespace QqhrCitizen.Controllers
             List<TypeDictionary> lstType = new List<TypeDictionary>();
             List<ReadRecord> lstRecord = new List<ReadRecord>();
             List<vReadRecord> _lstRecord = new List<vReadRecord>();
+            List<EBook> lstInterestBook = new List<EBook>();
+
 
             var Ebook = db.EBooks.Find(id);
             Ebook.Browses += 1;
             db.SaveChanges();
             LstNewEBook = db.EBooks.OrderByDescending(c => c.Time).Take(12).ToList();
             lstType = db.TypeDictionaries.Where(tp => tp.FatherID == Ebook.TypeDictionary.FatherID && tp.ID != Ebook.TypeDictionary.ID).ToList();
-            lstRecord = db.ReadRecords.Where(r=>r.EBookID==id).OrderByDescending(r => r.Time).Take(12).ToList();
-
+            lstRecord = db.ReadRecords.Where(r=>r.EBookID==id).OrderByDescending(r => r.Time).Take(8).ToList();
+            lstInterestBook = db.EBooks.Where(e => e.EBookTypeID == Ebook.EBookTypeID && e.ID!=Ebook.ID).OrderByDescending(e => e.Browses).Take(5).ToList();
             foreach (var item in lstRecord)
             {
                 _lstRecord.Add(new vReadRecord(item));
@@ -131,6 +133,7 @@ namespace QqhrCitizen.Controllers
             ViewBag.LstNewEBook = LstNewEBook;
             ViewBag.Ebook = Ebook;
             ViewBag.LstType = lstType;
+            ViewBag.LstInterestBook = lstInterestBook;
             return View();
         }
         #endregion

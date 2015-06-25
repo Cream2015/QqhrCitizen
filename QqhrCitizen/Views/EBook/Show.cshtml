@@ -86,7 +86,7 @@
                 <div id="d_booklike" class="d-booklike">
                     <div class="head">您可能喜欢的图书</div>
                     <div class="body" id="divLike">
-                        @foreach (var item in ViewBag.LstNewEBook as List<EBook>)
+                        @foreach (var item in ViewBag.LstInterestBook as List<EBook>)
                         {
                             <div class="item">
                                 <a class="cover" href="/EBook/Show/@item.ID" target="_parent" title="@item.Title" style="width:68px;height:96px;">
