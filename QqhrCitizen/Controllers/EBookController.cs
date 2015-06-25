@@ -5,8 +5,6 @@ using System.Web;
 using System.Web.Mvc;
 using QqhrCitizen.Models;
 using QqhrCitizen.Models.ViewModel;
-using Word = Microsoft.Office.Interop.Word;
-using Microsoft.Office.Interop.Word;
 using Aspose.Words;
 using System.IO;
 

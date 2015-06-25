@@ -165,7 +165,7 @@
     }*@
 
     $(function () {
-        $(window).bind('beforeunload', function () {
+        $(window).unbind().bind('beforeunload', function () {
             if (document.body.clientWidth - event.clientX < 21 || event.altKey || event.ctrlKey) {
                 alert("close");
             } else {
@@ -174,7 +174,7 @@
                 return false;
             }
         })
-        $(window).bind('onunload', function () {
+        $(window).unbind().bind('onunload', function () {
             var user = $("#hdCurrentuser").val();
             alert(user);
             if (user != null && user != "") {
