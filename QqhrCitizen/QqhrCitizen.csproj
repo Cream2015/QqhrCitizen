@@ -164,8 +164,10 @@
     <Content Include="Images\board-bodybg.png" />
     <Content Include="Images\hot.gif" />
     <Content Include="Images\icon-arrow-round.png" />
+    <Content Include="Images\icon-courserecommendbyday.png" />
     <Content Include="Images\icon-search.png" />
     <Content Include="Images\icon-title.jpg" />
+    <Content Include="Images\icon-turndot.png" />
     <Content Include="Images\lab.jpg" />
     <Content Include="Images\logo.psd" />
     <Content Include="Images\togbg.gif" />
@@ -394,7 +396,6 @@
     <Folder Include="App_Data\" />
     <Folder Include="Content\" />
     <Folder Include="Lessions\" />
-    <Folder Include="NewsImages\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
