@@ -143,14 +143,26 @@ namespace QqhrCitizen.Controllers
             ViewBag.Types = types;
             return View();
         }
-        public ActionResult ReadBook()
+        public ActionResult ReadBook(int id)
         {
             //存放word文件的完整路径
+            var Ebook = db.EBooks.Find(id);
+           /* if (Ebook.FileID.ToString()!="null")
+            {
+                var File = db.Files.Find(Ebook.FileID);
+                Ebook.Browses += 1;
+                db.SaveChanges();
+                //ViewBag.FileLoad = File.Path;
+            }*/
+            ViewBag.Ebook = Ebook;
+            ViewBag.FileLoad = "/Upload/1/1.html";
+            return View();
+        }
+        public void WordUpload()
+        {
             string wordPath = Server.MapPath("/Upload/1.doc");
             string fileName = "1";
-            //存放html文件的完整路径
-            ViewBag.html=WordToHtml(wordPath, fileName);
-            return View();
+            WordToHtml(wordPath, fileName);
         }
         private string WordToHtml(string wordFileName, string fileName)
         {
