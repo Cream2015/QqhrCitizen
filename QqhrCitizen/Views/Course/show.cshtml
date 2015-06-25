@@ -40,11 +40,14 @@
                             </div>
                             <div class="info">
                                 <div class="title">@course.Title</div>
-                                <div class="stat">
-                                    <span id="info1">学习人次：@course.Browses</span>
+                                <div class="owner">
+                                    <span class="star star30" id="star"></span>
                                 </div>
                                 <div class="stat">
                                     <span id="info1">分类：@course.TypeDictionary.TypeValue </span>
+                                </div>
+                                <div class="stat">
+                                    <span id="info1">学习人次：@course.Browses</span>
                                 </div>
                             </div>
                             <div class="clear"></div>
@@ -56,9 +59,6 @@
                                 <div class="area txt-justify">
                                     @course.Description;
                                 </div>
-                                <!--<div class="bot">
-                                    <a href="javascript:;" onclick="sub_showhidepart('d_courseintro',168)">显示全部</a>
-                                </div>-->
                             </div>
                         </div><!-- region end: 课程简介 --><!-- region start: 课件列表 -->
                         <hr style="border: none; height: 1px; background-color: #ccc; margin: 20px 25px 0 0;">
@@ -105,6 +105,7 @@
                                         <span>暂不相关信息</span>
                                     }
 
+
                                 </div>
                             </div>
                         </div>
@@ -117,7 +118,7 @@
                 <div class="d-col-2-4">
                     <div class="contentarea">
                         <div id="Record" class="d-courseaction well">
-                            @if (lessions.Count>0)
+                            @if (lessions.Count > 0)
                             {
                                 <p> 开始学习课程：@lessions[0].Title</p>
                                 <p style="text-align: center; border-top: 1px solid #ccc; padding-top: 20px;">
@@ -125,7 +126,6 @@
                                 </p>
                             }
                         </div>
-                        <!-- region start: 学习动态 -->
                         <div id="d_learningactivitybycourse" class="d-learningactivitybycourse">
                             <div class="head">学习动态</div>
                             <div class="body">
