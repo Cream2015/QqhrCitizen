@@ -5,6 +5,10 @@ using System.Web;
 using System.Web.Mvc;
 using QqhrCitizen.Models;
 using QqhrCitizen.Models.ViewModel;
+using Word = Microsoft.Office.Interop.Word;
+using Microsoft.Office.Interop.Word;
+using Aspose.Words;
+using System.IO;
 
 namespace QqhrCitizen.Controllers
 {
@@ -140,6 +144,26 @@ namespace QqhrCitizen.Controllers
 
             ViewBag.Types = types;
             return View();
+        }
+        public ActionResult ReadBook()
+        {
+            //存放word文件的完整路径
+            string wordPath = Server.MapPath("/Upload/1.doc");
+            string fileName = "1";
+            //存放html文件的完整路径
+             ViewBag.html=WordToHtml(wordPath, fileName);
+            return View();
+        }
+        private string WordToHtml(string wordFileName, string fileName)
+        {
+            Aspose.Words.Document d = new Aspose.Words.Document(wordFileName);
+            string filePhysicalPath = "/Upload/" + fileName + "/";
+            string filepath = Server.MapPath(filePhysicalPath);
+            string setfileload = filePhysicalPath + fileName + ".html";
+            Directory.CreateDirectory(filepath);
+            
+            d.Save("D:/ASP_MVC/QqhrCitizen/QqhrCitizen" + setfileload,SaveFormat.Html);
+            return setfileload;
         }
     }
 } 
