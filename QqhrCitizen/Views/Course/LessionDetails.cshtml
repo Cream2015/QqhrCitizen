@@ -70,12 +70,14 @@
                                 课后问题
                             </div>
                             <div class="body">
+                               
                                 @if (questions.Count() == 0)
                                 {
                                     <div>暂无课后问题</div>
                                 }
                                 else
                                 {
+                                    <input type="hidden" id="questionCount" value="@questions.Count" />
                                     for (int i = 0; i < questions.Count(); i++)
                                     {
                                         <div class="question">
