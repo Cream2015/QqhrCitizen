@@ -11,6 +11,7 @@
     <div id="d_menu_c" class="d-menu-c">
         <!-- region start: menu -->
         <div id="d_headmenu" class="d-headmenu">
+
             <div class="body">
                 <a id="headmenu_default" class="item" href="/Course/Index" target="_parent">课程首页</a>
                 <a id="headmenu_discovery" class="item" href="/Course/Discovery/0" target="_parent">发现课程</a>
@@ -27,6 +28,7 @@
                     <div class="contentarea">
                         <!-- region start: 课程信息 -->
                         <div id="d_coursedetail" class="d-coursedetail">
+                            <input type="hidden" id="hdCurrentuser" value="@(ViewBag.CurrentUser!=null? @ViewBag.CurrentUser.Username:"")" />
                             <script type="text/javascript">
                                 player("/Lessions/@lession.Path", 600, 400, 1, "start.jpg");
                             </script>
@@ -51,3 +53,18 @@
         </div>
     </div>
 </div>
+
+<script>
+    myVideo.currentTime = 10;
+
+    window.onbeforeunload = onbeforeunload_handler;
+    window.onunload = onunload_handler;
+
+    function onunload_handler() {
+        var user = $("#hdCurrentuser").val();
+        if (user != null && user != "") {
+            $.post("/Course/LearningRecord/@lession.ID", function (data) {
+            });
+        }
+    }
+</script>

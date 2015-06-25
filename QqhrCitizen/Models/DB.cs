@@ -6,7 +6,7 @@ using System.Web;
 
 namespace QqhrCitizen.Models
 {
-    public class DB:DbContext
+    public class DB : DbContext
     {
         public DB() : base("sqlserverdb") { }
         public DbSet<User> Users { get; set; }
@@ -23,6 +23,12 @@ namespace QqhrCitizen.Models
         public DbSet<Live> Lives { get; set; }
 
         public DbSet<LessionScore> LessionScore { set; get; }
+
+        public DbSet<LearningRecord> LearningRecords { set; get; }
+        public DbSet<StudyRecord> StudyRecord { set; get; }
+
+        public DbSet<ReadRecord> ReadRecords { set; get; }
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);

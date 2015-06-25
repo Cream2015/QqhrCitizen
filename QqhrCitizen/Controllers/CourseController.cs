@@ -62,7 +62,7 @@ namespace QqhrCitizen.Controllers
                 _lstCourse.Add(new vCourse(item));
             }
 
-            return Json(_lstCourse,JsonRequestBehavior.AllowGet);
+            return Json(_lstCourse, JsonRequestBehavior.AllowGet);
         }
         #endregion
 
@@ -82,7 +82,7 @@ namespace QqhrCitizen.Controllers
             db.SaveChanges();
 
             //课程下面的课时
-            var listLessions = db.Lessions.Where(lession => lession.CourseID == id).OrderBy(l=>l.Time).ToList();
+            var listLessions = db.Lessions.Where(lession => lession.CourseID == id).OrderBy(l => l.Time).ToList();
             foreach (var item in listLessions)
             {
                 vLession vlession = new vLession(item);
@@ -112,7 +112,7 @@ namespace QqhrCitizen.Controllers
             var lessions = new List<Lession>();
             var vLessions = new List<vLession>();
             Lession Lession = db.Lessions.Find(id);
-            Lession.Browses = Lession.Browses+1;
+            Lession.Browses = Lession.Browses + 1;
             db.SaveChanges();
             ViewBag.Lession = Lession;
             var listNote = db.Notes.Where(note => note.LessionID == Lession.ID).OrderByDescending(n => n.Time).ToList();
@@ -211,6 +211,26 @@ namespace QqhrCitizen.Controllers
 
             ViewBag.Types = types;
             return View();
+        }
+
+
+        /// <summary>
+        /// 关闭浏览器记录学习进度
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public ActionResult LearningRecord(int id)
+        {
+            if (User.Identity.IsAuthenticated)
+            {
+                LearningRecord record = new Models.LearningRecord();
+                record.LessionInt = id;
+                record.Time = DateTime.Now;
+                record.UserID = CurrentUser.ID;
+                db.LearningRecords.Add(record);
+                db.SaveChanges();
+            }
+            return Content("");
         }
     }
 }
