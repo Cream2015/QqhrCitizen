@@ -3,7 +3,7 @@
 @{
     Course course = ViewBag.Course as Course;
     List<vLession> lessions = ViewBag.Lessions as List<vLession>;
-    List<Lession> lstLession = ViewBag.lstCourse as List<Lession>;
+    List<Course> lstLession = ViewBag.LstCourse as List<Course>;
     ViewBag.Title = "课程简介_齐齐哈尔市民学习网";
 }
 <div id="d_menu" class="d-menu menu-cou">
@@ -71,7 +71,8 @@
                                 }
                                 <div class="clear"></div>
                             </div>
-                        </div><!-- region end: 课件列表 -->
+                        </div>
+                        <!-- region end: 课件列表 -->
                         <!-- region start: 课程附件 -->
                         <!-- region end: 课程附件 -->
                         <!-- region start: 系列课程 --><!-- region end: 系列课程 -->
@@ -85,14 +86,14 @@
                                     {
                                         foreach (var item in lstLession)
                                         {
-                                            <div class="item">
-                                                <div class="title">
-                                                    <a href="/Course/Show/@item.ID" target="_blank">@item.Title</a>
-                                                </div>
-                                                <span class="signed">@item.Browses</span>
-                                                <a class="cover" href="javascript:learnLession(@item.ID)" target="_blank">
-                                                    <img class="imgCoursePicM" src="/Course/ShowPicture/@item.ID">
-                                                </a>
+                                             <div class="item">
+                                              <div class="title">
+                                                 <a href="/Course/Show/@item.ID" target="_blank">@item.Title</a>
+                                              </div>
+                                              <span class="signed">@item.Browses</span>
+                                                 <a class="cover" href="/Course/Show/@item.ID" target="_blank">
+                                                     <img class="imgCoursePicM" src="/Course/ShowPicture/@item.ID" title="@item.Title">
+                                                 </a>
                                             </div>
                                         }
                                     }
@@ -106,9 +107,26 @@
                             </div>
                         </div>
                     </div>
-                    <!-- region end: 大家还喜欢的课程 -->
+
                     <hr style="border: none; height: 1px; background-color: #ccc; margin: 20px 25px 0 0;">
-                    <div id="d_coursecomment" class="d-coursecomment">
+                    <div class="d-coursecomment">
+                        <div class="head">评论</div>
+                        <!-- 多说评论框 start -->
+                        <div class="ds-thread" data-thread-key="@course.CourseTypeID+@course.ID" data-title="@course.Title" data-url="@HttpContext.Current.Request.Url.ToString()"></div>
+                        <!-- 多说评论框 end -->
+                        <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+                        <script type="text/javascript">
+                            var duoshuoQuery = { short_name: "qqhrcitizen" };
+                            (function () {
+                                var ds = document.createElement('script');
+                                ds.type = 'text/javascript'; ds.async = true;
+                                ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+                                ds.charset = 'UTF-8';
+                                (document.getElementsByTagName('head')[0]
+                                    || document.getElementsByTagName('body')[0]).appendChild(ds);
+                            })();
+                        </script>
+                        <!-- 多说公共JS代码 end -->
                     </div>
                 </div>
                 <div class="d-col-2-4">

@@ -127,6 +127,7 @@ namespace QqhrCitizen.Controllers
             ViewBag.Course = Course;
             ViewBag.lstCourse = lstCourse;
             ViewBag.LstRecord = LstRecord;
+            ViewBag.LstCourse = lstCourse;
             return View();
         }
 
