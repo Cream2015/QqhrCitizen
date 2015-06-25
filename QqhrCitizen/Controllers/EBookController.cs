@@ -151,7 +151,7 @@ namespace QqhrCitizen.Controllers
             string wordPath = Server.MapPath("/Upload/1.doc");
             string fileName = "1";
             //存放html文件的完整路径
-             ViewBag.html=WordToHtml(wordPath, fileName);
+            ViewBag.html=WordToHtml(wordPath, fileName);
             return View();
         }
         private string WordToHtml(string wordFileName, string fileName)
