@@ -65,7 +65,7 @@
                                 @foreach (var item in lessions)
                                 {
                                     <div class="item" id="Ware_908">
-                                        <a class="name lession" target="_blank" href="javascript:learnLession(@item.ID)" title="@item.Title">@item.Title</a>
+                                        <a class="name lession" target="_blank" href="/Course/LessionDetails/@item.ID" title="@item.Title">@item.Title</a>
                                         <span class="hour"></span><span class="sign">@item.Browses 人学过</span>
                                     </div>
                                 }

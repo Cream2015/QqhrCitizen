@@ -286,8 +286,8 @@ function learnLession(data) {
     var authority = $("#hdPlayAuthority").val();
     var user = $("#hdCurrentuser").val();
     if (authority == '1' && user == '') {
-        CastMsg("该视屏需要登录之后查看！");
+        CastMsg("该视频需要登录之后查看！");
         return false;
     }
-    window.location.href = "/Course/LessionDetails/" + data;
+    window.location.href = "/Course/BeginCourse/" + data;
 }
