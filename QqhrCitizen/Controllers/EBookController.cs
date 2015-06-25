@@ -102,16 +102,19 @@ namespace QqhrCitizen.Controllers
         public ActionResult Show(int id)
         {
             List<EBook> LstNewEBook = new List<EBook>();
-            List<vLession> lessions = new List<vLession>();
+            List<TypeDictionary> lstType = new List<TypeDictionary>();
             var Ebook = db.EBooks.Find(id);
             Ebook.Browses += 1;
             db.SaveChanges();
             LstNewEBook = db.EBooks.OrderByDescending(c => c.Time).Take(12).ToList();
+            lstType = db.TypeDictionaries.Where(tp => tp.FatherID == Ebook.TypeDictionary.FatherID && tp.ID != Ebook.TypeDictionary.ID).ToList();
             ViewBag.LstNewEBook = LstNewEBook;
             ViewBag.Ebook = Ebook;
+            ViewBag.LstType = lstType;
             return View();
         }
         #endregion
+
         #region 图书截图
         /// <summary>
         /// 图书截图

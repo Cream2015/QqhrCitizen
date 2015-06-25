@@ -20,13 +20,13 @@
                         <div class="author">作者：@ebook.Author</div>
                         <div class="classification">分类：@ebook.TypeDictionary.TypeValue</div>
                         <div class="readbtn">
-                            @if (@ebook.FileID.ToString() != "")
+                            @if (@ebook.FileID.ToString() != null)
                             {
-                                <a href="/EBook/ReadBook/@ebook.ID" class="btn btn-small btn-orange" target="_blank">在线预览</a>
+                                <a href="/EBook/ReadBook/@ebook.ID" class="btn btn-small btn-orange" target="_blank"></a>
                             }
                             else
                             {
-                                <span class="btn btn-small btn-orange">暂时无法在线阅读</span> 
+                                <span class="btn btn-small btn-orange">暂时无法在线阅读</span>
                             }
                             <br>
                         </div>
@@ -44,22 +44,15 @@
                             <button type="button" id="btnIR" style="display: none;" class="btn btn-small">在读</button>
                             <button type="button" id="btnHR" style="display: none;" class="btn btn-small">读过</button>
                         </div>
-                        <div class="l">
-                            <div id="pushStar" class="star-comment" style="margin-top:5px;">
-                                <span class="txt">评价：</span>
-                                <span class="star star" data-km-star=""></span>
-                                <span class="comment">&nbsp;</span>
-                                <input type="hidden" name="Level" value="">
-                            </div>
-                        </div>
+
                         <div class="r">
                             <span style="display: none;" id="spanAddToList">
                                 <a href="#">添加到藏书单</a>
                             </span>
-                           
+
                             <!--分享-->
                             <span class="dropdown">
-                               
+
                             </span>
                         </div>
                         <div class="clear"></div>
@@ -85,7 +78,7 @@
                             <div class="item">
                                 <a class="cover" href="/EBook/Show/@item.ID" target="_parent" title="@item.Title" style="width:68px;height:96px;">
                                     <img style="width:106px;height:158px;" src="/Ebook/ShowPicture/@item.ID" data-echo=" " onerror="javascript:this.onerror=null;this.src='/Ebook/ShowPicture/@item.ID'">
-                                </a>                     
+                                </a>
                                 <div class="title trim">
                                     <a title="@item.Title" href="/EBook/Show/@item.ID" target="_parent">@item.Title</a>
                                 </div>
@@ -106,7 +99,8 @@
                         <div class="item">
                             <div class="title trim">评论标题</div>
                             <div class="name trim">
-                            <a href="#">评论内容 </a></div>
+                                <a href="#">评论内容 </a>
+                            </div>
                             <div class="review txt-justify">
                                 <pre class="preComment">评论内容</pre>
                             </div>
@@ -133,23 +127,10 @@
             </div>
         </div><div class="d-col-2-4">
             <div class="contentarea">
-                <!-- region start: ad1 -->
-                <div id="d_ad_book_bookdetail_1" class="d-ad-323x264" style="padding: 20px 0 0 0;" data-km-url="/Book/AdInBookDetail">
-                    <div class="container">
-                        <a href="/Home/Index" target="_blank" rel="nofollow">
-                        </a>
-                    </div>
-                </div>
-                <!-- region end: ad1 --><!-- region start: 相关标签 -->
+                <!-- region start: 相关标签 -->
                 <div id="d_booktagrelated" class="d-booktagrelated">
-                    <div class="head">相关标签</div><div class="body">
-                        <span class="item">
-                            <a href="/Book/Find/?parms=D374021AC4C0AED2">哲学</a>
-                            <span></span>
-                        </span>
-                        <span class="item">
-                            <a href="/Book/Find/?parms=7BBEEEC2B112DB71">心理学</a><span></span>
-                        </span>
+                    <div class="head">相关分类</div>
+                    <div class="body">
 
                     </div>
                 </div><!-- region end: 相关标签 -->
