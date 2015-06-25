@@ -16,17 +16,12 @@ namespace QqhrCitizen.Controllers
         /// <returns></returns>
         public ActionResult Index()
         {
-            /*string tid =HttpContext.Request.QueryString["tid"].ToString();*/
+           
             List<News> lstNews = new List<News>();
             lstNews = db.News.OrderByDescending(n => n.Browses).ThenByDescending(n => n.Time).Take(8).ToList();
-            /*ViewBag.Tid = tid;
-           var type = new TypeDictionary();
-           if (tid != "0")
-           {
-               int id = Convert.ToInt32(tid);
-               type = db.TypeDictionaries.Find(id);
-           }
-           ViewBag.Type = type.TypeValue;*/
+
+            
+           
             ViewBag.LstNews = lstNews;
             return View();
         }

@@ -25,7 +25,8 @@ namespace QqhrCitizen.Models
         public DbSet<LessionScore> LessionScore { set; get; }
 
         public DbSet<LearningRecord> LearningRecords { set; get; }
-        public DbSet<StudyRecord> StudyRecord { set; get; }
+
+        public DbSet<StudyRecord> StudyRecords { set; get; }
 
         public DbSet<ReadRecord> ReadRecords { set; get; }
 

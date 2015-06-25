@@ -20,16 +20,26 @@ namespace QqhrCitizen.Controllers
             List<vCourse> _LstNewCourse = new List<vCourse>();
             List<TypeDictionary> LstType = new List<TypeDictionary>();
 
+            List<StudyRecord> records = new List<StudyRecord>();
+            List<vStudyRecord> LstRecord = new List<vStudyRecord>();
+            records = db.StudyRecords.OrderByDescending(sr => sr.Time).DistinctBy(x => new { x.ID }).Take(12).ToList();
+
             LstNewCourse = db.Courses.OrderByDescending(c => c.Time).Take(12).ToList();
             foreach (var item in LstNewCourse)
             {
                 _LstNewCourse.Add(new vCourse(item));
             }
 
+            foreach (var item in records)
+            {
+                LstRecord.Add(new vStudyRecord(item));
+            }
+
             LstHotType = db.Courses.OrderByDescending(c => c.Browses).Select(x => x.TypeDictionary).DistinctBy(x => new { x.ID }).ToList();
 
             ViewBag.LstNewCourse = _LstNewCourse;
             ViewBag.LstHotType = LstHotType;
+            ViewBag.LstRecord = LstRecord;
             return View();
         }
 
@@ -271,7 +281,7 @@ namespace QqhrCitizen.Controllers
             lessionScore.LessionId = lid;
             lessionScore.Rate = rate;
             db.LessionScore.Add(lessionScore);
-            db.StudyRecord.Add(record);
+            db.StudyRecords.Add(record);
 
             db.SaveChanges();
             return Content("ok");
