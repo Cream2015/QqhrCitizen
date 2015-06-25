@@ -161,9 +161,8 @@ namespace QqhrCitizen.Controllers
             string filepath = Server.MapPath(filePhysicalPath);
             string setfileload = filePhysicalPath + fileName + ".html";
             Directory.CreateDirectory(filepath);
-            
-            d.Save("D:/ASP_MVC/QqhrCitizen/QqhrCitizen" + setfileload,SaveFormat.Html);
-            d.SaveToPdf("D:/ASP_MVC/QqhrCitizen/QqhrCitizen/"+filePhysicalPath+"1.pdf");
+            d.Save(Server.MapPath(setfileload),SaveFormat.Html);
+            d.SaveToPdf(Server.MapPath(filePhysicalPath+"1.pdf"));
             return setfileload;
         }
     }
