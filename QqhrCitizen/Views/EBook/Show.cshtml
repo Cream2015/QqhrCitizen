@@ -79,14 +79,17 @@
                 <div id="d_booklike" class="d-booklike">
                     <div class="head">您可能喜欢的图书</div>
                     <div class="body" id="divLike">
-                        <div class="item">
-                            <a title=" " class="cover" href="/Ebook/WordShow" target="_parent">
-                                <img style="width:106px;height:158px;" src=" " data-echo=" " onerror="javascript:this.onerror=null;this.src='/file/Images/Default/reading_default_110_164.jpg'">
-                            </a>
-                            <div class="title trim">
-                                <a title=" " href="/Reading/Reading3466.html" target="_parent"> </a>
+                        @foreach (var item in ViewBag.LstNewEBook as List<EBook>)
+                        {
+                            <div class="item">
+                                <a class="cover" href="/EBook/Show/@item.ID" target="_parent" title="@item.Title" style="width:68px;height:96px;">
+                                    <img style="width:106px;height:158px;" src="/Ebook/ShowPicture/@item.ID" data-echo=" " onerror="javascript:this.onerror=null;this.src='/Ebook/ShowPicture/@item.ID'">
+                                </a>                     
+                                <div class="title trim">
+                                    <a title="@item.Title" href="/EBook/Show/@item.ID" target="_parent">@item.Title</a>
+                                </div>
                             </div>
-                        </div>
+                        }
                     </div>
                 </div>
                 <!-- region end: 喜欢本书的人也喜欢 -->
