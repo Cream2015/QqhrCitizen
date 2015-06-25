@@ -1,0 +1,101 @@
+﻿@using QqhrCitizen.Models;
+@{
+
+    ViewBag.Title = "发现图书_齐齐哈尔市民学习网";
+}
+<div id="d_menu" class="d-menu menu-cou">
+    <div id="d_menu_c" class="d-menu-c">
+        <!-- region start: menu -->
+        <div id="d_headmenu" class="d-headmenu">
+            <div class="body">
+                <a id="headmenu_default" class="item" href="/Ebook/Index">图书首页</a>
+                <a id="headmenu_discovery" class="item_selected" href="/Ebook/Discovery">发现图书</a>
+            </div>
+        </div>
+        <!-- region end: menu -->
+    </div>
+</div>
+<div id="d_bottom" class="d-bottom" style="visibility: hidden;"><div class="d-bottom-c"><div id="d_scrolltop" class="d-scrolltop" style="right: -70px;"><span class="t" onclick="$(document.body).ScrollTo();">顶部</span></div></div></div>
+<div class="d-row" style="margin-bottom: 20px; padding: 30px 0 0 0;">
+    <div class="d-row-c">
+        <div class="d-col-2-3">
+            <input type="hidden" value="@ViewBag.Type" id="tid" />
+            <div class="contentarea" style="border-right: 1px solid #ddd;">
+                @foreach (var item in ViewBag.Types as List<TypeDictionary>)
+                {
+                    <div id="d_12FF2473CE16B988" class="d-coursecategory">
+                        <div class="head">
+                            <span onclick="doSubmit(0, '@ViewBag.Type')">
+                                @item.TypeValue
+                            </span>
+                        </div>
+                        <div class="body fselect">
+
+                            <div id="d_select_category_a" class="cff3">
+                                @foreach (var type in @item.Children)
+                                {
+                                    <div data-txt="@item.TypeValue" class="cfp3"><a href="/Ebook/Discovery/@item.ID">@type.TypeValue</a></div>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+        <div class="d-col-2-9">
+            <div class="contentarea" style="padding: 0 0 0 25px;">
+                <!-- region start: 图书标签 -->
+                <!-- region end: 图书标签 -->
+                <!-- region start: 图书列表 -->
+                <div id="d_coursesearch" class="d-coursesearch">
+                    <div class="head">
+                        <div class="filter fselect">
+                            <select id="select_category_sort" class="select-hid">
+                                <option value="1" selected="selected">最热门</option>
+                                <option value="2">最新</option>
+                            </select>
+                            <div id="d_select_category_sort" class="cff3">
+                                <div data-txt="最热门" class="cfp3_s" onclick="km_fselect.clk('select_category_sort','1','最热门','');">最热门</div>
+                                <div data-txt="最新" class="cfp3" onclick="km_fselect.clk('select_category_sort','2','最新','');">最新</div>
+                                <div class="clear"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="d_main" class="d-main" style="width: 725px; min-width: 1000px;">
+                        <div class="d-row" style="width: 725px; margin-bottom: 20px; padding: 1px 0 0 0;">
+                            <div class="d-row-c" style="width: 725px;">
+                                <div class="container" style="width: 725px;">
+                                    <div class="d-col-2-9" style="width: 725px;">
+                                        <div class="contentarea">
+                                            <!-- region start: 图书列表 -->
+                                            <div id="d_coursesearch" class="d-coursesearch">
+                                                <div class="body lstEBook">
+
+                                                </div>
+                                                <div class="loadMore"></div>
+                                            </div>
+                                            <!-- region end: 图书列表 -->
+                                        </div>
+                                    </div>
+                                    <div class="clear"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div><input id="SearchItem" type="hidden" value="">
+                </div>
+            </div><div class="clear"></div>
+        </div><div class="clear"></div>
+    </div>
+</div>
+
+<script>
+    function dosearch() {
+        $('#SearchForm').submit();
+    }
+    tid = $('#tid').val();
+    function ChickSearch() {
+        //var _t = $('#s_d_t').val();
+        var _kw = $.trim($('#txtSearch').val());
+        return validateSearchKey(_kw);
+    }
+</script>

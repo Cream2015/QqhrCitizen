@@ -141,6 +141,17 @@ namespace QqhrCitizen.Controllers
         /// <returns></returns>
         public ActionResult Discovery(int id)
         {
+            List<TypeDictionary> types = new List<TypeDictionary>();
+            types = db.TypeDictionaries.Where(t => t.Belonger == TypeBelonger.电子书 && t.FatherID == 0).ToList();
+            ViewBag.Tid = id;
+            var type = new TypeDictionary();
+            if (id != 0)
+            {
+                type = db.TypeDictionaries.Find(id);
+            }
+            ViewBag.Type = id;
+
+            ViewBag.Types = types;
             return View();
         }
     }

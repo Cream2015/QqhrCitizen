@@ -109,7 +109,7 @@ namespace QqhrCitizen.Controllers
         } 
         #endregion
 
-        #region
+        #region 发现新闻
         /// <summary>
         /// 发现新闻
         /// </summary>
