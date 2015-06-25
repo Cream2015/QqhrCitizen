@@ -27,7 +27,7 @@
 
 'use strict';
 
-var DEFAULT_URL = 'compressed.tracemonkey-pldi-09.pdf';
+var DEFAULT_URL = App;//默认加载文件
 var DEFAULT_SCALE_DELTA = 1.1;
 var MIN_SCALE = 0.25;
 var MAX_SCALE = 10.0;
@@ -37,7 +37,7 @@ var SCALE_SELECT_PADDING = 22;
 var PAGE_NUMBER_LOADING_INDICATOR = 'visiblePageIsLoading';
 var DISABLE_AUTO_FETCH_LOADING_BAR_TIMEOUT = 5000;
 
-PDFJS.imageResourcesPath = '../../Images/pdf';
+PDFJS.imageResourcesPath = '../../Images';
   PDFJS.workerSrc = '../Scripts/pdf.worker.js';
   PDFJS.cMapUrl = 'cmaps/';
   PDFJS.cMapPacked = true;
@@ -7404,5 +7404,3 @@ window.addEventListener('afterprint', function afterPrint(evt) {
     window.requestAnimationFrame(resolve);
   });
 })();
-
-
