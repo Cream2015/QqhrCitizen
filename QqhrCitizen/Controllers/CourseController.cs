@@ -140,6 +140,59 @@ namespace QqhrCitizen.Controllers
         }
 
         /// <summary>
+        /// 得到该课时的详细信息
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        [HttpGet]
+        [AccessToLession]
+        public ActionResult BeginCourse(int id)
+        {
+            var vLessions = new List<vLession>();
+            var vNotes = new List<vNote>();
+            Lession Lession = db.Lessions.Find(id);
+            bool flag = false;
+            var temp = new LearningRecord();
+            if (CurrentUser != null)
+            {
+                temp = db.LearningRecords.Where(sr => sr.UserID == CurrentUser.ID && sr.Lession.CourseID == Lession.CourseID).OrderByDescending(t => t.Time).FirstOrDefault();
+                if (temp != null)
+                {
+                    id = temp.LessionInt;
+                    flag = true;
+                }
+            }
+            var questions = new List<vQuestion>();
+            var lessions = new List<Lession>();
+
+            Lession.Browses = Lession.Browses + 1;
+            db.SaveChanges();
+            ViewBag.Lession = Lession;
+            var listNote = db.Notes.Where(note => note.LessionID == Lession.ID).OrderByDescending(n => n.Time).ToList();
+
+            var listQuestions = db.Questions.Where(question => question.LessionID == id).ToList();
+            lessions = db.Lessions.Where(l => l.CourseID == Lession.CourseID).ToList();
+            foreach (var item in listQuestions)
+            {
+                questions.Add(new vQuestion(item));
+            }
+            foreach (var item in lessions)
+            {
+                vLessions.Add(new vLession(item));
+            }
+            foreach (var item in listNote)
+            {
+                vNotes.Add(new vNote(item));
+            }
+
+            ViewBag.Questions = questions;
+            ViewBag.Lessions = vLessions;
+            ViewBag.ListNote = vNotes;
+            return View("LessionDetails");
+        }
+
+
+        /// <summary>
         /// 添加课时笔记
         /// </summary>
         /// <param name="note"></param>
@@ -210,11 +263,15 @@ namespace QqhrCitizen.Controllers
                     }
                 }
             }
+            else
+            {
+                record.isFinishCourse = false;
+            }
             lessionScore.UserId = CurrentUser.ID;
             lessionScore.LessionId = lid;
             lessionScore.Rate = rate;
             db.LessionScore.Add(lessionScore);
-
+            db.StudyRecord.Add(record);
 
             db.SaveChanges();
             return Content("ok");
@@ -262,14 +319,26 @@ namespace QqhrCitizen.Controllers
         /// <returns></returns>
         public ActionResult LearningRecord(int id)
         {
+            Lession Lession = new Lession();
+            Lession = db.Lessions.Find(id);
             if (User.Identity.IsAuthenticated)
             {
-                LearningRecord record = new Models.LearningRecord();
-                record.LessionInt = id;
-                record.Time = DateTime.Now;
-                record.UserID = CurrentUser.ID;
-                db.LearningRecords.Add(record);
-                //db.SaveChanges();
+                LearningRecord record = db.LearningRecords.Where(sr => sr.UserID == CurrentUser.ID && sr.Lession.CourseID == Lession.CourseID).FirstOrDefault();
+                if (record == null)
+                {
+                    record = new Models.LearningRecord();
+                    record.UserID = CurrentUser.ID;
+                    record.LessionInt = id;
+                    record.Time = DateTime.Now;
+                    db.LearningRecords.Add(record);
+                }
+                else
+                {
+                    record.LessionInt = id;
+                    record.Time = DateTime.Now;
+                }
+
+                db.SaveChanges();
             }
             return Content("");
         }

@@ -120,7 +120,7 @@
 </div>
 
 <script>
-    window.onbeforeunload = onbeforeunload_handler;
+    @*window.onbeforeunload = onbeforeunload_handler;
     window.onunload = onunload_handler;
     function onbeforeunload_handler() {
         var warning = "确认退出?";
@@ -133,5 +133,56 @@
             $.post("/Course/LearningRecord/@lession.ID", function (data) {
             });
         }
+    }*@
+
+    @*window.onbeforeunload = onbeforeunload_handler;
+    window.onunload = onunload_handler;
+    function onbeforeunload_handler() {
+        if (event.clientX > document.body.clientWidth && event.clientY < 0 || event.altKey) {
+            alert("你关闭了浏览器");
+        } else {
+            alert("你正在刷新页面");
+        }
     }
+
+    function onbeforeunload_handler() {
+        if (document.body.clientWidth-event.clientX<21||event.altKey||event.ctrlKey){  
+            alert("close");  
+        }else{  
+            window.event.returnValue="";  
+            alert("refrash");  
+            return false;  
+        }  
+    }  
+
+    function onunload_handler() {
+        var user = $("#hdCurrentuser").val();
+        alert(user);
+        if (user != null && user != "") {
+            $.post("/Course/LearningRecord/@lession.ID", function (data) {
+            });
+        }
+    }*@
+
+    $(function () {
+        $(window).bind('beforeunload', function () {
+            if (document.body.clientWidth - event.clientX < 21 || event.altKey || event.ctrlKey) {
+                alert("close");
+            } else {
+                window.event.returnValue = "";
+                alert("refrash");
+                return false;
+            }
+        })
+        $(window).bind('onunload', function () {
+            var user = $("#hdCurrentuser").val();
+            alert(user);
+            if (user != null && user != "") {
+                $.post("/Course/LearningRecord/@lession.ID", function (data) {
+                });
+            }
+        })
+
+
+    })
 </script>
