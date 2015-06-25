@@ -23,7 +23,14 @@
                         <!--<div class="price">定价：29.00元</div>-->
                         <div class="isbn">ISBN：</div>
                         <div class="readbtn">
-                            <a href="/EBook/Show/@ebook.ID" class="btn btn-small btn-orange" target="_blank">在线阅读</a>
+                            @if (@ebook.FileID.ToString() != null)
+                            {
+                                <a href="/EBook/ReadBook/@ebook.ID" class="btn btn-small btn-orange" target="_blank"></a>
+                            }
+                            else
+                            {
+                                <span class="btn btn-small btn-orange">暂时无法在线阅读</span> 
+                            }
                             <br>
                         </div>
                     </div>

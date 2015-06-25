@@ -168,6 +168,7 @@
     <Content Include="Images\icon-title.jpg" />
     <Content Include="Images\lab.jpg" />
     <Content Include="Images\logo.psd" />
+    <Content Include="Images\togbg.gif" />
     <Content Include="Images\userphoto.png" />
     <Content Include="Scripts\.DS_Store" />
     <Content Include="Scripts\bootstrap.js" />
