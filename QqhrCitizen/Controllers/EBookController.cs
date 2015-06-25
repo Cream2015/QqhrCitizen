@@ -147,15 +147,18 @@ namespace QqhrCitizen.Controllers
         {
             //存放word文件的完整路径
             var Ebook = db.EBooks.Find(id);
-           /* if (Ebook.FileID.ToString()!="null")
+            if (Ebook.FileID.ToString()!="null")
             {
                 var File = db.Files.Find(Ebook.FileID);
                 Ebook.Browses += 1;
                 db.SaveChanges();
-                //ViewBag.FileLoad = File.Path;
-            }*/
+                ViewBag.FileLoad = File.Path;
+            }
+            else
+            {
+                ViewBag.FileLoad = "/Upload/1/1.html";
+            }
             ViewBag.Ebook = Ebook;
-            ViewBag.FileLoad = "/Upload/1/1.html";
             return View();
         }
         public void WordUpload()
