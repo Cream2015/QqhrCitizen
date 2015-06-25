@@ -27,28 +27,6 @@
     <div class="d-row-c">
         <div class="d-col-2-8">
             <div class="contentarea" style="padding: 30px 0 30px 0;">
-                <!-- region start: banner -->
-                <div id="d_bookbanner" class="d-bookbanner" data-km-url="/Book/MainBanner">
-                    <div id="d_bookbanner" class="jcarousel-wrapper">
-                        <div class="jcarousel" data-jcarousel="true" data-jcarouselautoscroll="true">
-                            <ul style="left: -652px; top: 0px;">
-                                <li>
-                                    <a href="http://read.shlll.net/Reading/Reading12683.html" target="_blank">
-                                        <img src="/File/Reading/Recommend/2015/1/29/201501291602238962.jpg" width="652" height="205" alt="">
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="http://read.shlll.net/Reading/Reading12615.html" target="_blank">
-                                        <img src="/File/Reading/Recommend/2015/1/13/201501131534158371.jpg" width="652" height="205" alt="">
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                        <p class="photo-credits"></p>
-                        <a href="#" class="jcarousel-control-prev" data-jcarouselcontrol="true">‹</a>    <a href="#" class="jcarousel-control-next" data-jcarouselcontrol="true">›</a>
-                        <p class="jcarousel-pagination" data-jcarouselpagination="true"><a href="#1" class="active">1</a><a href="#2" class="">2</a></p>
-                    </div>
-                </div><!-- region end: banner --><!-- region start: 热门图书 -->
                 <div id="d_bookhot" class="d-bookhot">
                     <div class="head">
                         热门图书
@@ -59,7 +37,7 @@
                             {
                                 <div class="item">
                                     <a class="cover" href="/EBook/Show/@item.ID" target="_blank">
-                                        <img style="width:110px;height:164px;" src="/EBook/ShowPicture" />
+                                        <img style="width:110px;height:164px;" src="/EBook/ShowPicture/@item.ID" />
                                     </a>
                                     <div class="title trim">
                                         <a href="/EBook/Show/@item.ID" title="@item.Title" target="_blank">@item.Title</a>
@@ -152,7 +130,8 @@
                         </div>
                     </div><!-- region end: 读者动态 -->
                 </div>
-            </div><div class="clear"></div>
+            </div>
+            <div class="clear"></div>
         </div>
     </div>
 </div>
