@@ -22,60 +22,6 @@
         </div>
     </div>
 </div>
-<div class="d-row" style="margin-bottom: 20px; padding: 20px 0 0 0;">
-    <div class="d-row-c">
-        <div class="d-col-2-8">
-            <div class="contentarea">
-                <!-- region start: banner -->
-                <div class="d-coursebanner">
-                    <div class="container">
-                        <div class="jcarousel-wrapper">
-                            <div class="jcarousel" data-jcarousel="true" data-jcarouselautoscroll="true">
-                                <ul style="left: -1304px; top: 0px;">
-                                    <li>
-                                        <a href="/Course/Course8382.html" target="_parent">
-                                            <img title="随听随说社区英语" class="imgCourseRollPic" src="/File/Course/CourseRollPic/2014/11/18/201411180949027219.jpg" alt="" onerror="this.onerror='';this.src='/file/Images/Default/public_default_200_150.jpg'">
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="/Course/Course8386.html" target="_parent">
-                                            <img title="老年人轻松理财（上篇）" class="imgCourseRollPic" src="/File/Course/CourseRollPic/2014/11/18/201411180949411136.jpg" alt="" onerror="this.onerror='';this.src='/file/Images/Default/public_default_200_150.jpg'">
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="http://jcwg.shlll.net" target="_blank">
-                                            <img title="上海市进城务工人员技能文化培训" class="imgCourseRollPic" src="/File/Course/CourseRollPic/2014/12/25/201412251146495080.jpg" alt="" onerror="this.onerror='';this.src='/file/Images/Default/public_default_200_150.jpg'">
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
-                            <p class="photo-credits"></p>
-                            <a href="#" class="jcarousel-control-prev" data-jcarouselcontrol="true">‹</a>
-                            <a href="#" class="jcarousel-control-next" data-jcarouselcontrol="true">›</a>
-                            <p class="jcarousel-pagination" data-jcarouselpagination="true"><a href="#1" class="active">1</a><a href="#2" class="">2</a><a href="#3" class="">3</a></p>
-                        </div>
-
-                    </div>
-                </div>
-                <!-- region end: banner -->
-
-                <hr style="border: none; height: 1px; background-color: #ccc; margin: 20px 25px 0 0;">
-
-            </div>
-        </div>
-        <div class="d-col-2-4">
-            <div class="contentarea">
-                <div id="d_ad_event_default_2" class="d-ad-323x264" style="padding: 0;">
-                    <div class="container">
-                        <a href="#" rel="nofollow" target="_blank"></a>
-                    </div>
-                </div>
-                <!-- region start: 培训机构 --><!-- region end: 培训机构 -->
-            </div>
-        </div>
-        <div class="clear"></div>
-    </div>
-</div>
 <div class="d-row">
     <div class="d-row-c">
         <div class="d-col-2-8">
@@ -104,8 +50,7 @@
                                             @item.Title
                                         </a>
                                     </div>
-                                    <span class="signed">16</span>
-                                    <span class="star star0"></span>
+                                    <span class="signed">@item.Browses</span>
                                 </div>
                             }
                         </div>
@@ -130,8 +75,7 @@
                                             @item.Title
                                         </a>
                                     </div>
-                                    <span class="signed">16</span>
-                                    <span class="star star0"></span>
+                                    <span class="signed">@item.Browses</span>
                                 </div>
                             }
                         </div>
@@ -145,7 +89,7 @@
                 <div id="d_coursehotcategory" class="d-coursehotcategory">
                     <div class="head">
                         热门分类
-                        <a href="/Course/Discovery">浏览更多&nbsp;&gt;&gt;</a>
+                        <a href="/Course/Discovery/0">浏览更多&nbsp;&gt;&gt;</a>
                     </div>
                     <div class="body">
                         @foreach (var item in ViewBag.LstHotType as List<TypeDictionary>)

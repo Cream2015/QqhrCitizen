@@ -28,6 +28,8 @@ namespace QqhrCitizen.Models.ViewModel
 
         public string Sumamry { get; set; }
 
+        public int Browses { get; set; }
+
         public vCourse() { }
 
         public vCourse(Course model)
@@ -43,6 +45,7 @@ namespace QqhrCitizen.Models.ViewModel
             this.Time = model.Time;
             this.Remark = model.Remark;
             this.AuthorityAsInt = model.AuthorityAsInt;
+            this.Browses = model.Browses;
             Lessions = (from l in db.Lessions where l.CourseID == model.ID select l).ToList();
             this.Sumamry = Helpers.String.SubString(QqhrCitizen.Helpers.HtmlFilter.Instance.SanitizeHtml(model.Description), 50, "...");
         }
