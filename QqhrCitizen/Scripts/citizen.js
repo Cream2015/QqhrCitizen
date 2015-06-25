@@ -84,7 +84,7 @@ function LoadEBooks() {
             type: "post",
             data: { "page": page, "tid": tid },
         }).done(function (data) {
-            var str ="";
+            var str = "";
             for (var i = 0 ; i < data.length; i++) {
                 str += '<div class="item"><div class="title"><a href="/Ebook/Show/' + data[i].ID + '" target="_blank">' + data[i].Title + '</a></div><div class="desc">' + data[i].Sumamry + '</div><div class="add"></div><div class="cover"> <a href="/Ebook/Show/' + data[i].ID + '" target="_blank"><img class="imgCoursePicM" src="/Ebook/ShowPicture/' + data[i].ID + '"></a></div></div>';
             }
@@ -240,9 +240,29 @@ $(document).ready(function () {
         $.post("/Course/RecordScore", { lid: $("#LessionID").val(), rate: rate }, function (data) {
             CastMsg("记录回答记录成功！");
         })
-        $(".warning").html(str);
+        console.log(str);
+        // str = +"  正确率：" + rate.toString();
+        console.log(rate);
+
+        var str1 = "正确率：" + rate * 100 + "%";
+        if (rate >= 0.6) {
+            str1 += "状态：通过";
+        }
+        else {
+            str1 += "状态：未通过";
+        }
+        $(".warning").html(str1);
     });
 
+
+    $("#btnAddNote").click(function () {
+        var content = $("#noteContent").val();
+        $.post("/Course/AddNote?sid=" + $("#sid"), { content: $("#noteContent") }, function (data) {
+            CastMsg("添加的笔记成功！");
+            var str = "<div class='div_HisNote'><p>"+data.Content+"</p>"+data.Time+"</div>"
+            $("#lstNote").prepend(str);
+        })
+    });
 
 
 });
@@ -262,5 +282,5 @@ function learnLession(data) {
         CastMsg("该视屏需要登录之后查看！");
         return false;
     }
-    window.location.href = "/Course/LessionDetails/"+data;
+    window.location.href = "/Course/LessionDetails/" + data;
 }

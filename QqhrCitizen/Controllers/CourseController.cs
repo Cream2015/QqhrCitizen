@@ -111,12 +111,13 @@ namespace QqhrCitizen.Controllers
             var questions = new List<vQuestion>();
             var lessions = new List<Lession>();
             var vLessions = new List<vLession>();
+            var vNotes = new List<vNote>();
             Lession Lession = db.Lessions.Find(id);
             Lession.Browses = Lession.Browses + 1;
             db.SaveChanges();
             ViewBag.Lession = Lession;
             var listNote = db.Notes.Where(note => note.LessionID == Lession.ID).OrderByDescending(n => n.Time).ToList();
-            ViewBag.ListNote = listNote;
+
             var listQuestions = db.Questions.Where(question => question.LessionID == id).ToList();
             lessions = db.Lessions.Where(l => l.CourseID == Lession.CourseID).ToList();
             foreach (var item in listQuestions)
@@ -127,8 +128,14 @@ namespace QqhrCitizen.Controllers
             {
                 vLessions.Add(new vLession(item));
             }
+            foreach (var item in listNote)
+            {
+                vNotes.Add(new vNote(item));
+            }
+
             ViewBag.Questions = questions;
             ViewBag.Lessions = vLessions;
+            ViewBag.ListNote = vNotes;
             return View();
         }
 
@@ -137,14 +144,17 @@ namespace QqhrCitizen.Controllers
         /// </summary>
         /// <param name="note"></param>
         /// <returns></returns>
+        [ValidateSID]
         [HttpPost]
-        public ActionResult AddNote(Note note)
+        public ActionResult AddNote(string content)
         {
+            Note note = new Note();
             note.Time = DateTime.Now;
             note.UserID = CurrentUser.ID;
+            note.Content = content;
             db.Notes.Add(note);
             db.SaveChanges();
-            return Redirect("LessionDetails/" + note.LessionID);
+            return Json(note);
         }
 
         #region 播放课时视屏
@@ -171,10 +181,40 @@ namespace QqhrCitizen.Controllers
         public ActionResult RecordScore(int lid, double rate)
         {
             LessionScore lessionScore = new LessionScore();
+            List<Lession> lessions = new List<Lession>();
+            StudyRecord record = new StudyRecord();
+            Course course = new Course();
+            User user = new Models.User();
+            record.LessionInt = lid;
+            record.UserID = CurrentUser.ID;
+            record.Time = DateTime.Now;
+            if (rate >= 0.6)
+            {
+                Lession lession = new Lession();
+                lession = db.Lessions.Find(lid);
+                if (!lession.IsPassTest)
+                {
+                    lession.IsPassTest = true;
+                    lessions = db.Lessions.Where(l => l.CourseID == lession.CourseID).ToList();
+                    if (lessions.LastOrDefault().ID == lession.ID)
+                    {
+                        course = db.Courses.Find(lession.CourseID);
+                        user = db.Users.Find(CurrentUser.ID);
+                        user.Score += course.Credit;
+                        record.isFinishCourse = true;
+                    }
+                    else
+                    {
+                        record.isFinishCourse = false;
+                    }
+                }
+            }
             lessionScore.UserId = CurrentUser.ID;
             lessionScore.LessionId = lid;
             lessionScore.Rate = rate;
             db.LessionScore.Add(lessionScore);
+
+
             db.SaveChanges();
             return Content("ok");
         }

@@ -30,11 +30,73 @@
                         <div id="d_coursedetail" class="d-coursedetail">
                             <h2>@lession.Title</h2>
                             <input type="hidden" id="hdCurrentuser" value="@(ViewBag.CurrentUser!=null? @ViewBag.CurrentUser.Username:"")" />
+                            <input type="hidden" name="name" id="LessionID" value="@lession.ID" />
                             <script type="text/javascript">
                                 player("/Lessions/@lession.Path", 600, 400, 1, "start.jpg");
                             </script>
                             @*<video id="video" src="~/Lessions/@lession.Path" controls="controls"></video>*@
                         </div>
+
+                        <div id="d_courseware" class="d-courseware">
+                            <div class="head">
+                                课堂笔记
+                            </div>
+                            <div class="body">
+                                <input type="hidden" id="userId" name="UserID" value="@(ViewBag.CurrentUser==null?"":@ViewBag.CurrentUser.ID)" />
+                                <input type="hidden" name="LessionID" id="LessionID" value="@lession.ID" />
+                                <input type="hidden"  id="sid" value="ViewBag.SID" />
+                                 <textarea name="Content" class="textbox" id="noteContent"></textarea>
+                                <p><input type="button" value="保存" id="btnAddNote" class="button blue" style="margin-left:10px;" /></p>
+                                <hr />
+                                <div style="padding-top:10px;"><h5>历史笔记</h5></div>
+                                <div id="lstNote">
+                                    @if (listNote.Count > 0)
+                                    {
+                                        foreach (var note in listNote)
+                                        {
+                                            <div class="div_HisNote">
+                                                <p>@note.Time</p>
+                                                @note.Content
+                                            </div>
+                                        }
+                                    }
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="d_courseware" class="d-courseware">
+                            <div class="head">
+                                课时列表
+                            </div>
+                            <div class="body">
+                                @if (questions.Count() == 0)
+                                {
+                                <div>暂无课后问题</div>
+                                }
+                                else
+                                {
+                                    for (int i = 0; i < questions.Count(); i++)
+                                    {
+                                <div class="question">
+                                    @(i + 1)<span>.</span>@questions[i].Content <br />
+                                    <input value="@questions[i].RightAnswer" type="hidden" class="roghtanswer" />
+                                    @for (int j = 0; j < questions[i].Answers.Count(); j++)
+                                            {
+                                            <input name="answer@(i+1)" type="radio" value="@j" class="answer" />@CommonEnums.Answers[j]<<span>:</span>@questions[i].Answers[j] <br />
+                                            }
+                                </div>
+
+                                    }
+                                <input type="button" class="button blue" value="提交" id="btnAnswerQuestion" />
+                                }
+                                <div class="warning"></div>
+
+                            </div>
+                        </div>
+
+
+
                     </div>
                 </div>
                 <div class="d-col-2-4">
@@ -43,16 +105,16 @@
                             <h2>课时</h2>
                             @foreach (var item in ViewBag.Lessions as List<vLession>)
                             {
-                                <p><a href="/Course/LessionDetails/@item.ID">[@item.Time.ToString("yyyy-MM-dd")] @item.Title</a></p>
+                                    <p><a href="/Course/LessionDetails/@item.ID">[@item.Time.ToString("yyyy-MM-dd")] @item.Title</a></p>
                             }
-                        </div>
                     </div>
-
                 </div>
-                <div class="clear"></div>
+
             </div>
+            <div class="clear"></div>
         </div>
     </div>
+</div>
 </div>
 
 <script>
