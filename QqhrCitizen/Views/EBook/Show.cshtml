@@ -1,11 +1,9 @@
 ﻿@using QqhrCitizen.Models
 @{
-    ViewBag.Title = "WordShow";
-    Layout = "~/Views/Shared/_Layout.cshtml";
-    EBook book = ViewBag.EBook as EBook;
-
+    EBook ebook = ViewBag.Ebook as EBook;
+    ViewBag.Title = "图书简介_齐齐哈尔市民学习网";
 }
-<div id="d_menu" class="d-menu menu-bok"><div id="d_menu_c" class="d-menu-c"><!-- region start: menu --><div id="d_headmenu" class="d-headmenu"><div class="body"><a class="item" href="/EBook/Index" id="headmenu_default">悦读首页</a><a class="item" href="/Book/Show" id="headmenu_discovery">发现图书</a><!--<a id="headmenu_bookshelf" class="item" href="/book/bookshelf">我的藏书</a>--></div></div><!-- region end: menu --></div></div>
+<div id="d_menu" class="d-menu menu-bok"><div id="d_menu_c" class="d-menu-c"><!-- region start: menu --><div id="d_headmenu" class="d-headmenu"><div class="body"><a class="item" href="/EBook/Index" id="headmenu_default">图书首页</a><a class="item" href="/Book/Discovery/0" id="headmenu_discovery">发现图书</a><!--<a id="headmenu_bookshelf" class="item" href="/book/bookshelf">我的藏书</a>--></div></div><!-- region end: menu --></div></div>
 <div id="d_bottom" class="d-bottom" style="visibility: hidden; position: relative;"><div class="d-bottom-c"><div id="d_scrolltop" class="d-scrolltop" style="right: -70px;"><span class="t" onclick="$(document.body).ScrollTo();">顶部</span></div></div></div>
 <div class="d-row" style="padding: 0 0 40px 0;">
     <div class="d-row-c">
@@ -13,20 +11,20 @@
             <div class="contentarea">
                 <!-- region start: 图书详细 -->
                 <div id="d_bookdetail" class="d-bookdetail">
-                    <div class="title">书名</div>
+                    <input type="hidden" id="hdCurrentuser" value="@(ViewBag.CurrentUser!=null? @ViewBag.CurrentUser.Username:"")" />
+                    <div class="title">@ebook.Title</div>
                     <div class="cover">
-                        <img src="书图片路径" style="width: 102px; height: 144px;" onerror="javascript:this.onerror=null;this.src='无封面图书图片'">
+                        <img src="/Ebook/ShowPicture/@ebook.ID" style="width: 102px; height: 144px;" />
                     </div>
                     <div class="info">
-                        <div class="author">作者：</div>
+                        <div class="author">作者：@ebook.Author</div>
                         <div class="publisher">出版社：</div>
                         <div class="year">出版时间：</div>
                         <!--<div class="price">定价：29.00元</div>-->
                         <div class="isbn">ISBN：</div>
                         <div class="readbtn">
-                            <a href="/Book/ReadEBook/?bookId=856B5D1BEFDC5ABF&amp;readingId=4ED4B13121C1F262" class="btn btn-small btn-orange" target="_blank">在线阅读</a>
+                            <a href="/EBook/Show/@ebook.ID" class="btn btn-small btn-orange" target="_blank">在线阅读</a>
                             <br>
-                            <a href="/file/guide/reading/ebook.html" target="_blank">电子书阅读帮助</a>
                         </div>
                     </div>
                     <div class="social">
@@ -35,7 +33,7 @@
                         </div>
                         <div id="divAmount" class="amount">
                             <a href="#comment">
-                                (<span> </span>人评价)
+                                (<span>@ebook.Browses</span>人浏览)
                             </a>
                         </div>
                     </div>
@@ -57,27 +55,17 @@
                             <span style="display: none;" id="spanAddToList">
                                 <a href="#">添加到藏书单</a>
                             </span>
-                            <!--							<a href="#">推荐</a>	-->
+                           
+                            <!--分享-->
                             <span class="dropdown">
-                                <a href="javascript:;" onclick="km_kb._set($$('d_dropdown_share'),null,function (){});">分享到</a>
-                                <div id="d_dropdown_share" class="d-dropdown-share" style="display: none;">
-                                    <!--<a class="lexiang" href="#">我的乐享</a>	 -->
-                                    <a class="share sina" href="#" data-service="sina">新浪微博</a>
-                                    <a class="share qq_t" href="#" data-service="qq_t">腾讯微博</a>
-                                    <a class="share douban" href="#" data-service="douban">豆瓣</a>
-                                    <a class="share netease" href="#" data-service="netease">网易微博</a>
-                                    <a class="share renren" href="#" data-service="renren">人人网</a>
-                                    <a class="share kaixin" href="#" data-service="kaixin">开心网</a>
-                                    <a class="share sohu" href="#" data-service="sohu">搜狐微博</a>
-                                </div>
+                               
                             </span>
                         </div>
                         <div class="clear"></div>
                     </div>
                     <div class="brief" style="display: block;">
                         <div class="head">内容简介</div>
-                        <pre class="area txt-justify">
-</pre>
+                        <pre class="area txt-justify">@ebook.Description</pre>
                     </div>
                     <div class="authorbrief" style="display: none;">
                         <div class="head">作者简介</div>
@@ -113,7 +101,8 @@
                     <div class="body">
                         <div class="item">
                             <div class="title trim">评论标题</div>
-                            <div class="name trim"><a href="#">sgyjs </a></div>
+                            <div class="name trim">
+                            <a href="#">评论内容 </a></div>
                             <div class="review txt-justify">
                                 <pre class="preComment">评论内容</pre>
                             </div>

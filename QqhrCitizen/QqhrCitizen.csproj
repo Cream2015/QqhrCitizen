@@ -340,7 +340,7 @@
     <Content Include="Views\Live\Channel.cshtml" />
     <Content Include="Views\Home\Search.cshtml" />
     <Content Include="Views\Home\SearchResultMore.cshtml" />
-    <Content Include="Views\EBook\WordShow.cshtml" />
+    <Content Include="Views\EBook\Show.cshtml" />
     <Content Include="Views\Home\Test.cshtml" />
     <Content Include="Scripts\ss" />
     <Content Include="Views\Home\ViewPage1.cshtml" />

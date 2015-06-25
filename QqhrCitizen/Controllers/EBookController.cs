@@ -92,33 +92,18 @@ namespace QqhrCitizen.Controllers
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
+ 
         public ActionResult Show(int id)
         {
-            EBook book = new EBook();
-            book = db.EBooks.Find(id);
-            book.Browses += 1;
+            List<vLession> lessions = new List<vLession>();
+            var Ebook = db.EBooks.Find(id);
+            Ebook.Browses += 1;
             db.SaveChanges();
-            ViewBag.Ebook = new vEBook(book);
 
-            List<EBook> lstEBook  = new List<EBook>();
-            lstEBook = db.EBooks.Where(b => b.EBookTypeID == book.EBookTypeID && b.ID != id).OrderByDescending(b => b.Time).Take(8).ToList();
-            ViewBag.EBooks = lstEBook;
-            return View();
-        } 
-        #endregion
-
-
-        public ActionResult WordShow(int id)
-        {
-            EBook book = new EBook();
-            book = db.EBooks.Find(id);
-            ViewBag.EBook  = book;
-            string host = Request.Url.Host;
-            string port = Request.Url.Port.ToString();
-            ViewBag.Address = host + ":" + port;
+            ViewBag.Ebook = Ebook;
             return View();
         }
-
+        #endregion
         #region 图书截图
         /// <summary>
         /// 图书截图
