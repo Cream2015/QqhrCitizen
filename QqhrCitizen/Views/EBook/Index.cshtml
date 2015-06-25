@@ -1,4 +1,5 @@
 ﻿@using QqhrCitizen.Models;
+@using QqhrCitizen.Models.ViewModel;
 @{
     ViewBag.Title = "图书首页_齐齐哈尔市民学习网";
     EBook ebook = ViewBag.EBooks;
@@ -119,7 +120,7 @@
                     <div class="head">读者动态</div>
                     <div class="body">
                         <div id="feed_bookactivity" class="feedcontainer" style="top: 0px;">
-                            @foreach (var item in ViewBag.LstRecord as List<vStudyRecord>)
+                            @foreach (var item in ViewBag.LstRecord as List<vReadRecord>)
                             {
                                 <div class="item">
                                     <div class="name trim">
@@ -127,8 +128,8 @@
                                     </div>
                                     <div class="trends trim">@item.Time 阅读了</div>
                                     <div class="book trim">
-                                        <a href="/Course/Show/@item.EBookId" title="@item.EBookTitle" target="_blank">
-                                            @item.EBookTitle
+                                        <a href="/EBook/Show/@item.EBookID" title="@item.EBook.Title" target="_blank">
+                                            @item.EBook.Title
                                         </a>
                                     </div>
                                     <a class="avatar" href="#">

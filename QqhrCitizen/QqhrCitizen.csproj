@@ -305,6 +305,7 @@
     <Compile Include="Models\ViewModel\vNews.cs" />
     <Compile Include="Models\ViewModel\vNote.cs" />
     <Compile Include="Models\ViewModel\vQuestion.cs" />
+    <Compile Include="Models\ViewModel\vReadRecord.cs" />
     <Compile Include="Models\ViewModel\vRegister.cs" />
     <Compile Include="Helpers\MvcHtmlHelperExt.cs" />
     <Compile Include="Models\ViewModel\vResourceLink.cs" />

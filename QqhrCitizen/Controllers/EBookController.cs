@@ -30,10 +30,24 @@ namespace QqhrCitizen.Controllers
             List<EBook> HotBooks = new List<EBook>();
             List<EBook> NewBooks = new List<EBook>();
 
+            List<ReadRecord> lstRecord = new List<ReadRecord>();
+            List<vReadRecord> _lstRecord = new List<vReadRecord>();
+
+
+
             HotBooks = db.EBooks.OrderByDescending(b => b.Browses).Take(10).ToList();
             NewBooks = db.EBooks.OrderByDescending(b => b.Time).Take(12).ToList();
+            lstRecord = db.ReadRecords.OrderByDescending(r => r.Time).Take(12).ToList();
+
+            foreach (var item in lstRecord)
+            {
+                _lstRecord.Add(new vReadRecord(item));
+            }
+
             ViewBag.HotBooks = HotBooks;
             ViewBag.NewBooks = NewBooks;
+            ViewBag.LstRecord = _lstRecord;
+
             return View();
         }
 
