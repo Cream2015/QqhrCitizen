@@ -735,6 +735,7 @@ namespace QqhrCitizen.Controllers
                 Ebook.FileID = fileId;
                 Ebook.Time = DateTime.Now;
                 Ebook.UserID = CurrentUser.ID;
+                Ebook.Author = model.Author;
 
                 System.IO.Stream stream = file1.InputStream;
                 byte[] buffer = new byte[stream.Length];
