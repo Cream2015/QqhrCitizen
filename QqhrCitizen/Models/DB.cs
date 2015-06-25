@@ -30,6 +30,8 @@ namespace QqhrCitizen.Models
 
         public DbSet<ReadRecord> ReadRecords { set; get; }
 
+        public DbSet<Menu> Menus { set; get; }
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
