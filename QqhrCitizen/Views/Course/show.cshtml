@@ -126,20 +126,34 @@
                             <div class="head">学习动态</div>
                             <div class="body">
                                 <div id="feed_learningactivitybycourse" class="feedcontainer" style="top: 0px;">
-                                    <div class="item">
-                                        <a class="userportrait" href="#">
-                                            <img class="imgMemberPicS" style="height:20px;width:20px;vertical-align:baseline;" src="/File/Images/Predefine/icon/130.jpg" onerror="this.onerror='';this.src='/file/Images/Default/member_default_120_120.jpg'">
-                                        </a>
-                                        <span class="gender male"></span>
-                                        <span class="createtime">14天前</span>
-                                        <a class="owner" href="#" title="lirongjin_01">lirongjin_01</a>
-                                        <div class="content">
-                                            观看了在线课程
-                                            <a href="/Course/Course8052.html" title="中华养生宝典" target="_blank">中华养生宝典</a>
-                                            中的：
-                                            <a target="_blank" href="/Ware/Ware917.html" title="中国养生文化的特征（一）">中国养生文化的特征（一）</a>
+                                    @foreach (var item in ViewBag.LstRecord as List<vStudyRecord>)
+                                    {
+                                        <div class="item">
+                                            <a class="userportrait" href="#">
+                                                @if (item.User.Picture == null)
+                                                {
+                                                    <img class="imgMemberPicS" style="height:20px;width:20px;vertical-align:baseline;" src="/Images/userphoto.png" />
+
+                                                }
+                                                else
+                                                {
+                                                    <img class="imgMemberPicS" style="height:20px;width:20px;vertical-align:baseline;" src="/User/ShowPicture/@item.UserID" />
+                                                }
+
+                                            </a>
+                                            <span class="gender male"></span>
+                                            <span class="createtime">@item.Time</span>
+                                            <a class="owner" href="#">
+                                                <span title="江毅乐悠悠">@item.User.Username</span>
+                                            </a>
+                                            <div class="content">
+                                                观看了在线课程
+                                                <a href="/Course/Show/@item.Lession.Course" title="@item.Lession.Course.Title" target="_blank">@item.Lession.Course.Title</a>
+                                                中的：
+                                                <a href="/Course/LessionDetails/@item.LessionID" title="@item.Lession.Title" target="_blank">@item.Lession.Title</a>
+                                            </div>
                                         </div>
-                                    </div>
+                                    }
                                 </div>
                             </div>
                         </div>

@@ -20,9 +20,14 @@ namespace QqhrCitizen.Controllers
             List<vCourse> _LstNewCourse = new List<vCourse>();
             List<TypeDictionary> LstType = new List<TypeDictionary>();
 
+            List<Course> LstHotCourse = new List<Course>();
+            List<vCourse> _LstHotCourse = new List<vCourse>();
+
             List<StudyRecord> records = new List<StudyRecord>();
             List<vStudyRecord> LstRecord = new List<vStudyRecord>();
-            records = db.StudyRecords.OrderByDescending(sr => sr.Time).DistinctBy(x => new { x.ID }).Take(12).ToList();
+            records = db.StudyRecords.OrderByDescending(sr => sr.Time).DistinctBy(x => new { x.UserID }).Take(12).ToList();
+
+            LstHotCourse = db.Courses.OrderByDescending(c => c.Browses).Take(12).ToList();
 
             LstNewCourse = db.Courses.OrderByDescending(c => c.Time).Take(12).ToList();
             foreach (var item in LstNewCourse)
@@ -35,11 +40,17 @@ namespace QqhrCitizen.Controllers
                 LstRecord.Add(new vStudyRecord(item));
             }
 
+            foreach(var item in LstHotCourse)
+            {
+                _LstHotCourse.Add(new vCourse(item));
+            }
+
             LstHotType = db.Courses.OrderByDescending(c => c.Browses).Select(x => x.TypeDictionary).DistinctBy(x => new { x.ID }).ToList();
 
             ViewBag.LstNewCourse = _LstNewCourse;
             ViewBag.LstHotType = LstHotType;
             ViewBag.LstRecord = LstRecord;
+            ViewBag.LstHotCourse = _LstHotCourse;
             return View();
         }
 
@@ -87,6 +98,16 @@ namespace QqhrCitizen.Controllers
         public ActionResult Show(int id)
         {
             List<vLession> lessions = new List<vLession>();
+
+            List<StudyRecord> records = new List<StudyRecord>();
+            List<vStudyRecord> LstRecord = new List<vStudyRecord>();
+
+            records = db.StudyRecords.OrderByDescending(sr => sr.Time).DistinctBy(x => new { x.UserID }).Take(12).ToList();
+            foreach (var item in records)
+            {
+                LstRecord.Add(new vStudyRecord(item));
+            }
+
             var Course = db.Courses.Find(id);
             Course.Browses += 1;
             db.SaveChanges();
@@ -105,6 +126,7 @@ namespace QqhrCitizen.Controllers
 
             ViewBag.Course = Course;
             ViewBag.lstCourse = lstCourse;
+            ViewBag.LstRecord = LstRecord;
             return View();
         }
 

@@ -58,6 +58,9 @@
                     </div>
                 </div>
                 <!-- region end: banner -->
+
+                <hr style="border: none; height: 1px; background-color: #ccc; margin: 20px 25px 0 0;">
+                
             </div>
         </div>
         <div class="d-col-2-4">
@@ -66,7 +69,8 @@
                     <div class="container">
                         <a href="#" rel="nofollow" target="_blank"></a>
                     </div>
-                </div><!-- region start: 培训机构 --><!-- region end: 培训机构 -->
+                </div>
+                <!-- region start: 培训机构 --><!-- region end: 培训机构 -->
             </div>
         </div>
         <div class="clear"></div>
@@ -90,6 +94,32 @@
                         <div id="slide_courserecommend" class="slidecontainer" style="top: 0px;">
 
                             @foreach (var item in ViewBag.LstNewCourse as List<vCourse>)
+                            {
+                                <div class="item">
+                                    <a class="cover" href="/Course/Show/@item.ID" title="@item.Title" target="_blank">
+                                        <img class="imgCoursePic" src="/Course/ShowPicture/@item.ID">
+                                    </a>
+                                    <div class="title">
+                                        <a class="trim" style="max-width:184px; display:normal;" href="/Course/Show/@item.ID" title="可乐球" target="_blank">
+                                            @item.Title
+                                        </a>
+                                    </div>
+                                    <span class="signed">16</span>
+                                    <span class="star star0"></span>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+
+                <hr style="border: none; height: 1px; background-color: #ccc; margin: 20px 25px 0 0;">
+                <div id="d_courserecommend" class="d-courserecommend">
+                    <div class="head">
+                        热门课程
+                    </div>
+                    <div class="body">
+                        <div id="slide_courserecommend" class="slidecontainer" style="top: 0px;">
+                            @foreach (var item in ViewBag.LstHotCourse as List<vCourse>)
                             {
                                 <div class="item">
                                     <a class="cover" href="/Course/Show/@item.ID" title="@item.Title" target="_blank">
