@@ -171,6 +171,10 @@ namespace QqhrCitizen.Controllers
             string fileName = "1";
             WordToHtml(wordPath, fileName);
         }
+        public ActionResult Pdf()
+        {
+            return View();
+        }
         private string WordToHtml(string wordFileName, string fileName)
         {
             Aspose.Words.Document d = new Aspose.Words.Document(wordFileName);
@@ -182,5 +186,6 @@ namespace QqhrCitizen.Controllers
             //d.SaveToPdf(Server.MapPath(filePhysicalPath+"1.pdf"));
             return setfileload;
         }
+        
     }
 }
