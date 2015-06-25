@@ -26,6 +26,7 @@
     <div class="d-row-c">
         <div class="d-col-2-8">
             <div class="contentarea" style="padding: 30px 0 30px 0;">
+<<<<<<< HEAD
                 <!-- region start: banner -->
                 <div id="d_bookbanner" class="d-bookbanner" data-km-url="/Book/MainBanner">
                     <div id="d_bookbanner" class="jcarousel-wrapper">
@@ -49,6 +50,8 @@
                         <p class="jcarousel-pagination" data-jcarouselpagination="true"><a href="#1" class="active">1</a><a href="#2" class="">2</a></p>
                     </div>
                 </div><!-- region end: banner --><!-- region start: 热门图书 -->
+=======
+>>>>>>> 4004c65717e33e4dd53b61a275f22b5c3f7dd82c
                 <div id="d_bookhot" class="d-bookhot">
                     <div class="head">
                         热门图书
@@ -57,6 +60,7 @@
                         <div id="slide_bookhot" class="slidecontainer">
                             @foreach (var item in ViewBag.HotBooks as List<EBook>)
                             {
+<<<<<<< HEAD
                                 <div class="item">
                                     <a class="cover" href="/EBook/Show/@item.ID" target="_blank">
                                         <img style="width:110px;height:164px;" src="/EBook/ShowPicture/@item.ID" />
@@ -65,15 +69,23 @@
                                         <a href="/EBook/Show/@item.ID" title="@item.Title" target="_blank">@item.Title</a>
                                     </div>
                                     <div class="author trim" title="">@item.Author</div>
+=======
+                            <div class="item">
+                                <a class="cover" href="/EBook/Show/@item.ID" target="_blank">
+                                    <img style="width:110px;height:164px;" src="/EBook/ShowPicture/@item.ID" />
+                                </a>
+                                <div class="title trim">
+                                    <a href="/EBook/Show/@item.ID" title="@item.Title" target="_blank">@item.Title</a>
+>>>>>>> 4004c65717e33e4dd53b61a275f22b5c3f7dd82c
                                 </div>
+                                <div class="author trim" title="">@item.Author</div>
+                            </div>
                             }
                         </div>
                     </div>
                 </div>
-                <!-- region end: 热门图书 -->
-                <!-- region start: ad1 -->
-                <!-- region end: ad1 -->
-                <!-- region start: 最受关注 -->
+                <!-- region start: 图书推荐 -->
+                <hr style="border: none; height: 1px; background-color: #ccc; margin: 20px 25px 0 0;">
                 <div id="d_booknew" class="d-booknew">
                     <div class="head">
                         图书推荐
@@ -82,42 +94,39 @@
                         <div id="slide_booknew" class="slidecontainer">
                             @foreach (var item in ViewBag.NewBooks as List<EBook>)
                             {
-                                <div class="item">
-                                    <div class="title trim">
-                                        <a href="/EBook/Show/@item.ID" title="@item.Title" target="_blank">@item.Title</a>
-                                    </div>
-                                    <div class="star star40"></div>
-                                    <div title="@item.Author" class="author trim">作者：@item.Author</div>
-                                    <div class="classification  trim" title="@item.TypeDictionary.TypeValue">@item.TypeDictionary.TypeValue</div>
-                                    <div class="type">&nbsp;</div>
-                                    <a class="cover" href="/EBook/Show/@item" target="_blank">
-                                        <img src="/Ebook/ShowPicture/@item.ID" style="width:68px;height:96px;" />
-                                    </a>
+                            <div class="item">
+                                <div class="title trim">
+                                    <a href="/EBook/Show/@item.ID" title="@item.Title" target="_blank">@item.Title</a>
                                 </div>
+                                <div title="@item.Author" class="author trim">作者：@item.Author</div>
+                                <div class="classification  trim" title="@item.TypeDictionary.TypeValue">@item.TypeDictionary.TypeValue</div>
+                                <div class="type">&nbsp;</div>
+                                <a class="cover" href="/EBook/Show/@item" target="_blank">
+                                    <img src="/Ebook/ShowPicture/@item.ID" style="width:68px;height:96px;" />
+                                </a>
+                            </div>
                             }
                         </div>
                     </div>
-                </div><!-- region end: 最受关注 --><!-- region start: 图书评论 -->
-
+                </div>
+                <!-- region end: 图书推荐 -->
             </div>
         </div>
         <div class="d-col-2-4">
             <div class="contentarea" style="padding: 0px 0 30px 0;">
-                <!-- region start: 热门标签 -->
-                <div id="d_booktaghot" class="d-booktaghot">
-                    <!-- region start: 热门分类 -->
-                    <div id="d_coursehotcategory" class="d-coursehotcategory">
-                        <div class="head">
-                            热门分类
-                            <a href="/EBook/Discovery/0">浏览更多&nbsp;&gt;&gt;</a>
-                        </div>
-                        <div class="body">
-                            @foreach (var item in ViewBag.LstHotType as List<TypeDictionary>)
-                            {
-                                <a class="item" href="/EBook/Discovery/@item.ID" title="@item.TypeValue">@item.TypeValue</a>
-                            }
-                        </div>
+                <!-- region start: 热门分类 -->
+                <div id="d_coursehotcategory" class="d-coursehotcategory">
+                    <div class="head">
+                        热门分类
+                        <a href="/EBook/Discovery/0">浏览更多&nbsp;&gt;&gt;</a>
                     </div>
+                    <div class="body">
+                        @foreach (var item in ViewBag.LstHotType as List<TypeDictionary>)
+                        {
+                        <a class="item" href="/EBook/Discovery/@item.ID" title="@item.TypeValue">@item.TypeValue</a>
+                        }
+                    </div>
+
                 </div>
                 <!-- region end: 热门标签 -->
             <!-- region start: 读者动态 -->
@@ -128,33 +137,39 @@
                         <div id="feed_bookactivity" class="feedcontainer" style="top: 0px;">
                             @foreach (var item in ViewBag.LstRecord as List<vReadRecord>)
                             {
-                                <div class="item">
-                                    <div class="name trim">
-                                        <a href="#" title="@item.User.Username">@item.User.Username</a>
-                                    </div>
-                                    <div class="trends trim">@item.Time 阅读了</div>
-                                    <div class="book trim">
-                                        <a href="/EBook/Show/@item.EBookID" title="@item.EBook.Title" target="_blank">
-                                            @item.EBook.Title
-                                        </a>
-                                    </div>
-                                    <a class="avatar" href="#">
-                                        @if (item.User.Picture != null)
+                            <div class="item">
+                                <div class="name trim">
+                                    <a href="#" title="@item.User.Username">@item.User.Username</a>
+                                </div>
+                                <div class="trends trim">@item.Time 阅读了</div>
+                                <div class="book trim">
+                                    <a href="/EBook/Show/@item.EBookID" title="@item.EBook.Title" target="_blank">
+                                        @item.EBook.Title
+                                    </a>
+                                </div>
+                                <a class="avatar" href="#">
+                                    @if (item.User.Picture != null)
                                         {
-                                            <img src="/User/ShowPicture/@item.UserID" style="width:48px;height:48px;">
+                                        <img src="/User/ShowPicture/@item.UserID" style="width:48px;height:48px;">
                                         }
                                         else
                                         {
-                                            <img src="~/Images/userphoto.png" style="width:48px;height:48px;">
+                                        <img src="~/Images/userphoto.png" style="width:48px;height:48px;">
                                         }
-                                    </a>
-                                </div>
+                                </a>
+                            </div>
                             }
                         </div>
                     </div><!-- region end: 读者动态 -->
                 </div>
             </div>
+<<<<<<< HEAD
             <div class="clear"></div>
+=======
+
+>>>>>>> 4004c65717e33e4dd53b61a275f22b5c3f7dd82c
         </div>
+
+        <div class="clear"></div>
     </div>
 </div>

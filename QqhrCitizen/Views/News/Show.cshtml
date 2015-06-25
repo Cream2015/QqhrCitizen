@@ -10,7 +10,7 @@
             <div class="body">
                 <a id="headmenu_default" class="item_selected" href="/News/Index" style="cursor:pointer" target="_parent">资讯首页</a>
                 <a id="headmenu_discovery" class="item" href="/News/Discovery/0">发现新闻</a>
-             </div>
+            </div>
         </div><!-- region end: menu -->
     </div>
 </div>
@@ -37,7 +37,30 @@
                         </div>
                     </div>
                 </div><!-- region end: 资讯文章 -->
+
+                <hr style="border: none; height: 1px; background-color: #ccc; margin: 20px 25px 0 0;">
+                <div class="d-coursecomment">
+                    <div class="head">评论</div>
+                    <!-- 多说评论框 start -->
+                    <div class="ds-thread" data-thread-key="@news.NewsTypeID+@news.ID" data-title="@news.Title" data-url="@HttpContext.Current.Request.Url.ToString()"></div>
+                    <!-- 多说评论框 end -->
+                    <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+                    <script type="text/javascript">
+                        var duoshuoQuery = { short_name: "qqhrcitizen" };
+                        (function () {
+                            var ds = document.createElement('script');
+                            ds.type = 'text/javascript'; ds.async = true;
+                            ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+                            ds.charset = 'UTF-8';
+                            (document.getElementsByTagName('head')[0]
+                                || document.getElementsByTagName('body')[0]).appendChild(ds);
+                        })();
+                    </script>
+                    <!-- 多说公共JS代码 end -->
+                </div>
             </div>
+
+
         </div>
         <div class="d-col-2-4">
             <div class="contentarea">
@@ -52,7 +75,7 @@
                     <div class="body">
                         @foreach (var item in ViewBag.LstNews as List<News>)
                         {
-                            <a class="item trim" href="/News/Show/@item.ID" target="_blank" title="@item.Title">@item.Title</a>
+                        <a class="item trim" href="/News/Show/@item.ID" target="_blank" title="@item.Title">@item.Title</a>
                         }
                     </div>
                 </div>
@@ -61,4 +84,6 @@
         </div>
         <div class="clear"></div>
     </div>
+
+
 </div>
