@@ -219,6 +219,9 @@ $(document).ready(function () {
         }
         var str = "";
         var answers = $(".answer:checked");
+        if (answers.length==0) {
+            CastMsg("你有题目没有选择答案，请先完成答题在提交！");
+        }
         var count = 0;
         var rate = 1.0;
         var questionCount = 0;
