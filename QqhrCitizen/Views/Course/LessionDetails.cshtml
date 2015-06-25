@@ -6,6 +6,7 @@
     List<vQuestion> questions = ViewBag.Questions as List<vQuestion>;
     ViewBag.Title = lession.Title;
 }
+<script src="~/Scripts/video.js"></script>
 <div id="d_menu" class="d-menu menu-cou">
     <div id="d_menu_c" class="d-menu-c">
         <!-- region start: menu -->
@@ -26,7 +27,10 @@
                     <div class="contentarea">
                         <!-- region start: 课程信息 -->
                         <div id="d_coursedetail" class="d-coursedetail">
-                            <video id="video" src="~/Lessions/@lession.Path" controls="controls"></video>
+                            <script type="text/javascript">
+                                player("/Lessions/@lession.Path", 600, 400, 1, "start.jpg");
+                            </script>
+                            @*<video id="video" src="~/Lessions/@lession.Path" controls="controls"></video>*@
                         </div>
                     </div>
                 </div>
