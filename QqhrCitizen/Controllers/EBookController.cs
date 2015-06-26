@@ -201,9 +201,9 @@ namespace QqhrCitizen.Controllers
             return View();
         }
 
-        private string WordToPdf(string wordFileName, string fileName)
+        private string WordToPdf(string wordFileLoad, string fileName)
         {
-            Aspose.Words.Document d = new Aspose.Words.Document(wordFileName);
+            Aspose.Words.Document d = new Aspose.Words.Document(wordFileLoad);
             string filePhysicalPath = "/Upload/EBook" + fileName + "/";
             string filepath = Server.MapPath(filePhysicalPath);
             string setfileload = "../" + filePhysicalPath + fileName + ".pdf";
