@@ -174,33 +174,6 @@ namespace QqhrCitizen.Controllers
             ViewBag.Types = types;
             return View();
         }
-        public ActionResult ReadBook(int id)
-        {
-            //存放word文件的完整路径
-            var Ebook = db.EBooks.Find(id);
-            if (Ebook.FileID.ToString() != "null")
-            {
-                var File = db.Files.Find(Ebook.FileID);
-                Ebook.Browses += 1;
-                db.SaveChanges();
-                string wordPath = Server.MapPath(File.Path);
-                string fileName = Path.GetFileName(File.FileName);
-                WordToHtml(wordPath, fileName);
-            }
-            else
-            {
-                ViewBag.FileLoad = "/Upload/1/1.html";
-            }
-            ViewBag.Ebook = Ebook;
-            return View();
-        }
-
-        public void WordUpload()
-        {
-            string wordPath = Server.MapPath("/Upload/1.doc");
-            string fileName = "1";
-            WordToHtml(wordPath, fileName);
-        }
 
         public ActionResult Read(int id)
         {
@@ -213,7 +186,7 @@ namespace QqhrCitizen.Controllers
                 System.IO.FileInfo file = new System.IO.FileInfo(File.FileName);
                 if (file.Extension == ".doc" || file.Extension == ".docx")
                 {
-                    ViewBag.FileLoad = WordToPdf(Server.MapPath("~/Upload/" + File.Path), File.FileName);
+                    ViewBag.FileLoad = WordToPdf(Server.MapPath("~/Upload/" + File.Path), file.Name);
                 }
                 else
                 {
@@ -228,10 +201,10 @@ namespace QqhrCitizen.Controllers
             return View();
         }
 
-        private string WordToPdf(string wordFileName, string fileName)
+        private string WordToPdf(string wordFileLoad, string fileName)
         {
-            Aspose.Words.Document d = new Aspose.Words.Document(wordFileName);
-            string filePhysicalPath = "/Upload/" + fileName + "/";
+            Aspose.Words.Document d = new Aspose.Words.Document(wordFileLoad);
+            string filePhysicalPath = "/Upload/EBook" + fileName + "/";
             string filepath = Server.MapPath(filePhysicalPath);
             string setfileload = "../" + filePhysicalPath + fileName + ".pdf";
             if (!Directory.Exists(filePhysicalPath))
@@ -247,23 +220,5 @@ namespace QqhrCitizen.Controllers
             }
         }
 
-        private string WordToHtml(string wordFileName, string fileName)
-        {
-            Aspose.Words.Document d = new Aspose.Words.Document(wordFileName);
-            string filePhysicalPath = "/Upload/" + fileName + "/";
-            string filepath = Server.MapPath(filePhysicalPath);
-            string setfileload = "../" + filePhysicalPath + fileName + ".pdf";
-            if (!Directory.Exists(filePhysicalPath))
-            {
-                Directory.CreateDirectory(filepath);
-                //d.Save(Server.MapPath(setfileload), SaveFormat.Html);
-                d.Save(Server.MapPath(filePhysicalPath + fileName + ".html"), SaveFormat.Html);
-                return Server.MapPath(filePhysicalPath + fileName + ".html");
-            }
-            else
-            {
-                return Server.MapPath(".." + filePhysicalPath + fileName + ".pdf");
-            }
-        }
     }
 }
