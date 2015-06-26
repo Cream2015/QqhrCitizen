@@ -233,7 +233,7 @@ namespace QqhrCitizen.Controllers
         [HttpPost]
         [ValidateSID]
         [ValidateInput(false)]
-        public ActionResult AddNews(News model,HttpPostedFileBase file )
+        public ActionResult AddNews(News model, HttpPostedFileBase file)
         {
             var random = DateHelper.GetTimeStamp();
             var message = "";
@@ -242,14 +242,11 @@ namespace QqhrCitizen.Controllers
                 string fileName = Path.Combine(Request.MapPath("~/Upload/NewsWord"), random + Path.GetFileName(file.FileName));
                 file.SaveAs(fileName);
                 NewsWordToHtml(fileName, random);
-                message =
-
-                    
-                    message = string.Empty;
-                    using (var reader = new StreamReader(fileName))
-                    {
-                        message = reader.ReadToEnd();
-                    }
+                message = message = string.Empty;
+                using (var reader = new StreamReader(fileName))
+                {
+                    message = reader.ReadToEnd();
+                }
             }
             model.UserID = CurrentUser.ID;
             model.Time = DateTime.Now;
@@ -259,14 +256,14 @@ namespace QqhrCitizen.Controllers
                 if (file != null)
                 {
                     string[] imgs = Helpers.String.GetHtmlImageUrlList(message);
-                    model.FirstImgUrl = "/Upload/NewsWord/"+random+imgs[0];
+                    model.FirstImgUrl = "/Upload/NewsWord/" + random + imgs[0];
                 }
                 else
                 {
                     string[] imgs = Helpers.String.GetHtmlImageUrlList(model.Content);
                     model.FirstImgUrl = imgs[0];
                 }
-               
+
             }
             db.News.Add(model);
 
@@ -1260,9 +1257,9 @@ namespace QqhrCitizen.Controllers
         private string NewsWordToHtml(string wordFileName, string fileName)
         {
             Aspose.Words.Document d = new Aspose.Words.Document(wordFileName);
-            string filePhysicalPath = "/Upload/EBook/" + fileName + "/";
+            string filePhysicalPath = "/Upload/NewsBook/" + fileName + "/";
             string filepath = Server.MapPath(filePhysicalPath);
-            
+
             if (!Directory.Exists(filePhysicalPath))
             {
                 Directory.CreateDirectory(fileName);
