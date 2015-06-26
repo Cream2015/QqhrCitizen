@@ -242,11 +242,8 @@ namespace QqhrCitizen.Controllers
                 string fileName = Path.Combine(Request.MapPath("~/Upload/NewsWord"), random + Path.GetFileName(file.FileName));
                 file.SaveAs(fileName);
                 NewsWordToHtml(fileName, random);
-                message = message = string.Empty;
-                using (var reader = new StreamReader(fileName))
-                {
-                    message = reader.ReadToEnd();
-                }
+                message  = string.Empty;
+                message = System.IO.File.OpenText(fileName).ReadToEnd();
                 model.Content = message;
             }
             model.UserID = CurrentUser.ID;
