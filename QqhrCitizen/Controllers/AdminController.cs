@@ -247,6 +247,7 @@ namespace QqhrCitizen.Controllers
                 {
                     message = reader.ReadToEnd();
                 }
+                model.Content = message;
             }
             model.UserID = CurrentUser.ID;
             model.Time = DateTime.Now;
