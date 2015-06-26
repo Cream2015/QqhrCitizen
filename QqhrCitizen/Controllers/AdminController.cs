@@ -244,7 +244,7 @@ namespace QqhrCitizen.Controllers
                 NewsWordToHtml(fileName, random);
                 message  = string.Empty;
                 message = System.IO.File.OpenText(fileName).ReadToEnd();
-                using (StreamReader sr = new StreamReader(fileName,System.Text.Encoding.Default))
+                using (StreamReader sr = new StreamReader(fileName,System.Text.Encoding.UTF8))
                 {
                     message = sr.ReadToEnd();
                 }
