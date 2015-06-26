@@ -90,6 +90,12 @@
                         <div class="body channel">
                             <div class="lab">频道</div>
                             <div class="box">
+                                @foreach (Menu m in ViewBag.Menus)
+                                {
+                                    <span class="item">
+                                        <a href="@m.Url">@m.Title</a>
+                                    </span>
+                                }
                             </div>
                         </div>
                         <div class="clear"></div>

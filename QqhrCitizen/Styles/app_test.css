@@ -1471,9 +1471,9 @@ div, p, span, a {
     width: 100%;
     z-index: 4;
     text-align: center;
-    background-image: url(/images/header_bg.jpg);
-    background-position: left -30px;
-    background-repeat: repeat-x;
+    background-image: url(/images/header_bg.png);
+    background-position: center;
+    background-repeat: no-repeat;
 }
 
     .d-header .d-header-c {

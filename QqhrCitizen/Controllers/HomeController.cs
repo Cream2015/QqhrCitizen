@@ -40,6 +40,7 @@ namespace QqhrCitizen.Controllers
             ViewBag.Lives = db.Lives.OrderByDescending(x => x.End).Take(5).ToList();
             ViewBag.TextLinks = db.ResourceLinks.Where(x => !x.IsHaveFile).ToList();
             ViewBag.ImgLinks = db.ResourceLinks.Where(x => x.IsHaveFile).ToList();
+            ViewBag.Menus = db.Menus.ToList();
             return View();
         }
 
