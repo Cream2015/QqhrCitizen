@@ -235,11 +235,20 @@ namespace QqhrCitizen.Controllers
         [ValidateInput(false)]
         public ActionResult AddNews(News model,HttpPostedFileBase file )
         {
+            var message = "";
             if (file != null)
             {
                 string fileName = Path.Combine(Request.MapPath("~/Upload/NewsWord"), DateHelper.GetTimeStamp() + Path.GetFileName(file.FileName));
                 file.SaveAs(fileName);
                 NewsWordToHtml(fileName, DateHelper.GetTimeStamp());
+                message =
+
+                    
+                    message = string.Empty;
+                    using (var reader = new StreamReader(fileName))
+                    {
+                        message = reader.ReadToEnd();
+                    }
             }
             model.UserID = CurrentUser.ID;
             model.Time = DateTime.Now;
