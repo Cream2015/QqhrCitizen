@@ -123,12 +123,14 @@
                                     }
                                     function CheckEmail() {
                                         if ($("#Email").val() == "") {
-                                            CastMsg("邮箱不能为空");
+                                            CastMsg("至少输入4位密码");
+                                            $("#email_msg").html("至少输入4位密码");
                                             return false;
                                         }
                                         var myreg = /^([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+@@([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+\.[a-zA-Z]{2,3}$/;
                                         if (!myreg.test($("#Email").val())) {
                                             CastMsg("邮箱格式输入错误！");
+                                            $("#email_msg").html("邮箱格式输入错误");
                                             return false;
                                         }
                                         return true;
