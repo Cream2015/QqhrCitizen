@@ -7,6 +7,7 @@ using QqhrCitizen.Models;
 using QqhrCitizen.Models.ViewModel;
 using Aspose.Words;
 using System.IO;
+using System.Web;
 
 namespace QqhrCitizen.Controllers
 {
@@ -123,8 +124,8 @@ namespace QqhrCitizen.Controllers
             db.SaveChanges();
             LstNewEBook = db.EBooks.OrderByDescending(c => c.Time).Take(12).ToList();
             lstType = db.TypeDictionaries.Where(tp => tp.FatherID == Ebook.TypeDictionary.FatherID && tp.ID != Ebook.TypeDictionary.ID).ToList();
-            lstRecord = db.ReadRecords.Where(r=>r.EBookID==id).OrderByDescending(r => r.Time).Take(8).ToList();
-            lstInterestBook = db.EBooks.Where(e => e.EBookTypeID == Ebook.EBookTypeID && e.ID!=Ebook.ID).OrderByDescending(e => e.Browses).Take(5).ToList();
+            lstRecord = db.ReadRecords.Where(r => r.EBookID == id).OrderByDescending(r => r.Time).Take(8).ToList();
+            lstInterestBook = db.EBooks.Where(e => e.EBookTypeID == Ebook.EBookTypeID && e.ID != Ebook.ID).OrderByDescending(e => e.Browses).Take(5).ToList();
             foreach (var item in lstRecord)
             {
                 _lstRecord.Add(new vReadRecord(item));
@@ -201,7 +202,7 @@ namespace QqhrCitizen.Controllers
             WordToHtml(wordPath, fileName);
         }
 
-        public ActionResult Pdf(int id)
+        public ActionResult Read(int id)
         {
             var Ebook = db.EBooks.Find(id);
             if (Ebook.FileID.ToString() != "null")
@@ -210,13 +211,13 @@ namespace QqhrCitizen.Controllers
                 Ebook.Browses += 1;
                 db.SaveChanges();
                 System.IO.FileInfo file = new System.IO.FileInfo(File.FileName);
-                if(file.Extension == ".doc")
+                if (file.Extension == ".doc" || file.Extension == ".docx")
                 {
-                    ViewBag.FileLoad = WordToPdf(File.Path, File.FileName);
+                    ViewBag.FileLoad = WordToPdf(Server.MapPath("~/Upload/" + File.Path), File.FileName);
                 }
                 else
                 {
-                    ViewBag.FileLoad = "../Upload/" + File.Path; 
+                    ViewBag.FileLoad = "../Upload/" + File.Path;
                 }
             }
             else
@@ -232,7 +233,7 @@ namespace QqhrCitizen.Controllers
             Aspose.Words.Document d = new Aspose.Words.Document(wordFileName);
             string filePhysicalPath = "/Upload/" + fileName + "/";
             string filepath = Server.MapPath(filePhysicalPath);
-            string setfileload = "../"+filePhysicalPath + fileName + ".pdf";
+            string setfileload = "../" + filePhysicalPath + fileName + ".pdf";
             if (!Directory.Exists(filePhysicalPath))
             {
                 Directory.CreateDirectory(filepath);
@@ -256,7 +257,7 @@ namespace QqhrCitizen.Controllers
                 Directory.CreateDirectory(filepath);
                 //d.Save(Server.MapPath(setfileload), SaveFormat.Html);
                 d.Save(Server.MapPath(filePhysicalPath + fileName + ".html"), SaveFormat.Html);
-                return setfileload;
+                return Server.MapPath(filePhysicalPath + fileName + ".html");
             }
             else
             {

@@ -9,18 +9,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <meta name="google" content="notranslate">
     <title>@Ebook.Title _在线阅读</title>
-    <script>
-    var App = "../@ViewBag.FileLoad";
-    </script>
+
     <link rel="stylesheet" href="~/Styles/viewer.css" />
     <script src="~/Scripts/compatibility.js"></script>
-
+   
     <!-- This snippet is used in production (included from viewer.html) -->
+    <script>
+        var App = "../@ViewBag.FileLoad"
+    </script>
+
     <script src="~/Scripts/l10n.js"></script>
     <script src="~/Scripts/pdf.js"></script>
 
     <script src="~/Scripts/debugger.js"></script>
     <script src="~/Scripts/viewer.js"></script>
+    <script type="text/javascript" src="~/Scripts/jquery-1.6.4.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/jquery.media.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            $('#PDFFile').media({ width: 800, height: 800 });
+        });
+    </script>
 </head>
 <body tabindex="1" class="loadingInProgress">
     <div id="outerContainer">
@@ -206,7 +215,15 @@
                           data-l10n-id="page_rotate_ccw"></menuitem>
             </menu>
             <div id="viewerContainer" tabindex="0">
-                <div id="viewer" class="pdfViewer"></div>
+                <!--[if IE]>
+                   
+                    <div id="pdf">
+                    <a  href="../@ViewBag.FileLoad" id="PDFFile">
+                        @Ebook.Title
+                    </a>
+                </div> <![endif]-->
+                <!--[if  !IE]> <!-->
+                <div id="viewer" class="pdfViewer"></div> <!--<![endif]-->
             </div>
             <div id="errorWrapper" hidden='true'>
                 <div id="errorMessageLeft">
