@@ -5,7 +5,6 @@
     List<vNote> listNote = ViewBag.ListNote as List<vNote>;
     List<vQuestion> questions = ViewBag.Questions as List<vQuestion>;
     ViewBag.Title = lession.Title;
-    ViewBag.Search = "课程名、标签";
 }
 <script src="~/Scripts/video.js"></script>
 <div id="d_menu" class="d-menu menu-cou">
@@ -57,7 +56,7 @@
                                         {
                                             <div class="div_HisNote">
                                                 <p>@note.Time</p>
-                                                 @note.Content
+                                                @note.Content
                                             </div>
                                         }
                                     }
@@ -71,7 +70,7 @@
                                 课后问题
                             </div>
                             <div class="body">
-                               
+
                                 @if (questions.Count() == 0)
                                 {
                                     <div>暂无课后问题</div>
@@ -108,16 +107,16 @@
                             <h2>课时</h2>
                             @foreach (var item in ViewBag.Lessions as List<vLession>)
                             {
-                                    <p><a href="/Course/LessionDetails/@item.ID">[@item.Time.ToString("yyyy-MM-dd")] @item.Title</a></p>
+                                <p><a href="/Course/LessionDetails/@item.ID">[@item.Time.ToString("yyyy-MM-dd")] @item.Title</a></p>
                             }
+                        </div>
                     </div>
-                </div>
 
+                </div>
+                <div class="clear"></div>
             </div>
-            <div class="clear"></div>
         </div>
     </div>
-</div>
 </div>
 
 <script>
@@ -147,14 +146,14 @@
     }
 
     //function onbeforeunload_handler() {
-    //    if (document.body.clientWidth-event.clientX<21||event.altKey||event.ctrlKey){  
-    //        alert("close");  
-    //    }else{  
-    //        window.event.returnValue="";  
-    //        alert("refrash");  
-    //        return false;  
-    //    }  
-    //}  
+    //    if (document.body.clientWidth-event.clientX<21||event.altKey||event.ctrlKey){
+    //        alert("close");
+    //    }else{
+    //        window.event.returnValue="";
+    //        alert("refrash");
+    //        return false;
+    //    }
+    //}
 
     function onunload_handler() {
         var user = $("#hdCurrentuser").val();

@@ -8,10 +8,6 @@ function resize() {
     $('.main').width($(window).width() - 280);
 }
 
-$(window).resize(function () {
-    resize();
-});
-
 //加载新闻
 function LoadNews() {
     if (lock) {
