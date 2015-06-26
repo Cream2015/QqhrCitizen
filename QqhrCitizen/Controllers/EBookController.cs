@@ -200,7 +200,7 @@ namespace QqhrCitizen.Controllers
             string fileName = "1";
             WordToHtml(wordPath, fileName);
         }
-        public ActionResult Pdf(int id)
+        public ActionResult Read(int id)
         {
             var Ebook = db.EBooks.Find(id);
             if (Ebook.FileID.ToString() != "null")
