@@ -83,64 +83,144 @@
                                 <div class="head">
                                     齐齐哈尔市民学习网用户注册
                                 </div>
-                            @using (Html.BeginForm("Register", "User", FormMethod.Post))
-                            {
-                                @Html.AntiForgerySID()
-                                                         <div class="body">
-                                                             <table class="tbl">
-                                                                 <tbody>
-                                                                     <tr>
-                                                                         <td>
-                                                                             <div>
-                                                                                 用户名
-                                                                             </div>
-                                                                         </td>
-                                                                         <td><div><input type="text" class="int-hs" name="Username" style="width:264px;" maxlength="30" autocorrect="off" autocapitalize="off"><br><span class="text">用户名长度在1-30个字之间；只能由字母、数字和下划线组成；不能以下划线开头。例：study_001</span></div></td>
-                                                                     </tr>
-                                                                     <tr>
-                                                                         <td>
-                                                                             <div>
-                                                                                 电子邮箱
-                                                                             </div>
-                                                                         </td>
-                                                                         <td><div><input type="text" class="int-hs" name="Email" style="width:264px;" maxlength="100" autocorrect="off" autocapitalize="off"><span class="text"></span></div></td>
-                                                                     </tr>
-                                                                     <tr>
-                                                                         <td>
-                                                                             <div>
-                                                                                 密码
-                                                                             </div>
-                                                                         </td>
-                                                                         <td><div><input type="password" class="int-hs" name="Password" style="width:264px;" maxlength="20" autocorrect="off" autocapitalize="off"><br><span class="text">密码长度在1-20个字之间；只能由字母、数字和下划线组成。</span></div></td>
-                                                                     </tr>
-                                                                     <tr>
-                                                                         <td>
-                                                                             <div>
-                                                                                 确认密码
-                                                                             </div>
-                                                                         </td>
-                                                                         <td><div><input type="password" class="int-hs" name="Confirm" style="width:264px;" maxlength="20" autocorrect="off" autocapitalize="off"><span class="text"></span></div></td>
-                                                                     </tr>
-                                                                     <tr>
-                                                                         <td>
-                                                                             <div>
-                                                                                 &nbsp;
-                                                                             </div>
-                                                                         </td>
-                                                                         <td><div><input id="int_submit" type="submit" class="btn btn-orange btn-big" value="注册" style="width:120px;"></div></td>
-                                                                     </tr>
-                                                                     <tr>
-                                                                         <td>
-                                                                             <div>
-                                                                                 &nbsp;
-                                                                             </div>
-                                                                         </td>
-                                                                         <td><div><a href="/User/Login">已经注册过？请登录。</a></div></td>
-                                                                     </tr>
-                                                                 </tbody>
-                                                             </table>
-                                                         </div>
-                            }
+                                <script>
+                                    function frmCheck() {
+                                        if (!CheckUsername()) return false;
+                                        if (!CheckPassword()) return false;
+                                        if (!CheckEmail()) return false;
+
+                                    }
+                                    function CheckUsername() {
+                                        if ($("#Username").val() == "") {
+                                            CastMsg("用户名不能为空");
+                                            $("#user_msg").html("用户名不能为空")
+                                            return false;
+                                        }
+                                        return true;
+                                    }
+                                    function CheckPassword() {
+                                        if ($('#Password').val() == "") {
+                                            CastMsg("密码不能为空")
+                                            $("#pwd_msg").html("用户名不能为空");
+                                            return false;
+                                        }
+                                        if ($('#Confirm').val() == "") {
+                                            CastMsg("密码重复不能为空！");
+                                            $("#pwd_msg").html("密码重复不能为空");
+                                            return false;
+                                        }
+                                        if ($("#Password").val().length < 4) {
+                                            CastMsg("至少输入4位密码");
+                                            $("#pwd_msg").html("密码重复不能为空");
+                                            return false;
+                                        }
+                                        if ($('#Password').val() != $('#Confirm').val()) {
+                                            CastMsg("两次输入密码不一致");
+                                            $("#repwd_msg").css("color:red");
+                                            return false;
+                                        }
+                                        return true;
+                                    }
+                                    function CheckEmail() {
+                                        if ($("#Email").val() == "") {
+                                            CastMsg("邮箱不能为空");
+                                            return false;
+                                        }
+                                        var myreg = /^([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+@@([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+\.[a-zA-Z]{2,3}$/;
+                                        if (!myreg.test($("#Email").val())) {
+                                            CastMsg("邮箱格式输入错误！");
+                                            return false;
+                                        }
+                                        return true;
+                                    }
+
+                                </script>
+                                @using (Html.BeginForm("Register", "User", FormMethod.Post, new
+                                {
+                                    onsumbit = "return frmCheck();"
+                                }))
+                                {
+                                    @Html.AntiForgerySID()
+                                    <div class="body">
+                                        <table class="tbl">
+                                            <tbody>
+                                                <tr>
+                                                    <td>
+                                                        <div>
+                                                            用户名
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div>
+                                                            @Html.TextBoxFor(model => model.Username, new { @class = "int-hs" })
+                                                            <br><span class="text" id="user_msg">用户名长度在1-30个字之间；只能由字母、数字和下划线组成；不能以下划线开头。例：study_001</span>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <div>
+                                                            电子邮箱
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div>
+                                                            @Html.TextBoxFor(model => model.Email, new { @class = "int-hs" })
+                                                            <span class="text" id="email_msg"></span>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <div>
+                                                            密码
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div>
+                                                            @Html.PasswordFor(modal => modal.Password, new { @class = "int-hs" })
+                                                            <br><span class="text" id="pwd_msg">密码长度在1-20个字之间；只能由字母、数字和下划线组成。</span>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <div>
+
+                                                            确认密码
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div>
+                                                            @Html.Password("Confirm", "", new { @class = "int-hd" })
+                                                            <span class="text" id="repwd_msg"></span>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <div>
+                                                            &nbsp;
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div>
+                                                            <input id="int_submit" type="submit" class="btn btn-orange btn-big" value="注册" style="width:120px;">
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <div>
+                                                            &nbsp;
+                                                        </div>
+                                                    </td>
+                                                    <td><div><a href="/User/Login">已经注册过？请登录。</a></div></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                }
                             </div><!-- region end: 注册 -->
                         </div>
                     </div>
