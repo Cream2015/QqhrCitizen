@@ -255,8 +255,17 @@ namespace QqhrCitizen.Controllers
             model.Browses = 0;
             if (model.IsHaveImg)
             {
-                string[] imgs = Helpers.String.GetHtmlImageUrlList(model.Content);
-                model.FirstImgUrl = imgs[0];
+                if (file != null)
+                {
+                    string[] imgs = Helpers.String.GetHtmlImageUrlList();
+                    model.FirstImgUrl = imgs[0];
+                }
+                else
+                {
+                    string[] imgs = Helpers.String.GetHtmlImageUrlList(model.Content);
+                    model.FirstImgUrl = imgs[0];
+                }
+               
             }
             db.News.Add(model);
 
