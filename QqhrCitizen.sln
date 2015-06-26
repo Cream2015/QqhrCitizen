@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QqhrCitizen", "QqhrCitizen\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QqhrCitizen.Tests", "QqhrCitizen.Tests\QqhrCitizen.Tests.csproj", "{38082C04-C11E-4375-9339-227F91B1E0DB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QqhrCitizenExport", "QqhrCitizenExport\QqhrCitizenExport.csproj", "{7EF0C535-6F0C-4460-84A5-44E30F8E383B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{38082C04-C11E-4375-9339-227F91B1E0DB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{38082C04-C11E-4375-9339-227F91B1E0DB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{38082C04-C11E-4375-9339-227F91B1E0DB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7EF0C535-6F0C-4460-84A5-44E30F8E383B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7EF0C535-6F0C-4460-84A5-44E30F8E383B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7EF0C535-6F0C-4460-84A5-44E30F8E383B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7EF0C535-6F0C-4460-84A5-44E30F8E383B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

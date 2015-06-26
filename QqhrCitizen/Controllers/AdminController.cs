@@ -232,7 +232,7 @@ namespace QqhrCitizen.Controllers
         [HttpPost]
         [ValidateSID]
         [ValidateInput(false)]
-        public ActionResult AddNews(News model)
+        public ActionResult AddNews(News model,HttpPostedFileBase file )
         {
             model.UserID = CurrentUser.ID;
             model.Time = DateTime.Now;
@@ -711,6 +711,7 @@ namespace QqhrCitizen.Controllers
 
         public ActionResult AddEBook(EBook model, HttpPostedFileBase file, HttpPostedFileBase file1)
         {
+
             int fileId = 0;
             if (file != null)
             {

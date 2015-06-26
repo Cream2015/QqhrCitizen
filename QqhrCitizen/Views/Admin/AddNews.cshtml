@@ -8,7 +8,7 @@
     <div class="result-title">
         <h1>增加新闻</h1>
     </div>
-    @using (Html.BeginForm("AddNews", "Admin", FormMethod.Post))
+    @using (Html.BeginForm("AddNews", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
     {
         @Html.AntiForgerySID()
         <table class="detail-table">
@@ -44,6 +44,14 @@
                 </td>
                 <td>
                     <textarea class="textbox"  name="Content"></textarea>
+                </td>
+            </tr>
+            <tr>
+                <td class="row-title">
+                    上传word
+                </td>
+                <td>
+                    <input type="file" name="file" id="file" class="textbox nullable" />
                 </td>
             </tr>
             <tr>
