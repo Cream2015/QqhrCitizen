@@ -186,11 +186,13 @@ namespace QqhrCitizen.Controllers
                 System.IO.FileInfo file = new System.IO.FileInfo(File.FileName);
                 if (file.Extension == ".doc" || file.Extension == ".docx")
                 {
-                    ViewBag.FileLoad = WordToPdf(Server.MapPath("~/Upload/EBook/" + File.Path), file.Name);
+
+                    ViewBag.FileLoad = WordToPdf(Server.MapPath("~/Upload/EBook" + File.Path), file.Name);
                 }
                 else
                 {
-                    ViewBag.FileLoad = "../Upload/EBook/" + File.Path;
+                    ViewBag.FileLoad = "../Upload/EBook" + File.Path;
+
                 }
             }
             else
