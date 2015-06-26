@@ -1257,12 +1257,12 @@ namespace QqhrCitizen.Controllers
         private string NewsWordToHtml(string wordFileName, string fileName)
         {
             Aspose.Words.Document d = new Aspose.Words.Document(wordFileName);
-            string filePhysicalPath = "/Upload/NewsBook/" + fileName + "/";
+            string filePhysicalPath = "/Upload/NewsWord/" + fileName + "/";
             string filepath = Server.MapPath(filePhysicalPath);
 
             if (!Directory.Exists(filePhysicalPath))
             {
-                Directory.CreateDirectory(fileName);
+                Directory.CreateDirectory(filepath);
                 d.Save(Server.MapPath(filePhysicalPath + fileName + ".html"), SaveFormat.Html);
                 return Server.MapPath(filePhysicalPath + fileName + ".html");
             }
