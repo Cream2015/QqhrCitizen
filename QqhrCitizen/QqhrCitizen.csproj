@@ -644,7 +644,7 @@
     <Content Include="Views\User\HistoryCourse.cshtml" />
     <Content Include="Views\User\CourseNote.cshtml" />
     <Content Include="Views\EBook\ReadBook.cshtml" />
-    <Content Include="Views\EBook\Pdf.cshtml" />
+    <Content Include="Views\EBook\Read.cshtml" />
     <Content Include="Upload\1.pdf" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

@@ -203,7 +203,7 @@ namespace QqhrCitizen.Controllers
         private string WordToPdf(string wordFileName, string fileName)
         {
             Aspose.Words.Document d = new Aspose.Words.Document(wordFileName);
-            string filePhysicalPath = "/Upload/" + fileName + "/";
+            string filePhysicalPath = "/Upload/EBook" + fileName + "/";
             string filepath = Server.MapPath(filePhysicalPath);
             string setfileload = "../"+filePhysicalPath + fileName + ".pdf";
             if (!Directory.Exists(filePhysicalPath))
