@@ -2519,7 +2519,7 @@ var WorkerTransport = (function WorkerTransportClosure() {
     // Right now, the requirement is, that an Uint8Array is still an Uint8Array
     // as it arrives on the worker. Chrome added this with version 15.
     if (!globalScope.PDFJS.disableWorker && typeof Worker !== 'undefined') {
-      var workerSrc = PDFJS.workerSrc;
+        var workerSrc = "../../Scripts/pdf.worker.js";
       if (!workerSrc) {
         error('No PDFJS.workerSrc specified');
       }

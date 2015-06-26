@@ -207,15 +207,24 @@ namespace QqhrCitizen.Controllers
                 var File = db.Files.Find(Ebook.FileID);
                 Ebook.Browses += 1;
                 db.SaveChanges();
-                ViewBag.FileLoad = "../Upload/" + File.Path; 
+                System.IO.FileInfo file = new System.IO.FileInfo(File.FileName);
+                if(file.Extension == ".doc")
+                {
+                    ViewBag.FileLoad = WordToPdf(File.Path, File.FileName);
+                }
+                else
+                {
+                    ViewBag.FileLoad = "../Upload/" + File.Path; 
+                }
             }
             else
             {
                 ViewBag.FileLoad = "../Upload/1.pdf";
             }
+            ViewBag.Ebook = Ebook;
             return View();
         }
-        private string WordToHtml(string wordFileName, string fileName)
+        private string WordToPdf(string wordFileName, string fileName)
         {
             Aspose.Words.Document d = new Aspose.Words.Document(wordFileName);
             string filePhysicalPath = "/Upload/" + fileName + "/";
@@ -230,9 +239,26 @@ namespace QqhrCitizen.Controllers
             }
             else
             {
-                return ",," + filePhysicalPath + fileName + ".pdf";
+                return ".." + filePhysicalPath + fileName + ".pdf";
             }
         }
-
+        private string WordToHtml(string wordFileName, string fileName)
+        {
+            Aspose.Words.Document d = new Aspose.Words.Document(wordFileName);
+            string filePhysicalPath = "/Upload/" + fileName + "/";
+            string filepath = Server.MapPath(filePhysicalPath);
+            string setfileload = "../" + filePhysicalPath + fileName + ".pdf";
+            if (!Directory.Exists(filePhysicalPath))
+            {
+                Directory.CreateDirectory(filepath);
+                //d.Save(Server.MapPath(setfileload), SaveFormat.Html);
+                d.Save(Server.MapPath(filePhysicalPath + fileName + ".html"), SaveFormat.Html);
+                return setfileload;
+            }
+            else
+            {
+                return Server.MapPath(".." + filePhysicalPath + fileName + ".pdf");
+            }
+        }
     }
 }

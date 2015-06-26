@@ -1,5 +1,6 @@
 ﻿@{
     Layout = null;
+    EBook Ebook = ViewBag.Ebook as EBook;
 }
 <!DOCTYPE html>
 <html dir="ltr" mozdisallowselectionprint moznomarginboxes>
@@ -7,11 +8,10 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <meta name="google" content="notranslate">
-    <title>HTML5在线PDF阅读器DEMO演示</title>
+    <title>@Ebook.Title _在线阅读</title>
     <script>
-    var App = "@ViewBag.FileLoad";
+    var App = "../@ViewBag.FileLoad";
     </script>
-
     <link rel="stylesheet" href="~/Styles/viewer.css" />
     <script src="~/Scripts/compatibility.js"></script>
 

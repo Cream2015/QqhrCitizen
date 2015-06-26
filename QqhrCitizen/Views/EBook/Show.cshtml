@@ -3,6 +3,7 @@
 @{
     EBook ebook = ViewBag.Ebook as EBook;
     List<vReadRecord> recoreds = ViewBag.LstRecord as List<vReadRecord>;
+    ViewBag.Search = "新闻、标签";
     ViewBag.Title = "图书简介_齐齐哈尔市民学习网";
 }
 <div id="d_menu" class="d-menu menu-bok">
@@ -35,7 +36,7 @@
                         <div class="readbtn">
                             @if (@ebook.FileID.ToString() != null)
                             {
-                                <a href="/EBook/ReadBook/@ebook.ID" class="btn btn-small btn-orange" target="_blank"></a>
+                                <a href="/EBook/Pdf/@ebook.ID" class="btn btn-small btn-orange" target="_blank">在新悦读</a>
                             }
                             else
                             {

@@ -88,7 +88,7 @@
                             @using (Html.BeginForm("Search", "Home", FormMethod.Post, new { id = "frmSearch" }))
                             {
                                 @Html.AntiForgerySID()
-                                <input id="txtSearch" maxlength="30" name="key" onkeydown="if(event.keyCode==13){dosearch();}" type="text" value="" placeholder="课程名称、标签" autocomplete="off" autocorrect="off" autocapitalize="off">
+                                <input id="txtSearch" maxlength="30" name="key" onkeydown="if(event.keyCode==13){dosearch();}" type="text" value="" placeholder="@ViewBag.Search" autocomplete="off" autocorrect="off" autocapitalize="off">
                                 <span id="icon-search" class="icon-search" onclick="dosearch();"></span>
                             }
                         </div>
