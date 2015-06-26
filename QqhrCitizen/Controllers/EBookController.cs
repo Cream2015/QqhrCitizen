@@ -7,6 +7,7 @@ using QqhrCitizen.Models;
 using QqhrCitizen.Models.ViewModel;
 using Aspose.Words;
 using System.IO;
+using System.Web;
 
 namespace QqhrCitizen.Controllers
 {
@@ -208,7 +209,7 @@ namespace QqhrCitizen.Controllers
                 Ebook.Browses += 1;
                 db.SaveChanges();
                 System.IO.FileInfo file = new System.IO.FileInfo(File.FileName);
-                if(file.Extension == ".doc")
+                if (file.Extension == ".doc" || file.Extension == ".docx")
                 {
                     ViewBag.FileLoad = WordToPdf(File.Path, File.FileName);
                 }
@@ -253,7 +254,7 @@ namespace QqhrCitizen.Controllers
                 Directory.CreateDirectory(filepath);
                 //d.Save(Server.MapPath(setfileload), SaveFormat.Html);
                 d.Save(Server.MapPath(filePhysicalPath + fileName + ".html"), SaveFormat.Html);
-                return setfileload;
+                return Server.MapPath(filePhysicalPath + fileName + ".html");
             }
             else
             {
