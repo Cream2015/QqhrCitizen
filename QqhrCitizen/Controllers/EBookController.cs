@@ -193,12 +193,14 @@ namespace QqhrCitizen.Controllers
             ViewBag.Ebook = Ebook;
             return View();
         }
+
         public void WordUpload()
         {
             string wordPath = Server.MapPath("/Upload/1.doc");
             string fileName = "1";
             WordToHtml(wordPath, fileName);
         }
+
         public ActionResult Pdf(int id)
         {
             var Ebook = db.EBooks.Find(id);
@@ -224,6 +226,7 @@ namespace QqhrCitizen.Controllers
             ViewBag.Ebook = Ebook;
             return View();
         }
+
         private string WordToPdf(string wordFileName, string fileName)
         {
             Aspose.Words.Document d = new Aspose.Words.Document(wordFileName);
