@@ -646,6 +646,7 @@
     <Content Include="Views\EBook\ReadBook.cshtml" />
     <Content Include="Views\EBook\Read.cshtml" />
     <Content Include="Upload\1.pdf" />
+    <None Include="Views\Shared\Error.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

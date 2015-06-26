@@ -15,7 +15,10 @@ namespace QqhrCitizen.Controllers
             return View();
         }
 
-
+        public ActionResult Error()
+        {
+            return View();
+        }
         #region MyRegion
         /// <summary>
         /// 访问受限时跳转
