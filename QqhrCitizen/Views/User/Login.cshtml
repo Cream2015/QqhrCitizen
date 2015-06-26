@@ -88,18 +88,14 @@
                                         @Html.AntiForgerySID()
                                         <div class="d-username">
                                             <span class="i">&nbsp;</span>
-                                            @Html.TextBoxFor(m => m.Username, new { @class = "int-hs logElm" })
+                                            @Html.TextBoxFor(m => m.Username, new { @class = "int-hs logElm", @placeholder = "用户名" })
                                             <div class="clear"></div>
                                         </div>
                                         <div class="d-password">
                                             <span class="i">&nbsp;</span>
-                                            @Html.PasswordFor(x => x.Password, new { @class = "int-hs logElm" })
+                                            @Html.PasswordFor(x => x.Password, new { @class = "int-hs logElm"，@placeholder = "密码"})
                                             <div class="clear"></div>
                                         </div>
-                                        <script>
-                                            $("#Username").attr("placeholder", "用户名");
-                                            $("#Password").attr("placeholder", "密码");
-                                        </script>
                                         <div class="d-vcode" style="line-height: 100%; display: none;">
                                             <span class="i">&nbsp;</span>
                                             <input type="text" class="int-hs logElm" id="vcode" style="width:140px;" name="vcode" maxlength="4" autocorrect="off" autocapitalize="off" value="" placeholder="验证码">
