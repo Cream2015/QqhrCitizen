@@ -10,6 +10,7 @@ using System.Web.Security;
 using PagedList;
 using System.IO;
 using QqhrCitizen.Helpers;
+using Aspose.Words;
 
 namespace QqhrCitizen.Controllers
 {
@@ -234,6 +235,12 @@ namespace QqhrCitizen.Controllers
         [ValidateInput(false)]
         public ActionResult AddNews(News model,HttpPostedFileBase file )
         {
+            if (file != null)
+            {
+                string fileName = Path.Combine(Request.MapPath("~/Upload/NewsWord"), DateHelper.GetTimeStamp() + Path.GetFileName(file.FileName));
+                file.SaveAs(fileName);
+                NewsWordToHtml(fileName, DateHelper.GetTimeStamp());
+            }
             model.UserID = CurrentUser.ID;
             model.Time = DateTime.Now;
             model.Browses = 0;
@@ -1228,6 +1235,25 @@ namespace QqhrCitizen.Controllers
         {
             ViewBag.Msg = msg;
             return View();
+        }
+
+
+        private string NewsWordToHtml(string wordFileName, string fileName)
+        {
+            Aspose.Words.Document d = new Aspose.Words.Document(wordFileName);
+            string filePhysicalPath = "/Upload/EBook/" + fileName + "/";
+            string filepath = Server.MapPath(filePhysicalPath);
+            
+            if (!Directory.Exists(filePhysicalPath))
+            {
+                Directory.CreateDirectory(fileName);
+                d.Save(Server.MapPath(filePhysicalPath + fileName + ".html"), SaveFormat.Html);
+                return Server.MapPath(filePhysicalPath + fileName + ".html");
+            }
+            else
+            {
+                return Server.MapPath(".." + filePhysicalPath + fileName + ".html");
+            }
         }
     }
 }

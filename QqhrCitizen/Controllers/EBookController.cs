@@ -246,6 +246,7 @@ namespace QqhrCitizen.Controllers
                 return ".." + filePhysicalPath + fileName + ".pdf";
             }
         }
+
         private string WordToHtml(string wordFileName, string fileName)
         {
             Aspose.Words.Document d = new Aspose.Words.Document(wordFileName);
