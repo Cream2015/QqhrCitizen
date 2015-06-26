@@ -235,12 +235,13 @@ namespace QqhrCitizen.Controllers
         [ValidateInput(false)]
         public ActionResult AddNews(News model,HttpPostedFileBase file )
         {
+            var random = DateHelper.GetTimeStamp();
             var message = "";
             if (file != null)
             {
-                string fileName = Path.Combine(Request.MapPath("~/Upload/NewsWord"), DateHelper.GetTimeStamp() + Path.GetFileName(file.FileName));
+                string fileName = Path.Combine(Request.MapPath("~/Upload/NewsWord"), random + Path.GetFileName(file.FileName));
                 file.SaveAs(fileName);
-                NewsWordToHtml(fileName, DateHelper.GetTimeStamp());
+                NewsWordToHtml(fileName, random);
                 message =
 
                     
@@ -257,8 +258,8 @@ namespace QqhrCitizen.Controllers
             {
                 if (file != null)
                 {
-                    string[] imgs = Helpers.String.GetHtmlImageUrlList();
-                    model.FirstImgUrl = imgs[0];
+                    string[] imgs = Helpers.String.GetHtmlImageUrlList(message);
+                    model.FirstImgUrl = "/Upload/NewsWord/"+random+imgs[0];
                 }
                 else
                 {
