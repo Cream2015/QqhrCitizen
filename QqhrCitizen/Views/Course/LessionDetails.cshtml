@@ -48,7 +48,7 @@
                                 <input type="hidden" name="LessionID" id="LessionID" value="@lession.ID" />
                                 <input type="hidden" id="sid" value="@ViewBag.SID" />
                                 <textarea name="Content" class="textbox" id="noteContent"></textarea>
-                                <p><input type="button" value="保存" id="btnAddNote" class="button blue" style="margin-left:10px;" /></p>
+                                <p><input type="button" value="保存" id="btnAddNote" class="btn-ok button btn-info" style="margin-left:10px;" /></p>
                                 <div style="padding-top:10px;"><h5>历史笔记</h5></div>
                                 <div id="lstNote">
                                     @if (listNote.Count > 0)
@@ -91,7 +91,7 @@
                                         </div>
 
                                     }
-                                    <input type="button" class="button blue" value="提交" id="btnAnswerQuestion" />
+                                    <input type="button" class="btn-ok button btn-info" value="提交" id="btnAnswerQuestion" />
                                 }
                                 <div class="warning"></div>
 
@@ -136,7 +136,7 @@
         }
     }*@
 
-    @*window.onbeforeunload = onbeforeunload_handler;
+    window.onbeforeunload = onbeforeunload_handler;
     window.onunload = onunload_handler;
     function onbeforeunload_handler() {
         if (event.clientX > document.body.clientWidth && event.clientY < 0 || event.altKey) {
@@ -146,15 +146,15 @@
         }
     }
 
-    function onbeforeunload_handler() {
-        if (document.body.clientWidth-event.clientX<21||event.altKey||event.ctrlKey){  
-            alert("close");  
-        }else{  
-            window.event.returnValue="";  
-            alert("refrash");  
-            return false;  
-        }  
-    }  
+    //function onbeforeunload_handler() {
+    //    if (document.body.clientWidth-event.clientX<21||event.altKey||event.ctrlKey){  
+    //        alert("close");  
+    //    }else{  
+    //        window.event.returnValue="";  
+    //        alert("refrash");  
+    //        return false;  
+    //    }  
+    //}  
 
     function onunload_handler() {
         var user = $("#hdCurrentuser").val();
@@ -163,9 +163,9 @@
             $.post("/Course/LearningRecord/@lession.ID", function (data) {
             });
         }
-    }*@
+    }
 
-    $(function () {
+    @*$(function () {
         $(window).unbind().bind('beforeunload', function () {
             if (document.body.clientWidth - event.clientX < 21 || event.altKey || event.ctrlKey) {
                 alert("close");
@@ -185,5 +185,5 @@
         })
 
 
-    })
+    })*@
 </script>

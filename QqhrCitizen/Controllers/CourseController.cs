@@ -197,7 +197,7 @@ namespace QqhrCitizen.Controllers
             }
             var questions = new List<vQuestion>();
             var lessions = new List<Lession>();
-
+            Lession = db.Lessions.Find(id);
             Lession.Browses = Lession.Browses + 1;
             db.SaveChanges();
             ViewBag.Lession = Lession;
