@@ -17,13 +17,11 @@
     <meta name="author" content="">
     <link rel="shortcut icon" href="Images/logo.ico">
     <link href="~/Styles/app_home.css" rel="stylesheet" media="screen">
+    <link href="~/Styles/citizen.css" rel="stylesheet" />
     <script src="~/Scripts/jquery.js"></script>
-    <script src="~/Scripts/plugins.js"></script>
-    <script src="~/Scripts/flproto0.1.0.js"></script>
-    <script src="~/Scripts/proto.js"></script>
-    <script src="~/Scripts/modernizr-2.6.2.min.js"></script>
-    <script type="text/javascript" src="~/Scripts/home.login.js"></script>
 
+
+    <script src="~/Scripts/qqhrcitizen.base.js"></script>
     <script src="~/Scripts/citizen.js"></script>
 </head>
 <body class="home__login">
@@ -85,7 +83,7 @@
                                     欢迎回来
                                 </div>
                                 <div class="body">
-                                    @using (Html.BeginForm("Login", "User", FormMethod.Post,new {  id="frmLogin"}))
+                                    @using (Html.BeginForm("Login", "User", FormMethod.Post, new { id = "frmLogin" }))
                                     {
                                         @Html.AntiForgerySID()
                                         <div class="d-username">

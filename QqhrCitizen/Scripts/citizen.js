@@ -261,14 +261,14 @@ $(document).ready(function () {
 
 
     $("#frmLogin").submit(function () {
-        alert("asd");
         var username = $("#Username").val();
         var password = $("#Password").val();
-        if (username == "") {
+        if (username == "" || username == null) {
+            alert("asdasd");
             CastMsg("用户名不能为空！");
             return false;
         }
-        if (username == "") {
+        if (password == "" || password == null) {
             CastMsg("密码不能为空！");
             return false;
         }
