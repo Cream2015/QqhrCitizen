@@ -40,7 +40,7 @@ namespace QqhrCitizen.Controllers
                 LstRecord.Add(new vStudyRecord(item));
             }
 
-            foreach(var item in LstHotCourse)
+            foreach (var item in LstHotCourse)
             {
                 _LstHotCourse.Add(new vCourse(item));
             }
@@ -102,7 +102,7 @@ namespace QqhrCitizen.Controllers
             List<StudyRecord> records = new List<StudyRecord>();
             List<vStudyRecord> LstRecord = new List<vStudyRecord>();
 
-            records = db.StudyRecords.Where(sr=>sr.Lession.CourseID == id).OrderByDescending(sr => sr.Time).DistinctBy(x => new { x.UserID }).Take(8).ToList();
+            records = db.StudyRecords.Where(sr => sr.Lession.CourseID == id).OrderByDescending(sr => sr.Time).DistinctBy(x => new { x.UserID }).Take(8).ToList();
             foreach (var item in records)
             {
                 LstRecord.Add(new vStudyRecord(item));
@@ -121,7 +121,7 @@ namespace QqhrCitizen.Controllers
             }
 
             //相关的课程
-            var lstCourse = db.Courses.Where(c => c.CourseTypeID == Course.CourseTypeID && c.ID != id).OrderByDescending(n=>n.Browses).ThenByDescending(n => n.Time).Take(8).ToList();
+            var lstCourse = db.Courses.Where(c => c.CourseTypeID == Course.CourseTypeID && c.ID != id).OrderByDescending(n => n.Browses).ThenByDescending(n => n.Time).Take(8).ToList();
             ViewBag.Lessions = lessions;
 
             ViewBag.Course = Course;
@@ -146,7 +146,9 @@ namespace QqhrCitizen.Controllers
             var vLessions = new List<vLession>();
             var vNotes = new List<vNote>();
             StudyRecord record = new StudyRecord();
-        
+            UserCourse userCourse = new UserCourse();
+
+
             record.LessionID = id;
             record.UserID = CurrentUser.ID;
             record.Time = DateTime.Now;
@@ -155,8 +157,23 @@ namespace QqhrCitizen.Controllers
             Lession.Browses = Lession.Browses + 1;
 
             db.StudyRecords.Add(record);
+
+            userCourse = db.UserCourses.Where(uc => uc.UserID == CurrentUser.ID && uc.CourseID == Lession.CourseID).FirstOrDefault();
+            if (userCourse == null)
+            {
+                userCourse = new UserCourse();
+                userCourse.UserID = CurrentUser.ID;
+                userCourse.CourseID = Lession.CourseID;
+                userCourse.Time = DateTime.Now;
+                userCourse.IsFinisnCourse = false;
+                db.UserCourses.Add(userCourse);
+            }
+            else
+            {
+                userCourse.Time = DateTime.Now;
+            }
             db.SaveChanges();
-            ViewBag.Lession = Lession;
+
             var listNote = db.Notes.Where(note => note.LessionID == Lession.ID).OrderByDescending(n => n.Time).ToList();
 
             var listQuestions = db.Questions.Where(question => question.LessionID == id).ToList();
@@ -174,6 +191,8 @@ namespace QqhrCitizen.Controllers
                 vNotes.Add(new vNote(item));
             }
 
+
+            ViewBag.Lession = Lession;
             ViewBag.Questions = questions;
             ViewBag.Lessions = vLessions;
             ViewBag.ListNote = vNotes;
@@ -195,11 +214,11 @@ namespace QqhrCitizen.Controllers
             var vNotes = new List<vNote>();
             Lession Lession = db.Lessions.Find(id);
             StudyRecord record = new StudyRecord();
-
+            UserCourse userCourse = new UserCourse();
             record.LessionID = id;
             record.UserID = CurrentUser.ID;
             record.Time = DateTime.Now;
-            
+
             bool flag = false;
             var temp = new LearningRecord();
             if (CurrentUser != null)
@@ -216,6 +235,21 @@ namespace QqhrCitizen.Controllers
             Lession = db.Lessions.Find(id);
             Lession.Browses = Lession.Browses + 1;
             db.StudyRecords.Add(record);
+
+            userCourse = db.UserCourses.Where(uc => uc.UserID == CurrentUser.ID && uc.CourseID == Lession.CourseID).FirstOrDefault();
+            if (userCourse == null)
+            {
+                userCourse = new UserCourse();
+                userCourse.UserID = CurrentUser.ID;
+                userCourse.CourseID = Lession.CourseID;
+                userCourse.Time = DateTime.Now;
+                userCourse.IsFinisnCourse = false;
+                db.UserCourses.Add(userCourse);
+            }
+            else
+            {
+                userCourse.Time = DateTime.Now;
+            }
             db.SaveChanges();
             ViewBag.Lession = Lession;
             var listNote = db.Notes.Where(note => note.LessionID == Lession.ID).OrderByDescending(n => n.Time).ToList();
@@ -286,10 +320,15 @@ namespace QqhrCitizen.Controllers
         {
             LessionScore lessionScore = new LessionScore();
             lessionScore = db.LessionScores.Where(ls => ls.LessionId == lid && ls.UserId == CurrentUser.ID).FirstOrDefault();
-            
-             
-            if(lessionScore == null)
+            Lession lession = new Lession();
+            lession = db.Lessions.Find(lid);
+            List<Lession> lstLession = new List<Lession>();
+            lstLession = db.Lessions.Where(l => l.CourseID == lession.CourseID).OrderBy(l => l.Time).ToList();
+            int index = lstLession.FindIndex(l => l.ID == lession.ID);
+            int count = lstLession.Count();
+            if (lessionScore == null)
             {
+                lessionScore = new LessionScore();
                 lessionScore.UserId = CurrentUser.ID;
                 lessionScore.LessionId = lid;
                 lessionScore.Rate = rate;
@@ -297,6 +336,15 @@ namespace QqhrCitizen.Controllers
                 if (rate >= 0.6)
                 {
                     lessionScore.IsPassTest = true;
+                    if (index == count - 1)
+                    {
+                        UserCourse userCourse = db.UserCourses.Where(uc => uc.UserID == CurrentUser.ID && uc.CourseID == lession.CourseID).FirstOrDefault();
+                        userCourse.IsFinisnCourse = true;
+                        userCourse.Time = DateTime.Now;
+                        Models.User user = new User();
+                        user = db.Users.Find(CurrentUser.ID);
+                        user.Score += lession.Course.Credit;
+                    }
                 }
                 else
                 {
@@ -307,11 +355,22 @@ namespace QqhrCitizen.Controllers
             else
             {
                 lessionScore.Time = DateTime.Now;
-                if (rate >= 0.6 && lessionScore.IsPassTest==false)
+                if (rate >= 0.6 && lessionScore.IsPassTest == false)
                 {
                     lessionScore.IsPassTest = true;
+
+                    if (index == count - 1)
+                    {
+                        UserCourse userCourse = db.UserCourses.Where(uc => uc.UserID == CurrentUser.ID && uc.CourseID == lession.CourseID).FirstOrDefault();
+                        userCourse.IsFinisnCourse = true;
+                        userCourse.Time = DateTime.Now;
+                        Models.User user = new User();
+                        user = db.Users.Find(CurrentUser.ID);
+                        user.Score += lession.Course.Credit;
+                    }
                 }
             }
+
             db.SaveChanges();
             return Content("ok");
         }

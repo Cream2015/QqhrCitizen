@@ -45,6 +45,12 @@ namespace QqhrCitizen.Models
 
             modelBuilder.Entity<Note>().HasRequired(n => n.User).WithMany().WillCascadeOnDelete(false);
             modelBuilder.Entity<LessionScore>().HasRequired(ls => ls.User).WithMany().WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<StudyRecord>().HasRequired(ls => ls.User).WithMany().WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<LearningRecord>().HasRequired(ls => ls.User).WithMany().WillCascadeOnDelete(false);
+            modelBuilder.Entity<ReadRecord>().HasRequired(ls => ls.User).WithMany().WillCascadeOnDelete(false);
+            modelBuilder.Entity<UserCourse>().HasRequired(ls => ls.User).WithMany().WillCascadeOnDelete(false);
         }
 
     }

@@ -36,7 +36,7 @@ namespace QqhrCitizen.Controllers
             user1 = db.Users.Where(u => u.Username == model.Username).SingleOrDefault();
             if (user1 == null)
             {
-                User user = new User { Username = model.Username, Password = Helpers.Encryt.GetMD5(model.Password), Role = Role.User, Realname = model.Realname, Email = model.Email, Phone = model.Phone, Address = model.Address };
+                User user = new User { Username = model.Username, Password = Helpers.Encryt.GetMD5(model.Password), Role = Role.User, Realname = model.Realname, Email = model.Email, Phone = model.Phone, Address = model.Address,Score=0 };
                 db.Users.Add(user);
                 int result = db.SaveChanges();
                 if (result > 0)
@@ -271,7 +271,9 @@ namespace QqhrCitizen.Controllers
         {
             User user = new User();
             user = db.Users.Find(id);
+            List<UserCourse> lstCourse = db.UserCourses.Where(us => us.UserID == CurrentUser.ID).DistinctBy(x => new { x.CourseID }).OrderByDescending(us => us.Time).ToList();
             ViewBag.user = new vUser(user);
+            ViewBag.LstCourse = lstCourse;
             return View();
         }
 
