@@ -101,7 +101,7 @@ namespace WpfApplication2
                 para[4].Value = 1;
                 para[5].Value = 0;
                 para[6].Value = 37;
-                para[7].Value = 6;
+                para[7].Value = citizen_sqldt.Rows[i]["CreditHour"];
                 a += citizen_sqlhelp.ExecuteNonQuery(citizen_sql, para);
                 Sql_list.Items.Add(citizen_sql);
             }
