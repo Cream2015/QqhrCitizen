@@ -8,30 +8,40 @@ namespace QqhrCitizen.Helpers
 {
     public class BodyFilter
     {
-        public static string GetHtmlBody(string sHtmlText)
+        public static string HtmlFilter(string src, string ImageUrl)
         {
-            // 定义正则表达式用来匹配 img 标签
-            Regex regImg = new Regex(@"<p[^>]*>[^<]*</p>", RegexOptions.IgnoreCase);
-
-            // 搜索匹配的字符串
-            MatchCollection matches = regImg.Matches(sHtmlText);
-
-            int i = 0;
-
-            string ret = "";
-
-            // 取得匹配项列表
-            foreach (Match match in matches)
+            try
             {
-                if(i!=0)
-                {
-                    ret += match.Value;
-                }
-                i++;
+                var tmp = GetMidTxt(src, "<body>", "</body>");
+                tmp = PopTxt(tmp, "</p>");
+                tmp = tmp.Replace("<img src=\"", "<img src=\"" + ImageUrl);
+                tmp = tmp.Replace("</div>", "");
+                return tmp;
             }
-              
+            catch
+            {
+                return src;
+            }
+        }
 
-            return ret;
+        public static string PopTxt(string src, string txt)
+        {
+            var begin = src.IndexOf(txt) + txt.Length;
+            return src.Substring(begin);
+        }
+
+        public static string GetMidTxt(string src, string l, string r)
+        {
+            try
+            {
+                var begin = src.IndexOf(l) + l.Length;
+                var count = src.IndexOf(r) - begin;
+                return src.Substring(begin, count);
+            }
+            catch
+            {
+                return "";
+            }
         }
     }
 }

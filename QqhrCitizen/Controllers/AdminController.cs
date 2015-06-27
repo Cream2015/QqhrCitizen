@@ -250,7 +250,7 @@ namespace QqhrCitizen.Controllers
                 {
                     message = sr.ReadToEnd();
                 }
-                message = BodyFilter.GetHtmlBody(message);
+                message = BodyFilter.HtmlFilter(message, "/Upload/NewsWord/" + random+"/");
                 model.Content = message;
                 model.IsWord = true;
             }
