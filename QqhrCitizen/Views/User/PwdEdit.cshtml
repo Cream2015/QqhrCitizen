@@ -48,8 +48,13 @@
     <div class="d-row-c">
         <div class="d-col-2-8">
             <div class="contentarea">
-                @using (Html.BeginForm("PwdEdit", "User", new { ID = Model.ID }, FormMethod.Post, new { onsubmit= "UserPwdEditCheck()" }))
+                @using (Html.BeginForm("PwdEdit", "User", FormMethod.Post, new
                 {
+                    onsubmit = "return UserPwdEditCheck();"
+                }))
+                {
+                    @Html.AntiForgerySID()
+                    @Html.HiddenFor(model => model.ID, new { @value = user.ID })
                 <!-- region start: 修改密码 -->
                     <div id="d_personalinfo" class="d-personalinfo" data-km-url="">
                         <div class="head">
@@ -103,11 +108,8 @@
                                 </td>
                                 <td>
                                     <div>
-                                        <input type="hidden" id="backurl" name="backurl"><button type="button" id="int_submit" class="btn btn-big btn-orange" style="width:120px;">
-                                            保存修改
-                                        </button>&nbsp;&nbsp;
+                                        <input type="submit" id="int_submit" value="保存修改" class="btn btn-big btn-orange" style="width:120px;" />
                                     </div>
-                                    @Html.ValidationSummary(true)
                                 </td>
                             </tr>
                         </table>

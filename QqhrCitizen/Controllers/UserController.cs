@@ -201,13 +201,12 @@ namespace QqhrCitizen.Controllers
             User user = db.Users.Find(model.ID);
             if (ModelState.IsValid)
             {
-                FormsAuthentication.SetAuthCookie(model.Username, false);
 
                 if (!string.IsNullOrEmpty(model.Password))
                 {
                     if (!user.Password.Equals(Helpers.Encryt.GetMD5(model.Password)))
                     {
-                        ModelState.AddModelError("", "原始密码输入不正确");
+                        return Redirect("/Shared/Info?msg=" + "您输入原始密码错误！");
                     }
                     else
                     {
