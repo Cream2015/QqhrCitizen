@@ -29,5 +29,7 @@ namespace QqhrCitizen.Controllers
             return Message("您没有权限执行本操作！");
         } 
         #endregion
+
+        
     }
 }

@@ -1,0 +1,11 @@
+﻿<Window x:Class="WpfApplication2.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="MainWindow" Height="350" Width="525">
+    <Grid>
+        <Button Content="NewsInfo" HorizontalAlignment="Left" Height="41" Margin="28,29,0,0" VerticalAlignment="Top" Width="125" Click="Button_Click"/>
+        <Button Content="CourseInfo" HorizontalAlignment="Left" Height="40" Margin="28,91,0,0" VerticalAlignment="Top" Width="125" Click="Button_Click_1"/>
+        <ListView x:Name="Sql_list" HorizontalAlignment="Left" Height="202" Margin="250,10,0,0" VerticalAlignment="Top" Width="256"/>
+
+    </Grid>
+</Window>
