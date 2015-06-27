@@ -75,60 +75,6 @@
                     </div>
                 </div>
             </div>
-            <script>
-    function frmCheck() {
-        if (!CheckUsername()) return false;
-        if (!CheckPassword()) return false;
-        if (!CheckEmail()) return false;
-    }
-    function CheckUsername() {
-        if ($("#Username").val() == "") {
-            CastMsg("用户名不能为空");
-            $("#user_msg").html("用户名不能为空");
-            return false;
-        }
-        return true;
-    }
-    function CheckPassword() {
-        if ($('#Password').val() == "") {
-            CastMsg("密码不能为空！");
-            $("#pwd_msg").html("用户名不能为空");
-            return false;
-        }
-        if ($('#Confirm').val() == "") {
-            CastMsg("密码重复不能为空！");
-            $("#repwd_msg").html("用户名不能为空");
-            return false;
-        }
-        if ($("#Password").val().length < 4) {
-            $("#pwd_msg").html("用户名不能为空");
-            CastMsg("至少输入4位密码");
-            return false;
-        }
-        if ($('#Password').val() != $('#Confirm').val()) {
-            CastMsg("两次输入密码不一致");
-            $("#repwd_msg").html("用户名不能为空");
-            $("#repwd_msg").css("color:red");
-            return false;
-        }
-        return true;
-    }
-    function CheckEmail() {
-        if ($("#Email").val() == "") {
-            CastMsg("邮箱不能为空");
-            $("#email_msg").html("邮箱不能为空");
-            return false;
-        }
-        var myreg = /^([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+@@([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+\.[a-zA-Z]{2,3}$/;
-        if (!myreg.test($("#Email").val())) {
-            CastMsg("邮箱格式输入错误！");
-            $("#email_msg").html("邮箱格式输入错误");
-            return false;
-        }
-        return true;
-    }
-
-            </script>
 
             <div class="d-row" style="margin-bottom: 20px; padding: 20px 0 20px 0;">
                 <div class="d-row-c">
@@ -138,9 +84,63 @@
                                 <div class="head">
                                     齐齐哈尔市民学习网用户注册
                                 </div>
+                                <script>
+                                    $("#frmRegister").submit(function () {
+                                        if (!CheckUsername()) return false;
+                                        if (!CheckPassword()) return false;
+                                        if (!CheckEmail()) return false;
+
+                                    });
+                                    function CheckUsername() {
+                                        if ($("#Username").val() == "") {
+                                            CastMsg("用户名不能为空");
+                                            $("#user_msg").html("用户名不能为空")
+                                            return false;
+                                        }
+                                        return true;
+                                    }
+                                    function CheckPassword() {
+                                        if ($('#Password').val() == "") {
+                                            CastMsg("密码不能为空")
+                                            $("#pwd_msg").html("用户名不能为空");
+                                            return false;
+                                        }
+                                        if ($('#Confirm').val() == "") {
+                                            CastMsg("密码重复不能为空！");
+                                            $("#pwd_msg").html("密码重复不能为空");
+                                            return false;
+                                        }
+                                        if ($("#Password").val().length < 4) {
+                                            CastMsg("至少输入4位密码");
+                                            $("#pwd_msg").html("密码重复不能为空");
+                                            return false;
+                                        }
+                                        if ($('#Password').val() != $('#Confirm').val()) {
+                                            CastMsg("两次输入密码不一致");
+                                            $("#repwd_msg").css("color:red");
+                                            return false;
+                                        }
+                                        return true;
+                                    }
+                                    function CheckEmail() {
+                                        if ($("#Email").val() == "") {
+                                            CastMsg("至少输入4位密码");
+                                            $("#email_msg").html("至少输入4位密码");
+                                            return false;
+                                        }
+                                        var myreg = /^([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+@@([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+\.[a-zA-Z]{2,3}$/;
+                                        if (!myreg.test($("#Email").val())) {
+                                            CastMsg("邮箱格式输入错误！");
+                                            $("#email_msg").html("邮箱格式输入错误");
+                                            return false;
+                                        }
+                                        return true;
+                                    }
+
+                                </script>
                                 @using (Html.BeginForm("Register", "User", FormMethod.Post, new
                                 {
-                                    onsubmit = "return frmCheck();"
+                                    id="frmRegister"
                                 }))
                                 {
                                     @Html.AntiForgerySID()
@@ -155,9 +155,8 @@
                                                     </td>
                                                     <td>
                                                         <div>
-                                                            @Html.TextBoxFor(model => model.Username, new { @class = "int-hs" })
-                                                            <br>
-                                                            <span class="text" id="user_msg">用户名长度在1-30个字之间；只能由字母、数字和下划线组成；不能以下划线开头。例：study_001</span>
+                                                            @Html.TextBoxFor(model => model.Username, new { @class = "int-hs",id="Username"})
+                                                            <br><span class="text" id="user_msg">用户名长度在1-30个字之间；只能由字母、数字和下划线组成；不能以下划线开头。例：study_001</span>
                                                         </div>
                                                     </td>
                                                 </tr>
@@ -169,7 +168,7 @@
                                                     </td>
                                                     <td>
                                                         <div>
-                                                            @Html.TextBoxFor(model => model.Email, new { @class = "int-hs" })
+                                                            @Html.TextBoxFor(model => model.Email, new { @class = "int-hs",id="Email"})
                                                             <span class="text" id="email_msg"></span>
                                                         </div>
                                                     </td>
@@ -182,8 +181,8 @@
                                                     </td>
                                                     <td>
                                                         <div>
-                                                            @Html.PasswordFor(model => model.Password, new { @class = "int-hs" })<br>
-                                                            <span class="text" id="pwd_msg">密码长度在1-20个字之间；只能由字母、数字和下划线组成。</span>
+                                                            @Html.PasswordFor(modal => modal.Password, new { @class = "int-hs",id="Password" })
+                                                            <br><span class="text" id="pwd_msg">密码长度在1-20个字之间；只能由字母、数字和下划线组成。</span>
                                                         </div>
                                                     </td>
                                                 </tr>
@@ -195,7 +194,7 @@
                                                     </td>
                                                     <td>
                                                         <div>
-                                                            @Html.Password("Confirm", "", new { @class = "int-hs" })
+                                                            @Html.Password("Confirm", "", new { @class = "int-hd",id="Confirm" })
                                                             <span class="text" id="repwd_msg"></span>
                                                         </div>
                                                     </td>
