@@ -528,6 +528,7 @@
     <Compile Include="Filters\AccessToLessionAttribute.cs" />
     <Compile Include="Filters\BaseAuthAttribute.cs" />
     <Compile Include="Filters\ValidateSIDAttribute.cs" />
+    <Compile Include="Helpers\BodyFilter.cs" />
     <Compile Include="Helpers\DateHelper.cs" />
     <Compile Include="Helpers\Encryt.cs" />
     <Compile Include="Global.asax.cs">

@@ -61,7 +61,7 @@
 
 
 <script>
-    if ($("#isword").val() == true) {
+    if ($("#isword").val() == "value") {
         $.each($("#content").find("img"), function (i, item) {
             var src = $(this).attr("src");
             var path = $("#url").val().replace(src, "");

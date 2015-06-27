@@ -250,7 +250,7 @@ namespace QqhrCitizen.Controllers
                 {
                     message = sr.ReadToEnd();
                 }
-                message = Regex.Match(message, "<body.+</body>").ToString();
+                message = BodyFilter.GetHtmlBody(message);
                 model.Content = message;
                 model.IsWord = true;
             }
