@@ -260,6 +260,8 @@ namespace QqhrCitizen.Controllers
             ViewBag.user = new vUser(user);
             return View();
         }
+
+
         public ActionResult HistoryCourse(int id)
         {
             User user = new User();
@@ -267,13 +269,15 @@ namespace QqhrCitizen.Controllers
             ViewBag.user = new vUser(user);
             return View();
         }
+
+
         public ActionResult CourseNote(int id)
         {
             User user = new User();
             user = db.Users.Find(id);
             ViewBag.user = new vUser(user);
             List<Note> notes = new List<Note>();
-            notes = db.Notes.Where(n => n.UserID == id).ToList();
+            notes = db.Notes.Where(n => n.UserID == id).OrderByDescending(n => n.Time).ToList();
             ViewBag.Notes = notes;
             return View();
         }
