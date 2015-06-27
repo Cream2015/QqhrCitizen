@@ -14,6 +14,7 @@ namespace QqhrCitizen.Controllers
 {
     public class UserController : BaseController
     {
+        
 
         [HttpGet]
         public ActionResult Register()
@@ -36,7 +37,7 @@ namespace QqhrCitizen.Controllers
             user1 = db.Users.Where(u => u.Username == model.Username).SingleOrDefault();
             if (user1 == null)
             {
-                User user = new User { Username = model.Username, Password = Helpers.Encryt.GetMD5(model.Password), Role = Role.User, Realname = model.Realname, Email = model.Email, Phone = model.Phone, Address = model.Address,Score=0 };
+                User user = new User { Username = model.Username, Password = Helpers.Encryt.GetMD5(model.Password), Role = Role.User, Realname = model.Realname, Email = model.Email, Phone = model.Phone, Address = model.Address, Score = 0 };
                 db.Users.Add(user);
                 int result = db.SaveChanges();
                 if (result > 0)
@@ -262,6 +263,15 @@ namespace QqhrCitizen.Controllers
             ViewBag.user = new vUser(user);
             List<StudyRecord> records = new List<StudyRecord>();
             records = db.StudyRecords.Where(sr => sr.UserID == CurrentUser.ID).OrderByDescending(sr => sr.Time).ToList();
+
+
+            int courseSum = db.UserCourses.Where(us => us.UserID == CurrentUser.ID).DistinctBy(x => new { x.CourseID }).Count();
+            int score = CurrentUser.Score;
+            int noteSum = db.Notes.Where(n => n.UserID == CurrentUser.ID).Count();
+
+            ViewBag.CourseSum = courseSum;
+            ViewBag.Score = score;
+            ViewBag.NoteSum = noteSum;
             ViewBag.Records = records;
             return View();
         }
@@ -273,6 +283,13 @@ namespace QqhrCitizen.Controllers
             user = db.Users.Find(id);
             List<UserCourse> lstCourse = db.UserCourses.Where(us => us.UserID == CurrentUser.ID).DistinctBy(x => new { x.CourseID }).OrderByDescending(us => us.Time).ToList();
             ViewBag.user = new vUser(user);
+            int courseSum = db.UserCourses.Where(us => us.UserID == CurrentUser.ID).DistinctBy(x => new { x.CourseID }).Count();
+            int score = CurrentUser.Score;
+            int noteSum = db.Notes.Where(n => n.UserID == CurrentUser.ID).Count();
+
+            ViewBag.CourseSum = courseSum;
+            ViewBag.Score = score;
+            ViewBag.NoteSum = noteSum;
             ViewBag.LstCourse = lstCourse;
             return View();
         }
@@ -285,6 +302,13 @@ namespace QqhrCitizen.Controllers
             ViewBag.user = new vUser(user);
             List<Note> notes = new List<Note>();
             notes = db.Notes.Where(n => n.UserID == id).OrderByDescending(n => n.Time).ToList();
+            int courseSum = db.UserCourses.Where(us => us.UserID == CurrentUser.ID).DistinctBy(x => new { x.CourseID }).Count();
+            int score = CurrentUser.Score;
+            int noteSum = db.Notes.Where(n => n.UserID == CurrentUser.ID).Count();
+
+            ViewBag.CourseSum = courseSum;
+            ViewBag.Score = score;
+            ViewBag.NoteSum = noteSum;
             ViewBag.Notes = notes;
             return View();
         }
