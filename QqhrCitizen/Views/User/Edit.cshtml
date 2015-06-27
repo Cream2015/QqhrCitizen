@@ -5,6 +5,8 @@
     User user = ViewBag.User as User;
     ViewBag.Title = "修改用户信息修改 - 齐齐哈尔市民学习网";
 }
+
+<script src="~/Scripts/jquery.datetimepicker.js"></script>
 <div id="d_menu" class="d-menu menu-use">
     <div id="d_menu_c" class="d-menu-c">
         <!-- region start: menu -->
@@ -45,7 +47,9 @@
         return true;
     }
     function CheckBirthday() {
+
         if ($("#Birthday").val() != "") {
+
             var str = $("#Birthday").val()
             var year = Convert.ToInt32(str.Substring(0, 3));
             var month = Convert.ToInt32(str.Substring(5, 2));
@@ -80,6 +84,10 @@
             }
         }
     }
+
+    $(function () {
+        $('.datetime').datetimepicker();
+    });
 </script>
 <div id="d_bottom" class="d-bottom" style="visibility: hidden; position: fixed;"><div class="d-bottom-c"><div id="d_scrolltop" class="d-scrolltop" style="right: -70px;"><span class="t" onclick="$(document.body).ScrollTo();">顶部</span></div></div></div>
 <div class="d-row" style="padding:0 0 40px 0">
@@ -119,7 +127,7 @@
                                 </td>
                                 <td>
                                     <div>
-                                        @Html.TextBoxFor(model => model.Realname, new { @Value = user.Realname, @class = "int-hs", @style = "width:150px" })<br />
+                                        @Html.TextBoxFor(model => model.Realname, new { @Value = user.Realname, @class = "int-hs nullable", @style = "width:150px" })<br />
                                         <span class="text">仅用于显示，不用于用户登录。长度为20个字符，一个汉字为2个字符。</span>
                                     </div>
                                 </td>
@@ -132,7 +140,7 @@
                                 </td>
                                 <td>
                                     <div>
-                                        @Html.DropDownListFor(model => model.Sex, ViewBag.Sex as IEnumerable<SelectListItem>, new { @class = "int-hs", @style = "width:150px" })<br>
+                                        @Html.DropDownListFor(model => model.Sex, ViewBag.Sex as IEnumerable<SelectListItem>, new { @class = "int-hs nullable", @style = "width:150px" })<br>
                                     </div>
                                 </td>
                             </tr>
@@ -144,7 +152,7 @@
                                 </td>
                                 <td>
                                     <div>
-                                        @Html.TextBoxFor(model => model.Age, new { @Value = user.Age, @class = "int-hs", @style = "width:150px" })<br>
+                                        @Html.TextBoxFor(model => model.Age, new { @Value = user.Age, @class = "int-hs nullable", @style = "width:150px" })<br>
                                         <span class="text"></span>
                                     </div>
                                 </td>
@@ -157,7 +165,7 @@
                                 </td>
                                 <td>
                                     <div>
-                                        @Html.TextBoxFor(model => model.Email, new { @Value = user.Email, @class = "int-hs", @style = "width:150px" })<br />
+                                        @Html.TextBoxFor(model => model.Email, new { @Value = user.Email, @class = "int-hs nullable", @style = "width:150px" })<br />
                                         <span class="text"></span>
                                     </div>
                                 </td>
@@ -170,7 +178,7 @@
                                 </td>
                                 <td>
                                     <div>
-                                        @Html.TextBoxFor(model => model.Birthday, new { @Value = String.Format("{0:yyyy-MM-dd}", user.Birthday), @class = "int-hs", @style = "width:150px" })<br />
+                                        @Html.TextBoxFor(model => model.Birthday, new { @Value = user.Birthday, @class = "w-3 datetime nullable" })<br />
                                         <span class="text"></span>
                                     </div>
                                 </td>
@@ -183,7 +191,7 @@
                                 </td>
                                 <td>
                                     <div>
-                                        @Html.TextBoxFor(model => model.Phone, new { @class = "int-hs", @style = "width:150px", @Value = @user.Phone })<br />
+                                        @Html.TextBoxFor(model => model.Phone, new { @class = "int-hs nullable", @style = "width:150px ", @Value = @user.Phone })<br />
                                         <span class="text"></span>
                                     </div>
                                 </td>
@@ -196,7 +204,7 @@
                                 </td>
                                 <td>
                                     <div>
-                                        @Html.TextBoxFor(model => model.Address, new { @Value = @user.Address, @class = "int-hs", @style = "width:200px" })<br />
+                                        @Html.TextBoxFor(model => model.Address, new { @Value = @user.Address, @class = "int-hs nullable", @style = "width:200px" })<br />
                                         <span class="text"></span>
                                     </div>
                                 </td>
@@ -204,7 +212,7 @@
                             <tr>
                                 <td>
                                     <div>
-                                        头像<br>(图片限制：<br>不超过<span class="lmt">1024KB</span>，<br>宽120px，高120px)
+                                        头像（不修改请，留空）
                                     </div>
                                 </td>
                                 <td>
@@ -219,11 +227,9 @@
                                         }
                                         <input value="/User/ShowPicture/@user.ID" id="Pic" name="Pic" type="hidden">
                                         <div>
-                                            <span class="btn btn-orange sltAvatar">选择头像</span>&nbsp;&nbsp;
                                             <span class="btn btn-orange fileinput-button">
                                                 <span style="font-size:13px;">本地上传</span>
-                                                <!-- The file input field used as target for the file upload widget -->
-                                                <input id="fileupload" type="file" name="files[]" multiple="">
+                                                <input id="fileupload" type="file" class="nullable" name="file">
                                             </span>
                                         </div>
                                     </div>
@@ -232,7 +238,7 @@
                             <tr>
                                 <td>
                                     <div>
-                                        
+
                                     </div>
                                 </td>
                                 <td>
