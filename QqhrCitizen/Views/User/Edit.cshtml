@@ -80,135 +80,136 @@
             }
         }
     }
-    </script>
-    <div id="d_bottom" class="d-bottom" style="visibility: hidden; position: fixed;"><div class="d-bottom-c"><div id="d_scrolltop" class="d-scrolltop" style="right: -70px;"><span class="t" onclick="$(document.body).ScrollTo();">顶部</span></div></div></div>
-    <div class="d-row" style="padding:0 0 40px 0">
-        <div class="d-row-c">
-            <div class="d-col-2-8">
-                <div class="contentarea">
-                    @using (Html.BeginForm("Edit", "User", new { ID = user.ID }, FormMethod.Post, new
-                    {
-                        onsubmit = "return UserEditCheck();"
-                    }))
+</script>
+<div id="d_bottom" class="d-bottom" style="visibility: hidden; position: fixed;"><div class="d-bottom-c"><div id="d_scrolltop" class="d-scrolltop" style="right: -70px;"><span class="t" onclick="$(document.body).ScrollTo();">顶部</span></div></div></div>
+<div class="d-row" style="padding:0 0 40px 0">
+    <div class="d-row-c">
+        <div class="d-col-2-8">
+            <div class="contentarea">
+                @using (Html.BeginForm("Edit", "User", FormMethod.Post, new
+                {
+                    onsubmit = "return UserEditCheck();",
+                    enctype = "multipart/form-data"
+                }))
                 {
                     @Html.AntiForgerySID()
+                    @Html.HiddenFor(model => model.ID, new { @value = user.ID })
                     <div id="d_personalinfo" class="d-personalinfo">
-                            <div class="head">
-                                修改个人信息
-                            </div><table class="tbl">
-                                <tr>
-                                    <td style="width:100px;">
-                                        <div>
-                                            用户名
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div>
-                                            @user.Username
-                                            @Html.HiddenFor(modal => modal.Username, new { @Value = user.Username })
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <div>
-                                            <label for="Realname">真实姓名</label>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div>
-                                                @Html.TextBoxFor(model => model.Realname, new { @Value = user.Realname, @class = "int-hs", @style = "width:150px" })<br />
-                                            <span class="text">仅用于显示，不用于用户登录。长度为20个字符，一个汉字为2个字符。</span>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <div>
-                                            <label for="Sex">性别</label>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div>
-                                                @Html.DropDownListFor(model => model.Sex, ViewBag.Sex as IEnumerable<SelectListItem>, new { @class = "int-hs", @style = "width:150px" })<br>
-                                            <span class="text">@user.SexAsInt</span>
-                                        </div>
-                                    </td>
-                                </tr>
-                                      <tr>
-                                          <td>
-                                              <div>
-                                                  <label for="Age">年龄</label>
-                                              </div>
-                                          </td>
-                                          <td>
-                                              <div>
-                                                @Html.TextBoxFor(model => model.Age, new { @Value = user.Age, @class = "int-hs", @style = "width:150px" })<br>
-                                                  <span class="text"></span>
-                                              </div>
-                                          </td>
-                                      </tr>
-                                <tr>
-                                    <td>
-                                        <div>
-                                            <label for="Email">电子邮箱</label>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div>
-                                                @Html.TextBoxFor(model => model.Email, new { @Value = user.Email, @class = "int-hs", @style = "width:150px" })<br />
-                                            <span class="text"></span>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <div>
-                                            <label for="Birthday">生日</label>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div>
-                                                @Html.TextBoxFor(model => model.Birthday, new { @Value = String.Format("{0:yyyy-MM-dd}", user.Birthday), @class = "int-hs", @style = "width:150px" })<br />
-                                            <span class="text"></span>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <div>
-                                            <label for="Phone">电话</label>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div>
-                                                @Html.TextBoxFor(model => model.Phone, new { @class = "int-hs", @style = "width:150px" ,@Value=@user.Phone})<br />
-                                            <span class="text"></span>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <div>
-                                            <label for="Address">地址</label>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div>
-                                                @Html.TextBoxFor(model => model.Address, new {@Value=@user.Address, @class = "int-hs", @style = "width:200px" })<br />
-                                            <span class="text"></span>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <div>
-                                            头像<br>(图片限制：<br>不超过<span class="lmt">1024KB</span>，<br>宽120px，高120px)
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div id="avatarContainer">
-                                                @if (user.Picture == null)
+                        <div class="head">
+                            修改个人信息
+                        </div><table class="tbl">
+                            <tr>
+                                <td style="width:100px;">
+                                    <div>
+                                        用户名
+                                    </div>
+                                </td>
+                                <td>
+                                    <div>
+                                        @user.Username
+                                        @Html.HiddenFor(modal => modal.Username, new { @Value = user.Username })
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div>
+                                        <label for="Realname">真实姓名</label>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div>
+                                        @Html.TextBoxFor(model => model.Realname, new { @Value = user.Realname, @class = "int-hs", @style = "width:150px" })<br />
+                                        <span class="text">仅用于显示，不用于用户登录。长度为20个字符，一个汉字为2个字符。</span>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div>
+                                        <label for="Sex">性别</label>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div>
+                                        @Html.DropDownListFor(model => model.Sex, ViewBag.Sex as IEnumerable<SelectListItem>, new { @class = "int-hs", @style = "width:150px" })<br>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div>
+                                        <label for="Age">年龄</label>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div>
+                                        @Html.TextBoxFor(model => model.Age, new { @Value = user.Age, @class = "int-hs", @style = "width:150px" })<br>
+                                        <span class="text"></span>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div>
+                                        <label for="Email">电子邮箱</label>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div>
+                                        @Html.TextBoxFor(model => model.Email, new { @Value = user.Email, @class = "int-hs", @style = "width:150px" })<br />
+                                        <span class="text"></span>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div>
+                                        <label for="Birthday">生日</label>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div>
+                                        @Html.TextBoxFor(model => model.Birthday, new { @Value = String.Format("{0:yyyy-MM-dd}", user.Birthday), @class = "int-hs", @style = "width:150px" })<br />
+                                        <span class="text"></span>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div>
+                                        <label for="Phone">电话</label>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div>
+                                        @Html.TextBoxFor(model => model.Phone, new { @class = "int-hs", @style = "width:150px", @Value = @user.Phone })<br />
+                                        <span class="text"></span>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div>
+                                        <label for="Address">地址</label>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div>
+                                        @Html.TextBoxFor(model => model.Address, new { @Value = @user.Address, @class = "int-hs", @style = "width:200px" })<br />
+                                        <span class="text"></span>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div>
+                                        头像<br>(图片限制：<br>不超过<span class="lmt">1024KB</span>，<br>宽120px，高120px)
+                                    </div>
+                                </td>
+                                <td>
+                                    <div id="avatarContainer">
+                                        @if (user.Picture == null)
                                         {
                                             <img src="/Images/userphoto.png" width="100" height="100" style="border-radius:50%;" id="avatar" />
                                         }
@@ -216,61 +217,59 @@
                                         {
                                             <img src="/User/ShowPicture/@user.ID" width="100" height="100" style="border-radius:50%;" alt="图像" id="avatar" />
                                         }
-                                            <input value="/User/ShowPicture/@user.ID" id="Pic" name="Pic" type="hidden">
-                                            <div>
-                                                <span class="btn btn-orange sltAvatar">选择头像</span>&nbsp;&nbsp;
-                                                <span class="btn btn-orange fileinput-button">
-                                                    <span style="font-size:13px;">本地上传</span>
-                                                    <!-- The file input field used as target for the file upload widget -->
-                                                    <input id="fileupload" type="file" name="files[]" multiple="">
-                                                </span>
-                                            </div>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
+                                        <input value="/User/ShowPicture/@user.ID" id="Pic" name="Pic" type="hidden">
                                         <div>
-                                            &nbsp;
+                                            <span class="btn btn-orange sltAvatar">选择头像</span>&nbsp;&nbsp;
+                                            <span class="btn btn-orange fileinput-button">
+                                                <span style="font-size:13px;">本地上传</span>
+                                                <!-- The file input field used as target for the file upload widget -->
+                                                <input id="fileupload" type="file" name="files[]" multiple="">
+                                            </span>
                                         </div>
-                                    </td>
-                                    <td>
-                                        <div>
-                                            <button type="submit" id="int_submit" class="btn btn-big btn-orange" style="width:120px;">
-                                                保存修改
-                                            </button>&nbsp;&nbsp;
-                                        </div>
-                                    </td>
-                                </tr>
-                            </table>
-                            <div class="info">
-                                我们保证以上信息仅用于齐齐哈尔市民学习网用户实名身份认证，不会用于其他商业用途。
-                            </div>
-                        </div><!-- region end: 个人信息 -->
-                }
-                </div>
-            </div><div class="d-col-2-4">
-                <div class="contentarea">
-                    <!-- region start: 个人设置 -->
-                    <div id="d_settings" class="d-settings">
-                        <div class="head">
-                            &nbsp;
-                        </div><div class="body">
-                            <div class="item">
-                                <a href="/User/PwdEdit/@user.ID">修改密码</a>
-                            </div>
-                            <div class="item">
-                                <a href="/User/Edit/@user.ID">修改个人信息</a>
-                            </div>
-                            <!--<div class="item">
-                                <a href="/usercenter/verify">实名认证</a>
-                            </div>-->
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div>
+                                        
+                                    </div>
+                                </td>
+                                <td>
+                                    <div>
+                                        <input type="submit" class="btn btn-orange btn-big" value="保存" style="width:300px;">
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
+                        <div class="info">
+                            我们保证以上信息仅用于齐齐哈尔市民学习网用户实名身份认证，不会用于其他商业用途。
                         </div>
-                    </div>
-                    <!-- region end: 个人设置 -->
-                    <input type="hidden" id="redirect" name="redirect">
-                </div>
+                    </div><!-- region end: 个人信息 -->
+                }
             </div>
-            <div class="clear"></div>
+        </div><div class="d-col-2-4">
+            <div class="contentarea">
+                <!-- region start: 个人设置 -->
+                <div id="d_settings" class="d-settings">
+                    <div class="head">
+                        &nbsp;
+                    </div><div class="body">
+                        <div class="item">
+                            <a href="/User/PwdEdit/@user.ID">修改密码</a>
+                        </div>
+                        <div class="item">
+                            <a href="/User/Edit/@user.ID">修改个人信息</a>
+                        </div>
+                        <!--<div class="item">
+                            <a href="/usercenter/verify">实名认证</a>
+                        </div>-->
+                    </div>
+                </div>
+                <!-- region end: 个人设置 -->
+                <input type="hidden" id="redirect" name="redirect">
+            </div>
         </div>
+        <div class="clear"></div>
     </div>
+</div>
