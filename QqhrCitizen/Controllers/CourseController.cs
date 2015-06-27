@@ -147,13 +147,14 @@ namespace QqhrCitizen.Controllers
             var vNotes = new List<vNote>();
             StudyRecord record = new StudyRecord();
         
-            record.LessionInt = id;
+            record.LessionID = id;
             record.UserID = CurrentUser.ID;
             record.Time = DateTime.Now;
 
             Lession Lession = db.Lessions.Find(id);
             Lession.Browses = Lession.Browses + 1;
 
+            db.StudyRecords.Add(record);
             db.SaveChanges();
             ViewBag.Lession = Lession;
             var listNote = db.Notes.Where(note => note.LessionID == Lession.ID).OrderByDescending(n => n.Time).ToList();
@@ -195,10 +196,10 @@ namespace QqhrCitizen.Controllers
             Lession Lession = db.Lessions.Find(id);
             StudyRecord record = new StudyRecord();
 
-            record.LessionInt = id;
+            record.LessionID = id;
             record.UserID = CurrentUser.ID;
             record.Time = DateTime.Now;
-
+            
             bool flag = false;
             var temp = new LearningRecord();
             if (CurrentUser != null)
@@ -214,6 +215,7 @@ namespace QqhrCitizen.Controllers
             var lessions = new List<Lession>();
             Lession = db.Lessions.Find(id);
             Lession.Browses = Lession.Browses + 1;
+            db.StudyRecords.Add(record);
             db.SaveChanges();
             ViewBag.Lession = Lession;
             var listNote = db.Notes.Where(note => note.LessionID == Lession.ID).OrderByDescending(n => n.Time).ToList();

@@ -29,18 +29,20 @@ namespace QqhrCitizen.Filters
                         msg = "请先登陆在学习该节内容";
                         return false;
                     }
-                    List<LessionScore> list = db.LessionScores.Where(c => c.LessionId == id).OrderBy(c => c.Time).ToList();
-                    List<Lession> lessions = db.Lessions.Where(l)
+              
+                    List<Lession> lessions = db.Lessions.Where(l => l.Course.ID == lession.CourseID).OrderBy(l => l.Time).ToList();
                    
                     for (int i = 0; i < lessions.Count; i++)
                     {
                         if (lession.ID == lessions[i].ID)
                         {
+
                             if (i == 0)
                             {
                                 break;
                             }
-                            if (!lessions[i - 1].IsPassTest)
+                            LessionScore lesssionScore = db.LessionScores.Where(ls => ls.LessionId == i - 1).OrderBy(ls => ls.Time).OrderByDescending(ls=>ls.Time).FirstOrDefault();
+                            if (!lesssionScore.IsPassTest)
                             {
                                 msg = "请先完成上一节的测试，在学习该节";
                                 return false;

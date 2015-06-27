@@ -40,7 +40,7 @@ namespace QqhrCitizen.Models.ViewModel
         public void SetDate(int uid)
         {
             DB db = new DB();
-            LessionScore lessionScore = db.LessionScore.Where(ls => ls.UserId == uid && ls.LessionId == this.ID).OrderByDescending(ls => ls.ID).FirstOrDefault();
+            LessionScore lessionScore = db.LessionScores.Where(ls => ls.UserId == uid && ls.LessionId == this.ID).OrderByDescending(ls => ls.ID).FirstOrDefault();
             if (lessionScore == null)
             {
                 this.Rate = 0;
