@@ -7,6 +7,7 @@
     ViewBag.Title = lession.Title;
 }
 <script src="~/Scripts/video.js"></script>
+<script src="~/Scripts/ckeditor/ckeditor.js"></script>
 <div id="d_menu" class="d-menu menu-cou">
     <div id="d_menu_c" class="d-menu-c">
         <!-- region start: menu -->
@@ -56,7 +57,7 @@
                                         {
                                             <div class="div_HisNote">
                                                 <p>@note.Time</p>
-                                                @note.Content
+                                                 @Html.Sanitized(@note.Content)
                                             </div>
                                         }
                                     }
@@ -185,4 +186,24 @@
 
 
     })*@
+
+    CKEDITOR.replace('Content',
+    {
+        toolbar: 'Basic',
+        width: "100%",
+        height: "80px"
+    });
+
+    $("#btnAddNote").click(function () {
+        // var content = $("#noteContent").val();
+        var content = CKEDITOR.instances.noteContent.getData();
+        $.post("/Course/AddNote?sid=" + $("#sid").val(), { content: content, lid: $("#LessionID").val() }, function (data) {
+            CastMsg("添加的笔记成功！");
+            var str = "<div class='div_HisNote'><p>" + moment(data.Time).format("YYYY/MM/DD HH:mm:ss") + "</p>" + data.Content + "</div>"
+            $("#lstNote").prepend(str);
+            $("#noteContent").val("");
+        })
+    });
 </script>
+
+ 

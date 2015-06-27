@@ -283,6 +283,7 @@ namespace QqhrCitizen.Controllers
         /// <returns></returns>
         [ValidateSID]
         [HttpPost]
+        [ValidateInput(false)]
         public ActionResult AddNote(string content, int lid)
         {
             Note note = new Note();

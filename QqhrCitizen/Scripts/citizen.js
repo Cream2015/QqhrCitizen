@@ -248,16 +248,7 @@ $(document).ready(function () {
     });
 
 
-    $("#btnAddNote").click(function () {
-        var content = $("#noteContent").val();
-        
-        $.post("/Course/AddNote?sid=" + $("#sid").val(), { content: $("#noteContent").val(), lid: $("#LessionID").val() }, function (data) {
-            CastMsg("添加的笔记成功！");
-            var str = "<div class='div_HisNote'><p>" + moment(data.Time).format("YYYY/MM/DD HH:mm:ss") + "</p>" + data.Content+ "</div>"
-            $("#lstNote").prepend(str);
-            $("#noteContent").val("");
-        })
-    });
+   
 
 });
 
