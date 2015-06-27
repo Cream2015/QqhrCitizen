@@ -102,14 +102,7 @@ namespace QqhrCitizen.Controllers
 
         public ActionResult Show(int id)
         {
-            ReadRecord recored = new ReadRecord();
-            if (CurrentUser != null)
-            {
-                recored.EBookID = id;
-                recored.UserID = CurrentUser.ID;
-                recored.Time = DateTime.Now;
-                db.ReadRecords.Add(recored);
-            }
+           
 
 
             List<EBook> LstNewEBook = new List<EBook>();
@@ -177,6 +170,15 @@ namespace QqhrCitizen.Controllers
         public ActionResult Read(int id)
         {
             var Ebook = db.EBooks.Find(id);
+            ReadRecord recored = new ReadRecord();
+            if (CurrentUser != null)
+            {
+                recored.EBookID = id;
+                recored.UserID = CurrentUser.ID;
+                recored.Time = DateTime.Now;
+                db.ReadRecords.Add(recored);
+            }
+            db.SaveChanges();
             if (Ebook.FileID.ToString() != "null")
             {
                 var File = db.Files.Find(Ebook.FileID);
