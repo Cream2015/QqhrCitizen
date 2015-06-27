@@ -186,7 +186,7 @@ namespace QqhrCitizen.Controllers
                 if (file.Extension == ".doc" || file.Extension == ".docx")
                 {
 
-                    ViewBag.FileLoad = WordToPdf(Server.MapPath("~/Upload/EBook" + File.Path), file.Name);
+                    ViewBag.FileLoad = WordToPdf(Server.MapPath("~/Upload/EBook/" + File.Path), file.Name);
                 }
                 else
                 {

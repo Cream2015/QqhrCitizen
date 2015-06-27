@@ -745,15 +745,15 @@ namespace QqhrCitizen.Controllers
 
         public ActionResult AddEBook(EBook model, HttpPostedFileBase file, HttpPostedFileBase file1)
         {
-
+            var random = DateHelper.GetTimeStamp();
             int fileId = 0;
             if (file != null)
             {
-                string fileName = Path.Combine(Request.MapPath("~/Upload"), DateHelper.GetTimeStamp() + Path.GetFileName(file.FileName));
+                string fileName = Path.Combine(Request.MapPath("~/Upload/EBook"), random+ Path.GetExtension(file.FileName));
                 file.SaveAs(fileName);
                 Models.File _file = new Models.File();
                 _file.FileTypeID = model.EBookTypeID;
-                _file.Path = DateHelper.GetTimeStamp() + Path.GetFileName(file.FileName);
+                _file.Path =  random+ Path.GetExtension(file.FileName);
                 _file.Time = DateTime.Now;
                 _file.ContentType = file.ContentType;
                 _file.FileName = file.FileName;
