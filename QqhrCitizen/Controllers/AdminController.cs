@@ -11,6 +11,7 @@ using PagedList;
 using System.IO;
 using QqhrCitizen.Helpers;
 using Aspose.Words;
+using System.Text.RegularExpressions;
 
 namespace QqhrCitizen.Controllers
 {
@@ -242,18 +243,25 @@ namespace QqhrCitizen.Controllers
                 string fileName = Path.Combine(Request.MapPath("~/Upload/NewsWord"), random + Path.GetFileName(file.FileName));
                 file.SaveAs(fileName);
                 NewsWordToHtml(fileName, random);
-                message  = string.Empty;
+                message = string.Empty;
                 //message = System.IO.File.OpenText(fileName).ReadToEnd();
-                var fiepath = Path.Combine(Request.MapPath("~/Upload/NewsWord/"+random), random +".html");
+                var fiepath = Path.Combine(Request.MapPath("~/Upload/NewsWord/" + random), random + ".html");
                 using (StreamReader sr = new StreamReader(fiepath, System.Text.Encoding.UTF8))
                 {
                     message = sr.ReadToEnd();
                 }
+                message = Regex.Match(message, "<body.+</body>").ToString();
                 model.Content = message;
+                model.IsWord = true;
+            }
+            else
+            {
+                model.IsWord = false;
             }
             model.UserID = CurrentUser.ID;
             model.Time = DateTime.Now;
             model.Browses = 0;
+            
             if (model.IsHaveImg)
             {
                 if (file != null)

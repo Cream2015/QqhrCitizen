@@ -35,6 +35,8 @@ namespace QqhrCitizen.Models
 
         public string FirstImgUrl { get; set; }
 
+        public bool IsWord { get; set; }
+
         [NotMapped]
         public string Sumamry
         {
