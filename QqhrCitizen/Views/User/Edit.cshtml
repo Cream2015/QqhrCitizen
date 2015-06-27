@@ -88,8 +88,7 @@
                 <div class="contentarea">
                     @using (Html.BeginForm("Edit", "User", new { ID = user.ID }, FormMethod.Post, new
                     {
-                        onsubmit = "return UserEditCheck();",
-                        enctype = "multipart/form-data"
+                        onsubmit = "return UserEditCheck();"
                     }))
                 {
                     @Html.AntiForgerySID()

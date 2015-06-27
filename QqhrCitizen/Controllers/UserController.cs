@@ -118,7 +118,6 @@ namespace QqhrCitizen.Controllers
             User user = db.Users.Find(id);
             ViewBag.user = user;
             List<SelectListItem> ListSex = new List<SelectListItem>();
-
             ListSex.Add(new SelectListItem { Text = "女", Value = "0", Selected = user.SexAsInt == 0 ? true : false });
             ListSex.Add(new SelectListItem { Text = "男", Value = "1", Selected = user.SexAsInt == 1 ? true : false });
             ViewBag.Sex = ListSex;
