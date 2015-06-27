@@ -259,52 +259,6 @@ $(document).ready(function () {
         })
     });
 
-
-    $("#frmLogin").submit(function () {
-        var username = $("#Username").val();
-        var password = $("#Password").val();
-        if (username == "" || username == null) {
-            CastMsg("用户名不能为空！");
-            return false;
-        }
-        if (password == "" || password == null) {
-            CastMsg("密码不能为空！");
-            return false;
-        }
-    });
-    $("#frmRegister").submit(function () {
-        if ($("#Username").val() == "") {
-            CastMsg("用户名不能为空");
-            return false;
-        }
-        if ($('#Password').val() == "") {
-            CastMsg("密码不能为空");
-            return false;
-        }
-        if ($('#Confirm').val() == "") {
-            CastMsg("密码重复不能为空！");
-            return false;
-        }
-        if ($("#Password").val().length < 4) {
-            CastMsg("至少输入4位密码");
-            return false;
-        }
-        if ($('#Password').val() != $('#Confirm').val()) {
-            CastMsg("两次输入密码不一致");
-            return false;
-        }
-        if ($("#Email").val() == "") {
-            CastMsg("至少输入4位密码");
-            return false;
-        }
-        var myreg = /^([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+@@([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+\.[a-zA-Z]{2,3}$/;
-        if (!myreg.test($("#Email").val())) {
-            CastMsg("邮箱格式输入错误！");
-            return false;
-        }
-        return true;
-
-    });
 });
 
 
