@@ -264,7 +264,6 @@ $(document).ready(function () {
         var username = $("#Username").val();
         var password = $("#Password").val();
         if (username == "" || username == null) {
-            alert("asdasd");
             CastMsg("用户名不能为空！");
             return false;
         }
