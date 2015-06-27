@@ -243,8 +243,9 @@ namespace QqhrCitizen.Controllers
                 file.SaveAs(fileName);
                 NewsWordToHtml(fileName, random);
                 message  = string.Empty;
-                message = System.IO.File.OpenText(fileName).ReadToEnd();
-                using (StreamReader sr = new StreamReader(fileName,System.Text.Encoding.UTF8))
+                //message = System.IO.File.OpenText(fileName).ReadToEnd();
+                var fiepath = Path.Combine(Request.MapPath("~/Upload/NewsWord/"+random), random +".html");
+                using (StreamReader sr = new StreamReader(fiepath, System.Text.Encoding.UTF8))
                 {
                     message = sr.ReadToEnd();
                 }
@@ -258,7 +259,7 @@ namespace QqhrCitizen.Controllers
                 if (file != null)
                 {
                     string[] imgs = Helpers.String.GetHtmlImageUrlList(message);
-                    model.FirstImgUrl = "/Upload/NewsWord/" + random + imgs[0];
+                    model.FirstImgUrl = "/Upload/NewsWord/" + random+"/" + imgs[0];
                 }
                 else
                 {
