@@ -253,15 +253,20 @@ namespace QqhrCitizen.Controllers
             user = db.Users.Find(id);
             return File(user.Picture, "image/jpg");
         }
+
+        [Authorize]
         public ActionResult StudyHistory(int id)
         {
             User user = new User();
             user = db.Users.Find(id);
             ViewBag.user = new vUser(user);
+            List<StudyRecord> records = new List<StudyRecord>();
+            records = db.StudyRecords.Where(sr => sr.UserID == CurrentUser.ID).OrderByDescending(sr => sr.Time).ToList();
+            ViewBag.Records = records;
             return View();
         }
 
-
+        [Authorize]
         public ActionResult HistoryCourse(int id)
         {
             User user = new User();

@@ -29,7 +29,9 @@ namespace QqhrCitizen.Filters
                         msg = "请先登陆在学习该节内容";
                         return false;
                     }
-                    List<Lession> lessions = db.Lessions.Where(c => c.CourseID == lession.CourseID).OrderBy(c => c.Time).ToList();
+                    List<LessionScore> list = db.LessionScores.Where(c => c.LessionId == id).OrderBy(c => c.Time).ToList();
+                    List<Lession> lessions = db.Lessions.Where(l)
+                   
                     for (int i = 0; i < lessions.Count; i++)
                     {
                         if (lession.ID == lessions[i].ID)

@@ -22,13 +22,15 @@ namespace QqhrCitizen.Models
         public DbSet<TypeDictionary> TypeDictionaries { get; set; }
         public DbSet<Live> Lives { get; set; }
 
-        public DbSet<LessionScore> LessionScore { set; get; }
+        public DbSet<LessionScore> LessionScores { set; get; }
 
         public DbSet<LearningRecord> LearningRecords { set; get; }
 
         public DbSet<StudyRecord> StudyRecords { set; get; }
 
         public DbSet<ReadRecord> ReadRecords { set; get; }
+
+        public DbSet<UserCourse> UserCourses { set; get; }
 
         public DbSet<Menu> Menus { set; get; }
 

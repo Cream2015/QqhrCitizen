@@ -13,7 +13,7 @@ namespace QqhrCitizen.Models
         public DateTime Time { get; set; }
 
         [ForeignKey("Lession")]
-        public int LessionInt { get; set; }
+        public int LessionID { get; set; }
         public virtual Lession Lession { set; get; }
 
         [ForeignKey("User")]

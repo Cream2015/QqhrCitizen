@@ -21,8 +21,6 @@ namespace QqhrCitizen.Models.ViewModel
 
         public string Time { get; set; }
 
-        public bool IsFinishCourse { get; set; }
-
 
         public vStudyRecord() { }
 
@@ -34,7 +32,6 @@ namespace QqhrCitizen.Models.ViewModel
             this.UserID = model.UserID;
             this.User = model.User ;
             this.Time = Helpers.Time.ToTimeTip(model.Time);
-            this.IsFinishCourse = model.isFinishCourse;
         }
     }
 }

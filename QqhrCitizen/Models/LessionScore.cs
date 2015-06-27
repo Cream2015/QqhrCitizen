@@ -21,5 +21,9 @@ namespace QqhrCitizen.Models
         public virtual Lession Lession { get; set; }
 
         public double Rate { get; set; }
+
+        public bool IsPassTest{set;get;}
+
+        public DateTime Time { get; set; }
     }
 }

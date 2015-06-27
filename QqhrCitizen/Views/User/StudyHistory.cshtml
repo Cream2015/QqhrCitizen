@@ -28,7 +28,33 @@
                         <a id="navi_course" href="/User/StudyHistory/@user.ID" class="item his-navi item_select">学习记录</a>
                         <a id="navi_event" href="/User/CourseNote/@user.ID" class="item his-navi">课程笔记</a>
                     </div>
-                    <!--<p style="text-align: center; font-size:13px;">对不起，未找到相关学习记录。</p>-->
+
+                    <div class="body ctnt" style="display: block;">
+                        @if (ViewBag.Records == null)
+                        {
+                            <p style="text-align: center; font-size:13px;">对不起，未找到相关课程记录。</p>
+                        }
+                        else
+                        {
+                            foreach (var item in ViewBag.Records as List<StudyRecord>)
+                            {
+                                <div class="item">
+                                    <div class="content">
+                                        <div class="info">
+                                            所属课程：<span>@item.Lession.Course.Title</span>
+                                        </div>
+                                        <div class="stat">
+                                            所属课时：<span>@item.Lession.Title</span>
+                                        </div>
+                                        <div class="date">
+                                            时间：<span>@item.Time</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <hr />
+                            }
+                        }
+                    </div>
                 </div><!-- region end: historycourse -->
             </div>
         </div><div class="d-col-2-4">
