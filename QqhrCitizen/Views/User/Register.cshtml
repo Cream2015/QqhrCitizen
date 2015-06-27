@@ -128,6 +128,7 @@
                     </div>
                 </div>
             </div>
+
             <div class="d-row" style="margin-bottom: 20px; padding: 20px 0 20px 0;">
                 <div class="d-row-c">
                     <div class="d-col-1">
@@ -137,7 +138,6 @@
                                 <div class="head">
                                     齐齐哈尔市民学习网用户注册
                                 </div>
-
                                 @using (Html.BeginForm("Register", "User", FormMethod.Post, new
                                 {
                                     onsubmit = "return frmCheck();"
@@ -155,7 +155,7 @@
                                                     </td>
                                                     <td>
                                                         <div>
-                                                            @Html.TextBoxFor(model => model.Username, new { @class = "int-hs" })
+                                                            @Html.TextBoxFor(model => model.Username, new { @class = "int-hs", id = "Username" })
                                                             <br><span class="text" id="user_msg">用户名长度在1-30个字之间；只能由字母、数字和下划线组成；不能以下划线开头。例：study_001</span>
                                                         </div>
                                                     </td>
@@ -168,7 +168,7 @@
                                                     </td>
                                                     <td>
                                                         <div>
-                                                            @Html.TextBoxFor(model => model.Email, new { @class = "int-hs" })
+                                                            @Html.TextBoxFor(model => model.Email, new { @class = "int-hs", id = "Email" })
                                                             <span class="text" id="email_msg"></span>
                                                         </div>
                                                     </td>
@@ -181,7 +181,7 @@
                                                     </td>
                                                     <td>
                                                         <div>
-                                                            @Html.PasswordFor(modal => modal.Password, new { @class = "int-hs" })
+                                                            @Html.PasswordFor(modal => modal.Password, new { @class = "int-hs", id = "Password" })
                                                             <br><span class="text" id="pwd_msg">密码长度在1-20个字之间；只能由字母、数字和下划线组成。</span>
                                                         </div>
                                                     </td>
@@ -194,7 +194,7 @@
                                                     </td>
                                                     <td>
                                                         <div>
-                                                            @Html.Password("Confirm", "", new { @class = "int-hd" })
+                                                            @Html.Password("Confirm", "", new { @class = "int-hd", id = "Confirm" })
                                                             <span class="text" id="repwd_msg"></span>
                                                         </div>
                                                     </td>
@@ -208,6 +208,7 @@
                                                     <td>
                                                         <div>
                                                             <input id="int_submit" type="submit" class="btn btn-orange btn-big" value="注册" style="width:120px;">
+                                                            @Html.ValidationSummary(true)
                                                         </div>
                                                     </td>
                                                 </tr>
