@@ -50,23 +50,4 @@
             @news.User.Username
         </td>
     </tr>
-
-  
-
 </table>
-
-<input type="hidden" name="name" id="url" value="@news.FirstImgUrl" />
-<input type="hidden" name="name" id="isword" value="@news.IsWord" />
-
-
-
-<script>
-    if ($("#isword").val() == "value") {
-        $.each($("#content").find("img"), function (i, item) {
-            var src = $(this).attr("src");
-            var path = $("#url").val().replace(src, "");
-
-            $(this).attr("src", path + src);
-        });
-    }
-</script>
