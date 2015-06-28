@@ -65,6 +65,8 @@ namespace QqhrCitizen.Controllers
         public ActionResult AddType(TypeBelonger type)
         {
             List<TypeDictionary> list = db.TypeDictionaries.Where(tp => tp.Belonger == type && tp.FatherID == 0).ToList();
+            ViewBag.LastTypes = list;
+            ViewBag.Type = type;
             return View();
         }
         #endregion
@@ -86,7 +88,7 @@ namespace QqhrCitizen.Controllers
             TypeDictionary type = new TypeDictionary { TypeValue = TypeValue, Belonger = Belonger, NeedAuthorize = flag, FatherID = FatherID, Time = DateTime.Now };
             db.TypeDictionaries.Add(type);
             db.SaveChanges();
-            return RedirectToAction("TypeManager");
+            return Redirect("/Admin/TypeManager?type="+Belonger);
         }
         #endregion
 

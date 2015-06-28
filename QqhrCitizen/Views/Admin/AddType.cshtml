@@ -42,7 +42,13 @@
                     上级类型
                 </td>
                 <td>
-                     
+                    <select name="FatherID" id="lsFatherID" class="textbox">
+                        <option value="0">无上级分类</option>
+                        @foreach (var item in ViewBag.LastTypes as List<TypeDictionary>)
+                        { 
+                         <option value="@item.ID">@item.TypeValue</option>
+                        }
+                    </select>
                 </td>
             </tr>
         </table>
