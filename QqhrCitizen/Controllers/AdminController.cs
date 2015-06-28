@@ -84,6 +84,11 @@ namespace QqhrCitizen.Controllers
         [HttpPost]
         public ActionResult AddType(TypeBelonger Belonger, string TypeValue, int NeedAuthorize, int FatherID)
         {
+            TypeDictionary temp = db.TypeDictionaries.Where(tp => tp.TypeValue == TypeValue.Trim()).FirstOrDefault();
+            if (temp != null)
+            {
+                return Redirect("/Admin/AdminMessage?msg=你填写的分类名称已经存在！");
+            }
             bool flag = Convert.ToBoolean(NeedAuthorize);
             TypeDictionary type = new TypeDictionary { TypeValue = TypeValue, Belonger = Belonger, NeedAuthorize = flag, FatherID = FatherID, Time = DateTime.Now };
             db.TypeDictionaries.Add(type);
@@ -1446,5 +1451,8 @@ namespace QqhrCitizen.Controllers
             return RedirectToAction("ViwepagerManager");
         }
         #endregion
+
+
+     
     }
 }
