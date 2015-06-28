@@ -2,13 +2,11 @@
 @{
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
     Viewpager viwepager = ViewBag.ViwepagerShow;
-    ViewBag.Title =viwepager .Title;
+    ViewBag.Title = viwepager.Title;
 }
 
-@using (Html.BeginForm("ViwepagerShow", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
-    {
-    @Html.AntiForgerySID()
-    <table class="detail-table">
+<h1 class="head-tietle">@viwepager.Title - 轮播展示 <a href="/Admin/AddViwepager">增加</a></h1>
+<table class="detail-table">
     <tr>
         <td class="row-title">标题</td>
         <td>
@@ -36,7 +34,7 @@
             优先级
         </td>
         <td>
-           @viwepager.Priority
+            @viwepager.Priority
         </td>
     </tr>
     <tr>
@@ -45,4 +43,3 @@
         </td>
     </tr>
 </table>
-}

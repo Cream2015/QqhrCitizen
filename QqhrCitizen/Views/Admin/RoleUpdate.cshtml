@@ -7,8 +7,8 @@
 
 
 <div>
-    <h1>角色修改</h1>
-    @using (Html.BeginForm("RoleUpdate", "Admin", FormMethod.Post))
+    <h2 class="head-tietle">@user.Username - 角色修改</h2>
+    @using (Html.BeginForm("RoleUpdate", "Admin", FormMethod.Post, new { @style="margin-top:20px;"}))
     {
         @Html.AntiForgerySID()
         <input type="hidden" name="uid" value="@user.ID" />
@@ -23,7 +23,7 @@
                 <td class="row-title">角色</td>
                 <td>
                     <select name="role" class="textbox">
-                        <option value="Admin" @(user.Role == Role.Admin?"selected":"")>超级管理员</option>
+                        <option value="Admin" @(user.Role == Role.Admin ? "selected" : "")>超级管理员</option>
                         <option value="NewsManager" @(user.Role == Role.NewsManager ? "selected" : "")>新闻管理员</option>
                         <option value="EBookManager" @(user.Role == Role.EBookManager ? "selected" : "")>电子书管理员</option>
                         <option value="CourseManager" @(user.Role == Role.CourseManager ? "selected" : "")>课程管理员</option>

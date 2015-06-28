@@ -66,6 +66,7 @@ namespace QqhrCitizen.Controllers
         {
             List<TypeDictionary> list = db.TypeDictionaries.Where(tp => tp.Belonger == type && tp.FatherID == 0).ToList();
             ViewBag.LastTypes = list;
+            ViewBag.Type = type;
             return View();
         }
         #endregion
@@ -83,11 +84,16 @@ namespace QqhrCitizen.Controllers
         [HttpPost]
         public ActionResult AddType(TypeBelonger Belonger, string TypeValue, int NeedAuthorize, int FatherID)
         {
+            TypeDictionary temp = db.TypeDictionaries.Where(tp => tp.TypeValue == TypeValue.Trim()).FirstOrDefault();
+            if (temp != null)
+            {
+                return Redirect("/Admin/AdminMessage?msg=你填写的分类名称已经存在！");
+            }
             bool flag = Convert.ToBoolean(NeedAuthorize);
             TypeDictionary type = new TypeDictionary { TypeValue = TypeValue, Belonger = Belonger, NeedAuthorize = flag, FatherID = FatherID, Time = DateTime.Now };
             db.TypeDictionaries.Add(type);
             db.SaveChanges();
-            return RedirectToAction("TypeManager");
+            return Redirect("/Admin/TypeManager?type=" + Belonger);
         }
         #endregion
 
@@ -1445,5 +1451,43 @@ namespace QqhrCitizen.Controllers
             return RedirectToAction("ViwepagerManager");
         }
         #endregion
+
+
+        #region M删除轮播yRegion
+        // <summary>
+        /// 删除轮播
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public ActionResult ViwepagerDelete(int id)
+        {
+            Viewpager viewpager = db.Viewpagers.Find(id);
+            db.Viewpagers.Remove(viewpager);
+            db.SaveChanges();
+            return Content("ok");
+        }
+        #endregion
+
+
+        #region 导航管理
+        /// <summary>
+        /// 导航管理
+        /// </summary>
+        /// <returns></returns>
+        public ActionResult NavigationManager()
+        {
+            ViewBag.Navigations = db.Navigations.ToList();
+            return View();
+        } 
+        #endregion
+
+        /// <summary>
+        /// 增加导航
+        /// </summary>
+        /// <returns></returns>
+        public ActionResult AddNavigation()
+        {
+            return View();
+        }
     }
 }
