@@ -2135,46 +2135,36 @@ div, p, span, a {
     }
 
     .f-headerdefault .logo-cou {
-         
     }
 
     .f-headerdefault .logo-eve {
-         
     }
 
     .f-headerdefault .logo-gro {
-         
     }
 
     .f-headerdefault .logo-bok {
-         
     }
 
     .f-headerdefault .logo-map {
-         
     }
 
     .f-headerdefault .logo-cha {
-         
     }
 
     .f-headerdefault .logo-sha {
-         
     }
 
     .f-headerdefault .logo-msg {
-         
     }
 
     .f-headerdefault .logo-use {
-         
         width: 275px;
         height: 90px;
         top: 5px;
     }
 
     .f-headerdefault .logo-stu {
-         
         width: 275px;
         height: 90px;
         top: 5px;
@@ -3032,46 +3022,36 @@ div, p, span, a {
     }
 
     .d-headerdefault .logo-cou {
-         
     }
 
     .d-headerdefault .logo-eve {
-         
     }
 
     .d-headerdefault .logo-gro {
-         
     }
 
     .d-headerdefault .logo-bok {
-         
     }
 
     .d-headerdefault .logo-map {
-         
     }
 
     .d-headerdefault .logo-cha {
-         
     }
 
     .d-headerdefault .logo-sha {
-         
     }
 
     .d-headerdefault .logo-msg {
-         
     }
 
     .d-headerdefault .logo-use {
-         
         width: 275px;
         height: 90px;
         top: 5px;
     }
 
     .d-headerdefault .logo-stu {
-         
         width: 275px;
         height: 90px;
         top: 5px;
@@ -9751,11 +9731,31 @@ label.inline {
     }
 
 
-#video{
-    width:650px;
+#video {
+    width: 650px;
 }
 
 .imgCoursePicM {
-  height: 106px;
-  width: 106px;
+    height: 106px;
+    width: 106px;
+}
+
+
+.pager-item, .pager-item:visited, .pager-item:active {
+    color: #fff;
+    background-color: #2a3b52;
+    transition: background 0.2s linear, color 0.2s linear;
+    float: left;
+    font-size: 18px;
+    padding: 10px;
+    margin-right: 1px;
+}
+
+.pager {
+    padding: 20px 0;
+}
+
+.pager-item.active, .pager-item:hover {
+    background-color: rgb(30, 91, 120);
+    color: #fff;
 }

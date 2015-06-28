@@ -538,6 +538,7 @@
     <Compile Include="Helpers\EnumerableExt.cs" />
     <Compile Include="Helpers\HtmlFilter.cs" />
     <Compile Include="Helpers\ImgSrcFilter.cs" />
+    <Compile Include="Helpers\PagerHelper.cs" />
     <Compile Include="Models\Channel.cs" />
     <Compile Include="Models\Common.cs" />
     <Compile Include="Models\Course.cs" />
