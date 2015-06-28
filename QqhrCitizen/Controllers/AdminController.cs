@@ -250,7 +250,7 @@ namespace QqhrCitizen.Controllers
                 {
                     message = sr.ReadToEnd();
                 }
-                message = BodyFilter.HtmlFilter(message, "/Upload/NewsWord/" + random+"/");
+                message = BodyFilter.HtmlFilter(message, "/Upload/NewsWord/" + random + "/");
                 model.Content = message;
                 model.IsWord = true;
             }
@@ -261,13 +261,13 @@ namespace QqhrCitizen.Controllers
             model.UserID = CurrentUser.ID;
             model.Time = DateTime.Now;
             model.Browses = 0;
-            
+
             if (model.IsHaveImg)
             {
                 if (file != null)
                 {
                     string[] imgs = Helpers.String.GetHtmlImageUrlList(message);
-                    model.FirstImgUrl = "/Upload/NewsWord/" + random+"/" + imgs[0];
+                    model.FirstImgUrl = "/Upload/NewsWord/" + random + "/" + imgs[0];
                 }
                 else
                 {
@@ -372,17 +372,19 @@ namespace QqhrCitizen.Controllers
         /// <returns></returns>
         [HttpGet]
 
-        public ActionResult CourseManager(int page,string key)
+        public ActionResult CourseManager(string key,int p = 0)
         {
 
 
             IEnumerable<Course> query = db.Courses.AsEnumerable();
-            if (string.IsNullOrEmpty(key))
+            if (!string.IsNullOrEmpty(key))
             {
-
+                query = query.Where(c => c.Title.Contains(key));
             }
-            var list = db.Courses.OrderByDescending(tp => tp.ID).ToPagedList(page, 10);
-            return View(list);
+            //  var list = db.Courses.OrderByDescending(tp => tp.ID).ToPagedList(page, 10);
+            query = query.OrderByDescending(x => x.Time);
+            ViewBag.PageInfo = PagerHelper.Do(ref query, 20, p);
+            return View(query);
         }
         #endregion
 
@@ -756,11 +758,11 @@ namespace QqhrCitizen.Controllers
             int fileId = 0;
             if (file != null)
             {
-                string fileName = Path.Combine(Request.MapPath("~/Upload/EBook"), random+ Path.GetExtension(file.FileName));
+                string fileName = Path.Combine(Request.MapPath("~/Upload/EBook"), random + Path.GetExtension(file.FileName));
                 file.SaveAs(fileName);
                 Models.File _file = new Models.File();
                 _file.FileTypeID = model.EBookTypeID;
-                _file.Path =  random+ Path.GetExtension(file.FileName);
+                _file.Path = random + Path.GetExtension(file.FileName);
                 _file.Time = DateTime.Now;
                 _file.ContentType = file.ContentType;
                 _file.FileName = file.FileName;
