@@ -86,7 +86,7 @@
                                             <input value="@questions[i].RightAnswer" type="hidden" class="roghtanswer" />
                                             @for (int j = 0; j < questions[i].Answers.Count(); j++)
                                             {
-                                                <input name="answer@(i+1)" type="radio" value="@j" class="answer" />@CommonEnums.Answers[j]<span>:</span>@questions[i].Answers[j] <br />
+                                                <input name="answer@(i+1)" type="radio" value="@j" class="answer w-3" />@CommonEnums.Answers[j]<span>:</span>@questions[i].Answers[j] <br />
                                             }
                                         </div>
 
