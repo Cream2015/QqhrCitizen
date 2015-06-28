@@ -60,6 +60,7 @@ namespace QqhrCitizen.Controllers
             ViewBag.NewsTypes = _newsTypes;
             ViewBag.CourseTypes = _courseTypes;
             ViewBag.EBookTypes = _ebookTypes;
+            ViewBag.Navigation = db.Navigations.ToList();
             if (requestContext.HttpContext.User.Identity.IsAuthenticated)
             {
                 ViewBag.CurrentUser = (from u in db.Users

@@ -41,7 +41,7 @@ namespace QqhrCitizen.Controllers
             ViewBag.TextLinks = db.ResourceLinks.Where(x => !x.IsHaveFile).ToList();
             ViewBag.ImgLinks = db.ResourceLinks.Where(x => x.IsHaveFile).ToList();
             ViewBag.Menus = db.Menus.ToList();
-            ViewBag.Navigation = db.Navigations.ToList();
+      
             return View();
         }
 

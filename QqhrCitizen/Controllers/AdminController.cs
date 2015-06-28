@@ -372,8 +372,9 @@ namespace QqhrCitizen.Controllers
         /// <returns></returns>
         [HttpGet]
 
-        public ActionResult CourseManager(int page = 1)
-        {
+        public ActionResult CourseManager(int page,string key)
+        { 
+
             var list = db.Courses.OrderByDescending(tp => tp.ID).ToPagedList(page, 10);
             return View(list);
         }
