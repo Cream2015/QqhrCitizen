@@ -1,5 +1,4 @@
-﻿@using PagedList
-@using PagedList.Mvc
+﻿@model IEnumerable<QqhrCitizen.Models.Course>
 @{
     ViewBag.Title = "新闻管理";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
@@ -23,26 +22,23 @@
                 </tr>
             </thead>
             <tbody>
-                @if (Model.Count > 0)
+                @foreach (var item in Model)
                 {
-                    foreach (var item in Model)
-                    {
-                        <tr id="@item.ID">
-                            <td>@item.ID</td>
-                            <td>@item.Title</td>
-                            <td>@item.TypeDictionary.TypeValue</td>
-                            <td>@item.Time</td>
-                            <td>@item.User.Username</td>
-                            <td>
-                                <a href="/Admin/NewsShow/@item.ID">查看详细</a>
-                                <a href="javascript:deleteDialog('/Admin/NewsDelete/' + @item.ID + '?sid=@ViewBag.SID',@item.ID);">删除</a>
-                                <a href="/Admin/NewsEdit/@item.ID">编辑</a>
-                            </td>
-                        </tr>
-                    }
+                    <tr id="@item.ID">
+                        <td>@item.ID</td>
+                        <td>@item.Title</td>
+                        <td>@item.TypeDictionary.TypeValue</td>
+                        <td>@item.Time</td>
+                        <td>@item.User.Username</td>
+                        <td>
+                            <a href="/Admin/NewsShow/@item.ID">查看详细</a>
+                            <a href="javascript:deleteDialog('/Admin/NewsDelete/' + @item.ID + '?sid=@ViewBag.SID',@item.ID);">删除</a>
+                            <a href="/Admin/NewsEdit/@item.ID">编辑</a>
+                        </td>
+                    </tr>
                 }
             </tbody>
         </table>
-        @Html.PagedListPager((IPagedList)Model, page => Url.Action("NewsManager", new { page }))
+        @Html.MakePager()
     </div>
 </div>
