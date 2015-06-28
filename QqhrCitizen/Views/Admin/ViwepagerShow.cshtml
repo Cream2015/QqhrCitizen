@@ -1,13 +1,42 @@
-﻿<!DOCTYPE html>
+﻿@using QqhrCitizen.Models.ViewModel
+@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    View viwepager = ViewBag.ViwepaherShow;
+    ViewBag.Title = viwepager.Title;
+}
 
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>@ViewBag.Title</title>
-</head>
-<body>
-    <div>
-        @RenderBody()
-    </div>
-</body>
-</html>
+@using (Html.BeginForm("Viwepager.Edit", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+    @Html.AntiForgerySID():ddd
+<table class="detail-table">
+    <tr>
+        <td class="row-title">标题</td>
+        <td>
+            @viwepager.Title
+        </td>
+    </tr>
+    <tr>
+        <td class="row-title">
+            描述
+        </td>
+        <td>
+            @viwepager.Sbutitle
+        </td>
+    </tr>
+    <tr>
+        <td class="row-title">
+            Url
+        </td>
+        <td>
+            @viwepager.Url
+        </td>
+    </tr>
+    <tr>
+        <td class="row-title">
+            优先级
+        </td>
+        <td>
+           @viwepager.Priority
+        </td>
+    </tr>
+</table>
