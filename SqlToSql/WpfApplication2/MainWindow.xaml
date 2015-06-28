@@ -3,9 +3,9 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="MainWindow" Height="350" Width="525">
     <Grid>
-        <Button Content="NewsInfo" HorizontalAlignment="Left" Height="41" Margin="28,29,0,0" VerticalAlignment="Top" Width="125" Click="Button_Click"/>
-        <Button Content="CourseInfo" HorizontalAlignment="Left" Height="40" Margin="28,91,0,0" VerticalAlignment="Top" Width="125" Click="Button_Click_1"/>
-        <Button Content="CourswwareInfo" HorizontalAlignment="Left" Height="38" Margin="28,160,0,0" VerticalAlignment="Top" Width="125" Click="Button_Click_2"/>
+        <Button Content="新闻信息" HorizontalAlignment="Left" Height="41" Margin="28,29,0,0" VerticalAlignment="Top" Width="125" Click="Button_Click"/>
+        <Button Content="课程信息" HorizontalAlignment="Left" Height="40" Margin="28,91,0,0" VerticalAlignment="Top" Width="125" Click="Button_Click_1"/>
+        <Button Content="用户信息" HorizontalAlignment="Left" Height="38" Margin="28,160,0,0" VerticalAlignment="Top" Width="125" Click="Button_Click_2"/>
         <TextBlock x:Name="ShowSqlNumber" HorizontalAlignment="Left" Height="289" Margin="182,20,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Width="325"/>
 
     </Grid>

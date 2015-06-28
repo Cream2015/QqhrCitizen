@@ -15,7 +15,7 @@ function LoadNews() {
     }
     else {
         lock = true;
-        $(".loadMore").text("正在加载~~");
+        $(".loadMore").text("正在加载中，请稍后");
         $.ajax({
             url: "/News/getNews",
             type: "post",
@@ -45,7 +45,7 @@ function LoadCourses() {
     }
     else {
         lock = true;
-        $(".loadMore").text("正在加载~~");
+        $(".loadMore").text("正在加载中，请稍后");
         $.ajax({
             url: "/Course/getCourses",
             type: "get",
@@ -67,14 +67,14 @@ function LoadCourses() {
     }
 }
 
-// 加载图书
+// 加载电子书
 function LoadEBooks() {
     if (lock) {
         return;
     }
     else {
         lock = true;
-        $(".loadMore").text("正在加载~~");
+        $(".loadMore").text("正在加载中，请稍后");
         $.ajax({
             url: "/EBook/getEBookes",
             type: "post",
@@ -103,7 +103,7 @@ function LoadSearchRessult() {
     }
     else {
         lock = true;
-        $(".loadMore").text("正在加载~~");
+        $(".loadMore").text("正在加载中，请稍后");
         $.ajax({
             url: "/Home/GetSearchResultMore",
             type: "get",
@@ -132,7 +132,7 @@ function LoadIndexNews() {
     }
     else {
         lock = true;
-        $(".loadMore").text("正在加载~~");
+        $(".loadMore").text("正在加载中，请稍后");
         $.ajax({
             url: "/News/getNewsByPage",
             type: "get",

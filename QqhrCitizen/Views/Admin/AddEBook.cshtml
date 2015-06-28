@@ -1,6 +1,6 @@
 ﻿
 @{
-    ViewBag.Title = "增加图书";
+    ViewBag.Title = "增加电子书";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
@@ -9,7 +9,7 @@
 
 <div>
     <div class="result-title">
-        <h1>增加图书</h1>
+        <h1>增加电子书</h1>
     </div>
     @using (Html.BeginForm("AddEBook", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
     {
@@ -55,14 +55,14 @@
             </tr>
             <tr>
                 <td class="row-title">
-                    上传截图
+                    上传封面
                 </td>
                 <td>
                     <input type="file" name="file1" id="file1" class="textbox" />
                 </td>
             </tr>
             <tr>
-                <td class="row-title">图书文件上传</td>
+                <td class="row-title">电子书文件上传</td>
                 <td>
                     <input type="file" name="file" />
                 </td>

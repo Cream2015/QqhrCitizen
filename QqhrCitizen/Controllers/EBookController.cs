@@ -42,9 +42,9 @@ namespace QqhrCitizen.Controllers
             return View();
         }
 
-        #region 分页获取图书
+        #region 分页获取电子书
         /// <summary>
-        ///   分页获取图书
+        ///   分页获取电子书
         /// </summary>
         /// <param name="page"></param>
         /// <param name="tid"></param>
@@ -93,9 +93,9 @@ namespace QqhrCitizen.Controllers
         #endregion
 
 
-        #region 显示图书信息
+        #region 显示电子书信息
         /// <summary>
-        /// 显示图书信息
+        /// 显示电子书信息
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
@@ -131,9 +131,9 @@ namespace QqhrCitizen.Controllers
         }
         #endregion
 
-        #region 图书截图
+        #region 电子书截图
         /// <summary>
-        /// 图书截图
+        /// 电子书截图
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
