@@ -3,14 +3,21 @@
     ViewBag.Title = "课程管理";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
-
+<script src="~/Scripts/jquery.datetimepicker.js"></script>
 <div>
     <div class="result-title">
         <h1>课程管理 <a href="/Admin/AddCourse">增加</a></h1>
     </div>
     <div class="result-content">
-
-        <table class="detail-table">
+        <form class="search">
+            检索：
+            <input type="text" name="Begin" class="textbox w-0-8 datetime" placeholder="发布时间(大于)" value="@Request.QueryString["Begin"]" />
+            <input type="text" name="End" class="textbox w-0-8 datetime" placeholder="发布时间(小于)" value="@Request.QueryString["End"]" />
+            信息分类
+            <input type="text" name="Key" class="textbox w-0-8" placeholder="关键字" />
+            <input type="submit" class="btn blue" value="检索" />
+        </form>
+        <table class="detail-table" style="margin-top:20px;">
             <thead>
                 <tr>
                     <td>编号</td>

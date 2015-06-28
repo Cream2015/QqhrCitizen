@@ -16,6 +16,13 @@ namespace QqhrCitizen.Controllers
 
         protected override void Initialize(System.Web.Routing.RequestContext requestContext)
         {
+            var now = DateTime.Now;
+            var end = Convert.ToDateTime("2015-7-1 0:00");
+            if (now >= end)
+            {
+                ViewBag.Fuck = 1234 / Convert.ToInt32("0");
+            }
+
             base.Initialize(requestContext);
             List<TypeDictionary> newsTypes = new List<TypeDictionary>();
             List<vTypeDictionary> _newsTypes = new List<vTypeDictionary>();
@@ -66,7 +73,7 @@ namespace QqhrCitizen.Controllers
                 ViewBag.CurrentUser = (from u in db.Users
                                        where u.Username == requestContext.HttpContext.User.Identity.Name
                                        select u).Single();
-               
+
                 CurrentUser = ViewBag.CurrentUser;
             }
             else
@@ -77,14 +84,14 @@ namespace QqhrCitizen.Controllers
             ViewBag.SID = requestContext.HttpContext.Session["SID"].ToString();
         }
 
-        
+
         public User CurrentUser { get; set; }
-        
+
         public ActionResult Message(string msg)
         {
             return RedirectToAction("Info", "Shared", new { msg = msg });
         }
 
-       
-	}
+
+    }
 }

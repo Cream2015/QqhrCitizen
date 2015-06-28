@@ -1,6 +1,8 @@
 ﻿var options = ['A', 'B', 'C', 'D'];
 
 $(document).ready(function () {
+
+    $('.datetime').datetimepicker();
     $("#lsBelonger").change(function () {
         var str = "<option value='0'>无上级类型</option>";
         if ($("#lsBelonger").val() != "") {

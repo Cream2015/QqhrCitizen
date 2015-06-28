@@ -372,7 +372,7 @@ namespace QqhrCitizen.Controllers
         /// <returns></returns>
         [HttpGet]
 
-        public ActionResult CourseManager(string key,int p = 0)
+        public ActionResult CourseManager(string key,DateTime? Begin,DateTime? End, int p = 0)
         {
 
 
@@ -381,6 +381,16 @@ namespace QqhrCitizen.Controllers
             {
                 query = query.Where(c => c.Title.Contains(key));
             }
+            if(Begin.HasValue)
+            {
+                query = query.Where(c => c.Time >=Begin);
+            }
+            if (End.HasValue)
+            {
+                query = query.Where(c => c.Time <= End);
+            }
+
+
             //  var list = db.Courses.OrderByDescending(tp => tp.ID).ToPagedList(page, 10);
             query = query.OrderByDescending(x => x.Time);
             ViewBag.PageInfo = PagerHelper.Do(ref query, 20, p);
