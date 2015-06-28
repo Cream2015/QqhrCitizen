@@ -10,8 +10,8 @@ namespace WpfApplication2
 {
     class citizen_sqlhelp
     {
-        private static string connStr = "Server='42.96.129.28';database='QqhrCitizen';User ID='sa';Password='koala19920716'";
-        //private static string connStr = "Server='218.8.130.134';database='QqhrCitizen';User ID='sa';Password='Qqrtvu.com.cn!@#'";
+        //private static string connStr = "Server='42.96.129.28';database='QqhrCitizen';User ID='sa';Password='koala19920716'";
+        private static string connStr = "Server='218.8.130.134';database='QqhrCitizen';User ID='sa';Password='Qqrtvu.com.cn!@#'";
         public static int ExecuteNonQuery(string sql, params SqlParameter[] parameters)
         {
 

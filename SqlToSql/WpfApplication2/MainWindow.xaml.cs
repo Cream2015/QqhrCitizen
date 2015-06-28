@@ -15,6 +15,7 @@ using System.Windows.Shapes;
 using System.Data.SqlClient;
 using System.Data;
 using System.Globalization;
+using System.Security.Cryptography;
 
 namespace WpfApplication2
 {
@@ -25,14 +26,48 @@ namespace WpfApplication2
     {
         public int insert_type_id;
         public int type_id;
-        public int user_id=6;
+        public int user_id;
         public MainWindow()
         {
             InitializeComponent();
+            user_id = Convert.ToInt32(citizen_sqlhelp.ExecuteScalar("insert into User (Username,Password,Age,SexAsInt,RoleAsInt,Score) values ('fanfzj','" + Md5("6yhn6yhn") + "','0','1','1','1');Select @@Identity"));
             insert_type_id = Convert.ToInt32(citizen_sqlhelp.ExecuteScalar("insert into TypeDictionaries (TypeValue,FatherID,Time,NeedAuthorize,Belonger) values ('其他','0','" + Convert.ToDateTime(DateTime.Now).ToString("yyyy-MM-dd HH:mm:ss.fff", DateTimeFormatInfo.InvariantInfo) + "','0','2')" + ";Select @@Identity"));
             type_id = Convert.ToInt32(citizen_sqlhelp.ExecuteScalar("insert into TypeDictionaries (TypeValue,FatherID,Time,NeedAuthorize,Belonger) values ('其他','" + insert_type_id + "','" + Convert.ToDateTime(DateTime.Now).ToString("yyyy-MM-dd HH:mm:ss.fff", DateTimeFormatInfo.InvariantInfo) + "','0','2')" + ";Select @@Identity"));
+            
         }
+        public void SetNavigations()
+        {
+            citizen_sqlhelp.ExecuteScalar("insert into Navigations (Title,Url,Nav_Id,Km_st_Id) values ('首页','/Home/Index','topmenu_home','Null')");
+            citizen_sqlhelp.ExecuteScalar("insert into Navigations (Title,Url,Nav_Id,Km_st_Id) values ('新闻','/News/Index','topmenu_news','Null')");
+            citizen_sqlhelp.ExecuteScalar("insert into Navigations (Title,Url,Nav_Id,Km_st_Id) values ('课程','/Course/Index','topmenu_course','d_row_course')");
+            citizen_sqlhelp.ExecuteScalar("insert into Navigations (Title,Url,Nav_Id,Km_st_Id) values ('电子书','/Ebook/Index','topmenu_ebook','d_row_ebook')");
+            citizen_sqlhelp.ExecuteScalar("insert into Navigations (Title,Url,Nav_Id,Km_st_Id) values ('直播','/Live/Index','topmenu_live','d_row_live')");
+            citizen_sqlhelp.ExecuteScalar("insert into Navigations (Title,Url,Nav_Id,Km_st_Id) values ('链接','Null','Null','d_row_link')");
+           
+        }
+        public string Md5(string sDataIn)
+        {
+            MD5CryptoServiceProvider md5 = new MD5CryptoServiceProvider();
 
+            byte[] bytValue, bytHash;
+
+            bytValue = System.Text.Encoding.UTF8.GetBytes(sDataIn);
+
+            bytHash = md5.ComputeHash(bytValue);
+
+            md5.Clear();
+
+            string sTemp = "";
+
+            for (int i = 0; i < bytHash.Length; i++)
+            {
+
+                sTemp += bytHash[i].ToString("X").PadLeft(2, '0');
+
+            }
+
+            return sTemp.ToLower();
+        }
         private void Button_Click(object sender, RoutedEventArgs e)
         {
 
