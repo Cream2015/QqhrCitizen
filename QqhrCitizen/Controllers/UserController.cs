@@ -19,6 +19,7 @@ namespace QqhrCitizen.Controllers
         [HttpGet]
         public ActionResult Register()
         {
+            ViewBag.Navigation = db.Navigations.ToList();
             return View();
         }
 
@@ -60,6 +61,7 @@ namespace QqhrCitizen.Controllers
         [HttpGet]
         public ActionResult Login()
         {
+            ViewBag.Navigation = db.Navigations.ToList();
             if (User.Identity.IsAuthenticated == true)
             {
                 return Redirect("/");
@@ -72,8 +74,6 @@ namespace QqhrCitizen.Controllers
         [ValidateSID]
         public ActionResult Login(vLogin model)
         {
-
-
             User user = new User();
             model.Password = Helpers.Encryt.GetMD5(model.Password);
             user = db.Users.Where(u => u.Username == model.Username && u.Password == model.Password).SingleOrDefault();
@@ -116,6 +116,7 @@ namespace QqhrCitizen.Controllers
         [HttpGet]
         public ActionResult Edit(int id)
         {
+            ViewBag.Navigation = db.Navigations.ToList();
             User user = db.Users.Find(id);
             ViewBag.user = user;
             List<SelectListItem> ListSex = new List<SelectListItem>();
@@ -183,6 +184,7 @@ namespace QqhrCitizen.Controllers
         {
             User user = db.Users.Find(id);
             ViewBag.user = new vUserPwdEdit(user);
+            ViewBag.Navigation = db.Navigations.ToList();
             return View();
         }
 
@@ -258,6 +260,7 @@ namespace QqhrCitizen.Controllers
         [Authorize]
         public ActionResult StudyHistory(int id)
         {
+            ViewBag.Navigation = db.Navigations.ToList();
             User user = new User();
             user = db.Users.Find(id);
             ViewBag.user = new vUser(user);
@@ -279,6 +282,7 @@ namespace QqhrCitizen.Controllers
         [Authorize]
         public ActionResult HistoryCourse(int id)
         {
+            ViewBag.Navigation = db.Navigations.ToList();
             User user = new User();
             user = db.Users.Find(id);
             List<UserCourse> lstCourse = db.UserCourses.Where(us => us.UserID == CurrentUser.ID).DistinctBy(x => new { x.CourseID }).OrderByDescending(us => us.Time).ToList();
@@ -297,6 +301,7 @@ namespace QqhrCitizen.Controllers
 
         public ActionResult CourseNote(int id)
         {
+            ViewBag.Navigation = db.Navigations.ToList();
             User user = new User();
             user = db.Users.Find(id);
             ViewBag.user = new vUser(user);

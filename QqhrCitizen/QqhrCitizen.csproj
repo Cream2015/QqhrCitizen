@@ -162,7 +162,6 @@
     <Content Include="Helpers\toto.txt" />
     <Content Include="Images\banner.png" />
     <Content Include="Images\board-bodybg.png" />
-    <Content Include="Images\book.jpg" />
     <Content Include="Images\hot.gif" />
     <Content Include="Images\icon-arrow-round.png" />
     <Content Include="Images\icon-courserecommendbyday.png" />
@@ -550,6 +549,7 @@
     <Compile Include="Models\LessionScore.cs" />
     <Compile Include="Models\Live.cs" />
     <Compile Include="Models\Menu.cs" />
+    <Compile Include="Models\Navigation.cs" />
     <Compile Include="Models\News.cs" />
     <Compile Include="Models\Note.cs" />
     <Compile Include="Models\Question.cs" />

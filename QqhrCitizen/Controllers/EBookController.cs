@@ -39,6 +39,7 @@ namespace QqhrCitizen.Controllers
             ViewBag.NewBooks = NewBooks;
             ViewBag.LstRecord = _lstRecord;
             ViewBag.LstHotType = lstHotType;
+            ViewBag.Navigation = db.Navigations.ToList();
             return View();
         }
 

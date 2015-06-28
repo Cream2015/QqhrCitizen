@@ -16,7 +16,7 @@ namespace QqhrCitizen.Controllers
         /// <returns></returns>
         public ActionResult Index()
         {
-           
+            ViewBag.Navigation = db.Navigations.ToList();
             List<News> lstNews = new List<News>();
             lstNews = db.News.OrderByDescending(n => n.Browses).ThenByDescending(n => n.Time).Take(8).ToList();
 
@@ -35,6 +35,7 @@ namespace QqhrCitizen.Controllers
         [HttpGet]
         public ActionResult Show(int id)
         {
+            ViewBag.Navigation = db.Navigations.ToList();
             News news = new News();
             news = db.News.Find(id);
             news.Browses = news.Browses + 1;
@@ -111,6 +112,7 @@ namespace QqhrCitizen.Controllers
         /// <returns></returns>
         public ActionResult Discovery(int id)
         {
+            ViewBag.Navigation = db.Navigations.ToList();
             List<TypeDictionary> types = new List<TypeDictionary>();
             types = db.TypeDictionaries.Where(t => t.Belonger == TypeBelonger.新闻 && t.FatherID == 0).ToList();
             ViewBag.Tid = id;

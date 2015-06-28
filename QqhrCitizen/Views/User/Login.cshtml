@@ -31,13 +31,13 @@
                     <div id="d_topmenu" class="d-topmenu">
                         <div class="d-top-nav">
                             <div class="body">
-                                <a id="" class="item" href="/Home/Index">学习网首页</a>
-                                <!--选中-->
-                                <!--<a id="topmenu_course" class="item_selected" href="/Course/Index" target="_parent">课程</a>-->
-                                <a id="topmenu_event" class="item" href="/News/Index" target="_parent">新闻</a>
-                                <a id="topmenu_book" class="item" href="/Course/Index" target="_parent">课程</a>
-                                <a id="topmenu_group" class="item" href="/Ebook/Index" target="_parent">电子书</a>
-                                <a id="topmenu_news" class="item" href="/Live/Index" target="_parent">直播</a>
+                               @foreach (var item in ViewBag.Navigation)
+                               {
+                                   if (@item.Url != "Null")
+                                   {
+                                    <a id='@item.Nav_Id' class="item" href="@item.Url" target="_parent">@item.Title</a>
+                                   }
+                               }
                             </div>
                         </div>
                         <div class="d-top-weather">

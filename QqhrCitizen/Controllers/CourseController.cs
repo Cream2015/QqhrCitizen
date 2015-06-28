@@ -51,6 +51,7 @@ namespace QqhrCitizen.Controllers
             ViewBag.LstHotType = LstHotType;
             ViewBag.LstRecord = LstRecord;
             ViewBag.LstHotCourse = _LstHotCourse;
+            ViewBag.Navigation = db.Navigations.ToList();
             return View();
         }
 
@@ -107,7 +108,7 @@ namespace QqhrCitizen.Controllers
             {
                 LstRecord.Add(new vStudyRecord(item));
             }
-
+            ViewBag.Navigation = db.Navigations.ToList();
             var Course = db.Courses.Find(id);
             Course.Browses += 1;
             db.SaveChanges();
@@ -148,7 +149,7 @@ namespace QqhrCitizen.Controllers
             StudyRecord record = new StudyRecord();
             UserCourse userCourse = new UserCourse();
 
-
+            ViewBag.Navigation = db.Navigations.ToList();
             record.LessionID = id;
             record.UserID = CurrentUser.ID;
             record.Time = DateTime.Now;
@@ -414,7 +415,7 @@ namespace QqhrCitizen.Controllers
                 type = db.TypeDictionaries.Find(id);
             }
             ViewBag.Type = id;
-
+            ViewBag.Navigation = db.Navigations.ToList();
             ViewBag.Types = types;
             return View();
         }
