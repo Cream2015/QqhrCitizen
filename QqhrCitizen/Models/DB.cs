@@ -33,7 +33,10 @@ namespace QqhrCitizen.Models
         public DbSet<UserCourse> UserCourses { set; get; }
 
         public DbSet<Menu> Menus { set; get; }
+
         public DbSet<Navigation> Navigations { set; get; }
+
+        public DbSet<Viewpager> Viewpagers { set; get; }
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);

@@ -43,7 +43,7 @@ namespace WpfApplication2
             citizen_sqlhelp.ExecuteScalar("insert into Navigations (Title,Url,Nav_Id,Km_st_Id) values ('电子书','/Ebook/Index','topmenu_ebook','d_row_ebook')");
             citizen_sqlhelp.ExecuteScalar("insert into Navigations (Title,Url,Nav_Id,Km_st_Id) values ('直播','/Live/Index','topmenu_live','d_row_live')");
             citizen_sqlhelp.ExecuteScalar("insert into Navigations (Title,Url,Nav_Id,Km_st_Id) values ('链接','Null','Null','d_row_link')");
-           
+            MessageBox.Show("成功");
         }
         public string Md5(string sDataIn)
         {
@@ -163,38 +163,7 @@ namespace WpfApplication2
         }
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
-            ShowSqlNumber.Text = "";
-            string qqhrstudy_sql = "select * from StudentInfo";
-            string citizen_sql;
-            DataTable citizen_sqldt = qqhr_sqlhelp.ExecuteDataTable(qqhrstudy_sql);
-            int a = 0;
-            for (int i = 0; i < citizen_sqldt.Rows.Count; i++)
-            {
-                string Time = Convert.ToDateTime(citizen_sqldt.Rows[i]["CreatedTime"]).ToString("yyyy-MM-dd HH:mm:ss.fff", DateTimeFormatInfo.InvariantInfo);
-                citizen_sql = "insert into Lessions (Title,Description,CourseID,Time,Remark,Path,Browses,IsPassTest) values (@Title,@Description,@CourseId,@Time,@Remark,@Path,@Browses,@IsPassTest)";
-                SqlParameter[] para = new SqlParameter[]
-	                    {
-                             new SqlParameter("@Title", SqlDbType.VarChar),
-                             new SqlParameter("@Description",SqlDbType.VarChar),
-                             new SqlParameter("@CourseID", SqlDbType.Int),
-                             new SqlParameter("@Time",SqlDbType.DateTime),
-                             new SqlParameter("@Remark", SqlDbType.VarChar),
-                             new SqlParameter("@Path",SqlDbType.VarChar),
-                             new SqlParameter("@Browses", SqlDbType.Int),
-                             new SqlParameter("@IsPassTest",SqlDbType.Int)
-                        };
-                para[0].Value = citizen_sqldt.Rows[i]["Name"].ToString();
-                para[1].Value = citizen_sqldt.Rows[i]["Name"].ToString();
-                para[2].Value = citizen_sqldt.Rows[i]["CourseID"].ToString();
-                para[3].Value = Time;
-                para[4].Value = citizen_sqldt.Rows[i]["Name"].ToString();
-                para[5].Value = citizen_sqldt.Rows[i]["Url"].ToString();
-                para[6].Value = 0;
-                para[7].Value = 0;
-                a += citizen_sqlhelp.ExecuteNonQuery(citizen_sql, para);
-                ShowSqlNumber.Text = ShowSqlNumber.Text + "<br>" + citizen_sql;
-            }
-            MessageBox.Show("导入数据");
+            SetNavigations();
         }
     }
 }
