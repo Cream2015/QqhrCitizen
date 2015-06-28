@@ -8,10 +8,10 @@ using System.Data;
 
 namespace WpfApplication2
 {
-    class qqhr_sqlhelp
+    class Sqlhelp
     {
-        private static string connStr = "server=127.0.0.1;database=qqhrstudy;uid=sa;pwd=123456";
-        public static int ExecuteNonQuery(string sql, params SqlParameter[] parameters)
+        
+        public static int ExecuteNonQuery(string sql,string connStr, params SqlParameter[] parameters)
         {
 
             using (SqlConnection conn = new SqlConnection(connStr))
@@ -42,7 +42,7 @@ namespace WpfApplication2
 
         }
 
-        public static object ExecuteScalar(string sql, params SqlParameter[] parameters)
+        public static object ExecuteScalar(string sql,string connStr, params SqlParameter[] parameters)
         {
 
             using (SqlConnection conn = new SqlConnection(connStr))
@@ -65,7 +65,7 @@ namespace WpfApplication2
 
         }
         //只用来执行查询结果比较小的sql
-        public static DataSet ExecuteDataSet(string sql)
+        public static DataSet ExecuteDataSet(string sql,string connStr)
         {
             using (SqlConnection conn = new SqlConnection(connStr))
             {
@@ -83,7 +83,7 @@ namespace WpfApplication2
         }
         //只用来执行查询结果比较少的sql
 
-        public static DataTable ExecuteDataTable(string sql, params SqlParameter[] parameters)
+        public static DataTable ExecuteDataTable(string sql, string connStr, params SqlParameter[] parameters)
         {
 
             using (SqlConnection conn = new SqlConnection(connStr))

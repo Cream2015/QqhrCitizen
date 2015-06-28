@@ -53,8 +53,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="citizen_sqlhelp.cs" />
-    <Compile Include="qqhr_sqlhelp.cs" />
+    <Compile Include="Sqlhelp.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
