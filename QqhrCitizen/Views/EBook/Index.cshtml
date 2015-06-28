@@ -1,17 +1,17 @@
 ﻿@using QqhrCitizen.Models;
 @using QqhrCitizen.Models.ViewModel;
 @{
-    ViewBag.Title = "图书首页_齐齐哈尔市民学习网";
+    ViewBag.Title = "电子书首页_齐齐哈尔市民学习网";
     EBook ebook = ViewBag.EBooks;
-    ViewBag.Search = "图书名、标签";
+    ViewBag.Search = "电子书名、标签";
 }
 <div id="d_menu" class="d-menu menu-bok">
     <div id="d_menu_c" class="d-menu-c">
         <!-- region start: menu -->
         <div id="d_headmenu" class="d-headmenu">
             <div class="body">
-                <a class="item_selected" href="/EBook/Index" id="headmenu_default">图书首页</a>
-                <a class="item" href="/EBook/Discovery/0" id="headmenu_discovery">发现图书</a>
+                <a class="item_selected" href="/EBook/Index" id="headmenu_default">电子书首页</a>
+                <a class="item" href="/EBook/Discovery/0" id="headmenu_discovery">发现电子书</a>
             </div>
         </div><!-- region end: menu -->
     </div>
@@ -27,10 +27,10 @@
     <div class="d-row-c">
         <div class="d-col-2-8">
             <div class="contentarea" style="padding: 30px 0 30px 0;">
-                <!-- region start: 热门图书 -->
+                <!-- region start: 热门电子书 -->
                 <div id="d_bookhot" class="d-bookhot">
                     <div class="head">
-                        热门图书
+                        热门电子书
                     </div>
                     <div class="body">
                         <div id="slide_bookhot" class="slidecontainer">
@@ -49,11 +49,11 @@
                         </div>
                     </div>
                 </div>
-                <!-- region start: 图书推荐 -->
+                <!-- region start: 电子书推荐 -->
                 <hr style="border: none; height: 1px; background-color: #ccc; margin: 20px 25px 0 0;">
                 <div id="d_booknew" class="d-booknew">
                     <div class="head">
-                        图书推荐
+                        电子书推荐
                     </div>
                     <div class="body">
                         <div id="slide_booknew" class="slidecontainer">
@@ -74,7 +74,7 @@
                         </div>
                     </div>
                 </div>
-                <!-- region end: 图书推荐 -->
+                <!-- region end: 电子书推荐 -->
             </div>
         </div>
         <div class="d-col-2-4">

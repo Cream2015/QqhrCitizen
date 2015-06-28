@@ -701,9 +701,9 @@ namespace QqhrCitizen.Controllers
         #endregion
 
 
-        #region 图书管理
+        #region 电子书管理
         /// <summary>
-        /// 图书管理
+        /// 电子书管理
         /// </summary>
         /// <returns></returns>
         [HttpGet]
@@ -716,9 +716,9 @@ namespace QqhrCitizen.Controllers
         #endregion
 
 
-        #region 增加图书
+        #region 增加电子书
         /// <summary>
-        ///   增加图书
+        ///   增加电子书
         /// </summary>
         /// <returns></returns>
         [HttpGet]
@@ -817,9 +817,9 @@ namespace QqhrCitizen.Controllers
         #endregion
 
 
-        #region 图书详情
+        #region 电子书详情
         /// <summary>
-        ///  图书详情
+        ///  电子书详情
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
@@ -833,9 +833,9 @@ namespace QqhrCitizen.Controllers
         #endregion
 
 
-        #region 图书修改
+        #region 电子书修改
         /// <summary>
-        /// 图书修改
+        /// 电子书修改
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>

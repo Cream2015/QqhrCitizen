@@ -122,8 +122,8 @@ namespace WpfApplication2
         }
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
-            /*Sql_list.Items.Clear();
-            string qqhrstudy_sql = "select * from CoursewareInfo";
+            ShowSqlNumber.Text="";
+            string qqhrstudy_sql = "select * from StudentInfo";
             string citizen_sql;
             DataTable citizen_sqldt = qqhr_sqlhelp.ExecuteDataTable(qqhrstudy_sql);
             int a = 0;
@@ -151,8 +151,8 @@ namespace WpfApplication2
                 para[6].Value = 0;
                 para[7].Value = 0;
                 a += citizen_sqlhelp.ExecuteNonQuery(citizen_sql, para);
-                Sql_list.Items.Add(citizen_sql);
-            }*/
+                ShowSqlNumber.Text = ShowSqlNumber.Text + "<br>" + citizen_sql;
+            }
             MessageBox.Show("导入数据");
         }
     }

@@ -25,7 +25,7 @@
                     <select name="role" class="textbox">
                         <option value="Admin" @(user.Role == Role.Admin?"selected":"")>超级管理员</option>
                         <option value="NewsManager" @(user.Role == Role.NewsManager ? "selected" : "")>新闻管理员</option>
-                        <option value="EBookManager" @(user.Role == Role.EBookManager ? "selected" : "")>图书管理员</option>
+                        <option value="EBookManager" @(user.Role == Role.EBookManager ? "selected" : "")>电子书管理员</option>
                         <option value="CourseManager" @(user.Role == Role.CourseManager ? "selected" : "")>课程管理员</option>
                         <option value="LinkManager" @(user.Role == Role.LinkManager ? "selected" : "")>资源连接管理员</option>
                     </select>

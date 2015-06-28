@@ -4,15 +4,15 @@
     EBook ebook = ViewBag.Ebook as EBook;
     List<vReadRecord> recoreds = ViewBag.LstRecord as List<vReadRecord>;
     ViewBag.Search = "新闻、标签";
-    ViewBag.Title = "图书简介_齐齐哈尔市民学习网";
+    ViewBag.Title = "电子书简介_齐齐哈尔市民学习网";
 }
 <div id="d_menu" class="d-menu menu-bok">
     <div id="d_menu_c" class="d-menu-c">
         <!-- region start: menu -->
         <div id="d_headmenu" class="d-headmenu">
             <div class="body">
-                <a class="item" href="/EBook/Index" id="headmenu_default">图书首页</a>
-                <a class="item" href="/EBook/Discovery/0" id="headmenu_discovery">发现图书</a>
+                <a class="item" href="/EBook/Index" id="headmenu_default">电子书首页</a>
+                <a class="item" href="/EBook/Discovery/0" id="headmenu_discovery">发现电子书</a>
                 <!--<a id="headmenu_bookshelf" class="item" href="/book/bookshelf">我的藏书</a>-->
             </div>
         </div><!-- region end: menu -->
@@ -23,7 +23,7 @@
     <div class="d-row-c">
         <div class="d-col-2-8">
             <div class="contentarea">
-                <!-- region start: 图书详细 -->
+                <!-- region start: 电子书详细 -->
                 <div id="d_bookdetail" class="d-bookdetail">
                     <input type="hidden" id="hdCurrentuser" value="@(ViewBag.CurrentUser!=null? @ViewBag.CurrentUser.Username:"")" />
                     <div class="title">@ebook.Title</div>
@@ -83,9 +83,36 @@
                         <div class="head">试读</div>
                         <pre class="area txt-justify"></pre>
                     </div>
-                </div><!-- region end: 图书详细 --><!-- region start: 喜欢本书的人也喜欢 -->
+                </div>
+                <!-- region end: 电子书详细 -->
+                <!-- region start: 电子书评论 -->
+                <div id="d_bookcomment" class="d-bookcomment">
+                    <div class="head">
+                        书评
+                    </div>
+                    <div class="body">
+                        <!-- 电子书评论框 start -->
+                        <div class="ds-thread" data-thread-key="@ebook.EBookTypeID+@ebook.ID" data-title="@ebook.Title" data-url="@HttpContext.Current.Request.Url.ToString()"></div>
+                        <!-- 电子书评论框 end -->
+                        <!-- 电子书公共JS代码 start (一个网页只需插入一次) -->
+                        <script type="text/javascript">
+                            var duoshuoQuery = { short_name: "qqhrcitizen" };
+                            (function () {
+                                var ds = document.createElement('script');
+                                ds.type = 'text/javascript'; ds.async = true;
+                                ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+                                ds.charset = 'UTF-8';
+                                (document.getElementsByTagName('head')[0]
+                                    || document.getElementsByTagName('body')[0]).appendChild(ds);
+                            })();
+                        </script>
+                        <!-- 电子书公共JS代码 end -->
+                    </div>
+                </div>
+                <!-- region end: 电子书评论 -->
+                <!-- region start: 喜欢本书的人也喜欢 -->
                 <div id="d_booklike" class="d-booklike">
-                    <div class="head">您可能喜欢的图书</div>
+                    <div class="head">您可能喜欢的电子书</div>
                     <div class="body" id="divLike">
                         @foreach (var item in ViewBag.LstInterestBook as List<EBook>)
                         {
@@ -101,31 +128,7 @@
                     </div>
                 </div>
                 <!-- region end: 喜欢本书的人也喜欢 -->
-                <!-- region start: 图书评论 -->
-                <div id="d_bookcomment" class="d-bookcomment">
-                    <div class="head">
-                        书评
-                    </div>
-                    <div class="body">
-                        <!-- 图书评论框 start -->
-                        <div class="ds-thread" data-thread-key="@ebook.EBookTypeID+@ebook.ID" data-title="@ebook.Title" data-url="@HttpContext.Current.Request.Url.ToString()"></div>
-                        <!-- 图书评论框 end -->
-                        <!-- 图书公共JS代码 start (一个网页只需插入一次) -->
-                        <script type="text/javascript">
-                            var duoshuoQuery = { short_name: "qqhrcitizen" };
-                            (function () {
-                                var ds = document.createElement('script');
-                                ds.type = 'text/javascript'; ds.async = true;
-                                ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-                                ds.charset = 'UTF-8';
-                                (document.getElementsByTagName('head')[0]
-                                    || document.getElementsByTagName('body')[0]).appendChild(ds);
-                            })();
-                        </script>
-                        <!-- 图书公共JS代码 end -->
-                    </div>
-                </div>
-                <!-- region end: 图书评论 -->
+                
             </div>
         </div>
         <div class="d-col-2-4">

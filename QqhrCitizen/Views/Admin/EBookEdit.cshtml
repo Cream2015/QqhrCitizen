@@ -7,7 +7,7 @@
 
 <div>
     <div class="result-title">
-        <h1>修改图书</h1>
+        <h1>修改电子书</h1>
     </div>
     @using (Html.BeginForm("EBookEdit", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
     {
@@ -46,12 +46,12 @@
                     描述
                 </td>
                 <td>
-                    <textarea class="textbox" style="height:100px;" name="Description">@book.Description</textarea>
+                    <textarea class="textbox" style="height:100px;width:200px" rows="10" rows="10" name="Description">@book.Description</textarea>
                 </td>
             </tr>
 
             <tr>
-                <td class="row-title">图书文件</td>
+                <td class="row-title">电子书文件</td>
                 <td> 
                     <input type="file" name="file" value="@book.File.FileName" />（不修改，请留空）
                 </td>

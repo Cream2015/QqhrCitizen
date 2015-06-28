@@ -14,6 +14,6 @@ namespace QqhrCitizen.Models
     {
         public static string[] Answers = { "A", "B", "C", "D"};
 
-        public static string[] RoleDisply = { "用户", "超级管理员", "新闻管理员", "图书管理员", "课程管理员","资源连接管理员" };
+        public static string[] RoleDisply = { "用户", "超级管理员", "新闻管理员", "电子书管理员", "课程管理员","资源连接管理员" };
     }
 }
