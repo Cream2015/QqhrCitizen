@@ -33,7 +33,7 @@ namespace QqhrCitizen.Controllers
         [HttpGet]
         public ActionResult TypeManager(int type,int page = 1)
         {
-            var list = db.TypeDictionaries.OrderByDescending(tp => tp.ID && tp.Belonger ==  ).ToPagedList(page, 10);
+            var list = db.TypeDictionaries.OrderByDescending(tp => tp.ID && tp.Belonger == TypeBelonger. ).ToPagedList(page, 10);
             return View(list);
         }
 
