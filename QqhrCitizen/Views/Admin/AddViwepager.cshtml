@@ -1,0 +1,51 @@
+﻿@using QqhrCitizen.Models
+@{
+    ViewBag.Title = "轮播管理";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<div class="result-title">
+    <h1>增加轮播</h1>
+</div>
+
+@using (Html.BeginForm("AddViwepager", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgerySID()
+    <table class="detail-table">
+        <tr>
+            <td>标题</td>
+            <td>
+                <input class="textbox w-3" name="Title" />
+            </td>
+        </tr>
+        <tr>
+            <td>副标题</td>
+            <td>
+                <input class="textbox w-3" name="Subtitle">
+            </td>
+        </tr>
+        <tr>
+            <td>URL</td>
+            <td>
+                <input class="textbox w-3" name="URL" />
+            </td>
+        </tr>
+        <tr>
+            <td>优先级</td>
+            <td>
+                <input class="textbox w-3" name="Priority">
+            </td>
+        </tr>
+        <tr>
+            <td class="row-title">
+                上传图片
+            </td>
+            <td>
+                <input type="file" name="file" id="file" class="textbox" />
+            </td>
+        </tr>
+    </table>
+    <p><input type="submit" value="增加" class="button blue" /></p>
+}
+
+
+

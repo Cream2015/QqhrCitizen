@@ -372,7 +372,7 @@ namespace QqhrCitizen.Controllers
         /// <returns></returns>
         [HttpGet]
 
-        public ActionResult CourseManager(string key,DateTime? Begin,DateTime? End, int p = 0)
+        public ActionResult CourseManager(string key, DateTime? Begin, DateTime? End, int p = 0)
         {
 
 
@@ -381,9 +381,9 @@ namespace QqhrCitizen.Controllers
             {
                 query = query.Where(c => c.Title.Contains(key));
             }
-            if(Begin.HasValue)
+            if (Begin.HasValue)
             {
-                query = query.Where(c => c.Time >=Begin);
+                query = query.Where(c => c.Time >= Begin);
             }
             if (End.HasValue)
             {
@@ -1311,5 +1311,76 @@ namespace QqhrCitizen.Controllers
             ViewBag.Viwepagers = db.Viewpagers.ToList();
             return View();
         }
+
+        #region 增加轮播
+        [HttpGet]
+        public ActionResult AddViwepager()
+        {
+            return View();
+        }
+        [HttpPost]
+        [ValidateSID]
+        [ValidateInput(false)]
+        public ActionResult AddViwepager(Viewpager model, HttpPostedFileBase file)
+        {
+
+            System.IO.Stream stream = file.InputStream;
+            byte[] buffer = new byte[stream.Length];
+            stream.Read(buffer, 0, (int)stream.Length);
+            stream.Close();
+            model.Picture = buffer;
+            db.Viewpagers.Add(model);
+
+            db.SaveChanges();
+            return RedirectToAction("ViwepagerManager");
+        }
+        #endregion
+
+        #region 展示轮播详细
+        [HttpGet]
+        public ActionResult ViwepagerShow(int id)
+        {
+            ViewBag.ViwepaherShow = db.Viewpagers.Find(id);
+            return View();
+        }
+        #endregion
+
+        #region 修改轮播
+        [HttpGet]
+        public ActionResult ViwepagerkEdit(int id)
+        {
+            ViewBag.ViwepaherShow = db.Viewpagers.Find(id);
+            return View();
+        }
+        [HttpPost]
+        [ValidateSID]
+        [ValidateInput(false)]
+        public ActionResult ViwepagerkEdit(Viewpager model, HttpPostedFileBase file)
+        {
+            if(file!=null)
+            {
+                System.IO.Stream stream = file.InputStream;
+                byte[] buffer = new byte[stream.Length];
+                stream.Read(buffer, 0, (int)stream.Length);
+                stream.Close();
+                model.Picture = buffer;
+            }
+            else
+            {
+                model.Picture = null;
+            }
+
+            Viewpager viewpager = new Viewpager();
+            viewpager = db.Viewpagers.Find(model.ID);
+            viewpager.Title = model.Title;
+            viewpager.Subtitle = model.Subtitle;
+            viewpager.Url = model.Url;
+            viewpager.Priority = model.Priority;
+            viewpager.Picture = model.Picture;
+
+            db.SaveChanges();
+            return RedirectToAction("ViwepagerManager");
+        }
+        #endregion
     }
 }
