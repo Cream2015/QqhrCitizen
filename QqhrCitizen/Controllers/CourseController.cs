@@ -129,6 +129,7 @@ namespace QqhrCitizen.Controllers
             ViewBag.lstCourse = lstCourse;
             ViewBag.LstRecord = LstRecord;
             ViewBag.LstCourse = lstCourse;
+            ViewBag.Navigation = db.Navigations.ToList();
             return View();
         }
 
@@ -192,7 +193,7 @@ namespace QqhrCitizen.Controllers
                 vNotes.Add(new vNote(item));
             }
 
-
+            ViewBag.Navigation = db.Navigations.ToList();
             ViewBag.Lession = Lession;
             ViewBag.Questions = questions;
             ViewBag.Lessions = vLessions;
@@ -273,6 +274,7 @@ namespace QqhrCitizen.Controllers
             ViewBag.Questions = questions;
             ViewBag.Lessions = vLessions;
             ViewBag.ListNote = vNotes;
+            ViewBag.Navigation = db.Navigations.ToList();
             return View("LessionDetails");
         }
 
