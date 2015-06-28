@@ -17,8 +17,14 @@ namespace QqhrCitizen.Models
 
         public string Url { get; set; }
 
+        /// <summary>
+        ///   a标签ID
+        /// </summary>
         public string Nav_Id { get; set; }
 
+        /// <summary>
+        /// 
+        /// </summary>
         public string Km_st_Id { get; set; }
     }
 }
