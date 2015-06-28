@@ -543,8 +543,23 @@ namespace QqhrCitizen.Controllers
 
         public ActionResult LinkManager(string key, DateTime? Begin, DateTime? End, int p = 0)
         {
-            
-            return View(list);
+
+            IEnumerable<ResourceLink> query = db.ResourceLinks.AsEnumerable();
+            if (!string.IsNullOrEmpty(key))
+            {
+                query = query.Where(c => c.Title.Contains(key));
+            }
+            if (Begin.HasValue)
+            {
+                query = query.Where(c => c.Time >= Begin);
+            }
+            if (End.HasValue)
+            {
+                query = query.Where(c => c.Time <= End);
+            }
+            query = query.OrderByDescending(x => x.Time);
+            ViewBag.PageInfo = PagerHelper.Do(ref query, 20, p);
+            return View(query);
         }
         #endregion
 
