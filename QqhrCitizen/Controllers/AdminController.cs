@@ -93,7 +93,7 @@ namespace QqhrCitizen.Controllers
             TypeDictionary type = new TypeDictionary { TypeValue = TypeValue, Belonger = Belonger, NeedAuthorize = flag, FatherID = FatherID, Time = DateTime.Now };
             db.TypeDictionaries.Add(type);
             db.SaveChanges();
-            return Redirect("/Admin/TypeManager?type="+Belonger);
+            return Redirect("/Admin/TypeManager?type=" + Belonger);
         }
         #endregion
 
@@ -1453,7 +1453,8 @@ namespace QqhrCitizen.Controllers
         #endregion
 
 
-        /// <summary>
+        #region M删除轮播yRegion
+        // <summary>
         /// 删除轮播
         /// </summary>
         /// <param name="id"></param>
@@ -1465,7 +1466,28 @@ namespace QqhrCitizen.Controllers
             db.SaveChanges();
             return Content("ok");
         }
+        #endregion
 
-     
+
+        #region 导航管理
+        /// <summary>
+        /// 导航管理
+        /// </summary>
+        /// <returns></returns>
+        public ActionResult NavigationManager()
+        {
+            ViewBag.Navigations = db.Navigations.ToList();
+            return View();
+        } 
+        #endregion
+
+        /// <summary>
+        /// 增加导航
+        /// </summary>
+        /// <returns></returns>
+        public ActionResult AddNavigation()
+        {
+            return View();
+        }
     }
 }
