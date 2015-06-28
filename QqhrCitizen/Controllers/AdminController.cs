@@ -744,10 +744,24 @@ namespace QqhrCitizen.Controllers
         /// <returns></returns>
         [HttpGet]
 
-        public ActionResult EBookManager(int page = 1)
+        public ActionResult EBookManager(string key, DateTime? Begin, DateTime? End, int p = 0)
         {
-            var list = db.EBooks.OrderByDescending(tp => tp.ID).ToPagedList(page, 10);
-            return View(list);
+            IEnumerable<EBook> query = db.EBooks.AsEnumerable();
+            if (!string.IsNullOrEmpty(key))
+            {
+                query = query.Where(c => c.Title.Contains(key));
+            }
+            if (Begin.HasValue)
+            {
+                query = query.Where(c => c.Time >= Begin);
+            }
+            if (End.HasValue)
+            {
+                query = query.Where(c => c.Time <= End);
+            }
+            query = query.OrderByDescending(x => x.Time);
+            ViewBag.PageInfo = PagerHelper.Do(ref query, 20, p);
+            return View(query);
         }
         #endregion
 
