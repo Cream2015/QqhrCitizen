@@ -657,7 +657,7 @@
     <Content Include="Views\Admin\AddViwepager.cshtml" />
     <Content Include="Views\Admin\ViwepagerManager.cshtml" />
     <None Include="Views\Shared\Error.cshtml" />
-    <Content Include="Views\Viwe123.cshtml" />
+    <Content Include="Views\Admin\ViwepagerEdit.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
