@@ -541,9 +541,9 @@ namespace QqhrCitizen.Controllers
         /// <returns></returns>
         [HttpGet]
 
-        public ActionResult LinkManager(int page = 1)
+        public ActionResult LinkManager(string key, DateTime? Begin, DateTime? End, int p = 0)
         {
-            var list = db.ResourceLinks.OrderByDescending(tp => tp.ID).ToPagedList(page, 10);
+            
             return View(list);
         }
         #endregion

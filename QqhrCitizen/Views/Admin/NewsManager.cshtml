@@ -1,4 +1,4 @@
-﻿@model IEnumerable<QqhrCitizen.Models.Course>
+﻿@model IEnumerable<QqhrCitizen.Models.News>
 @{
     ViewBag.Title = "新闻管理";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
@@ -9,8 +9,15 @@
         <h1>新闻管理 <a href="/Admin/AddNews">增加</a></h1>
     </div>
     <div class="result-content">
-
-        <table class="detail-table">
+        <form class="search">
+            检索：
+            <input type="text" name="Begin" class="textbox datetime nullable" placeholder="发布时间(大于)" value="@Request.QueryString["Begin"]" />
+            <input type="text" name="End" class="textbox datetime nullable" placeholder="发布时间(小于)" value="@Request.QueryString["End"]" />
+            信息分类
+            <input type="text" name="Key" class="textbox nullable" placeholder="关键字" />
+            <input type="submit" class="btn blue" value="检索" />
+        </form>
+        <table class="detail-table" style="margin-top:20px;">
             <thead>
                 <tr>
                     <td>编号</td>

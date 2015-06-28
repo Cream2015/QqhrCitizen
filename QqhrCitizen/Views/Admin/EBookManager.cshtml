@@ -1,4 +1,4 @@
-﻿@model IEnumerable<QqhrCitizen.Models.Course>
+﻿@model IEnumerable<QqhrCitizen.Models.EBook>
 @{
     ViewBag.Title = "电子书管理";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
@@ -17,7 +17,7 @@
             <input type="text" name="Key" class="textbox nullable" placeholder="关键字" />
             <input type="submit" class="btn blue" value="检索" />
         </form>
-        <table class="detail-table">
+        <table class="detail-table" style="margin-top:20px;">
             <thead>
                 <tr>
                     <td>编号</td>
