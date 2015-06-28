@@ -132,11 +132,11 @@
                     string[] bgcolor = { "rgb(42, 145, 212)", "rgb(219, 170, 85)", "rgb(249, 220, 140)", "rgb(207, 180, 115)", "rgb(215, 205, 191)" };
                     var i = 1;
                 }
-                @foreach (News n in ViewBag.News)
+                @foreach (Viewpager n in ViewBag.Pictures)
                 {
                     if (i > 5) { break; }
                     <li id="bb@(i)" style="background-color: @(bgcolor[i - 1]); z-index: 9; display: block;">
-                        <a href="/News/Show/@n.ID" target="_blank" style="background-image: url(@n.ImgUrl.First());"><p class="t" style="display: none;"></p><p class="h" style="color: rgb(255, 255, 255);">@n.Title</p><p class="p" style="color: rgb(255, 255, 255);">@n.Title</p></a>
+                        <a href="@n.Url" target="_blank" style="background-image: url(/ViewPager/ShowPicture/@n.ID);"><p class="t" style="display: none;"></p><p class="h" style="color: rgb(255, 255, 255);">@n.Title</p><p class="p" style="color: rgb(255, 255, 255);">@n.Subtitle</p></a>
                     </li>
                     { i++; }
                 }
@@ -237,33 +237,34 @@
                             <div class="body">
                                 <div id="slide_eventrecommend" class="slidecontainer">
                                     @{ var index = 0; }
-                                    @foreach (Live l in ViewBag.Lives)
+                                    @foreach (News l in ViewBag.News)
                                     {
                                         if (index++ == 0)
                                         {
                                             <span class="itemhot">
-                                                <a class="act-cover cover" href="/Live/Show/@l.ID" title="@l.Title">
-                                                    <img src="/Live/ShowPicture/@l.ID" data-echo="/Live/ShowPicture/@l.ID" onerror="this.onerror='';this.src='/Live/ShowPicture/@l.ID';">
+                                                <a class="act-cover cover" href="/News/Show/@l.ID" title="@l.Title">
+                                                    <img src="/News/ShowPicture/@l.ID" data-echo="/News/ShowPicture/@l.ID" onerror="this.onerror='';this.src='/News/ShowPicture/@l.ID';">
                                                 </a>
-                                                <div class="title trim"><a href="/Live/Show/@l.ID" title="@l.Title">@l.Title</a></div>
-                                                <span class="date">@l.Begin.ToString("yyyy.MM.dd HH:mm") ~ @l.End.ToString("yyyy.MM.dd HH:mm")</span>
+                                                <div class="title trim"><a href="/News/Show/@l.ID" title="@l.Title">@l.Title</a></div>
+                                                <span class="date">@l.Time.ToString("yyyy.MM.dd HH:mm")</span>
                                                 <div class="desc">
-                                                    @Html.Sanitized(@l.Description)
+                                                    @Html.Sanitized(@l.Content)
                                                 </div>
                                             </span>
                                         }
                                         else
                                         {
+                                            if (index == 6) { break; }
                                             <span class="item">
-                                                <a class="act-cover cover" href="/Live/Show/@l.ID" title="@l.Title">
-                                                    <img src="/Live/Show/@l.ID" data-echo="/Live/Show/@l.ID" onerror="this.onerror='';this.src='/Live/Show/@l.ID';">
+                                                <a class="act-cover cover" href="/News/Show/@l.ID" title="@l.Title">
+                                                    <img src="/News/Show/@l.ID" data-echo="/News/Show/@l.ID" onerror="this.onerror='';this.src='/News/Show/@l.ID';">
                                                 </a>
                                                 <div class="title trim">
-                                                    <a href="/Live/Show/@l.ID" title="@l.Title">@l.Title</a>
+                                                    <a href="/News/Show/@l.ID" title="@l.Title">@l.Title</a>
                                                 </div>
-                                                <span class="date">@l.Begin.ToString("yyyy.MM.dd HH:mm") ~ @l.End.ToString("yyyy.MM.dd HH:mm")</span>
+                                                <span class="date">@l.Time.ToString("yyyy.MM.dd HH:mm")</span>
                                                 <div class="desc">
-                                                    @Html.Sanitized(@l.Description)
+                                                    @Html.Sanitized(@l.Content)
                                                 </div>
                                             </span>
                                         }
