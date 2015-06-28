@@ -1453,6 +1453,19 @@ namespace QqhrCitizen.Controllers
         #endregion
 
 
+        /// <summary>
+        /// 删除轮播
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public ActionResult ViwepagerDelete(int id)
+        {
+            Viewpager viewpager = db.Viewpagers.Find(id);
+            db.Viewpagers.Remove(viewpager);
+            db.SaveChanges();
+            return Content("ok");
+        }
+
      
     }
 }
