@@ -1,11 +1,9 @@
 ﻿@using QqhrCitizen.Models.ViewModel
 @{
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
-    vEBook book = ViewBag.EBook as vEBook;
-    ViewBag.Title =  book.Title;
+    vEBook nat = ViewBag.EBook;
+    ViewBag.Title = nat.Title;
 }
-
-<h2>电子书详情 <a href="/Admin/EBookEdit/@book.ID">修改电子书</a></h2>
 
 <table class="detail-table">
     <tr>
@@ -17,7 +15,8 @@
     <tr>
         <td class="row-title">标题</td>
         <td>
-             @book.Title
+             @nat.Title('','炒墨鱼吗
+                 ')
         </td>
     </tr>
     <tr>

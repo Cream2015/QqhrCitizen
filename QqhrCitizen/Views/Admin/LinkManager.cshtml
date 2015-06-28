@@ -1,4 +1,6 @@
-﻿@model IEnumerable<QqhrCitizen.Models.ResourceLink>
+﻿@using PagedList
+@using PagedList.Mvc
+@model PagedList<QqhrCitizen.Models.ResourceLink>
 @{
     ViewBag.Title = "资源链接管理";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
@@ -9,15 +11,8 @@
         <h1>资源链接管理 <a href="/Admin/AddLink">增加</a></h1>
     </div>
     <div class="result-content">
-        <form class="search">
-            检索：
-            <input type="text" name="Begin" class="textbox datetime nullable" placeholder="发布时间(大于)" value="@Request.QueryString["Begin"]" />
-            <input type="text" name="End" class="textbox datetime nullable" placeholder="发布时间(小于)" value="@Request.QueryString["End"]" />
-            信息分类
-            <input type="text" name="Key" class="textbox nullable" placeholder="关键字" />
-            <input type="submit" class="btn blue" value="检索" />
-        </form>
-        <table class="detail-table">
+
+        <table class="table">
             <thead>
                 <tr>
                     <td>编号</td>
@@ -30,25 +25,28 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach (var item in Model)
+                @if (Model.Count > 0)
                 {
-                <tr id="@item.ID">
-                    <td>@item.ID</td>
-                    <td>@item.Title</td>
-                    <td>@item.URL</td>
-                    <td>@item.TypeDictionary.TypeValue</td>
-                    <td>@item.Time</td>
-                    <td>@item.User.Username</td>
-                    <td>
-                        <a href="/Admin/LinkShow/@item.ID">资源链接详情</a>
-                        <a href="javascript:deleteDialog('/Admin/LinkDelete/' + @item.ID + '?sid=@ViewBag.SID',@item.ID);">删除</a>
-                        <a href="/Admin/LinkEdit/@item.ID">编辑</a>
-                    </td>
-                </tr>
+                    foreach (var item in Model)
+                    {
+                        <tr id="@item.ID">
+                            <td>@item.ID</td>
+                            <td>@item.Title</td>
+                            <td>@item.URL</td>
+                            <td>@item.TypeDictionary.TypeValue</td>
+                            <td>@item.Time</td>
+                            <td>@item.User.Username</td>
+                            <td>
+                                <a href="/Admin/LinkShow/@item.ID">资源链接详情</a>
+                                <a href="javascript:deleteDialog('/Admin/LinkDelete/' + @item.ID + '?sid=@ViewBag.SID',@item.ID);">删除</a>
+                                <a href="/Admin/LinkEdit/@item.ID">编辑</a>
+                            </td>
+                        </tr>
+                    }
                 }
             </tbody>
         </table>
-        @Html.MakePager()
+        @Html.PagedListPager((IPagedList)Model, page => Url.Action("TypeManager", new { page }))
     </div>
 </div>
 
