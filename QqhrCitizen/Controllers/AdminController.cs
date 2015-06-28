@@ -49,6 +49,7 @@ namespace QqhrCitizen.Controllers
 
             query = query.OrderByDescending(x => x.Time);
             ViewBag.PageInfo = PagerHelper.Do(ref query, 20, p);
+            ViewBag.Type = type;
             return View(query);
         }
 
@@ -61,7 +62,7 @@ namespace QqhrCitizen.Controllers
         /// <returns></returns>
 
         [HttpGet]
-        public ActionResult AddType()
+        public ActionResult AddType(TypeBelonger type)
         {
             return View();
         }

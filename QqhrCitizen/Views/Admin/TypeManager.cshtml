@@ -6,9 +6,10 @@
 
 <div>
     <div class="result-title">
-        <h1>类型管理 <a href="/Admin/AddType">增加</a></h1>
+        <h1>@ViewBag.Type 类型管理 <a href="/Admin/AddTypes?type=@ViewBag.Type">增加</a></h1>
     </div>
     <div class="result-content">
+        
         <form class="search">
             检索：
             <input type="text" name="Begin" class="textbox datetime nullable" placeholder="发布时间(大于)" value="@Request.QueryString["Begin"]" />
