@@ -386,7 +386,16 @@ namespace QqhrCitizen.Controllers
         {
             Course course = new Course();
             course = db.Courses.Find(id);
-            return File(course.Picture, "image/jpg");
+            if (course.Picture== null)
+            {
+                 var path = Server.MapPath("~/Images/book.jpg");
+                 return File(path, "image/jpg");
+            }
+            else
+            {
+                return File(course.Picture, "image/jpg");
+            }
+            
         }
 
 
