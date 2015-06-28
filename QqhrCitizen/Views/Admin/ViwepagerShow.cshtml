@@ -1,14 +1,14 @@
 ﻿@using QqhrCitizen.Models.ViewModel
 @{
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
-    View viwepager = ViewBag.ViwepaherShow;
-    ViewBag.Title = viwepager.Title;
+    Viewpager viwepager = ViewBag.ViwepagerShow;
+    ViewBag.Title =viwepager .Title;
 }
 
-@using (Html.BeginForm("Viwepager.Edit", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
+@using (Html.BeginForm("ViwepagerShow", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
     {
-    @Html.AntiForgerySID():ddd
-<table class="detail-table">
+    @Html.AntiForgerySID()
+    <table class="detail-table">
     <tr>
         <td class="row-title">标题</td>
         <td>
@@ -20,7 +20,7 @@
             描述
         </td>
         <td>
-            @viwepager.Sbutitle
+            @viwepager.Subtitle
         </td>
     </tr>
     <tr>
@@ -39,4 +39,11 @@
            @viwepager.Priority
         </td>
     </tr>
+    <tr>
+        <td class="row-title">
+            图片
+        </td>
+        
+    </tr>
 </table>
+}
