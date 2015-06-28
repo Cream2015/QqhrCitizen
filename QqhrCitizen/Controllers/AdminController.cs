@@ -373,8 +373,14 @@ namespace QqhrCitizen.Controllers
         [HttpGet]
 
         public ActionResult CourseManager(int page,string key)
-        { 
+        {
 
+
+            IEnumerable<Course> query = db.Courses.AsEnumerable();
+            if (string.IsNullOrEmpty(key))
+            {
+
+            }
             var list = db.Courses.OrderByDescending(tp => tp.ID).ToPagedList(page, 10);
             return View(list);
         }

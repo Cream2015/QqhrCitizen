@@ -54,6 +54,7 @@ namespace QqhrCitizen.Controllers
             {
                 ModelState.AddModelError("", "用户名不可用！");
             }
+            ViewBag.Navigation = db.Navigations.ToList();
             return View();
         }
         #endregion
@@ -74,11 +75,13 @@ namespace QqhrCitizen.Controllers
         [ValidateSID]
         public ActionResult Login(vLogin model)
         {
+            
             User user = new User();
             model.Password = Helpers.Encryt.GetMD5(model.Password);
             user = db.Users.Where(u => u.Username == model.Username && u.Password == model.Password).SingleOrDefault();
             if (user == null)
             {
+                ViewBag.Navigation = db.Navigations.ToList();
                 ModelState.AddModelError("", "用户名或密码错误！");
             }
             else
