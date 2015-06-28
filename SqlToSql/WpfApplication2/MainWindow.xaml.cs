@@ -23,14 +23,19 @@ namespace WpfApplication2
     /// </summary>
     public partial class MainWindow : Window
     {
+        public int insert_type_id;
+        public int type_id;
+        public int user_id=6;
         public MainWindow()
         {
             InitializeComponent();
-
+            insert_type_id = Convert.ToInt32(citizen_sqlhelp.ExecuteScalar("insert into TypeDictionaries (TypeValue,FatherID,Time,NeedAuthorize,Belonger) values ('其他','0','" + Convert.ToDateTime(DateTime.Now).ToString("yyyy-MM-dd HH:mm:ss.fff", DateTimeFormatInfo.InvariantInfo) + "','0','2')" + ";Select @@Identity"));
+            type_id = Convert.ToInt32(citizen_sqlhelp.ExecuteScalar("insert into TypeDictionaries (TypeValue,FatherID,Time,NeedAuthorize,Belonger) values ('其他','" + insert_type_id + "','" + Convert.ToDateTime(DateTime.Now).ToString("yyyy-MM-dd HH:mm:ss.fff", DateTimeFormatInfo.InvariantInfo) + "','0','2')" + ";Select @@Identity"));
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+
             ShowSqlNumber.Text = "";
             string qqhrstudy_sql = "select * from NewsInfo";
             string citizen_sql;
@@ -63,9 +68,9 @@ namespace WpfApplication2
                 }
                 para[2].Value = citizen_sqldt.Rows[i]["ImageUrl"].ToString();
                 para[3].Value = Time;
-                para[4].Value = 1;
+                para[4].Value = user_id;
                 para[5].Value = 0;
-                para[6].Value = 5;
+                para[6].Value = type_id;
                 //para[6].Value = 37;
                 para[7].Value = citizen_sqldt.Rows[i]["ImageFlag"].ToString();
                 para[8].Value = 0;
@@ -84,6 +89,7 @@ namespace WpfApplication2
             int a = 0;
             for (int i = 0; i < citizen_sqldt.Rows.Count; i++)
             {
+
                 string Time = Convert.ToDateTime(citizen_sqldt.Rows[i]["CreatedTime"]).ToString("yyyy-MM-dd HH:mm:ss.fff", DateTimeFormatInfo.InvariantInfo);
                 citizen_sql = "insert into Courses (Title,Description,AuthorityAsInt,Time,UserID,Browses,CourseTypeID,Credit) values (@Title,@Description,@AuthorityAsInt,@Time,@UserID,@Browse,@CourseTypeID,@Credit)";
                 SqlParameter[] para = new SqlParameter[]
@@ -101,9 +107,9 @@ namespace WpfApplication2
                 para[1].Value = citizen_sqldt.Rows[i]["Description"].ToString();
                 para[2].Value = citizen_sqldt.Rows[i]["Status"].ToString();
                 para[3].Value = Time;
-                para[4].Value = 1;
+                para[4].Value = user_id;
                 para[5].Value = 0;
-                para[6].Value = 5;
+                para[6].Value = type_id;
                 //para[6].Value = 37;
                 para[7].Value = citizen_sqldt.Rows[i]["CreditHour"];
                 int insert_id = Convert.ToInt32(citizen_sqlhelp.ExecuteScalar(citizen_sql + ";Select @@Identity", para));
@@ -116,13 +122,13 @@ namespace WpfApplication2
                     citizen_sqlhelp.ExecuteNonQuery(insert_sql);
                 }
                 a++;
-                ShowSqlNumber.Text = ShowSqlNumber.Text+"<br>" + course_sql;
+                ShowSqlNumber.Text = ShowSqlNumber.Text + "<br>" + course_sql;
             }
             MessageBox.Show("导入数据：" + a.ToString());
         }
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
-            ShowSqlNumber.Text="";
+            ShowSqlNumber.Text = "";
             string qqhrstudy_sql = "select * from StudentInfo";
             string citizen_sql;
             DataTable citizen_sqldt = qqhr_sqlhelp.ExecuteDataTable(qqhrstudy_sql);
