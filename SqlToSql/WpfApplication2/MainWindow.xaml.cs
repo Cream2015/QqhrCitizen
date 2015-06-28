@@ -30,7 +30,7 @@ namespace WpfApplication2
         public MainWindow()
         {
             InitializeComponent();
-            user_id = Convert.ToInt32(citizen_sqlhelp.ExecuteScalar("insert into User (Username,Password,Age,SexAsInt,RoleAsInt,Score) values ('fanfzj','" + Md5("6yhn6yhn") + "','0','1','1','1');Select @@Identity"));
+            user_id = Convert.ToInt32(citizen_sqlhelp.ExecuteScalar("insert into Users (Username,Password,Age,SexAsInt,RoleAsInt,Score) values ('fanfzj','" + Md5("6yhn6yhn") + "','0','1','1','1');Select @@Identity"));
             insert_type_id = Convert.ToInt32(citizen_sqlhelp.ExecuteScalar("insert into TypeDictionaries (TypeValue,FatherID,Time,NeedAuthorize,Belonger) values ('其他','0','" + Convert.ToDateTime(DateTime.Now).ToString("yyyy-MM-dd HH:mm:ss.fff", DateTimeFormatInfo.InvariantInfo) + "','0','2')" + ";Select @@Identity"));
             type_id = Convert.ToInt32(citizen_sqlhelp.ExecuteScalar("insert into TypeDictionaries (TypeValue,FatherID,Time,NeedAuthorize,Belonger) values ('其他','" + insert_type_id + "','" + Convert.ToDateTime(DateTime.Now).ToString("yyyy-MM-dd HH:mm:ss.fff", DateTimeFormatInfo.InvariantInfo) + "','0','2')" + ";Select @@Identity"));
             
