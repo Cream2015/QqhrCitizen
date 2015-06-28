@@ -7,6 +7,9 @@
         <Button Content="课程信息" HorizontalAlignment="Left" Height="40" Margin="28,91,0,0" VerticalAlignment="Top" Width="125" Click="Button_Click_1"/>
         <Button Content="导航栏" HorizontalAlignment="Left" Height="38" Margin="28,160,0,0" VerticalAlignment="Top" Width="125" Click="Button_Click_2"/>
         <TextBlock x:Name="ShowSqlNumber" HorizontalAlignment="Left" Height="289" Margin="182,20,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Width="325"/>
+        <RadioButton x:Name="radiobt_1" Content="42.96.129.28(nele)" HorizontalAlignment="Left" Height="23" Margin="28,222,0,0" VerticalAlignment="Top" Width="149"/>
+        <RadioButton x:Name="radiobt_2" GroupName="IP" Content="218.8.130.134(qqhr)" HorizontalAlignment="Left" Height="22" Margin="28,245,0,0" VerticalAlignment="Top" Width="149"/>
+
 
     </Grid>
 </Window>

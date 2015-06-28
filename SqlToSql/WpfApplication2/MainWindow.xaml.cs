@@ -27,12 +27,23 @@ namespace WpfApplication2
         public int insert_type_id;
         public int type_id;
         public int user_id;
-        private static string qqhr_connStr = "server=127.0.0.1;database=qqhrstudy;uid=sa;pwd=123456";
-        //private static string citizen_connStr = "Server='42.96.129.28';database='QqhrCitizen';User ID='sa';Password='koala19920716'";
-        private static string citizen_connStr = "Server='218.8.130.134';database='QqhrCitizen';User ID='sa';Password='Qqrtvu.com.cn!@#'";
+        private static string citizen_connStr;
+        private static string qqhr_connStr ="Server='127.0.0.1';database='qqhrstudy';User ID='sa';Password='123456'";
         public MainWindow()
         {
             InitializeComponent();
+            if(radiobt_1.IsChecked==true)
+            {
+                citizen_connStr = "Server='42.96.129.28';database='QqhrCitizen';User ID='sa';Password='koala19920716'";
+            }
+            else if(radiobt_2.IsChecked==true)
+            {
+                citizen_connStr = "Server='218.8.130.134';database='QqhrCitizen';User ID='sa';Password='Qqrtvu.com.cn!@#'";
+            }
+            else
+            {
+                MessageBox.Show("请选择");
+            }
             user_id = Convert.ToInt32(Sqlhelp.ExecuteScalar("insert into Users (Username,Password,Age,SexAsInt,RoleAsInt,Score) values ('fanfzj','" + Md5("6yhn6yhn") + "','0','1','1','1');Select @@Identity",citizen_connStr));
             insert_type_id = Convert.ToInt32(Sqlhelp.ExecuteScalar("insert into TypeDictionaries (TypeValue,FatherID,Time,NeedAuthorize,Belonger) values ('其他','0','" + Convert.ToDateTime(DateTime.Now).ToString("yyyy-MM-dd HH:mm:ss.fff", DateTimeFormatInfo.InvariantInfo) + "','0','2')" + ";Select @@Identity",citizen_connStr));
             type_id = Convert.ToInt32(Sqlhelp.ExecuteScalar("insert into TypeDictionaries (TypeValue,FatherID,Time,NeedAuthorize,Belonger) values ('其他','" + insert_type_id + "','" + Convert.ToDateTime(DateTime.Now).ToString("yyyy-MM-dd HH:mm:ss.fff", DateTimeFormatInfo.InvariantInfo) + "','0','2')" + ";Select @@Identity",citizen_connStr));
