@@ -65,6 +65,7 @@ namespace QqhrCitizen.Controllers
         public ActionResult AddType(TypeBelonger type)
         {
             List<TypeDictionary> list = db.TypeDictionaries.Where(tp => tp.Belonger == type && tp.FatherID == 0).ToList();
+            ViewBag.LastTypes = list;
             return View();
         }
         #endregion
