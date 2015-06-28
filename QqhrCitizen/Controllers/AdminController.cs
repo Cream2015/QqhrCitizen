@@ -1301,5 +1301,15 @@ namespace QqhrCitizen.Controllers
                 return Server.MapPath(".." + filePhysicalPath + fileName + ".html");
             }
         }
+
+        /// <summary>
+        ///  首页轮播管理
+        /// </summary>
+        /// <returns></returns>
+        public ActionResult ViwepagerManager()
+        {
+            ViewBag.Viwepagers = db.Viewpagers.ToList();
+            return View();
+        }
     }
 }
