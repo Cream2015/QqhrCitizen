@@ -31,10 +31,25 @@ namespace QqhrCitizen.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpGet]
-        public ActionResult TypeManager(int type,int page = 1)
+        public ActionResult TypeManager(string key, DateTime? Begin, DateTime? End, TypeBelonger type, int p = 0)
         {
-            var list = db.TypeDictionaries.OrderByDescending(tp => tp.ID && tp.Belonger == TypeBelonger. ).ToPagedList(page, 10);
-            return View(list);
+            IEnumerable<TypeDictionary> query = db.TypeDictionaries.AsEnumerable();
+            if (!string.IsNullOrEmpty(key))
+            {
+                query = query.Where(c => c.TypeValue.Contains(key));
+            }
+            if (Begin.HasValue)
+            {
+                query = query.Where(c => c.Time >= Begin);
+            }
+            if (End.HasValue)
+            {
+                query = query.Where(c => c.Time <= End);
+            }
+
+            query = query.OrderByDescending(x => x.Time);
+            ViewBag.PageInfo = PagerHelper.Do(ref query, 20, p);
+            return View(query);
         }
 
         #endregion

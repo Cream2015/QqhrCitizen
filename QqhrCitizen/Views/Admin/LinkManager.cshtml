@@ -1,6 +1,4 @@
-﻿@using PagedList
-@using PagedList.Mvc
-@model PagedList<QqhrCitizen.Models.ResourceLink>
+﻿ @model IEnumerable<QqhrCitizen.Models.ResourceLink>
 @{
     ViewBag.Title = "资源链接管理";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
@@ -11,7 +9,14 @@
         <h1>资源链接管理 <a href="/Admin/AddLink">增加</a></h1>
     </div>
     <div class="result-content">
-
+        <form class="search">
+            检索：
+            <input type="text" name="Begin" class="textbox datetime nullable" placeholder="发布时间(大于)" value="@Request.QueryString["Begin"]" />
+            <input type="text" name="End" class="textbox datetime nullable" placeholder="发布时间(小于)" value="@Request.QueryString["End"]" />
+            信息分类
+            <input type="text" name="Key" class="textbox nullable" placeholder="关键字" />
+            <input type="submit" class="btn blue" value="检索" />
+        </form>
         <table class="table">
             <thead>
                 <tr>
@@ -46,7 +51,7 @@
                 }
             </tbody>
         </table>
-        @Html.PagedListPager((IPagedList)Model, page => Url.Action("TypeManager", new { page }))
+       @Html.MakePager()
     </div>
 </div>
 
