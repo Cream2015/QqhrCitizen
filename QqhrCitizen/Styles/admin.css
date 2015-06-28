@@ -104,3 +104,34 @@
     background-color: rgb(30, 91, 120);
     color: #fff;
 }
+
+.table {
+    table-layout: auto;
+}
+
+.table th {
+    text-align: left;
+    border-bottom: 3px solid rgb(30, 91, 120);
+}
+
+.table th, .table td {
+    padding: 8px;
+    text-overflow: ellipsis;  
+}
+
+.table tbody tr {
+    transition: background 0.2s linear, color 0.2s linear;
+}
+
+.table a {
+    color: #333;
+}
+
+.table tbody tr:hover {
+    background-color: rgb(30, 91, 120);
+    color: #fff;
+}
+
+.table tbody tr:hover a {
+    color: #fff;
+}
