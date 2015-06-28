@@ -33,7 +33,7 @@ namespace QqhrCitizen.Controllers
         [HttpGet]
         public ActionResult TypeManager(string key, DateTime? Begin, DateTime? End, TypeBelonger type, int p = 0)
         {
-            IEnumerable<TypeDictionary> query = db.TypeDictionaries.AsEnumerable();
+            IEnumerable<TypeDictionary> query = db.TypeDictionaries.Where(tp => tp.Belonger == type);
             if (!string.IsNullOrEmpty(key))
             {
                 query = query.Where(c => c.TypeValue.Contains(key));
