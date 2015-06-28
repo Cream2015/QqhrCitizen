@@ -31,9 +31,9 @@ namespace QqhrCitizen.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpGet]
-        public ActionResult TypeManager(int page = 1)
+        public ActionResult TypeManager(int type,int page = 1)
         {
-            var list = db.TypeDictionaries.OrderByDescending(tp => tp.ID).ToPagedList(page, 10);
+            var list = db.TypeDictionaries.OrderByDescending(tp => tp.ID && tp.Belonger ==  ).ToPagedList(page, 10);
             return View(list);
         }
 
@@ -201,11 +201,8 @@ namespace QqhrCitizen.Controllers
             {
                 query = query.Where(c => c.Time <= End);
             }
-
-
-            //  var list = db.Courses.OrderByDescending(tp => tp.ID).ToPagedList(page, 10);
             query = query.OrderByDescending(x => x.Time);
-            ViewBag.PageInfo = PagerHelper.Do(ref query, 20, p);
+            ViewBag.PageInfo = PagerHelper.Do(ref query, 50, p);
             return View(query);
         }
         #endregion
@@ -382,6 +379,8 @@ namespace QqhrCitizen.Controllers
         }
         #endregion
 
+
+
         #region 课程管理
         /// <summary>
         /// 新闻管理
@@ -410,7 +409,7 @@ namespace QqhrCitizen.Controllers
 
             //  var list = db.Courses.OrderByDescending(tp => tp.ID).ToPagedList(page, 10);
             query = query.OrderByDescending(x => x.Time);
-            ViewBag.PageInfo = PagerHelper.Do(ref query, 20, p);
+            ViewBag.PageInfo = PagerHelper.Do(ref query, 50, p);
             return View(query);
         }
         #endregion
@@ -558,7 +557,7 @@ namespace QqhrCitizen.Controllers
                 query = query.Where(c => c.Time <= End);
             }
             query = query.OrderByDescending(x => x.Time);
-            ViewBag.PageInfo = PagerHelper.Do(ref query, 20, p);
+            ViewBag.PageInfo = PagerHelper.Do(ref query, 50, p);
             return View(query);
         }
         #endregion
@@ -775,7 +774,7 @@ namespace QqhrCitizen.Controllers
                 query = query.Where(c => c.Time <= End);
             }
             query = query.OrderByDescending(x => x.Time);
-            ViewBag.PageInfo = PagerHelper.Do(ref query, 20, p);
+            ViewBag.PageInfo = PagerHelper.Do(ref query, 50, p);
             return View(query);
         }
         #endregion
@@ -1403,7 +1402,7 @@ namespace QqhrCitizen.Controllers
         [ValidateInput(false)]
         public ActionResult ViwepagerkEdit(Viewpager model, HttpPostedFileBase file)
         {
-            if(file!=null)
+            if (file != null)
             {
                 System.IO.Stream stream = file.InputStream;
                 byte[] buffer = new byte[stream.Length];
