@@ -78,7 +78,7 @@
                             {
                                 @Html.AntiForgerySID()
                                 <input id="txtSearch" maxlength="30" name="key" onkeydown="if(event.keyCode==13){dosearch();}" type="text" value="" placeholder="课程、新闻、电子书" autocomplete="off" autocorrect="off" autocapitalize="off">
-                                <span class="site-search header-search"  onclick="dosearch();" id="home_search" style="left: 348px; border-left: none;">站内搜索</span>
+                                <span class="site-search header-search" onclick="dosearch();" id="home_search" style="left: 348px; border-left: none;">站内搜索</span>
                             }
                         </div>
                     </div><!-- region end: header -->
@@ -136,9 +136,7 @@
                 </div>
             </div>
         </div>
-        <div style="background: #000; position: relative; background: url(/file/video/video_wrapper_bg.gif) repeat-x;">
-            <div id="wrapper" style="width: 802px; margin: 0 auto; position: relative; display: none; padding-top: 20px; height: 471px;"><div id="v_c" style="position: absolute; right: -90px; top: 20px; display: none;"><a href="javascript:;" id="v_close">关闭</a><p><input type="checkbox" id="v_never" style="margin: 0; padding: 0; height: 13px;"><label for="v_never" style="color: #f2f2f2; font-size: 14px;">&nbsp;不再显示</label></p></div><div id="videoWrapper"></div></div>
-        </div>
+       
         <div id="d_banner" class="d-banner" style="background-color: rgb(42, 145, 212);">
             <ul id="d_homebanner" class="d-homebanner" style="display: block;">
                 @{
@@ -369,7 +367,7 @@
                         <p>
                             @foreach (ResourceLink rl in ViewBag.ImgLinks)
                             {
-                                <a href="@rl.URL" target="_blank"><img src="/Upload/@((new QqhrCitizen.Models.ViewModel.vResourceLink(rl)).File.Path)"  class="cc-link-img" /></a>
+                                <a href="@rl.URL" target="_blank"><img src="/Upload/@((new QqhrCitizen.Models.ViewModel.vResourceLink(rl)).File.Path)" class="cc-link-img" /></a>
                             }
                         </p>
                         <p style="font-size: 20px;">
