@@ -1,4 +1,5 @@
-﻿using QqhrCitizen.Models;
+﻿using QqhrCitizen.Filters;
+using QqhrCitizen.Models;
 using QqhrCitizen.Models.ViewModel;
 using System;
 using System.Collections.Generic;
@@ -50,16 +51,37 @@ namespace QqhrCitizen.Controllers
             return View();
         }
 
+        [ValidateSID]
         public ActionResult Search(string key)
         {
-            int newsCount = db.News.Where(n => n.Title.Contains(key) || n.Content.Contains(key)).OrderByDescending(n=>n.Time).Count();
+            List<string> hots = (List<string>)HttpContext.Application["hots"];
+            if (hots == null)
+            {
+                hots = new List<string>();
+            }
+            int newsCount = db.News.Where(n => n.Title.Contains(key) || n.Content.Contains(key)).OrderByDescending(n => n.Time).Count();
             int courseCount = db.Courses.Where(c => c.Title.Contains(key)).OrderByDescending(c => c.Time).Count();
             int ebookCount = db.EBooks.Where(eb => eb.Title.Contains(key)).OrderByDescending(e => e.Time).Count();
-            
+
+            if (!hots.Contains(key))
+            {
+                if (hots.Count < 10)
+                {
+                    hots.Add(key);
+                }
+                else
+                {
+                    hots.RemoveAt(0);
+                    hots.Add(key);
+                }
+            }
+
+            HttpContext.Application["hots"] = hots;
             ViewBag.NewsCount = newsCount;
             ViewBag.CourseCount = courseCount;
             ViewBag.EBookCount = ebookCount;
             ViewBag.Key = key;
+            ViewBag.Hots = HttpContext.Application["hots"];
             return View("SearchResult");
         }
 
@@ -121,6 +143,6 @@ namespace QqhrCitizen.Controllers
 
 
 
-        
+
     }
 }

@@ -178,7 +178,7 @@ function Load() {
 
 $(document).ready(function () {
 
-    
+
 
     Load();
 
@@ -209,7 +209,7 @@ $(document).ready(function () {
         var str = "";
         var answers = $(".answer:checked");
         var sum = $("#questionCount").val()
-        if (answers.length<parseInt(sum)) {
+        if (answers.length < parseInt(sum)) {
             CastMsg("请先完成答题在提交！");
             return false;
         }
@@ -249,7 +249,7 @@ $(document).ready(function () {
     });
 
 
-   
+
 
 });
 
@@ -270,10 +270,19 @@ function dosearch() {
 }
 
 
+function dosearch1() {
+    var key = $("#txtSearch").val();
+    $("#frmSearch1").submit();
+}
+
+function hotSearch(data) {
+    windows.location.href = "/Home/Search?key=" + data + "&sid=" + $("#sid").val();
+}
+
 function Search(data) {
-   
-    $(".d_searchtabs>a").removeClass("tab_select");
-    $(this).addClass("tab_select");
+
+    // $(".d_searchtabs>a").removeClass("tab_select");
+    //$(this).addClass("tab_select");
     console.log($(this));
     if (data == "1") {
         type = "course";
