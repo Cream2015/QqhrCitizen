@@ -193,7 +193,7 @@ namespace QqhrCitizen.Controllers
                 }
                 else
                 {
-                    ViewBag.FileLoad = "../Upload/EBook" + File.Path;
+                    ViewBag.FileLoad = "../Upload/EBook/" + File.Path;
 
                 }
             }
