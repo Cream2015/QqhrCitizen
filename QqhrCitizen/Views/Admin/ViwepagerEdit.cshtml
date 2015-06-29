@@ -9,7 +9,7 @@
     <div class="result-title">
         <h1 class="head-tietle">@viwepaher.Title - 导航修改</h1>
     </div>
-    @using (Html.BeginForm("ViwepagerkEdit", "Admin", FormMethod.Post))
+    @using (Html.BeginForm("ViwepagerkEdit", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
     {
         @Html.AntiForgerySID()
         <input value="@viwepaher.ID" type="hidden" name="ID" />
@@ -41,7 +41,7 @@
             <tr>
                 <td class="row-title">图片</td>
                 <td>
-                    <input type="file" name="file" id="Picture" class="textbox nullable">
+                    <input type="file" name="file" id="file" class="textbox" />
                 </td>
             </tr>
         </table>

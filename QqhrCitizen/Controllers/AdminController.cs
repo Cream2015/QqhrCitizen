@@ -1404,18 +1404,11 @@ namespace QqhrCitizen.Controllers
         [ValidateInput(false)]
         public ActionResult ViwepagerkEdit(Viewpager model, HttpPostedFileBase file)
         {
-            if (file != null)
-            {
-                System.IO.Stream stream = file.InputStream;
-                byte[] buffer = new byte[stream.Length];
-                stream.Read(buffer, 0, (int)stream.Length);
-                stream.Close();
-                model.Picture = buffer;
-            }
-            else
-            {
-                model.Picture = null;
-            }
+            System.IO.Stream stream = file.InputStream;
+            byte[] buffer = new byte[stream.Length];
+            stream.Read(buffer, 0, (int)stream.Length);
+            stream.Close();
+            model.Picture = buffer;
 
             Viewpager viewpager = new Viewpager();
             viewpager = db.Viewpagers.Find(model.ID);
