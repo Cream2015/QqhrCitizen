@@ -16,6 +16,7 @@ using System.Data.SqlClient;
 using System.Data;
 using System.Globalization;
 using System.Security.Cryptography;
+using System.Threading;
 
 namespace WpfApplication2
 {
@@ -27,32 +28,21 @@ namespace WpfApplication2
         public int insert_type_id;
         public int type_id;
         public int user_id;
-        private static string citizen_connStr;
-        private static string qqhr_connStr ="Server='127.0.0.1';database='qqhrstudy';User ID='sa';Password='123456'";
+
+        private static string citizen_connStr = "Server='42.96.129.28';database='QqhrCitizen';User ID='sa';Password='koala19920716'";
+        //private static string citizen_connStr = "Server='218.8.130.134';database='QqhrCitizen';User ID='sa';Password='Qqrtvu.com.cn!@#'";
+        private static string qqhr_connStr = "Server='127.0.0.1';database='qqhrstudy';User ID='sa';Password='123456'";
         public MainWindow()
         {
             InitializeComponent();
-            citizen_connStr = "Server='42.96.129.28';database='QqhrCitizen';User ID='sa';Password='koala19920716'";
-            /*if (radiobt_1.IsChecked == true)
-            {
-                citizen_connStr = "Server='42.96.129.28';database='QqhrCitizen';User ID='sa';Password='koala19920716'";
-            }
-            else if (radiobt_2.IsChecked == true)
-            {
-                citizen_connStr = "Server='218.8.130.134';database='QqhrCitizen';User ID='sa';Password='Qqrtvu.com.cn!@#'";
-            }
-            else
-            {
-                MessageBox.Show("请选择");
-            }*/
-            user_id = Convert.ToInt32(Sqlhelp.ExecuteScalar("insert into Users (Username,Password,Age,SexAsInt,RoleAsInt,Score) values ('fanfzj','" + Md5("6yhn6yhn") + "','0','1','1','1');Select @@Identity",citizen_connStr));
-            insert_type_id = Convert.ToInt32(Sqlhelp.ExecuteScalar("insert into TypeDictionaries (TypeValue,FatherID,Time,NeedAuthorize,Belonger) values ('其他','0','" + Convert.ToDateTime(DateTime.Now).ToString("yyyy-MM-dd HH:mm:ss.fff", DateTimeFormatInfo.InvariantInfo) + "','0','2')" + ";Select @@Identity",citizen_connStr));
-            type_id = Convert.ToInt32(Sqlhelp.ExecuteScalar("insert into TypeDictionaries (TypeValue,FatherID,Time,NeedAuthorize,Belonger) values ('其他','" + insert_type_id + "','" + Convert.ToDateTime(DateTime.Now).ToString("yyyy-MM-dd HH:mm:ss.fff", DateTimeFormatInfo.InvariantInfo) + "','0','2')" + ";Select @@Identity",citizen_connStr));
+            user_id = Convert.ToInt32(Sqlhelp.ExecuteScalar("insert into Users (Username,Password,Age,SexAsInt,RoleAsInt,Score) values ('fanfzj','" + Md5("6yhn6yhn" + DateTime.Now) + "','0','1','1','1');Select @@Identity", citizen_connStr));
+            //insert_type_id = Convert.ToInt32(Sqlhelp.ExecuteScalar("insert into TypeDictionaries (TypeValue,FatherID,Time,NeedAuthorize,Belonger) values ('其他','0','" + Convert.ToDateTime(DateTime.Now).ToString("yyyy-MM-dd HH:mm:ss.fff", DateTimeFormatInfo.InvariantInfo) + "','0','2')" + ";Select @@Identity", citizen_connStr));
+            //type_id = Convert.ToInt32(Sqlhelp.ExecuteScalar("insert into TypeDictionaries (TypeValue,FatherID,Time,NeedAuthorize,Belonger) values ('其他','" + insert_type_id + "','" + Convert.ToDateTime(DateTime.Now).ToString("yyyy-MM-dd HH:mm:ss.fff", DateTimeFormatInfo.InvariantInfo) + "','0','2')" + ";Select @@Identity", citizen_connStr));
         }
         public void SetNavigations()
         {
 
-            Sqlhelp.ExecuteScalar("insert into Navigations (Title,Url,Nav_Id,Km_st_Id) values ('首页','/Home/Index','topmenu_home','Null')",citizen_connStr);
+            Sqlhelp.ExecuteScalar("insert into Navigations (Title,Url,Nav_Id,Km_st_Id) values ('首页','/Home/Index','topmenu_home','Null')", citizen_connStr);
             Sqlhelp.ExecuteScalar("insert into Navigations (Title,Url,Nav_Id,Km_st_Id) values ('新闻','/News/Index','topmenu_news','Null')", citizen_connStr);
             Sqlhelp.ExecuteScalar("insert into Navigations (Title,Url,Nav_Id,Km_st_Id) values ('课程','/Course/Index','topmenu_course','d_row_course')", citizen_connStr);
             Sqlhelp.ExecuteScalar("insert into Navigations (Title,Url,Nav_Id,Km_st_Id) values ('电子书','/Ebook/Index','topmenu_ebook','d_row_ebook')", citizen_connStr);
@@ -83,12 +73,13 @@ namespace WpfApplication2
 
             return sTemp.ToLower();
         }
+        #region 新闻
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             ShowSqlNumber.Text = "";
             string qqhrstudy_sql = "select * from NewsInfo";
             string citizen_sql;
-            DataTable citizen_sqldt = Sqlhelp.ExecuteDataTable(qqhrstudy_sql,qqhr_connStr);
+            DataTable citizen_sqldt = Sqlhelp.ExecuteDataTable(qqhrstudy_sql, qqhr_connStr);
             int a = 0;
             for (int i = 0; i < citizen_sqldt.Rows.Count; i++)
             {
@@ -123,57 +114,113 @@ namespace WpfApplication2
                 //para[6].Value = 37;
                 para[7].Value = citizen_sqldt.Rows[i]["ImageFlag"].ToString();
                 para[8].Value = 0;
-                a += Sqlhelp.ExecuteNonQuery(citizen_sql,citizen_connStr, para);
+                a += Sqlhelp.ExecuteNonQuery(citizen_sql, citizen_connStr, para);
                 ShowSqlNumber.Text = ShowSqlNumber.Text + "<br>" + citizen_sql;
             }
             MessageBox.Show("导入数据：" + a.ToString());
         }
-
+        #endregion
+        int sum = 0;
+        #region 课程
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
+            MessageBox.Show("开始");
             ShowSqlNumber.Text = "";
-            string qqhrstudy_sql = "select * from CourseInfo";
-            string citizen_sql;
-            DataTable citizen_sqldt = Sqlhelp.ExecuteDataTable(qqhrstudy_sql,qqhr_connStr);
-            int a = 0;
-            for (int i = 0; i < citizen_sqldt.Rows.Count; i++)
-            {
+            string sql1 = "select * from CourseCategoryInfo where ParentId=0";
+            string sql2, sql3, sql4;
+            string insert_sql1, insert_sql2, insert_sql3, insert_sql4;
+            DataTable cit_sql1 = Sqlhelp.ExecuteDataTable(sql1, qqhr_connStr);
+            DataTable cit_sql2, cit_sql3, cit_sql4;
 
-                string Time = Convert.ToDateTime(citizen_sqldt.Rows[i]["CreatedTime"]).ToString("yyyy-MM-dd HH:mm:ss.fff", DateTimeFormatInfo.InvariantInfo);
-                citizen_sql = "insert into Courses (Title,Description,AuthorityAsInt,Time,UserID,Browses,CourseTypeID,Credit) values (@Title,@Description,@AuthorityAsInt,@Time,@UserID,@Browse,@CourseTypeID,@Credit)";
-                SqlParameter[] para = new SqlParameter[]
-	                    {
-                             new SqlParameter("@Title", SqlDbType.VarChar),
-                             new SqlParameter("@Description",SqlDbType.VarChar),
-                             new SqlParameter("@AuthorityAsInt", SqlDbType.Int),
-                             new SqlParameter("@Time",SqlDbType.DateTime),
-                             new SqlParameter("@UserID", SqlDbType.Int),
-                             new SqlParameter("@Browse",SqlDbType.Int),
-                             new SqlParameter("@CourseTypeID", SqlDbType.Int),
-                             new SqlParameter("@Credit",SqlDbType.Int)
-                        };
-                para[0].Value = citizen_sqldt.Rows[i]["Name"].ToString();
-                para[1].Value = citizen_sqldt.Rows[i]["Description"].ToString();
-                para[2].Value = citizen_sqldt.Rows[i]["Status"].ToString();
-                para[3].Value = Time;
-                para[4].Value = user_id;
-                para[5].Value = 0;
-                para[6].Value = type_id;
-                //para[6].Value = 37;
-                para[7].Value = citizen_sqldt.Rows[i]["CreditHour"];
-                int insert_id = Convert.ToInt32(Sqlhelp.ExecuteScalar(citizen_sql + ";Select @@Identity",citizen_connStr, para));
-                string course_sql = "select * from CoursewareInfo where CourseId=" + citizen_sqldt.Rows[i]["Id"];
-                DataTable coursest = Sqlhelp.ExecuteDataTable(course_sql,qqhr_connStr);
-                if (coursest.Rows.Count > 0)
+            int insert_id1 = 0, insert_id2 = 0, insert_id3 = 0, insert_id4 = 0;
+            string Time1, Time2, Time3, Time4;
+            for (int a = 0; a < cit_sql1.Rows.Count; a++)
+            {
+                sql2 = "select * from CourseCategoryInfo where ParentId=" + cit_sql1.Rows[a]["Id"];
+                cit_sql2 = Sqlhelp.ExecuteDataTable(sql2, qqhr_connStr);
+                Time1 = SetDateTime(cit_sql1.Rows[a]["CreatedTime"]);
+
+                insert_sql1 = "insert into TypeDictionaries (TypeValue,Time,NeedAuthorize,Belonger,FatherID) values('" + cit_sql1.Rows[a]["Name"] + "','" + Time1 + "','0','4','0');Select @@Identity";
+                insert_id1 = Convert.ToInt32(Sqlhelp.ExecuteScalar(insert_sql1, citizen_connStr));
+
+                for (int b = 0; b < cit_sql2.Rows.Count; b++)
                 {
-                    //string insert_sql = "insert into Lessions (Title,Description,CourseID,Time,Remark,Path,Browses,IsPassTest) values ('" + coursest.Rows[0]["Name"] + "','" + coursest.Rows[0]["Name"] + "','" + insert_id + "','" + Convert.ToDateTime(coursest.Rows[0]["CreatedTime"]).ToString("yyyy-MM-dd HH:mm:ss.fff", DateTimeFormatInfo.InvariantInfo) + "','" + coursest.Rows[0]["Name"] + "','" + coursest.Rows[0]["Url"] + "','0','0')";
-                    string insert_sql = "insert into Lessions (Title,Description,CourseID,Time,Remark,Path,Browses) values ('" + coursest.Rows[0]["Name"] + "','" + coursest.Rows[0]["Name"] + "','" + insert_id + "','" + Convert.ToDateTime(coursest.Rows[0]["CreatedTime"]).ToString("yyyy-MM-dd HH:mm:ss.fff", DateTimeFormatInfo.InvariantInfo) + "','" + coursest.Rows[0]["Name"] + "','" + coursest.Rows[0]["Url"] + "','0')";
-                    Sqlhelp.ExecuteNonQuery(insert_sql,citizen_connStr);
+                    if (cit_sql2 == null)
+                    {
+                        Insert_Course(cit_sql1.Rows[b]["Id"],insert_id1);
+                        continue;
+                    }
+                    sql3 = "select * from CourseCategoryInfo where ParentId=" + cit_sql2.Rows[b]["Id"];
+                    cit_sql3 = Sqlhelp.ExecuteDataTable(sql3, qqhr_connStr);
+                    Time2 = SetDateTime(cit_sql2.Rows[b]["CreatedTime"]);
+
+                    insert_sql2 = "insert into TypeDictionaries (TypeValue,Time,NeedAuthorize,Belonger,FatherID) values('" + cit_sql2.Rows[b]["Name"] + "','" + Time2 + "','0','4','" + insert_id1 + "');Select @@Identity";
+                    insert_id2 = Convert.ToInt32(Sqlhelp.ExecuteScalar(insert_sql2, citizen_connStr));
+
+                    for (int c = 0; c < cit_sql3.Rows.Count; c++)
+                    {
+                        if (cit_sql3 == null)
+                        {
+                            Insert_Course(cit_sql2.Rows[c]["Id"],insert_id2);
+                            continue;
+                        }
+                        sql4 = "select * from CourseCategoryInfo where ParentId=" + cit_sql3.Rows[c]["Id"];
+                        cit_sql4 = Sqlhelp.ExecuteDataTable(sql4, qqhr_connStr);
+                        Time3 = SetDateTime(cit_sql3.Rows[c]["CreatedTime"]);
+
+                        insert_sql3 = "insert into TypeDictionaries (TypeValue,Time,NeedAuthorize,Belonger,FatherID) values('" + cit_sql3.Rows[c]["Name"] + "','" + Time3 + "','0','4','" + insert_id2 + "');Select @@Identity";
+                        insert_id3 = Convert.ToInt32(Sqlhelp.ExecuteScalar(insert_sql3, citizen_connStr));
+
+                        for (int d = 0; d < cit_sql4.Rows.Count; d++)
+                        {
+                            if (cit_sql4 == null)
+                            {
+                                Insert_Course(cit_sql3.Rows[d]["Id"],insert_id3);
+                                continue;
+                            }
+                            Time4 = SetDateTime(cit_sql4.Rows[d]["CreatedTime"]);
+                            insert_sql4 = "insert into TypeDictionaries (TypeValue,Time,NeedAuthorize,Belonger,FatherID) values('" + cit_sql4.Rows[d]["Name"] + "','" + Time4 + "','0','4','" + insert_id3 + "');Select @@Identity";
+                            insert_id4 = Convert.ToInt32(Sqlhelp.ExecuteScalar(insert_sql4, citizen_connStr));
+                            Insert_Course(cit_sql4.Rows[d]["Id"],insert_id4);
+
+                        }
+                    }
                 }
-                a++;
-                ShowSqlNumber.Text = ShowSqlNumber.Text + "<br>" + course_sql;
+                if (sum % 500 == 0)
+                {
+                    System.Threading.Thread.Sleep(5000);
+                    MessageBox.Show("再次开始");
+                }
             }
-            MessageBox.Show("导入数据：" + a.ToString());
+            MessageBox.Show("导入数据：" + sum.ToString());
+        }
+        private int Insert_Course(object select_course_id,int insert_course_id)
+        {
+            string Time, insert_sql5, insert_sql6, Time_Course;
+            int inset_id_course = 0;
+            DataTable cit_sql6;
+            DataTable cit_sql5 = Sqlhelp.ExecuteDataTable("select * from CourseInfo where CourseCategoryId=" + Convert.ToInt32(select_course_id), qqhr_connStr);
+            for (int f = 0; f < cit_sql5.Rows.Count; f++)
+            {
+                Time = SetDateTime(cit_sql5.Rows[f]["CreatedTime"]);
+                insert_sql5 = "insert into Courses (CourseTypeID,Title,Description,UserID,Time,AuthorityAsInt,Browses,Credit) values ('" + insert_course_id + "','" + cit_sql5.Rows[f]["Name"] + "','" + cit_sql5.Rows[f]["Description"] + "','" + user_id + "','" + Time + "','0','0','" + Convert.ToInt32(cit_sql5.Rows[f]["CreditHour"]) + "');Select @@Identity";
+                inset_id_course = Convert.ToInt32(Sqlhelp.ExecuteScalar(insert_sql5, citizen_connStr));
+                cit_sql6 = Sqlhelp.ExecuteDataTable("select * from CoursewareInfo where CourseId=" + cit_sql5.Rows[f]["Id"], qqhr_connStr);
+                for (int g = 0; g < cit_sql6.Rows.Count; g++)
+                {
+                    Time_Course = SetDateTime(cit_sql6.Rows[g]["CreatedTime"]);
+                    insert_sql6 = "insert into Lessions (Title,Description,CourseID,Time,Path,Browses) values ('" + cit_sql6.Rows[g]["Name"] + "','" + cit_sql6.Rows[g]["Name"] + "','" + inset_id_course + "','" + Time_Course + "','" + cit_sql6.Rows[g]["Url"] + "','0')";
+                    Sqlhelp.ExecuteScalar(insert_sql6, citizen_connStr);
+                    sum++;
+                }
+            }
+            return 1;
+        }
+        #endregion
+
+        private string SetDateTime(object time)
+        {
+            return Convert.ToDateTime(time).ToString("yyyy-MM-dd HH:mm:ss.fff", DateTimeFormatInfo.InvariantInfo);
         }
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
