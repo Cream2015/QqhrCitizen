@@ -241,6 +241,10 @@
                                 <div class="head course"></div>
                             </a>
                             <div class="body">
+                                @foreach (TypeDictionary td in ViewBag.NewsTypes)
+                                {
+                                    <a class="item" href="/News/Discovery/@td.ID">@td.TypeValue</a>
+                                }
                             </div>
                         </div>
                     </div>
