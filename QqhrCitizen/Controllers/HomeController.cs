@@ -54,13 +54,11 @@ namespace QqhrCitizen.Controllers
             int courseCount = db.Courses.Where(c => c.Title.Contains(key)).OrderByDescending(c => c.Time).Count();
             int ebookCount = db.EBooks.Where(eb => eb.Title.Contains(key)).OrderByDescending(e => e.Time).Count();
             
-            ViewBag.NewsCount = db.News.Count();
-            ViewBag.LstNews = lstNews;
-            ViewBag.LstCourse = lstCourse;
-            ViewBag.LstEBook = lstEBook;
+            ViewBag.NewsCount = newsCount;
+            ViewBag.CourseCount = lstCourse;
+            ViewBag.EBookCount = lstEBook;
             ViewBag.Key = key;
-            return View();
-
+            return View("SearchResult");
         }
 
         [HttpGet]
