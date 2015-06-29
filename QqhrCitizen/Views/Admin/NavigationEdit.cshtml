@@ -1,0 +1,33 @@
+﻿@using QqhrCitizen.Models
+@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    Navigation navigation = ViewBag.NavigationShow as Navigations;
+    ViewBag.Title = navigation.Title;
+}
+
+<div>
+    <div class="result-title">
+        <h1 class="head-tietle">@navigation.Title - 导航修改</h1>
+    </div>
+    @using (Html.BeginForm("NavigationEdit", "Admin", FormMethod.Post))
+    {
+        @Html.AntiForgerySID()
+        <input value="@navigation.ID" type="hidden" name="ID" />
+        <table class="detail-table">
+            <tr>
+                <td class="row-title">标题</td>
+                <td>
+                    @Html.HiddenFor(modal => modal.Title, new { @Value = navigation.Title ,@class="textbox w-3"})
+                </td>
+            </tr>
+            <tr>
+                <td class="row-title">Url</td>
+                <td>
+                   @Html.HiddenFor(modal => modal.Url, new { @Value = navigation.Url, @class = "textbox w-3" })
+                </td>
+            </tr>
+        </table>
+
+        <p><input type="submit" value="保存" class="button blue" /></p>
+    }
+</div>

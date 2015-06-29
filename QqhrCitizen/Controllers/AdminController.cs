@@ -182,7 +182,7 @@ namespace QqhrCitizen.Controllers
             db.SaveChanges();
             return RedirectToAction("TypeManager");
         }
-        
+
 
 
         public ActionResult UploadNewsImg(HttpPostedFileBase upload)
@@ -441,7 +441,7 @@ namespace QqhrCitizen.Controllers
             ViewBag.Types = CourseTypes;
             return View();
         }
-       
+
 
         [HttpPost]
         [ValidateSID]
@@ -589,7 +589,7 @@ namespace QqhrCitizen.Controllers
             return View();
         }
 
-        
+
         /// <summary>
         ///  增加地址链接
         /// </summary>
@@ -1169,7 +1169,7 @@ namespace QqhrCitizen.Controllers
             ViewBag.Question = new vQuestion(question);
             return View();
         }
-        #endregion 
+        #endregion
 
         #region 管理员管理
         /// <summary>
@@ -1454,7 +1454,7 @@ namespace QqhrCitizen.Controllers
         {
             ViewBag.Navigations = db.Navigations.ToList();
             return View();
-        } 
+        }
         #endregion
 
         #region 增加导航
@@ -1474,12 +1474,14 @@ namespace QqhrCitizen.Controllers
             Navigation nav = new Navigation();
             nav.Title = model.Title;
             nav.Url = model.Url;
-            if (nav.Url==null)
+            nav.Nav_Id = "topmenu_" + model.Nav_Id;
+            if (nav.Url == null)
             {
                 nav.Url = "Null";
+                nav.Nav_Id = "Null";
             }
-            nav.Km_st_Id="Null";
-            nav.Nav_Id = "topmenu_"+model.Nav_Id;
+            nav.Km_st_Id = "Null";
+
             db.Navigations.Add(nav);
             db.SaveChanges();
             return RedirectToAction("NavigationManager");
@@ -1491,6 +1493,37 @@ namespace QqhrCitizen.Controllers
         {
             ViewBag.Navigation = db.Navigations.Find(id);
             return View();
+        }
+        #endregion
+
+        #region 导航删除
+        public ActionResult NavigationDelete(int id)
+        {
+            Navigation navigation = db.Navigations.Find(id);
+            db.Navigations.Remove(navigation);
+            db.SaveChanges();
+            return Content("ok");
+        }
+        #endregion
+
+        #region
+        public ActionResult NavigationEdit(int id)
+        {
+            ViewBag.NavigationShow = db.Navigations.Find(id);
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateSID]
+        [ValidateInput(false)]
+        public ActionResult NavigationEdit(Navigation model)
+        {
+            Navigation navigation = new Navigation();
+            navigation = db.Navigations.Find(model.ID);
+            navigation.Title = model.Title;
+            navigation.Url = model.Url == null ? "Null" : model.Url;
+            db.SaveChanges();
+            return RedirectToAction("NavigationManager");
         }
         #endregion
     }
