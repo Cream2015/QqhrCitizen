@@ -18,9 +18,9 @@
                     </form>
                 </div><!-- region end: 搜索条件 --><!-- region start: 搜索结果标签 -->
                 <div id="d_searchtabs" class="d-searchtabs">
-                    <a id=" headmenu_searchall" class="tab" onclick="SearchLink('11');">课程<span class="baget"> </span></a>
-                    <a id="headmenu_searchevent" class="tab" onclick="SearchLink('21');">新闻<span class="baget"> </span></a>
-                    <a id="headmenu_searchread" class="tab" onclick="SearchLink('31');">电子书<span class="baget"> </span></a>
+                    <a id=" headmenu_searchall" class="tab" onclick="SearchLink(@ViewBag.CourseCount);">课程<span class="baget"> </span></a>
+                    <a id="headmenu_searchevent" class="tab" onclick="SearchLink(@ViewBag.NewsCount);">新闻<span class="baget"> </span></a>
+                    <a id="headmenu_searchread" class="tab" onclick="SearchLink('');">电子书<span class="baget"> </span></a>
                     <a id="headmenu_searchcircle" class="tab" onclick="SearchLink('41');">链接<span class="baget"> </span></a>
                 </div>
                 <!-- region end: 搜索结果标签 --><!-- region start: 搜索结果列表 -->
