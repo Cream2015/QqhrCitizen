@@ -239,7 +239,7 @@
                 <div class="d-col-2-1">
                     <div class="contentarea">
                         <div class="d-menu-vertical">
-                            <a href="/Live">
+                            <a href="/News">
                                 <div class="head course"></div>
                             </a>
                             <div class="body">
@@ -304,7 +304,7 @@
                             <div class="body">
                                 @foreach (TypeDictionary td in ViewBag.BookTypes)
                                 {
-                                    <a class="item" href="/Course?tid=@td.ID">@td.TypeValue</a>
+                                    <a class="item" href="/EBook/Discovery/@td.ID">@td.TypeValue</a>
                                 }
                             </div>
                         </div>
