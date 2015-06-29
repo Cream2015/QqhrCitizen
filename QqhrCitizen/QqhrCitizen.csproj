@@ -548,6 +548,7 @@
     <Compile Include="Models\DB.cs" />
     <Compile Include="Models\EBook.cs" />
     <Compile Include="Models\File.cs" />
+    <Compile Include="Models\Joke.cs" />
     <Compile Include="Models\LearningRecord.cs" />
     <Compile Include="Models\Lession.cs" />
     <Compile Include="Models\LessionScore.cs" />

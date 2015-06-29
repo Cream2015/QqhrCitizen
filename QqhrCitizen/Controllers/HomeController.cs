@@ -50,14 +50,17 @@ namespace QqhrCitizen.Controllers
             List<News> lstNews = new List<News>();
             List<Course> lstCourse = new List<Course>();
             List<EBook> lstEBook = new List<EBook>();
-            lstNews = db.News.Where(n => n.Title.Contains(key) || n.Content.Contains(key)).OrderByDescending(n=>n.Time).Take(10).ToList();
-            lstCourse = db.Courses.Where(c => c.Title.Contains(key)).OrderByDescending(c=>c.Time).Take(10).ToList();
-            lstEBook = db.EBooks.Where(eb => eb.Title.Contains(key)).OrderByDescending(e=>e.Time).Take(10).ToList();
+            int newsCount = db.News.Where(n => n.Title.Contains(key) || n.Content.Contains(key)).OrderByDescending(n=>n.Time).Count();
+            int courseCount = db.Courses.Where(c => c.Title.Contains(key)).OrderByDescending(c => c.Time).Count();
+            int ebookCount = db.EBooks.Where(eb => eb.Title.Contains(key)).OrderByDescending(e => e.Time).Count();
+            
+            ViewBag.NewsCount = db.News.Count();
             ViewBag.LstNews = lstNews;
             ViewBag.LstCourse = lstCourse;
             ViewBag.LstEBook = lstEBook;
             ViewBag.Key = key;
             return View();
+
         }
 
         [HttpGet]
@@ -115,6 +118,8 @@ namespace QqhrCitizen.Controllers
         {
             return View();
         }
+
+
 
         public ActionResult SearchResult()
         {

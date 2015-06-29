@@ -37,6 +37,8 @@ namespace QqhrCitizen.Models
         public DbSet<Navigation> Navigations { set; get; }
 
         public DbSet<Viewpager> Viewpagers { set; get; }
+
+        public DbSet<Joke> Jokes { set; get; }
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
