@@ -180,7 +180,7 @@ namespace QqhrCitizen.Controllers
             TypeDictionary.FatherID = model.FatherID;
             TypeDictionary.NeedAuthorize = model.NeedAuthorize;
             db.SaveChanges();
-            return RedirectToAction("TypeManager?type="+TypeDictionary.Belonger);
+            return Redirect("/Admin/TypeManager?type="+TypeDictionary.Belonger);
         }
 
 
