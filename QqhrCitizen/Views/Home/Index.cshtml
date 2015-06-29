@@ -142,11 +142,14 @@
                 }
             </ul><div id="d_banner_c" class="d-banner-c" style="visibility: visible;">
                 <div id="d_banner_thumb" class="d-banner-thumb">
-                    @foreach (News n in ViewBag.News)
+                   { i = 0; }
+                    @foreach (Viewpager n in ViewBag.Pictures)
                     {
-                        <a href="/News/Show/@n.ID" target="_blank" style="background-image: url(@n.ImgUrl.First()); margin-top: 0px;">
+                        if (i > 5) { break; }
+                        <a href="@n.Url" target="_blank" style="background-image: url(/ViewPager/ShowPicture/@n.ID); margin-top: 0px;">
                             <p><span style="width: 0px;"></span></p>
                         </a>
+                        { i++; }
                     }
                 </div><div id="d_board" class="d-board">
                     <div class="tabbar">
