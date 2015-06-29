@@ -23,7 +23,10 @@ namespace QqhrCitizen.Helpers
 
             // 取得匹配项列表
             foreach (Match match in matches)
-                ret.Add(match.Groups["imgUrl"].Value);
+            {
+                if (match.Groups["imgUrl"].Value[0] == '/' || match.Groups["imgUrl"].Value.IndexOf("http") >= 0)
+                    ret.Add(match.Groups["imgUrl"].Value);
+            }
 
             return ret;
         }
