@@ -45,7 +45,7 @@ namespace QqhrCitizen.Controllers
                 _LstHotCourse.Add(new vCourse(item));
             }
 
-            LstHotType = db.Courses.OrderByDescending(c => c.Browses).Select(x => x.TypeDictionary).DistinctBy(x => new { x.ID }).ToList();
+            LstHotType = db.Courses.OrderByDescending(c => c.Browses).Select(x => x.TypeDictionary).DistinctBy(x => new { x.ID }).Take(20).ToList();
 
             ViewBag.LstNewCourse = _LstNewCourse;
             ViewBag.LstHotType = LstHotType;
