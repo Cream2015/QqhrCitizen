@@ -666,6 +666,7 @@
     <Content Include="Views\Admin\JokeManager.cshtml" />
     <Content Include="Views\Admin\AddJoke.cshtml" />
     <Content Include="Views\Admin\JokeEdit.cshtml" />
+    <Content Include="Views\Home\Test1.cshtml" />
     <None Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Admin\ViwepagerEdit.cshtml" />
     <None Include="Web.Debug.config">
