@@ -42,6 +42,11 @@ namespace QqhrCitizen.Controllers
             ViewBag.ImgLinks = db.ResourceLinks.Where(x => x.IsHaveFile).ToList();
             ViewBag.Pictures = db.Viewpagers.OrderBy(x => x.Priority).ToList();
             ViewBag.Menus = db.Menus.ToList();
+            var joke = (from j in db.Jokes
+                        orderby Guid.NewGuid() ascending
+                        select j).FirstOrDefault();
+            if (joke == null) ViewBag.Joke = "";
+            else ViewBag.Joke = joke.Content;
             return View();
         }
 
