@@ -528,6 +528,7 @@
     <Compile Include="Controllers\NewsController.cs" />
     <Compile Include="Controllers\SharedController.cs" />
     <Compile Include="Controllers\UserController.cs" />
+    <Compile Include="Controllers\ViewPagerController.cs" />
     <Compile Include="Filters\AccessToLessionAttribute.cs" />
     <Compile Include="Filters\BaseAuthAttribute.cs" />
     <Compile Include="Filters\ValidateSIDAttribute.cs" />
@@ -671,6 +672,7 @@
     <Folder Include="Content\" />
     <Folder Include="Lessions\" />
     <Folder Include="Upload\NewsWord\" />
+    <Folder Include="Views\ViewPager\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
