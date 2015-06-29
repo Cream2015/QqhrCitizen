@@ -369,14 +369,13 @@
                         <p>
                             @foreach (ResourceLink rl in ViewBag.ImgLinks)
                             {
-                                <a href="@rl.URL"><img src="/Upload/@((new QqhrCitizen.Models.ViewModel.vResourceLink(rl)).File.Path)" class="cc-link-img" /></a>
+                                <a href="@rl.URL" target="_blank"><img src="/Upload/@((new QqhrCitizen.Models.ViewModel.vResourceLink(rl)).File.Path)"  class="cc-link-img" /></a>
                             }
                         </p>
                         <p style="font-size: 20px;">
                             @foreach (ResourceLink rl in ViewBag.TextLinks)
                             {
-                                <a href="@rl.URL">@rl.Title</a>@MvcHtmlString.Create("&nbsp;&nbsp;")
-
+                                <a href="@rl.URL" target="_blank">@rl.Title</a>@MvcHtmlString.Create("&nbsp;&nbsp;")
                             }
                         </p>
                     </div>
