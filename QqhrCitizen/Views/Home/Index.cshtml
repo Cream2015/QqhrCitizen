@@ -243,7 +243,7 @@
                                         {
                                             <span class="itemhot">
                                                 <a class="act-cover cover" href="/News/Show/@l.ID" title="@l.Title">
-                                                    <img src="/News/ShowPicture/@l.ID" data-echo="/News/ShowPicture/@l.ID" onerror="this.onerror='';this.src='/News/ShowPicture/@l.ID';">
+                                                    <img src="@l.ImgUrl.First()" data-echo="@l.ImgUrl.First()" onerror="this.onerror='';this.src='@l.ImgUrl.First()';">
                                                 </a>
                                                 <div class="title trim"><a href="/News/Show/@l.ID" title="@l.Title">@l.Title</a></div>
                                                 <span class="date">@l.Time.ToString("yyyy.MM.dd HH:mm")</span>
@@ -257,7 +257,7 @@
                                             if (index == 6) { break; }
                                             <span class="item">
                                                 <a class="act-cover cover" href="/News/Show/@l.ID" title="@l.Title">
-                                                    <img src="/News/Show/@l.ID" data-echo="/News/Show/@l.ID" onerror="this.onerror='';this.src='/News/Show/@l.ID';">
+                                                    <img src="@l.ImgUrl.First()" data-echo="@l.ImgUrl.First()" onerror="this.onerror='';this.src='@l.ImgUrl.First()';">
                                                 </a>
                                                 <div class="title trim">
                                                     <a href="/News/Show/@l.ID" title="@l.Title">@l.Title</a>
