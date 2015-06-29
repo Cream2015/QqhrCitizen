@@ -9,6 +9,10 @@
         <TextBlock x:Name="ShowSqlNumber" HorizontalAlignment="Left" Height="289" Margin="182,20,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Width="325"/>
         <RadioButton x:Name="radiobt_1" Content="42.96.129.28(nele)" HorizontalAlignment="Left" Height="23" Margin="28,222,0,0" VerticalAlignment="Top" Width="149"/>
         <RadioButton x:Name="radiobt_2" GroupName="IP" Content="218.8.130.134(qqhr)" HorizontalAlignment="Left" Height="22" Margin="28,245,0,0" VerticalAlignment="Top" Width="149"/>
+        <TextBox x:Name="txt_type" HorizontalAlignment="Left" Height="18" Margin="86,267,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="67"/>
+        <TextBox x:Name="txtuser" HorizontalAlignment="Left" Height="18" Margin="86,290,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="67"/>
+        <TextBox HorizontalAlignment="Left" TextAlignment="Center" Height="18" Margin="28,267,0,0" TextWrapping="Wrap" Text="管理员id:" VerticalAlignment="Top" Width="58"/>
+        <TextBox HorizontalAlignment="Left" TextAlignment="Center" Height="19" Margin="28,290,0,0" TextWrapping="Wrap" Text="类别id:" VerticalAlignment="Center" Width="58" />
 
 
     </Grid>
