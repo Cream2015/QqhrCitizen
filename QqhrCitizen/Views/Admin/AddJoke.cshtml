@@ -1,0 +1,25 @@
+﻿@using QqhrCitizen.Models
+@{
+    ViewBag.Title = "笑话管理";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<div class="result-title">
+    <h1 class="head-tietle">增加笑话</h1>
+</div>
+
+@using (Html.BeginForm("AddJoke", "Admin", FormMethod.Post))
+{
+    @Html.AntiForgerySID()
+    <table class="detail-table">
+        <tr>
+            <td>内容</td>
+            <td>
+                <textarea class="textbox w-3" name="Content" style="height:100px;width:300px;"></textarea>
+            </td>
+        </tr>
+    </table>
+    <p><input type="submit" value="增加" class="button blue" /></p>
+}
+
+
+

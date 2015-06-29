@@ -1519,5 +1519,62 @@ namespace QqhrCitizen.Controllers
             return RedirectToAction("NavigationManager");
         }
         #endregion
+
+        #region 笑话管理
+        public ActionResult JokeManager()
+        {
+            ViewBag.JokeShow = db.Jokes.ToList();
+            return View();
+        }
+
+        #endregion
+
+        #region 笑话增加
+        public ActionResult AddJoke()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateSID]
+        [ValidateInput(false)]
+        public ActionResult AddJoke(Joke model)
+        {
+            model.Time = DateTime.Now;
+            db.Jokes.Add(model);
+            db.SaveChanges();
+            return RedirectToAction("JokeManager");
+        }
+        #endregion
+
+        #region 笑话删除
+        public ActionResult JokeDelete(int id)
+        {
+            Joke joke = db.Jokes.Find(id);
+            db.Jokes.Remove(joke);
+            db.SaveChanges();
+            return Content("ok");
+        }
+        #endregion
+
+        #region 笑话修改
+        public ActionResult JokeEdit(int id)
+        {
+            ViewBag.JokeShow = db.Jokes.Find(id);
+            return View();
+        }
+         
+        [HttpPost]
+        [ValidateSID]
+        [ValidateInput(false)]
+        public ActionResult JokeEdit(Joke model)
+        {
+            Joke joke = new Joke();
+            joke = db.Jokes.Find(model.ID);
+            joke.Content = model.Content;
+            db.SaveChanges();
+            return RedirectToAction("JokeManager");
+        }
+        #endregion
     }
 }
