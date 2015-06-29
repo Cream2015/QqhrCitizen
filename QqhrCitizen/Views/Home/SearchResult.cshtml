@@ -12,37 +12,25 @@
                     <form action="/ContentQuery/Search" id="SearchForm" method="post" onsubmit="return ChickSearch();">
                         <input data-val="true" data-val-number="字段 Int32 必须是一个数字。" data-val-required="Int32 字段是必需的。" id="SearchType" name="SearchType" type="hidden" value="-1">
                         <input id="action" name="action" type="hidden" value="">
-                        <input id="Search" name="Search" maxlength="30" type="text" class="input-big" value="" placeholder="课程、活动、悦读、团队、资讯" style="width: 400px;" onkeydown="if(event.keyCode==13){$('#btnSearch').click();}">
+                        <input id="Search" name="Search" maxlength="30" type="text" class="input-big" value="" placeholder="课程、新闻、电子书" style="width: 400px;" onkeydown="if(event.keyCode==13){$('#btnSearch').click();}">
                         &nbsp;
                         <input type="button" class="btn btn-big btn-green" id="btnSearch" onclick="search();" style="width: 70px;" value="搜索">
                     </form>
                 </div><!-- region end: 搜索条件 --><!-- region start: 搜索结果标签 -->
                 <div id="d_searchtabs" class="d-searchtabs">
-                    <a id=" headmenu_searchall" class="tab" onclick="SearchLink(@ViewBag.CourseCount);">课程<span class="baget"> </span></a>
-                    <a id="headmenu_searchevent" class="tab" onclick="SearchLink(@ViewBag.NewsCount);">新闻<span class="baget"> </span></a>
-                    <a id="headmenu_searchread" class="tab" onclick="SearchLink(@ViewBag.EBookCount);">电子书<span class="baget"> </span></a>
+                    <input type="hidden" name="Key" id="searchKey" value="@ViewBag.Key" />
+                    <a id=" headmenu_searchall" class="tab" onclick="Search(1);">课程<span class="baget">@ViewBag.CourseCount </span></a>
+                    <a id="headmenu_searchevent" class="tab" onclick="Search(2);">新闻<span class="baget">@ViewBag.NewsCount </span></a>
+                    <a id="headmenu_searchread" class="tab" onclick="Search(3);">电子书<span class="baget">@ViewBag.EBookCount </span></a>
                 </div>
                 <!-- region end: 搜索结果标签 --><!-- region start: 搜索结果列表 -->
                 <div id="d_searchresultcourse" class="d-searchresultcourse" style="min-height: 270px; width: 652px;">
                     <div class="body">
-                        <div class="item news_min_height">
-                            <div class="title" style="padding-left: 0px; display: inline-block; width: 630px;">
-                                <a class="trim news_title_max_width" href="（链接）" target="_blank" title="（Title）">（Title）</a>
-                                <span class="category">电子书</span>
-                            </div>
-                            <div class="desc txt-justify" style="padding-left: 0px; color: #999;">
-                                <p>（内容）</p>
-                            </div>
+                        <div class="item news_min_height result">
+                           
                         </div>
                     </div>
-                </div>
-                <div id="d_pagination" class="pagination" style="display: block;">
-                    <span>共（）条记录</span>
-                    <a href="javascript:;" class="s">1</a>
-                    <a href="javascript:;" class="c" onclick="km_pageno.gopage(2,1,156)">2</a>
-                    <a href="javascript:;" class="c" onclick="km_pageno.gopage(2,1,156)">下一页 <i class="icon-angle-right"></i></a>
-                    <span>跳转到第</span>&nbsp;<input id="int_pageno" type="text" style="width:20px;" class="int" maxlength="5">&nbsp;<span>页</span>&nbsp;
-                    <button type="button" class="btn" style="padding-left:2px;padding-right:2px;" onclick="km_pageno.gopage($('#int_pageno').val(),1,156)">Go</button>
+                    <div class="loadMore"></div>
                 </div>
             </div>
             <!-- region end: 搜索结果列表 -->
@@ -64,3 +52,7 @@
         <div class="clear"></div>
     </div>
 </div>
+
+<script>
+    var type = "course";
+</script>

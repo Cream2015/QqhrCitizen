@@ -52,16 +52,13 @@ namespace QqhrCitizen.Controllers
 
         public ActionResult Search(string key)
         {
-            List<News> lstNews = new List<News>();
-            List<Course> lstCourse = new List<Course>();
-            List<EBook> lstEBook = new List<EBook>();
             int newsCount = db.News.Where(n => n.Title.Contains(key) || n.Content.Contains(key)).OrderByDescending(n=>n.Time).Count();
             int courseCount = db.Courses.Where(c => c.Title.Contains(key)).OrderByDescending(c => c.Time).Count();
             int ebookCount = db.EBooks.Where(eb => eb.Title.Contains(key)).OrderByDescending(e => e.Time).Count();
             
             ViewBag.NewsCount = newsCount;
-            ViewBag.CourseCount = lstCourse;
-            ViewBag.EBookCount = lstEBook;
+            ViewBag.CourseCount = courseCount;
+            ViewBag.EBookCount = ebookCount;
             ViewBag.Key = key;
             return View("SearchResult");
         }

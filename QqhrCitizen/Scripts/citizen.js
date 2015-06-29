@@ -2,6 +2,7 @@
 var page = 0;
 var tid = "";
 var options = ['A', 'B', 'C', 'D'];
+var type = "";
 
 
 function resize() {
@@ -107,7 +108,7 @@ function LoadSearchRessult() {
         $.ajax({
             url: "/Home/GetSearchResultMore",
             type: "get",
-            data: { "type": $("#hdType").val(), "key": $("#hdKey").val(), "page": page },
+            data: { "type": type, "key": $("#searchKey").val(), "page": page },
         }).done(function (data) {
             var str = "";
             for (var i = 0 ; i < data.length; i++) {
@@ -266,4 +267,21 @@ function learnLession(data) {
 function dosearch() {
     var key = $("#txtSearch").val();
     $("#frmSearch").submit();
+}
+
+
+function Search(data) {
+    alert(data)
+    if (data == "1") {
+        type = "course";
+    }
+    if (data == "2") {
+        type = "news";
+    }
+    if (data == "3") {
+        type = "ebook";
+    }
+    lock = false;
+    $(".result").html("");
+    LoadSearchRessult();
 }
