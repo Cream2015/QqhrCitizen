@@ -67,7 +67,10 @@
             <div id="d_header" class="d-header">
                 <div id="d_header_c" class="d-header-c">
                     <!-- region start: header --><div id="d_headerhome" class="d-headerhome">
-                        <a class="d-logo" href="#"><div class="ver" style="left: 900px; top: 65px; text-align: right;display:none;">Beta 2014</div></a><div class="d-search" style="background-color: #fff;"><input id="__int_entry" type="text" value="" placeholder="课程、新闻、电子书" maxlength="30" autocomplete="off" autocorrect="off" autocapitalize="off" name="entry_selitem_list_pg"><span class="site-search header-search" id="home_search" style="left: 348px; border-left: none;">站内搜索</span><input type="hidden" id="__int_entry_uid" name="entry_selitem_pg"></div>
+                        <a class="d-logo" href="#"><div class="ver" style="left: 900px; top: 65px; text-align: right;display:none;">Beta 2014</div></a><div class="d-search" style="background-color: #fff;">
+                            <input id="__int_entry" type="text" value="" placeholder="课程、新闻、电子书" maxlength="30" autocomplete="off" autocorrect="off" autocapitalize="off" name="entry_selitem_list_pg">
+                            <span class="site-search header-search" id="home_search" style="left: 348px; border-left: none;">站内搜索</span><input type="hidden" id="__int_entry_uid" name="entry_selitem_pg">
+                        </div>
                     </div><!-- region end: header -->
                 </div>
             </div>
@@ -142,7 +145,7 @@
                 }
             </ul><div id="d_banner_c" class="d-banner-c" style="visibility: visible;">
                 <div id="d_banner_thumb" class="d-banner-thumb">
-                   @{ i = 0; }
+                    @{ i = 0; }
                     @foreach (Viewpager n in ViewBag.Pictures)
                     {
                         if (i > 5) { break; }
@@ -291,7 +294,7 @@
                             <div class="body">
                                 @foreach (TypeDictionary td in ViewBag.BookTypes)
                                 {
-                                <a class="item" href="/Course?tid=@td.ID">@td.TypeValue</a>
+                                    <a class="item" href="/Course?tid=@td.ID">@td.TypeValue</a>
                                 }
                             </div>
                         </div>
@@ -305,15 +308,15 @@
                                 @{ string[] bookcolors = { "#23a532", "#169425", "#189727", "#11851e", "#23a532", "#189727" }; var bi = 0; }
                                 @foreach (TypeDictionary td in ViewBag.BookTypes)
                                 {
-                                <div class="item" style="background-color: @(bookcolors[bi++]);">
-                                    <a href="#" title="@td.TypeValue">@td.TypeValue</a>
-                                    <div>
-                                        @foreach (TypeDictionary td2 in td.Children.Take(6).ToList())
+                                    <div class="item" style="background-color: @(bookcolors[bi++]);">
+                                        <a href="#" title="@td.TypeValue">@td.TypeValue</a>
+                                        <div>
+                                            @foreach (TypeDictionary td2 in td.Children.Take(6).ToList())
                                             {
-                                        <a class="" href="/EBook/Index?tid=@td2.ID" title="@td2.TypeValue">@td2.TypeValue</a>
+                                                <a class="" href="/EBook/Index?tid=@td2.ID" title="@td2.TypeValue">@td2.TypeValue</a>
                                             }
+                                        </div>
                                     </div>
-                                </div>
                                 }
                             </div>
                         </div><div id="d_bookrecommend" class="d-bookrecommend">
@@ -321,16 +324,16 @@
                                 <div id="slide_bookrecommend" class="slidecontainer">
                                     @foreach (EBook eb in ViewBag.Books)
                                     {
-                                    <div class="item">
-                                        <a class="cover readingCover" href="/EBook/Show/@eb.ID" title="@eb.Title">
-                                            <img src="/EBook/ShowPicture/@eb.ID" data-echo="/EBook/ShowPicture/@eb.ID" onerror="this.onerror='';this.src='/EBook/ShowPicture/@eb.ID';">
-                                        </a>
-                                        <div class="title trim">
-                                            <a href="/EBook/Show/@eb.ID" title="@eb.Title">@eb.Title</a>
-                                        </div><div class="author trim">
-                                            @eb.Author
+                                        <div class="item">
+                                            <a class="cover readingCover" href="/EBook/Show/@eb.ID" title="@eb.Title">
+                                                <img src="/EBook/ShowPicture/@eb.ID" data-echo="/EBook/ShowPicture/@eb.ID" onerror="this.onerror='';this.src='/EBook/ShowPicture/@eb.ID';">
+                                            </a>
+                                            <div class="title trim">
+                                                <a href="/EBook/Show/@eb.ID" title="@eb.Title">@eb.Title</a>
+                                            </div><div class="author trim">
+                                                @eb.Author
+                                            </div>
                                         </div>
-                                    </div>
                                     }
                                 </div>
                             </div>
@@ -356,13 +359,13 @@
                         <p>
                             @foreach (ResourceLink rl in ViewBag.ImgLinks)
                             {
-                            <a href="@rl.URL"><img src="/Upload/@((new QqhrCitizen.Models.ViewModel.vResourceLink(rl)).File.Path)" class="cc-link-img" /></a>
+                                <a href="@rl.URL"><img src="/Upload/@((new QqhrCitizen.Models.ViewModel.vResourceLink(rl)).File.Path)" class="cc-link-img" /></a>
                             }
                         </p>
                         <p style="font-size: 20px;">
                             @foreach (ResourceLink rl in ViewBag.TextLinks)
                             {
-                            <a href="@rl.URL">@rl.Title</a>@MvcHtmlString.Create("&nbsp;&nbsp;")
+                                <a href="@rl.URL">@rl.Title</a>@MvcHtmlString.Create("&nbsp;&nbsp;")
 
                             }
                         </p>
@@ -374,203 +377,203 @@
     </div>
 
 
-            <div class="d-row" style="background-color: #ececec; border-top: 2px solid #474747;">
-                <div class="d-row-c">
-                    <div class="d-col-1">
-                        <div class="contentarea"></div>
-                    </div>
-                    <div id="d_footer" class="d-footer">
-                        <div id="d_footer_c" class="d-footer-c">
-                            <div class="l" style="display: block;">
-                                Copyright © 2015 齐齐哈尔市广播电视大学. All Rights Reserved. 哈尔滨市码锋科技有限责任公司提供技术支持.
-                            </div><div class="clear"></div>
-                        </div>
-                    </div>
+    <div class="d-row" style="background-color: #ececec; border-top: 2px solid #474747;">
+        <div class="d-row-c">
+            <div class="d-col-1">
+                <div class="contentarea"></div>
+            </div>
+            <div id="d_footer" class="d-footer">
+                <div id="d_footer_c" class="d-footer-c">
+                    <div class="l" style="display: block;">
+                        Copyright © 2015 齐齐哈尔市广播电视大学. All Rights Reserved. 哈尔滨市码锋科技有限责任公司提供技术支持.
+                    </div><div class="clear"></div>
                 </div>
             </div>
-            <script>
+        </div>
+    </div>
+    <script>
 
-                var adtranObj = new km_adtran();
-                adtranObj.afterinit = function () {
-                    $('#div_spin').remove();
-                    $('.d-banner .loading').remove();
-                    $('#d_banner_c').css({
-                        visibility: 'visible'
-                    });
-                    $('#' + adtranObj.thumb).children().each(function (i) {
-                        var _i = i;
-                        $(this).on('mouseover', function () {
-                            adtranObj.dotran(i);
-                        });
-                    });
-                    $('#d_homebanner').children().eq(0).css('z-index', '11');
-                    $('#d_homebanner').css('display', 'block');
-                    adtranObj.start();
+        var adtranObj = new km_adtran();
+        adtranObj.afterinit = function () {
+            $('#div_spin').remove();
+            $('.d-banner .loading').remove();
+            $('#d_banner_c').css({
+                visibility: 'visible'
+            });
+            $('#' + adtranObj.thumb).children().each(function (i) {
+                var _i = i;
+                $(this).on('mouseover', function () {
+                    adtranObj.dotran(i);
+                });
+            });
+            $('#d_homebanner').children().eq(0).css('z-index', '11');
+            $('#d_homebanner').css('display', 'block');
+            adtranObj.start();
 
-                    $proto.pageloaded = true;
-                };
-                adtranObj.beforetran = function (oidx, nidx) {
-                    if (oidx == -1) { return; }
-                    $('#' + adtranObj.thumb).children().eq(oidx).stop();
-                    $('#' + adtranObj.thumb).children().eq(nidx).stop();
-                    $('#' + adtranObj.thumb).children().eq(oidx).find('span').stop();
-                    $('#' + adtranObj.thumb).children().eq(nidx).find('span').stop();
-                    $('#' + adtranObj.thumb).children().eq(oidx).find('span').css({ 'width': '0' });
-                    $('#' + adtranObj.thumb).children().eq(nidx).find('span').css({ 'width': '0' });
-                    $('#' + adtranObj.thumb).children().eq(oidx).animate({ 'margin-top': '7px' }, 100);
-                    $('#' + adtranObj.thumb).children().eq(nidx).animate({ 'margin-top': '0' }, 100);
-                }
-                adtranObj.aftertran = function (nidx) {
-                    return;
-                    var it = adtranObj.list[nidx].interval;
-                    $('#' + adtranObj.thumb).children().eq(nidx).find('span').animate({ 'width': '100%' }, it, function () {
-                        $(this).css({ 'width': '0' });
-                    });
-                }
-                adtranObj.container = 'd_homebanner';
-                adtranObj.thumb = 'd_banner_thumb';
-                adtranObj.himgs = [
-                    @{ var iii = 0; }
-                    @foreach (Viewpager n in ViewBag.Pictures)
+            $proto.pageloaded = true;
+        };
+        adtranObj.beforetran = function (oidx, nidx) {
+            if (oidx == -1) { return; }
+            $('#' + adtranObj.thumb).children().eq(oidx).stop();
+            $('#' + adtranObj.thumb).children().eq(nidx).stop();
+            $('#' + adtranObj.thumb).children().eq(oidx).find('span').stop();
+            $('#' + adtranObj.thumb).children().eq(nidx).find('span').stop();
+            $('#' + adtranObj.thumb).children().eq(oidx).find('span').css({ 'width': '0' });
+            $('#' + adtranObj.thumb).children().eq(nidx).find('span').css({ 'width': '0' });
+            $('#' + adtranObj.thumb).children().eq(oidx).animate({ 'margin-top': '7px' }, 100);
+            $('#' + adtranObj.thumb).children().eq(nidx).animate({ 'margin-top': '0' }, 100);
+        }
+        adtranObj.aftertran = function (nidx) {
+            return;
+            var it = adtranObj.list[nidx].interval;
+            $('#' + adtranObj.thumb).children().eq(nidx).find('span').animate({ 'width': '100%' }, it, function () {
+                $(this).css({ 'width': '0' });
+            });
+        }
+        adtranObj.container = 'd_homebanner';
+        adtranObj.thumb = 'd_banner_thumb';
+        adtranObj.himgs = [
+            @{ var iii = 0; }
+            @foreach (Viewpager n in ViewBag.Pictures)
             {
                 if (iii >= 5) { break; }
                 @MvcHtmlString.Create("{ id: 'bb" + (iii + 1) + "', bg: '/Viewpager/ShowPicture/" + n.ID + "', thumb: '/Viewpager/ShowPicture/" + n.ID + "', bgcolor: '" + bgcolor[iii] + "', fgcolor: '#fff' },")
                 { i++; }
             }
-                ];
-                var adtranObjList = [];
-                for (var i = 0; i < adtranObj.himgs.length; i++) {
-                    var _id = 'bb' + (i + 1);
-                    var _d = { d: _id, interval: i == 0 ? 10000 : 5000 };
-                    adtranObjList.push(_d);
-                }
-                adtranObj.list = adtranObjList;
-            </script>
+        ];
+        var adtranObjList = [];
+        for (var i = 0; i < adtranObj.himgs.length; i++) {
+            var _id = 'bb' + (i + 1);
+            var _d = { d: _id, interval: i == 0 ? 10000 : 5000 };
+            adtranObjList.push(_d);
+        }
+        adtranObj.list = adtranObjList;
+    </script>
 
-            <style>
-                .readingCover img {
-                    width: 106px;
-                    height: 158px;
-                }
+    <style>
+        .readingCover img {
+            width: 106px;
+            height: 158px;
+        }
 
-                .item .act-cover img {
-                    width: 222px;
-                    height: 125px;
-                }
+        .item .act-cover img {
+            width: 222px;
+            height: 125px;
+        }
 
-                .item .course-cover img {
-                    width: 297px;
-                    height: 167px;
-                }
+        .item .course-cover img {
+            width: 297px;
+            height: 167px;
+        }
 
-                .itemhot .act-cover img {
-                    width: 448px;
-                    height: 252px;
-                }
-            </style>
-            <script>
-    km_st.list = [
-                     @foreach (var item in ViewBag.Navigation)
+        .itemhot .act-cover img {
+            width: 448px;
+            height: 252px;
+        }
+    </style>
+    <script>
+        km_st.list = [
+                         @foreach (var item in ViewBag.Navigation)
                     {
                         if (@item.Km_st_Id != "Null")
                         {
                          @MvcHtmlString.Create("{ id: '"+@item.Km_st_Id+"', text:'"+@item.Title+"'},")
                         }
                      }
-                ];
-            </script><div style="display: none;">
-            </div>
-            <script>
-                $(function () {
-                    $('.channel').find('a').on('click', function () {
-                        var href = $(this).data('href');
-                        var fix = '';
-                        if ($proto.userinfo) {
-                            var un = $proto.userinfo.encodeusername;
-                            fix = '?n=' + un;
-                        }
-                        $(this).attr('href', href + fix);
-                    });
-                });
-            </script>
-            <style>
-                .d-banner-thumb, .d-homebanner li a .h, .d-homebanner li a .p {
-                    left: 20px;
+        ];
+    </script><div style="display: none;">
+    </div>
+    <script>
+        $(function () {
+            $('.channel').find('a').on('click', function () {
+                var href = $(this).data('href');
+                var fix = '';
+                if ($proto.userinfo) {
+                    var un = $proto.userinfo.encodeusername;
+                    fix = '?n=' + un;
                 }
-            </style>
-            <style>
-                #v_close {
-                    width: 70px;
-                    text-align: right;
-                    height: 25px;
-                    line-height: 25px;
-                    background: url(/file/video/close.jpg) no-repeat;
-                    font-size: 16px;
-                    color: #f2f2f2;
-                    display: block;
-                }
+                $(this).attr('href', href + fix);
+            });
+        });
+    </script>
+    <style>
+        .d-banner-thumb, .d-homebanner li a .h, .d-homebanner li a .p {
+            left: 20px;
+        }
+    </style>
+    <style>
+        #v_close {
+            width: 70px;
+            text-align: right;
+            height: 25px;
+            line-height: 25px;
+            background: url(/file/video/close.jpg) no-repeat;
+            font-size: 16px;
+            color: #f2f2f2;
+            display: block;
+        }
 
-                .header-search {
-                    width: 92px;
-                    height: 32px;
-                    line-height: 32px;
-                    text-align: center;
-                    display: block;
-                    font-size: 14px;
-                    border: 1px solid #ddd;
-                    position: absolute;
-                    color: #888;
-                    cursor: pointer;
-                }
-                /*#videoWrapper { width:800px;  }*/
-            </style>
-            <script src="~/Scripts/init.js"></script>
-            <script src="~/Scripts/history.js"></script>
-            <style>
-                .esplan-sp-item {
-                    float: left;
-                    height: 430px;
-                    width: 310px;
-                    margin-right: 35px;
-                }
+        .header-search {
+            width: 92px;
+            height: 32px;
+            line-height: 32px;
+            text-align: center;
+            display: block;
+            font-size: 14px;
+            border: 1px solid #ddd;
+            position: absolute;
+            color: #888;
+            cursor: pointer;
+        }
+        /*#videoWrapper { width:800px;  }*/
+    </style>
+    <script src="~/Scripts/init.js"></script>
+    <script src="~/Scripts/history.js"></script>
+    <style>
+        .esplan-sp-item {
+            float: left;
+            height: 430px;
+            width: 310px;
+            margin-right: 35px;
+        }
 
-                    .esplan-sp-item .esplan-cover, .esplan-sp-item .esplan-cover img {
-                        width: 310px;
-                        height: 230px;
-                    }
+            .esplan-sp-item .esplan-cover, .esplan-sp-item .esplan-cover img {
+                width: 310px;
+                height: 230px;
+            }
 
-                    .esplan-sp-item .esplan-cover {
-                        margin-bottom: 10px;
-                    }
+            .esplan-sp-item .esplan-cover {
+                margin-bottom: 10px;
+            }
 
-                    .esplan-sp-item .esplan-title {
-                        margin-bottom: 10px;
-                        color: #d10f1a;
-                        font-size: 18px;
-                    }
+            .esplan-sp-item .esplan-title {
+                margin-bottom: 10px;
+                color: #d10f1a;
+                font-size: 18px;
+            }
 
-                    .esplan-sp-item .esplan-content {
-                        height: 105px;
-                        word-break: break-all;
-                        font-size: 14px;
-                        line-height: 1.5em;
-                    }
+            .esplan-sp-item .esplan-content {
+                height: 105px;
+                word-break: break-all;
+                font-size: 14px;
+                line-height: 1.5em;
+            }
 
-                    .esplan-sp-item .esplan-enter {
-                        position: absolute;
-                        right: 0;
-                        bottom: 0;
-                        width: 100px;
-                    }
-            </style>
-            <script>
-                $(function () {
-                    if ($('.esplan-sp-item').length > 0) {
-                        $('.esplan-sp-item:eq(2)').css('margin-right', '0');
-                    } else {
-                        $('#esplan_sp').remove();
-                    }
-                });
-            </script>
-        </body>
-    </html>
+            .esplan-sp-item .esplan-enter {
+                position: absolute;
+                right: 0;
+                bottom: 0;
+                width: 100px;
+            }
+    </style>
+    <script>
+        $(function () {
+            if ($('.esplan-sp-item').length > 0) {
+                $('.esplan-sp-item:eq(2)').css('margin-right', '0');
+            } else {
+                $('#esplan_sp').remove();
+            }
+        });
+    </script>
+</body>
+</html>
