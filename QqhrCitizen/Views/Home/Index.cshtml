@@ -24,6 +24,12 @@
     <!--<script src="http://res.shlll.net/vendor/ifvisible/src/ifvisible.js"></script>-->
     <script src="~/Scripts/km_adtran.js"></script>
     <script src="~/Scripts/home.default_v1_01s.js"></script>
+    <script>
+        function dosearch() {
+            var key = $("#txtSearch").val();
+            $("#frmSearch").submit();
+        }
+    </script>
     <style>
         .avatar img {
             width: 48px;
@@ -72,7 +78,7 @@
                             {
                                 @Html.AntiForgerySID()
                                 <input id="txtSearch" maxlength="30" name="key" onkeydown="if(event.keyCode==13){dosearch();}" type="text" value="" placeholder="课程、新闻、电子书" autocomplete="off" autocorrect="off" autocapitalize="off">
-                                <span id="icon-search" class="icon-search" onclick="dosearch();"></span>
+                                <span class="site-search header-search"  onclick="dosearch();" id="home_search" style="left: 348px; border-left: none;">站内搜索</span>
                             }
                         </div>
                     </div><!-- region end: header -->
