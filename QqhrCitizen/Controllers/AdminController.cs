@@ -1457,6 +1457,7 @@ namespace QqhrCitizen.Controllers
         } 
         #endregion
 
+        #region 增加导航
         /// <summary>
         /// 增加导航
         /// </summary>
@@ -1483,5 +1484,14 @@ namespace QqhrCitizen.Controllers
             db.SaveChanges();
             return RedirectToAction("NavigationManager");
         }
+        #endregion
+
+        #region 展示导航详细
+        public ActionResult NavigationShow(int id)
+        {
+            ViewBag.Navigation = db.Navigations.Find(id);
+            return View();
+        }
+        #endregion
     }
 }

@@ -1,0 +1,32 @@
+﻿@using QqhrCitizen.Models.ViewModel
+@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    Navigation navigation = ViewBag.Navigation;
+    ViewBag.Title = navigation.Title;
+}
+
+<h1 class="head-tietle">@navigation.Title - 导航展示 <a href="/Admin/AddNavigation">增加</a></h1>
+<table class="detail-table">
+    <tr>
+        <td class="row-title">标题</td>
+        <td>
+            @navigation.Title
+        </td>
+    </tr>
+    <tr>
+        <td class="row-title">
+            Url
+        </td>
+        <td>
+            @navigation.Url
+        </td>
+    </tr>
+    <tr>
+        <td class="row-title">
+            标注
+        </td>
+        <td>
+            @navigation.Nav_Id
+        </td>
+    </tr>
+</table>
