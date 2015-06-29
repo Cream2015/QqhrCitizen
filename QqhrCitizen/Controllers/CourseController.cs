@@ -143,41 +143,49 @@ namespace QqhrCitizen.Controllers
         [AccessToLession]
         public ActionResult LessionDetails(int id)
         {
-            var questions = new List<vQuestion>();
-            var lessions = new List<Lession>();
             var vLessions = new List<vLession>();
             var vNotes = new List<vNote>();
-            StudyRecord record = new StudyRecord();
-            UserCourse userCourse = new UserCourse();
-
-            ViewBag.Navigation = db.Navigations.ToList();
-            record.LessionID = id;
-            record.UserID = CurrentUser.ID;
-            record.Time = DateTime.Now;
-
             Lession Lession = db.Lessions.Find(id);
+            StudyRecord record = new StudyRecord();
+            if (CurrentUser != null)
+            {
+                UserCourse userCourse = new UserCourse();
+                record.LessionID = id;
+                record.UserID = CurrentUser.ID;
+                record.Time = DateTime.Now;
+
+                db.StudyRecords.Add(record);
+
+                userCourse = db.UserCourses.Where(uc => uc.UserID == CurrentUser.ID && uc.CourseID == Lession.CourseID).FirstOrDefault();
+                if (userCourse == null)
+                {
+                    userCourse = new UserCourse();
+                    userCourse.UserID = CurrentUser.ID;
+                    userCourse.CourseID = Lession.CourseID;
+                    userCourse.Time = DateTime.Now;
+                    userCourse.IsFinisnCourse = false;
+                    db.UserCourses.Add(userCourse);
+                }
+                else
+                {
+                    userCourse.Time = DateTime.Now;
+                }
+                var listNote = db.Notes.Where(note => note.LessionID == Lession.ID && note.UserID == CurrentUser.ID).OrderByDescending(n => n.Time).ToList();
+                foreach (var item in listNote)
+                {
+                    vNotes.Add(new vNote(item));
+                }
+
+                ViewBag.ListNote = vNotes;
+            }
+
+            var questions = new List<vQuestion>();
+            var lessions = new List<Lession>();
+            Lession = db.Lessions.Find(id);
             Lession.Browses = Lession.Browses + 1;
 
-            db.StudyRecords.Add(record);
-
-            userCourse = db.UserCourses.Where(uc => uc.UserID == CurrentUser.ID && uc.CourseID == Lession.CourseID).FirstOrDefault();
-            if (userCourse == null)
-            {
-                userCourse = new UserCourse();
-                userCourse.UserID = CurrentUser.ID;
-                userCourse.CourseID = Lession.CourseID;
-                userCourse.Time = DateTime.Now;
-                userCourse.IsFinisnCourse = false;
-                db.UserCourses.Add(userCourse);
-            }
-            else
-            {
-                userCourse.Time = DateTime.Now;
-            }
             db.SaveChanges();
-
-            var listNote = db.Notes.Where(note => note.LessionID == Lession.ID).OrderByDescending(n => n.Time).ToList();
-
+            ViewBag.Lession = Lession;
             var listQuestions = db.Questions.Where(question => question.LessionID == id).ToList();
             lessions = db.Lessions.Where(l => l.CourseID == Lession.CourseID).ToList();
             foreach (var item in listQuestions)
@@ -188,16 +196,9 @@ namespace QqhrCitizen.Controllers
             {
                 vLessions.Add(new vLession(item));
             }
-            foreach (var item in listNote)
-            {
-                vNotes.Add(new vNote(item));
-            }
-
-            ViewBag.Navigation = db.Navigations.ToList();
-            ViewBag.Lession = Lession;
             ViewBag.Questions = questions;
             ViewBag.Lessions = vLessions;
-            ViewBag.ListNote = vNotes;
+            return View("LessionDetails");
             return View();
         }
 
@@ -210,52 +211,58 @@ namespace QqhrCitizen.Controllers
         [AccessToLession]
         public ActionResult BeginCourse(int id)
         {
-
-
             var vLessions = new List<vLession>();
             var vNotes = new List<vNote>();
             Lession Lession = db.Lessions.Find(id);
             StudyRecord record = new StudyRecord();
-            UserCourse userCourse = new UserCourse();
-            record.LessionID = id;
-            record.UserID = CurrentUser.ID;
-            record.Time = DateTime.Now;
-
-            bool flag = false;
-            var temp = new LearningRecord();
             if (CurrentUser != null)
             {
+                UserCourse userCourse = new UserCourse();
+                record.LessionID = id;
+                record.UserID = CurrentUser.ID;
+                record.Time = DateTime.Now;
+
+                db.StudyRecords.Add(record);
+
+                userCourse = db.UserCourses.Where(uc => uc.UserID == CurrentUser.ID && uc.CourseID == Lession.CourseID).FirstOrDefault();
+                if (userCourse == null)
+                {
+                    userCourse = new UserCourse();
+                    userCourse.UserID = CurrentUser.ID;
+                    userCourse.CourseID = Lession.CourseID;
+                    userCourse.Time = DateTime.Now;
+                    userCourse.IsFinisnCourse = false;
+                    db.UserCourses.Add(userCourse);
+                }
+                else
+                {
+                    userCourse.Time = DateTime.Now;
+                }
+                bool flag = false;
+                var temp = new LearningRecord();
                 temp = db.LearningRecords.Where(sr => sr.UserID == CurrentUser.ID && sr.Lession.CourseID == Lession.CourseID).OrderByDescending(t => t.Time).FirstOrDefault();
                 if (temp != null)
                 {
                     id = temp.LessionID;
                     flag = true;
                 }
+
+                var listNote = db.Notes.Where(note => note.LessionID == Lession.ID && note.UserID == CurrentUser.ID).OrderByDescending(n => n.Time).ToList();
+                foreach (var item in listNote)
+                {
+                    vNotes.Add(new vNote(item));
+                }
+
+                ViewBag.ListNote = vNotes;
             }
+
             var questions = new List<vQuestion>();
             var lessions = new List<Lession>();
             Lession = db.Lessions.Find(id);
             Lession.Browses = Lession.Browses + 1;
-            db.StudyRecords.Add(record);
 
-            userCourse = db.UserCourses.Where(uc => uc.UserID == CurrentUser.ID && uc.CourseID == Lession.CourseID).FirstOrDefault();
-            if (userCourse == null)
-            {
-                userCourse = new UserCourse();
-                userCourse.UserID = CurrentUser.ID;
-                userCourse.CourseID = Lession.CourseID;
-                userCourse.Time = DateTime.Now;
-                userCourse.IsFinisnCourse = false;
-                db.UserCourses.Add(userCourse);
-            }
-            else
-            {
-                userCourse.Time = DateTime.Now;
-            }
             db.SaveChanges();
             ViewBag.Lession = Lession;
-            var listNote = db.Notes.Where(note => note.LessionID == Lession.ID).OrderByDescending(n => n.Time).ToList();
-
             var listQuestions = db.Questions.Where(question => question.LessionID == id).ToList();
             lessions = db.Lessions.Where(l => l.CourseID == Lession.CourseID).ToList();
             foreach (var item in listQuestions)
@@ -266,15 +273,8 @@ namespace QqhrCitizen.Controllers
             {
                 vLessions.Add(new vLession(item));
             }
-            foreach (var item in listNote)
-            {
-                vNotes.Add(new vNote(item));
-            }
-
             ViewBag.Questions = questions;
             ViewBag.Lessions = vLessions;
-            ViewBag.ListNote = vNotes;
-            ViewBag.Navigation = db.Navigations.ToList();
             return View("LessionDetails");
         }
 
@@ -389,16 +389,16 @@ namespace QqhrCitizen.Controllers
         {
             Course course = new Course();
             course = db.Courses.Find(id);
-            if (course.Picture== null)
+            if (course.Picture == null)
             {
-                 var path = Server.MapPath("~/Images/book.jpg");
-                 return File(path, "image/jpg");
+                var path = Server.MapPath("~/Images/book.jpg");
+                return File(path, "image/jpg");
             }
             else
             {
                 return File(course.Picture, "image/jpg");
             }
-            
+
         }
 
 
