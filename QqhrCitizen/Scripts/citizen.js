@@ -271,7 +271,10 @@ function dosearch() {
 
 
 function Search(data) {
-    alert(data)
+   
+    $(".d_searchtabs>a").removeClass("tab_select");
+    $(this).addClass("tab_select");
+    console.log($(this));
     if (data == "1") {
         type = "course";
     }
