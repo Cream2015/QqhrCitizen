@@ -54,16 +54,16 @@
                                 <p><input type="button" value="保存" id="btnAddNote" class="btn-ok button btn-info" style="margin-left:10px;" /></p>
                                 <div style="padding-top:10px;"><h5>历史笔记</h5></div>
                                 <div id="lstNote">
-                                    @if (listNote.Count > 0)
-                                    {
-                                        foreach (var note in listNote)
+                                    @if (listNote != null)
                                         {
+                                            foreach (var note in listNote)
+                                            {
                                             <div class="div_HisNote">
                                                 <p>@note.Time</p>
                                                  @Html.Sanitized(@note.Content)
                                             </div>
-                                        }
-                                    }
+                                            }
+                                }
 
                                 </div>
                             </div>
@@ -110,7 +110,7 @@
                         <div id="Record" class="d-courseaction well">
                             <h2>课时</h2>
                             @foreach (var item in ViewBag.Lessions as List<vLession>)
-                            {
+                                {
                                 <p><a href="/Course/LessionDetails/@item.ID">[@item.Time.ToString("yyyy-MM-dd")] @item.Title</a></p>
                             }
                         </div>
@@ -195,17 +195,6 @@
         toolbar: 'Basic',
         width: "100%",
         height: "80px"
-    });
-
-    $("#btnAddNote").click(function () {
-        // var content = $("#noteContent").val();
-        var content = CKEDITOR.instances.noteContent.getData();
-        $.post("/Course/AddNote?sid=" + $("#sid").val(), { content: content, lid: $("#LessionID").val() }, function (data) {
-            CastMsg("添加的笔记成功！");
-            var str = "<div class='div_HisNote'><p>" + moment(data.Time).format("YYYY/MM/DD HH:mm:ss") + "</p>" + data.Content + "</div>"
-            $("#lstNote").prepend(str);
-            $("#noteContent").val("");
-        })
     });
 </script>
 

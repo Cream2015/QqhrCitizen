@@ -191,14 +191,21 @@ $(document).ready(function () {
         }
     });
 
-    $("#frmAddNote").submit(function () {
+    $("#btnAddNote").click(function () {
         var userid = $("#userId").val();
+        console.log(userid);
         if (userid == "") {
             CastMsg("请先登录，在添加笔记");
             return false;
         }
-        return true;
-    })
+        var content = CKEDITOR.instances.noteContent.getData();
+        $.post("/Course/AddNote?sid=" + $("#sid").val(), { content: content, lid: $("#LessionID").val() }, function (data) {
+            CastMsg("添加的笔记成功！");
+            var str = "<div class='div_HisNote'><p>" + moment(data.Time).format("YYYY/MM/DD HH:mm:ss") + "</p>" + data.Content + "</div>"
+            $("#lstNote").prepend(str);
+            $("#noteContent").val("");
+        })
+    });
 
     $("#btnAnswerQuestion").click(function () {
         var userid = $("#userId").val();

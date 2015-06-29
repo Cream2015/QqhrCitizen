@@ -199,7 +199,6 @@ namespace QqhrCitizen.Controllers
             ViewBag.Questions = questions;
             ViewBag.Lessions = vLessions;
             return View("LessionDetails");
-            return View();
         }
 
         /// <summary>
