@@ -428,10 +428,10 @@
                 adtranObj.thumb = 'd_banner_thumb';
                 adtranObj.himgs = [
                     @{ var iii = 0; }
-                    @foreach (News n in ViewBag.News)
+                    @foreach (Viewpager n in ViewBag.Pictures)
             {
                 if (iii >= 5) { break; }
-                @MvcHtmlString.Create("{ id: 'bb" + (iii + 1) + "', bg: '" + n.ImgUrl.First() + "', thumb: '" + n.ImgUrl.First() + "', bgcolor: '" + bgcolor[iii] + "', fgcolor: '#fff' },")
+                @MvcHtmlString.Create("{ id: 'bb" + (iii + 1) + "', bg: '/Viewpager/ShowPicture/" + n.ID + "', thumb: '/Viewpager/ShowPicture/" + n.ID + "', bgcolor: '" + bgcolor[iii] + "', fgcolor: '#fff' },")
                 { i++; }
             }
                 ];
