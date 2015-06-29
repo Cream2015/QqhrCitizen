@@ -9759,3 +9759,914 @@ label.inline {
     background-color: rgb(30, 91, 120);
     color: #fff;
 }
+.d-searchtabs {
+    height: 40px;
+    padding: 20px 0 0;
+    font-size: 0;
+}
+
+    .d-searchtabs .tab, .d-searchtabs .tab_select {
+        display: inline-block;
+        height: 40px;
+        line-height: 40px;
+        padding: 0 10px;
+        text-align: center;
+        font-size: 15px;
+        cursor: pointer;
+        text-decoration: none;
+    }
+
+        .d-searchtabs .tab .baget, .d-searchtabs .tab_select .baget {
+            display: inline-block;
+            height: 16px;
+            line-height: 16px;
+            padding: 0 4px;
+            margin: 0 0 0 5px;
+            text-align: center;
+            font-size: 12px;
+            background-color: #ddd;
+            color: #b94a48;
+            text-shadow: 0 -1px 0 rgba(0,0,0,.25);
+            -webkit-border-radius: 8px;
+            -moz-border-radius: 8px;
+            border-radius: 8px;
+        }
+
+    .d-searchtabs .tab {
+        background-color: transparent;
+    }
+
+    .d-searchtabs .tab_select {
+        background-color: #eee;
+    }
+
+.d-searchcondition .head {
+    height: 65px;
+    line-height: 65px;
+    font-size: 15px;
+    color: #00a000;
+}
+
+.d-searchhot .head {
+    height: 65px;
+    line-height: 65px;
+    font-size: 15px;
+    color: #00a000;
+}
+
+.d-searchhot .body .item {
+    display: inline-block;
+    height: 30px;
+    line-height: 30px;
+    padding: 0 20px 0 0;
+    text-align: left;
+    font-size: 13px;
+}
+
+.d-searchresultcourse {
+    width: 652px;
+}
+
+    .d-searchresultcourse .body .item {
+        display: block;
+        padding: 20px 0;
+        border-top: 1px solid #ccc;
+    }
+
+        .d-searchresultcourse .body .item div {
+            position: relative;
+        }
+
+        .d-searchresultcourse .body .item .cover {
+            position: absolute;
+            width: 106px;
+            height: 106px;
+            top: 20px;
+            left: 0;
+        }
+
+        .d-searchresultcourse .body .item .title {
+            padding: 0 0 0 130px;
+        }
+
+            .d-searchresultcourse .body .item .title a {
+                font-size: 15px;
+            }
+
+        .d-searchresultcourse .body .item .info {
+            display: block;
+            padding: 0 0 0 130px;
+            height: 40px;
+            line-height: 40px;
+        }
+
+            .d-searchresultcourse .body .item .info .vendor {
+                display: inline-block;
+                background-color: #eee;
+                height: 27px;
+                line-height: 27px;
+                padding: 0 10px;
+                margin: 0 20px 0 0;
+                font-size: 13px;
+                text-decoration: none;
+            }
+
+            .d-searchresultcourse .body .item .info .star {
+                display: inline-block;
+                width: 55px;
+                height: 11px;
+                line-height: 11px;
+                font-size: 0;
+                overflow: hidden;
+                background-image: url(../images/midstars.gif);
+                background-repeat: no-repeat;
+            }
+
+            .d-searchresultcourse .body .item .info .star0 {
+                background-position: 0 -110px;
+            }
+
+            .d-searchresultcourse .body .item .info .star5 {
+                background-position: 0 -99px;
+            }
+
+            .d-searchresultcourse .body .item .info .star10 {
+                background-position: 0 -88px;
+            }
+
+            .d-searchresultcourse .body .item .info .star15 {
+                background-position: 0 -77px;
+            }
+
+            .d-searchresultcourse .body .item .info .star20 {
+                background-position: 0 -66px;
+            }
+
+            .d-searchresultcourse .body .item .info .star25 {
+                background-position: 0 -55px;
+            }
+
+            .d-searchresultcourse .body .item .info .star30 {
+                background-position: 0 -44px;
+            }
+
+            .d-searchresultcourse .body .item .info .star35 {
+                background-position: 0 -33px;
+            }
+
+            .d-searchresultcourse .body .item .info .star40 {
+                background-position: 0 -22px;
+            }
+
+            .d-searchresultcourse .body .item .info .star45 {
+                background-position: 0 -11px;
+            }
+
+            .d-searchresultcourse .body .item .info .star50 {
+                background-position: 0 0;
+            }
+
+        .d-searchresultcourse .body .item .desc {
+            display: block;
+            padding: 0 0 0 130px;
+            line-height: 24px;
+            font-size: 13px;
+        }
+
+        .d-searchresultcourse .body .item .add {
+            display: block;
+            padding: 0 0 0 130px;
+            height: 40px;
+            line-height: 40px;
+        }
+
+            .d-searchresultcourse .body .item .add .btn-add {
+                border: 0;
+                padding: 0 10px;
+                height: 24px;
+                line-height: 24px;
+                font-size: 13px;
+            }
+
+        .d-searchresultcourse .body .item:first-child {
+            margin: -1px 0 0 0;
+        }
+
+.d-searchresultlearningmap {
+    width: 652px;
+}
+
+    .d-searchresultlearningmap .body .item {
+        display: block;
+        padding: 20px 0;
+        border-top: 1px solid #ccc;
+    }
+
+        .d-searchresultlearningmap .body .item div {
+            position: relative;
+        }
+
+        .d-searchresultlearningmap .body .item .cover {
+            position: absolute;
+            width: 106px;
+            height: 106px;
+            top: 20px;
+            left: 0;
+        }
+
+        .d-searchresultlearningmap .body .item .title {
+            padding: 0 0 0 130px;
+        }
+
+            .d-searchresultlearningmap .body .item .title a {
+                font-size: 15px;
+            }
+
+        .d-searchresultlearningmap .body .item .info {
+            display: block;
+            padding: 0 0 0 130px;
+            height: 40px;
+            line-height: 40px;
+        }
+
+            .d-searchresultlearningmap .body .item .info .vendor {
+                display: inline-block;
+                background-color: #eee;
+                height: 27px;
+                line-height: 27px;
+                padding: 0 10px;
+                margin: 0 20px 0 0;
+                font-size: 13px;
+                text-decoration: none;
+            }
+
+            .d-searchresultlearningmap .body .item .info .star {
+                display: inline-block;
+                width: 55px;
+                height: 11px;
+                line-height: 11px;
+                font-size: 0;
+                overflow: hidden;
+                background-image: url(../images/midstars.gif);
+                background-repeat: no-repeat;
+            }
+
+            .d-searchresultlearningmap .body .item .info .star0 {
+                background-position: 0 -110px;
+            }
+
+            .d-searchresultlearningmap .body .item .info .star5 {
+                background-position: 0 -99px;
+            }
+
+            .d-searchresultlearningmap .body .item .info .star10 {
+                background-position: 0 -88px;
+            }
+
+            .d-searchresultlearningmap .body .item .info .star15 {
+                background-position: 0 -77px;
+            }
+
+            .d-searchresultlearningmap .body .item .info .star20 {
+                background-position: 0 -66px;
+            }
+
+            .d-searchresultlearningmap .body .item .info .star25 {
+                background-position: 0 -55px;
+            }
+
+            .d-searchresultlearningmap .body .item .info .star30 {
+                background-position: 0 -44px;
+            }
+
+            .d-searchresultlearningmap .body .item .info .star35 {
+                background-position: 0 -33px;
+            }
+
+            .d-searchresultlearningmap .body .item .info .star40 {
+                background-position: 0 -22px;
+            }
+
+            .d-searchresultlearningmap .body .item .info .star45 {
+                background-position: 0 -11px;
+            }
+
+            .d-searchresultlearningmap .body .item .info .star50 {
+                background-position: 0 0;
+            }
+
+        .d-searchresultlearningmap .body .item .desc {
+            display: block;
+            padding: 0 0 0 130px;
+            line-height: 24px;
+            font-size: 13px;
+        }
+
+        .d-searchresultlearningmap .body .item .add {
+            display: block;
+            padding: 0 0 0 130px;
+            height: 40px;
+            line-height: 40px;
+        }
+
+            .d-searchresultlearningmap .body .item .add .btn-add {
+                border: 0;
+                padding: 0 10px;
+                height: 24px;
+                line-height: 24px;
+                font-size: 13px;
+            }
+
+        .d-searchresultlearningmap .body .item:first-child {
+            margin: -1px 0 0 0;
+        }
+
+.d-searchresultbook .body .item {
+    display: block;
+    padding: 20px 0;
+    margin: -1px 0 0 0;
+    border-top: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+}
+
+    .d-searchresultbook .body .item div {
+        position: relative;
+    }
+
+    .d-searchresultbook .body .item .cover {
+        position: absolute;
+        width: 90px;
+        height: 127px;
+        top: 20px;
+        left: 0;
+    }
+
+    .d-searchresultbook .body .item .title {
+        padding: 0 0 0 110px;
+    }
+
+        .d-searchresultbook .body .item .title a {
+            font-size: 15px;
+        }
+
+    .d-searchresultbook .body .item .info {
+        display: block;
+        padding: 0 0 0 110px;
+        height: 30px;
+        line-height: 30px;
+    }
+
+        .d-searchresultbook .body .item .info .author {
+            display: inline-block;
+            height: 27px;
+            line-height: 27px;
+            padding: 0 10px 0 0;
+            margin: 0 20px 0 0;
+            font-size: 13px;
+        }
+
+        .d-searchresultbook .body .item .info .price {
+            display: inline-block;
+            height: 27px;
+            line-height: 27px;
+            padding: 0 10px;
+            margin: 0 20px 0 0;
+            font-size: 13px;
+        }
+
+        .d-searchresultbook .body .item .info .amount {
+            display: inline-block;
+            height: 27px;
+            line-height: 27px;
+            padding: 0 10px 0 0;
+            margin: 0 20px 0 0;
+            font-size: 12px;
+            color: #999;
+        }
+
+        .d-searchresultbook .body .item .info .star {
+            display: inline-block;
+            width: 55px;
+            height: 11px;
+            line-height: 11px;
+            font-size: 0;
+            overflow: hidden;
+            background-image: url(../images/midstars.gif);
+            background-repeat: no-repeat;
+        }
+
+        .d-searchresultbook .body .item .info .star0 {
+            background-position: 0 -110px;
+        }
+
+        .d-searchresultbook .body .item .info .star5 {
+            background-position: 0 -99px;
+        }
+
+        .d-searchresultbook .body .item .info .star10 {
+            background-position: 0 -88px;
+        }
+
+        .d-searchresultbook .body .item .info .star15 {
+            background-position: 0 -77px;
+        }
+
+        .d-searchresultbook .body .item .info .star20 {
+            background-position: 0 -66px;
+        }
+
+        .d-searchresultbook .body .item .info .star25 {
+            background-position: 0 -55px;
+        }
+
+        .d-searchresultbook .body .item .info .star30 {
+            background-position: 0 -44px;
+        }
+
+        .d-searchresultbook .body .item .info .star35 {
+            background-position: 0 -33px;
+        }
+
+        .d-searchresultbook .body .item .info .star40 {
+            background-position: 0 -22px;
+        }
+
+        .d-searchresultbook .body .item .info .star45 {
+            background-position: 0 -11px;
+        }
+
+        .d-searchresultbook .body .item .info .star50 {
+            background-position: 0 0;
+        }
+
+        .d-searchresultbook .body .item .info .star {
+            margin: 0 20px 0 0;
+        }
+
+    .d-searchresultbook .body .item .brief {
+        display: block;
+        padding: 0 0 0 110px;
+        line-height: 24px;
+        font-size: 13px;
+    }
+
+    .d-searchresultbook .body .item .add {
+        display: block;
+        padding: 0 0 0 110px;
+        height: 40px;
+        line-height: 40px;
+    }
+
+        .d-searchresultbook .body .item .add .btn-add {
+            border: 0;
+            padding: 0 10px;
+            height: 24px;
+            line-height: 24px;
+            font-size: 13px;
+        }
+
+.d-searchresultevent {
+    width: 652px;
+}
+
+    .d-searchresultevent .body .item {
+        padding: 20px 0;
+        border-top: 1px solid #aaa;
+    }
+
+        .d-searchresultevent .body .item .title {
+            padding: 0 0 0 130px;
+            line-height: 25px;
+        }
+
+            .d-searchresultevent .body .item .title a {
+                font-size: 15px;
+            }
+
+        .d-searchresultevent .body .item .desc {
+            display: block;
+            padding: 0 0 0 130px;
+            max-height: 60px;
+            line-height: 20px;
+        }
+
+        .d-searchresultevent .body .item .date {
+            display: block;
+            padding: 0 0 0 130px;
+            height: 20px;
+            line-height: 20px;
+            color: #999;
+        }
+
+        .d-searchresultevent .body .item .location {
+            display: block;
+            padding: 0 0 0 130px;
+            height: 20px;
+            line-height: 20px;
+            color: #999;
+        }
+
+        .d-searchresultevent .body .item .fee {
+            display: block;
+            padding: 0 0 0 130px;
+            height: 20px;
+            line-height: 20px;
+            color: #999;
+        }
+
+        .d-searchresultevent .body .item .sponsor {
+            display: block;
+            padding: 0 0 0 130px;
+            height: 20px;
+            line-height: 20px;
+            color: #999;
+        }
+
+        .d-searchresultevent .body .item .info {
+            padding: 0 0 0 130px;
+        }
+
+            .d-searchresultevent .body .item .info .follow {
+                display: inline-block;
+                height: 20px;
+                line-height: 20px;
+                color: #999;
+                padding: 0 10px 0 0;
+            }
+
+            .d-searchresultevent .body .item .info .participant {
+                display: inline-block;
+                height: 20px;
+                line-height: 20px;
+                color: #999;
+            }
+
+        .d-searchresultevent .body .item .cover {
+            position: absolute;
+            top: 20px;
+            left: 0;
+            width: 106px;
+            height: 106px;
+        }
+
+.d-searchresultgroup .body .item {
+    padding: 20px 0;
+    border-top: 1px solid #ccc;
+}
+
+    .d-searchresultgroup .body .item .name {
+        padding: 0 0 0 58px;
+        height: 27px;
+        line-height: 27px;
+    }
+
+        .d-searchresultgroup .body .item .name a {
+            font-size: 14px;
+        }
+
+    .d-searchresultgroup .body .item .users {
+        display: block;
+        padding: 0 0 0 58px;
+        height: 21px;
+        line-height: 21px;
+        font-size: 13px;
+    }
+
+    .d-searchresultgroup .body .item .desc {
+        display: block;
+        padding: 0 0 0 58px;
+        max-height: 80px;
+        line-height: 20px;
+        font-size: 13px;
+        color: #999;
+    }
+
+    .d-searchresultgroup .body .item .add {
+        display: block;
+        padding: 0 0 0 58px;
+        height: 40px;
+        line-height: 40px;
+    }
+
+        .d-searchresultgroup .body .item .add .btn-add {
+            border: 0;
+            padding: 0 10px;
+            height: 24px;
+            line-height: 24px;
+            font-size: 13px;
+        }
+
+    .d-searchresultgroup .body .item a.portrait {
+        position: absolute;
+        top: 20px;
+        left: 0;
+        width: 48px;
+        height: 48px;
+    }
+
+.d-searchresulttopic .body {
+    width: 652px;
+}
+
+    .d-searchresulttopic .body .item {
+        padding: 20px 0;
+        border-top: 1px solid #aaa;
+    }
+
+        .d-searchresulttopic .body .item .title {
+            height: 40px;
+            line-height: 40px;
+        }
+
+            .d-searchresulttopic .body .item .title a {
+                font-size: 14px;
+            }
+
+        .d-searchresulttopic .body .item .desc {
+            display: block;
+            max-height: 60px;
+            line-height: 20px;
+            font-size: 13px;
+        }
+
+        .d-searchresulttopic .body .item .info {
+            display: block;
+            text-align: right;
+            font-size: 12px;
+        }
+
+            .d-searchresulttopic .body .item .info .reply {
+                display: inline-block;
+                height: 20px;
+                line-height: 20px;
+                color: #999;
+                padding: 0 10px 0 0;
+            }
+
+            .d-searchresulttopic .body .item .info .like {
+                display: inline-block;
+                height: 20px;
+                line-height: 20px;
+                color: #999;
+            }
+
+        .d-searchresulttopic .body .item .from {
+            display: block;
+            text-align: right;
+            height: 20px;
+            line-height: 20px;
+            color: #999;
+            font-size: 12px;
+        }
+
+        .d-searchresulttopic .body .item:first-child {
+            padding-top: 0;
+        }
+
+.d-searchresultmember {
+    width: 652px;
+    width: 663px;
+    overflow-x: hidden;
+}
+
+    .d-searchresultmember .head {
+        height: 65px;
+        line-height: 65px;
+        font-size: 15px;
+        color: #00a000;
+    }
+
+    .d-searchresultmember .body {
+        padding: 20px 0;
+        border-top: 1px solid #aaa;
+        width: 679px;
+    }
+
+        .d-searchresultmember .body .info {
+            height: 50px;
+            line-height: 50px;
+            display: block;
+            color: #999;
+            font-size: 13px;
+        }
+
+        .d-searchresultmember .body .item {
+            width: 324px;
+            height: 98px;
+            margin: 0 15px 20px 0;
+            float: left;
+            overflow: hidden;
+        }
+
+            .d-searchresultmember .body .item .portrait {
+                position: absolute;
+                top: 0;
+                left: 0;
+                display: block;
+                width: 48px;
+                height: 48px;
+            }
+
+            .d-searchresultmember .body .item .name {
+                padding: 0 0 0 60px;
+                height: 24px;
+                line-height: 24px;
+            }
+
+                .d-searchresultmember .body .item .name a {
+                    font-size: 13px;
+                }
+
+            .d-searchresultmember .body .item .signature {
+                padding: 0 0 0 60px;
+                min-height: 40px;
+                line-height: 20px;
+                font-size: 13px;
+                color: #999;
+            }
+
+            .d-searchresultmember .body .item .shared {
+                display: inline-block;
+                height: 20px;
+                line-height: 20px;
+                font-size: 13px;
+                color: #999;
+                padding: 0 0 0 60px;
+                margin: 0 10px 0 0;
+            }
+
+            .d-searchresultmember .body .item .friends {
+                display: inline-block;
+                height: 20px;
+                line-height: 20px;
+                font-size: 13px;
+                color: #999;
+            }
+
+            .d-searchresultmember .body .item .action {
+                position: absolute;
+                top: 0;
+                right: 0;
+                width: 20px;
+                height: 20px;
+                line-height: 20px;
+                cursor: pointer;
+                font-size: 15px;
+                color: #999;
+            }
+.imgCoursePic
+{
+    height: 184px;
+    width: 184px;
+}
+
+.imgCoursePicM
+{
+    height: 106px;
+    width: 106px;
+}
+
+.imgCourseRollPic
+{
+    height: 220px;
+    width: 652px;
+}
+
+
+.imgActivitPicM
+{
+    height: 106px;
+    width: 106px;
+}
+
+
+.imgCirclePicS
+{
+    width: 48px;
+    height: 48px;
+}
+
+.imgBookPic
+{
+    width: 90px;
+    height: 127px;
+}
+
+
+
+.sponsor
+{
+    display: block;
+    /*padding: 0 0 0 130px;*/
+    /*height: 20px;*/
+    line-height: 20px;
+    color: #999;
+}
+
+.date
+{
+    display: block;
+    /*padding: 0 0 0 130px;*/
+    height: 20px;
+    line-height: 20px;
+    color: #999;
+}
+
+.category
+{
+    display: inline-block;
+    background-color: #eee;
+    height: 20px;
+    line-height: 20px;
+    padding: 0 10px;
+    margin: 0 20px 0 5px;
+    font-size: 13px;
+    text-decoration: none;
+    float: right;
+    width: 40px;
+}
+
+.trim
+{
+    /*width: 220px;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;*/
+    display: block;
+}
+
+
+.news_min_height
+{
+    min-height: 100px;
+    _height: expression((document.documentElement.clientHeight||document.body.clientHeight)>100?"100px":"");
+}
+
+.book_min_height
+{
+    min-height: 124px;
+    _height: expression((document.documentElement.clientHeight||document.body.clientHeight)>124?"124px":"");
+}
+
+.course_min_height
+{
+    min-height: 124px;
+    _height: expression((document.documentElement.clientHeight||document.body.clientHeight)>124?"124px":"");
+}
+
+.circle_min_height
+{
+    min-height: 124px;
+    _height: expression((document.documentElement.clientHeight||document.body.clientHeight)>124?"124px":"");
+}
+
+.activities_min_height
+{
+    min-height: 124px;
+    _height: expression((document.documentElement.clientHeight||document.body.clientHeight)>124?"124px":"");
+}
+
+.news_title_max_width
+{
+    max-width: 300px;
+    *width: 300px;
+    _width: expression((document.documentElement.clientWidth||document.body.clientWidth)<300?"300px":"");
+    overflow: hidden;
+    float: left;
+}
+
+.book_title_max_width
+{
+    max-width: 300px;
+    *width: 300px;
+    _width: expression((document.documentElement.clientWidth||document.body.clientWidth)<300?"300px":"");
+    overflow: hidden;
+    float: left;
+}
+
+.activities_title_max_width
+{
+    max-width: 300px;
+    *width: 300px;
+    _width: expression((document.documentElement.clientWidth||document.body.clientWidth)<300?"300px":"");
+    overflow: hidden;
+    float: left;
+}
+
+.course_title_max_width
+{
+    max-width: 300px;
+    *width: 300px;
+    _width: expression((document.documentElement.clientWidth||document.body.clientWidth)<300?"300px":"");
+    overflow: hidden;
+     float: left;
+}
+
+.circle_title_max_width
+{
+    max-width: 300px;
+    *width: 300px;
+    _width: expression((document.documentElement.clientWidth||document.body.clientWidth)<300?"300px":"");
+    overflow: hidden;
+    float: left;
+}

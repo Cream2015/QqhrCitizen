@@ -115,5 +115,10 @@ namespace QqhrCitizen.Controllers
         {
             return View();
         }
+
+        public ActionResult SearchResult()
+        {
+            return View();
+        }
     }
 }

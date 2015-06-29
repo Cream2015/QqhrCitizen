@@ -661,6 +661,7 @@
     <Content Include="Views\Admin\AddNavigation.cshtml" />
     <Content Include="Views\Admin\NavigationShow.cshtml" />
     <Content Include="Views\Admin\NavigationEdit.cshtml" />
+    <Content Include="Views\Home\SearchResult.cshtml" />
     <None Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Admin\ViwepagerEdit.cshtml" />
     <None Include="Web.Debug.config">
