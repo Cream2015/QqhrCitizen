@@ -69,7 +69,7 @@
                                 @foreach (var item in lessions)
                                 {
                                     <div class="item" id="Ware_908">
-                                        <a class="name lession" target="_blank" href="/Course/LessionDetails/@item.ID" title="@item.Title">@item.Title</a>
+                                        <a class="name lession" href="/Course/LessionDetails/@item.ID" title="@item.Title">@item.Title</a>
                                         <span class="hour"></span><span class="sign">@item.Browses 人学过</span>
                                     </div>
                                 }
@@ -92,7 +92,7 @@
                                         {
                                              <div class="item">
                                               <div class="title">
-                                                 <a href="/Course/Show/@item.ID" target="_blank">@item.Title</a>
+                                                 <a href="/Course/Show/@item.ID">@item.Title</a>
                                               </div>
                                               <span class="signed">@item.Browses</span>
                                                  <a class="cover" href="/Course/Show/@item.ID" target="_blank">
