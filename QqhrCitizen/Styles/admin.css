@@ -132,6 +132,10 @@
     color: #fff;
 }
 
+.table tbody tr:nth-child(odd) {
+    background-color: #fafafa;
+}
+
 .table tbody tr:hover a {
     color: #fff;
 }
