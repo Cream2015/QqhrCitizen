@@ -46,17 +46,7 @@
             </div>
             <div class="sidebar-content">
                 <ul class="sidebar-list">
-                    @if (user.Role == Role.Admin)
-                    {
-
-                        <li>
-                            <a href="#"><i class="icon-font">&#xe018;</i>导航管理</a>
-                            <ul class="sub-menu">
-                                <li><a href="/Admin/NavigationManager"><i class="icon-font">&#xe017;</i>导航管理</a></li>
-                                <li><a href="/Admin/AddNavigation"><i class="icon-font">&#xe037;</i>增加导航</a></li>
-                            </ul>
-                        </li>
-                    }
+                   
                     @if (user.Role == Role.Admin || user.Role == Role.NewsManager)
                     {
                         <li>
@@ -109,6 +99,17 @@
                             <ul class="sub-menu">
                                 <li><a href="/Admin/ViwepagerManager"><i class="icon-font">&#xe017;</i>轮播管理</a></li>
                                 <li><a href="/Admin/AddViwepager"><i class="icon-font">&#xe037;</i>增加轮播</a></li>
+                            </ul>
+                        </li>
+                    }
+                    @if (user.Role == Role.Admin)
+                    {
+
+                        <li>
+                            <a href="#"><i class="icon-font">&#xe018;</i>导航管理</a>
+                            <ul class="sub-menu">
+                                <li><a href="/Admin/NavigationManager"><i class="icon-font">&#xe017;</i>导航管理</a></li>
+                                <li><a href="/Admin/AddNavigation"><i class="icon-font">&#xe037;</i>增加导航</a></li>
                             </ul>
                         </li>
                     }
