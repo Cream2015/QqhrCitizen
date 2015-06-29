@@ -24,7 +24,6 @@ namespace QqhrCitizen.Controllers
             return View();
         }
 
-
         #region 类型管理
         /// <summary>
         /// 类型管理
@@ -97,7 +96,6 @@ namespace QqhrCitizen.Controllers
         }
         #endregion
 
-
         #region 根据模块得到分类
         /// <summary>
         /// 根据模块得到分类
@@ -113,7 +111,6 @@ namespace QqhrCitizen.Controllers
             return Json(TypeDictionaries, JsonRequestBehavior.AllowGet);
         }
         #endregion
-
 
         #region 删除分类字典 一条数据
         /// <summary>
@@ -137,7 +134,6 @@ namespace QqhrCitizen.Controllers
             return Content("ok");
         }
         #endregion
-
 
         #region 修改类型字典
 
@@ -165,7 +161,6 @@ namespace QqhrCitizen.Controllers
         }
         #endregion
 
-
         #region 执行修改类型字典
         /// <summary>
         /// 执行修改类型字典
@@ -187,7 +182,7 @@ namespace QqhrCitizen.Controllers
             db.SaveChanges();
             return RedirectToAction("TypeManager");
         }
-        #endregion
+        
 
 
         public ActionResult UploadNewsImg(HttpPostedFileBase upload)
@@ -202,6 +197,7 @@ namespace QqhrCitizen.Controllers
             return Content("<script type=\"text/javascript\">window.parent.CKEDITOR.tools.callFunction(" + callback + ",'" + path + "')</script>");
 
         }
+        #endregion
 
         #region 新闻管理
         /// <summary>
@@ -246,7 +242,6 @@ namespace QqhrCitizen.Controllers
         }
         #endregion
 
-
         #region 分类根据父节点得到子节点
         /// <summary>
         ///  分类根据父节点得到子节点
@@ -260,8 +255,6 @@ namespace QqhrCitizen.Controllers
             return Json(types, JsonRequestBehavior.AllowGet);
         }
         #endregion
-
-
 
         #region 增加新闻
         /// <summary>
@@ -341,7 +334,6 @@ namespace QqhrCitizen.Controllers
         }
         #endregion
 
-
         #region 新闻修改
         /// <summary>
         /// 新闻修改
@@ -365,7 +357,6 @@ namespace QqhrCitizen.Controllers
             return View();
         }
         #endregion
-
 
         #region 执行修改新闻
         /// <summary>
@@ -403,8 +394,6 @@ namespace QqhrCitizen.Controllers
         }
         #endregion
 
-
-
         #region 课程管理
         /// <summary>
         /// 新闻管理
@@ -438,8 +427,6 @@ namespace QqhrCitizen.Controllers
         }
         #endregion
 
-
-
         #region 增加课程
         /// <summary>
         ///  增加新闻
@@ -454,7 +441,7 @@ namespace QqhrCitizen.Controllers
             ViewBag.Types = CourseTypes;
             return View();
         }
-        #endregion
+       
 
         [HttpPost]
         [ValidateSID]
@@ -474,6 +461,7 @@ namespace QqhrCitizen.Controllers
             db.SaveChanges();
             return RedirectToAction("CourseManager");
         }
+        #endregion
 
         #region 课程删除
         /// <summary>
@@ -517,6 +505,7 @@ namespace QqhrCitizen.Controllers
             return View();
         }
         #endregion
+
         #region 执行修改课程
         /// <summary>
         /// 执行修改新闻
@@ -555,7 +544,6 @@ namespace QqhrCitizen.Controllers
         }
         #endregion
 
-
         #region 资源链接
         /// <summary>
         /// 资源链接
@@ -586,6 +574,7 @@ namespace QqhrCitizen.Controllers
         }
         #endregion
 
+        #region 增加地址链接
         /// <summary>
         /// 增加链接
         /// </summary>
@@ -600,7 +589,7 @@ namespace QqhrCitizen.Controllers
             return View();
         }
 
-        #region 增加地址链接
+        
         /// <summary>
         ///  增加地址链接
         /// </summary>
@@ -685,7 +674,6 @@ namespace QqhrCitizen.Controllers
             return View();
         }
         #endregion
-
 
         #region 链接修改
         /// <summary>
@@ -774,7 +762,6 @@ namespace QqhrCitizen.Controllers
         }
         #endregion
 
-
         #region 电子书管理
         /// <summary>
         /// 电子书管理
@@ -803,7 +790,6 @@ namespace QqhrCitizen.Controllers
         }
         #endregion
 
-
         #region 增加电子书
         /// <summary>
         ///   增加电子书
@@ -819,7 +805,6 @@ namespace QqhrCitizen.Controllers
             return View();
         }
         #endregion
-
 
         #region 增加电子书
 
@@ -879,7 +864,6 @@ namespace QqhrCitizen.Controllers
 
         #endregion
 
-
         #region 删除电子书
         /// <summary>
         /// 删除电子书
@@ -904,7 +888,6 @@ namespace QqhrCitizen.Controllers
 
         #endregion
 
-
         #region 电子书详情
         /// <summary>
         ///  电子书详情
@@ -919,7 +902,6 @@ namespace QqhrCitizen.Controllers
             return View();
         }
         #endregion
-
 
         #region 电子书修改
         /// <summary>
@@ -983,7 +965,6 @@ namespace QqhrCitizen.Controllers
         }
         #endregion
 
-
         #region 增加课程
         /// <summary>
         /// 增加课程
@@ -1000,7 +981,6 @@ namespace QqhrCitizen.Controllers
             return View();
         }
         #endregion
-
 
         #region 创建课时
         /// <summary>
@@ -1028,7 +1008,6 @@ namespace QqhrCitizen.Controllers
         }
         #endregion
 
-
         #region 课程删除
         /// <summary>
         /// 课程删除
@@ -1049,7 +1028,6 @@ namespace QqhrCitizen.Controllers
         }
         #endregion
 
-
         #region 课时编辑
         /// <summary>
         ///  课时编辑
@@ -1066,7 +1044,6 @@ namespace QqhrCitizen.Controllers
             return View();
         }
         #endregion
-
 
         #region 课时修改
         /// <summary>
@@ -1099,8 +1076,7 @@ namespace QqhrCitizen.Controllers
         }
         #endregion
 
-
-        #region LessionShow
+        #region 课时显示
         /// <summary>
         /// 课程显示
         /// </summary>
@@ -1113,7 +1089,6 @@ namespace QqhrCitizen.Controllers
             return View();
         }
         #endregion
-
 
         #region 删除问题
         /// <summary>
@@ -1133,7 +1108,6 @@ namespace QqhrCitizen.Controllers
         }
         #endregion
 
-
         #region 增加问题
         /// <summary>
         /// 增加问题
@@ -1148,7 +1122,6 @@ namespace QqhrCitizen.Controllers
             return View();
         }
         #endregion
-
 
         #region 增加问题
         /// <summary>
@@ -1183,6 +1156,7 @@ namespace QqhrCitizen.Controllers
 
         #endregion
 
+        #region 显示问题
         /// <summary>
         /// 显示问题
         /// </summary>
@@ -1195,6 +1169,7 @@ namespace QqhrCitizen.Controllers
             ViewBag.Question = new vQuestion(question);
             return View();
         }
+        #endregion 
 
         #region 管理员管理
         /// <summary>
@@ -1236,7 +1211,7 @@ namespace QqhrCitizen.Controllers
         }
         #endregion
 
-        #region ManagerDelete
+        #region 管理员删除
         /// <summary>
         ///  删除管理员
         /// </summary>
@@ -1269,7 +1244,7 @@ namespace QqhrCitizen.Controllers
         }
         #endregion
 
-        #region MyRegion
+        #region 管理员密码重置
         /// <summary>
         ///  管理员密码重置
         /// </summary>
@@ -1303,8 +1278,6 @@ namespace QqhrCitizen.Controllers
             return Redirect("/Admin/ManagerManage");
         }
         #endregion
-
-
 
         #region 角色重置
 
@@ -1341,6 +1314,7 @@ namespace QqhrCitizen.Controllers
         }
         #endregion
 
+        #region 管理员消息
         /// <summary>
         ///  消息
         /// </summary>
@@ -1351,8 +1325,9 @@ namespace QqhrCitizen.Controllers
             ViewBag.Msg = msg;
             return View();
         }
+        #endregion
 
-
+        #region Word转换Html
         private string NewsWordToHtml(string wordFileName, string fileName)
         {
             Aspose.Words.Document d = new Aspose.Words.Document(wordFileName);
@@ -1370,7 +1345,9 @@ namespace QqhrCitizen.Controllers
                 return Server.MapPath(".." + filePhysicalPath + fileName + ".html");
             }
         }
+        #endregion
 
+        #region 首页轮播管理
         /// <summary>
         ///  首页轮播管理
         /// </summary>
@@ -1380,6 +1357,7 @@ namespace QqhrCitizen.Controllers
             ViewBag.Viwepagers = db.Viewpagers.ToList();
             return View();
         }
+        #endregion
 
         #region 增加轮播
         [HttpGet]
@@ -1452,8 +1430,7 @@ namespace QqhrCitizen.Controllers
         }
         #endregion
 
-
-        #region M删除轮播yRegion
+        #region 删除轮播
         // <summary>
         /// 删除轮播
         /// </summary>
@@ -1467,7 +1444,6 @@ namespace QqhrCitizen.Controllers
             return Content("ok");
         }
         #endregion
-
 
         #region 导航管理
         /// <summary>
@@ -1488,6 +1464,24 @@ namespace QqhrCitizen.Controllers
         public ActionResult AddNavigation()
         {
             return View();
+        }
+
+        [HttpPost]
+        [ValidateInput(false)]
+        public ActionResult AddNavigation(Navigation model)
+        {
+            Navigation nav = new Navigation();
+            nav.Title = model.Title;
+            nav.Url = model.Url;
+            if (nav.Url==null)
+            {
+                nav.Url = "Null";
+            }
+            nav.Km_st_Id="Null";
+            nav.Nav_Id = "topmenu_"+model.Nav_Id;
+            db.Navigations.Add(nav);
+            db.SaveChanges();
+            return RedirectToAction("NavigationManager");
         }
     }
 }

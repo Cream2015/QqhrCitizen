@@ -1,0 +1,55 @@
+﻿@using QqhrCitizen.Models
+@{
+    ViewBag.Title = "导航管理";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<div class="result-title">
+    <h1 class="head-tietle">增加导航</h1>
+</div>
+
+@using (Html.BeginForm("AddNavigation", "Admin", FormMethod.Post))
+{
+    @Html.AntiForgerySID()
+    <table class="detail-table">
+        <tr>
+            <td>标题</td>
+            <td>
+                <input class="textbox w-3" name="Title" />
+            </td>
+        </tr>
+        <tr>
+            <td>Url</td>
+            <td>
+                <input class="textbox w-3" name="Url" id="Url" style="margin-right:20px"/><input type="checkbox" id="tf_url" checked="checked"/>首页导航栏显示<br>
+                <span id="Url_demo">(例如: /Home/Index)</span>
+            </td>
+        </tr>
+        <tr>
+            <td>标注</td>
+            <td>
+                <input class="textbox w-3" name="Nav_Id" />
+            </td>
+        </tr>
+    </table>
+    <p><input type="submit" value="增加" class="button blue" /></p>
+}
+<script>
+    $("#tf_url").click(function () {
+        if ($(this).attr("checked"))
+        {
+            $(this).removeAttr("checked");
+            $("#Url").hide();
+            $("#Url_demo").hide();
+            $("#Url").val("Null");
+        }
+        else
+        {
+            $("#Url").val("");
+            $(this).attr("checked", 'true');
+            $("#Url").show();
+            $("#Url_demo").show();
+        }
+    });
+</script>
+
+

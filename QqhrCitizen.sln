@@ -1,13 +1,15 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.22823.1
+# Visual Studio 2013
+VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QqhrCitizen", "QqhrCitizen\QqhrCitizen.csproj", "{EBC15E1B-6694-4EB1-B8DA-30DAC6932AA0}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QqhrCitizen.Tests", "QqhrCitizen.Tests\QqhrCitizen.Tests.csproj", "{38082C04-C11E-4375-9339-227F91B1E0DB}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QqhrCitizenExport", "QqhrCitizenExport\QqhrCitizenExport.csproj", "{7EF0C535-6F0C-4460-84A5-44E30F8E383B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SqlToSql", "SqlToSql\WpfApplication2\SqlToSql.csproj", "{AF589CA1-FC22-48B5-BE6A-CA3B3864F265}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +29,10 @@ Global
 		{7EF0C535-6F0C-4460-84A5-44E30F8E383B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7EF0C535-6F0C-4460-84A5-44E30F8E383B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7EF0C535-6F0C-4460-84A5-44E30F8E383B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AF589CA1-FC22-48B5-BE6A-CA3B3864F265}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AF589CA1-FC22-48B5-BE6A-CA3B3864F265}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AF589CA1-FC22-48B5-BE6A-CA3B3864F265}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AF589CA1-FC22-48B5-BE6A-CA3B3864F265}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
