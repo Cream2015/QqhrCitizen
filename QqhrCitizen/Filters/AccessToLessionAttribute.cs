@@ -41,12 +41,24 @@ namespace QqhrCitizen.Filters
                             {
                                 break;
                             }
-                            LessionScore lesssionScore = db.LessionScores.Where(ls => ls.LessionId == i - 1).OrderBy(ls => ls.Time).OrderByDescending(ls=>ls.Time).FirstOrDefault();
-                            if (!lesssionScore.IsPassTest)
+                            int tempId = lessions[i - 1].ID;
+                            
+                            LessionScore lesssionScore = db.LessionScores.Where(ls => ls.LessionId == tempId).OrderByDescending(ls=>ls.Time).FirstOrDefault();
+
+                            if (lesssionScore == null)
                             {
                                 msg = "请先完成上一节的测试，在学习该节";
                                 return false;
                             }
+                            else
+                            {
+                                if (!lesssionScore.IsPassTest)
+                                {
+                                    msg = "请先完成上一节的测试，在学习该节";
+                                    return false;
+                                }
+                            }
+                           
                         }
                     }
                 }
