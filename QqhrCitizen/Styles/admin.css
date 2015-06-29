@@ -135,3 +135,12 @@
 .table tbody tr:hover a {
     color: #fff;
 }
+
+
+.head-tietle {
+    font-size:20px;
+}
+
+    .head-tietle a {
+      font-size:12px;
+    }

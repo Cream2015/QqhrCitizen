@@ -15,7 +15,7 @@
     <script src="~/Scripts/jquery-1.11.3.min.js"></script>
     <script src="~/Scripts/ckeditor/ckeditor.js"></script>
     <script src="~/Scripts/citizen.admin.js"></script>
-   
+    <script src="~/Scripts/jquery.datetimepicker.js"></script>
 </head>
 <body>
     <div class="topbar-wrap white">
@@ -46,13 +46,6 @@
             </div>
             <div class="sidebar-content">
                 <ul class="sidebar-list">
-                    <li>
-                        <a href="#"><i class="icon-font">&#xe003;</i>分类管理</a>
-                        <ul class="sub-menu">
-                            <li><a href="/Admin/TypeManager"><i class="icon-font">&#xe008;</i>分类管理</a></li>
-                            <li><a href="/Admin/AddType"><i class="icon-font">&#xe005;</i>增加分类</a></li>
-                        </ul>
-                    </li>
                     @if (user.Role == Role.Admin || user.Role == Role.NewsManager)
                     {
                         <li>
@@ -60,7 +53,7 @@
                             <ul class="sub-menu">
                                 <li><a href="/Admin/NewsManager"><i class="icon-font">&#xe017;</i>新闻管理</a></li>
                                 <li><a href="/Admin/AddNews"><i class="icon-font">&#xe037;</i>增加新闻</a></li>
-                                <li><a href="/Admin/NewsTypeManager">分类管理</a></li>
+                                <li><a href="/Admin/TypeManager?type=0"><i class="icon-font">&#xe037;</i>分类管理</a></li>
                             </ul>
                         </li>
                     }
@@ -71,6 +64,7 @@
                             <ul class="sub-menu">
                                 <li><a href="/Admin/CourseManager"><i class="icon-font">&#xe017;</i>课程管理</a></li>
                                 <li><a href="/Admin/AddCourse"><i class="icon-font">&#xe037;</i>增加课程</a></li>
+                                <li><a href="/Admin/TypeManager?type=4"><i class="icon-font">&#xe037;</i>分类管理</a></li>
                             </ul>
                         </li>
                     }
@@ -81,6 +75,7 @@
                             <ul class="sub-menu">
                                 <li><a href="/Admin/EBookManager"><i class="icon-font">&#xe017;</i>电子书管理</a></li>
                                 <li><a href="/Admin/AddEBook"><i class="icon-font">&#xe037;</i>增加电子书</a></li>
+                                <li><a href="/Admin/TypeManager?type=3"><i class="icon-font">&#xe037;</i>分类管理</a></li>
                             </ul>
                         </li>
                     }
@@ -91,6 +86,7 @@
                             <ul class="sub-menu">
                                 <li><a href="/Admin/LinkManager"><i class="icon-font">&#xe017;</i>链接管理</a></li>
                                 <li><a href="/Admin/AddLink"><i class="icon-font">&#xe037;</i>增加链接</a></li>
+                                <li><a href="/Admin/TypeManager?type=2"><i class="icon-font">&#xe037;</i>分类管理</a></li>
                             </ul>
                         </li>
                     }
@@ -105,18 +101,6 @@
                             </ul>
                         </li>
                     }
-                    @if (user.Role == Role.Admin)
-                    {
-
-                        <li>
-                            <a href="#"><i class="icon-font">&#xe018;</i>轮播管理</a>
-                            <ul class="sub-menu">
-                                <li><a href="/Admin/ViwepagerManager"><i class="icon-font">&#xe017;</i>轮播管理</a></li>
-                                <li><a href="/Admin/AddViwepager"><i class="icon-font">&#xe037;</i>增加轮播</a></li>
-                            </ul>
-                        </li>
-                    }
-
                     @if (user.Role == Role.Admin)
                     {
 

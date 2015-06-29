@@ -7,7 +7,7 @@
 
 <div>
     <div class="result-title">
-        <h1>修改电子书</h1>
+        <h1 class="head-tietle">@book.Title 修改电子书</h1>
     </div>
     @using (Html.BeginForm("EBookEdit", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
     {
@@ -58,6 +58,7 @@
             </tr>
         </table>
         <p><input type="submit" value="保存" class="button blue" /></p>
+         <p><input type="submit" value="保存" class="button blue" /></p>
     }
 </div>
 

@@ -2,10 +2,11 @@
 @{
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
     vEBook book = ViewBag.EBook as vEBook;
-    ViewBag.Title =  book.Title;
+    ViewBag.Title = book.Title;
 }
 
-<h2>电子书详情 <a href="/Admin/EBookEdit/@book.ID">修改电子书</a></h2>
+
+<h2 class="head-tietle">@book.Title - 图书详细  <a href="/Admin/EBookEdit/@book.ID">修改</a></h2>
 
 <table class="detail-table">
     <tr>

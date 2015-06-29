@@ -6,7 +6,7 @@
 }
 
 <div>
-    <h2>增加课时</h2>
+    <h2 class="head-tietle">@course.Title - 增加课时</h2>
     @using (Html.BeginForm("AddLession", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
     {
         @Html.AntiForgerySID()

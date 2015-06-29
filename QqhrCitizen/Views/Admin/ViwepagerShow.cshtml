@@ -1,13 +1,45 @@
-﻿<!DOCTYPE html>
+﻿@using QqhrCitizen.Models.ViewModel
+@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    Viewpager viwepager = ViewBag.ViwepagerShow;
+    ViewBag.Title = viwepager.Title;
+}
 
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>@ViewBag.Title</title>
-</head>
-<body>
-    <div>
-        @RenderBody()
-    </div>
-</body>
-</html>
+<h1 class="head-tietle">@viwepager.Title - 轮播展示 <a href="/Admin/AddViwepager">增加</a></h1>
+<table class="detail-table">
+    <tr>
+        <td class="row-title">标题</td>
+        <td>
+            @viwepager.Title
+        </td>
+    </tr>
+    <tr>
+        <td class="row-title">
+            描述
+        </td>
+        <td>
+            @viwepager.Subtitle
+        </td>
+    </tr>
+    <tr>
+        <td class="row-title">
+            Url
+        </td>
+        <td>
+            @viwepager.Url
+        </td>
+    </tr>
+    <tr>
+        <td class="row-title">
+            优先级
+        </td>
+        <td>
+            @viwepager.Priority
+        </td>
+    </tr>
+    <tr>
+        <td class="row-title">
+            图片
+        </td>
+    </tr>
+</table>

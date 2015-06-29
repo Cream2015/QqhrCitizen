@@ -5,7 +5,7 @@
     ViewBag.Title = course.Title;
 }
 
-<h2>课程详细  <a href="/Admin/CoursesEdit/@course.ID">修改</a></h2>
+<h2 class="head-tietle">@course.Title - 课程详细  <a href="/Admin/CoursesEdit/@course.ID">修改</a></h2>
 
 <table class="detail-table">
     <tr>
@@ -80,7 +80,6 @@
                             <a href="/Admin/LessionEdit/@item.ID">修改</a>
                         </td>
                     </tr>
-
                 }
             }
         </tbody>
