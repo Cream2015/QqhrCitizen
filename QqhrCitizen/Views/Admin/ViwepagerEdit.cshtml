@@ -1,13 +1,33 @@
-﻿<!DOCTYPE html>
+﻿@using QqhrCitizen.Models
+@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    ViewPage viwepaher = ViewBag.ViwepaherShow;
+    ViewBag.Title = viwepaher.Title;
+}
 
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>@ViewBag.Title</title>
-</head>
-<body>
-    <div>
-        @RenderBody()
+<div>
+    <div class="result-title">
+        <h1 class="head-tietle">@viwepaher.Title - 导航修改</h1>
     </div>
-</body>
-</html>
+    @using (Html.BeginForm("NavigationEdit", "Admin", FormMethod.Post))
+    {
+        @Html.AntiForgerySID()
+        <input value="@viwepaher.ID" type="hidden" name="ID" />
+        <table class="detail-table">
+            <tr>
+                <td class="row-title">标题</td>
+                <td>
+                    <input class="textbox w-3" value="@viwepaher.Title" name="Title">
+                </td>
+            </tr>
+            <tr>
+                <td class="row-title">Url</td>
+                <td>
+                    <input class="textbox w-3" value="@viwepaher.Url" name="Url">
+                </td>
+            </tr>
+        </table>
+
+        <p><input type="submit" value="保存" class="button blue" /></p>
+    }
+</div>

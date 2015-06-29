@@ -1,7 +1,7 @@
 ﻿@using QqhrCitizen.Models
 @{
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
-    Navigation navigation = ViewBag.NavigationShow as Navigations;
+    Navigation navigation = ViewBag.NavigationShow;
     ViewBag.Title = navigation.Title;
 }
 
@@ -17,13 +17,13 @@
             <tr>
                 <td class="row-title">标题</td>
                 <td>
-                    @Html.HiddenFor(modal => modal.Title, new { @Value = navigation.Title ,@class="textbox w-3"})
+                    <input class="textbox w-3" value="@navigation.Title" name="Title">
                 </td>
             </tr>
             <tr>
                 <td class="row-title">Url</td>
                 <td>
-                   @Html.HiddenFor(modal => modal.Url, new { @Value = navigation.Url, @class = "textbox w-3" })
+                    <input class="textbox w-3" value="@navigation.Url" name="Url">
                 </td>
             </tr>
         </table>
