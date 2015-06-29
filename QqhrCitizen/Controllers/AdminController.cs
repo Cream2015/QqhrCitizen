@@ -1394,7 +1394,7 @@ namespace QqhrCitizen.Controllers
 
         #region 修改轮播
         [HttpGet]
-        public ActionResult ViwepagerkEdit(int id)
+        public ActionResult ViwepagerEdit(int id)
         {
             ViewBag.ViwepaherShow = db.Viewpagers.Find(id);
             return View();
