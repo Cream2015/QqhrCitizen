@@ -17,6 +17,8 @@ using System.Data;
 using System.Globalization;
 using System.Security.Cryptography;
 using System.Threading;
+using System.Net;
+using System.IO;
 
 namespace WpfApplication2
 {
@@ -301,5 +303,18 @@ namespace WpfApplication2
             string citizen_connStr = radiobt_1.IsChecked == true ? radio_1 : radio_2;
             txtuser.Text = Sqlhelp.ExecuteScalar("insert into Users (Username,password,Age,SexAsInt,RoleAsInt,Score) values ('fanfzj','"+Md5("6yhn6yhn")+"','20','1','1','1000')", citizen_connStr).ToString();
         }
+
+        private void Button_Click_4(object sender, RoutedEventArgs e)
+        {
+            string PageUrl = UrlText.Text;
+            WebRequest request = WebRequest.Create(PageUrl);
+            WebResponse response = request.GetResponse();
+            Stream resStream = response.GetResponseStream();
+            StreamReader sr = new StreamReader(resStream, System.Text.Encoding.Default);
+            ShowSqlNumber.Text = sr.ReadToEnd();
+            resStream.Close();
+            sr.Close();
+        }
+
     }
 }

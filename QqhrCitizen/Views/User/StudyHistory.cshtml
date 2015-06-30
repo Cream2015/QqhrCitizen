@@ -38,20 +38,17 @@
                         {
                             foreach (var item in ViewBag.Records as List<StudyRecord>)
                             {
-                                <div class="item">
-                                    <div class="content">
-                                        <div class="info">
-                                            所属课程：<span>@item.Lession.Course.Title</span>
-                                        </div>
-                                        <div class="stat">
-                                            所属课时：<span>@item.Lession.Title</span>
-                                        </div>
-                                        <div class="date">
-                                            时间：<span>@item.Time</span>
-                                        </div>
+                                <div class="item study">
+                                    <div class="title">
+                                        <a href="/Courese/LessionDetails/@item.Lession.Course.ID">@item.Lession.Course.Title</a>
+                                    </div>
+                                    <div class="info">
+                                        <span class="lesson_time">@item.Lession.Title</span>
+                                    </div>
+                                    <div class="date" style="padding: 0 0 0 50px;">
+                                        时间：<span>@item.Time</span>
                                     </div>
                                 </div>
-                                <hr />
                             }
                         }
                     </div>

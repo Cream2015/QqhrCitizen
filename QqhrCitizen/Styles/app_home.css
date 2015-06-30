@@ -404,7 +404,7 @@ h3 {
 }
 
 h4 {
-    font-size: 15px;
+    font-size: 17px;
     margin: .6em 0;
 }
 
@@ -651,7 +651,7 @@ table.tbl-hover tbody tr:hover > td {
         margin: 0 2px 0 0;
         padding: 0 6px;
         text-align: center;
-        font-size: 13px;
+        font-size: 15px;
         text-decoration: none;
     }
 
@@ -685,7 +685,7 @@ table.tbl-hover tbody tr:hover > td {
 
     .pagination-a table td, .pagination-a table th {
         border: 0;
-        font-size: 13px;
+        font-size: 15px;
     }
 
     .pagination-a table .l {
@@ -698,7 +698,7 @@ table.tbl-hover tbody tr:hover > td {
     }
 
     .pagination-a table .btn {
-        font-size: 13px;
+        font-size: 15px;
     }
 
     .pagination-a table span, .pagination-a table a {
@@ -716,7 +716,7 @@ table.tbl-hover tbody tr:hover > td {
         min-height: 30px;
         line-height: 30px;
         padding: 0 170px 0 0;
-        font-size: 13px;
+        font-size: 15px;
     }
 
     .filelist .status {
@@ -727,7 +727,7 @@ table.tbl-hover tbody tr:hover > td {
         right: 60px;
         width: 120px;
         padding: 0 10px 0 0;
-        font-size: 13px;
+        font-size: 15px;
         color: #999;
         text-align: right;
     }
@@ -739,7 +739,7 @@ table.tbl-hover tbody tr:hover > td {
         top: 0;
         right: 0;
         width: 40px;
-        font-size: 13px;
+        font-size: 15px;
         text-align: right;
     }
 
@@ -785,7 +785,7 @@ table.tbl-hover tbody tr:hover > td {
         background-color: orange;
         cursor: pointer;
         color: #fff;
-        font-size: 13px;
+        font-size: 15px;
     }
 
 label {
@@ -815,7 +815,7 @@ input {
 input {
     height: 27px;
     line-height: 27px;
-    font-size: 13px;
+    font-size: 15px;
 }
 
 .input-big {
@@ -827,7 +827,7 @@ input {
 .input-small {
     height: 22px;
     line-height: 22px;
-    font-size: 13px;
+    font-size: 15px;
 }
 
 .int-hs_d {
@@ -857,7 +857,7 @@ select {
     -webkit-appearance: none;
     -moz-appearance: none;
     vertical-align: middle;
-    font-size: 13px;
+    font-size: 15px;
 }
 
 .select-big {
@@ -891,7 +891,7 @@ select {
         border: 1px solid #eed3d7;
         padding: 0 8px;
         line-height: 27px;
-        font-size: 13px;
+        font-size: 15px;
     }
 
 label.inline {
@@ -958,7 +958,7 @@ label.block {
 .btn {
     height: 27px;
     line-height: 27px;
-    font-size: 13px;
+    font-size: 15px;
 }
 
 .btn-big {
@@ -970,7 +970,7 @@ label.block {
 .btn-small {
     height: 22px;
     line-height: 22px;
-    font-size: 13px;
+    font-size: 15px;
     padding: 0 5px;
 }
 
@@ -1109,7 +1109,7 @@ label.block {
         margin: 8px 0 0;
         height: 23px;
         color: #333;
-        font-size: 15px;
+        font-size: 17px;
         z-index: 9;
     }
 
@@ -1202,7 +1202,7 @@ label.block {
 
         #flalert .area .c, #flmpaper_grey .area .c, #flmpaper_white .area .c {
             padding: 20px 20px 20px 30px;
-            font-size: 13px;
+            font-size: 15px;
         }
 
 #lockLayer {
@@ -1221,7 +1221,7 @@ label.block {
 .msgbox-info {
     padding: 0 20px 2;
     line-height: 25px;
-    font-size: 15px;
+    font-size: 17px;
     background-color: #d5e8f3;
     background-image: url(msgbox-info.png);
     background-position: right top;
@@ -1231,7 +1231,7 @@ label.block {
 .msgbox-alert {
     padding: 0 20px 2;
     line-height: 25px;
-    font-size: 15px;
+    font-size: 17px;
     background-color: #eaedef;
     background-image: url(msgbox-alert.png);
     background-position: right top;
@@ -1365,7 +1365,7 @@ table.caltbl {
 
 .calendar-int .txt-t {
     display: inline-block;
-    font-size: 13px;
+    font-size: 15px;
     height: 30px;
     line-height: 30px;
     cursor: pointer;
@@ -1373,7 +1373,7 @@ table.caltbl {
 }
 
 .calendar-int input[type=text] {
-    font-size: 13px;
+    font-size: 15px;
 }
 
 .div_cal {
@@ -1475,11 +1475,11 @@ div {
         .d-footer .d-footer-c .l {
             float: left;
             text-align: left;
-            font-size: 13px;
+            font-size: 15px;
         }
 
             .d-footer .d-footer-c .l span {
-                font-size: 13px;
+                font-size: 15px;
             }
 
         .d-footer .d-footer-c .r {
@@ -1488,7 +1488,7 @@ div {
         }
 
             .d-footer .d-footer-c .r div {
-                font-size: 13px;
+                font-size: 15px;
             }
 
 .d-row {
@@ -1660,7 +1660,7 @@ div {
         height: 22px;
         line-height: 22px;
         text-align: center;
-        font-size: 13px;
+        font-size: 15px;
         color: #000;
         background-color: #f9edbe;
         border: 1px solid #f0c36d;
@@ -1674,7 +1674,7 @@ div {
         height: 30px;
         line-height: 30px;
         text-align: left;
-        font-size: 15px;
+        font-size: 17px;
     }
 
     .d-feedback-widget .btn-close {
@@ -1734,7 +1734,7 @@ div {
     }
 
         .d-feedback-widget .feedback-ctrl select {
-            font-size: 13px;
+            font-size: 15px;
             text-align: center;
             width: 270px;
             padding: 0 0 0 4px;
@@ -1750,7 +1750,7 @@ div {
         }
 
         .d-feedback-widget .feedback-ctrl a {
-            font-size: 13px;
+            font-size: 15px;
         }
 
     .d-feedback-widget .d-userinfo {
@@ -1777,11 +1777,11 @@ div {
     text-align: center;
     color: #fff;
     background-color: #777;
-    font-size: 13px;
+    font-size: 15px;
 }
 
     .d-browserchk a {
-        font-size: 13px;
+        font-size: 15px;
     }
 
 .d-bull {
@@ -1789,7 +1789,7 @@ div {
     padding: 10px 40px;
     background-color: #777;
     color: #fff;
-    font-size: 13px;
+    font-size: 15px;
     letter-spacing: 1px;
     text-align: left;
 }
@@ -1798,7 +1798,7 @@ div {
         line-height: 22px;
         text-indent: 28px;
         color: #fff;
-        font-size: 13px;
+        font-size: 15px;
         letter-spacing: 1px;
     }
 
@@ -2012,7 +2012,7 @@ div {
                 line-height: 27px;
                 margin: 0;
                 display: block;
-                font-size: 13px;
+                font-size: 15px;
                 cursor: pointer;
                 border: 0;
                 color: #777;
@@ -2046,7 +2046,7 @@ div {
             margin: 8px 0 0 -1px;
             display: inline-block;
             color: #676767;
-            font-size: 13px;
+            font-size: 15px;
             border: 0;
         }
 
@@ -2089,7 +2089,7 @@ div {
             width: 100px;
             height: 20px;
             line-height: 20px;
-            font-size: 13px;
+            font-size: 15px;
             color: #aaa;
             text-align: right;
         }
@@ -2139,7 +2139,7 @@ div {
             .d-headerhome .d-search .clsdrop .item {
                 padding: 10px;
                 cursor: pointer;
-                font-size: 13px;
+                font-size: 15px;
             }
 
 .d-headmenu {
@@ -2259,7 +2259,7 @@ div {
             width: 40px;
             height: 30px;
             line-height: 30px;
-            font-size: 13px;
+            font-size: 15px;
             font-weight: 700;
             text-align: left;
             color: #fff;
@@ -2283,7 +2283,7 @@ div {
             }
 
                 .d-headmenusub .body .box .item a {
-                    font-size: 13px;
+                    font-size: 15px;
                     color: #666;
                 }
 
@@ -2380,7 +2380,7 @@ div {
                 text-align: center;
                 background-color: red;
                 color: #fff;
-                font-size: 13px;
+                font-size: 15px;
                 cursor: pointer;
             }
 
@@ -2489,7 +2489,7 @@ div {
             border-right: 1px solid #6d6d6d;
             background-color: transparent;
             text-align: center;
-            font-size: 13px;
+            font-size: 15px;
             cursor: pointer;
         }
 
@@ -2568,7 +2568,7 @@ div {
             margin: 8px 0 0;
             padding: 0 12px;
             text-align: center;
-            font-size: 13px;
+            font-size: 15px;
             cursor: pointer;
             background-color: transparent;
             border-left: 1px solid #595959;
@@ -2727,7 +2727,7 @@ div {
             line-height: 20px;
             padding: 3px 0;
             margin: 15px 0 0;
-            font-size: 15px;
+            font-size: 17px;
             text-align: center;
             color: #666;
             text-decoration: none;
@@ -2819,7 +2819,7 @@ div {
                     height: 16px;
                     line-height: 16px;
                     padding: 0 10px 0 22px;
-                    font-size: 13px;
+                    font-size: 15px;
                     background-image: url(/Images/icon-courserecommendbyday.png);
                     background-position: 0 0;
                     background-repeat: no-repeat;
@@ -2959,7 +2959,7 @@ div {
                 }
 
                     .d-eventrecommend .body .slidecontainer .itemhot .title a {
-                        font-size: 13px;
+                        font-size: 15px;
                         color: #fff;
                         text-decoration: none;
                     }
@@ -3027,7 +3027,7 @@ div {
                 }
 
                     .d-eventrecommend .body .slidecontainer .item .title a {
-                        font-size: 13px;
+                        font-size: 15px;
                         text-decoration: none;
                     }
 
@@ -3103,7 +3103,7 @@ div {
                     height: 30px;
                     line-height: 30px;
                     padding: 0 8px;
-                    font-size: 13px;
+                    font-size: 15px;
                     color: #fff;
                     text-decoration: none;
                 }
@@ -3141,7 +3141,7 @@ div {
                 height: 213px;
                 margin: 0 10px 24px 0;
                 float: left;
-                font-size: 13px;
+                font-size: 15px;
             }
 
                 .d-bookrecommend .body .slidecontainer .item .cover {
@@ -3167,7 +3167,7 @@ div {
                     width: 110px;
                     height: 16px;
                     line-height: 16px;
-                    font-size: 13px;
+                    font-size: 15px;
                     color: #222;
                 }
 
@@ -3214,7 +3214,7 @@ div {
             }
 
                 .d-grouprecommend .body .item .name a {
-                    font-size: 13px;
+                    font-size: 15px;
                     color: #fff;
                     text-decoration: none;
                 }
@@ -3409,7 +3409,7 @@ div {
                 }
 
                     .d-maprecommend .body .slidecontainer .itemhot .title a {
-                        font-size: 13px;
+                        font-size: 15px;
                         color: #ff9a3d;
                         text-decoration: none;
                     }
@@ -3518,7 +3518,7 @@ div {
                 }
 
                     .d-maprecommend .body .slidecontainer .item .title a {
-                        font-size: 13px;
+                        font-size: 15px;
                         text-decoration: none;
                     }
 
@@ -3626,7 +3626,7 @@ div {
             display: block;
             padding: 0 0 0 58px;
             line-height: 20px;
-            font-size: 13px;
+            font-size: 15px;
             text-align: justify;
             text-justify: inter-ideograph;
         }
@@ -3637,7 +3637,7 @@ div {
             padding: 0 0 0 58px;
             height: 20px;
             line-height: 20px;
-            font-size: 13px;
+            font-size: 15px;
         }
 
         .d-sharerecentshared .body .item .portrait {
@@ -3675,7 +3675,7 @@ div {
         position: absolute;
         top: 0;
         right: 0;
-        font-size: 13px;
+        font-size: 15px;
         color: #999;
     }
 
@@ -3699,7 +3699,7 @@ div {
         display: block;
         height: 14px;
         line-height: 14px;
-        font-size: 13px;
+        font-size: 15px;
         color: #999;
         padding: 0 0 0 58px;
     }
@@ -3708,7 +3708,7 @@ div {
         display: block;
         height: 14px;
         line-height: 14px;
-        font-size: 13px;
+        font-size: 15px;
         color: #999;
         padding: 0 0 0 58px;
     }
@@ -3735,7 +3735,7 @@ div {
         position: absolute;
         top: 0;
         right: 0;
-        font-size: 13px;
+        font-size: 15px;
         color: #999;
     }
 
@@ -3759,7 +3759,7 @@ div {
         display: none;
         height: 14px;
         line-height: 14px;
-        font-size: 13px;
+        font-size: 15px;
         color: #999;
         padding: 0 0 0 58px;
         margin: 0 10px 0 0;
@@ -3769,7 +3769,7 @@ div {
         display: none;
         height: 14px;
         line-height: 14px;
-        font-size: 13px;
+        font-size: 15px;
         color: #999;
     }
 
@@ -3808,7 +3808,7 @@ div {
             height: 30px;
             line-height: 30px;
             text-align: center;
-            font-size: 13px;
+            font-size: 15px;
             color: #474747;
             text-decoration: none;
         }
@@ -4107,7 +4107,7 @@ div {
         }
 
             .d-signin .body .d-submit .btn {
-                font-size: 15px;
+                font-size: 17px;
             }
 
         .d-signin .body .d-sign {
@@ -4119,13 +4119,13 @@ div {
 .d-signup .head {
     height: 65px;
     line-height: 65px;
-    font-size: 15px;
+    font-size: 17px;
     color: #00a000;
 }
 
 .d-signup .body .tbl td div {
     line-height: 40px;
-    font-size: 13px;
+    font-size: 15px;
 }
 
     .d-signup .body .tbl td div .text {

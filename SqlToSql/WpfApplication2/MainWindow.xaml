@@ -6,7 +6,7 @@
         <Button Content="新闻信息" HorizontalAlignment="Left" Height="41" Margin="28,20,0,0" VerticalAlignment="Top" Width="125" Click="Button_Click"/>
         <Button Content="课程信息" HorizontalAlignment="Left" Height="40" Margin="28,75,0,0" VerticalAlignment="Top" Width="125" Click="Button_Click_1"/>
         <Button Content="导航栏" HorizontalAlignment="Left" Height="38" Margin="28,130,0,0" VerticalAlignment="Top" Width="125" Click="Button_Click_2"/>
-        <TextBlock x:Name="ShowSqlNumber" HorizontalAlignment="Left" Height="289" Margin="182,20,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Width="325"/>
+        <TextBlock x:Name="ShowSqlNumber" HorizontalAlignment="Left" Height="257" Margin="182,10,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="325"/>
         <RadioButton x:Name="radiobt_1" Content="42.96.129.28(nele)" HorizontalAlignment="Left" Height="23" Margin="28,222,0,0" VerticalAlignment="Top" Width="149"/>
         <RadioButton x:Name="radiobt_2" GroupName="IP" Content="218.8.130.134(qqhr)" HorizontalAlignment="Left" Height="22" Margin="28,245,0,0" VerticalAlignment="Top" Width="149"/>
         <TextBox x:Name="txtuser" HorizontalAlignment="Left" Height="18" Margin="86,267,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="67"/>
@@ -14,6 +14,9 @@
         <TextBox HorizontalAlignment="Left" TextAlignment="Center" Height="18" Margin="28,267,0,0" TextWrapping="Wrap" Text="管理员id:" VerticalAlignment="Top" Width="58"/>
         <TextBox HorizontalAlignment="Left" TextAlignment="Center" Height="19" Margin="28,290,0,0" TextWrapping="Wrap" Text="类别id:" VerticalAlignment="Center" Width="58" />
         <Button Content="增加用户" HorizontalAlignment="Left" Height="35" Margin="28,182,0,0" VerticalAlignment="Top" Width="125" Click="Button_Click_3"/>
+        <Button Content="检测网站" HorizontalAlignment="Left" Height="29" Margin="182,279,0,0" VerticalAlignment="Top" Width="113" Click="Button_Click_4"/>
+        <TextBox x:Name="UrlText" HorizontalAlignment="Left" Height="20" Margin="373,279,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="134"/>
+        <TextBlock HorizontalAlignment="Left" Height="20" Margin="312,279,0,0" TextWrapping="Wrap" Text="网站Url：" VerticalAlignment="Top" Width="61"/>
 
 
     </Grid>

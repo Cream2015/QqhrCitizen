@@ -168,7 +168,7 @@
 
     function onunload_handler() {
         var user = $("#hdCurrentuser").val();
-        alert(user);
+        //alert(user);
         if (user != null && user != "") {
             $.post("/Course/LearningRecord/@lession.ID", function (data) {
             });

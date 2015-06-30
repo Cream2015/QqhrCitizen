@@ -32,26 +32,21 @@
                     <div class="body ctnt" style="display: block;">
                         @if (ViewBag.Notes == null)
                         {
-                            <p style="text-align: center; font-size:13px;">对不起，未找到相关课程记录。</p>
+                            <p style="text-align: center; font-size:13px;">对不起，未找到相关课程笔记。</p>
                         }
                         else
                         {
                             foreach (var item in ViewBag.Notes as List<Note>)
                             {
                                 <div class="item">
-                                    <div class="content">
-                                        <div class="info">
-                                            所属课程：<span>@item.Lession.Course.Title</span>
-                                        </div>
-                                        <div class="stat">
-                                            所属课时：<span>@item.Lession.Title</span>
-                                        </div>
-                                        <div class="date">
-                                            添加时间：<span>@item.Time</span>
-                                        </div>
-                                        <div class="action">
-                                            内容:<span class="cert">@item.Content</span>
-                                        </div>
+                                    <a href="/Courese/Show/@item.Lession.Course.ID" class="title" title="@item.Lession.Course.Title" target="_blank">
+                                        所属课程：@item.Lession.Course.Title
+                                    </a>
+                                    <div class="desc topicContent">
+                                        <p>@item.Content</p>
+                                    </div>
+                                    <div class="info">
+                                        所属课时：<a href="/Course/LessionDetails/@item.Lession.ID">@item.Lession.Title</a><span>@item.Time</span>
                                     </div>
                                 </div>
                                 <hr />

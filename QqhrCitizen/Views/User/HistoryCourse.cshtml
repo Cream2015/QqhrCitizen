@@ -37,16 +37,16 @@
                         {
                             foreach (var item in ViewBag.LstCourse as List<UserCourse>)
                             {
-                                <div class="item">
+                                <div class="item  course">
                                     <div class="content">
                                         <div class="info">
-                                            所属课程：<span>@item.Course.Title</span>
+                                            <span class="title">所属课程：@item.Course.Title</span>
                                         </div>
                                         <div class="stat">
-                                            学习状态：<span>@(item.IsFinisnCourse?"完成":"未完成")</span>
+                                            <span class="stat_count">学习状态：@(item.IsFinisnCourse ? "完成" : "未完成")</span>
                                         </div>
                                         <div class="date">
-                                            时间：<span>@item.Time</span>
+                                            <span class="signdate">@item.Time</span>
                                         </div>
                                     </div>
                                 </div>
