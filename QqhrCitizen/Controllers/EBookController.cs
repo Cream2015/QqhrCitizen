@@ -193,13 +193,13 @@ namespace QqhrCitizen.Controllers
                 }
                 else
                 {
-                    ViewBag.FileLoad = "../Upload/EBook/" + File.Path;
+                    ViewBag.FileLoad = "/Upload/EBook/" + File.Path;
 
                 }
             }
             else
             {
-                ViewBag.FileLoad = "../Upload/1.pdf";
+                ViewBag.FileLoad = "/Upload/1.pdf";
             }
             ViewBag.Ebook = Ebook;
             return View();
@@ -210,7 +210,7 @@ namespace QqhrCitizen.Controllers
             Aspose.Words.Document d = new Aspose.Words.Document(wordFileLoad);
             string filePhysicalPath = "/Upload/EBook/" + fileName + "/";
             string filepath = Server.MapPath(filePhysicalPath);
-            string setfileload = "../" + filePhysicalPath + fileName + ".pdf";
+            string setfileload = "/" + filePhysicalPath + fileName + ".pdf";
             if (!Directory.Exists(filePhysicalPath))
             {
                 Directory.CreateDirectory(filepath);
@@ -220,7 +220,7 @@ namespace QqhrCitizen.Controllers
             }
             else
             {
-                return ".." + filePhysicalPath + fileName + ".pdf";
+                return filePhysicalPath + fileName + ".pdf";
             }
         }
 
