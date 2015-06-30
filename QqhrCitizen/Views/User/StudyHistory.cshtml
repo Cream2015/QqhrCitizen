@@ -32,7 +32,7 @@
                     <div class="body ctnt" style="display: block;">
                         @if (ViewBag.Records == null)
                         {
-                            <p style="text-align: center; font-size:13px;">对不起，未找到相关课程记录。</p>
+                            <p style="text-align: center; font-size:16px;">对不起，未找到相关课程记录。</p>
                         }
                         else
                         {
@@ -45,8 +45,8 @@
                                     <div class="info">
                                         <span class="lesson_time">@item.Lession.Title</span>
                                     </div>
-                                    <div class="date" style="padding: 0 0 0 50px;">
-                                        时间：<span>@item.Time</span>
+                                    <div class="date">
+                                        <span>@item.Time</span>
                                     </div>
                                 </div>
                             }
