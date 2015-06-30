@@ -218,9 +218,14 @@ namespace QqhrCitizen.Controllers
         [AccessToLession]
         public ActionResult BeginCourse(int id)
         {
+            bool flag2 = false;
             var vLessions = new List<vLession>();
             var vNotes = new List<vNote>();
             Lession Lession = db.Lessions.Find(id);
+            if (Lession.Path.Contains(".htm") || Lession.Path.Contains(".html"))
+            {
+                flag2 = true;
+            }
             StudyRecord record = new StudyRecord();
             if (CurrentUser != null)
             {
@@ -282,6 +287,7 @@ namespace QqhrCitizen.Controllers
             }
             ViewBag.Questions = questions;
             ViewBag.Lessions = vLessions;
+            ViewBag.Flag = flag2;
             return View("LessionDetails");
         }
 
