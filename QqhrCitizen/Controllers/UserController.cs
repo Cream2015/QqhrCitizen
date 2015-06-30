@@ -28,31 +28,37 @@ namespace QqhrCitizen.Controllers
         /// <param name="model"></param>
         /// <returns></returns>
         [HttpPost]
-        [ValidateSID]
+        [ValidateAntiForgeryToken]
         public ActionResult Register(vRegister model)
         {
-
-            User user1 = new User();
-            user1 = db.Users.Where(u => u.Username == model.Username).SingleOrDefault();
-            if (user1 == null)
+            if (ModelState.IsValid)
             {
-                User user = new User { Username = model.Username, Password = Helpers.Encryt.GetMD5(model.Password), Role = Role.User, Realname = model.Realname, Email = model.Email, Phone = model.Phone, Address = model.Address, Score = 0 };
-                db.Users.Add(user);
-                int result = db.SaveChanges();
-                if (result > 0)
+                User user1 = new User();
+                user1 = db.Users.Where(u => u.Username == model.Username).SingleOrDefault();
+                if (user1 == null)
                 {
-                    return RedirectToAction("Login");
+                    User user = new User { Username = model.Username, Password = Helpers.Encryt.GetMD5(model.Password), Role = Role.User, Realname = model.Realname, Email = model.Email, Phone = model.Phone, Address = model.Address, Score = 0 };
+                    db.Users.Add(user);
+                    int result = db.SaveChanges();
+                    if (result > 0)
+                    {
+                        return RedirectToAction("Login");
+                    }
+                    else
+                    {
+                        return Message("注册失败，请重新注册");
+                    }
                 }
                 else
                 {
-                    return Message("注册失败，请重新注册");
+                    ModelState.AddModelError("", "用户名不可用！");
                 }
+                ViewBag.Navigation = db.Navigations.ToList();
             }
             else
             {
-                ModelState.AddModelError("", "用户名不可用！");
+                ModelState.AddModelError("", "您填写的信息有误，请重新填写");
             }
-            ViewBag.Navigation = db.Navigations.ToList();
             return View();
         }
         #endregion
