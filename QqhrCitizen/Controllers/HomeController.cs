@@ -51,7 +51,7 @@ namespace QqhrCitizen.Controllers
             return View();
         }
 
-        [ValidateSID]
+        [ValidateAntiForgeryToken]
         public ActionResult Search(string key)
         {
             List<string> hots = (List<string>)HttpContext.Application["hots"];

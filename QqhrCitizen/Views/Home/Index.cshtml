@@ -76,7 +76,7 @@
                         <a class="d-logo" href="#"><div class="ver" style="left: 900px; top: 65px; text-align: right;display:none;">Beta 2014</div></a><div class="d-search" style="background-color: #fff;">
                             @using (Html.BeginForm("Search", "Home", FormMethod.Post, new { id = "frmSearch" }))
                             {
-                                @Html.AntiForgerySID()
+                                @Html.AntiForgeryToken()
                                 <input id="txtSearch" maxlength="30" name="key" onkeydown="if(event.keyCode==13){dosearch();}" type="text" value="" placeholder="课程、新闻、电子书" autocomplete="off" autocorrect="off" autocapitalize="off">
                                 <span class="site-search header-search" onclick="dosearch();" id="home_search" style="left: 348px; border-left: none;">站内搜索</span>
                             }
