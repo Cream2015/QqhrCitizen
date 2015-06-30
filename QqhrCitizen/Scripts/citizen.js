@@ -255,7 +255,18 @@ $(document).ready(function () {
         $(".warning").html(str1);
     });
 
-
+    $("#frmLogin").submit(function () {
+        var username = $("#Username").val();
+        var password = $("#Password").val();
+        if (username == "") {
+            CastMsg("请填写用户名！");
+            return false;
+        }
+        if(password == "") {
+            CastMsg("请填写密码！");
+            return false;
+        }
+    });
 
 
 });

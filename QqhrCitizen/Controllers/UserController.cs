@@ -14,8 +14,6 @@ namespace QqhrCitizen.Controllers
 {
     public class UserController : BaseController
     {
-        
-
         [HttpGet]
         public ActionResult Register()
         {
@@ -72,22 +70,24 @@ namespace QqhrCitizen.Controllers
 
 
         [HttpPost]
-        [ValidateSID]
+        [ValidateAntiForgeryToken]
         public ActionResult Login(vLogin model)
         {
-            
-            User user = new User();
-            model.Password = Helpers.Encryt.GetMD5(model.Password);
-            user = db.Users.Where(u => u.Username == model.Username && u.Password == model.Password).SingleOrDefault();
-            if (user == null)
+            if (ModelState.IsValid)
             {
-                ViewBag.Navigation = db.Navigations.ToList();
-                ModelState.AddModelError("", "用户名或密码错误！");
-            }
-            else
-            {
-                FormsAuthentication.SetAuthCookie(model.Username, model.RememberMe);
-                return RedirectToAction("Index", "Home");
+                User user = new User();
+                model.Password = Helpers.Encryt.GetMD5(model.Password);
+                user = db.Users.Where(u => u.Username == model.Username && u.Password == model.Password).SingleOrDefault();
+                if (user == null)
+                {
+                    ViewBag.Navigation = db.Navigations.ToList();
+                    ModelState.AddModelError("", "用户名或密码错误！");
+                }
+                else
+                {
+                    FormsAuthentication.SetAuthCookie(model.Username, model.RememberMe);
+                    return RedirectToAction("Index", "Home");
+                }
             }
             return View(model);
         }

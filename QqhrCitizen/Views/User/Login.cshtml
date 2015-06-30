@@ -83,7 +83,7 @@
                                 <div class="body">
                                     @using (Html.BeginForm("Login", "User", FormMethod.Post, new { id = "frmLogin" }))
                                     {
-                                        @Html.AntiForgerySID()
+                                        @Html.AntiForgeryToken()
                                         <div class="d-username">
                                             <span class="i">&nbsp;</span>
                                             @Html.TextBoxFor(m => m.Username, new { @class = "int-hs logElm", @placeholder = "用户名" })
@@ -98,9 +98,6 @@
                                             <input type="submit" class="btn btn-orange btn-big" value="登录" style="width:300px;">
                                         </div>
                                         <div class="d-knowme">
-                                            <!--<label>
-                                                <input id="check_knowme" type="checkbox"> 记住我(在公共场上网所请勿勾选此项)
-                                            </label>-->
                                             记住我 @Html.EditorFor(model => model.RememberMe)
                                         </div>
                                         <div class="d-sign">
