@@ -143,9 +143,14 @@ namespace QqhrCitizen.Controllers
         [AccessToLession]
         public ActionResult LessionDetails(int id)
         {
+            bool flag = false;
             var vLessions = new List<vLession>();
             var vNotes = new List<vNote>();
             Lession Lession = db.Lessions.Find(id);
+            if (Lession.Path.Contains(".htm") || Lession.Path.Contains(".html"))
+            {
+                flag = true;
+            }
             StudyRecord record = new StudyRecord();
             if (CurrentUser != null)
             {
@@ -155,6 +160,8 @@ namespace QqhrCitizen.Controllers
                 record.Time = DateTime.Now;
 
                 db.StudyRecords.Add(record);
+
+                
 
                 userCourse = db.UserCourses.Where(uc => uc.UserID == CurrentUser.ID && uc.CourseID == Lession.CourseID).FirstOrDefault();
                 if (userCourse == null)
@@ -198,6 +205,7 @@ namespace QqhrCitizen.Controllers
             }
             ViewBag.Questions = questions;
             ViewBag.Lessions = vLessions;
+            ViewBag.Flag = flag;
             return View("LessionDetails");
         }
 
