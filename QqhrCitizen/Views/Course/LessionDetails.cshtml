@@ -36,7 +36,7 @@
                             <input type="hidden" id="hdCurrentuser" value="@(ViewBag.CurrentUser!=null? @ViewBag.CurrentUser.Username:"")" />
                             <input type="hidden" name="name" id="LessionID" value="@lession.ID" />
                             <script type="text/javascript">
-                                player("/Lessions/@lession.Path", 600, 400, 1, "start.jpg");
+                                player("@lession.Path", 600, 400, 1, "start.jpg");
                             </script>
                             @*<video id="video" src="~/Lessions/@lession.Path" controls="controls"></video>*@
                         </div>

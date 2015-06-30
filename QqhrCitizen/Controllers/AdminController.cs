@@ -12,12 +12,16 @@ using System.IO;
 using QqhrCitizen.Helpers;
 using Aspose.Words;
 using System.Text.RegularExpressions;
+using System.Web.Hosting;
 
 namespace QqhrCitizen.Controllers
 {
     [Authorize]
     public class AdminController : BaseController
     {
+
+        static string  fileServer = "http://127.0.0.1:53411/";
+
         // GET: Admin
         public ActionResult Index()
         {
@@ -180,7 +184,7 @@ namespace QqhrCitizen.Controllers
             TypeDictionary.FatherID = model.FatherID;
             TypeDictionary.NeedAuthorize = model.NeedAuthorize;
             db.SaveChanges();
-            return Redirect("/Admin/TypeManager?type="+TypeDictionary.Belonger);
+            return Redirect("/Admin/TypeManager?type=" + TypeDictionary.Belonger);
         }
 
 
@@ -459,6 +463,12 @@ namespace QqhrCitizen.Controllers
             db.Courses.Add(model);
 
             db.SaveChanges();
+
+
+            string root = "~/Lessions/" + model.Title + "/";
+            var phicyPath = HostingEnvironment.MapPath(root);
+            Directory.CreateDirectory(phicyPath);
+
             return RedirectToAction("CourseManager");
         }
         #endregion
@@ -993,14 +1003,16 @@ namespace QqhrCitizen.Controllers
 
         public ActionResult AddLession(Lession model, HttpPostedFileBase file)
         {
-
-            string fileName = Path.Combine(Request.MapPath("~/Lessions"), DateHelper.GetTimeStamp() + Path.GetExtension(file.FileName));
-            file.SaveAs(fileName);
-            var path = DateHelper.GetTimeStamp() + Path.GetExtension(file.FileName);
+            var radom = DateHelper.GetTimeStamp();
+            var course = db.Courses.Find(model.CourseID);
+            string root = "~/Lessions/" + course.Title + "/";
+            var phicyPath = HostingEnvironment.MapPath(root);
+            
+            file.SaveAs(phicyPath+ file.FileName);
 
             model.Time = DateTime.Now;
             model.ContentType = file.ContentType;
-            model.Path = path;
+            model.Path = fileServer+"Lessions/"+course.Title+"/"+file.FileName;
             model.Browses = 0;
             db.Lessions.Add(model);
             db.SaveChanges();
@@ -1020,11 +1032,12 @@ namespace QqhrCitizen.Controllers
         {
             Lession lession = new Lession();
             lession = db.Lessions.Find(id);
-            var path = Server.MapPath("~/Lessions" + lession.Path);
+            var path = Server.MapPath(lession.Path.Replace(fileServer, ""));
             System.IO.File.Delete(path);
             db.Lessions.Remove(lession);
             db.SaveChanges();
             return Content("ok");
+            
         }
         #endregion
 
@@ -1063,7 +1076,7 @@ namespace QqhrCitizen.Controllers
                 path = Server.MapPath(lession.Path);
                 System.IO.File.Delete(path);
 
-                string fileName = Path.Combine(Request.MapPath("~/Lessions"), DateHelper.GetTimeStamp() + Path.GetExtension(file.FileName));
+                string fileName = Path.Combine(Request.MapPath(@"C:/inetpub/study/new"), DateHelper.GetTimeStamp() + Path.GetExtension(file.FileName));
                 file.SaveAs(fileName);
                 path = DateHelper.GetTimeStamp() + Path.GetExtension(file.FileName);
                 lession.Path = path;
@@ -1563,7 +1576,7 @@ namespace QqhrCitizen.Controllers
             ViewBag.JokeShow = db.Jokes.Find(id);
             return View();
         }
-         
+
         [HttpPost]
         [ValidateSID]
         [ValidateInput(false)]
