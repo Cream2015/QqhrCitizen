@@ -101,7 +101,8 @@
                                             记住我 @Html.EditorFor(model => model.RememberMe)
                                         </div>
                                         <div class="d-sign">
-                                            <a href="/User/Register">不是学习网用户？请注册。</a>
+                                            <a href="/User/Register">不是学习网用户？请注册。</a> <br/>
+                                            <p>@Html.ValidationSummary(true)</p>
                                         </div>
                                     }
                                 </div>

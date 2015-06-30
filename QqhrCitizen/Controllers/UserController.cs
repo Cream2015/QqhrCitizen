@@ -80,7 +80,6 @@ namespace QqhrCitizen.Controllers
                 user = db.Users.Where(u => u.Username == model.Username && u.Password == model.Password).SingleOrDefault();
                 if (user == null)
                 {
-                    ViewBag.Navigation = db.Navigations.ToList();
                     ModelState.AddModelError("", "用户名或密码错误！");
                 }
                 else
@@ -88,6 +87,10 @@ namespace QqhrCitizen.Controllers
                     FormsAuthentication.SetAuthCookie(model.Username, model.RememberMe);
                     return RedirectToAction("Index", "Home");
                 }
+            }
+            else
+            {
+                ModelState.AddModelError("", "登陆信息错误请重新填写！");
             }
             return View(model);
         }
