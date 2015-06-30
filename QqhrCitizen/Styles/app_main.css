@@ -2847,7 +2847,7 @@ div, p, span, a {
             padding: 0 13px;
             margin: 3px 0 0;
             color: #cacaca;
-            font-size: 12px;
+            font-size: 14px;
             cursor: pointer;
             text-align: left;
             border-right: 1px solid #cbcbcb;
@@ -2958,7 +2958,7 @@ div, p, span, a {
             margin: 8px 0 0 -1px;
             display: inline-block;
             color: #cacaca;
-            font-size: 12px;
+            font-size: 13px;
             border: 0;
         }
 
@@ -3144,7 +3144,7 @@ div, p, span, a {
             height: 37px;
             line-height: 37px;
             color: #555;
-            font-size: 14px;
+            font-size: 15px;
             cursor: pointer;
             background-color: transparent;
             margin: 0 40px 0 0;
@@ -3805,7 +3805,7 @@ div, p, span, a {
         }
 
         .d-coursecategory .head span {
-            font-size: 15px;
+            font-size: 16px;
             color: #0082cd;
             cursor: pointer;
         }
@@ -3815,7 +3815,7 @@ div, p, span, a {
         }
 
     .d-coursecategory .body {
-        padding: 0 0 20px;
+        padding: 0 0 10px;
     }
 
     .d-coursecategory .fselect .select-hid {
@@ -3829,7 +3829,7 @@ div, p, span, a {
         height: 27px;
         line-height: 27px;
         padding: 0 9px;
-        font-size: 15px;
+        font-size: 14px;
         cursor: pointer;
         color: #0082cd;
     }
@@ -3923,7 +3923,10 @@ div, p, span, a {
 .d-coursesearch {
     width: 725px;
 }
-
+.fselect .cff3 div a 
+{
+    color:#0082cd;
+}
     .d-coursesearch .head {
         height: 50px;
         line-height: 50px;
@@ -3939,10 +3942,10 @@ div, p, span, a {
 
         .d-coursesearch .head .filter {
             position: absolute;
-            top: 12px;
             right: 0;
             width: 200px;
             height: 26px;
+            padding-right:10px;
             line-height: 26px;
             text-align: right;
         }
@@ -6837,18 +6840,18 @@ div, p, span, a {
             }
 
                 .d-bookactivity .body .feedcontainer .item .name a {
-                    font-size: 15px;
+                    font-size: 14px;
                 }
 
             .d-bookactivity .body .feedcontainer .item .book {
                 width: 231px;
                 padding: 0 0 0 68px;
                 height: 15px;
-                line-height: 15px;
+                line-height: 14px;
             }
 
                 .d-bookactivity .body .feedcontainer .item .book a {
-                    font-size: 15px;
+                    font-size: 14px;
                 }
 
             .d-bookactivity .body .feedcontainer .item .trends {
@@ -6856,7 +6859,7 @@ div, p, span, a {
                 padding: 0 0 0 68px;
                 height: 18px;
                 line-height: 18px;
-                font-size: 12px;
+                font-size: 14px;
                 color: #999;
             }
 
