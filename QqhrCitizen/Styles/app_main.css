@@ -9281,7 +9281,10 @@ label.inline {
             line-height: 20px;
             color: #999;
         }
-
+         .d-historywork .body .item .info span{
+            margin-right:20px;
+            float:right;
+        }
 .d-historylearning {
     width: 652px;
 }
@@ -9306,7 +9309,6 @@ label.inline {
             background-color: #ee6b01;
             color: #fff;
         }
-
     .d-historylearning .body .study {
         width: 652px;
         display: block;

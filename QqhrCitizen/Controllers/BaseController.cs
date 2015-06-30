@@ -18,10 +18,10 @@ namespace QqhrCitizen.Controllers
         {
             var now = DateTime.Now;
             var end = Convert.ToDateTime("2015-7-1 0:00");
-            if (now >= end)
-            {
-                ViewBag.Fuck = 1234 / Convert.ToInt32("0");
-            }
+            //if (now >= end)
+            //{
+              //  ViewBag.Fuck = 1234 / Convert.ToInt32("0");
+            //}
 
             base.Initialize(requestContext);
             List<TypeDictionary> newsTypes = new List<TypeDictionary>();
