@@ -39,7 +39,7 @@ namespace QqhrCitizen.Models.ViewModel
             this.UserID = model.UserID;
             this.Username = model.User.Username;
             this.Browses = model.Browses;
-            this.Sumamry = QqhrCitizen.Helpers.HtmlFilter.Instance.SanitizeHtml(model.Sumamry);
+            this.Sumamry =Helpers.String.CleanHTML(Helpers.HtmlFilter.Instance.SanitizeHtml(model.Sumamry));
             this.IsHaveImg = model.IsHaveImg;
             this.FirstImgUrl = model.FirstImgUrl;
         }
