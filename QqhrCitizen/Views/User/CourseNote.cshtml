@@ -2,6 +2,7 @@
 @using QqhrCitizen.Models;
 @{
     vUser user = ViewBag.User as vUser;
+    List<Note> notes = ViewBag.Notes as List<Note>;
     ViewBag.Title = "用户个人档案 - 齐齐哈尔市民学习网";
 }
 <div id="d_menu" class="d-menu menu-use">
@@ -30,7 +31,7 @@
                     </div>
                     <!--<p style="text-align: center; font-size:13px;">对不起，未找到相关课程记录。</p>-->
                     <div class="body ctnt" style="display: block;">
-                        @if (ViewBag.Notes == null)
+                        @if (notes.Count <= 0)
                         {
                             <p style="text-align: center; font-size:13px;">对不起，未找到相关课程笔记。</p>
                         }
