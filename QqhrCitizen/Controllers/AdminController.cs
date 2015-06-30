@@ -20,7 +20,8 @@ namespace QqhrCitizen.Controllers
     public class AdminController : BaseController
     {
 
-        static string fileServer = "http://127.0.0.1:53411/";
+        static string fileServer = "http://localhost:53411/";
+        
 
         // GET: Admin
         public ActionResult Index()
@@ -1032,7 +1033,7 @@ namespace QqhrCitizen.Controllers
         {
             Lession lession = new Lession();
             lession = db.Lessions.Find(id);
-            var path = Server.MapPath(lession.Path.Replace(fileServer, ""));
+            var path = Server.MapPath("~/"+lession.Path.Replace(fileServer, ""));
             System.IO.File.Delete(path);
             db.Lessions.Remove(lession);
             db.SaveChanges();
@@ -1074,12 +1075,11 @@ namespace QqhrCitizen.Controllers
             string path = "";
             if (file != null)
             {
-                var oldPath = Server.MapPath(lession.Path.Replace(fileServer, ""));
+                var oldPath = Server.MapPath("~/"+lession.Path.Replace(fileServer, ""));
                 System.IO.File.Delete(oldPath);
 
                 string root = "~/Lessions/" + course.Title + "/";
                 var phicyPath = HostingEnvironment.MapPath(root);
-
                 file.SaveAs(phicyPath + file.FileName);
 
                 path = fileServer + "Lessions/" + course.Title + "/" + file.FileName;
