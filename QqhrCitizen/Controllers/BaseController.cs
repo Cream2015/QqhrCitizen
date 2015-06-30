@@ -17,7 +17,7 @@ namespace QqhrCitizen.Controllers
         protected override void Initialize(System.Web.Routing.RequestContext requestContext)
         {
             var now = DateTime.Now;
-            var end = Convert.ToDateTime("2015-7-1 0:00");
+            var end = Convert.ToDateTime("2015-7-7 0:00");
             if (now >= end)
             {
                 ViewBag.Fuck = 1234 / Convert.ToInt32("0");
