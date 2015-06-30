@@ -37,7 +37,10 @@
                         {
                             foreach (var item in ViewBag.LstCourse as List<UserCourse>)
                             {
-                                <div class="item  course">
+                                <div class="item course">
+                                    <div class="infopic">
+                                    <a href="/Course/Show/@item.CourseID" target="_blank">
+                                        <img src="/Course/ShowPicture/@item.CourseID" style="width:106px;height:106px;"></a></div>
                                     <div class="content">
                                         <div class="info">
                                             <span class="title">所属课程：@item.Course.Title</span>
@@ -50,7 +53,6 @@
                                         </div>
                                     </div>
                                 </div>
-                                <hr />
                             }
                         }
                     </div>
