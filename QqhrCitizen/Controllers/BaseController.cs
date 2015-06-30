@@ -23,6 +23,7 @@ namespace QqhrCitizen.Controllers
               //  ViewBag.Fuck = 1234 / Convert.ToInt32("0");
             //}
 
+
             base.Initialize(requestContext);
             List<TypeDictionary> newsTypes = new List<TypeDictionary>();
             List<vTypeDictionary> _newsTypes = new List<vTypeDictionary>();
