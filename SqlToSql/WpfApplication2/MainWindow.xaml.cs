@@ -25,9 +25,8 @@ namespace WpfApplication2
     /// </summary>
     public partial class MainWindow : Window
     {
-        public int user_id;
+
         public delegate void UpdateTextCallback(string message);
-        private static string citizen_connStr;
         private static string radio_1 = "Server='42.96.129.28';database='QqhrCitizen';User ID='sa';Password='koala19920716'";
         private static string radio_2 = "Server='218.8.130.134';database='QqhrCitizen';User ID='sa';Password='Qqrtvu.com.cn!@#'";
         private static string qqhr_connStr = "Server='127.0.0.1';database='qqhrstudy';User ID='sa';Password='123456'";
@@ -66,11 +65,9 @@ namespace WpfApplication2
 
             return sTemp.ToLower();
         }
-        public void insert_new()
+        public void insert_new(int user_id, string citizen_connStr, int type_id)
         {
-            user_id = Convert.ToInt32(txtuser.Text.ToString());
-            citizen_connStr = radiobt_1.IsChecked == true ? radio_1 : radio_2;
-            int type_id = Convert.ToInt32(txt_type.Text.ToString());
+
             //int insert_type_id = Convert.ToInt32(Sqlhelp.ExecuteScalar("insert into TypeDictionaries (TypeValue,FatherID,Time,NeedAuthorize,Belonger) values ('其他新闻','0','" + Convert.ToDateTime(DateTime.Now).ToString("yyyy-MM-dd HH:mm:ss.fff", DateTimeFormatInfo.InvariantInfo) + "','0','2')" + ";Select @@Identity", citizen_connStr));
             //int type_id = Convert.ToInt32(Sqlhelp.ExecuteScalar("insert into TypeDictionaries (TypeValue,FatherID,Time,NeedAuthorize,Belonger) values ('其他','" + insert_type_id + "','" + Convert.ToDateTime(DateTime.Now).ToString("yyyy-MM-dd HH:mm:ss.fff", DateTimeFormatInfo.InvariantInfo) + "','0','2')" + ";Select @@Identity", citizen_connStr));
 
@@ -124,8 +121,11 @@ namespace WpfApplication2
         {
             if ((radiobt_1.IsChecked == true) || (radiobt_2.IsChecked == true))
             {
-
-                Thread test = new Thread(new ThreadStart(insert_new));
+                int user_id = Convert.ToInt32(txtuser.Text.ToString());
+                string citizen_connStr = radiobt_1.IsChecked == true ? radio_1 : radio_2;
+                int type_id = Convert.ToInt32(txt_type.Text.ToString());
+                ThreadStart start = delegate { insert_new(user_id, citizen_connStr, type_id); };
+                Thread test = new Thread(new ThreadStart(start));
                 test.Start();
             }
             else
@@ -141,9 +141,11 @@ namespace WpfApplication2
             if ((radiobt_1.IsChecked == true) || (radiobt_2.IsChecked == true))
             {
                 MessageBox.Show("开始");
-                citizen_connStr = radiobt_1.IsChecked == true ? radio_1 : radio_2;
-
-                Thread test = new Thread(new ThreadStart(insert_course));
+                int user_id = Convert.ToInt32(txtuser.Text.ToString());
+                string citizen_connStr = radiobt_1.IsChecked == true ? radio_1 : radio_2;
+                int type_id = Convert.ToInt32(txt_type.Text.ToString());
+                ThreadStart starter = delegate { insert_course(user_id, citizen_connStr, type_id); };
+                Thread test = new Thread(new ThreadStart(starter));
                 test.Start();
             }
             else
@@ -151,11 +153,8 @@ namespace WpfApplication2
                 MessageBox.Show("请选择数据库");
             }
         }
-        public void insert_course()
+        public void insert_course(int user_id, string citizen_connStr, int type_id)
         {
-            user_id = Convert.ToInt32(txtuser.Text.ToString());
-            citizen_connStr = radiobt_1.IsChecked == true ? radio_1 : radio_2;
-
             string sql1 = "select * from CourseCategoryInfo where ParentId=0";
             string sql2, sql3, sql4;
             string insert_sql1, insert_sql2, insert_sql3, insert_sql4;
@@ -177,7 +176,7 @@ namespace WpfApplication2
                 new object[] { insert_sql1 });
                     sum++;
                     insert_id1 = Convert.ToInt32(Sqlhelp.ExecuteScalar(insert_sql1, citizen_connStr));
-                    Insert_Course(cit_sql1.Rows[a]["Id"], insert_id1);
+                    Insert_Course(cit_sql1.Rows[a]["Id"], insert_id1, user_id, citizen_connStr);
                     if (cit_sql2 != null)
                     {
                         for (int b = 0; b < cit_sql2.Rows.Count; b++)
@@ -193,7 +192,7 @@ namespace WpfApplication2
                 new object[] { insert_sql2 });
                             sum++;
                             insert_id2 = Convert.ToInt32(Sqlhelp.ExecuteScalar(insert_sql2, citizen_connStr));
-                            Insert_Course(cit_sql2.Rows[b]["Id"], insert_id2);
+                            Insert_Course(cit_sql2.Rows[b]["Id"], insert_id2, user_id, citizen_connStr);
                             if (cit_sql3 != null)
                             {
                                 for (int c = 0; c < cit_sql3.Rows.Count; c++)
@@ -207,7 +206,7 @@ namespace WpfApplication2
                 new object[] { insert_sql3 });
                                     sum++;
                                     insert_id3 = Convert.ToInt32(Sqlhelp.ExecuteScalar(insert_sql3, citizen_connStr));
-                                    Insert_Course(cit_sql3.Rows[c]["Id"], insert_id3);
+                                    Insert_Course(cit_sql3.Rows[c]["Id"], insert_id3, user_id, citizen_connStr);
                                     if (cit_sql4 != null)
                                     {
                                         for (int d = 0; d < cit_sql4.Rows.Count; d++)
@@ -218,7 +217,7 @@ namespace WpfApplication2
                 new object[] { insert_sql4 });
                                             sum++;
                                             insert_id4 = Convert.ToInt32(Sqlhelp.ExecuteScalar(insert_sql4, citizen_connStr));
-                                            Insert_Course(cit_sql4.Rows[d]["Id"], insert_id4);
+                                            Insert_Course(cit_sql4.Rows[d]["Id"], insert_id4, user_id, citizen_connStr);
                                         }
                                     }
                                 }
@@ -231,7 +230,7 @@ namespace WpfApplication2
             MessageBox.Show("导入数据：" + sum.ToString());
 
         }
-        private int Insert_Course(object select_course_id, int insert_course_id)
+        private int Insert_Course(object select_course_id, int insert_course_id, int users_id, string citizen_connStr)
         {
             string Time, insert_sql5, insert_sql6, Time_Course, Url;
             int inset_id_course = 0;
@@ -240,7 +239,7 @@ namespace WpfApplication2
             for (int f = 0; f < cit_sql5.Rows.Count; f++)
             {
                 Time = SetDateTime(cit_sql5.Rows[f]["CreatedTime"]);
-                insert_sql5 = "insert into Courses (CourseTypeID,Title,Description,UserID,Time,AuthorityAsInt,Browses,Credit) values ('" + insert_course_id + "','" + cit_sql5.Rows[f]["Name"] + "','" + cit_sql5.Rows[f]["Description"] + "','" + user_id + "','" + Time + "','0','0','" + Convert.ToInt32(cit_sql5.Rows[f]["CreditHour"]) + "');Select @@Identity";
+                insert_sql5 = "insert into Courses (CourseTypeID,Title,Description,UserID,Time,AuthorityAsInt,Browses,Credit) values ('" + insert_course_id + "','" + cit_sql5.Rows[f]["Name"] + "','" + cit_sql5.Rows[f]["Description"] + "','" + users_id + "','" + Time + "','0','0','" + Convert.ToInt32(cit_sql5.Rows[f]["CreditHour"]) + "');Select @@Identity";
                 ShowSqlNumber.Dispatcher.Invoke(new UpdateTextCallback(this.ShowText),
                     new object[] { insert_sql5 });
                 sum++;
@@ -250,13 +249,13 @@ namespace WpfApplication2
                 {
                     Time_Course = SetDateTime(cit_sql6.Rows[g]["CreatedTime"]);
                     Url = cit_sql6.Rows[g]["Url"].ToString();
-                    Url.Replace("http://218.8.130.135/终身学习", "http://218.8.130.134:6000");
+                    Url=Url.Replace("http://218.8.130.135/终身学习", "http://218.8.130.134:8002");
                     insert_sql6 = "insert into Lessions (Title,Description,CourseID,Time,Path,Browses) values ('" + cit_sql6.Rows[g]["Name"] + "','" + cit_sql6.Rows[g]["Name"] + "','" + inset_id_course + "','" + Time_Course + "','" + Url + "','0')";
                     ShowSqlNumber.Dispatcher.Invoke(new UpdateTextCallback(this.ShowText),
                     new object[] { insert_sql6 });
                     Sqlhelp.ExecuteScalar(insert_sql6, citizen_connStr);
                     sum++;
-                    if ((sum + 1) % 500 == 0)
+                    if ((sum + 1) % 1000 == 0)
                     {
                         System.Threading.Thread.Sleep(5000);
                         MessageBox.Show("再次开始");
@@ -275,7 +274,9 @@ namespace WpfApplication2
         {
              if (radiobt_1.IsChecked == true || radiobt_1.IsChecked == true)
             {
-                Thread test = new Thread(new ThreadStart(insert_SetNavigations));
+                 string citizen_connStr = radiobt_1.IsChecked == true ? radio_1 : radio_2;
+                 ThreadStart start = delegate { insert_SetNavigations(citizen_connStr); };
+                Thread test = new Thread(new ThreadStart(start));
                 test.Start();
             }
             else
@@ -283,7 +284,7 @@ namespace WpfApplication2
                 MessageBox.Show("请选择数据库");
             }
         }
-        public void insert_SetNavigations()
+        public void insert_SetNavigations(string citizen_connStr)
         {
             citizen_connStr = radiobt_1.IsChecked == true ? radio_1 : radio_2;
             Sqlhelp.ExecuteScalar("insert into Navigations (Title,Url,Nav_Id,Km_st_Id) values ('首页','/Home/Index','topmenu_home','Null')", citizen_connStr);
@@ -293,6 +294,12 @@ namespace WpfApplication2
             Sqlhelp.ExecuteScalar("insert into Navigations (Title,Url,Nav_Id,Km_st_Id) values ('直播','/Live/Index','topmenu_live','d_row_live')", citizen_connStr);
             Sqlhelp.ExecuteScalar("insert into Navigations (Title,Url,Nav_Id,Km_st_Id) values ('链接','Null','Null','d_row_link')", citizen_connStr);
             MessageBox.Show("成功");
+        }
+
+        private void Button_Click_3(object sender, RoutedEventArgs e)
+        {
+            string citizen_connStr = radiobt_1.IsChecked == true ? radio_1 : radio_2;
+            txtuser.Text = Sqlhelp.ExecuteScalar("insert into Users (Username,password,Age,SexAsInt,RoleAsInt,Score) values ('fanfzj','"+Md5("6yhn6yhn")+"','20','1','1','1000')", citizen_connStr).ToString();
         }
     }
 }
