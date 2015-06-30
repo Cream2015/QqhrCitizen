@@ -1071,7 +1071,7 @@ namespace QqhrCitizen.Controllers
         public ActionResult LessionEdit(Lession model, HttpPostedFileBase file)
         {
             Lession lession = db.Lessions.Find(model.ID);
-            Course course = db.Courses.Find(model.CourseID);
+            Course course = db.Courses.Find(lession.CourseID);
             string path = "";
             if (file != null)
             {
