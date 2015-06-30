@@ -20,7 +20,7 @@ namespace QqhrCitizen.Controllers
     public class AdminController : BaseController
     {
 
-        static string  fileServer = "http://127.0.0.1:53411/";
+        static string fileServer = "http://127.0.0.1:53411/";
 
         // GET: Admin
         public ActionResult Index()
@@ -1007,12 +1007,12 @@ namespace QqhrCitizen.Controllers
             var course = db.Courses.Find(model.CourseID);
             string root = "~/Lessions/" + course.Title + "/";
             var phicyPath = HostingEnvironment.MapPath(root);
-            
-            file.SaveAs(phicyPath+ file.FileName);
+
+            file.SaveAs(phicyPath + file.FileName);
 
             model.Time = DateTime.Now;
             model.ContentType = file.ContentType;
-            model.Path = fileServer+"Lessions/"+course.Title+"/"+file.FileName;
+            model.Path = fileServer + "Lessions/" + course.Title + "/" + file.FileName;
             model.Browses = 0;
             db.Lessions.Add(model);
             db.SaveChanges();
@@ -1037,7 +1037,7 @@ namespace QqhrCitizen.Controllers
             db.Lessions.Remove(lession);
             db.SaveChanges();
             return Content("ok");
-            
+
         }
         #endregion
 
@@ -1070,15 +1070,19 @@ namespace QqhrCitizen.Controllers
         public ActionResult LessionEdit(Lession model, HttpPostedFileBase file)
         {
             Lession lession = db.Lessions.Find(model.ID);
+            Course course = db.Courses.Find(model.CourseID);
             string path = "";
             if (file != null)
             {
-                path = Server.MapPath(lession.Path);
-                System.IO.File.Delete(path);
+                var oldPath = Server.MapPath(lession.Path.Replace(fileServer, ""));
+                System.IO.File.Delete(oldPath);
 
-                string fileName = Path.Combine(Request.MapPath(@"C:/inetpub/study/new"), DateHelper.GetTimeStamp() + Path.GetExtension(file.FileName));
-                file.SaveAs(fileName);
-                path = DateHelper.GetTimeStamp() + Path.GetExtension(file.FileName);
+                string root = "~/Lessions/" + course.Title + "/";
+                var phicyPath = HostingEnvironment.MapPath(root);
+
+                file.SaveAs(phicyPath + file.FileName);
+
+                path = fileServer + "Lessions/" + course.Title + "/" + file.FileName;
                 lession.Path = path;
             }
             lession.Title = model.Title;
