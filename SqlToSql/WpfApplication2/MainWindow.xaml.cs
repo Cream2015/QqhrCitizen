@@ -69,10 +69,6 @@ namespace WpfApplication2
         }
         public void insert_new(int user_id, string citizen_connStr, int type_id)
         {
-
-            //int insert_type_id = Convert.ToInt32(Sqlhelp.ExecuteScalar("insert into TypeDictionaries (TypeValue,FatherID,Time,NeedAuthorize,Belonger) values ('其他新闻','0','" + Convert.ToDateTime(DateTime.Now).ToString("yyyy-MM-dd HH:mm:ss.fff", DateTimeFormatInfo.InvariantInfo) + "','0','2')" + ";Select @@Identity", citizen_connStr));
-            //int type_id = Convert.ToInt32(Sqlhelp.ExecuteScalar("insert into TypeDictionaries (TypeValue,FatherID,Time,NeedAuthorize,Belonger) values ('其他','" + insert_type_id + "','" + Convert.ToDateTime(DateTime.Now).ToString("yyyy-MM-dd HH:mm:ss.fff", DateTimeFormatInfo.InvariantInfo) + "','0','2')" + ";Select @@Identity", citizen_connStr));
-
             string qqhrstudy_sql = "select * from NewsInfo";
             string citizen_sql;
             DataTable citizen_sqldt = Sqlhelp.ExecuteDataTable(qqhrstudy_sql, qqhr_connStr);
@@ -251,7 +247,7 @@ namespace WpfApplication2
                 {
                     Time_Course = SetDateTime(cit_sql6.Rows[g]["CreatedTime"]);
                     Url = cit_sql6.Rows[g]["Url"].ToString();
-                    Url=Url.Replace("http://218.8.130.135/终身学习", "http://218.8.130.135:8000");
+                    Url = Url.Replace("http://218.8.130.135/终身学习", "http://218.8.130.135:8000");
                     insert_sql6 = "insert into Lessions (Title,Description,CourseID,Time,Path,Browses) values ('" + cit_sql6.Rows[g]["Name"] + "','" + cit_sql6.Rows[g]["Name"] + "','" + inset_id_course + "','" + Time_Course + "','" + Url + "','0')";
                     ShowSqlNumber.Dispatcher.Invoke(new UpdateTextCallback(this.ShowText),
                     new object[] { insert_sql6 });
@@ -274,10 +270,10 @@ namespace WpfApplication2
         }
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
-             if (radiobt_1.IsChecked == true || radiobt_1.IsChecked == true)
+            if (radiobt_1.IsChecked == true || radiobt_2.IsChecked == true)
             {
-                 string citizen_connStr = radiobt_1.IsChecked == true ? radio_1 : radio_2;
-                 ThreadStart start = delegate { insert_SetNavigations(citizen_connStr); };
+                string citizen_connStr = radiobt_1.IsChecked == true ? radio_1 : radio_2;
+                ThreadStart start = delegate { insert_SetNavigations(citizen_connStr); };
                 Thread test = new Thread(new ThreadStart(start));
                 test.Start();
             }
@@ -288,7 +284,6 @@ namespace WpfApplication2
         }
         public void insert_SetNavigations(string citizen_connStr)
         {
-            citizen_connStr = radiobt_1.IsChecked == true ? radio_1 : radio_2;
             Sqlhelp.ExecuteScalar("insert into Navigations (Title,Url,Nav_Id,Km_st_Id) values ('首页','/Home/Index','topmenu_home','Null')", citizen_connStr);
             Sqlhelp.ExecuteScalar("insert into Navigations (Title,Url,Nav_Id,Km_st_Id) values ('新闻','/News/Index','topmenu_news','Null')", citizen_connStr);
             Sqlhelp.ExecuteScalar("insert into Navigations (Title,Url,Nav_Id,Km_st_Id) values ('课程','/Course/Index','topmenu_course','d_row_course')", citizen_connStr);
@@ -300,8 +295,17 @@ namespace WpfApplication2
 
         private void Button_Click_3(object sender, RoutedEventArgs e)
         {
-            string citizen_connStr = radiobt_1.IsChecked == true ? radio_1 : radio_2;
-            txtuser.Text = Sqlhelp.ExecuteScalar("insert into Users (Username,password,Age,SexAsInt,RoleAsInt,Score) values ('fanfzj','"+Md5("6yhn6yhn")+"','20','1','1','1000')", citizen_connStr).ToString();
+            if (radiobt_1.IsChecked == true || radiobt_2.IsChecked == true)
+            {
+                string citizen_connStr = radiobt_1.IsChecked == true ? radio_1 : radio_2;
+                string a = Convert.ToInt32(Sqlhelp.ExecuteScalar("insert into Users (Username,password,Age,SexAsInt,RoleAsInt,Score) values ('fanfzj','" + Md5("6yhn6yhn") + "','20','1','1','1000');Select @@Identity", citizen_connStr)).ToString();
+                MessageBox.Show("成功");
+                txtuser.Text = a;
+            }
+            else
+            {
+                MessageBox.Show("请选择数据库");
+            }
         }
 
         private void Button_Click_4(object sender, RoutedEventArgs e)
@@ -314,6 +318,22 @@ namespace WpfApplication2
             ShowSqlNumber.Text = sr.ReadToEnd();
             resStream.Close();
             sr.Close();
+        }
+
+        private void Button_Click_5(object sender, RoutedEventArgs e)
+        {
+            if (radiobt_1.IsChecked == true || radiobt_2.IsChecked == true)
+            {
+                string citizen_connStr = radiobt_1.IsChecked == true ? radio_1 : radio_2;
+                int insert_type_id = Convert.ToInt32(Sqlhelp.ExecuteScalar("insert into TypeDictionaries (TypeValue,FatherID,Time,NeedAuthorize,Belonger) values ('其他新闻','0','" + Convert.ToDateTime(DateTime.Now).ToString("yyyy-MM-dd HH:mm:ss.fff", DateTimeFormatInfo.InvariantInfo) + "','0','2')" + ";Select @@Identity", citizen_connStr));
+                int type_id = Convert.ToInt32(Sqlhelp.ExecuteScalar("insert into TypeDictionaries (TypeValue,FatherID,Time,NeedAuthorize,Belonger) values ('其他','" + insert_type_id + "','" + Convert.ToDateTime(DateTime.Now).ToString("yyyy-MM-dd HH:mm:ss.fff", DateTimeFormatInfo.InvariantInfo) + "','0','2')" + ";Select @@Identity", citizen_connStr));
+                MessageBox.Show("成功");
+                txt_type.Text = type_id.ToString();
+            }
+            else
+            {
+                MessageBox.Show("请选择数据库");
+            }
         }
 
     }
