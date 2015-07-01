@@ -1471,9 +1471,6 @@ div, p, span, a {
     width: 100%;
     z-index: 4;
     text-align: center;
-    background-image: url(/images/header_bg.png);
-    background-position: center;
-    background-repeat: no-repeat;
 }
 
     .d-header .d-header-c {
@@ -2099,9 +2096,7 @@ div, p, span, a {
 .f-headerdefault {
     width: 1000px;
     height: 100px;
-    background-image: url(/images/logo2.jpg);
-    background-repeat: no-repeat;
-    background-position: 189px 0;
+
 }
 
     .f-headerdefault .d-logo {
@@ -2847,7 +2842,7 @@ div, p, span, a {
             padding: 0 13px;
             margin: 3px 0 0;
             color: #cacaca;
-            font-size: 12px;
+            font-size: 14px;
             cursor: pointer;
             text-align: left;
             border-right: 1px solid #cbcbcb;
@@ -2958,7 +2953,7 @@ div, p, span, a {
             margin: 8px 0 0 -1px;
             display: inline-block;
             color: #cacaca;
-            font-size: 12px;
+            font-size: 13px;
             border: 0;
         }
 
@@ -2996,7 +2991,7 @@ div, p, span, a {
         position: absolute;
         top: 0;
         left: 0;
-        width: 179px;
+        width: 480px;
         height: 100px;
     }
 
@@ -3144,7 +3139,7 @@ div, p, span, a {
             height: 37px;
             line-height: 37px;
             color: #555;
-            font-size: 14px;
+            font-size: 16px;
             cursor: pointer;
             background-color: transparent;
             margin: 0 40px 0 0;
@@ -3805,7 +3800,7 @@ div, p, span, a {
         }
 
         .d-coursecategory .head span {
-            font-size: 15px;
+            font-size: 16px;
             color: #0082cd;
             cursor: pointer;
         }
@@ -3815,7 +3810,7 @@ div, p, span, a {
         }
 
     .d-coursecategory .body {
-        padding: 0 0 20px;
+        padding: 0 0 10px;
     }
 
     .d-coursecategory .fselect .select-hid {
@@ -3829,7 +3824,7 @@ div, p, span, a {
         height: 27px;
         line-height: 27px;
         padding: 0 9px;
-        font-size: 15px;
+        font-size: 14px;
         cursor: pointer;
         color: #0082cd;
     }
@@ -3924,187 +3919,191 @@ div, p, span, a {
     width: 725px;
 }
 
-    .d-coursesearch .head {
-        height: 50px;
-        line-height: 50px;
+.fselect .cff3 div a {
+    color: #0082cd;
+}
+
+.d-coursesearch .head {
+    height: 50px;
+    line-height: 50px;
+    overflow: hidden;
+}
+
+    .d-coursesearch .head .tag {
+        display: inline-block;
+        padding: 0 10px;
+        font-size: 14px;
+        color: #00a000;
+    }
+
+    .d-coursesearch .head .filter {
+        position: absolute;
+        right: 0;
+        width: 200px;
+        height: 26px;
+        padding-right: 10px;
+        line-height: 26px;
+        text-align: right;
+    }
+
+    .d-coursesearch .head .fselect .select-hid {
+        display: none;
+    }
+
+    .d-coursesearch .head .fselect .cfp3, .d-coursesearch .head .fselect .cfp3_s {
+        display: inline-block;
+        *display: inline;
+        zoom: 1;
+        height: 26px;
+        line-height: 26px;
+        padding: 0 10px;
+        font-size: 15px;
+        cursor: pointer;
+        color: #0082cd;
+    }
+
+        .d-coursesearch .head .fselect .cfp3:hover {
+            background-color: #f0f0f0;
+        }
+
+    .d-coursesearch .head .fselect .cfp3_s {
+        background-color: #ee6b01;
+        color: #fff;
+    }
+
+    .d-coursesearch .head .fselect .cfp3 {
+        color: #0082cd;
+    }
+
+    .d-coursesearch .head .fselect .cflabel3 {
+        display: inline-block;
+        *display: inline;
+        zoom: 1;
+    }
+
+.d-coursesearch .body .item {
+    display: block;
+    padding: 20px 0;
+    margin: -1px 0 0 0;
+    border-top: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+}
+
+    .d-coursesearch .body .item div {
+        position: relative;
+    }
+
+    .d-coursesearch .body .item .cover {
+        position: absolute;
+        width: 106px;
+        height: 106px;
+        top: 20px;
+        left: 0;
         overflow: hidden;
     }
 
-        .d-coursesearch .head .tag {
-            display: inline-block;
-            padding: 0 10px;
-            font-size: 14px;
-            color: #00a000;
-        }
-
-        .d-coursesearch .head .filter {
-            position: absolute;
-            top: 12px;
-            right: 0;
-            width: 200px;
-            height: 26px;
-            line-height: 26px;
-            text-align: right;
-        }
-
-        .d-coursesearch .head .fselect .select-hid {
-            display: none;
-        }
-
-        .d-coursesearch .head .fselect .cfp3, .d-coursesearch .head .fselect .cfp3_s {
-            display: inline-block;
-            *display: inline;
-            zoom: 1;
-            height: 26px;
-            line-height: 26px;
-            padding: 0 10px;
-            font-size: 15px;
-            cursor: pointer;
-            color: #0082cd;
-        }
-
-            .d-coursesearch .head .fselect .cfp3:hover {
-                background-color: #f0f0f0;
-            }
-
-        .d-coursesearch .head .fselect .cfp3_s {
-            background-color: #ee6b01;
-            color: #fff;
-        }
-
-        .d-coursesearch .head .fselect .cfp3 {
-            color: #0082cd;
-        }
-
-        .d-coursesearch .head .fselect .cflabel3 {
-            display: inline-block;
-            *display: inline;
-            zoom: 1;
-        }
-
-    .d-coursesearch .body .item {
-        display: block;
-        padding: 20px 0;
-        margin: -1px 0 0 0;
-        border-top: 1px solid #ccc;
-        border-bottom: 1px solid #ccc;
+    .d-coursesearch .body .item .title {
+        padding: 0 0 0 130px;
     }
 
-        .d-coursesearch .body .item div {
-            position: relative;
+        .d-coursesearch .body .item .title a {
+            font-size: 17px;
         }
 
-        .d-coursesearch .body .item .cover {
-            position: absolute;
-            width: 106px;
-            height: 106px;
-            top: 20px;
-            left: 0;
+    .d-coursesearch .body .item .info {
+        display: block;
+        padding: 0 0 0 130px;
+        height: 40px;
+        line-height: 40px;
+    }
+
+        .d-coursesearch .body .item .info .vendor {
+            display: inline-block;
+            background-color: #eee;
+            height: 27px;
+            line-height: 27px;
+            padding: 0 10px;
+            margin: 0 20px 0 0;
+            font-size: 15px;
+            text-decoration: none;
+        }
+
+        .d-coursesearch .body .item .info .star {
+            display: inline-block;
+            width: 55px;
+            height: 11px;
+            line-height: 11px;
+            font-size: 0;
             overflow: hidden;
+            background-image: url(/images/midstars.gif);
+            background-repeat: no-repeat;
         }
 
-        .d-coursesearch .body .item .title {
-            padding: 0 0 0 130px;
+        .d-coursesearch .body .item .info .star0 {
+            background-position: 0 -110px;
         }
 
-            .d-coursesearch .body .item .title a {
-                font-size: 17px;
-            }
-
-        .d-coursesearch .body .item .info {
-            display: block;
-            padding: 0 0 0 130px;
-            height: 40px;
-            line-height: 40px;
+        .d-coursesearch .body .item .info .star5 {
+            background-position: 0 -99px;
         }
 
-            .d-coursesearch .body .item .info .vendor {
-                display: inline-block;
-                background-color: #eee;
-                height: 27px;
-                line-height: 27px;
-                padding: 0 10px;
-                margin: 0 20px 0 0;
-                font-size: 15px;
-                text-decoration: none;
-            }
+        .d-coursesearch .body .item .info .star10 {
+            background-position: 0 -88px;
+        }
 
-            .d-coursesearch .body .item .info .star {
-                display: inline-block;
-                width: 55px;
-                height: 11px;
-                line-height: 11px;
-                font-size: 0;
-                overflow: hidden;
-                background-image: url(/images/midstars.gif);
-                background-repeat: no-repeat;
-            }
+        .d-coursesearch .body .item .info .star15 {
+            background-position: 0 -77px;
+        }
 
-            .d-coursesearch .body .item .info .star0 {
-                background-position: 0 -110px;
-            }
+        .d-coursesearch .body .item .info .star20 {
+            background-position: 0 -66px;
+        }
 
-            .d-coursesearch .body .item .info .star5 {
-                background-position: 0 -99px;
-            }
+        .d-coursesearch .body .item .info .star25 {
+            background-position: 0 -55px;
+        }
 
-            .d-coursesearch .body .item .info .star10 {
-                background-position: 0 -88px;
-            }
+        .d-coursesearch .body .item .info .star30 {
+            background-position: 0 -44px;
+        }
 
-            .d-coursesearch .body .item .info .star15 {
-                background-position: 0 -77px;
-            }
+        .d-coursesearch .body .item .info .star35 {
+            background-position: 0 -33px;
+        }
 
-            .d-coursesearch .body .item .info .star20 {
-                background-position: 0 -66px;
-            }
+        .d-coursesearch .body .item .info .star40 {
+            background-position: 0 -22px;
+        }
 
-            .d-coursesearch .body .item .info .star25 {
-                background-position: 0 -55px;
-            }
+        .d-coursesearch .body .item .info .star45 {
+            background-position: 0 -11px;
+        }
 
-            .d-coursesearch .body .item .info .star30 {
-                background-position: 0 -44px;
-            }
+        .d-coursesearch .body .item .info .star50 {
+            background-position: 0 0;
+        }
 
-            .d-coursesearch .body .item .info .star35 {
-                background-position: 0 -33px;
-            }
+    .d-coursesearch .body .item .desc {
+        display: block;
+        padding: 0 0 0 130px;
+        line-height: 24px;
+        font-size: 15px;
+    }
 
-            .d-coursesearch .body .item .info .star40 {
-                background-position: 0 -22px;
-            }
+    .d-coursesearch .body .item .add {
+        display: block;
+        padding: 0 0 0 130px;
+        height: 40px;
+        line-height: 40px;
+    }
 
-            .d-coursesearch .body .item .info .star45 {
-                background-position: 0 -11px;
-            }
-
-            .d-coursesearch .body .item .info .star50 {
-                background-position: 0 0;
-            }
-
-        .d-coursesearch .body .item .desc {
-            display: block;
-            padding: 0 0 0 130px;
+        .d-coursesearch .body .item .add .btn-add {
+            border: 0;
+            padding: 0 10px;
+            height: 24px;
             line-height: 24px;
             font-size: 15px;
         }
-
-        .d-coursesearch .body .item .add {
-            display: block;
-            padding: 0 0 0 130px;
-            height: 40px;
-            line-height: 40px;
-        }
-
-            .d-coursesearch .body .item .add .btn-add {
-                border: 0;
-                padding: 0 10px;
-                height: 24px;
-                line-height: 24px;
-                font-size: 15px;
-            }
 
 .d-coursedetail {
     width: 652px;
@@ -6837,18 +6836,18 @@ div, p, span, a {
             }
 
                 .d-bookactivity .body .feedcontainer .item .name a {
-                    font-size: 15px;
+                    font-size: 14px;
                 }
 
             .d-bookactivity .body .feedcontainer .item .book {
                 width: 231px;
                 padding: 0 0 0 68px;
                 height: 15px;
-                line-height: 15px;
+                line-height: 14px;
             }
 
                 .d-bookactivity .body .feedcontainer .item .book a {
-                    font-size: 15px;
+                    font-size: 14px;
                 }
 
             .d-bookactivity .body .feedcontainer .item .trends {
@@ -6856,7 +6855,7 @@ div, p, span, a {
                 padding: 0 0 0 68px;
                 height: 18px;
                 line-height: 18px;
-                font-size: 12px;
+                font-size: 14px;
                 color: #999;
             }
 
@@ -9277,7 +9276,10 @@ label.inline {
             line-height: 20px;
             color: #999;
         }
-
+         .d-historywork .body .item .info span{
+            margin-right:20px;
+            float:right;
+        }
 .d-historylearning {
     width: 652px;
 }
@@ -9291,22 +9293,21 @@ label.inline {
         .d-historylearning .head .item, .d-historylearning .head .item_select, .d-historylearning .head .item:hover, .d-historylearning .head .item_select:hover {
             display: inline-block;
             padding: 0 20px;
-            margin: 12px 0 0;
+            margin: 14px 0 0;
             height: 30px;
             line-height: 30px;
             text-decoration: none;
-            font-size: 14px;
+            font-size: 16px;
         }
 
         .d-historylearning .head .item_select {
             background-color: #ee6b01;
             color: #fff;
         }
-
     .d-historylearning .body .study {
         width: 652px;
         display: block;
-        padding: 20px 0;
+        padding: 20px 0 10px 0;
         margin: -1px 0 0 0;
         border-top: 1px solid #ccc;
         border-bottom: 1px solid #ccc;
@@ -9336,97 +9337,106 @@ label.inline {
         .d-historylearning .body .study .info {
             width: 542px;
             display: block;
-            padding: 0 0 0 50px;
+            padding: 0 0 0 70px;
             height: 30px;
             line-height: 30px;
         }
 
-            .d-historylearning .body .study .info .lesson_time {
-                display: inline-block;
-                height: 27px;
-                line-height: 27px;
-                padding: 0 10px 0 0;
-                margin: 0 20px 0 0;
-                font-size: 15px;
-            }
+        .d-historylearning .body .study .date {
+            display: block;
+            position: absolute;
+            margin-top: 25px;
+            top: 0;
+            right: 0;
+            width: 200px;
+        }
 
-            .d-historylearning .body .study .info .price {
-                display: inline-block;
-                height: 27px;
-                line-height: 27px;
-                padding: 0 10px;
-                margin: 0 20px 0 0;
-                font-size: 15px;
-            }
+        .d-historylearning .body .study .info .lesson_time {
+            display: inline-block;
+            height: 27px;
+            line-height: 27px;
+            padding: 0 10px 0 0;
+            margin: 0 20px 0 0;
+            font-size: 15px;
+        }
 
-            .d-historylearning .body .study .info .amount {
-                display: inline-block;
-                height: 27px;
-                line-height: 27px;
-                padding: 0 10px 0 0;
-                margin: 0 20px 0 0;
-                font-size: 12px;
-                color: #999;
-            }
+        .d-historylearning .body .study .info .price {
+            display: inline-block;
+            height: 27px;
+            line-height: 27px;
+            padding: 0 10px;
+            margin: 0 20px 0 0;
+            font-size: 15px;
+        }
 
-            .d-historylearning .body .study .info .star {
-                display: inline-block;
-                width: 55px;
-                height: 11px;
-                line-height: 11px;
-                font-size: 0;
-                overflow: hidden;
-                background-image: url(../images/midstars.gif);
-                background-repeat: no-repeat;
-            }
+        .d-historylearning .body .study .info .amount {
+            display: inline-block;
+            height: 27px;
+            line-height: 27px;
+            padding: 0 10px 0 0;
+            margin: 0 20px 0 0;
+            font-size: 12px;
+            color: #999;
+        }
 
-            .d-historylearning .body .study .info .star0 {
-                background-position: 0 -110px;
-            }
+        .d-historylearning .body .study .info .star {
+            display: inline-block;
+            width: 55px;
+            height: 11px;
+            line-height: 11px;
+            font-size: 0;
+            overflow: hidden;
+            background-image: url(../images/midstars.gif);
+            background-repeat: no-repeat;
+        }
 
-            .d-historylearning .body .study .info .star5 {
-                background-position: 0 -99px;
-            }
+        .d-historylearning .body .study .info .star0 {
+            background-position: 0 -110px;
+        }
 
-            .d-historylearning .body .study .info .star10 {
-                background-position: 0 -88px;
-            }
+        .d-historylearning .body .study .info .star5 {
+            background-position: 0 -99px;
+        }
 
-            .d-historylearning .body .study .info .star15 {
-                background-position: 0 -77px;
-            }
+        .d-historylearning .body .study .info .star10 {
+            background-position: 0 -88px;
+        }
 
-            .d-historylearning .body .study .info .star20 {
-                background-position: 0 -66px;
-            }
+        .d-historylearning .body .study .info .star15 {
+            background-position: 0 -77px;
+        }
 
-            .d-historylearning .body .study .info .star25 {
-                background-position: 0 -55px;
-            }
+        .d-historylearning .body .study .info .star20 {
+            background-position: 0 -66px;
+        }
 
-            .d-historylearning .body .study .info .star30 {
-                background-position: 0 -44px;
-            }
+        .d-historylearning .body .study .info .star25 {
+            background-position: 0 -55px;
+        }
 
-            .d-historylearning .body .study .info .star35 {
-                background-position: 0 -33px;
-            }
+        .d-historylearning .body .study .info .star30 {
+            background-position: 0 -44px;
+        }
 
-            .d-historylearning .body .study .info .star40 {
-                background-position: 0 -22px;
-            }
+        .d-historylearning .body .study .info .star35 {
+            background-position: 0 -33px;
+        }
 
-            .d-historylearning .body .study .info .star45 {
-                background-position: 0 -11px;
-            }
+        .d-historylearning .body .study .info .star40 {
+            background-position: 0 -22px;
+        }
 
-            .d-historylearning .body .study .info .star50 {
-                background-position: 0 0;
-            }
+        .d-historylearning .body .study .info .star45 {
+            background-position: 0 -11px;
+        }
 
-            .d-historylearning .body .study .info .star {
-                margin: 0 20px 0 0;
-            }
+        .d-historylearning .body .study .info .star50 {
+            background-position: 0 0;
+        }
+
+        .d-historylearning .body .study .info .star {
+            margin: 0 20px 0 0;
+        }
 
         .d-historylearning .body .study .brief {
             display: block;
@@ -9466,7 +9476,7 @@ label.inline {
         }
 
         .d-historylearning .body .course .content {
-            padding: 0 0 0 100px;
+            padding: 10px 0 0 130px;
         }
 
         .d-historylearning .body .course .info {
@@ -9505,7 +9515,7 @@ label.inline {
             .d-historylearning .body .course .stat .stat_count {
                 display: inline-block;
                 padding: 0 5px 0 0;
-                color: #999;
+                color: #0082cd;
                 font-size: 15px;
             }
 
@@ -9530,15 +9540,13 @@ label.inline {
 
         .d-historylearning .body .course .date {
             display: block;
-            position: absolute;
-            top: 0;
-            right: 0;
+            top: 10px;
+            margin-bottom: 10px;
             width: 200px;
         }
 
             .d-historylearning .body .course .date .signdate {
                 display: block;
-                padding: 0 5px 0 0;
                 color: #999;
                 font-size: 15px;
             }
@@ -9759,6 +9767,7 @@ label.inline {
     background-color: rgb(30, 91, 120);
     color: #fff;
 }
+
 .d-searchtabs {
     height: 40px;
     padding: 20px 0 0;
@@ -10514,48 +10523,42 @@ label.inline {
                 font-size: 17px;
                 color: #999;
             }
-.imgCoursePic
-{
+
+.imgCoursePic {
     height: 184px;
     width: 184px;
 }
 
-.imgCoursePicM
-{
+.imgCoursePicM {
     height: 106px;
     width: 106px;
 }
 
-.imgCourseRollPic
-{
+.imgCourseRollPic {
     height: 220px;
     width: 652px;
 }
 
 
-.imgActivitPicM
-{
+.imgActivitPicM {
     height: 106px;
     width: 106px;
 }
 
 
-.imgCirclePicS
-{
+.imgCirclePicS {
     width: 48px;
     height: 48px;
 }
 
-.imgBookPic
-{
+.imgBookPic {
     width: 90px;
     height: 127px;
 }
 
 
 
-.sponsor
-{
+.sponsor {
     display: block;
     /*padding: 0 0 0 130px;*/
     /*height: 20px;*/
@@ -10563,18 +10566,16 @@ label.inline {
     color: #999;
 }
 
-.date
-{
+.date {
     display: block;
     /*padding: 0 0 0 130px;*/
     height: 20px;
     line-height: 20px;
     color: #999;
-    font-size:15px;
+    font-size: 15px;
 }
 
-.category
-{
+.category {
     display: inline-block;
     background-color: #eee;
     height: 20px;
@@ -10587,8 +10588,7 @@ label.inline {
     width: 40px;
 }
 
-.trim
-{
+.trim {
     /*width: 220px;
             overflow: hidden;
             white-space: nowrap;
@@ -10597,38 +10597,32 @@ label.inline {
 }
 
 
-.news_min_height
-{
+.news_min_height {
     min-height: 100px;
     _height: expression((document.documentElement.clientHeight||document.body.clientHeight)>100?"100px":"");
 }
 
-.book_min_height
-{
+.book_min_height {
     min-height: 124px;
     _height: expression((document.documentElement.clientHeight||document.body.clientHeight)>124?"124px":"");
 }
 
-.course_min_height
-{
+.course_min_height {
     min-height: 124px;
     _height: expression((document.documentElement.clientHeight||document.body.clientHeight)>124?"124px":"");
 }
 
-.circle_min_height
-{
+.circle_min_height {
     min-height: 124px;
     _height: expression((document.documentElement.clientHeight||document.body.clientHeight)>124?"124px":"");
 }
 
-.activities_min_height
-{
+.activities_min_height {
     min-height: 124px;
     _height: expression((document.documentElement.clientHeight||document.body.clientHeight)>124?"124px":"");
 }
 
-.news_title_max_width
-{
+.news_title_max_width {
     max-width: 300px;
     *width: 300px;
     _width: expression((document.documentElement.clientWidth||document.body.clientWidth)<300?"300px":"");
@@ -10636,8 +10630,7 @@ label.inline {
     float: left;
 }
 
-.book_title_max_width
-{
+.book_title_max_width {
     max-width: 300px;
     *width: 300px;
     _width: expression((document.documentElement.clientWidth||document.body.clientWidth)<300?"300px":"");
@@ -10645,8 +10638,7 @@ label.inline {
     float: left;
 }
 
-.activities_title_max_width
-{
+.activities_title_max_width {
     max-width: 300px;
     *width: 300px;
     _width: expression((document.documentElement.clientWidth||document.body.clientWidth)<300?"300px":"");
@@ -10654,17 +10646,15 @@ label.inline {
     float: left;
 }
 
-.course_title_max_width
-{
+.course_title_max_width {
     max-width: 300px;
     *width: 300px;
     _width: expression((document.documentElement.clientWidth||document.body.clientWidth)<300?"300px":"");
     overflow: hidden;
-     float: left;
+    float: left;
 }
 
-.circle_title_max_width
-{
+.circle_title_max_width {
     max-width: 300px;
     *width: 300px;
     _width: expression((document.documentElement.clientWidth||document.body.clientWidth)<300?"300px":"");

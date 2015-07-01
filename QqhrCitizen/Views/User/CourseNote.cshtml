@@ -23,7 +23,7 @@
         <div class="d-col-2-8">
             <div class="contentarea">
                 <!-- region start: historycourse -->
-                <div id="d_historylearning" class="d-historylearning">
+                <div id="d_historywork" class="d-historywork">
                     <div class="head">
                         <a id="navi_event" href="/User/HistoryCourse/@user.ID" class="item his-navi">课程</a>
                         <a id="navi_course" href="/User/StudyHistory/@user.ID" class="item his-navi">学习记录</a>
@@ -33,7 +33,7 @@
                     <div class="body ctnt" style="display: block;">
                         @if (notes.Count <= 0)
                         {
-                            <p style="text-align: center; font-size:13px;">对不起，未找到相关课程笔记。</p>
+                            <p style="text-align: center; font-size:16px;">对不起，未找到相关课程笔记。</p>
                         }
                         else
                         {
@@ -41,16 +41,16 @@
                             {
                                 <div class="item">
                                     <a href="/Courese/Show/@item.Lession.Course.ID" class="title" title="@item.Lession.Course.Title" target="_blank">
-                                        所属课程：@item.Lession.Course.Title
+                                        @item.Lession.Course.Title
                                     </a>
                                     <div class="desc topicContent">
                                         <p>@item.Content</p>
                                     </div>
                                     <div class="info">
-                                        所属课时：<a href="/Course/LessionDetails/@item.Lession.ID">@item.Lession.Title</a><span>@item.Time</span>
+                                        <a href="/Course/LessionDetails/@item.Lession.ID">@item.Lession.Title</a>
+                                        <span >@item.Time</span>
                                     </div>
                                 </div>
-                                <hr />
                             }
                         }
                     </div>

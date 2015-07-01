@@ -251,7 +251,7 @@ namespace WpfApplication2
                 {
                     Time_Course = SetDateTime(cit_sql6.Rows[g]["CreatedTime"]);
                     Url = cit_sql6.Rows[g]["Url"].ToString();
-                    Url=Url.Replace("http://218.8.130.135/终身学习", "http://218.8.130.134:8002");
+                    Url=Url.Replace("http://218.8.130.135/终身学习", "http://218.8.130.135:8000");
                     insert_sql6 = "insert into Lessions (Title,Description,CourseID,Time,Path,Browses) values ('" + cit_sql6.Rows[g]["Name"] + "','" + cit_sql6.Rows[g]["Name"] + "','" + inset_id_course + "','" + Time_Course + "','" + Url + "','0')";
                     ShowSqlNumber.Dispatcher.Invoke(new UpdateTextCallback(this.ShowText),
                     new object[] { insert_sql6 });

@@ -162,6 +162,7 @@
     <Content Include="Helpers\toto.txt" />
     <Content Include="Images\banner.png" />
     <Content Include="Images\board-bodybg.png" />
+    <Content Include="Images\book.jpg" />
     <Content Include="Images\hot.gif" />
     <Content Include="Images\icon-arrow-round.png" />
     <Content Include="Images\icon-courserecommendbyday.png" />
