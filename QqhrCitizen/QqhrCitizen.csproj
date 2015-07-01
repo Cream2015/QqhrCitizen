@@ -170,6 +170,7 @@
     <Content Include="Images\icon-title.jpg" />
     <Content Include="Images\icon-turndot.png" />
     <Content Include="Images\lab.jpg" />
+    <Content Include="Images\links.png" />
     <Content Include="Images\logo.psd" />
     <Content Include="Scripts\jquery-1.6.4.min.js" />
     <Content Include="Scripts\jquery.media.js" />
