@@ -12,20 +12,20 @@
         <table class="table">
             <thead>
                 <tr>
-                    <td>编号</td>
-                    <td>内容</td>
-                    <td>时间</td>
-                    <td>操作</td>
+                    <td style="width:5%;text-align:center">编号</td>
+                    <td style="width:70%;text-align:center">内容</td>
+                    <td style="width:15%;text-align:center">时间</td>
+                    <td style="width:10%;text-align:center">操作</td>
                 </tr>
             </thead>
             <tbody>
                 @foreach (var item in ViewBag.JokeShow as List<Joke>)
                 {
                     <tr id="@item.ID">
-                        <td>@item.ID</td>
-                        <td>@item.Content</td>
-                        <td>@item.Time</td>
-                        <td>
+                        <td style="text-align:center">@item.ID</td>
+                        <td style="text-align:center">@item.Content</td>
+                        <td style="text-align:center">@item.Time</td>
+                        <td style="text-align:center">
                             <a href="javascript:deleteDialog('/Admin/JokeDelete/' + @item.ID + '?sid=@ViewBag.SID',@item.ID);">删除</a>
                             <a href="/Admin/JokeEdit/@item.ID">编辑</a>
                         </td>
