@@ -13,16 +13,28 @@ namespace QqhrCitizen.Models
     public class Course
     {
         public int ID { get; set; }
+
         [ForeignKey("TypeDictionary")]
         public int CourseTypeID { get; set; }
+
         public virtual TypeDictionary TypeDictionary { get; set; }
-        [StringLength(100)]
+
+        [StringLength(256)]
+        [Index]
         public string Title { get; set; }
+
         public string Description { get; set; }
+
+
         [ForeignKey("User")]
         public int UserID { get; set; }
+
+
         public virtual User User { get; set; }
+
+        [Index]
         public DateTime Time { get; set; }
+
         public string Remark { get; set; }
 
         /// <summary>

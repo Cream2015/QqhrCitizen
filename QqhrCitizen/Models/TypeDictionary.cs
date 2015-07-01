@@ -15,6 +15,7 @@ namespace QqhrCitizen.Models
         public int ID { get; set; }
 
         [StringLength(50)]
+        [Index]
         public string TypeValue { get; set; }
 
         public DateTime Time { get; set; }

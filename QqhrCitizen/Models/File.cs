@@ -13,15 +13,23 @@ namespace QqhrCitizen.Models
     public class File
     {
         public int ID { get; set; }
-        [StringLength(50)]
+
+        [StringLength(256)]
+        [Index]
         public string FileName { get; set; }
+
         public string Path { get; set; }
+
+        [Index]
         public DateTime Time { get; set; }
+
         [ForeignKey("TypeDictionary")]
         public int FileTypeID { get; set; }
         public virtual TypeDictionary TypeDictionary { get; set; }
+
         [StringLength(50)]
         public string ContentType { get; set; }
+
         [StringLength(10)]
         public string FileSize { get; set; }
     }

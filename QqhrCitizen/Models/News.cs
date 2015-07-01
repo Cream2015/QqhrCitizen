@@ -15,13 +15,20 @@ namespace QqhrCitizen.Models
     public class News
     {
         public int ID { get; set; }
-        [StringLength(40)]
+
+        [StringLength(256)]
+        [Index]
         public string Title { get; set; }
+
         public string Content { get; set; }
+
         [ForeignKey("TypeDictionary")]
         public int NewsTypeID { get; set; }
         public virtual TypeDictionary TypeDictionary { get; set; }
+
+        [Index]
         public DateTime Time { get; set; }
+
         [ForeignKey("User")]
         public int UserID { get; set; }
         public virtual User User { get; set; }

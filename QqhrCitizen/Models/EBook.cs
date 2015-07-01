@@ -13,14 +13,23 @@ namespace QqhrCitizen.Models
     public class EBook
     {
         public int ID { get; set; }
-        [StringLength(100)]
+
+        [StringLength(256)]
+        [Index]
         public string Title { get; set; }
+
         public string Description { get; set; }
+
         [ForeignKey("TypeDictionary")]
         public int EBookTypeID { get; set; }
-        public string Author { get; set; }
+       
         public virtual TypeDictionary TypeDictionary { get; set; }
+
+        public string Author { get; set; }
+
+        [Index]
         public DateTime Time { get; set; }
+
         [ForeignKey("User")]
         public int UserID { get; set; }
         public virtual User User { get; set; }

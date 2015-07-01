@@ -13,13 +13,20 @@ namespace QqhrCitizen.Models
     public class ResourceLink
     {
         public int ID { get; set; }
+
         [StringLength(100)]
+        [Index]
         public string Title { get; set; }
+
         public string URL { get; set; }
+
+        [Index]
         public DateTime Time { get; set; }
+
         [ForeignKey("TypeDictionary")]
         public int LinkTypeID { get; set; }
         public virtual TypeDictionary TypeDictionary { get; set; }
+
         public bool IsHaveFile { get; set; }
 
         public int FileID { get; set; }

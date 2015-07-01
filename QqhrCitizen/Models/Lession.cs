@@ -15,17 +15,24 @@ namespace QqhrCitizen.Models
     public class Lession
     {
         public int ID { get; set; }
+
         [StringLength(50)]
+        [Index]
         public string Title { get; set; }
+
         public string Description { get; set; }
 
         [ForeignKey("Course")]
         public int CourseID { get; set; }
-        public virtual Course Course{ get; set; }
+
+        public virtual Course Course { get; set; }
+
+        [Index]
         public DateTime Time { get; set; }
+
         public string Remark { get; set; }
 
-        public string  Path { set; get; }
+        public string Path { set; get; }
 
         public string ContentType { set; get; }
 
@@ -35,7 +42,5 @@ namespace QqhrCitizen.Models
         {
             return new vLession(this);
         }
-
-       
     }
 }

@@ -11,19 +11,23 @@ namespace QqhrCitizen.Models
     /// </summary>
     public class Note
     {
-
         [Column("ID")]
         public int ID { get; set; }
+
         [Column("LessionID")]
         [ForeignKey("Lession")]
         public int LessionID { get; set; }
         public virtual Lession Lession { get; set; }
+
         [Column("UserID")]
         [ForeignKey("User")]
         public int UserID { get; set; }
         public virtual User User { get; set; }
+
         [Column("Time")]
+        [Index]
         public DateTime Time { get; set; }
+
         [Column("Content")]
         public string Content { get; set; }
     }
