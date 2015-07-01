@@ -20,7 +20,7 @@ namespace QqhrCitizen.Controllers
     public class AdminController : BaseController
     {
 
-        static string fileServer = "http://localhost:53411/";
+        static string fileServer = "http://218.8.130.134:8000/";
         
 
         // GET: Admin
