@@ -769,6 +769,7 @@
     <Compile Include="Models\TypeDictionary.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Models\UserCourse.cs" />
+    <Compile Include="Models\ViewModel\vLive.cs" />
     <Compile Include="Models\ViewModel\vAdminModel.cs" />
     <Compile Include="Models\ViewModel\vCourse.cs" />
     <Compile Include="Models\ViewModel\vEBook.cs" />
@@ -870,6 +871,8 @@
     <Content Include="Views\Admin\AddJoke.cshtml" />
     <Content Include="Views\Admin\JokeEdit.cshtml" />
     <Content Include="Views\Home\Test1.cshtml" />
+    <Content Include="Views\Admin\LiveManager.cshtml" />
+    <Content Include="Views\Admin\AddLive.cshtml" />
     <None Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Admin\ViwepagerEdit.cshtml" />
     <None Include="Web.Debug.config">

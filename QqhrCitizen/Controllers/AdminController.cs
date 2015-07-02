@@ -21,7 +21,7 @@ namespace QqhrCitizen.Controllers
     {
 
         static string fileServer = "http://218.8.130.134:80/";
-        
+
 
         // GET: Admin
         public ActionResult Index()
@@ -1033,7 +1033,7 @@ namespace QqhrCitizen.Controllers
         {
             Lession lession = new Lession();
             lession = db.Lessions.Find(id);
-            var path = Server.MapPath("~/"+lession.Path.Replace(fileServer, ""));
+            var path = Server.MapPath("~/" + lession.Path.Replace(fileServer, ""));
             System.IO.File.Delete(path);
             db.Lessions.Remove(lession);
             db.SaveChanges();
@@ -1075,7 +1075,7 @@ namespace QqhrCitizen.Controllers
             string path = "";
             if (file != null)
             {
-                var oldPath = Server.MapPath("~/"+lession.Path.Replace(fileServer, ""));
+                var oldPath = Server.MapPath("~/" + lession.Path.Replace(fileServer, ""));
                 System.IO.File.Delete(oldPath);
 
                 string root = "~/Lessions/" + course.Title + "/";
@@ -1592,6 +1592,92 @@ namespace QqhrCitizen.Controllers
             db.SaveChanges();
             return RedirectToAction("JokeManager");
         }
+        #endregion
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet]
+        public ActionResult AddLive()
+        {
+            return View();
+        }
+
+        #region 增加直播
+        /// <summary>
+        /// 增加直播
+        /// </summary>
+        /// <param name="model"></param>
+        /// <param name="file"></param>
+        /// <returns></returns>
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult AddLive(Live model, HttpPostedFileBase file)
+        {
+            if (file != null)
+            {
+                System.IO.Stream stream = file.InputStream;
+                byte[] buffer = new byte[stream.Length];
+                stream.Read(buffer, 0, (int)stream.Length);
+                stream.Close();
+                model.Picture = buffer;
+                db.Lives.Add(model);
+                db.SaveChanges();
+                return Redirect("/Admin/LiveManager");
+            }
+            else
+            {
+                return Redirect("/Admin/AdminMessage?msg=你填写信息不正确，请重新填写！");
+            }
+        }
+        #endregion
+
+        #region 直播管理
+        /// <summary>
+        ///  直播管理
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet]
+        public ActionResult LiveManager(string key, DateTime? Begin, DateTime? End, int p = 0)
+        {
+            IEnumerable<Live> query = db.Lives.AsEnumerable();
+            if (!string.IsNullOrEmpty(key))
+            {
+                query = query.Where(c => c.Title.Contains(key));
+            }
+            if (Begin.HasValue)
+            {
+                query = query.Where(c => c.Begin >= Begin);
+            }
+            if (End.HasValue)
+            {
+                query = query.Where(c => c.End <= End);
+            }
+
+            query = query.OrderByDescending(x => x.ID);
+            ViewBag.PageInfo = PagerHelper.Do(ref query, 20, p);
+
+            return View(query);
+        }
+        #endregion
+
+        #region 直播删除
+        /// <summary>
+        /// 直播删除
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        [HttpGet]
+        [ValidateSID]
+        public ActionResult LiveDelete(int id)
+        {
+            Live live = db.Lives.Find(id);
+            db.Lives.Remove(live);
+            db.SaveChanges();
+            return Content("ok");
+        } 
         #endregion
     }
 }
