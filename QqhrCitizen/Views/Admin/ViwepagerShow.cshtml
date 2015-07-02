@@ -5,7 +5,7 @@
     ViewBag.Title = viwepager.Title;
 }
 
-<h1 class="head-tietle">@viwepager.Title - 轮播展示 <a href="/Admin/AddViwepager">增加</a></h1>
+<h1 class="head-tietle">@viwepager.Title - 轮播展示 <a href="/Admin/ViwepagerEdit/@viwepager.ID">修改</a></h1>
 <table class="detail-table">
     <tr>
         <td class="row-title">标题</td>
@@ -39,7 +39,19 @@
     </tr>
     <tr>
         <td class="row-title">
+            背景色
+        </td>
+        <td>
+            <div style="background:@viwepager.BgColor;width:20px;height:20px;"></div>
+        </td>
+    </tr>
+
+    <tr>
+        <td class="row-title">
             图片
+        </td>
+        <td>
+            <img src="/ViewPager/ShowPicture/@viwepager.ID" width="200" height="160" />
         </td>
     </tr>
 </table>

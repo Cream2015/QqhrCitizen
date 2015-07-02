@@ -7,11 +7,11 @@
 
 <div>
     <div class="result-title">
-        <h1 class="head-tietle">@viwepaher.Title - 导航修改</h1>
+        <h1 class="head-tietle">@viwepaher.Title - 轮播修改</h1>
     </div>
     @using (Html.BeginForm("ViwepagerkEdit", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
     {
-        @Html.AntiForgerySID()
+        @Html.AntiForgeryToken()
         <input value="@viwepaher.ID" type="hidden" name="ID" />
         <table class="detail-table">
             <tr>
@@ -39,9 +39,16 @@
                 </td>
             </tr>
             <tr>
+                <td class="row-title">背景色</td>
+                <td>
+                    <input id='colorpicker' />
+                    <input name="BgColor" id="bgcolor" type="hidden" value="@viwepaher.BgColor" />
+                </td>
+            </tr>
+            <tr>
                 <td class="row-title">图片</td>
                 <td>
-                    <input type="file" name="file" id="file" class="textbox" />
+                    <input type="file" name="file" id="file" class="textbox nullable" /> （不修改请留空）
                 </td>
             </tr>
         </table>
@@ -49,3 +56,14 @@
         <p><input type="submit" value="保存" class="button blue" /></p>
     }
 </div>
+
+
+<script>
+    $("#colorpicker").spectrum({
+        color: "#f00",
+        clickoutFiresChange: true,
+        change: function (color) {
+            $("#bgcolor").val(color.toHexString()); // #ff0000
+        }
+    });
+</script>
