@@ -22,9 +22,11 @@ namespace QqhrCitizen.Controllers
             ViewBag.ChananelID = id;
             return View();
         }
-        #region 电子书截图
+
+
+        #region 视频缩略图
         /// <summary>
-        /// 电子书截图
+        /// 视频缩略图
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
@@ -35,6 +37,8 @@ namespace QqhrCitizen.Controllers
             return File(live.Picture, "image/jpg");
         }
         #endregion
+
+
 
         public ActionResult Show(int id=0)
         {
@@ -51,8 +55,11 @@ namespace QqhrCitizen.Controllers
                 live.Title = "测试";
                 ViewBag.ShowLive = live;
             }
+            ViewBag.LiveID = id;
             return View();
         }
+
+
         public ActionResult Player(string source,string type)
         {
             ViewBag.Source = source;
