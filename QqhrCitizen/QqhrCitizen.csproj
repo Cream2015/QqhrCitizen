@@ -179,6 +179,7 @@
     <Content Include="Images\links.png" />
     <Content Include="Images\logo.psd" />
     <Content Include="Scripts\AC_RunActiveContent.js" />
+ 
     <Content Include="Images\midstars.gif" />
     <Content Include="Images\signin-password.jpg" />
     <Content Include="Images\signin-username.jpg" />
@@ -467,8 +468,6 @@
     <Content Include="Scripts\pdf.worker.js" />
     <Content Include="Scripts\viewer.js" />
     <Content Include="Styles\viewer.css" />
-    <Content Include="swfs\playerProductInstall.swf" />
-    <Content Include="swfs\videoPlayer.swf" />
     <Content Include="Views\Admin\ViwepagerShow.cshtml" />
     <None Include="Properties\PublishProfiles\nele.pubxml" />
     <None Include="Properties\PublishProfiles\qqrtvu.pubxml" />
@@ -720,7 +719,6 @@
     <Content Include="Styles\jQuery-File-Upload.css" />
     <Content Include="Styles\jquery.scrollbar.css" />
     <Content Include="Styles\PagedList.css" />
-    <None Include="Views\Live\Player.cshtml" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -880,7 +878,9 @@
     <Content Include="Views\Admin\LiveManager.cshtml" />
     <Content Include="Views\Admin\AddLive.cshtml" />
     <Content Include="Views\Admin\LiveShow.cshtml" />
-    <Content Include="Views\Admin\LiveEdit.cshtml" />
+    <Content Include="Views\Admin\LiveEdit.cshtml" /> 
+    <Content Include="Views\Live\Player.cshtml" />
+    <Content Include="Views\Live\Show.cshtml" />
     <None Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Admin\ViwepagerEdit.cshtml" />
     <None Include="Web.Debug.config">
