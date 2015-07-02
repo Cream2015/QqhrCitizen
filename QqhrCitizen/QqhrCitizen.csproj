@@ -178,9 +178,7 @@
     <Content Include="Images\lab.jpg" />
     <Content Include="Images\links.png" />
     <Content Include="Images\logo.psd" />
-<<<<<<< HEAD
     <Content Include="Scripts\AC_RunActiveContent.js" />
-=======
     <Content Include="Images\midstars.gif" />
     <Content Include="Images\signin-password.jpg" />
     <Content Include="Images\signin-username.jpg" />
@@ -192,7 +190,6 @@
     <Content Include="Images\sprite\lab.jpg" />
     <Content Include="Images\tbg.jpg" />
     <Content Include="Images\top.gif" />
->>>>>>> origin/master
     <Content Include="Scripts\ckeditor\lang\af.js" />
     <Content Include="Scripts\ckeditor\lang\ar.js" />
     <Content Include="Scripts\ckeditor\lang\bg.js" />
@@ -878,15 +875,12 @@
     <Content Include="Views\Admin\AddJoke.cshtml" />
     <Content Include="Views\Admin\JokeEdit.cshtml" />
     <Content Include="Views\Home\Test1.cshtml" />
-<<<<<<< HEAD
     <Content Include="Views\Live\Show.cshtml" />
     <Content Include="swfs\dynamicStream.smil" />
-=======
     <Content Include="Views\Admin\LiveManager.cshtml" />
     <Content Include="Views\Admin\AddLive.cshtml" />
     <Content Include="Views\Admin\LiveShow.cshtml" />
     <Content Include="Views\Admin\LiveEdit.cshtml" />
->>>>>>> origin/master
     <None Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Admin\ViwepagerEdit.cshtml" />
     <None Include="Web.Debug.config">
