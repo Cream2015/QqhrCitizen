@@ -34,7 +34,7 @@ namespace QqhrCitizen.Controllers
             List<TypeDictionary> courseTypes = db.TypeDictionaries.Where(x => x.Belonger == TypeBelonger.课程 && x.FatherID != null).Take(5).ToList();
             foreach (var item in courseTypes)
             {
-                item.TypeValue = item.TypeValue.Substring(0, 3);
+                item.TypeValue = item.TypeValue.Substring(0, 4);
             }
             ViewBag.CourseTypes = courseTypes;
 
