@@ -204,7 +204,7 @@
                             <div class="body">
                                 @foreach (TypeDictionary td in ViewBag.CourseTypes)
                                 {
-                                    <a class="item" href="/Course?tid=@td.ID">@td.TypeValue</a>
+                                <a class="item" href="/Course?tid=@td.ID">@td.TypeValue</a>
                                 }
                             </div>
                         </div>
@@ -218,14 +218,14 @@
                                 <div id="slide_courserecommend" class="slidecontainer">
                                     @foreach (Course c in ViewBag.Courses)
                                     {
-                                        <div class="item">
-                                            <a class="course-cover cover" href="/Course/Show/@c.ID" title="@c.Title">
-                                                <img src="/Course/ShowPicture/@c.ID" data-echo="/Course/ShowPicture/@c.ID" onerror="this.onerror='';this.src='/Course/ShowPicture/@c.ID';">
-                                            </a>
-                                            <div class="title trim">
-                                                <a href="/Course/Show/@c.ID" title="@c.Title">@c.Title</a>
-                                            </div><span class="signed">NaN 人学习</span>
-                                        </div>
+                                    <div class="item">
+                                        <a class="course-cover cover" href="/Course/Show/@c.ID" title="@c.Title">
+                                            <img src="/Course/ShowPicture/@c.ID" data-echo="/Course/ShowPicture/@c.ID" onerror="this.onerror='';this.src='/Course/ShowPicture/@c.ID';">
+                                        </a>
+                                        <div class="title trim">
+                                            <a href="/Course/Show/@c.ID" title="@c.Title">@c.Title</a>
+                                        </div><span class="signed">NaN 人学习</span>
+                                    </div>
                                     }
                                 </div>
                             </div>
@@ -246,7 +246,7 @@
                             <div class="body">
                                 @foreach (TypeDictionary td in ViewBag.NewsTypes)
                                 {
-                                    <a class="item" href="/News/Discovery/@td.ID">@td.TypeValue</a>
+                                <a class="item" href="/News/Discovery/@td.ID">@td.TypeValue</a>
                                 }
                             </div>
                         </div>
@@ -262,32 +262,32 @@
                                     {
                                         if (index++ == 0)
                                         {
-                                            <span class="itemhot">
-                                                <a class="act-cover cover" href="/News/Show/@l.ID" title="@l.Title">
-                                                    <img src="@l.ImgUrl.First()" data-echo="@l.ImgUrl.First()" onerror="this.onerror='';this.src='@l.ImgUrl.First()';">
-                                                </a>
-                                                <div class="title trim"><a href="/News/Show/@l.ID" title="@l.Title">@l.Title</a></div>
-                                                <span class="date">@l.Time.ToString("yyyy.MM.dd HH:mm")</span>
-                                                <div class="desc">
-                                                    @Html.Sanitized(@l.Content)
-                                                </div>
-                                            </span>
+                                    <span class="itemhot">
+                                        <a class="act-cover cover" href="/News/Show/@l.ID" title="@l.Title">
+                                            <img src="@l.ImgUrl.First()" data-echo="@l.ImgUrl.First()" onerror="this.onerror='';this.src='@l.ImgUrl.First()';">
+                                        </a>
+                                        <div class="title trim"><a href="/News/Show/@l.ID" title="@l.Title">@l.Title</a></div>
+                                        <span class="date">@l.Time.ToString("yyyy.MM.dd HH:mm")</span>
+                                        <div class="desc">
+                                            @Html.Sanitized(@l.Content)
+                                        </div>
+                                    </span>
                                         }
                                         else
                                         {
                                             if (index == 6) { break; }
-                                            <span class="item">
-                                                <a class="act-cover cover" href="/News/Show/@l.ID" title="@l.Title">
-                                                    <img src="@l.ImgUrl.First()" data-echo="@l.ImgUrl.First()" onerror="this.onerror='';this.src='@l.ImgUrl.First()';">
-                                                </a>
-                                                <div class="title trim">
-                                                    <a href="/News/Show/@l.ID" title="@l.Title">@l.Title</a>
-                                                </div>
-                                                <span class="date">@l.Time.ToString("yyyy.MM.dd HH:mm")</span>
-                                                <div class="desc">
-                                                    @Html.Sanitized(@l.Content)
-                                                </div>
-                                            </span>
+                                    <span class="item">
+                                        <a class="act-cover cover" href="/News/Show/@l.ID" title="@l.Title">
+                                            <img src="@l.ImgUrl.First()" data-echo="@l.ImgUrl.First()" onerror="this.onerror='';this.src='@l.ImgUrl.First()';">
+                                        </a>
+                                        <div class="title trim">
+                                            <a href="/News/Show/@l.ID" title="@l.Title">@l.Title</a>
+                                        </div>
+                                        <span class="date">@l.Time.ToString("yyyy.MM.dd HH:mm")</span>
+                                        <div class="desc">
+                                            @Html.Sanitized(@l.Content)
+                                        </div>
+                                    </span>
                                         }
                                     }
                                 </div>
@@ -298,7 +298,7 @@
             </div><div class="clear"></div>
         </div>
         <!--电子书-->
-        <div id="d_row_ebook" class="d-row" style="padding: 20px 0 20px 0; background-color: #f7f7f7;">
+        <div id="d_row_ebook" class="d-row" style="padding: 20px 0 10px 0; background-color: #f7f7f7;">
             <div class="d-row-c">
                 <div class="d-col-2-1">
                     <div class="contentarea">
@@ -310,7 +310,7 @@
                             <div class="body">
                                 @foreach (TypeDictionary td in ViewBag.BookTypes)
                                 {
-                                    <a class="item" href="/EBook/Discovery/@td.ID">@td.TypeValue</a>
+                                <a class="item" href="/EBook/Discovery/@td.ID">@td.TypeValue</a>
                                 }
                             </div>
                         </div>
@@ -324,15 +324,15 @@
                                 @{ string[] bookcolors = { "#23a532", "#169425", "#189727", "#11851e", "#23a532", "#189727" }; var bi = 0; }
                                 @foreach (TypeDictionary td in ViewBag.BookTypes)
                                 {
-                                    <div class="item" style="background-color: @(bookcolors[bi++]);">
-                                        <a href="#" title="@td.TypeValue">@td.TypeValue</a>
-                                        <div>
-                                            @foreach (TypeDictionary td2 in td.Children.Take(6).ToList())
+                                <div class="item" style="background-color: @(bookcolors[bi++]);">
+                                    <a href="#" title="@td.TypeValue">@td.TypeValue</a>
+                                    <div>
+                                        @foreach (TypeDictionary td2 in td.Children.Take(6).ToList())
                                             {
-                                                <a class="" href="/EBook/Index?tid=@td2.ID" title="@td2.TypeValue">@td2.TypeValue</a>
+                                            <a class="" href="/EBook/Index?tid=@td2.ID" title="@td2.TypeValue">@td2.TypeValue</a>
                                             }
-                                        </div>
                                     </div>
+                                </div>
                                 }
                             </div>
                         </div><div id="d_bookrecommend" class="d-bookrecommend">
@@ -340,16 +340,16 @@
                                 <div id="slide_bookrecommend" class="slidecontainer">
                                     @foreach (EBook eb in ViewBag.Books)
                                     {
-                                        <div class="item">
-                                            <a class="cover readingCover" href="/EBook/Show/@eb.ID" title="@eb.Title">
-                                                <img src="/EBook/ShowPicture/@eb.ID" data-echo="/EBook/ShowPicture/@eb.ID" onerror="this.onerror='';this.src='/EBook/ShowPicture/@eb.ID';">
-                                            </a>
-                                            <div class="title trim">
-                                                <a href="/EBook/Show/@eb.ID" title="@eb.Title">@eb.Title</a>
-                                            </div><div class="author trim">
-                                                @eb.Author
-                                            </div>
+                                    <div class="item">
+                                        <a class="cover readingCover" href="/EBook/Show/@eb.ID" title="@eb.Title">
+                                            <img src="/EBook/ShowPicture/@eb.ID" data-echo="/EBook/ShowPicture/@eb.ID" onerror="this.onerror='';this.src='/EBook/ShowPicture/@eb.ID';">
+                                        </a>
+                                        <div class="title trim">
+                                            <a href="/EBook/Show/@eb.ID" title="@eb.Title">@eb.Title</a>
+                                        </div><div class="author trim">
+                                            @eb.Author
                                         </div>
+                                    </div>
                                     }
                                 </div>
                             </div>
@@ -382,7 +382,7 @@
                         <p style="font-size: 20px;">
                             @foreach (ResourceLink rl in ViewBag.TextLinks)
                             {
-                               <span><a href="@rl.URL" target="_blank">@rl.Title</a>@MvcHtmlString.Create("&nbsp;&nbsp;")</span>
+                                <span><a href="@rl.URL" target="_blank">@rl.Title</a>@MvcHtmlString.Create("&nbsp;&nbsp;")</span>
                             }
                         </p>
                     </div>
@@ -473,8 +473,8 @@
         }
 
         .item .act-cover img {
-            width: 222px;
-            height: 125px;
+            width: 224px;
+            height: 134px;
         }
 
         .item .course-cover img {

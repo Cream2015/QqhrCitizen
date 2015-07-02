@@ -2920,7 +2920,7 @@ div {
 
     .d-eventrecommend .body {
         width: 900px;
-        height: 354px;
+        height: 370px;
         overflow: hidden;
     }
 
@@ -2929,7 +2929,7 @@ div {
             top: 0;
             left: 0;
             width: 905px;
-            height: 365px;
+            height: 370px;
         }
 
             .d-eventrecommend .body .slidecontainer .itemhot {
@@ -2937,7 +2937,7 @@ div {
                 display: block;
                 float: left;
                 width: 448px;
-                height: 354px;
+                height: 360px;
                 margin: 0 4px 10px 0;
                 background-color: #ee6b01;
             }
@@ -3014,8 +3014,8 @@ div {
 
                 .d-eventrecommend .body .slidecontainer .item .cover {
                     display: block;
-                    width: 222px;
-                    height: 125px;
+                    width: 224px;
+                    height: 134px;
                 }
 
                 .d-eventrecommend .body .slidecontainer .item .title {
