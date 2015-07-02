@@ -40,7 +40,9 @@ namespace QqhrCitizen.Controllers
         {
             if(id!=0)
             {
-                ViewBag.ShowLive = db.Lives.Find(id);
+                Live live = new Live();
+                live = db.Lives.Find(id);
+                ViewBag.ShowLive = live;
             }
             else
             {
