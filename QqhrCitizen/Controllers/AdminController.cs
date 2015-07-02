@@ -1669,7 +1669,7 @@ namespace QqhrCitizen.Controllers
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        [HttpGet]
+        [HttpPost]
         [ValidateSID]
         public ActionResult LiveDelete(int id)
         {
@@ -1677,6 +1677,63 @@ namespace QqhrCitizen.Controllers
             db.Lives.Remove(live);
             db.SaveChanges();
             return Content("ok");
+        }
+        #endregion
+
+        #region MyRegion
+        /// <summary>
+        ///  直播信息展示
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet]
+        public ActionResult LiveShow(int id)
+        {
+            Live live = db.Lives.Find(id);
+            ViewBag.Live = new vLive(live);
+            return View();
+        }
+        #endregion
+
+        /// <summary>
+        /// 直播编辑
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        [HttpGet]
+        public ActionResult LiveEdit(int id)
+        {
+            Live live = db.Lives.Find(id);
+            ViewBag.Live = live;
+            return View();
+        }
+
+        #region 直播编辑
+        /// <summary>
+        /// 直播编辑 
+        /// </summary>
+        /// <param name="model"></param>
+        /// <param name="file"></param>
+        /// <returns></returns>
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult LiveEdit(Live model, HttpPostedFileBase file)
+        {
+            Live live = db.Lives.Find(model.ID);
+            if (file != null)
+            {
+                System.IO.Stream stream = file.InputStream;
+                byte[] buffer = new byte[stream.Length];
+                stream.Read(buffer, 0, (int)stream.Length);
+                stream.Close();
+                live.Picture = buffer;
+            }
+            live.Title = model.Title;
+            live.Description = model.Description;
+            live.Begin = model.Begin;
+            live.End = model.End;
+            live.LiveURL = model.LiveURL;
+            db.SaveChanges();
+            return Redirect("/Admin/LiveManager");
         } 
         #endregion
     }
