@@ -192,6 +192,7 @@
                 </div>
             </div>
         </div>
+        <!--课程-->
         <div id="d_row_course" class="d-row" style="padding: 20px 0 20px 0; background-color: #f7f7f7;">
             <div class="d-row-c">
                 <div class="d-col-2-1">
@@ -233,6 +234,7 @@
                 </div><div class="clear"></div>
             </div>
         </div>
+        <!--直播-->
         <div id="d_row_live" class="d-row" style="padding: 20px 0 20px 0;">
             <div class="d-row-c">
                 <div class="d-col-2-1">
@@ -295,6 +297,7 @@
                 </div>
             </div><div class="clear"></div>
         </div>
+        <!--电子书-->
         <div id="d_row_ebook" class="d-row" style="padding: 20px 0 20px 0; background-color: #f7f7f7;">
             <div class="d-row-c">
                 <div class="d-col-2-1">
@@ -355,6 +358,7 @@
                 </div><div class="clear"></div>
             </div>
         </div>
+        <!--链接-->
         <div id="d_row_link" class="d-row" style="padding: 20px 0 20px 0; background-color: #fff;">
             <div class="d-row-c">
                 <div class="d-col-2-1">
@@ -372,13 +376,13 @@
                         <p>
                             @foreach (ResourceLink rl in ViewBag.ImgLinks)
                             {
-                                <a href="@rl.URL" target="_blank"><img src="/Upload/@((new QqhrCitizen.Models.ViewModel.vResourceLink(rl)).File.Path)" class="cc-link-img" /></a>
+                                <span><a href="@rl.URL" target="_blank"><img src="/Upload/@((new QqhrCitizen.Models.ViewModel.vResourceLink(rl)).File.Path)" class="cc-link-img" /></a></span>
                             }
                         </p>
                         <p style="font-size: 20px;">
                             @foreach (ResourceLink rl in ViewBag.TextLinks)
                             {
-                                <a href="@rl.URL" target="_blank">@rl.Title</a>@MvcHtmlString.Create("&nbsp;&nbsp;")
+                               <span><a href="@rl.URL" target="_blank">@rl.Title</a>@MvcHtmlString.Create("&nbsp;&nbsp;")</span>
                             }
                         </p>
                     </div>
