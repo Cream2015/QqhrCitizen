@@ -1,0 +1,120 @@
+﻿@using QqhrCitizen.Models;
+@{
+    ViewBag.Title = @ViewBag.ShowLive.Title+"_齐齐哈尔市民学习网";
+}
+<script src="~/Scripts/AC_RunActiveContent.js" language="javascript"></script>
+<script>
+    $("#topmenu_live").attr("class", "item_selected");
+    AC_FL_RunContent = 0;
+</script>
+<style type="text/css">
+    table {
+        border-collapse: collapse;
+        border-spacing: 0;
+        border-color: black;
+    }
+
+    li {
+        color: #FFFFFF;
+    }
+
+    ul li {
+        margin: 10px 0;
+    }
+
+    td img {
+        display: block;
+    }
+
+    body {
+        background-color: #191919;
+    }
+
+    a:link {
+        text-decoration: none;
+    }
+
+    a:hover {
+        text-decoration: underline;
+    }
+
+    a:visited {
+        text-decoration: none;
+    }
+
+    a:active {
+        text-decoration: none;
+    }
+</style>
+<!-- functionality -->
+<script type="text/javascript" src="~/Scripts/jquery.js"></script>
+
+<script language="javascript">
+
+    var queryParameters = new Array();
+    var flashVars = "";
+    var tag = "";
+    var url = "";
+
+    var CurrPage = 1;
+    var TotalPage = 1;
+    var TotalVideo = 0;
+
+    var FileList;
+
+    var PlayURL = "@ViewBag.ShowLive.LiveURL";
+
+    var mainURL, subURL, hasMain, hasSub;
+
+    window.onload = function () {
+        //var htmlobj=$.ajax({url:"/fmsinfo.do",async:false});
+
+        //FileList = htmlobj.responseText.split(":");
+        mainURL = "@ViewBag.ShowLive.LiveURL";
+        subURL = "@ViewBag.ShowLive.LiveURL";
+
+    }
+
+    function PlayVideo() {
+        document.getElementById("player").src = "player?source=" + PlayURL + "&type=live";
+       
+
+    }
+    function playMain() {
+        document.getElementById("player").src = "player?source=" + mainURL + "&type=live";
+        
+    }
+</script>
+
+<div id="d_menu" class="d-menu menu-bok">
+    <div id="d_menu_c" class="d-menu-c">
+        <!-- region start: menu -->
+        <div id="d_headmenu" class="d-headmenu">
+            <div class="body">
+                <a class="item_selected" href="/EBook/Index" id="headmenu_default">直播首页</a>
+            </div>
+        </div><!-- region end: menu -->
+    </div>
+</div>
+<div class="d-row">
+    <div class="d-row-c">
+        <div class="d-col-2-12">
+            <div class="contentarea">
+                <table width="900" align="center" cellpadding="0" cellspacing="0" bordercolor="#000000">
+                    <tr>
+                        <td valign="top" width="900" height="400">
+                                    <iframe id="player" name="player" width="100%" height="100%" border=0 allowtransparency scrollbars=no frameborder="0"></iframe>
+                          
+                        </td>
+                    </tr>
+                    <tr>
+                        <td valign="center" style="color:green" height="32">
+                            <a href="javascript:playMain();">开始播放</a>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div class="clear"></div>
+    </div>
+</div>

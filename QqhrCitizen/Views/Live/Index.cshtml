@@ -1,14 +1,58 @@
-﻿
+﻿@using QqhrCitizen.Models;
+@using QqhrCitizen.Models.ViewModel;
 @{
-    ViewBag.Title = "Index";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "直播首页_齐齐哈尔市民学习网";
 }
 <script>
     $("#topmenu_live").attr("class", "item_selected");
 </script>
-<div class="container wrap-cont">
-    <div class="block">
-       暂无
+<div id="d_menu" class="d-menu menu-bok">
+    <div id="d_menu_c" class="d-menu-c">
+        <!-- region start: menu -->
+        <div id="d_headmenu" class="d-headmenu">
+            <div class="body">
+                <a class="item_selected" href="/EBook/Index" id="headmenu_default">直播首页</a>
+            </div>
+        </div><!-- region end: menu -->
+    </div>
+</div>
+<div id="d_bottom" class="d-bottom" style="visibility: hidden; position: relative;">
+    <div class="d-bottom-c">
+        <div id="d_scrolltop" class="d-scrolltop" style="right: -70px;">
+            <span class="t" onclick="$(document.body).ScrollTo();">顶部</span>
+        </div>
+    </div>
+</div>
+<div class="d-row">
+    <div class="d-row-c">
+        <div class="d-col-2-12">
+            <div class="contentarea">
+                <!-- region start: 最新直播 -->
+                <div id="d_bookhot" class="d-bookhot">
+                    <div class="head">
+                        最新直播
+                    </div>
+                    <div class="body">
+                        <div id="slide_bookhot" class="slidecontainer">
+                            @foreach (var item in ViewBag.LiveList)
+                            {
+                                <div class="item">
+                                    <a class="cover" href="/Live/Show/@item.ID" target="_blank">
+                                        <img src="/Live/ShowPicture/@item.ID" />
+                                    </a>
+                                    <div class="title trim">
+                                        <a href="/Live/Show/@item.ID" title="@item.Title" target="_blank">@item.Title</a>
+                                    </div>
+                                    <div class="description" title="">@item.Description</div>
+                                    <div class="date"><span>开始:@item.Begin</span><br />结束<span>@item.End</span></div>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="clear"></div>
     </div>
 </div>
 

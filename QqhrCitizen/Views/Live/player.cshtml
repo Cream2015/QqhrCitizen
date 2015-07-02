@@ -1,0 +1,218 @@
+﻿@using QqhrCitizen.Models;
+@using QqhrCitizen.Models.ViewModel;
+@{
+    ViewBag.Title = "直播首页_齐齐哈尔市民学习网";
+    Layout = null;
+}
+<script language="javascript"> AC_FL_RunContent = 0; </script>
+<script src="~/Scripts/AC_RunActiveContent.js" language="javascript"></script>
+
+<style type="text/css">
+    td img {
+        display: block;
+    }
+
+    body {
+        background-color: #191919;
+    }
+
+    a:link {
+        text-decoration: none;
+    }
+
+    a:hover {
+        text-decoration: underline;
+    }
+
+    a:visited {
+        text-decoration: none;
+    }
+
+    a:active {
+        text-decoration: none;
+    }
+
+    .style22 {
+        color: #666666;
+    }
+
+    .style23 {
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 12px;
+    }
+
+    .style31 {
+        font-family: "Arial";
+        color: #999999;
+        font-size: 12px;
+        font-weight: bold;
+    }
+
+    .style34 {
+        font-family: "Arial";
+    }
+
+    .style24 {
+        font-size: 11px;
+        color: #999999;
+        font-family: Arial, Helvetica, sans-serif;
+    }
+
+    .style62 {
+        font-size: 12px;
+        color: #999999;
+        font-family: "myriad Pro";
+    }
+
+    .style67 {
+        font-family: "myriad Pro";
+        color: #999999;
+        font-size: 12px;
+        font-weight: bold;
+    }
+
+    .style69 {
+        font-family: "Arial";
+        color: #999999;
+        font-weight: bold;
+    }
+
+    .style1 {
+        font-family: Arial, Helvetica, sans-serif;
+        color: #999999;
+        font-size: 14px;
+        font-weight: bold;
+    }
+
+    .style3 {
+        font-family: "Arial";
+        font-size: 12px;
+        line-height: normal;
+        height: 10px;
+    }
+
+    .style71 {
+        font-family: "myriad Pro";
+    }
+
+    .style73 {
+        font-family: Arial;
+        color: #999999;
+        font-size: 12px;
+        font-weight: bold;
+    }
+
+    .style74 {
+        font-size: 12px;
+        color: #999999;
+        font-family: Arial;
+    }
+
+    .style75 {
+        font-family: Arial;
+        color: #999999;
+        font-size: 10px;
+        font-weight: bold;
+    }
+
+    .style76 {
+        font-size: 12px;
+        color: #F6122B;
+        font-family: Arial;
+    }
+
+    .style81 {
+        font-family: Arial;
+    }
+
+    .style82 {
+        color: #999999;
+        font-size: 12px;
+    }
+
+    .style83 {
+        font-size: 12px;
+        font-weight: bold;
+        color: #999999;
+    }
+</style>
+
+<!-- functionality -->
+
+<script language="javascript">
+
+    var queryParameters = new Array();
+    var flashVars = "";
+    var tag = "";
+    var url = "";
+
+    function getUrlParam( name )
+    {
+        name = name.replace(/[\[]/,"\\\[").replace(/[\]]/,"\\\]");
+        var regexS = "[\\?&]"+name+"=([^&#]*)";
+        var regex = new RegExp( regexS );
+        var results = regex.exec( window.location.href );
+        if( results == null )
+            return "";
+        else
+            return unescape( results[1] );
+    }
+
+
+
+    queryParameters['source'] = "@ViewBag.Source";
+    queryParameters['type'] ="@ViewBag.Type";
+    queryParameters['idx'] = "";
+
+
+
+
+    flashVars += "&videoWidth=";
+    flashVars += 0;
+
+    flashVars += "&videoHeight=";
+    flashVars += 0;
+
+    flashVars += "&dsControl=";
+    flashVars += unescape("manual");
+
+    flashVars += "&dsSensitivity=";
+    flashVars += 100;
+
+    flashVars += "&serverURL=";
+    flashVars += queryParameters['source'];
+
+    flashVars += "&DS_Status=";
+    flashVars += "true";
+
+    flashVars += "&streamType=";
+    flashVars += queryParameters['type'];
+
+    flashVars += "&autoStart=";
+    flashVars += unescape("true");
+
+    tag = "&lt;object width='640' height='377' id='videoPlayer' name='videoPlayer' type='application/x-shockwave-flash' classid='clsid:d27cdb6e-ae6d-11cf-96b8-444553540000' &gt;&lt;param name='movie' value='swfs/videoPlayer.swf' /&gt; &lt;param name='quality' value='high' /&gt; &lt;param name='bgcolor' value='#000000' /&gt; &lt;param name='allowfullscreen' value='true' /&gt; &lt;param name='flashvars' value= '"+
+    flashVars+"'/&gt;&lt;embed src='/swfs/videoPlayer.swf' width='640' height='377' id='videoPlayer' quality='high' bgcolor='#000000' name='videoPlayer' allowfullscreen='true' pluginspage='http://www.adobe.com/go/getflashplayer'   flashvars='"+ flashVars +"' type='application/x-shockwave-flash'&gt; &lt;/embed&gt;&lt;/object&gt;";
+
+</script>
+
+
+</head>
+<body scroll="no" leftmargin="0" topmargin="0">
+    <script language="JavaScript">
+        AC_FL_RunContent(
+            "src", "/swfs/videoPlayer",
+            "width", "640",
+            "height", "377",
+            "id", "videoPlayer",
+            "quality", "high",
+            "bgcolor", "#000000",
+            "name", "videoPlayer",
+            "allowfullscreen","true",
+            "type", "application/x-shockwave-flash",
+            "pluginspage", "http://www.adobe.com/go/getflashplayer",
+            "flashvars", flashVars
+        );
+    </script>
+</body>
+</html>
