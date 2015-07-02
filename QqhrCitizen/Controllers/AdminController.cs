@@ -26,6 +26,9 @@ namespace QqhrCitizen.Controllers
         // GET: Admin
         public ActionResult Index()
         {
+            ViewBag.NewsCount = db.News.Count();
+            ViewBag.CourseCount = db.Courses.Count();
+            ViewBag.EBookCount = db.EBooks.Count();
             return View();
         }
 
