@@ -108,6 +108,17 @@
                     {
 
                         <li>
+                            <a href="#"><i class="icon-font">&#xe018;</i>I实验管理</a>
+                            <ul class="sub-menu">
+                                <li><a href="/Admin/ITrialManager"><i class="icon-font">&#xe017;</i>I实验管理</a></li>
+                                <li><a href="/Admin/AddITrial"><i class="icon-font">&#xe037;</i>增加I实验</a></li>
+                            </ul>
+                        </li>
+                    }
+                    @if (user.Role == Role.Admin)
+                    {
+
+                        <li>
                             <a href="#"><i class="icon-font">&#xe018;</i>轮播管理</a>
                             <ul class="sub-menu">
                                 <li><a href="/Admin/ViwepagerManager"><i class="icon-font">&#xe017;</i>轮播管理</a></li>

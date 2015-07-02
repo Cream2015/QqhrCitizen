@@ -1,0 +1,49 @@
+﻿@using QqhrCitizen.Models
+@{
+    ViewBag.Title = "ITrialShow";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    ITrial itrial = ViewBag.ITrial as ITrial;
+}
+
+<h1 class="head-tietle">@itrial.Title - I实验展示 <a href="/Admin/ITrialEdit/@itrial.ID">修改</a></h1>
+<table class="detail-table">
+    <tr>
+        <td class="row-title">标题</td>
+        <td>
+            @itrial.Title
+        </td>
+    </tr>
+    <tr>
+        <td class="row-title">
+            描述
+        </td>
+        <td>
+            @itrial.Description
+        </td>
+    </tr>
+    <tr>
+        <td class="row-title">
+            Url
+        </td>
+        <td>
+            @itrial.URL
+        </td>
+    </tr>
+    <tr>
+        <td class="row-title">
+            优先级
+        </td>
+        <td>
+            @itrial.Priority
+        </td>
+    </tr>
+    <tr>
+        <td class="row-title">
+            图片
+        </td>
+        <td>
+            <img src="/ITrial/ShowPicture/@itrial.ID" width="200" height="160" />
+        </td>
+    </tr>
+</table>
+

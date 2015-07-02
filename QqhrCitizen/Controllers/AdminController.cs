@@ -1419,16 +1419,27 @@ namespace QqhrCitizen.Controllers
             ViewBag.ViwepaherShow = db.Viewpagers.Find(id);
             return View();
         }
+
+        /// <summary>
+        /// 轮播修改
+        /// </summary>
+        /// <param name="model"></param>
+        /// <param name="file"></param>
+        /// <returns></returns>
         [HttpPost]
-        [ValidateSID]
+        [ValidateAntiForgeryToken]
         [ValidateInput(false)]
         public ActionResult ViwepagerkEdit(Viewpager model, HttpPostedFileBase file)
         {
-            System.IO.Stream stream = file.InputStream;
-            byte[] buffer = new byte[stream.Length];
-            stream.Read(buffer, 0, (int)stream.Length);
-            stream.Close();
-            model.Picture = buffer;
+            if (file != null)
+            {
+                System.IO.Stream stream = file.InputStream;
+                byte[] buffer = new byte[stream.Length];
+                stream.Read(buffer, 0, (int)stream.Length);
+                stream.Close();
+                model.Picture = buffer;
+            }
+
 
             Viewpager viewpager = new Viewpager();
             viewpager = db.Viewpagers.Find(model.ID);
@@ -1737,7 +1748,67 @@ namespace QqhrCitizen.Controllers
             live.LiveURL = model.LiveURL;
             db.SaveChanges();
             return Redirect("/Admin/LiveManager");
-        } 
+        }
         #endregion
+
+
+        /// <summary>
+        /// I实验管理
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet]
+        public ActionResult ITrialManager()
+        {
+            ViewBag.ITrials = db.ITrials.OrderByDescending(i => i.Time).ToList();
+            return View();
+        }
+
+        [HttpGet]
+        public ActionResult AddITrial()
+        {
+
+            return View();
+        }
+
+        /// <summary>
+        /// 执行增加I实验
+        /// </summary>
+        /// <param name="model"></param>
+        /// <param name="file"></param>
+        /// <returns></returns>
+        [ValidateAntiForgeryToken]
+        [HttpPost]
+        public ActionResult AddITrial(ITrial model, HttpPostedFileBase file)
+        {
+            System.IO.Stream stream = file.InputStream;
+            byte[] buffer = new byte[stream.Length];
+            stream.Read(buffer, 0, (int)stream.Length);
+            stream.Close();
+            model.Picture = buffer;
+            model.Time = DateTime.Now;
+            db.ITrials.Add(model);
+            db.SaveChanges();
+            return Redirect("/Admin/ITrialManager");
+        }
+
+        /// <summary>
+        ///   显示I实验
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        [HttpGet]
+        public ActionResult ITrialShow(int id)
+        {
+            ViewBag.ITrial = db.ITrials.Find(id);
+            return View();
+        }
+
+        [HttpGet]
+        public ActionResult TrialEdit(int id)
+        {
+            ViewBag.ITrial = db.ITrials.Find(id);
+            return View();
+        }
+
     }
 }

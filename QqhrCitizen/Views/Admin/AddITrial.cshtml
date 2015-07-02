@@ -1,0 +1,51 @@
+﻿@{
+    ViewBag.Title = "增加I实验";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="result-title">
+    <h1 class="head-tietle">增加I实验</h1>
+</div>
+
+@using (Html.BeginForm("AddITrial", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    <table class="detail-table">
+        <tr>
+            <td class="row-title">标题</td>
+            <td>
+                <input class="textbox w-3" name="Title" />
+            </td>
+        </tr>
+        <tr>
+            <td class="row-title">描述</td>
+            <td>
+                <input class="textbox w-3" name="Description" />
+            </td>
+        </tr>
+
+        <tr>
+            <td class="row-title">URL</td>
+            <td>
+                <input class="textbox w-3" name="URL" />（例如： http://www.baidu.com）
+            </td>
+        </tr>
+        <tr>
+            <td class="row-title">优先级</td>
+            <td>
+                <input class="textbox w-3" name="Priority">
+            </td>
+        </tr>
+        <tr>
+            <td class="row-title">
+                上传图片
+            </td>
+            <td>
+                <input type="file" name="file" id="file" class="textbox" />
+            </td>
+        </tr>
+    </table>
+    <p><input type="submit" value="增加" class="button blue" /></p>
+}
+
+
