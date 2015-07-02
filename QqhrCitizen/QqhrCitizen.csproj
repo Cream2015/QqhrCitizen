@@ -875,7 +875,7 @@
     <Content Include="Views\Admin\AddLive.cshtml" />
     <Content Include="Views\Admin\LiveShow.cshtml" />
     <Content Include="Views\Admin\LiveEdit.cshtml" />
-    <Content Include="Views\Live\player.cshtml" />
+    <Content Include="Views\Live\Player.cshtml" />
     <Content Include="Views\Live\Show.cshtml" />
     <None Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Admin\ViwepagerEdit.cshtml" />
