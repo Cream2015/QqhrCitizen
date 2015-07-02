@@ -31,7 +31,13 @@ namespace QqhrCitizen.Controllers
         // GET: /Home/
         public ActionResult Index()
         {
-            ViewBag.CourseTypes = db.TypeDictionaries.Where(x => x.Belonger == TypeBelonger.课程 && x.FatherID != null).Take(5).ToList();
+            List<TypeDictionary> courseTypes = db.TypeDictionaries.Where(x => x.Belonger == TypeBelonger.课程 && x.FatherID != null).Take(5).ToList();
+            foreach (var item in courseTypes)
+            {
+                item.TypeValue = item.TypeValue.Substring(0, 3);
+            }
+            ViewBag.CourseTypes = courseTypes;
+
             ViewBag.Courses = db.Courses.OrderByDescending(x => x.Time).Take(6).ToList();
             ViewBag.NewsTypes = db.TypeDictionaries.Where(x => x.Belonger == TypeBelonger.新闻 && x.FatherID != null).Take(5).ToList();
             ViewBag.News = GetTop5News();
@@ -141,12 +147,12 @@ namespace QqhrCitizen.Controllers
             return View();
         }
 
-        
+
         public ActionResult Test1()
         {
             return View();
         }
-        
+
 
     }
 }

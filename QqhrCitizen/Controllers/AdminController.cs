@@ -88,7 +88,7 @@ namespace QqhrCitizen.Controllers
         [HttpPost]
         public ActionResult AddType(TypeBelonger Belonger, string TypeValue, int NeedAuthorize, int FatherID)
         {
-            TypeDictionary temp = db.TypeDictionaries.Where(tp => tp.TypeValue == TypeValue.Trim()).FirstOrDefault();
+            TypeDictionary temp = db.TypeDictionaries.Where(tp => tp.TypeValue == TypeValue.Trim() && tp.Belonger == Belonger).FirstOrDefault();
             if (temp != null)
             {
                 return Redirect("/Admin/AdminMessage?msg=你填写的分类名称已经存在！");
