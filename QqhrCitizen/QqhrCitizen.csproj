@@ -163,16 +163,36 @@
     <Content Include="Images\banner.png" />
     <Content Include="Images\board-bodybg.png" />
     <Content Include="Images\book.jpg" />
+    <Content Include="Images\dropdown-arrow-small.png" />
+    <Content Include="Images\exp.gif" />
+    <Content Include="Images\header_bg.png" />
     <Content Include="Images\hot.gif" />
     <Content Include="Images\icon-arrow-round.png" />
     <Content Include="Images\icon-courserecommendbyday.png" />
+    <Content Include="Images\icon-mobile-android.jpg" />
+    <Content Include="Images\icon-mobile-apple.jpg" />
     <Content Include="Images\icon-search.png" />
     <Content Include="Images\icon-title.jpg" />
     <Content Include="Images\icon-turndot.png" />
+    <Content Include="Images\kf.jpg" />
     <Content Include="Images\lab.jpg" />
     <Content Include="Images\links.png" />
     <Content Include="Images\logo.psd" />
+<<<<<<< HEAD
     <Content Include="Scripts\AC_RunActiveContent.js" />
+=======
+    <Content Include="Images\midstars.gif" />
+    <Content Include="Images\signin-password.jpg" />
+    <Content Include="Images\signin-username.jpg" />
+    <Content Include="Images\sprite\board-bodybg.png" />
+    <Content Include="Images\sprite\hot.gif" />
+    <Content Include="Images\sprite\icon-arrow-round.png" />
+    <Content Include="Images\sprite\icon-title.jpg" />
+    <Content Include="Images\sprite\icon-title.png" />
+    <Content Include="Images\sprite\lab.jpg" />
+    <Content Include="Images\tbg.jpg" />
+    <Content Include="Images\top.gif" />
+>>>>>>> origin/master
     <Content Include="Scripts\ckeditor\lang\af.js" />
     <Content Include="Scripts\ckeditor\lang\ar.js" />
     <Content Include="Scripts\ckeditor\lang\bg.js" />
@@ -756,6 +776,7 @@
     <Compile Include="Models\TypeDictionary.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Models\UserCourse.cs" />
+    <Compile Include="Models\ViewModel\vLive.cs" />
     <Compile Include="Models\ViewModel\vAdminModel.cs" />
     <Compile Include="Models\ViewModel\vCourse.cs" />
     <Compile Include="Models\ViewModel\vEBook.cs" />
@@ -857,8 +878,15 @@
     <Content Include="Views\Admin\AddJoke.cshtml" />
     <Content Include="Views\Admin\JokeEdit.cshtml" />
     <Content Include="Views\Home\Test1.cshtml" />
+<<<<<<< HEAD
     <Content Include="Views\Live\Show.cshtml" />
     <Content Include="swfs\dynamicStream.smil" />
+=======
+    <Content Include="Views\Admin\LiveManager.cshtml" />
+    <Content Include="Views\Admin\AddLive.cshtml" />
+    <Content Include="Views\Admin\LiveShow.cshtml" />
+    <Content Include="Views\Admin\LiveEdit.cshtml" />
+>>>>>>> origin/master
     <None Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Admin\ViwepagerEdit.cshtml" />
     <None Include="Web.Debug.config">

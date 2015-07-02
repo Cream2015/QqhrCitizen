@@ -1,0 +1,49 @@
+﻿@using QqhrCitizen.Models.ViewModel
+@{
+    ViewBag.Title = "直播展示";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    vLive live = ViewBag.Live as vLive;
+}
+<h2 class="head-tietle">@live.Title - 直播详细  <a href="/Admin/LiveEdit/@live.ID">修改</a></h2>
+
+<table class="detail-table">
+    
+    <tr>
+        <td class="row-title">标题</td>
+        <td>
+            @live.Title
+        </td>
+    </tr>
+    <tr>
+        <td class="row-title">
+            描述
+        </td>
+        <td>
+            @live.Description
+        </td>
+    </tr>
+
+    <tr>
+        <td class="row-title">开始时间</td>
+        <td>
+            @live.Begin
+        </td>
+    </tr>
+    <tr>
+        <td class="row-title">结束时间</td>
+        <td>
+            @live.End
+        </td>
+    </tr>
+    <tr>
+        <td class="row-title">缩略图</td>
+        <td>
+            <img src="/Live/ShowPicture/@live.ID" alt="@live.Title" />
+        </td>
+    </tr>
+</table>
+
+
+
+
+

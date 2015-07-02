@@ -1,0 +1,66 @@
+﻿@using QqhrCitizen.Models
+@{
+    ViewBag.Title = "LiveEdit";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    Live live = ViewBag.Live as Live;
+}
+
+
+<div>
+    <div class="result-title">
+        <h1 class="head-tietle">直播修改</h1>
+    </div>
+    @using (Html.BeginForm("LiveEdit", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        @Html.AntiForgeryToken()
+        <input value="@live.ID" name="ID" type="hidden" />
+        <table class="detail-table">
+            <tr>
+                <td class="row-title">标题</td>
+                <td>
+                    <input class="textbox w-3" type="text" name="Title" value="@live.Title" />
+                </td>
+            </tr>
+
+            <tr>
+                <td class="row-title">
+                    URL地址
+                </td>
+                <td>
+                    <input type="text" name="LiveURL" class="textbox w-3" value="@live.LiveURL" />(例如：rtmp://218.8.130.128:1935/Live/Video1)
+                </td>
+            </tr>
+
+            <tr>
+                <td class="row-title">描述</td>
+                <td>
+                    <textarea class="textbox w-3 nullable" name="Description">@live.Description</textarea>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="row-title">开始时间</td>
+                <td>
+                    <input type="text" name="Begin" class="textbox datetime" value="@live.Begin" placeholder="发布时间(大于)" />
+                </td>
+            </tr>
+
+            <tr>
+                <td class="row-title">结束时间</td>
+                <td>
+                    <input type="text" value="@live.End" name="End" class="textbox datetime" placeholder="发布时间(大于)" />
+                </td>
+            </tr>
+            <tr>
+                <td class="row-title">
+                    直播缩略图:
+                </td>
+                <td>
+                    <input type="file" name="file" id="file" class="textbox nullable" />(不修改请不要上传)
+                </td>
+            </tr>
+        </table>
+        <p><input type="submit" value="保存" class="button blue" /></p>
+    }
+</div>
+

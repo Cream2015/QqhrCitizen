@@ -36,38 +36,13 @@
                             <h2>@lession.Title</h2>
                             <input type="hidden" id="hdCurrentuser" value="@(ViewBag.CurrentUser!=null? @ViewBag.CurrentUser.Username:"")" />
                             <input type="hidden" name="name" id="LessionID" value="@lession.ID" />
-
-                            <script>
-                                var Sys = {};
-                                var ua = navigator.userAgent.toLowerCase();
-                                window.ActiveXObject ? Sys.ie = ua.match(/msie ([\d.]+)/)[1] :
-                                document.getBoxObjectFor ? Sys.firefox = ua.match(/firefox\/([\d.]+)/)[1] :
-                                window.MessageEvent && !document.getBoxObjectFor ? Sys.chrome = ua.match(/chrome\/([\d.]+)/)[1] :
-                                window.opera ? Sys.opera = ua.match(/opera.([\d.]+)/)[1] :
-                                window.openDatabase ? Sys.safari = ua.match(/version\/([\d.]+)/)[1] : 0;
-
-                                //以下进行测试
-                                //if (Sys.ie) document.write('IE: ' + Sys.ie);
-                                //if (Sys.firefox) document.write('Firefox: ' + Sys.firefox);
-                                //if (Sys.chrome) document.write('Chrome: ' + Sys.chrome);
-                                //if (Sys.opera) document.write('Opera: ' + Sys.opera);
-                                //if (Sys.safari) document.write('Safari: ' + Sys.safari);
-                            </script>
                             @if (flag == true)
                             {
                                 <iframe src="@lession.Path" width="600" height="400"></iframe>
                             }
                             else
                             {
-                                <div id="divVideo"></div>
-                                <script type="text/javascript">
-                                    if (Sys.ie) {
-                                        player("@lession.Path", 600, 400, 1, "start.jpg");
-                                    } else {
-                                        var str = "<video controls='controls' src='@lession.Path'></video>";
-                                        $("#divVideo").html(str);
-                                    }
-                                </script>
+                                <script> player("@lession.Path", 600, 400, 1, "start.jpg");</script>
                             }
                         </div>
 
