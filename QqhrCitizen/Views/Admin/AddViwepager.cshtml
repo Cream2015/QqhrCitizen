@@ -11,28 +11,35 @@
 {
     @Html.AntiForgerySID()
     <table class="detail-table">
-        <tr>
-            <td>标题</td>
+        <tr >
+            <td class="row-title">标题</td>
             <td>
                 <input class="textbox w-3" name="Title" />
             </td>
         </tr>
         <tr>
-            <td>副标题</td>
+            <td class="row-title">副标题</td>
             <td>
                 <input class="textbox w-3" name="Subtitle">
             </td>
         </tr>
         <tr>
-            <td>URL</td>
+            <td class="row-title">URL</td>
             <td>
                 <input class="textbox w-3" name="URL" />（例如： http://www.baidu.com）
             </td>
         </tr>
         <tr>
-            <td>优先级</td>
+            <td  class="row-title">优先级</td>
             <td>
                 <input class="textbox w-3" name="Priority">
+            </td>
+        </tr>
+        <tr>
+            <td class="row-title">背景色</td>
+            <td>
+                <input id='colorpicker' />
+                <input name="BgColor" id="bgcolor" type="hidden"/>
             </td>
         </tr>
         <tr>
@@ -49,3 +56,12 @@
 
 
 
+<script>
+    $("#colorpicker").spectrum({
+        color: "#f00",
+        clickoutFiresChange: true,
+        change: function (color) {
+            $("#bgcolor").val(color.toHexString()); // #ff0000
+        }
+    });
+</script>

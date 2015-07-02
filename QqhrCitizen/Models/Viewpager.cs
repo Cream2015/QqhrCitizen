@@ -35,5 +35,7 @@ namespace QqhrCitizen.Models
         /// 截图
         /// </summary>
         public byte[] Picture { get; set; }
+         
+        public string BgColor { set; get; }
     }
 }
