@@ -457,7 +457,7 @@
             @foreach (Viewpager n in ViewBag.Pictures)
             {
                 if (iii >= 5) { break; }
-                @MvcHtmlString.Create("{ id: 'bb" + (iii + 1) + "', bg: '/Viewpager/ShowPicture/" + n.ID + "', thumb: '/Viewpager/ShowPicture/" + n.ID + "', bgcolor: '" + bgcolor[iii] + "', fgcolor: '#fff' },")
+                @MvcHtmlString.Create("{ id: 'bb" + (iii + 1) + "', bg: '/Viewpager/ShowPicture/" + n.ID + "', thumb: '/Viewpager/ShowPicture/" + n.ID + "', bgcolor: '" + n.BgColor + "', fgcolor: '#fff' },")
                 { i++; }
             }
         ];
