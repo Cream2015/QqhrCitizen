@@ -1889,5 +1889,18 @@ namespace QqhrCitizen.Controllers
             ViewBag.Product = new vProduct(product);
             return View();
         }
+
+        [HttpGet]
+        public ActionResult AddProductImage(int id)
+        {
+            ViewBag.ProductID = id;
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult AddProductImage(int ProductID, HttpPostedFileBase file)
+        {
+            return Redirect("/Admin/ProductShow/"+ ProductID);
+        }
     }
 } 
