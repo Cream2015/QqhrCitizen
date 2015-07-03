@@ -30,9 +30,6 @@
         display: block;
     }
 
-    body {
-        background-color: #191919;
-    }
 
     a:link {
         text-decoration: none;
@@ -106,7 +103,7 @@
                 <table width="677" height="380" align="center" cellpadding="0" cellspacing="0">
                     <tr>
                         <td valign="top" width="660" height="380">
-                            <img src="~/Images/player.png" id="player_img" width="660" height="380" style="cursor:pointer"/>
+                            <img src="~/Images/player.png" id="player_img" width="660" height="380" style="cursor:pointer" />
                             <iframe id="player" name="player" width="100%" height="100%" border=0 allowtransparency scrollbars=no frameborder="0" style="display:none"></iframe>
                         </td>
                     </tr>
@@ -118,7 +115,7 @@
                 <input type="hidden" value="@ViewBag.LiveID" id="LiveID" />
                 <input type="hidden" value="@((ViewBag.CurrentUser == null) ?"":ViewBag.CurrentUser.Username)" id="currentuser" />
                 <div style="min-height:380px;">
-                    <div class="msgDisplay" style="height: 324px; overflow:auto;">
+                    <div class="msgDisplay" style="height: 324px; overflow:auto;background-color: #f9f9f9;">
 
                     </div>
                     <textarea id="txtMsg" class="textbox" style="height:56px;width:260px;"></textarea>
@@ -134,7 +131,15 @@
 <script>
     var contosoChatHubProxy = $.connection.contosoChatHub;
     contosoChatHubProxy.client.addContosoChatMessageToPage = function (name, message) {
-        var str = "<div><span style="color:#A00000">" + name + " " + moment(new Date()).format("YYYY-MM-DD HH:mm:ss") + "<p class='font-size:8px;'>" + message + "</p></div>";
+        var str;
+        var username = "@ViewBag.CurrentUser.Username";
+        if (name == username) {
+            str = "<div class='popover left'><div class='arrow'></div><div class='popover-content'><p>[<span style='color:#00CC00'>" + moment(new Date()).format("HH:mm:ss") + "]</span><span style='color:#0000CC'>" + name + "</span><br/></span  style='color:#006666'>" + message + "</p></div></div>";
+
+        }
+        else {
+            str = "<div class='popover right'><div class='arrow'></div><div class='popover-content'><p>[<span style='color:#00CC00'>" + moment(new Date()).format("HH:mm:ss") + "]</span><span style='color:#006666'>" + name + ":</span><br/><span style='color:#0000CC;'>" + message + "</span></p></div></div></div>";
+        }
         console.log(str);
         $(".msgDisplay").append(str);
     };
@@ -163,6 +168,91 @@
             $("#player").show();
             $("#player_img").hide();
         });
-       
+
     });
 </script>
+<style>
+    .popover {
+        position: relative;
+        top: 0;
+        left: 0;
+        z-index: 1060;
+        display: block;
+        max-width: 276px;
+        padding: 1px;
+        font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+        font-size: 14px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 1.42857143;
+        text-align: left;
+        text-align: start;
+        text-decoration: none;
+        text-shadow: none;
+        text-transform: none;
+        letter-spacing: normal;
+        word-break: normal;
+        word-spacing: normal;
+        word-wrap: normal;
+        white-space: normal;
+        background-color: #fff;
+        -webkit-background-clip: padding-box;
+        background-clip: padding-box;
+        border: 1px solid #ccc;
+        border: 1px solid rgba(0,0,0,.2);
+        border-radius: 6px;
+        -webkit-box-shadow: 0 5px 10px rgba(0,0,0,.2);
+        box-shadow: 0 5px 10px rgba(0,0,0,.2);
+        line-break: auto;
+    }
+
+        .popover > .arrow {
+            border-width: 11px;
+        }
+
+
+            .popover > .arrow, .popover > .arrow:after {
+                position: absolute;
+                display: block;
+                width: 0;
+                height: 0;
+                border-color: transparent;
+                border-style: solid;
+            }
+
+        .popover.left > .arrow {
+            top: 50%;
+            right: -11px;
+            margin-top: -11px;
+            border-right-width: 0;
+            border-left-color: #fff;
+        }
+
+            .popover.left > .arrow:after {
+                right: 1px;
+                bottom: -10px;
+                content: " ";
+                border-right-width: 0;
+                border-left-color: #fff;
+            }
+.popover.right > .arrow {
+            top: 50%;
+            left: -11px;
+            margin-top: -11px;
+            border-right-width: 0;
+            border-left-color: #fff;
+        }
+
+            .popover.right > .arrow:after {
+                right: 1px;
+                bottom: -10px;
+                content: " ";
+                border-right-width: 0;
+                border-left-color: #fff;
+            }
+    :after, :before {
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+    }
+</style>

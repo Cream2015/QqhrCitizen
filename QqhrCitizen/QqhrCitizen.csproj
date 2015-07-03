@@ -374,6 +374,7 @@
     <Content Include="Scripts\ckeditor\skins\moono\images\close.png" />
     <Content Include="Scripts\ckeditor\skins\moono\images\mini.png" />
     <Content Include="Scripts\jquery-1.6.4.min.js" />
+    <Content Include="Scripts\jquery.js" />
     <Content Include="Scripts\jquery.media.js" />
     <Content Include="Scripts\pdfobject.js" />
     <Content Include="Scripts\spectrum.js" />
@@ -677,7 +678,7 @@
     <Content Include="Scripts\jquery-1.11.2.min.js" />
     <Content Include="Scripts\jquery-1.11.3.min.js" />
     <Content Include="Scripts\jquery.datetimepicker.js" />
-    <Content Include="Scripts\jquery.js" />
+    <Content Include="Scripts\jquery_live.js" />
     <Content Include="Scripts\jquery.scrollbar.js" />
     <Content Include="Scripts\jquery.signalR-2.2.0.js" />
     <Content Include="Scripts\jquery.signalR-2.2.0.min.js" />
@@ -905,6 +906,7 @@
     <Folder Include="Content\" />
     <Folder Include="Lessions\" />
     <Folder Include="Upload\NewsWord\" />
+    <Folder Include="Views\ITrial\" />
     <Folder Include="Views\ViewPager\" />
   </ItemGroup>
   <PropertyGroup>
