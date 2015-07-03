@@ -1534,12 +1534,7 @@ namespace QqhrCitizen.Controllers
             Navigation nav = new Navigation();
             nav.Title = model.Title;
             nav.Url = model.Url;
-            nav.Nav_Id = "topmenu_" + model.Nav_Id;
-            if (nav.Url == null)
-            {
-                nav.Url = "Null";
-                nav.Nav_Id = "Null";
-            }
+            nav.Nav_Id = "Null";
             nav.Km_st_Id = "Null";
 
             db.Navigations.Add(nav);
