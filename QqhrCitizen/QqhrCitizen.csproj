@@ -732,6 +732,12 @@
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\CourseController.cs" />
     <Compile Include="Controllers\EBookController.cs" />
+	<Folder Include="Views\ITrial\" />
+	<Content Include="Views\Admin\ITrialManager.cshtml" />
+    <Content Include="Views\Admin\AddITrial.cshtml" />
+    <Content Include="Views\Admin\ITrialShow.cshtml" />
+	<Compile Include="Models\ITrial.cs" />
+	 <Compile Include="Controllers\ITrialController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LiveController.cs" />
     <Compile Include="Controllers\NewsController.cs" />
