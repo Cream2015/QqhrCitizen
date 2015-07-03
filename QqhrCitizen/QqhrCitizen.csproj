@@ -792,6 +792,7 @@
     <Compile Include="Models\ViewModel\vLogin.cs" />
     <Compile Include="Models\ViewModel\vNews.cs" />
     <Compile Include="Models\ViewModel\vNote.cs" />
+    <Compile Include="Models\ViewModel\vProduct.cs" />
     <Compile Include="Models\ViewModel\vQuestion.cs" />
     <Compile Include="Models\ViewModel\vReadRecord.cs" />
     <Compile Include="Models\ViewModel\vRegister.cs" />
@@ -897,6 +898,7 @@
     <Content Include="Views\ITrial\Index.cshtml" />
     <Content Include="Views\Admin\ProductManager.cshtml" />
     <Content Include="Views\Admin\AddProduct.cshtml" />
+    <Content Include="Views\Admin\ProductShow.cshtml" />
     <None Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Admin\ViwepagerEdit.cshtml" />
     <None Include="Web.Debug.config">
@@ -911,7 +913,6 @@
     <Folder Include="Content\" />
     <Folder Include="Lessions\" />
     <Folder Include="Upload\NewsWord\" />
-    <Folder Include="Views\ITrial\" />
     <Folder Include="Views\ViewPager\" />
   </ItemGroup>
   <PropertyGroup>

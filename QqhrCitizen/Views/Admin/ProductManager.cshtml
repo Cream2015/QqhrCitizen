@@ -38,10 +38,11 @@
                         <td>@item.Time</td>
                         <td>@item.User.Username</td>
                         <td>
-                            <a href="/Admin/CourseShow/@item.ID">查看详细</a>
-                            <a href="javascript:deleteDialog('/Admin/CoursesDelete/' + @item.ID + '?sid=@ViewBag.SID',@item.ID);">删除</a>
-                            <a href="/Admin/CoursesEdit/@item.ID">编辑</a>
-                            <a href="/Admin/AddLession/@item.ID">添加课时</a>
+                            <a href="/Admin/ProductShow/@item.ID">查看详细</a>
+                            <a href="javascript:deleteDialog('/Admin/ProductDelete/' + @item.ID + '?sid=@ViewBag.SID',@item.ID);">删除</a>
+                            <a href="/Admin/ProductEdit/@item.ID">编辑</a>
+                            <a href="/Admin/AddProductImage/@item.ID">添加图片</a>
+                            <a href="/Admin/AddProductVideo/@item.ID">添加图片</a>
                         </td>
                     </tr>
                 }

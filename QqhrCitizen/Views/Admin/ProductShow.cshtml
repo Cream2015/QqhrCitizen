@@ -1,0 +1,56 @@
+﻿@using QqhrCitizen.Models.ViewModel
+@{
+    ViewBag.Title = "产品展示";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    vProduct product = ViewBag.Product as vProduct;
+}
+
+<h1 class="head-tietle">@product.Title - 产品展示 <a href="/Admin/ProductEdit/@product.ID">修改</a></h1>
+<table class="detail-table">
+    <tr>
+        <td class="row-title">标题</td>
+        <td>
+            @product.Title
+        </td>
+    </tr>
+    <tr>
+        <td class="row-title">
+            描述
+        </td>
+        <td>
+            @product.Description
+        </td>
+    </tr>
+    <tr>
+        <td class="row-title">
+            价格
+        </td>
+        <td>
+           @product.Price
+        </td>
+    </tr>
+     
+    <tr>
+        <td class="row-title">
+            操作员
+        </td>
+        <td>
+            @product.Username
+        </td>
+    </tr>
+</table>
+
+<h3>图片</h3>
+<table>
+    @foreach (var item in product.ProductImages)
+    {
+        <tr>
+            <td>@item.ID</td>
+            <td>
+                <img src="/" alt="Alternate Text" />
+            </td>
+        </tr>
+    }
+</table>
+
+

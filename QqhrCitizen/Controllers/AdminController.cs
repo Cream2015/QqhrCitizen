@@ -1881,5 +1881,13 @@ namespace QqhrCitizen.Controllers
             db.SaveChanges();
             return Redirect("/Admin/ProductManager");
         }
+
+        [HttpGet]
+        public ActionResult ProductShow(int id)
+        {
+            Product product = db.Products.Find(id);
+            ViewBag.Product = new vProduct(product);
+            return View();
+        }
     }
 } 
