@@ -10683,27 +10683,28 @@ label.inline {
         }
 
             .d-livenew .body .slidecontainer .item {
-                width: 120px;
-                height: 227px;
-                margin: 0 29px 20px 0;
+                width: 230px;
+                height: 250px;
+                margin: 0 10px 10px 10px;
                 float: left;
                 font-size: 15px;
             }
 
                 .d-livenew .body .slidecontainer .item .cover {
                     display: block;
-                    width: 106px;
+                    width: 230px;
                     height: 158px;
                     overflow: hidden;
                 }
 
                     .d-livenew .body .slidecontainer .item .cover img {
-                        width: 110px;
+                        width: 230px;
                         height: 164px;
+                        text-align:center;
                     }
 
                 .d-livenew .body .slidecontainer .item .title {
-                    width: 120px;
+                    width: 230px;
                     height: 32px;
                     line-height: 32px;
                     padding: 10px 0 0;
@@ -10712,15 +10713,17 @@ label.inline {
                     white-space: nowrap;
                     overflow: hidden;
                     font-size: 16px;
+                    text-align:center;
                 }
 
                 .d-livenew .body .slidecontainer .item .description {
                     display: block;
-                    width: 120px;
+                    width: 230px;
                     height: 16px;
                     line-height: 16px;
                     font-size: 15px;
                     color: #222;
+                    text-align:center;
                 }
 
                 .d-livenew .body .slidecontainer .item .date {
@@ -10728,4 +10731,6 @@ label.inline {
                     font-size: 12px;
                     color: #999;
                     padding: 0 5px;
+                    text-align:center;
+                    width:230px
                 }

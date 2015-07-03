@@ -101,35 +101,29 @@
 </div>
 <div class="d-row">
     <div class="d-row-c">
-        <div class="d-col-2-12">
+        <div class="d-col-2-8">
             <div class="contentarea">
-                <table width="900" align="center" cellpadding="0" cellspacing="0" bordercolor="#000000">
+                <table width="677" height="380" align="center" cellpadding="0" cellspacing="0" bordercolor="#000000">
                     <tr>
-                        <td valign="top" width="900" height="400">
-                            <iframe id="player" name="player" width="100%" height="100%" border=0 allowtransparency scrollbars=no frameborder="0"></iframe>
+                        <td valign="top" width="660" height="380">
+                            <img src="~/Images/player.png" id="player_img" width="660" height="380" />
+                            <iframe id="player" name="player" width="100%" height="100%" border=0 allowtransparency scrollbars=no frameborder="0" style="display:none"></iframe>
                         </td>
                     </tr>
                     <tr>
-                        <td valign="center" style="color:green" height="32">
-                            <a href="javascript:playMain();">开始播放</a>
+                        <td valign="center" style="color:green" height="25">
+                            <a id="go_player">开始播放</a>
                         </td>
                     </tr>
                 </table>
             </div>
         </div>
-        <div class="clear"></div>
-    </div>
-</div>
-
-
-<div class="d-row">
-    <div class="d-row-c">
-        <div class="d-col-2-12">
+        <div class="d-col-2-4">
             <div class="contentarea">
                 <input type="hidden" value="@ViewBag.LiveID" id="LiveID" />
                 <input type="hidden" value="@((ViewBag.CurrentUser == null) ?"":ViewBag.CurrentUser.Username)" id="currentuser" />
-                <div style="min-height:300px;">
-                    <div class="msgDisplay" style="height: 300px; overflow:scroll;">
+                <div style="min-height:400px;">
+                    <div class="msgDisplay" style="height: 340px; overflow:auto;">
 
                     </div>
                     <textarea id="txtMsg" class="textbox" style="height:100px;width:200px;"></textarea>
@@ -137,9 +131,10 @@
                 </div>
             </div>
         </div>
+        <div class="clear"></div>
     </div>
-
 </div>
+
 
 <script>
     var contosoChatHubProxy = $.connection.contosoChatHub;
@@ -168,5 +163,11 @@
             contosoChatHubProxy.server.newContosoChatMessage($('#currentuser').val(), $('#txtMsg').val(), $("#LiveID").val());
             $('#txtMsg').val('').focus();
         });
+        $("#go_player").click(function () {
+            playMain();
+            $("#player_img").hide();
+            $("#player").show();
+        });
+       
     });
 </script>
