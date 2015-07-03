@@ -1821,7 +1821,7 @@ namespace QqhrCitizen.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult ITrialEdit(ITrial model, HttpPostedFileBase file)
         {
-          
+
             ITrial itrial = db.ITrials.Find(model.ID);
             itrial.Title = model.Title;
             itrial.Description = model.Description;
@@ -1840,5 +1840,46 @@ namespace QqhrCitizen.Controllers
         }
 
 
+        /// <summary>
+        /// 产品管理
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet]
+        public ActionResult ProductManager(string key, DateTime? Begin, DateTime? End, int p = 0)
+        {
+            IEnumerable<Product> query = db.Products.AsEnumerable();
+            if (!string.IsNullOrEmpty(key))
+            {
+                query = query.Where(c => c.Title.Contains(key));
+            }
+            if (Begin.HasValue)
+            {
+                query = query.Where(c => c.Time >= Begin);
+            }
+            if (End.HasValue)
+            {
+                query = query.Where(c => c.Time <= End);
+            }
+            query = query.OrderByDescending(x => x.Time);
+            ViewBag.PageInfo = PagerHelper.Do(ref query, 50, p);
+            return View(query);
+        }
+
+        [HttpGet]
+        public ActionResult AddProduct()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult AddProduct(Product model)
+        {
+            model.UserID = CurrentUser.ID;
+            model.Time = DateTime.Now;
+            db.Products.Add(model);
+            db.SaveChanges();
+            return Redirect("/Admin/ProductManager");
+        }
     }
-}
+} 

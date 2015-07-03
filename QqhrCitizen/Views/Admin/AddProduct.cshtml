@@ -1,0 +1,37 @@
+﻿@{
+    ViewBag.Title = "增加产品";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div>
+    <div class="result-title">
+        <h1 class="head-tietle">增加产品</h1>
+    </div>
+    @using (Html.BeginForm("AddProduct", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        @Html.AntiForgeryToken()
+        <table class="detail-table">
+            <tr>
+                <td class="row-title">标题</td>
+                <td>
+                    <input class="textbox w-3" type="text" name="Title" />
+                </td>
+            </tr>
+
+            <tr>
+                <td class="row-title">描述</td>
+                <td>
+                     <select name="Description" rows="10" class="textbox"></select>
+                </td>
+            </tr>
+            <tr>
+                <td class="row-title">价格</td>
+                <td>
+                    <input class="textbox w-3" type="text" name="Price" />
+                </td>
+            </tr>
+        </table>
+        <p><input type="submit" value="增加" class="button blue" /></p>
+    }
+</div>
+

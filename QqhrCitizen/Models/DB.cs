@@ -42,6 +42,10 @@ namespace QqhrCitizen.Models
 
         public DbSet<ITrial> ITrials { set; get; }
 
+        public DbSet<Product> Products { set; get; }
+
+        public DbSet<ProductFile> ProductFiles { set; get; }
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
