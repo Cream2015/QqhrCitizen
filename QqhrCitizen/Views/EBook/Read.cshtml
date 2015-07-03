@@ -29,6 +29,8 @@
             var h = $(document).height();
             $("#pdf").css("width", w).css("height", h);
             if (window.ActiveXObject || "ActiveXObject" in window) {
+                var a = "<object width='100%' height='100%' data='@ViewBag.FileLoad#scrollbars=0&toolbar=0&statusbar=0' type='application/pdf'>";
+                $("#pdf").html(a);
                 //判断是否为IE浏览器，"ActiveXObject" in window判断是否为IE11
                 //判断是否安装了adobe Reader
                 for (x = 2; x < 10; x++) {
@@ -69,7 +71,6 @@
                 }
             }
             else {
-
                 //alert($.trim(urls));
                 var success = new PDFObject({ url: "@ViewBag.FileLoad", pdfOpenParams: { scrollbars: '0', toolbar: '0', statusbar: '0' } }).embed("pdf");
                 if (!success) {
@@ -94,12 +95,5 @@
         browser. <a href="@ViewBag.FileLoad">Click here to download the PDF</a>
     </p>
     <div id="pdf"></div>
-    <script>
-        if (window.ActiveXObject || "ActiveXObject" in window)
-        {
-            var a = "<object width='100%' height='100%' data='@ViewBag.FileLoad#scrollbars=0&toolbar=0&statusbar=0' type='application/pdf'>";
-            $("#pdf").html(a);
-        }
-    </script>
 </body>
 </html>
