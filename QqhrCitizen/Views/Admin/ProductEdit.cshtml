@@ -1,0 +1,40 @@
+﻿@using QqhrCitizen.Models
+@{
+    ViewBag.Title = "修改产品";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    Product product = ViewBag.Product as Product;
+}
+
+
+<div>
+    <div class="result-title">
+        <h1 class="head-tietle">修改产品</h1>
+    </div>
+    @using (Html.BeginForm("ProductEdit", "Admin", FormMethod.Post))
+    {
+        @Html.AntiForgeryToken()
+        <table class="detail-table">
+            <tr>
+                <td class="row-title">标题</td>
+                <td>
+                    <input class="textbox w-3" type="text" name="Title" value="@product.Title" />
+                </td>
+            </tr>
+
+            <tr>
+                <td class="row-title">描述</td>
+                <td>
+                    <textarea name="Description" rows="20" class="textbox">@product.Description</textarea>
+                </td>
+            </tr>
+            <tr>
+                <td class="row-title">价格</td>
+                <td>
+                    <input class="textbox w-3" type="text" name="Price" value="@product.Price" />
+                </td>
+            </tr>
+        </table>
+        <p><input type="submit" value="保存" class="button blue" /></p>
+    }
+</div>
+

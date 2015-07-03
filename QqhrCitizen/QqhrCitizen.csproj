@@ -739,6 +739,7 @@
     <Content Include="Views\Admin\ITrialManager.cshtml" />
     <Content Include="Views\Admin\AddITrial.cshtml" />
     <Content Include="Views\Admin\ITrialShow.cshtml" />
+    <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Models\ITrial.cs" />
     <Compile Include="Controllers\ITrialController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -899,6 +900,9 @@
     <Content Include="Views\Admin\ProductManager.cshtml" />
     <Content Include="Views\Admin\AddProduct.cshtml" />
     <Content Include="Views\Admin\ProductShow.cshtml" />
+    <Content Include="Views\Admin\AddProductImage.cshtml" />
+    <Content Include="Views\Admin\AddProductVideo.cshtml" />
+    <Content Include="Views\Admin\ProductEdit.cshtml" />
     <None Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Admin\ViwepagerEdit.cshtml" />
     <None Include="Web.Debug.config">
@@ -912,7 +916,9 @@
     <Folder Include="App_Data\" />
     <Folder Include="Content\" />
     <Folder Include="Lessions\" />
+    <Folder Include="ProductFile\" />
     <Folder Include="Upload\NewsWord\" />
+    <Folder Include="Views\Product\" />
     <Folder Include="Views\ViewPager\" />
   </ItemGroup>
   <PropertyGroup>

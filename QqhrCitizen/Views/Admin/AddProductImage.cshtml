@@ -1,0 +1,24 @@
+﻿@{
+    ViewBag.Title = "产品增加图片";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>产品增加图片</h2>
+@using (Html.BeginForm("AddProductImage", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    <input name="ProductID" type="hidden"  value="@ViewBag.ProductID"/>
+    <table class="detail-table">
+        <tr>
+            <td class="row-title">
+                上传图片
+            </td>
+            <td>
+                <input type="file" name="file" id="file" class="textbox" />
+            </td>
+        </tr>
+    </table>
+    <p><input type="submit" value="增加" class="button blue" /></p>
+}
+
+
