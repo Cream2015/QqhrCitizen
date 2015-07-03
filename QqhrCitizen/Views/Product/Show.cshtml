@@ -1,5 +1,7 @@
-﻿@{
+﻿@using QqhrCitizen.Models.ViewModel
+@{
     ViewBag.Title = ViewBag.ITrualShow.Title + "_齐齐哈尔学习网";
+    vProduct product = ViewBag.Product as vProduct;
 }
 <div id="product-intro" class="m-item-grid clearfix">
     <div id="preview" clstag="shangpin|keycount|product|mainpicarea_1">
@@ -12,9 +14,9 @@
             <div class="spec-items" style="position: absolute; width: 310px; height: 54px; overflow: hidden;">
                 <ul class="lh" style="position: absolute; width: 372px; height: 54px; top: 0px; left: 0px;">
                     <!--图片列表-->
-                    @foreach()
+                    @foreach(var item in product.ProductImages)
                     {
-                    <li><img class="img-hover" alt="" src=""></li>
+                      <li><img class="img-hover" alt="" src="@item.Path"></li>
                     }
                 </ul>
             </div>
@@ -24,20 +26,16 @@
     <div class="m-item-inner" clstag="shangpin|keycount|product|zhushujuqu_1">
         <div id="itemInfo">
             <div id="name">
-                <!--Title-->
-                <h1></h1>
+                <h1>@product.Title</h1>
                 <div id="p-ad" class="p-ad J-ad-1592520">
-                    <!--Description-->
-                </div>
-                <div id="p-ad-phone" class="p-ad">
-                    <!--Time-->
+                    @product.Description
                 </div>
             </div>
             <div id="summary">
                 <div id="summary-price" style="margin: 5px 0px;">
                     <div class="dt">价 格：</div>
                     <div class="dd">
-                        <strong class="p-price" id="jd-price"><!--Price--></strong>
+                        <strong class="p-price" id="jd-price">@</strong>
                     </div>
                 </div>
 

@@ -26,7 +26,9 @@ namespace QqhrCitizen.Controllers
 
         public ActionResult Show(int id)
         {
-
+            Product product = new Product();
+            product = db.Products.Find(id);
+            ViewBag.Product = new vProduct(product);
             return View();
         }
 
