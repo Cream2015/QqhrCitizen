@@ -130,19 +130,18 @@
 
 <script>
     var contosoChatHubProxy = $.connection.contosoChatHub;
-    var username;
     contosoChatHubProxy.client.addContosoChatMessageToPage = function (name, message) {
         var str;
-        if (name == username) {
-            str = "<div class='popover left'><div class='arrow'></div><h3 class='popover-title'>[<span style='color:#00CC00'>" + moment(new Date()).format("HH:mm:ss") + "]</span><span style='color:#006666'>" + name + ":</span></h3><div class='popover-content'><p></span  style='color:#006666'>" + message + "</p></div></div>";
+        if (name == $("#user_name_show").html()) {
+            str = "<div class='popover left'><div class='arrow'></div><p class='popover-title' style='line-height:0px'>[<span style='color:#00CC00'>" + moment(new Date()).format("HH:mm:ss") + "]</span><span style='color:#006666'>" + name + ":</span></p><div class='popover-content'><p></span  style='color:#006666'>" + message + "</p></div></div>";
 
         }
         else {
-            str = "<div class='popover right'><div class='arrow'></div><h3 class='popover-title'>[<span style='color:#00CC00'>" + moment(new Date()).format("HH:mm:ss") + "]</span><span style='color:#006666'>" + name + ":</span></h3><div class='popover-content'><p><span style='color:#0000CC;'>" + message + "</span></p></div></div></div>";
+            str = "<div class='popover right'><div class='arrow'></div><p class='popover-title'>[<span style='color:#00CC00'>" + moment(new Date()).format("HH:mm:ss") + "]</span><span style='color:#006666'>" + name + ":</span></p><div class='popover-content'><p><span style='color:#0000CC;'>" + message + "</span></p></div></div></div>";
         }
         console.log(str);
         $(".msgDisplay").append(str);
-        $(".msgDisplay").scrollTop = $(".msgDisplay").scrollHeight；
+        $(".msgDisplay").scrollTop = $(".msgDisplay").scrollHeight;
     };
 
     contosoChatHubProxy.client.addGroupToShow = function (data) {
@@ -161,7 +160,6 @@
                 CastMsg("请先登录在发送聊天信息");
                 return false;
             }
-            username = $("#user_name_show").val();
             contosoChatHubProxy.server.newContosoChatMessage($('#currentuser').val(), $('#txtMsg').val(), $("#LiveID").val());
             $('#txtMsg').val('').focus();
         });
@@ -221,7 +219,9 @@
                 border-color: transparent;
                 border-style: solid;
             }
-
+    .popover.left {
+margin-right: 10px;
+}
         .popover.left > .arrow {
             top: 50%;
             right: -11px;
@@ -237,13 +237,15 @@
                 border-right-width: 0;
                 border-left-color: #fff;
             }
-.popover.right > .arrow {
+    .popover.right {
+margin-left: 10px;
+}
+        .popover.right > .arrow {
             top: 50%;
             left: -11px;
             margin-top: -11px;
             border-left-width: 0;
             border-right-color: #fff;
-
         }
 
             .popover.right > .arrow:after {
@@ -253,6 +255,7 @@
                 border-left-width: 0;
                 border-right-color: #fff;
             }
+
     :after, :before {
         -webkit-box-sizing: border-box;
         -moz-box-sizing: border-box;

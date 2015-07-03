@@ -3,17 +3,23 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<div class="d-row">
+<div class="d-row" style="border-top: 1px solid #3169ea;">
     <div class="d-row-c">
-        <div class="d-col-2-8">
+        <div class="d-col-2-12">
             <div class="contentarea">
-                @foreach (var item in ViewBag.ITrials as List<ITrial>)
-                {
-                    <div style="margin-top:20px;">
-                        <a href="@item.URL"><img src="/ITrial/ShowPicture/@item.ID" width="800" height="300" /></a> <br />
-                        <p><a href="@item.URL">@item.Title</a> </p>
+                <div id="d_bookhot" class="d-bookhot">
+                    <div class="body">
+                        <div id="slide_bookhot" class="slidecontainer">
+                            @foreach (var item in ViewBag.ITrials as List<ITrial>)
+                            {
+                                <div class="item">
+                                    <a href="@item.URL"><img src="/ITrial/ShowPicture/@item.ID" width="400" height="300" /></a> <br />
+                                    <p><a href="@item.URL" style="text-align:center">@item.Title</a> </p>
+                                </div>
+                            }
+                        </div>
                     </div>
-                }
+                </div>
             </div>
         </div>
     </div>
