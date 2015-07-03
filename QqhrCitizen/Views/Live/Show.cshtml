@@ -3,7 +3,7 @@
     ViewBag.Title = @ViewBag.ShowLive.Title + "_齐齐哈尔市民学习网";
 }
 <!-- functionality -->
-<script type="text/javascript" src="~/Scripts/jquery.js"></script>
+<script type="text/javascript" src="~/Scripts/jquery_live.js"></script>
 <script src="~/Scripts/AC_RunActiveContent.js" language="javascript"></script>
 <script src="~/Scripts/jquery.signalR-2.2.0.min.js"></script>
 <script src="/signalr/hubs"></script>
@@ -103,7 +103,7 @@
     <div class="d-row-c">
         <div class="d-col-2-8">
             <div class="contentarea">
-                <table width="677" height="380" align="center" cellpadding="0" cellspacing="0" bordercolor="#000000">
+                <table width="677" height="380" align="center" cellpadding="0" cellspacing="0">
                     <tr>
                         <td valign="top" width="660" height="380">
                             <img src="~/Images/player.png" id="player_img" width="660" height="380" style="cursor:pointer"/>
@@ -113,16 +113,16 @@
                 </table>
             </div>
         </div>
-        <div class="d-col-2-4">
+        <div class="d-col-2-4" style="width:310px">
             <div class="contentarea">
                 <input type="hidden" value="@ViewBag.LiveID" id="LiveID" />
                 <input type="hidden" value="@((ViewBag.CurrentUser == null) ?"":ViewBag.CurrentUser.Username)" id="currentuser" />
-                <div style="min-height:400px;">
-                    <div class="msgDisplay" style="height: 340px; overflow:auto;">
+                <div style="min-height:380px;">
+                    <div class="msgDisplay" style="height: 324px; overflow:auto;">
 
                     </div>
-                    <textarea id="txtMsg" class="textbox" style="height:100px;width:200px;"></textarea>
-                    <input type="button" class="button blue" value="发送" id="newContosoChatMessage" />
+                    <textarea id="txtMsg" class="textbox" style="height:56px;width:260px;"></textarea>
+                    <button class="button blue" id="newContosoChatMessage" style="height:62px">发</br>送</button>
                 </div>
             </div>
         </div>
@@ -160,8 +160,8 @@
         });
         $("#player_img").click(function () {
             playMain();
-            $("#player_img").hide();
             $("#player").show();
+            $("#player_img").hide();
         });
        
     });
