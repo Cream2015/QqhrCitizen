@@ -134,7 +134,7 @@
 <script>
     var contosoChatHubProxy = $.connection.contosoChatHub;
     contosoChatHubProxy.client.addContosoChatMessageToPage = function (name, message) {
-        var str = "<div>" + name + " " + moment(new Date()).format("YYYY-MM-DD HH:mm:ss") + "<p class='font-size:8px;'>" + message + "</p></div>";
+        var str = "<div><span style="color:#A00000">" + name + " " + moment(new Date()).format("YYYY-MM-DD HH:mm:ss") + "<p class='font-size:8px;'>" + message + "</p></div>";
         console.log(str);
         $(".msgDisplay").append(str);
     };
