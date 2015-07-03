@@ -1879,6 +1879,11 @@ namespace QqhrCitizen.Controllers
             model.Time = DateTime.Now;
             db.Products.Add(model);
             db.SaveChanges();
+
+            string root = "~/ProductFile/" + model.Title + "/";
+            var phicyPath = HostingEnvironment.MapPath(root);
+            Directory.CreateDirectory(phicyPath);
+
             return Redirect("/Admin/ProductManager");
         }
 
@@ -1897,10 +1902,84 @@ namespace QqhrCitizen.Controllers
             return View();
         }
 
+        /// <summary>
+        /// 增加图片
+        /// </summary>
+        /// <param name="ProductID"></param>
+        /// <param name="file"></param>
+        /// <returns></returns>
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult AddProductImage(int ProductID, HttpPostedFileBase file)
         {
-            return Redirect("/Admin/ProductShow/"+ ProductID);
+            if (file != null)
+            {
+                string random = Helpers.DateHelper.GetTimeStamp();
+                Product product = db.Products.Find(ProductID);
+                ProductFile productFile = new ProductFile();
+                productFile.ProductID = ProductID;
+                productFile.FileTypeAsInt = 0;
+
+                string root = "~/ProductFile/" + product.Title + "/";
+                var phicyPath = HostingEnvironment.MapPath(root);
+
+                file.SaveAs(phicyPath + random + file.FileName);
+
+                productFile.Path = phicyPath + random + file.FileName;
+
+                db.ProductFiles.Add(productFile);
+                db.SaveChanges();
+
+                return Redirect("/Admin/ProductShow/" + ProductID);
+            }
+            else
+            {
+                return Redirect("/Admin/AdminMessage?msg=你没有选择图片文件");
+            }
         }
+
+        [HttpGet]
+        public ActionResult AddProductVideo(int id)
+        {
+            ViewBag.ProductID = id;
+            return ViewBag();
+        }
+
+        /// <summary>
+        /// 增加视屏
+        /// </summary>
+        /// <param name="ProductID"></param>
+        /// <param name="file"></param>
+        /// <returns></returns>
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult AddProductVideo(int ProductID, HttpPostedFileBase file)
+        {
+            if (file != null)
+            {
+                string random = Helpers.DateHelper.GetTimeStamp();
+                Product product = db.Products.Find(ProductID);
+                ProductFile productFile = new ProductFile();
+                productFile.ProductID = ProductID;
+                productFile.FileTypeAsInt = 1;
+
+                string root = "~/ProductFile/" + product.Title + "/";
+                var phicyPath = HostingEnvironment.MapPath(root);
+
+                file.SaveAs(phicyPath + random + file.FileName);
+
+                productFile.Path = phicyPath + random + file.FileName;
+
+                db.ProductFiles.Add(productFile);
+                db.SaveChanges();
+
+                return Redirect("/Admin/ProductShow/" + ProductID);
+            }
+            else
+            {
+                return Redirect("/Admin/AdminMessage?msg=你没有选择视频文件");
+            }
+        }
+
     }
-} 
+}
