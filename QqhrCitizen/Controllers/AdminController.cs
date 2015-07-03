@@ -2032,5 +2032,22 @@ namespace QqhrCitizen.Controllers
             
             return Redirect("/Admin/ProductShow/" + id);
         }
+
+        [HttpPost]
+        [ValidateSID]
+        public ActionResult ProductVideoDelete(int id)
+        {
+            ProductFile productFile = db.ProductFiles.Find(id);
+            var phicyPath = HostingEnvironment.MapPath(productFile.Path);
+            db.ProductFiles.Remove(productFile);
+            db.SaveChanges();
+            if (System.IO.File.Exists(phicyPath))
+            {
+                //如果存在则删除
+                System.IO.File.Delete(phicyPath);
+            }
+
+            return Redirect("/Admin/ProductShow/" + id);
+        }
     }
 }

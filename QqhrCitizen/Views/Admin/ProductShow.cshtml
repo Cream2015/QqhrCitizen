@@ -56,4 +56,13 @@
     }
 </table>
 
+<h3>视频 <a href="/Admin/AddProductVideo/@product.ID">增加</a></h3>
+<table class="detail-table">
+        <tr>
+            <td>@product.ProductVideo.ID</td>
+            <td>
+                <a href="javascript:deleteDialog('/Admin/ProductVideoDelete/' + @product.ProductVideo.ID + '?sid=@ViewBag.SID',@product.ProductVideo.ID);">删除</a>
+            </td>
+        </tr>
+</table>
 
