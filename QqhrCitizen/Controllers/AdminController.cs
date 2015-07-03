@@ -375,13 +375,49 @@ namespace QqhrCitizen.Controllers
         [ValidateSID]
         [ValidateInput(false)]
 
-        public ActionResult NewsEdit(News model)
+        public ActionResult NewsEdit(News model, HttpPostedFileBase file)
         {
             News news = new News();
             news = db.News.Find(model.ID);
+            var random = DateHelper.GetTimeStamp();
+            var message = "";
+            if (file != null)
+            {
+                string fileName = Path.Combine(Request.MapPath("~/Upload/NewsWord"), random + Path.GetFileName(file.FileName));
+                file.SaveAs(fileName);
+                NewsWordToHtml(fileName, random);
+                message = string.Empty;
+                //message = System.IO.File.OpenText(fileName).ReadToEnd();
+                var fiepath = Path.Combine(Request.MapPath("~/Upload/NewsWord/" + random), random + ".html");
+                using (StreamReader sr = new StreamReader(fiepath, System.Text.Encoding.UTF8))
+                {
+                    message = sr.ReadToEnd();
+                }
+                message = BodyFilter.HtmlFilter(message, "/Upload/NewsWord/" + random + "/");
+                news.Content = message;
+                news.IsWord = true;
+            }
+            else
+            {
+                model.IsWord = false;
+                news.Content = model.Content;
+            }
+            if (model.IsHaveImg)
+            {
+                if (file != null)
+                {
+                    string[] imgs = Helpers.String.GetHtmlImageUrlList(message);
+                    news.FirstImgUrl = "/Upload/NewsWord/" + random + "/" + imgs[0];
+                }
+                else
+                {
+                    string[] imgs = Helpers.String.GetHtmlImageUrlList(model.Content);
+                    news.FirstImgUrl = imgs[0];
+                }
+
+            }
             news.NewsTypeID = model.NewsTypeID;
             news.Title = model.Title;
-            news.Content = model.Content;
             db.SaveChanges();
             return RedirectToAction("NewsManager");
         }

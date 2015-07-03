@@ -9,7 +9,7 @@
     <div class="result-title">
         <h1 class="head-tietle">@news.Title - 新闻修改</h1>
     </div>
-    @using (Html.BeginForm("NewsEdit", "Admin", FormMethod.Post))
+    @using (Html.BeginForm("NewsEdit", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
     {
         @Html.AntiForgerySID()
         <input value="@news.ID" type="hidden" name="ID" />
@@ -21,7 +21,7 @@
                         <option value="0">选择分类</option>
                         @foreach (var item in ViewBag.Types)
                         {
-                            <option value="@item.ID" @(news.TypeDictionary.FatherID==item.ID?"selected":"")>@item.TypeValue</option>
+                            <option value="@item.ID" @(news.TypeDictionary.FatherID == item.ID ? "selected" : "")>@item.TypeValue</option>
                         }
                     </select>
                 </td>
@@ -40,7 +40,7 @@
             <tr>
                 <td class="row-title">标题</td>
                 <td>
-                    <input class="textbox w-3" name="Title" value="@news.Title"  />
+                    <input class="textbox w-3" name="Title" value="@news.Title" />
                 </td>
             </tr>
             <tr>
@@ -51,18 +51,35 @@
                     <textarea class="textbox" style="height:100px" name="Content">@news.Content</textarea>
                 </td>
             </tr>
+            <tr>
+                <td class="row-title">
+                    上传word
+                </td>
+                <td>
+                    <input type="file" name="file" id="file" class="textbox nullable" />
+                </td>
+            </tr>
+            <tr>
+                <td class="row-title">
+                    是否包含图片
+                </td>
+                <td>
+                    <select name="IsHaveImg">
+                        <option value="false">否</option>
+                        <option value="true">是</option>
+                    </select>
+                </td>
+            </tr>
         </table>
         <script>
-        CKEDITOR.replace('Content',
-        {
-            toolbar: 'Basic',
-            width: "100%",
-            height: "370px"
-        });
+            CKEDITOR.replace('Content',
+            {
+                toolbar: 'Basic',
+                width: "100%",
+                height: "370px"
+            });
         </script>
 
         <p><input type="submit" value="保存" class="button blue" /></p>
     }
 </div>
-
-
