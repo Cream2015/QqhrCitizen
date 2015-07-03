@@ -903,6 +903,8 @@
     <Content Include="Views\Admin\AddProductImage.cshtml" />
     <Content Include="Views\Admin\AddProductVideo.cshtml" />
     <Content Include="Views\Admin\ProductEdit.cshtml" />
+    <Content Include="Views\Product\Show.cshtml" />
+    <Content Include="Views\Product\Index.cshtml" />
     <None Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Admin\ViwepagerEdit.cshtml" />
     <None Include="Web.Debug.config">
@@ -918,7 +920,6 @@
     <Folder Include="Lessions\" />
     <Folder Include="ProductFile\" />
     <Folder Include="Upload\NewsWord\" />
-    <Folder Include="Views\Product\" />
     <Folder Include="Views\ViewPager\" />
   </ItemGroup>
   <PropertyGroup>
