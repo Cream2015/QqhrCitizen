@@ -43,7 +43,18 @@
                                     <div class="title trim">
                                         <a href="/Live/Show/@item.ID" title="@item.Title" target="_blank">@item.Title</a>
                                     </div>
-                                    <div class="description" title="">@item.Description</div>
+                                    @if (item.End < DateTime.Now)
+                                    {
+                                        <div class="description" title="" style="color:#c9302c">已结束</div>
+                                    }
+                                    else if (item.Begin > DateTime.Now)
+                                    {
+                                        <div class="description" title="" style="color:#eea236">未开始</div>
+                                    }
+                                    else
+                                    {
+                                        <div class="description" title="" style="color:#449d44">进行中</div>
+                                    }
                                     <div class="date"><span>开始:@item.Begin</span><br />结束<span>@item.End</span></div>
                                 </div>
                             }
