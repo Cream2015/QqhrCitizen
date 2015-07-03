@@ -5,77 +5,86 @@
 }
 
 <script src="~/Scripts/video.js"></script>
-<div id="product-intro" class="m-item-grid clearfix">
-    <div id="preview" clstag="shangpin|keycount|product|mainpicarea_1">
-        <div id="spec-n1" class="jqzoom">
-            <img data-img="1" width="350" height="350" src="">
-        </div>
-        <div id="spec-list">
-            <a class="spec-control disabled" id="spec-forward"></a>
-            <a class="spec-control" id="spec-backward"></a>
-            <div class="spec-items" style="position: absolute; width: 310px; height: 54px; overflow: hidden;">
-                <ul class="lh" style="position: absolute; width: 372px; height: 54px; top: 0px; left: 0px;">
-                    @{ int i = 0;}
-                    <!--图片列表-->
-                    @foreach (var item in product.ProductImages)
-                    {
-                        i++;
-                        if (i > 4)
-                        {
-                            break;
-                        }
-                        <li><img class="img-hover" alt="" src="@item.Path"></li>
-                    }
-                </ul>
-            </div>
-        </div>
-    </div>
+<div class="d-row" style="border-top: 1px solid #3169ea;">
+    <div class="d-row-c" style="margin-top:10px">
+        <div class="d-col-2-12">
+            <div class="contentarea">
+                <div id="product-intro" class="m-item-grid clearfix">
+                    <div id="preview" clstag="shangpin|keycount|product|mainpicarea_1">
+                        <div id="spec-n1" class="jqzoom">
+                            <img data-img="1" width="350" height="350" src="">
+                        </div>
+                        <div id="spec-list">
+                            <a class="spec-control disabled" id="spec-forward"></a>
+                            <a class="spec-control" id="spec-backward"></a>
+                            <div class="spec-items" style="position: absolute; width: 310px; height: 54px; overflow: hidden;">
+                                <ul class="lh" style="position: absolute; width: 372px; height: 54px; top: 0px; left: 0px;">
+                                    @{ int i = 0;}
+                                    <!--图片列表-->
+                                    @foreach (var item in product.ProductImages)
+                                    {
+                                        i++;
+                                        if (i > 4)
+                                        {
+                                            break;
+                                        }
+                                        <li><img class="img-hover" alt="" src="@item.Path"></li>
+                                    }
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
 
-    <div class="m-item-inner" clstag="shangpin|keycount|product|zhushujuqu_1">
-        <div id="itemInfo">
-            <div id="name">
-                <h1>@product.Title</h1>
-                <div id="p-ad" class="p-ad J-ad-1592520">
-                    @product.Description
-                </div>
-            </div>
-            <div id="summary">
-                <div id="summary-price" style="margin: 5px 0px;">
-                    <div class="dt">价 格：</div>
-                    <div class="dd">
-                        <strong class="p-price" id="jd-price">@product.Price</strong>
+                    <div class="m-item-inner" clstag="shangpin|keycount|product|zhushujuqu_1">
+                        <div id="itemInfo">
+                            <div id="name">
+                                <h2>编号：@product.ID</h2>
+                                <h1>名称：@product.Title</h1>
+                                <div id="p-ad" class="p-ad">
+                                    简介：@product.Description
+                                </div>
+                            </div>
+                            <div id="summary">
+                                <div id="summary-price" style="margin: 5px 0px;">
+                                    <div class="dt">价 格：</div>
+                                    <div class="dd">
+                                        <strong class="p-price" id="jd-price">@product.Price</strong>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
                     </div>
                 </div>
-
-            </div>
-        </div>
-    </div>
-</div>
-<div id="product-detail" class="m m1">
-    <div class="ui-switchable-panel ui-switchable-panel-selected" style="display: block;">
-        <div class="mc" id="product-detail-1">
-            <div class="detail-content clearfix">
-                <div class="detail-content-wrap">
-                    <div class="detail-content-item">
-                        <div id="J-detail-content">
-                            <div style="width:750px;margin:0 auto;padding:0;">
-                                <table cellpadding="0" cellspacing="0">
-                                    <tbody>
-                                        <tr>
-                                            <td>
-                                                <script> player("@product.ProductVideo.Path", 600, 400, 1, "start.jpg");</script>
-                                            </td>
-                                        </tr>
-                                        @foreach (var item in product.ProductImages)
-                                        {
-                                            <tr>
-                                                <td><img src="@item.Path" class="" style=""></td>
-                                            </tr>
-                                        }
-                                    </tbody>
-                                </table>
-                            </div><br>
-                        </div><!-- #J-detail-content -->
+                <div id="product-detail" class="m m1">
+                    <div class="ui-switchable-panel ui-switchable-panel-selected" style="display: block;text-align:center">
+                        <div class="mc" id="product-detail-1">
+                            <div class="detail-content clearfix">
+                                <div class="detail-content-wrap">
+                                    <div class="detail-content-item">
+                                        <div id="J-detail-content">
+                                            <div style="width:100%;margin:0 auto;padding:0;">
+                                                <table cellpadding="0" cellspacing="0">
+                                                    <tbody>
+                                                        <tr>
+                                                            <td>
+                                                                <script> player("@product.ProductVideo.Path", 600, 400, 1, "start.jpg");</script>
+                                                            </td>
+                                                        </tr>
+                                                        @foreach (var item in product.ProductImages)
+                                                        {
+                                                            <tr>
+                                                                <td><img src="@item.Path" class="" style=""></td>
+                                                            </tr>
+                                                        }
+                                                    </tbody>
+                                                </table>
+                                            </div><br>
+                                        </div><!-- #J-detail-content -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
