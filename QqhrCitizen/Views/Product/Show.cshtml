@@ -1,0 +1,84 @@
+﻿@{
+    ViewBag.Title = ViewBag.ITrualShow.Title + "_齐齐哈尔学习网";
+}
+<div id="product-intro" class="m-item-grid clearfix">
+    <div id="preview" clstag="shangpin|keycount|product|mainpicarea_1">
+        <div id="spec-n1" class="jqzoom">
+            <img data-img="1" width="350" height="350" src="">
+        </div>
+        <div id="spec-list">
+            <a class="spec-control disabled" id="spec-forward"></a>
+            <a class="spec-control" id="spec-backward"></a>
+            <div class="spec-items" style="position: absolute; width: 310px; height: 54px; overflow: hidden;">
+                <ul class="lh" style="position: absolute; width: 372px; height: 54px; top: 0px; left: 0px;">
+                    <!--图片列表-->
+                    @foreach()
+                    {
+                    <li><img class="img-hover" alt="" src=""></li>
+                    }
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="m-item-inner" clstag="shangpin|keycount|product|zhushujuqu_1">
+        <div id="itemInfo">
+            <div id="name">
+                <!--Title-->
+                <h1></h1>
+                <div id="p-ad" class="p-ad J-ad-1592520">
+                    <!--Description-->
+                </div>
+                <div id="p-ad-phone" class="p-ad"></div>
+            </div>
+            <div id="summary">
+                <div id="summary-price" style="margin: 5px 0px;">
+                    <div class="dt">价 格：</div>
+                    <div class="dd">
+                        <strong class="p-price" id="jd-price"><!--Price--></strong>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+<div id="product-detail" class="m m1" clstag="shangpin|keycount|product|detail" data-lazyload-fn="done">
+    <div class="ui-switchable-panel ui-switchable-panel-selected" clstag="shangpin|keycount|product|shangpinneirongqu_1" style="display: block;">
+        <div class="mc" id="product-detail-1">
+            <div class="p-parameter" clstag="shangpin|keycount|product|canshuqu_1">
+                <ul id="parameter2" class="p-parameter-list">
+                    <li title="">名称：<!--Title--></li>
+                    <li title="">编号：<!--ID--></li>
+                    <li title="">简介：<!--Description--></li>
+                    <li title="">时间：<!--Time--></li>
+                </ul>
+            </div>
+            <div id="J-detail-banner"></div>
+            <div class="detail-content clearfix" data-lazyload-fn="done">
+                <div class="detail-content-wrap">
+                    <div class="detail-content-item">
+                        <div id="activity_header"><table border="0" width="200" cellspacing="1" cellpadding="1" align="center"><tbody><tr><td><img data-lazyload="done" alt="" src="http://img30.360buyimg.com/jgsq-productsoa/jfs/t1348/252/540570074/171415/fc03194e/5593a216N5d22e384.jpg" class="" style=""></td></tr></tbody></table></div>
+                        <div id="J-detail-content">
+                            <!-- Save for Web Slices (TQBM30-1108.psd) -->
+                            <div style="width:750px;margin:0 auto;padding:0;">
+                                <table cellpadding="0" cellspacing="0">
+                                    <tbody>
+                                        @foreach()
+                                        {
+                                            <tr>
+                                                <td><img src="" class="" style=""></td>
+                                            </tr>
+                                        }
+                                       
+
+                                    </tbody>
+                                </table>
+                            </div><br>
+                        </div><!-- #J-detail-content -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

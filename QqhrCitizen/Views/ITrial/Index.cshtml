@@ -4,17 +4,22 @@
 }
 
 <div class="d-row" style="border-top: 1px solid #3169ea;">
-    <div class="d-row-c">
+    <div class="d-row-c" style="margin-top:10px">
         <div class="d-col-2-12">
             <div class="contentarea">
-                <div id="d_bookhot" class="d-bookhot">
+                <div id="d_bookhot" class="d-bookhot" style="width:1000px">
                     <div class="body">
-                        <div id="slide_bookhot" class="slidecontainer">
+                        <div id="slide_bookhot" class="slidecontainer" style="width:1000px">
                             @foreach (var item in ViewBag.ITrials as List<ITrial>)
                             {
-                                <div class="item">
-                                    <a href="@item.URL"><img src="/ITrial/ShowPicture/@item.ID" width="400" height="300" /></a> <br />
-                                    <p><a href="@item.URL" style="text-align:center">@item.Title</a> </p>
+                                <div class="item" style="width: 230px;margin: 0 20px 20px 0;">
+                                    <a class="cover" href="@item.URL" target="_blank" style="width: 230px;">
+                                        <img src="/ITrial/ShowPicture/@item.ID" width="230" height="158" />
+                                    </a>
+                                    <div class="title trim">
+                                        <a href="@item.URL" style="text-align:center">@item.Title</a>
+                                    </div>
+                                    <div class="author trim" title="">@item.Time</div>
                                 </div>
                             }
                         </div>

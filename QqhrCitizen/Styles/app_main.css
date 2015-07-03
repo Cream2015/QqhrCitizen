@@ -10700,7 +10700,7 @@ label.inline {
                     .d-livenew .body .slidecontainer .item .cover img {
                         width: 230px;
                         height: 164px;
-                        text-align:center;
+                        text-align: center;
                     }
 
                 .d-livenew .body .slidecontainer .item .title {
@@ -10713,7 +10713,7 @@ label.inline {
                     white-space: nowrap;
                     overflow: hidden;
                     font-size: 16px;
-                    text-align:center;
+                    text-align: center;
                 }
 
                 .d-livenew .body .slidecontainer .item .description {
@@ -10723,7 +10723,7 @@ label.inline {
                     line-height: 16px;
                     font-size: 15px;
                     color: #222;
-                    text-align:center;
+                    text-align: center;
                 }
 
                 .d-livenew .body .slidecontainer .item .date {
@@ -10731,6 +10731,168 @@ label.inline {
                     font-size: 12px;
                     color: #999;
                     padding: 0 5px;
-                    text-align:center;
-                    width:230px
+                    text-align: center;
+                    width: 230px;
                 }
+
+.m-item-grid {
+    width: 100%;
+    position: relative;
+    z-index: 3;
+}
+
+.clearfix {
+    display: block;
+}
+
+#preview {
+    float: left;
+    padding-bottom: 15px;
+    display: inline;
+    width: 378px;
+    position: relative;
+}
+
+#spec-n1 {
+    width: 350px;
+    height: 350px;
+    margin: 14px 0 14px 14px;
+    position: relative;
+}
+
+.jqzoom {
+    position: relative;
+    padding: 0;
+}
+
+    .jqzoom img {
+        vertical-align: middle;
+    }
+
+#spec-list {
+    position: relative;
+    width: 310px;
+    height: 54px;
+    overflow: hidden;
+    padding: 0 20px 0 34px;
+}
+
+.root61 .m-item-grid .m-item-inner {
+    padding-right: 244px;
+}
+
+.m-item-grid .m-item-inner {
+    width: 588px;
+    float: left;
+    padding-right: 24px;
+}
+
+#itemInfo {
+    position: relative;
+    width: 100%;
+}
+
+#name {
+    padding: 15px 75px 10px 0;
+    zoom: 1;
+}
+
+    #name h1 {
+        line-height: 1.5em;
+        overflow: hidden;
+        font-weight: 700;
+        font-family: arial,"microsoft yahei";
+        font-size: 16px;
+    }
+
+#summary {
+    width: 100%;
+    position: relative;
+    z-index: 2;
+}
+
+#summary-price {
+    padding-top: 10px;
+    padding-bottom: 0;
+    padding-right: 81px;
+    height: 30px;
+    line-height: 30px;
+    background: #f7f7f7;
+}
+
+#summary-price, #summary-promotion, #summary-service, #summary-stock {
+    padding-left: 72px;
+    padding-right: 20px;
+}
+
+#comment .mc, #comments-list .mc #consult .mc, #discuss .mc, #product-detail .mc, #recommend .mc {
+    clear: both;
+}
+
+.m, .mt, .mc, .mb, .sm, .smt, .smc, .smb {
+    overflow: hidden;
+    zoom: 1;
+}
+
+.root61 .p-parameter {
+    padding: 0 10px 10px;
+}
+
+.right .p-parameter {
+    border: solid 1px #dedfde;
+    border-top: none;
+}
+
+.p-parameter {
+    padding: 0 10px 10px;
+}
+
+.root61 .p-parameter-list {
+    padding: 20px 0 15px;
+}
+
+.p-parameter-list {
+    padding: 20px 0 15px;
+    border-top: 1px dotted #ddd;
+    margin-top: -1px;
+    overflow: hidden;
+    _zoom: 1;
+}
+
+#parameter2 li {
+    line-height: 22px;
+}
+
+.root61 .p-parameter-list li {
+    width: 200px;
+}
+
+.detail-content {
+    position: relative;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    background-color: #f7f7f7;
+}
+
+.clearfix {
+    display: block;
+}
+
+.clearfix {
+    display: inline-table;
+}
+
+.detail-content-wrap {
+    width: 100%;
+    float: left;
+    background-color: #fff;
+}
+
+    .detail-content-wrap .detail-content-item {
+        width: 100%;
+    }
+
+        .detail-content-wrap .detail-content-item table {
+            empty-cells: show;
+        }
