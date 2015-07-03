@@ -178,6 +178,7 @@
     <Content Include="Images\lab.jpg" />
     <Content Include="Images\links.png" />
     <Content Include="Images\logo.psd" />
+    <Content Include="Images\player.png" />
     <Content Include="Scripts\AC_RunActiveContent.js" />
     <Content Include="Images\midstars.gif" />
     <Content Include="Images\signin-password.jpg" />
@@ -732,7 +733,6 @@
     <Compile Include="Controllers\CourseController.cs" />
     <Compile Include="Controllers\EBookController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\ITrialController.cs" />
     <Compile Include="Controllers\LiveController.cs" />
     <Compile Include="Controllers\NewsController.cs" />
     <Compile Include="Controllers\SharedController.cs" />
@@ -757,7 +757,6 @@
     <Compile Include="Models\DB.cs" />
     <Compile Include="Models\EBook.cs" />
     <Compile Include="Models\File.cs" />
-    <Compile Include="Models\ITrial.cs" />
     <Compile Include="Models\Joke.cs" />
     <Compile Include="Models\LearningRecord.cs" />
     <Compile Include="Models\Lession.cs" />
@@ -883,9 +882,6 @@
     <Content Include="Views\Admin\LiveEdit.cshtml" />
     <Content Include="Views\Live\Player.cshtml" />
     <Content Include="Views\Live\Show.cshtml" />
-    <Content Include="Views\Admin\ITrialManager.cshtml" />
-    <Content Include="Views\Admin\AddITrial.cshtml" />
-    <Content Include="Views\Admin\ITrialShow.cshtml" />
     <None Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Admin\ViwepagerEdit.cshtml" />
     <None Include="Web.Debug.config">
@@ -900,7 +896,6 @@
     <Folder Include="Content\" />
     <Folder Include="Lessions\" />
     <Folder Include="Upload\NewsWord\" />
-    <Folder Include="Views\ITrial\" />
     <Folder Include="Views\ViewPager\" />
   </ItemGroup>
   <PropertyGroup>
