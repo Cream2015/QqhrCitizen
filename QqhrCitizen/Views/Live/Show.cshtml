@@ -134,11 +134,11 @@
     contosoChatHubProxy.client.addContosoChatMessageToPage = function (name, message) {
         var str;
         if (name == username) {
-            str = "<div class='popover left'><div class='arrow'></div><div class='popover-content'><p>[<span style='color:#00CC00'>" + moment(new Date()).format("HH:mm:ss") + "]</span><span style='color:#0000CC'>" + name + "</span><br/></span  style='color:#006666'>" + message + "</p></div></div>";
+            str = "<div class='popover left'><div class='arrow'></div><h3 class='popover-title'>[<span style='color:#00CC00'>" + moment(new Date()).format("HH:mm:ss") + "]</span><span style='color:#006666'>" + name + ":</span></h3><div class='popover-content'><p></span  style='color:#006666'>" + message + "</p></div></div>";
 
         }
         else {
-            str = "<div class='popover right'><div class='arrow'></div><div class='popover-content'><p>[<span style='color:#00CC00'>" + moment(new Date()).format("HH:mm:ss") + "]</span><span style='color:#006666'>" + name + ":</span><br/><span style='color:#0000CC;'>" + message + "</span></p></div></div></div>";
+            str = "<div class='popover right'><div class='arrow'></div><h3 class='popover-title'>[<span style='color:#00CC00'>" + moment(new Date()).format("HH:mm:ss") + "]</span><span style='color:#006666'>" + name + ":</span></h3><div class='popover-content'><p><span style='color:#0000CC;'>" + message + "</span></p></div></div></div>";
         }
         console.log(str);
         $(".msgDisplay").append(str);
