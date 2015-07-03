@@ -1,8 +1,10 @@
 ﻿@using QqhrCitizen.Models.ViewModel
 @{
-    ViewBag.Title = ViewBag.ITrualShow.Title + "_齐齐哈尔学习网";
+    ViewBag.Title = "产品展示";
     vProduct product = ViewBag.Product as vProduct;
 }
+
+<script src="~/Scripts/video.js"></script>
 <div id="product-intro" class="m-item-grid clearfix">
     <div id="preview" clstag="shangpin|keycount|product|mainpicarea_1">
         <div id="spec-n1" class="jqzoom">
@@ -13,10 +15,16 @@
             <a class="spec-control" id="spec-backward"></a>
             <div class="spec-items" style="position: absolute; width: 310px; height: 54px; overflow: hidden;">
                 <ul class="lh" style="position: absolute; width: 372px; height: 54px; top: 0px; left: 0px;">
+                    @{ int i = 0;}
                     <!--图片列表-->
-                    @foreach(var item in product.ProductImages)
+                    @foreach (var item in product.ProductImages)
                     {
-                      <li><img class="img-hover" alt="" src="@item.Path"></li>
+                        i++;
+                        if (i > 4)
+                        {
+                            break;
+                        }
+                        <li><img class="img-hover" alt="" src="@item.Path"></li>
                     }
                 </ul>
             </div>
@@ -43,7 +51,7 @@
         </div>
     </div>
 </div>
-<div id="product-detail" class="m m1"  >
+<div id="product-detail" class="m m1">
     <div class="ui-switchable-panel ui-switchable-panel-selected" style="display: block;">
         <div class="mc" id="product-detail-1">
             <div class="detail-content clearfix">
@@ -53,14 +61,17 @@
                             <div style="width:750px;margin:0 auto;padding:0;">
                                 <table cellpadding="0" cellspacing="0">
                                     <tbody>
-                                        @foreach()
+                                        <tr>
+                                            <td>
+                                                <script> player("@product.ProductVideo.Path", 600, 400, 1, "start.jpg");</script>
+                                            </td>
+                                        </tr>
+                                        @foreach (var item in product.ProductImages)
                                         {
                                             <tr>
-                                                <td><img src="" class="" style=""></td>
+                                                <td><img src="@item.Path" class="" style=""></td>
                                             </tr>
                                         }
-                                       
-
                                     </tbody>
                                 </table>
                             </div><br>
