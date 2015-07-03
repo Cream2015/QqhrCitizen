@@ -1924,7 +1924,7 @@ namespace QqhrCitizen.Controllers
 
                 file.SaveAs(phicyPath + random + file.FileName);
 
-                productFile.Path = root + random + file.FileName;
+                productFile.Path = "/ProductFile/" + product.Title + "/" + random + file.FileName;
 
                 db.ProductFiles.Add(productFile);
                 db.SaveChanges();
@@ -1941,7 +1941,7 @@ namespace QqhrCitizen.Controllers
         public ActionResult AddProductVideo(int id)
         {
             ViewBag.ProductID = id;
-            return ViewBag();
+            return View();
         }
 
         /// <summary>
@@ -1967,7 +1967,7 @@ namespace QqhrCitizen.Controllers
 
                 file.SaveAs(phicyPath + random + file.FileName);
 
-                productFile.Path = root+ random + file.FileName;
+                productFile.Path = "/ProductFile/" + product.Title + "/" + random + file.FileName;
 
                 db.ProductFiles.Add(productFile);
                 db.SaveChanges();
@@ -2005,7 +2005,7 @@ namespace QqhrCitizen.Controllers
             DirectoryInfo di = new DirectoryInfo(phicyPath);
             di.Delete(true);
 
-            return Redirect("/Admin/ProductManager");
+            return Content("ok");
         }
 
         [HttpGet]
@@ -2015,6 +2015,17 @@ namespace QqhrCitizen.Controllers
             return View();
         }
 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult ProductEdit(Product model)
+        {
+            Product product = db.Products.Find(model.ID);
+            product.Title = model.Title;
+            product.Description = model.Description;
+            product.Price = model.Price;
+            db.SaveChanges();
+            return Redirect("/Admin/ProductShow/" + model.ID);
+        }
 
         [HttpPost]
         [ValidateSID]
@@ -2029,8 +2040,8 @@ namespace QqhrCitizen.Controllers
                 //如果存在则删除
                 System.IO.File.Delete(phicyPath);
             }
-            
-            return Redirect("/Admin/ProductShow/" + id);
+
+            return Content("ok");
         }
 
         [HttpPost]
@@ -2047,7 +2058,7 @@ namespace QqhrCitizen.Controllers
                 System.IO.File.Delete(phicyPath);
             }
 
-            return Redirect("/Admin/ProductShow/" + id);
+            return Content("ok");
         }
     }
 }

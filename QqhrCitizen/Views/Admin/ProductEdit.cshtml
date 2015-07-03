@@ -13,11 +13,12 @@
     @using (Html.BeginForm("ProductEdit", "Admin", FormMethod.Post))
     {
         @Html.AntiForgeryToken()
+        <input value="@product.ID" name="ID" type="hidden" />
         <table class="detail-table">
             <tr>
                 <td class="row-title">标题</td>
                 <td>
-                    <input class="textbox w-3" type="text" name="Title" value="@product.Title" />
+                    <input class="textbox w-3" type="text" name="Title" value="@product.Title" disabled="disabled" />
                 </td>
             </tr>
 
