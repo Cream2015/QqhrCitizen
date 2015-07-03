@@ -1,0 +1,20 @@
+﻿@{
+    ViewBag.Title = "I实验";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="d-row">
+    <div class="d-row-c">
+        <div class="d-col-2-8">
+            <div class="contentarea">
+                @foreach (var item in ViewBag.ITrials as List<ITrial>)
+                {
+                    <div style="margin-top:20px;">
+                        <a href="@item.URL"><img src="/ITrial/ShowPicture/@item.ID" width="800" height="300" /></a> <br />
+                        <p><a href="@item.URL">@item.Title</a> </p>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>

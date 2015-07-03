@@ -888,6 +888,7 @@
     <Content Include="Views\Live\Player.cshtml" />
     <Content Include="Views\Live\Show.cshtml" />
     <Content Include="Views\Admin\ITrialEdit.cshtml" />
+    <Content Include="Views\ITrial\Index.cshtml" />
     <None Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Admin\ViwepagerEdit.cshtml" />
     <None Include="Web.Debug.config">
@@ -902,7 +903,6 @@
     <Folder Include="Content\" />
     <Folder Include="Lessions\" />
     <Folder Include="Upload\NewsWord\" />
-    <Folder Include="Views\ITrial\" />
     <Folder Include="Views\ViewPager\" />
   </ItemGroup>
   <PropertyGroup>

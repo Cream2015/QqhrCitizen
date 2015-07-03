@@ -11,6 +11,7 @@ namespace QqhrCitizen.Controllers
         // GET: ITrial
         public ActionResult Index()
         {
+            ViewBag.ITrials = db.ITrials.ToList();
             return View();
         }
 
