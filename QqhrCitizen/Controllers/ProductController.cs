@@ -13,7 +13,10 @@ namespace QqhrCitizen.Controllers
         {
             return View();
         }
-
+        public ActionResult Show(int id)
+        {
+            return View();
+        }
         
     }
 }

@@ -1,0 +1,32 @@
+﻿@{
+    ViewBag.Title = "产品展示";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="d-row" style="border-top: 1px solid #3169ea;">
+    <div class="d-row-c" style="margin-top:10px">
+        <div class="d-col-2-12">
+            <div class="contentarea">
+                <div id="d_livenew" class="d-livenew">
+                    <div class="body">
+                        <div id="slide_bookhot" class="slidecontainer">
+                            @foreach ()
+                            {
+                                <div class="item">
+                                    <a class="cover" href="@item.URL" target="_blank" style="width: 230px;">
+                                        <img src="/Product/ShowPicture/@item.ID" width="230" height="158" />
+                                    </a>
+                                    <div class="title trim">
+                                        <a href="/Product/Show/@item.ID" style="text-align:center">@item.Title</a>
+                                    </div>
+                                    <div class="description" title="">@item.Description</div>
+                                    <div class="date" title="">@item.Time</div>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
