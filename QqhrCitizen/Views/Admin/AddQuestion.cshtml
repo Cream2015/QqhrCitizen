@@ -1,8 +1,10 @@
 ﻿@{
-    ViewBag.Title = "AddQuestion";
+    ViewBag.Title = "增加问题";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
+ 
 
+<script src="~/Scripts/jmeditor/JMEditor.js"></script>
 <div>
     <h2 class="head-tietle">增加问题</h2>
     @using (Html.BeginForm("AddQuestion", "Admin"))
@@ -13,7 +15,11 @@
             <tr>
                 <td class="row-title">内容</td>
                 <td>
-                    <textarea name="Content" class="textbox w-3"></textarea>
+                    <div id="content" contenteditable="true">
+                        编辑框一
+                    </div>
+                    @*<textarea name="Content" class="textbox w-3" contenteditable="true"></textarea>*@
+                    <input type="hidden" name="Content" id="Content" />
                 </td>
             </tr>
             <tr>
@@ -30,7 +36,7 @@
                         <tbody id="lstOption">
                             <tr>
                                 <td><input type="text" value="A" class="textbox w-0-6" disabled="disabled" /></td>
-                                <td><input type="text" name="option" class="textbox w-3" /></td>
+                                <td><input type="text" contenteditable="true" name="option" class="textbox w-3" /></td>
                                 <td></td>
                             </tr>
                         </tbody>
@@ -43,7 +49,7 @@
             <tr>
                 <td class="row-title">正确选项</td>
                 <td>
-                    <select name="RightAnswer" class="textbox w-2" >
+                    <select name="RightAnswer" class="textbox w-2">
                         <option value="A">A</option>
                         <option value="B">B</option>
                         <option value="C">C</option>
