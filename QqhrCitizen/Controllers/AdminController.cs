@@ -1872,7 +1872,6 @@ namespace QqhrCitizen.Controllers
         }
 
         [HttpPost]
-        [ValidateAntiForgeryToken]
         public ActionResult AddProduct(Product model)
         {
             model.UserID = CurrentUser.ID;
@@ -1979,6 +1978,40 @@ namespace QqhrCitizen.Controllers
             {
                 return Redirect("/Admin/AdminMessage?msg=你没有选择视频文件");
             }
+        }
+
+        /// <summary>
+        /// 删除文件
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        [HttpPost]
+        [ValidateSID]
+        public ActionResult ProductDelete(int id)
+        {
+            List<ProductFile> files = new List<ProductFile>();
+            files = db.ProductFiles.Where(pf => pf.ProductID == id).ToList();
+            Product product = new Product();
+            product = db.Products.Find(id);
+            foreach (var item in files)
+            {
+                db.ProductFiles.Remove(item);
+            }
+            db.Products.Remove(product);
+            string root = "~/ProductFile/" + product.Title + "/";
+            var phicyPath = HostingEnvironment.MapPath(root);
+
+            DirectoryInfo di = new DirectoryInfo(phicyPath);
+            di.Delete(true);
+
+            return Redirect("/Admin/ProductManager");
+        }
+
+        [HttpGet]
+        public ActionResult ProductEdit(int id)
+        {
+            ViewBag.Product = db.Products.Find(id);
+            return View();
         }
 
     }

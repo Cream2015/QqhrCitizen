@@ -902,6 +902,7 @@
     <Content Include="Views\Admin\ProductShow.cshtml" />
     <Content Include="Views\Admin\AddProductImage.cshtml" />
     <Content Include="Views\Admin\AddProductVideo.cshtml" />
+    <Content Include="Views\Admin\ProductEdit.cshtml" />
     <None Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Admin\ViwepagerEdit.cshtml" />
     <None Include="Web.Debug.config">
