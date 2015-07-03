@@ -1,4 +1,5 @@
-﻿@{
+﻿@using QqhrCitizen.Models.ViewModel
+@{
     ViewBag.Title = "产品展示";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
@@ -10,11 +11,11 @@
                 <div id="d_livenew" class="d-livenew">
                     <div class="body">
                         <div id="slide_bookhot" class="slidecontainer">
-                            @foreach ()
+                            @foreach (var item in ViewBag.Products as List<vProduct>)
                             {
                                 <div class="item">
-                                    <a class="cover" href="@item.URL" target="_blank" style="width: 230px;">
-                                        <img src="/Product/ShowPicture/@item.ID" width="230" height="158" />
+                                    <a class="cover" href="/Product/Show/@item.ID" target="_blank" style="width: 230px;">
+                                        <img src="@item.ProductImages[0].Path" width="230" height="158" />
                                     </a>
                                     <div class="title trim">
                                         <a href="/Product/Show/@item.ID" style="text-align:center">@item.Title</a>
