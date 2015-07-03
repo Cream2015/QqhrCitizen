@@ -130,9 +130,9 @@
 
 <script>
     var contosoChatHubProxy = $.connection.contosoChatHub;
+    var username;
     contosoChatHubProxy.client.addContosoChatMessageToPage = function (name, message) {
         var str;
-        var username = "@ViewBag.CurrentUser.Username";
         if (name == username) {
             str = "<div class='popover left'><div class='arrow'></div><div class='popover-content'><p>[<span style='color:#00CC00'>" + moment(new Date()).format("HH:mm:ss") + "]</span><span style='color:#0000CC'>" + name + "</span><br/></span  style='color:#006666'>" + message + "</p></div></div>";
 
@@ -142,6 +142,7 @@
         }
         console.log(str);
         $(".msgDisplay").append(str);
+        $(".msgDisplay").scrollTop = $(".msgDisplay").scrollHeight；
     };
 
     contosoChatHubProxy.client.addGroupToShow = function (data) {
@@ -160,6 +161,7 @@
                 CastMsg("请先登录在发送聊天信息");
                 return false;
             }
+            username = $("#user_name_show").val();
             contosoChatHubProxy.server.newContosoChatMessage($('#currentuser').val(), $('#txtMsg').val(), $("#LiveID").val());
             $('#txtMsg').val('').focus();
         });
@@ -225,7 +227,7 @@
             right: -11px;
             margin-top: -11px;
             border-right-width: 0;
-            border-left-color: #fff;
+            border-left-color: rgba(0,0,0,.25);
         }
 
             .popover.left > .arrow:after {
@@ -239,16 +241,17 @@
             top: 50%;
             left: -11px;
             margin-top: -11px;
-            border-right-width: 0;
-            border-left-color: #fff;
+            border-left-width: 0;
+            border-right-color: #fff;
+
         }
 
             .popover.right > .arrow:after {
-                right: 1px;
+                left: 1px;
                 bottom: -10px;
                 content: " ";
-                border-right-width: 0;
-                border-left-color: #fff;
+                border-left-width: 0;
+                border-right-color: #fff;
             }
     :after, :before {
         -webkit-box-sizing: border-box;
