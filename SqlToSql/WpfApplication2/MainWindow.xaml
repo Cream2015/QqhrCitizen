@@ -14,10 +14,11 @@
         <TextBox HorizontalAlignment="Left" TextAlignment="Center" Height="18" Margin="28,318,0,0" TextWrapping="Wrap" Text="管理员id:" VerticalAlignment="Top" Width="58"/>
         <TextBox HorizontalAlignment="Left" TextAlignment="Center" Height="19" Margin="28,341,0,0" TextWrapping="Wrap" Text="类别id:" VerticalAlignment="Top" Width="58" />
         <Button Content="增加用户" HorizontalAlignment="Left" Height="35" Margin="28,182,0,0" VerticalAlignment="Top" Width="125" Click="Button_Click_3"/>
-        <Button Content="检测网站" HorizontalAlignment="Left" Height="29" Margin="198,324,0,0" VerticalAlignment="Top" Width="90" Click="Button_Click_4"/>
-        <TextBox x:Name="UrlText" HorizontalAlignment="Left" Height="20" Margin="366,331,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="134"/>
-        <TextBlock HorizontalAlignment="Left" Height="20" Margin="302,331,0,0" TextWrapping="Wrap" Text="网站Url：" VerticalAlignment="Top" Width="61" RenderTransformOrigin="0.388,0.367"/>
+        <Button Content="检测网站" HorizontalAlignment="Left" Height="29" Margin="283,324,0,0" VerticalAlignment="Top" Width="90" Click="Button_Click_4"/>
+        <TextBox x:Name="UrlText" HorizontalAlignment="Left" Height="20" Margin="439,331,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="61"/>
+        <TextBlock HorizontalAlignment="Left" Height="20" Margin="378,333,0,0" TextWrapping="Wrap" Text="网站Url：" VerticalAlignment="Top" Width="61" RenderTransformOrigin="0.388,0.367"/>
         <Button Content="新建新闻分类" HorizontalAlignment="Left" Height="34" Margin="28,229,0,0" VerticalAlignment="Top" Width="125" Click="Button_Click_5"/>
+        <Button Content="导入拓展课程" HorizontalAlignment="Left" Height="29" Margin="177,324,0,0" VerticalAlignment="Top" Width="88" Click="Button_Click_6"/>
 
 
     </Grid>
