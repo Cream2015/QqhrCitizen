@@ -1,0 +1,56 @@
+﻿@using QqhrCitizen.Models
+@{
+    ViewBag.Title = "ITrialEdit";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    ITrial itrial = ViewBag.ITrial as ITrial;
+}
+
+
+
+
+<div class="result-title">
+    <h1 class="head-tietle">修改I实验</h1>
+</div>
+@using (Html.BeginForm("ITrialEdit", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    <input value="@itrial.ID" name="ID" type="hidden" />
+    <table class="detail-table">
+        <tr>
+            <td class="row-title">标题</td>
+            <td>
+                <input class="textbox w-3" name="Title" value="@itrial.Title" />
+            </td>
+        </tr>
+        <tr>
+            <td class="row-title">描述</td>
+            <td>
+                <input class="textbox w-3" name="Description" value="@itrial.Description" />
+            </td>
+        </tr>
+
+        <tr>
+            <td class="row-title">URL</td>
+            <td>
+                <input class="textbox w-3" name="URL" value="@itrial.URL" />（例如： http://www.baidu.com）
+            </td>
+        </tr>
+        <tr>
+            <td class="row-title">优先级</td>
+            <td>
+                <input class="textbox w-3" name="Priority" value="@itrial.Priority" /> 
+            </td>
+        </tr>
+        <tr>
+            <td class="row-title">
+                上传图片
+            </td>
+            <td>
+                <input type="file" name="file" id="file" class="textbox nullable" />(不修改请勿上传)
+            </td>
+        </tr>
+    </table>
+    <p><input type="submit" value="保存" class="button blue" /></p>
+}
+
+

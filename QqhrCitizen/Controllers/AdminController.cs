@@ -1804,11 +1804,41 @@ namespace QqhrCitizen.Controllers
         }
 
         [HttpGet]
-        public ActionResult TrialEdit(int id)
+        public ActionResult ITrialEdit(int id)
         {
             ViewBag.ITrial = db.ITrials.Find(id);
             return View();
         }
+
+
+        /// <summary>
+        /// 执行修改
+        /// </summary>
+        /// <param name="model"></param>
+        /// <param name="file"></param>
+        /// <returns></returns>
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult ITrialEdit(ITrial model, HttpPostedFileBase file)
+        {
+          
+            ITrial itrial = db.ITrials.Find(model.ID);
+            itrial.Title = model.Title;
+            itrial.Description = model.Description;
+            itrial.URL = model.URL;
+            itrial.Priority = model.Priority;
+            if (file != null)
+            {
+                System.IO.Stream stream = file.InputStream;
+                byte[] buffer = new byte[stream.Length];
+                stream.Read(buffer, 0, (int)stream.Length);
+                stream.Close();
+                itrial.Picture = buffer;
+            }
+            db.SaveChanges();
+            return Redirect("/Admin/ITrialManager");
+        }
+
 
     }
 }
