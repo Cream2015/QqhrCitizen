@@ -26,10 +26,10 @@
             价格
         </td>
         <td>
-           @product.Price
+            @product.Price
         </td>
     </tr>
-     
+
     <tr>
         <td class="row-title">
             操作员
@@ -41,13 +41,16 @@
 </table>
 
 <h3>图片 <a href="/Admin/AddProductImage/@product.ID">增加图片</a></h3>
-<table>
+<table class="detail-table">
     @foreach (var item in product.ProductImages)
     {
         <tr>
             <td>@item.ID</td>
             <td>
-                <img src="/" alt="Alternate Text" />
+                <img src="@item.Path" alt="@product.Title" width="80" height="60" />
+            </td>
+            <td>
+                <a href="javascript:deleteDialog('/Admin/ProductImageDelete/' + @item.ID + '?sid=@ViewBag.SID',@item.ID);">删除</a>
             </td>
         </tr>
     }

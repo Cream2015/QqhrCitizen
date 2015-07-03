@@ -1924,7 +1924,7 @@ namespace QqhrCitizen.Controllers
 
                 file.SaveAs(phicyPath + random + file.FileName);
 
-                productFile.Path = phicyPath + random + file.FileName;
+                productFile.Path = root + random + file.FileName;
 
                 db.ProductFiles.Add(productFile);
                 db.SaveChanges();
@@ -1967,7 +1967,7 @@ namespace QqhrCitizen.Controllers
 
                 file.SaveAs(phicyPath + random + file.FileName);
 
-                productFile.Path = phicyPath + random + file.FileName;
+                productFile.Path = root+ random + file.FileName;
 
                 db.ProductFiles.Add(productFile);
                 db.SaveChanges();
@@ -1998,6 +1998,7 @@ namespace QqhrCitizen.Controllers
                 db.ProductFiles.Remove(item);
             }
             db.Products.Remove(product);
+            db.SaveChanges();
             string root = "~/ProductFile/" + product.Title + "/";
             var phicyPath = HostingEnvironment.MapPath(root);
 
@@ -2014,5 +2015,22 @@ namespace QqhrCitizen.Controllers
             return View();
         }
 
+
+        [HttpPost]
+        [ValidateSID]
+        public ActionResult ProductImageDelete(int id)
+        {
+            ProductFile productFile = db.ProductFiles.Find(id);
+            var phicyPath = HostingEnvironment.MapPath(productFile.Path);
+            db.ProductFiles.Remove(productFile);
+            db.SaveChanges();
+            if (System.IO.File.Exists(phicyPath))
+            {
+                //如果存在则删除
+                System.IO.File.Delete(phicyPath);
+            }
+            
+            return Redirect("/Admin/ProductShow/" + id);
+        }
     }
 }

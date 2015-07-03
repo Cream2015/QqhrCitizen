@@ -14,6 +14,6 @@ namespace QqhrCitizen.Controllers
             return View();
         }
 
-
+        
     }
 }
