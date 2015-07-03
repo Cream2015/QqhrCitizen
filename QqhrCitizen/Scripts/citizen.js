@@ -156,6 +156,36 @@ function LoadIndexNews() {
     }
 }
 
+function LoadProducts() {
+    if (lock) {
+        return;
+    }
+    else {
+        lock = true;
+        $(".loadMore").text("正在加载中，请稍后");
+        $.ajax({
+            url: "/News/getNewsByPage",
+            type: "get",
+            data: { "page": page },
+        }).done(function (data) {
+            var str = "";
+            for (var i = 0 ; i < data.length; i++) {
+                str += '<div class="item"><div class="title"><a href="/News/Show/' + data[i].ID + '" target="_blank">' + data[i].Title + '</a></div><div class="info"><span class="date">' + moment(data[i].Time).format("YYYY-MM-DD HH:mm:ss") + '</span> <span class="from"></span><span class="view">浏览次数: ' + data[i].Browses + '</span></div><div class="desc txt-justify"><p>' + data[i].Sumamry + '</p></div></div>';
+                //str += "<div class='Q-pList'><h2><a  href='" + data[i].URL + "' style='color:#000;' class='show'>" + data[i].Title + " </a></h2><p class='sub_title'>时间：" + moment(data[i].Time).format("YYYY-MM-DD HH:mm:ss") + "</p><p>" + data[i].Sumamry + "</p></div>";
+            }
+            $("#lstNews").append(str);
+            if (data.length == 10) {
+                lock = false;
+                page++;
+                $(".loadMore").text("下拉加载更多！");
+            } else {
+                $(".loadMore").text("没有更多数据了！");
+            }
+        });
+    }
+}
+
+
 function Load() {
     if ($(".lstNews").length > 0) {
         LoadNews();
@@ -262,7 +292,7 @@ $(document).ready(function () {
             CastMsg("请填写用户名！");
             return false;
         }
-        if(password == "") {
+        if (password == "") {
             CastMsg("请填写密码！");
             return false;
         }

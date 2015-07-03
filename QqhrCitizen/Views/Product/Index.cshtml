@@ -10,7 +10,7 @@
             <div class="contentarea">
                 <div id="d_livenew" class="d-livenew">
                     <div class="body">
-                        <div id="slide_bookhot" class="slidecontainer">
+                        <div id="slide_bookhot" class="slidecontainer LstProduct">
                             @foreach (var item in ViewBag.Products as List<vProduct>)
                             {
                                 <div class="item">
@@ -20,11 +20,11 @@
                                     <div class="title trim">
                                         <a href="/Product/Show/@item.ID" style="text-align:center">@item.Title</a>
                                     </div>
-                                    <div class="description" title="">@item.Description</div>
-                                    <div class="date" title="">@item.Time</div>
+                                    <div class="description" title="">@item.Price</div>
                                 </div>
                             }
                         </div>
+                        <div class="loadMore"></div>
                     </div>
                 </div>
             </div>
