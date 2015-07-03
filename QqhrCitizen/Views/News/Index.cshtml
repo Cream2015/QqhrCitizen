@@ -3,7 +3,9 @@
     ViewBag.Title = "新闻首页_齐齐哈尔市民学习网";
     ViewBag.Search = "新闻、标签";
 }
+<script src="~/Scripts/stickUp.js"></script>
 <script>
+ 
     $("#topmenu_news").attr("class", "item_selected");
 </script>
 <div id="d_menu" class="d-menu menu-msg">
@@ -53,13 +55,13 @@
             <div class="contentarea">
                 
                 <!-- region start: 推荐资讯 -->
-                <div id="d_articlehot" class="d-articlehot">
+                <div id="d_articlehot" class="d-articlehot navbar-wrapper">
                     <div class="head">热门新闻</div>
                     <div class="body">
                         @foreach (var item in ViewBag.LstNews as List<News>)
-                        { 
-                          <a class="item trim" href="/News/Show/@item.ID" target="_blank" title="@item.Title">@item.Title</a>
-                        }    
+                        {
+                            <a class="item trim" href="/News/Show/@item.ID" target="_blank" title="@item.Title">@item.Title</a>
+                        }
                     </div>
                 </div>
                 <!-- region end: 推荐资讯 -->
@@ -67,3 +69,13 @@
         </div><div class="clear"></div>
     </div>
 </div>
+<script type="text/javascript">
+    //initiating jQuery
+    jQuery(function ($) {
+        $(document).ready(function () {
+            //enabling stickUp on the '.navbar-wrapper' class
+            $('.navbar-wrapper').stickUp();
+        });
+    });
+
+</script>

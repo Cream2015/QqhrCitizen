@@ -378,6 +378,8 @@
     <Content Include="Scripts\jquery.media.js" />
     <Content Include="Scripts\pdfobject.js" />
     <Content Include="Scripts\spectrum.js" />
+    <Content Include="Scripts\stickUp.js" />
+    <Content Include="Scripts\stickUp.min.js" />
     <Content Include="Styles\images\annotation-check.svg" />
     <Content Include="Styles\images\annotation-comment.svg" />
     <Content Include="Styles\images\annotation-help.svg" />
@@ -706,6 +708,7 @@
     <Content Include="Scripts\set.xml" />
     <Content Include="Scripts\setForshare.xml" />
     <Content Include="Scripts\spin.min.js" />
+    <Content Include="Scripts\stickUp.jquery.json" />
     <None Include="Scripts\_references.js" />
     <Content Include="Scripts\swfobject.js" />
     <Content Include="Scripts\video.js" />
