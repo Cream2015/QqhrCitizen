@@ -29,6 +29,8 @@ namespace QqhrCitizen.Controllers
             ViewBag.NewsCount = db.News.Count();
             ViewBag.CourseCount = db.Courses.Count();
             ViewBag.EBookCount = db.EBooks.Count();
+
+
             return View();
         }
 

@@ -4,8 +4,8 @@
     User user = ViewBag.Currentuser as User;
 }
 
-
 <div>
+    
     当前用户:@user.Username  <br />
     角色：@CommonEnums.RoleDisply[user.RoleAsInt] <br />
     新闻数：@ViewBag.NewsCount  <br />
