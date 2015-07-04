@@ -1,6 +1,6 @@
 ﻿@using QqhrCitizen.Models;
 @{
-    Live live=@ViewBag.Live;
+    Live live = @ViewBag.Live;
     ViewBag.Title = live.Title + "_齐齐哈尔市民学习网";
 }
 <!-- functionality -->
@@ -22,14 +22,15 @@
     <div class="d-row-c">
         <div class="d-col-2-8">
             <div class="contentarea">
-                div id="d_coursedetail" class="d-coursedetail">
-                <h2>@live.Title</h2>
-                <input type="hidden" name="name" id="LessionID" value="@live.ID" />
+                <div id="d_coursedetail" class="d-coursedetail">
+                    <h2>@live.Title</h2>
+                    <input type="hidden" name="name" id="LessionID" value="@live.ID" />
                     <script> player(""@live.Path", 600, 400, 1, "start.jpg");</script>
+                </div>
+
             </div>
-
         </div>
-    </div>
 
-    <div class="clear"></div>
+        <div class="clear"></div>
+    </div>
 </div>
