@@ -103,6 +103,7 @@ namespace QqhrCitizen.Controllers
             return View();
         }
 
+        [HttpGet]
         [AccessToLive]
         public ActionResult ReviewShow(int id)
         {
