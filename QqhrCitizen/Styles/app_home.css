@@ -1891,20 +1891,20 @@ div {
     }
 
 .d-topmenu {
-    width: 1000px;
+    width: 1200px;
     height: 30px;
 }
 
     .d-topmenu .d-top-nav {
         float: left;
-        width: 500px;
+        width: 710px;
     }
 
     .d-topmenu .d-top-sign {
         position: absolute;
         right: 0;
         top: 0;
-        width: 500px;
+        width: 490px;
     }
 
         .d-topmenu .d-top-sign span.item {
@@ -2067,6 +2067,9 @@ div {
 .d-headerhome {
     width: 1000px;
     height: 90px;
+    background-repeat: no-repeat;
+background-position: 19px 0;
+
 }
 
     .d-headerhome .d-logo {

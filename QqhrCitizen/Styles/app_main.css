@@ -2807,7 +2807,7 @@ div, p, span, a {
 
     .d-topmenu .d-top-sign {
         position: absolute;
-        right: 120px;
+        right: 0px;
         top: 0;
         width: 490px;
     }
@@ -2980,7 +2980,6 @@ div, p, span, a {
 .d-headerdefault {
     width: 1000px;
     height: 90px;
-    background-image: url(/images/logo.png);
     background-repeat: no-repeat;
     background-position: 19px 0;
 }
@@ -2992,6 +2991,7 @@ div, p, span, a {
         left: 0;
         width: 480px;
         height: 100px;
+        background-image: url(/images/logo.png);
     }
 
         .d-headerdefault .d-logo .ver {
@@ -10776,20 +10776,24 @@ label.inline {
     overflow: hidden;
     padding: 0 20px 0 34px;
 }
+
 .spec-items {
-position: absolute;
-top: 0;
-left: 36px;
+    position: absolute;
+    top: 0;
+    left: 36px;
 }
+
 #spec-list .spec-items li {
-width: 62px;
-text-align: center;
-font-size: 0;
-position: relative;
+    width: 62px;
+    text-align: center;
+    font-size: 0;
+    position: relative;
 }
+
 .lh li, .lh dl, .lh .item {
-float: left;
+    float: left;
 }
+
 .root61 .m-item-grid .m-item-inner {
     padding-right: 244px;
 }
@@ -10809,13 +10813,15 @@ float: left;
     padding: 15px 75px 10px 0;
     zoom: 1;
 }
-#name h2 {
+
+    #name h2 {
         line-height: 1.5em;
         overflow: hidden;
         font-weight: 700;
         font-family: arial,"microsoft yahei";
         font-size: 20px;
     }
+
     #name h1 {
         line-height: 1.5em;
         overflow: hidden;
@@ -10823,10 +10829,11 @@ float: left;
         font-family: arial,"microsoft yahei";
         font-size: 22px;
     }
-    #name .p-ad
-    {
-        font-size:20px
+
+    #name .p-ad {
+        font-size: 20px;
     }
+
 #summary {
     width: 100%;
     position: relative;
@@ -10841,21 +10848,24 @@ float: left;
     line-height: 30px;
     background: #f7f7f7;
 }
-#summary-price .p-price {
-    display: inline-block;
-    vertical-align: middle;
-    color: #e4393c;
-    font-size: 22px;
-}
-#summary-price .dt, #summary-promotion .dt, #summary-service .dt, #summary-stock .dt {
-float: left;
-width: 72px;
-margin-left: -72px;
-display: inline;
-text-align: right;
-font-family: '\5B8B\4F53';
-font-size:20px;
-}
+
+    #summary-price .p-price {
+        display: inline-block;
+        vertical-align: middle;
+        color: #e4393c;
+        font-size: 22px;
+    }
+
+    #summary-price .dt, #summary-promotion .dt, #summary-service .dt, #summary-stock .dt {
+        float: left;
+        width: 72px;
+        margin-left: -72px;
+        display: inline;
+        text-align: right;
+        font-family: '\5B8B\4F53';
+        font-size: 20px;
+    }
+
 #summary-price, #summary-promotion, #summary-service, #summary-stock {
     padding-left: 72px;
     padding-right: 20px;
@@ -10932,5 +10942,3 @@ font-size:20px;
         .detail-content-wrap .detail-content-item table {
             empty-cells: show;
         }
-
-
