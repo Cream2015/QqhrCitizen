@@ -18,6 +18,6 @@ namespace QqhrCitizen.Models
 
         public static string[] TypeBelongerDisply = { "新闻", "文件", "资源链接", "电子书", " 课程" };
 
-        public static string[] RoleDisply = { "用户", "超级管理员", "新闻管理员", "电子书管理员", "课程管理员","资源连接管理员" };
+        public static string[] RoleDisply = { "用户","商户", "超级管理员", "新闻管理员", "电子书管理员", "课程管理员","资源链接管理员" };
     }
 }
