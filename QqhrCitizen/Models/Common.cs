@@ -8,7 +8,7 @@ namespace QqhrCitizen.Models
     public enum TypeBelonger { 新闻, 文件, 资源链接, 电子书, 课程 }
     public enum Authority { All, Login }
     public enum Sex { 女, 男 }
-    public enum Role { User, Admin,NewsManager,EBookManager,CourseManager,LinkManager }
+    public enum Role { User, Business, Admin,NewsManager,EBookManager,CourseManager,LinkManager }
 
     public class CommonEnums
     {

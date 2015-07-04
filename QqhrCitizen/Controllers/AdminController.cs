@@ -1879,6 +1879,10 @@ namespace QqhrCitizen.Controllers
         public ActionResult ProductManager(string key, DateTime? Begin, DateTime? End, int p = 0)
         {
             IEnumerable<Product> query = db.Products.AsEnumerable();
+            if (CurrentUser.Role == Role.Business)
+            {
+                query = query.Where(c => c.UserID == CurrentUser.ID);
+            }
             if (!string.IsNullOrEmpty(key))
             {
                 query = query.Where(c => c.Title.Contains(key));

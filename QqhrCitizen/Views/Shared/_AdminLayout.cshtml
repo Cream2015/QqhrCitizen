@@ -104,9 +104,8 @@
                             </ul>
                         </li>
                     }
-                    @if (user.Role == Role.Admin)
+                    @if (user.Role == Role.Admin || user.Role == Role.Business)
                     {
-
                         <li>
                             <a href="#"><i class="icon-font">&#xe018;</i>市民生活管理</a>
                             <ul class="sub-menu">
