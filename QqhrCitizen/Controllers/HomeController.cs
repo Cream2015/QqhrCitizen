@@ -40,7 +40,7 @@ namespace QqhrCitizen.Controllers
 
             ViewBag.Courses = db.Courses.OrderByDescending(x => x.Time).Take(6).ToList();
             ViewBag.NewsTypes = db.TypeDictionaries.Where(x => x.Belonger == TypeBelonger.新闻 && x.FatherID ==0).Take(5).ToList();
-            //ViewBag.News = GetTop5News();
+            ViewBag.News = GetTop5News();
             ViewBag.MoreNews = db.News.OrderByDescending(x => x.Time).Take(10).ToList();
             ViewBag.BookTypes = db.TypeDictionaries.Where(x => x.Belonger == TypeBelonger.电子书 && x.FatherID == 0).Take(6).ToList();
             ViewBag.Books = db.EBooks.OrderByDescending(x => x.Time).Take(10).ToList();
