@@ -1777,6 +1777,7 @@ namespace QqhrCitizen.Controllers
             live.Begin = model.Begin;
             live.End = model.End;
             live.LiveURL = model.LiveURL;
+            live.NeedAuthorize = model.NeedAuthorize;
             db.SaveChanges();
             return Redirect("/Admin/LiveManager");
         }

@@ -59,6 +59,17 @@
                     <input type="file" name="file" id="file" class="textbox nullable" />(不修改请不要上传)
                 </td>
             </tr>
+            <tr>
+                <td class="row-title">
+                    是否需要登陆标记
+                </td>
+                <td>
+                    <select name="NeedAuthorize" class="textbox">
+                        <option value="false" @(live.NeedAuthorize ? "selected" : "")>否</option>
+                        <option value="true" @(live.NeedAuthorize ? "selected" : "")>是</option>
+                    </select>
+                </td>
+            </tr>
         </table>
         <p><input type="submit" value="保存" class="button blue" /></p>
     }
