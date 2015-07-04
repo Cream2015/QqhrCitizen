@@ -7,19 +7,19 @@
 <script src="~/Scripts/jmeditor/JMEditor.js"></script>
 <div>
     <h2 class="head-tietle">增加问题</h2>
-    @using (Html.BeginForm("AddQuestion", "Admin"))
+    @using (Html.BeginForm("AddQuestion", "Admin",new { id="frmAddQuestion" }))
     {
-        @Html.AntiForgerySID()
+        @Html.AntiForgeryToken()
         <input type="hidden" name="LessionID" value="@ViewBag.LessionID" />
         <table class="detail-table">
             <tr>
                 <td class="row-title">内容</td>
                 <td>
-                    <div id="content" contenteditable="true">
-                        编辑框一
+                    <div id="content" contenteditable="true" class="questionContent">
+                        编辑题目
                     </div>
                     @*<textarea name="Content" class="textbox w-3" contenteditable="true"></textarea>*@
-                    <input type="hidden" name="Content" id="Content" />
+                    <input type="hidden" name="Content" id="txtcontent" />
                 </td>
             </tr>
             <tr>
@@ -28,7 +28,7 @@
                     <table>
                         <thead>
                             <tr>
-                                <td>选项名称</td>
+                                <td style="width:30px;">选项名称</td>
                                 <td>选项内容</td>
                                 <td>操作</td>
                             </tr>
@@ -36,7 +36,9 @@
                         <tbody id="lstOption">
                             <tr>
                                 <td><input type="text" value="A" class="textbox w-0-6" disabled="disabled" /></td>
-                                <td><input type="text" contenteditable="true" name="option" class="textbox w-3" /></td>
+                                <td>
+                                     <input name="option" />
+                                </td>
                                 <td></td>
                             </tr>
                         </tbody>
@@ -60,7 +62,7 @@
             <tr>
                 <td class="row-title">备注</td>
                 <td>
-                    <textarea name="Remark" class="textbox"></textarea>
+                    <textarea name="Remark" class="textbox" style="height:60px" cols="100"></textarea>
                 </td>
             </tr>
 
