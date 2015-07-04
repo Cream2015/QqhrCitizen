@@ -184,33 +184,6 @@ function LoadProducts() {
     }
 }
 
-function LoadLives() {
-    if (lock) {
-        return;
-    }
-    else {
-        lock = true;
-        $(".loadMore").text("正在加载中，请稍后");
-        $.ajax({
-            url: "/Product/GetLivesByPage",
-            type: "get",
-            data: { "page": page },
-        }).done(function (data) {
-            var str = "";
-            for (var i = 0 ; i < data.length; i++) {
-                str += ' <div class="item"><a class="cover" href="/Product/Show/' + data[i].ID + '" target="_blank" style="width: 230px;"><img src="' + data[i].ProductImages[0].Path + '" width="230" height="158" /></a><div class="title trim"><a href="/Product/Show/' + data[i].ID + '" style="text-align:center">' + data[i].Title + '</a></div><div class="description" title="">' + data[i].Price + '</div></div>';
-            }
-            $(".lstLive").append(str);
-            if (data.length == 10) {
-                lock = false;
-                page++;
-                $(".loadMore").text("下拉加载更多！");
-            } else {
-                $(".loadMore").text("没有更多数据了！");
-            }
-        });
-    }
-}
 
 function LoadReviewLives() {
     if (lock) {
@@ -265,10 +238,7 @@ function Load() {
         LoadProducts();
     }
 
-    if ($(".lstLive").length > 0) {
-        LoadLives();
-    }
-
+   
     if ($(".lstReviewLive").length > 0) {
         LoadReviewLives();
     }
