@@ -105,7 +105,7 @@
                     <td>@item.Time</td>
                     <td>
                         <a href="/Admin/CourseQuestionShow/@item.ID">问题详情</a>
-                        <a href="javascript:Delete(@item.ID);">删除</a>
+                        <a href="javascript:deleteDialog('/Admin/CourseQuestionDelete/' + @item.ID + '?sid=@ViewBag.SID',@item.ID);">删除</a>
                         @*<a href="/Admin/LessionEdit/@item.ID">修改</a>*@
                     </td>
                 </tr>
@@ -113,3 +113,4 @@
         </tbody>
     </table>
 </div>
+<script

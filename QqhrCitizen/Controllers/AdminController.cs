@@ -1169,7 +1169,7 @@ namespace QqhrCitizen.Controllers
             question = db.Questions.Find(id);
             db.Questions.Remove(question);
             db.SaveChanges();
-            return Redirect("/Admin/LessionShow/" + question.LessionID);
+            return Content("ok");
         }
         #endregion
 
@@ -2212,7 +2212,7 @@ namespace QqhrCitizen.Controllers
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        [HttpGet]
+        [HttpPost]
         [ValidateSID]
         public ActionResult CourseQuestionDelete(int id)
         {
@@ -2220,7 +2220,7 @@ namespace QqhrCitizen.Controllers
             coursequestion = db.CourseQuestions.Find(id);
             db.CourseQuestions.Remove(coursequestion);
             db.SaveChanges();
-            return Redirect("/Admin/CourseShow/" + coursequestion.CourseID);
+            return Content("ok");
         }
         #endregion
     }
