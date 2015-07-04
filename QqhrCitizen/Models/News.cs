@@ -44,6 +44,15 @@ namespace QqhrCitizen.Models
 
         public bool IsWord { get; set; }
 
+        public int PlaceAsInt { set; get; }
+
+        [NotMapped]
+        public Place Place
+        {
+            set { PlaceAsInt = (int)value; }
+            get { return (Place)PlaceAsInt; }
+        }
+
         [NotMapped]
         public string Sumamry
         {

@@ -26,6 +26,10 @@ namespace QqhrCitizen.Models.ViewModel
 
         public string FirstImgUrl { get; set; }
 
+        public int PlaceAsInt { set; get; }
+
+        public Place Place { set; get; }
+
         public vNews() { }
 
         public vNews(News model)
@@ -42,6 +46,8 @@ namespace QqhrCitizen.Models.ViewModel
             this.Sumamry =Helpers.String.CleanHTML(Helpers.HtmlFilter.Instance.SanitizeHtml(model.Sumamry));
             this.IsHaveImg = model.IsHaveImg;
             this.FirstImgUrl = model.FirstImgUrl;
+            this.PlaceAsInt = model.PlaceAsInt;
+            this.Place = model.Place;
         }
     }
 }

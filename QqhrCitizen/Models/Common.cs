@@ -10,6 +10,8 @@ namespace QqhrCitizen.Models
     public enum Sex { 女, 男 }
     public enum Role { User, Business, Admin,NewsManager,EBookManager,CourseManager,LinkManager }
 
+    public enum Place { Location,Native}
+
     public class CommonEnums
     {
         public static string[] Answers = { "A", "B", "C", "D"};
