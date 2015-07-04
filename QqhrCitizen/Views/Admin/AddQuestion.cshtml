@@ -7,7 +7,7 @@
 <script src="~/Scripts/jmeditor/JMEditor.js"></script>
 <div>
     <h2 class="head-tietle">增加问题</h2>
-    @using (Html.BeginForm("AddQuestion", "Admin",new { id="frmAddQuestion" }))
+    @using (Html.BeginForm("AddQuestion", "Admin",FormMethod.Post,new { id="frmAddQuestion" }))
     {
         @Html.AntiForgeryToken()
         <input type="hidden" name="LessionID" value="@ViewBag.LessionID" />
@@ -37,7 +37,7 @@
                             <tr>
                                 <td><input type="text" value="A" class="textbox w-0-6" disabled="disabled" /></td>
                                 <td>
-                                     <input name="option" />
+                                     <input name="option" type="text" class="textbox w-3 nullable"  />
                                 </td>
                                 <td></td>
                             </tr>

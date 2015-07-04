@@ -39,7 +39,7 @@ $(document).ready(function () {
         $("#txtOptionIndex").val(index);
         var option = options[index];
 
-        var str = "<tr class='trAnswer'><td><input type='text' class='textbox w-0-6' value='" + option + "' disabled='disabled' /></td><td><input type='text' class='textbox w-3' name='option' /></td><td><a href='javascript:void(0);' class='btnDeltr'>删除</a></td></tr></tr>";
+        var str = "<tr class='trAnswer'><td><input type='text' class='textbox w-0-6' value='" + option + "' disabled='disabled' /></td><td><input type='text' class='textbox w-3 nullable' name='option' /></td><td><a href='javascript:void(0);' class='btnDeltr'>删除</a></td></tr></tr>";
         $("#lstOption").append(str);
         //  答案删除行
         $('.btnDeltr').unbind().click(function () {

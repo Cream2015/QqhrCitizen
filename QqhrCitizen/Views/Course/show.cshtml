@@ -37,7 +37,6 @@
                     <div class="contentarea">
                         <!-- region start: 课程信息 -->
                         <div id="d_coursedetail" class="d-coursedetail">
-                            <input type="hidden" id="hdPlayAuthority" value="@course.AuthorityAsInt" />
                             <input type="hidden" id="hdCurrentuser" value="@(ViewBag.CurrentUser!=null? @ViewBag.CurrentUser.Username:"")" />
                             <div class="cover">
                                 <img src="/Course/ShowPicture/@course.ID" />
