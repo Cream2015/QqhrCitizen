@@ -161,6 +161,11 @@ $(document).ready(function () {
             }
         }
     });
+
+    $("#frmAddQuestion").submit(function () {
+        var content = $("#content").text();
+        $("#txtcontent").val(content);
+    });
 });
 
 

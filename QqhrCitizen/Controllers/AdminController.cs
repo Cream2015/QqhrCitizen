@@ -1187,24 +1187,10 @@ namespace QqhrCitizen.Controllers
         /// <param name="model"></param>
         /// <returns></returns>
         [HttpPost]
-
+        [ValidateInput(false)]
+        [ValidateAntiForgeryToken]
         public ActionResult AddQuestion(Question model)
         {
-            var options = Request.Params.GetValues("option");
-            string Answers = "";
-            for (int i = 0; i < options.Count(); i++)
-            {
-                if (i == options.Count() - 1)
-                {
-                    Answers += options[i];
-                }
-                else
-                {
-                    Answers += options[i] + "|";
-                }
-            }
-
-            model.Answers = Answers;
             model.Time = DateTime.Now;
             db.Questions.Add(model);
             db.SaveChanges();

@@ -7,22 +7,22 @@
 <script src="~/Scripts/jmeditor/JMEditor.js"></script>
 <div>
     <h2 class="head-tietle">增加问题</h2>
-    @using (Html.BeginForm("AddQuestion", "Admin"))
+    @using (Html.BeginForm("AddQuestion", "Admin",new { id="frmAddQuestion" }))
     {
-        @Html.AntiForgerySID()
+        @Html.AntiForgeryToken()
         <input type="hidden" name="LessionID" value="@ViewBag.LessionID" />
         <table class="detail-table">
             <tr>
                 <td class="row-title">内容</td>
                 <td>
                     <div id="content" contenteditable="true" class="questionContent">
-                        编辑框一
+                        编辑题目
                     </div>
                     @*<textarea name="Content" class="textbox w-3" contenteditable="true"></textarea>*@
-                    <input type="hidden" name="Content" id="Content" />
+                    <input type="hidden" name="Content" id="txtcontent" />
                 </td>
             </tr>
-            <tr>
+            @*<tr>
                 <td class="row-title">选项</td>
                 <td>
                     <table>
@@ -47,7 +47,7 @@
                     <input type="hidden" value="0" id="txtOptionIndex" />
                     <a href="java:void(0)" id="btnAddOption">增加</a>
                 </td>
-            </tr>
+            </tr>*@
 
             <tr>
                 <td class="row-title">正确选项</td>
@@ -63,7 +63,7 @@
             <tr>
                 <td class="row-title">备注</td>
                 <td>
-                    <textarea name="Remark" class="textbox" style="height:60px;" cols="100"></textarea>
+                    <textarea name="Remark" class="textbox" style="height:60px" cols="100"></textarea>
                 </td>
             </tr>
 
