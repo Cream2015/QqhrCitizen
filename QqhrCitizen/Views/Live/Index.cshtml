@@ -38,7 +38,7 @@
                             @foreach (var item in ViewBag.LiveList)
                             {
                                 <div class="item">
-                                    <a class="cover live_show" id="live_id_@item.ID" style="cursor:pointer">
+                                    <a class="cover live_show" id="live_id_@item.ID" href="/Live/Show/@item.ID" style="cursor:pointer">
                                         <img src="/Live/ShowPicture/@item.ID" />
                                     </a>
                                     <div class="title trim">
