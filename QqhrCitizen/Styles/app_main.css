@@ -10718,13 +10718,13 @@ label.inline {
                     height: 16px;
                     line-height: 16px;
                     font-size: 15px;
-                    color: #222;
+                    color: #00a000;
                     text-align: center;
                 }
 
                 .d-livenew .body .slidecontainer .item .date {
                     display: inline-block;
-                    font-size: 12px;
+                    font-size: 14px;
                     color: #999;
                     padding: 0 5px;
                     text-align: center;
