@@ -1,6 +1,6 @@
 ﻿@using QqhrCitizen.Models;
 @{
-    ViewBag.Title = @ViewBag.ShowLive.Title + "_齐齐哈尔市民学习网";
+    ViewBag.Title = @ViewBag.Live.Title + "_齐齐哈尔市民学习网";
     bool flag = ViewBag.Flag;
 }
 <!-- functionality -->
@@ -25,14 +25,7 @@
                 div id="d_coursedetail" class="d-coursedetail">
                 <h2>@ViewBag.ShowLive.Title</h2>
                 <input type="hidden" name="name" id="LessionID" value="@ViewBag.ShowLive.ID" />
-                @if (flag == true)
-                {
-                    <iframe src="" @ViewBag.ShowLive.Path " width=" 600" height="400"></iframe>
-                    }
-                    else
-                    {
                     <script> player(""@ViewBag.ShowLive.Path", 600, 400, 1, "start.jpg");</script>
-                }
             </div>
 
         </div>

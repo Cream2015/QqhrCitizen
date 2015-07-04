@@ -44,16 +44,3 @@
         <div class="clear"></div>
     </div>
 </div>
-
-
-<script>
-    $(".live_show").click(function () {
-        var id = $(this).attr("Id");
-        var id_arr = id.split("_");
-        var live_hidden = $("#live_hidden_" + id_arr[2]).val();
-        if ((live_hidden == 1) && ($('#user_name_show').html() == "")) {
-            CastMsg("请先登录才能观看");
-            return false;
-        }
-    });
-</script>
