@@ -1,0 +1,77 @@
+﻿@using QqhrCitizen.Models;
+@using QqhrCitizen.Models.ViewModel;
+@{
+    ViewBag.Title = "往期回顾_齐齐哈尔市民学习网";
+}
+<script>
+    $("#topmenu_live").attr("class", "item_selected");
+</script>
+<div id="d_menu" class="d-menu menu-bok">
+    <div id="d_menu_c" class="d-menu-c">
+        <!-- region start: menu -->
+        <div id="d_headmenu" class="d-headmenu">
+            <div class="body">
+                <a class="item" href="/Live/Index" id="headmenu_default">直播首页</a>
+                <a class="item_selected" href="/Live/Review" id="headmenu_review">往期回顾</a>
+            </div>
+        </div><!-- region end: menu -->
+    </div>
+</div>
+<div id="d_bottom" class="d-bottom" style="visibility: hidden; position: relative;">
+    <div class="d-bottom-c">
+        <div id="d_scrolltop" class="d-scrolltop" style="right: -70px;">
+            <span class="t" onclick="$(document.body).ScrollTo();">顶部</span>
+        </div>
+    </div>
+</div>
+<div class="d-row">
+    <div class="d-row-c">
+        <div class="d-col-2-12">
+            <div class="contentarea">
+                <!-- region start: 往期回顾 -->
+                <div id="d_livenew" class="d-livenew">
+                    <div class="head">
+                        往期回顾
+                    </div>
+                    <div class="body">
+                        <div id="slide_bookhot" class="slidecontainer">
+                            @foreach (var item in ViewBag.LiveList)
+                            {
+                                if((item.End < DateTime.Now)
+                                {
+                                    <div class="item">
+                                        <a class="cover live_show" id="live_id_@item.ID" style="cursor:pointer">
+                                            <img src="/Live/ShowPicture/@item.ID" />
+                                        </a>
+                                        <div class="title trim">
+                                            <a title="@item.Title" class="live_show" id="live_id_@item.ID" style="cursor:pointer">@item.Title</a>
+                                            <input type="hidden" id="live_hidden_@item.ID" value="@item.NeedAuthorize" />
+                                            <script>
+                                                $(".live_show").click(function () {
+                                                    var id = $(this).attr("Id");
+                                                    var id_arr = id.split("_");
+                                                    var live_hidden = $("#live_hidden_" + id_arr[2]).val();
+                                                    if ((live_hidden == 1) && ($('#user_name_show').html() == "")) {
+                                                        CastMsg("请先登录才能观看");
+                                                        return false;
+                                                    }
+                                                    else {
+                                                        location.href = "/Live/Show/@item.ID";
+                                                    }
+                                                });
+
+                                            </script>
+                                        </div>
+                                        <div class="date"><span>开始:@item.Begin</span><br />结束<span>@item.End</span></div>
+                                    </div>
+                                }
+
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="clear"></div>
+    </div>
+</div>
