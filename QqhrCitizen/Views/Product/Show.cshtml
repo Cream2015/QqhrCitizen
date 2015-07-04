@@ -12,7 +12,7 @@
                 <div id="product-intro" class="m-item-grid clearfix">
                     <div id="preview" clstag="shangpin|keycount|product|mainpicarea_1">
                         <div id="spec-n1" class="jqzoom">
-                            <img data-img="1" width="350" height="350" src="">
+                            <img data-img="1" width="350" height="350" src="@product.ProductImages[0].Path" id="show_pic">
                         </div>
                         <div id="spec-list">
                             <a class="spec-control disabled" id="spec-forward"></a>
@@ -28,9 +28,14 @@
                                         {
                                             break;
                                         }
-                                        <li><img class="img-hover" alt="" src="@item.Path"></li>
+                                        <li style="cursor:pointer"><img class="img-hover" alt="" src="@item.Path"></li>
                                     }
                                 </ul>
+                                <script>
+                                    $(".img-hover").mouseover(function (e) {
+                                        $("#show_pic").attr("src",$(this).attr("src"));
+                                    });
+                                </script>
                             </div>
                         </div>
                     </div>
@@ -63,12 +68,12 @@
                                 <div class="detail-content-wrap">
                                     <div class="detail-content-item">
                                         <div id="J-detail-content">
-                                            <div style="width:100%;margin:0 auto;padding:0;">
-                                                <table cellpadding="0" cellspacing="0">
+                                            <div style="width:1000px;margin:0 auto;padding:0;">
+                                                <table style="width:1000px;margin:0 auto;padding:0;">
                                                     <tbody>
                                                         <tr>
-                                                            <td>
-                                                                <script> player("@product.ProductVideo.Path", 600, 400, 1, "start.jpg");</script>
+                                                            <td style="text-align:center">
+                                                                <script> player("@product.ProductVideo.Path", 800, 400, 1, "start.jpg");</script>
                                                             </td>
                                                         </tr>
                                                         @foreach (var item in product.ProductImages)
