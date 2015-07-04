@@ -197,6 +197,7 @@ function LoadReviewLives() {
             type: "get",
             data: { "page": page },
         }).done(function (data) {
+         
             var str = "";
             for (var i = 0 ; i < data.length; i++) {
                // str += ' <div class="item"><a class="cover" href="/Product/Show/' + data[i].ID + '" target="_blank" style="width: 230px;"><img src="' + data[i].ProductImages[0].Path + '" width="230" height="158" /></a><div class="title trim"><a href="/Product/Show/' + data[i].ID + '" style="text-align:center">' + data[i].Title + '</a></div><div class="description" title="">' + data[i].Price + '</div></div>';

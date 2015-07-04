@@ -42,9 +42,14 @@ namespace QqhrCitizen.Controllers
         public ActionResult getProductByPage(int page)
         {
             List<Product> products = new List<Product>();
+            List<vProduct> _products = new List<vProduct>();
             int index = page * 12;
             products = db.Products.OrderByDescending(p => p.Time).Skip(index).Take(12).ToList();
-            return Json(products, JsonRequestBehavior.AllowGet);
+            foreach (var item in products)
+            {
+                _products.Add(new vProduct(item));
+            }
+            return Json(_products, JsonRequestBehavior.AllowGet);
         } 
         #endregion
 
