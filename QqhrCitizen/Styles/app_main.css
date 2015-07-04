@@ -2796,7 +2796,7 @@ div, p, span, a {
     }
 
 .d-topmenu {
-    width: 1000px;
+    width: 1200px;
     text-align: left;
 }
 
@@ -2809,7 +2809,7 @@ div, p, span, a {
         position: absolute;
         right: 120px;
         top: 0;
-        width: 290px;
+        width: 490px;
     }
 
         .d-topmenu .d-top-sign span.item {

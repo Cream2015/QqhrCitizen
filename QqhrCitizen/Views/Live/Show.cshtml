@@ -115,7 +115,7 @@
                 <input type="hidden" value="@ViewBag.LiveID" id="LiveID" />
                 <input type="hidden" value="@((ViewBag.CurrentUser == null) ?"":ViewBag.CurrentUser.Username)" id="currentuser" />
                 <div style="min-height:380px;">
-                    <div class="msgDisplay" style="height: 324px; overflow:auto;background-color: #f9f9f9;">
+                    <div class="msgDisplay" style="height: 324px; overflow:auto;background-color: #f9f9f9;" id="msgDisplay">
 
                     </div>
                     <textarea id="txtMsg" class="textbox" style="height:56px;width:260px;"></textarea>
@@ -133,15 +133,16 @@
     contosoChatHubProxy.client.addContosoChatMessageToPage = function (name, message) {
         var str;
         if (name == $("#user_name_show").html()) {
-            str = "<div class='popover left'><div class='arrow'></div><p class='popover-title' style='line-height:0px'>[<span style='color:#00CC00'>" + moment(new Date()).format("HH:mm:ss") + "]</span><span style='color:#006666'>" + name + ":</span></p><div class='popover-content'><p></span  style='color:#006666'>" + message + "</p></div></div>";
+            str = "<div class='popover left'><div class='arrow'></div><p class='popover-title' style='line-height:0px;text-align:right;margin-right:10px'><span style='color:#006666'>" + name + "</span>&nbsp;[<span style='color:#00CC00'>" + moment(new Date()).format("HH:mm:ss") + "]</span></p><div class='popover-content'><p style='line-height:0px;text-align:right;margin-right:15px'></span  style='color:#006666'>" + message + "</p></div></div>";
 
         }
         else {
-            str = "<div class='popover right'><div class='arrow'></div><p class='popover-title'>[<span style='color:#00CC00'>" + moment(new Date()).format("HH:mm:ss") + "]</span><span style='color:#006666'>" + name + ":</span></p><div class='popover-content'><p><span style='color:#0000CC;'>" + message + "</span></p></div></div></div>";
+            str = "<div class='popover right'><div class='arrow'></div><p class='popover-title'style='line-height:0px;text-align:left;margin-left:10px'>[<span style='color:#00CC00'>" + moment(new Date()).format("HH:mm:ss") + "]</span>&nbsp;<span style='color:#006666'>" + name + "</span></p><div class='popover-content'><p style='line-height:0px;text-align:left;margin-left:15px'><span style='color:#0000CC;'>" + message + "</span></p></div></div></div>";
         }
         console.log(str);
         $(".msgDisplay").append(str);
-        $(".msgDisplay").scrollTop = $(".msgDisplay").scrollHeight;
+        $("#msgDisplay").scrollTop($("#msgDisplay")[0].scrollHeight);
+        
     };
 
     contosoChatHubProxy.client.addGroupToShow = function (data) {
@@ -209,7 +210,10 @@
         .popover > .arrow {
             border-width: 11px;
         }
-
+        .popover > .arrow >p
+        {
+            line-height:0px;
+        }
 
             .popover > .arrow, .popover > .arrow:after {
                 position: absolute;
@@ -219,42 +223,46 @@
                 border-color: transparent;
                 border-style: solid;
             }
-    .popover.left {
-margin-right: 10px;
-}
-        .popover.left > .arrow {
-            top: 50%;
-            right: -11px;
-            margin-top: -11px;
-            border-right-width: 0;
-            border-left-color: rgba(0,0,0,.25);
+
+        .popover.left {
+            margin-right: 10px;
         }
 
-            .popover.left > .arrow:after {
-                right: 1px;
-                bottom: -10px;
-                content: " ";
+            .popover.left > .arrow {
+                top: 50%;
+                right: -11px;
+                margin-top: -11px;
                 border-right-width: 0;
                 border-left-color: #fff;
             }
-    .popover.right {
-margin-left: 10px;
-}
-        .popover.right > .arrow {
-            top: 50%;
-            left: -11px;
-            margin-top: -11px;
-            border-left-width: 0;
-            border-right-color: #fff;
+
+                .popover.left > .arrow:after {
+                    right: 1px;
+                    bottom: -10px;
+                    content: " ";
+                    border-right-width: 0;
+                    border-left-color: #fff;
+                }
+
+        .popover.right {
+            margin-left: 10px;
         }
 
-            .popover.right > .arrow:after {
-                left: 1px;
-                bottom: -10px;
-                content: " ";
+            .popover.right > .arrow {
+                top: 50%;
+                left: -11px;
+                margin-top: -11px;
                 border-left-width: 0;
                 border-right-color: #fff;
             }
+
+                .popover.right > .arrow:after {
+                    left: 1px;
+                    bottom: -10px;
+                    content: " ";
+                    border-left-width: 0;
+                    border-right-color: #fff;
+                }
 
     :after, :before {
         -webkit-box-sizing: border-box;

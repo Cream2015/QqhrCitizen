@@ -8,6 +8,7 @@ using QqhrCitizen.Models.ViewModel;
 using Aspose.Words;
 using System.IO;
 using System.Web;
+using QqhrCitizen.Helpers;
 
 namespace QqhrCitizen.Controllers
 {
@@ -207,6 +208,8 @@ namespace QqhrCitizen.Controllers
 
         private string WordToPdf(string wordFileLoad, string fileName)
         {
+            var random = DateHelper.GetTimeStamp();
+            fileName = random + Path.GetExtension(fileName);
             Aspose.Words.Document d = new Aspose.Words.Document(wordFileLoad);
             string filePhysicalPath = "/Upload/EBook/" + fileName + "/";
             string filepath = Server.MapPath(filePhysicalPath);
