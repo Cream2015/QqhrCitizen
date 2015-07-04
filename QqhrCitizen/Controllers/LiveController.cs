@@ -1,4 +1,5 @@
-﻿using QqhrCitizen.Models;
+﻿using QqhrCitizen.Filters;
+using QqhrCitizen.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -39,7 +40,8 @@ namespace QqhrCitizen.Controllers
         #endregion
 
 
-
+        [HttpGet]
+        [AccessToLive]
         public ActionResult Show(int id=0)
         {
             if(id!=0)

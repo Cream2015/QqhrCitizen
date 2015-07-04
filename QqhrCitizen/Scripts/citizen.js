@@ -200,9 +200,10 @@ function LoadReviewLives() {
             var str = "";
             for (var i = 0 ; i < data.length; i++) {
                // str += ' <div class="item"><a class="cover" href="/Product/Show/' + data[i].ID + '" target="_blank" style="width: 230px;"><img src="' + data[i].ProductImages[0].Path + '" width="230" height="158" /></a><div class="title trim"><a href="/Product/Show/' + data[i].ID + '" style="text-align:center">' + data[i].Title + '</a></div><div class="description" title="">' + data[i].Price + '</div></div>';
-                str += '<div class="item"><a class="cover live_show" id="live_id_' + data[i].ID + '" style="cursor:pointer"><img src="/Live/ShowPicture/' + data[i].ID + '" /></a><div class="title trim"><a title="' + data[i].Title + '" class="live_show" id="live_id_' + data[i].Id + '" style="cursor:pointer">' + data[i].Title + '</a><input type="hidden" id="live_hidden_' + data[i].ID + '" value="' + data[i].NeedAuthorize + '" /></div><div class="date"><span>开始:' + moment(data[i].Begin).format("YYYY/MM/DD HH:mm:ss") + '</span><br />结束<span>' + moment(data[i].End).format("YYYY/MM/DD HH:mm:ss") + '</span></div></div>';
+                str += '<div class="item"><a class="cover live_show" id="live_id_' + data[i].ID + '" style="cursor:pointer"><img src="/Live/ShowPicture/' + data[i].ID + '" /></a><div class="title trim"><a title="' + data[i].Title + '" class="live_show" id="live_id_' + data[i].ID + '" style="cursor:pointer" href="/Live/Show/'+data[i].ID+'">' + data[i].Title + '</a><input type="hidden" id="live_hidden_' + data[i].ID + '" value="' + data[i].NeedAuthorize + '" /></div><div class="date"><span>开始:' + moment(data[i].Begin).format("YYYY/MM/DD HH:mm:ss") + '</span><br />结束<span>' + moment(data[i].End).format("YYYY/MM/DD HH:mm:ss") + '</span></div></div>';
             }
             $(".lstReviewLive").append(str);
+
             if (data.length == 10) {
                 lock = false;
                 page++;
