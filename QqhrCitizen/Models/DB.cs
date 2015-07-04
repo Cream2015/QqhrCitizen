@@ -18,7 +18,7 @@ namespace QqhrCitizen.Models
         public DbSet<News> News { get; set; }
         public DbSet<Note> Notes { get; set; }
         public DbSet<Question> Questions { get; set; }
-        public DbSet<Question> CourseQuestions { get; set; }
+        public DbSet<CourseQuestion> CourseQuestions { get; set; }
         public DbSet<ResourceLink> ResourceLinks { get; set; }
         public DbSet<TypeDictionary> TypeDictionaries { get; set; }
         public DbSet<Live> Lives { get; set; }
