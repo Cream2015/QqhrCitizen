@@ -22,7 +22,7 @@ namespace QqhrCitizen.Models.ViewModel
 
         public vCourseQuestion(CourseQuestion model)
         {
-            this.ID = ID;
+            this.ID = model.ID;
             this.Content = model.Content;
             this.RightAnswer = model.RightAnswer;
             this.Remark = model.Remark;
