@@ -152,3 +152,10 @@
     .head-tietle a {
       font-size:12px;
     }
+
+
+
+.questionContent {
+  border:1px solid #333;
+  height:100px;
+}
