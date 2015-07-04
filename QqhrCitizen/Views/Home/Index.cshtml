@@ -181,7 +181,7 @@
                                                 @foreach (News n in ViewBag.Location)
                                                 {
 
-                                                    <li><a href="/News/Show/@n.ID" title="@n.Title">@n.Title</a></li>
+                                                    <li style="cursor:pointer"><a href="/News/Show/@n.ID" title="@n.Title" style="cursor:pointer">@n.Title</a></li>
                                                 }
                                             </div>
                                         </div>
@@ -227,7 +227,7 @@
                             <ul class="d-board-e">
                                 @foreach (News n in ViewBag.Native)
                                 {
-                                    <li><a href="/News/Show/@n.ID" title="@n.Title">@n.Title</a></li>
+                                    <li style="cursor:pointer"><a href="/News/Show/@n.ID" style="cursor:pointer" title="@n.Title">@n.Title</a></li>
                                 }
                             </ul>
                         </div>
