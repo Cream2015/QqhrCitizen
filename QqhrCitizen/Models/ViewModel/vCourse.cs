@@ -21,7 +21,7 @@ namespace QqhrCitizen.Models.ViewModel
         public DateTime Time { get; set; }
         public string Remark { get; set; }
 
-        //public int AuthorityAsInt { set; get; }
+        public List<CourseQuestion> CourseQuestions { get; set; }
 
 
         public List<Lession> Lessions { set; get; }
