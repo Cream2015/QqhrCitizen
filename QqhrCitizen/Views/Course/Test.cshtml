@@ -1,12 +1,24 @@
-﻿
+﻿@using QqhrCitizen.Models
 @{
     ViewBag.Title = "课程测试";
     Layout = "~/Views/Shared/_Layout.cshtml";
+    List<CourseQuestion> questions = ViewBag.Qustions as List<CourseQuestion>;
 }
 
 
-<div>
-
+<div id="d_main" class="d-main" style="min-width: 1000px;">
+    <div class="container">
+        @for (int i = 0; i < questions.Count; i++)
+        {
+            <div class="question">
+                @(i + 1)<span>.</span>@questions[i].Content <br />
+                <input value="@questions[i].RightAnswer" type="hidden" class="roghtanswer" />
+                @for (int j = 0; j < questions[i].Answers.Count(); j++)
+                {
+                    <input name="answer@(i+1)" type="radio" value="@j" class="answer w-3" />@CommonEnums.Answers[j]<span>:</span>@questions[i].Answers[j] <br />
+                }
+            </div>
+        }
+        <input type="button" class="btn-ok button btn-info" value="提交" id="btnAnswerQuestion" />
+    </div>
 </div>
-
-

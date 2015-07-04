@@ -473,6 +473,7 @@ namespace QqhrCitizen.Controllers
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
+        [HttpGet]
         public ActionResult Test(int id)
         {
             List<CourseQuestion> questions = new List<CourseQuestion>();
