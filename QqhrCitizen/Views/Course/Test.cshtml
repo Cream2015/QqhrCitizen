@@ -5,20 +5,48 @@
     List<CourseQuestion> questions = ViewBag.Qustions as List<CourseQuestion>;
 }
 
+<div id="d_menu" class="d-menu menu-cou">
+    <div id="d_menu_c" class="d-menu-c">
+        <!-- region start: menu -->
+        <div id="d_headmenu" class="d-headmenu">
 
+            <div class="body">
+                <a id="headmenu_default" class="item" href="/Course/Index" target="_parent">课程首页</a>
+                <a id="headmenu_discovery" class="item" href="/Course/Discovery/0" target="_parent">发现课程</a>
+            </div>
+        </div>
+        <!-- region end: menu -->
+    </div>
+</div>
 <div id="d_main" class="d-main" style="min-width: 1000px;">
     <div class="container">
-        @for (int i = 0; i < questions.Count; i++)
-        {
-            <div class="question">
-                @(i + 1)<span>.</span>@questions[i].Content <br />
-                <input value="@questions[i].RightAnswer" type="hidden" class="roghtanswer" />
-                @for (int j = 0; j < questions[i].Answers.Count(); j++)
+        <div class="d-row" style="padding: 20px 0 0 0;">
+            <div class="d-row-c">
+                <input type="hidden" id="courseId" name="CourseID" value="@ViewBag.CourseID"/>
+                <input type="hidden" id="userId" name="UserID" value="@(ViewBag.CurrentUser==null?"":@ViewBag.CurrentUser.ID)" />
+                @if (questions != null)
                 {
-                    <input name="answer@(i+1)" type="radio" value="@j" class="answer w-3" />@CommonEnums.Answers[j]<span>:</span>@questions[i].Answers[j] <br />
+                    for (int i = 0; i < questions.Count; i++)
+                    {
+                        <div class="question">
+                            @(i + 1)<span>.</span>@questions[i].Content <br />
+                            <input value="@questions[i].RightAnswer" type="hidden" class="roghtanswer" />
+                            @for (int j = 0; j < questions[i].Answers.Count(); j++)
+                    {
+                                <input name="answer@(i + 1)" type="radio" value="@j" class="answer w-3" />@CommonEnums.Answers[j]<span>:</span>@questions[i].Answers[j] <br />
+                            }
+                        </div>
+                    }
+                    <input type="button" class="btn-ok button btn-info" value="提交" id="btnAnswerCourseQuestion" />
                 }
+                else
+                {
+                    <span>暂未上传试题</span>
+                }
+
+                <div class="warning"></div>
             </div>
-        }
-        <input type="button" class="btn-ok button btn-info" value="提交" id="btnAnswerQuestion" />
+        </div>
+
     </div>
 </div>

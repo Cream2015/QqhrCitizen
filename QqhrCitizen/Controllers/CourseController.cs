@@ -162,7 +162,7 @@ namespace QqhrCitizen.Controllers
 
                 db.StudyRecords.Add(record);
 
-                
+
 
                 userCourse = db.UserCourses.Where(uc => uc.UserID == CurrentUser.ID && uc.CourseID == Lession.CourseID).FirstOrDefault();
                 if (userCourse == null)
@@ -338,12 +338,7 @@ namespace QqhrCitizen.Controllers
         {
             LessionScore lessionScore = new LessionScore();
             lessionScore = db.LessionScores.Where(ls => ls.LessionId == lid && ls.UserId == CurrentUser.ID).FirstOrDefault();
-            Lession lession = new Lession();
-            lession = db.Lessions.Find(lid);
-            List<Lession> lstLession = new List<Lession>();
-            lstLession = db.Lessions.Where(l => l.CourseID == lession.CourseID).OrderBy(l => l.Time).ToList();
-            int index = lstLession.FindIndex(l => l.ID == lession.ID);
-            int count = lstLession.Count();
+
             if (lessionScore == null)
             {
                 lessionScore = new LessionScore();
@@ -354,15 +349,6 @@ namespace QqhrCitizen.Controllers
                 if (rate >= 0.6)
                 {
                     lessionScore.IsPassTest = true;
-                    if (index == count - 1)
-                    {
-                        UserCourse userCourse = db.UserCourses.Where(uc => uc.UserID == CurrentUser.ID && uc.CourseID == lession.CourseID).FirstOrDefault();
-                        userCourse.IsFinisnCourse = true;
-                        userCourse.Time = DateTime.Now;
-                        Models.User user = new User();
-                        user = db.Users.Find(CurrentUser.ID);
-                        user.Score += lession.Course.Credit;
-                    }
                 }
                 else
                 {
@@ -376,19 +362,8 @@ namespace QqhrCitizen.Controllers
                 if (rate >= 0.6 && lessionScore.IsPassTest == false)
                 {
                     lessionScore.IsPassTest = true;
-
-                    if (index == count - 1)
-                    {
-                        UserCourse userCourse = db.UserCourses.Where(uc => uc.UserID == CurrentUser.ID && uc.CourseID == lession.CourseID).FirstOrDefault();
-                        userCourse.IsFinisnCourse = true;
-                        userCourse.Time = DateTime.Now;
-                        Models.User user = new User();
-                        user = db.Users.Find(CurrentUser.ID);
-                        user.Score += lession.Course.Credit;
-                    }
                 }
             }
-
             db.SaveChanges();
             return Content("ok");
         }
@@ -476,11 +451,47 @@ namespace QqhrCitizen.Controllers
         [HttpGet]
         public ActionResult Test(int id)
         {
+            List<LessionScore> scores = new List<LessionScore>();
+            scores = db.LessionScores.Where(ls => ls.Lession.CourseID == id && ls.UserId == CurrentUser.ID).ToList();
+            if (scores == null)
+            {
+                return Redirect("/Shared/Info?msg=请完成课时的测试在进行总测试");
+            }
+            foreach (var item in scores)
+            {
+                if (!item.IsPassTest)
+                    return Redirect("/Shared/Info?msg=请完成课时的测试在进行总测试");
+            }
             List<CourseQuestion> questions = new List<CourseQuestion>();
             questions = db.CourseQuestions.Where(cq => cq.CourseID == id).ToList();
             ViewBag.Questions = questions;
             ViewBag.CourseID = id;
             return View();
         }
+
+        /// <summary>
+        /// 综合测试
+        /// </summary>
+        /// <param name="cid"></param>
+        /// <param name="rate"></param>
+        /// <returns></returns>
+        public ActionResult DoTest(int cid, double rate)
+        {
+            Course course = new Course();
+            course = db.Courses.Find(cid);
+            if (rate > 0.6)
+            {
+                UserCourse userCourse = db.UserCourses.Where(uc => uc.UserID == CurrentUser.ID && uc.CourseID == cid).FirstOrDefault();
+                userCourse.IsFinisnCourse = true;
+                userCourse.Time = DateTime.Now;
+                Models.User user = new User();
+                user = db.Users.Find(CurrentUser.ID);
+                user.Score += course.Credit;
+                db.SaveChanges();
+            }
+            return View();
+        }
+
+
     }
 }

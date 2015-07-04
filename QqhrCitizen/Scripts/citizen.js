@@ -324,6 +324,54 @@ $(document).ready(function () {
         $(".warning").html(str1);
     });
 
+    $("#btnAnswerCourseQuestion").click(function () {
+        var userid = $("#userId").val();
+        if (userid == "") {
+            CastMsg("请先登录，在添加回答问题");
+            return false;
+        }
+        var str = "";
+        var answers = $(".answer:checked");
+        var sum = $("#questionCount").val()
+        if (answers.length < parseInt(sum)) {
+            CastMsg("请先完成答题在提交！");
+            return false;
+        }
+        var count = 0;
+        var rate = 1.0;
+        var questionCount = 0;
+        $.each(answers, function (i, item) {
+            var answer = $(item).val();
+            var rightAnswer = $(item).parents(".question").children(".roghtanswer").val();
+            if (options[answer] != rightAnswer) {
+                str = str + "第" + (i + 1) + "题错误，答案应该是" + rightAnswer + "  ";
+                questionCount++;
+            }
+            else {
+                str = str + "第" + (i + 1) + "题正确" + "  ";
+                count++;
+                questionCount++;
+            }
+
+        });
+        rate = rate * (count * 1.0 / questionCount);
+        $.post("/Course/RecordScore", { cid: $("#courseId").val(), rate: rate }, function (data) {
+            CastMsg("记录回答记录成功！");
+        })
+        console.log(str);
+        // str = +"  正确率：" + rate.toString();
+        console.log(rate);
+
+        var str1 = "正确率：" + rate * 100 + "%";
+        if (rate >= 0.6) {
+            str1 += "状态：通过";
+        }
+        else {
+            str1 += "状态：未通过";
+        }
+        $(".warning").html(str1);
+    });
+
     $("#frmLogin").submit(function () {
         var username = $("#Username").val();
         var password = $("#Password").val();
