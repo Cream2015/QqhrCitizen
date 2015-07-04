@@ -588,6 +588,9 @@ namespace QqhrCitizen.Controllers
 
         public ActionResult CourseShow(int id)
         {
+            //CourseQuestion coursequestion = new CourseQuestion();
+            //coursequestion = db.CourseQuestions.Find(id);
+           // ViewBag.CourseQuestion = new vCourseQuestion(coursequestion);
             Course course = new Course();
             course = db.Courses.Find(id);
             ViewBag.Course = new vCourse(course);
@@ -2195,20 +2198,6 @@ namespace QqhrCitizen.Controllers
         }
         #endregion
 
-        #region 显示课程测试
-        /// <summary>
-        /// 显示问题
-        /// </summary>
-        /// <param name="id"></param>
-        /// <returns></returns>
-        public ActionResult CourseQuestionShow(int id)
-        {
-            CourseQuestion coursequestion = new CourseQuestion();
-            coursequestion = db.CourseQuestions.Find(id);
-            ViewBag.Question = new vCourseQuestion(coursequestion);
-            return View();
-        }
-        #endregion
 
         #region 删除课程测试
         /// <summary>

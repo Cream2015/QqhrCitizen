@@ -166,6 +166,10 @@ $(document).ready(function () {
         var content = $("#content").text();
         $("#txtcontent").val(content);
     });
+    $("#frmAddCourseQuestion").submit(function () {
+        var content = $("#content").text();
+        $("#txtcontent").val(content);
+    });
 });
 
 

@@ -973,6 +973,7 @@
     <Compile Include="Models\TypeDictionary.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Models\UserCourse.cs" />
+    <Compile Include="Models\ViewModel\vCourseQuestion.cs" />
     <Compile Include="Models\ViewModel\vLive.cs" />
     <Compile Include="Models\ViewModel\vAdminModel.cs" />
     <Compile Include="Models\ViewModel\vCourse.cs" />
