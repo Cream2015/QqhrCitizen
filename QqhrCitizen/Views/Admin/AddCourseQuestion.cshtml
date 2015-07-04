@@ -1,0 +1,71 @@
+﻿@{
+    ViewBag.Title = "增加问题";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<script src="~/Scripts/jmeditor/JMEditor.js"></script>
+<div>
+    <h2 class="head-tietle">增加问题</h2>
+    @using (Html.BeginForm("AddCourseQuestion", "Admin"))
+    {
+        @Html.AntiForgerySID()
+        <input type="hidden" name="Course" value="@ViewBag.CourseID" />
+        <table class="detail-table">
+            <tr>
+                <td class="row-title">内容</td>
+                <td>
+                    <div id="content" contenteditable="true">
+                        编辑框一
+                    </div>
+                    @*<textarea name="Content" class="textbox w-3" contenteditable="true"></textarea>*@
+                    <input type="hidden" name="Content" id="Content" />
+                </td>
+            </tr>
+            <tr>
+                <td class="row-title">选项</td>
+                <td>
+                    <table>
+                        <thead>
+                            <tr>
+                                <td>选项名称</td>
+                                <td>选项内容</td>
+                                <td>操作</td>
+                            </tr>
+                        </thead>
+                        <tbody id="lstOption">
+                            <tr>
+                                <td><input type="text" value="A" class="textbox w-0-6" disabled="disabled" /></td>
+                                <td><input type="text" contenteditable="true" name="option" class="textbox w-3" /></td>
+                                <td></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <input type="hidden" value="0" id="txtOptionIndex" />
+                    <a href="java:void(0)" id="btnAddOption">增加</a>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="row-title">正确选项</td>
+                <td>
+                    <select name="RightAnswer" class="textbox w-2">
+                        <option value="A">A</option>
+                        <option value="B">B</option>
+                        <option value="C">C</option>
+                        <option value="D">D</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td class="row-title">备注</td>
+                <td>
+                    <textarea name="Remark" class="textbox"></textarea>
+                </td>
+            </tr>
+
+        </table>
+        <p><input type="submit" value="增加" class="button blue" /></p>
+    }
+</div>
+

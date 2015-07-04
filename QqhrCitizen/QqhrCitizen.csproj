@@ -927,6 +927,7 @@
     <Content Include="Views\Admin\ITrialShow.cshtml" />
     <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Filters\AccessToLiveAttribute.cs" />
+    <Compile Include="Models\CourseQuestion.cs" />
     <Compile Include="Models\ITrial.cs" />
     <Compile Include="Controllers\ITrialController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -1095,6 +1096,7 @@
     <Content Include="Views\Admin\AddLiveVideo.cshtml" />
     <Content Include="Views\Live\Review.cshtml" />
     <Content Include="Views\Live\ReviewShow.cshtml" />
+    <Content Include="Views\Admin\AddCourseQuestion.cshtml" />
     <None Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Admin\ViwepagerEdit.cshtml" />
     <None Include="Web.Debug.config">

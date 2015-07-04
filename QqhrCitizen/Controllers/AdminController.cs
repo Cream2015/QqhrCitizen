@@ -2146,5 +2146,52 @@ namespace QqhrCitizen.Controllers
 
             return Content("ok");
         }
+
+        #region 增加课程测试
+        /// <summary>
+        /// 增加问题
+        /// </summary>
+        /// <param name="lid"></param>
+        /// <returns></returns>
+        [HttpGet]
+
+        public ActionResult AddCourseQuestion(int lid)
+        {
+            ViewBag.Course = lid;
+            return View();
+        }
+        #endregion
+
+        #region 增加课程测试
+        /// <summary>
+        /// 增加问题
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
+        [HttpPost]
+
+        public ActionResult AddCourseQuestion(CourseQuestion model)
+        {
+            var options = Request.Params.GetValues("option");
+            string Answers = "";
+            for (int i = 0; i < options.Count(); i++)
+            {
+                if (i == options.Count() - 1)
+                {
+                    Answers += options[i];
+                }
+                else
+                {
+                    Answers += options[i] + "|";
+                }
+            }
+
+            model.Answers = Answers;
+            model.Time = DateTime.Now;
+            db.CourseQuestions.Add(model);
+            db.SaveChanges();
+            return Redirect("/Admin/CourseShow/" + model.CourseID);
+        }
+        #endregion
     }
 }
