@@ -67,5 +67,34 @@ namespace QqhrCitizen.Controllers
 
             return View();
         }
-	}
+
+        /// <summary>
+        /// 得到正在进行 或即将进行的直播
+        /// </summary>
+        /// <param name="page"></param>
+        /// <returns></returns>
+        [HttpGet]
+        public ActionResult GetLivesByPage(int page)
+        {
+            List<Live> lives = new List<Live>();
+            int index = page * 12;
+            lives = db.Lives.Where(l=>l.End>DateTime.Now).OrderByDescending(l=>l.Begin).Skip(index).Take(12).ToList();
+            return Json(lives,JsonRequestBehavior.AllowGet);
+        }
+
+        /// <summary>
+        /// 得到往期回顾
+        /// </summary>
+        /// <param name="page"></param>
+        /// <returns></returns>
+        [HttpGet]
+        public ActionResult GetReviewLivesByPage(int page)
+        {
+            List<Live> lives = new List<Live>();
+            int index = page * 12;
+            lives = db.Lives.Where(l => l.End < DateTime.Now).OrderByDescending(l => l.Begin).Skip(index).Take(12).ToList();
+            return Json(lives, JsonRequestBehavior.AllowGet);
+        }
+
+    }
 }
