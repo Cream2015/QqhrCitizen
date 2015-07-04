@@ -76,7 +76,7 @@ namespace WpfApplication2
             for (int i = 0; i < citizen_sqldt.Rows.Count; i++)
             {
                 string Time = Convert.ToDateTime(citizen_sqldt.Rows[i]["CreatedTime"]).ToString("yyyy-MM-dd HH:mm:ss.fff", DateTimeFormatInfo.InvariantInfo);
-                citizen_sql = "insert into News (Title,Content,FirstImgUrl,Time,UserID,Browses,NewsTypeID,IsHaveImg,IsWord) values (@Title,@Content,@FirstImgUrl,@Time,@UserID,@Browse,@NewsTypeID,@IshaveImg,@IsWord)";
+                citizen_sql = "insert into News (Title,Content,FirstImgUrl,Time,UserID,Browses,NewsTypeID,IsHaveImg,IsWord,Place) values (@Title,@Content,@FirstImgUrl,@Time,@UserID,@Browse,@NewsTypeID,@IshaveImg,@IsWord,@Place)";
                 SqlParameter[] para = new SqlParameter[]
 	                    {
                              new SqlParameter("@Title", SqlDbType.VarChar),
@@ -87,6 +87,7 @@ namespace WpfApplication2
                              new SqlParameter("@Browse",SqlDbType.Int),
                              new SqlParameter("@NewsTypeID", SqlDbType.Int),
                              new SqlParameter("@IshaveImg",SqlDbType.Int),
+                             new SqlParameter("@IsWord",SqlDbType.Int),
                              new SqlParameter("@IsWord",SqlDbType.Int)
                         };
                 para[0].Value = citizen_sqldt.Rows[i]["Subject"].ToString();
@@ -106,6 +107,7 @@ namespace WpfApplication2
                 //para[6].Value = 37;
                 para[7].Value = citizen_sqldt.Rows[i]["ImageFlag"].ToString();
                 para[8].Value = 0;
+                para[9].Value = 0;
                 a += Sqlhelp.ExecuteNonQuery(citizen_sql, citizen_connStr, para);
                 ShowSqlNumber.Dispatcher.Invoke(new UpdateTextCallback(this.ShowText),
                 new object[] { citizen_sql });
