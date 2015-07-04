@@ -2796,7 +2796,7 @@ div, p, span, a {
     }
 
 .d-topmenu {
-    width: 1200px;
+    width: 1000px;
     text-align: left;
 }
 
@@ -2809,7 +2809,7 @@ div, p, span, a {
         position: absolute;
         right: 0px;
         top: 0;
-        width: 490px;
+        width: 300px;
     }
 
         .d-topmenu .d-top-sign span.item {
@@ -2967,10 +2967,6 @@ div, p, span, a {
 
     .d-topmenu .d-top-nav .body {
         text-align: left;
-    }
-
-    .d-topmenu .d-top-sign .body {
-        text-align: right;
     }
 
     .d-topmenu .d-top-weather .body {
