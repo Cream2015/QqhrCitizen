@@ -469,6 +469,7 @@ namespace QqhrCitizen.Controllers
             return View();
         }
 
+        #region 综合测试
         /// <summary>
         /// 综合测试
         /// </summary>
@@ -490,7 +491,8 @@ namespace QqhrCitizen.Controllers
                 db.SaveChanges();
             }
             return View();
-        }
+        } 
+        #endregion
 
 
     }
