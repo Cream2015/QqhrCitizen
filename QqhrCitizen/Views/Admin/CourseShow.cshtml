@@ -85,3 +85,31 @@
         </tbody>
     </table>
 </div>
+<div style="margin-top:20px;">
+    <h2>课程测试 <a href="/Admin/AddCourseQuestion?Cid=@course.ID">增加课程测试</a></h2>
+    <table class="detail-table">
+        <thead>
+            <tr>
+                <td>编号</td>
+                <td>备注</td>
+                <td>时间</td>
+                <td>操作</td>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in ViewBag.CourseQuestions)
+            {
+                <tr>
+                    <td>@item.ID</td>
+                    <td>@item.Remark</td>
+                    <td>@item.Time</td>
+                    <td>
+                        <a href="/Admin/CourseQuestionShow/@item.ID">问题详情</a>
+                        <a href="javascript:Delete(@item.ID);">删除</a>
+                        @*<a href="/Admin/LessionEdit/@item.ID">修改</a>*@
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

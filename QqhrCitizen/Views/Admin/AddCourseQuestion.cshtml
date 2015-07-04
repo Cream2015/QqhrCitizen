@@ -1,16 +1,16 @@
 ﻿@{
-    ViewBag.Title = "增加问题";
+    ViewBag.Title = "增加测试";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
 
 <script src="~/Scripts/jmeditor/JMEditor.js"></script>
 <div>
-    <h2 class="head-tietle">增加问题</h2>
+    <h2 class="head-tietle">增加测试</h2>
     @using (Html.BeginForm("AddCourseQuestion", "Admin", FormMethod.Post, new { id = "frmAddCourseQuestion" }))
     {
         @Html.AntiForgeryToken()
-        <input type="hidden" name="LessionID" value="@ViewBag.CourseID" />
+    <input type="hidden" name="CourseID" value="@ViewBag.CourseID" />
         <table class="detail-table">
             <tr>
                 <td class="row-title">内容</td>

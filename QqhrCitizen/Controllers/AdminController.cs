@@ -588,9 +588,14 @@ namespace QqhrCitizen.Controllers
 
         public ActionResult CourseShow(int id)
         {
-            //CourseQuestion coursequestion = new CourseQuestion();
-            //coursequestion = db.CourseQuestions.Find(id);
-           // ViewBag.CourseQuestion = new vCourseQuestion(coursequestion);
+            CourseQuestion coursequestion = new CourseQuestion();
+            List<CourseQuestion> coursequestions = db.CourseQuestions.Where(cq => cq.CourseID == id).ToList();
+            List<vCourseQuestion> coursequestionlist=new List<vCourseQuestion>();  
+            foreach(var item in coursequestions)
+            {
+                coursequestionlist.Add(new vCourseQuestion(item));
+            }
+            ViewBag.CourseQuestions = coursequestionlist;
             Course course = new Course();
             course = db.Courses.Find(id);
             ViewBag.Course = new vCourse(course);
@@ -2172,8 +2177,10 @@ namespace QqhrCitizen.Controllers
         /// </summary>
         /// <param name="model"></param>
         /// <returns></returns>
-        [HttpPost]
 
+        [HttpPost]
+        [ValidateInput(false)]
+        [ValidateAntiForgeryToken]
         public ActionResult AddCourseQuestion(CourseQuestion model)
         {
             var options = Request.Params.GetValues("option");
