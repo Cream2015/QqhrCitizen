@@ -164,16 +164,15 @@ function LoadProducts() {
         lock = true;
         $(".loadMore").text("正在加载中，请稍后");
         $.ajax({
-            url: "/News/getNewsByPage",
+            url: "/Product/getProductByPage",
             type: "get",
             data: { "page": page },
         }).done(function (data) {
             var str = "";
             for (var i = 0 ; i < data.length; i++) {
-                str += '<div class="item"><div class="title"><a href="/News/Show/' + data[i].ID + '" target="_blank">' + data[i].Title + '</a></div><div class="info"><span class="date">' + moment(data[i].Time).format("YYYY-MM-DD HH:mm:ss") + '</span> <span class="from"></span><span class="view">浏览次数: ' + data[i].Browses + '</span></div><div class="desc txt-justify"><p>' + data[i].Sumamry + '</p></div></div>';
-                //str += "<div class='Q-pList'><h2><a  href='" + data[i].URL + "' style='color:#000;' class='show'>" + data[i].Title + " </a></h2><p class='sub_title'>时间：" + moment(data[i].Time).format("YYYY-MM-DD HH:mm:ss") + "</p><p>" + data[i].Sumamry + "</p></div>";
+                str +=' <div class="item"><a class="cover" href="/Product/Show/'+data[i].ID+'" target="_blank" style="width: 230px;"><img src="'+data[i].ProductImages[0].Path+'" width="230" height="158" /></a><div class="title trim"><a href="/Product/Show/'+data[i].ID+'" style="text-align:center">'+data[i].Title+'</a></div><div class="description" title="">'+data[i].Price+'</div></div>';   
             }
-            $("#lstNews").append(str);
+            $(".lstProduct").append(str);
             if (data.length == 10) {
                 lock = false;
                 page++;
@@ -203,6 +202,10 @@ function Load() {
     ///新闻首页加载新闻
     if ($("#lstNews").length > 0) {
         LoadIndexNews();
+    }
+
+    if ($(".lstProduct").length > 0) {
+        LoadProducts();
     }
 }
 

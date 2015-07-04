@@ -32,5 +32,19 @@ namespace QqhrCitizen.Controllers
             return View();
         }
 
+        /// <summary>
+        /// 分页查找产品
+        /// </summary>
+        /// <param name="page"></param>
+        /// <returns></returns>
+        [HttpGet]
+        public ActionResult getProductByPage(int page)
+        {
+            List<Product> products = new List<Product>();
+            int index = page * 12;
+            products = db.Products.OrderByDescending(p => p.Time).Skip(index).Take(12).ToList(); 
+            return Json(products,JsonRequestBehavior.AllowGet);
+        }
+
     }
 }
