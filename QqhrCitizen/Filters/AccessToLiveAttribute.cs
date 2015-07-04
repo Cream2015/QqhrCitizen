@@ -24,7 +24,7 @@ namespace QqhrCitizen.Filters
                 {
                     if (!httpContext.User.Identity.IsAuthenticated)
                     {
-                        msg = "请先登陆在学习该节内容";
+                        msg = "请先登陆在观看内容";
                         return false;
                     }
                 }

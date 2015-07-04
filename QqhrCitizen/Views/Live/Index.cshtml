@@ -42,23 +42,8 @@
                                         <img src="/Live/ShowPicture/@item.ID" />
                                     </a>
                                     <div class="title trim">
-                                        <a title="@item.Title" class="live_show" id="live_id_@item.ID" style="cursor:pointer">@item.Title</a>
+                                        <a title="@item.Title" class="live_show" id="live_id_@item.ID" href="/Live/Show/@item.ID" style="cursor:pointer">@item.Title</a>
                                         <input type="hidden" id="live_hidden_@item.ID" value="@item.NeedAuthorize" />
-                                        <script>
-                                            $(".live_show").click(function () {
-                                                var id = $(this).attr("Id");
-                                                var id_arr = id.split("_");
-                                                var live_hidden = $("#live_hidden_" + id_arr[2]).val();
-                                                if ((live_hidden == 1) && ($('#user_name_show').html() == "")) {
-                                                    CastMsg("请先登录才能观看");
-                                                    return false;
-                                                }
-                                                else {
-                                                    location.href = "/Live/Show/@item.ID";
-                                                }
-                                            });
-
-                                        </script>
                                     </div>
                                     @if (item.End < DateTime.Now)
                                     {
