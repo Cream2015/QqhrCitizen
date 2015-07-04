@@ -1,0 +1,43 @@
+﻿@using QqhrCitizen.Models;
+@{
+    ViewBag.Title = @ViewBag.ShowLive.Title + "_齐齐哈尔市民学习网";
+    bool flag = ViewBag.Flag;
+}
+<!-- functionality -->
+<script type="text/javascript" src="~/Scripts/jquery_live.js"></script>
+<script src="~/Scripts/video.js"></script>
+
+<div id="d_menu" class="d-menu menu-bok">
+    <div id="d_menu_c" class="d-menu-c">
+        <!-- region start: menu -->
+        <div id="d_headmenu" class="d-headmenu">
+            <div class="body">
+                <a class="item" href="/EBook/Index" id="headmenu_default">直播首页</a>
+                <a class="item" href="/Live/Review" id="headmenu_review">往期回顾</a>
+            </div>
+        </div><!-- region end: menu -->
+    </div>
+</div>
+<div class="d-row">
+    <div class="d-row-c">
+        <div class="d-col-2-8">
+            <div class="contentarea">
+                div id="d_coursedetail" class="d-coursedetail">
+                <h2>@ViewBag.ShowLive.Title</h2>
+                <input type="hidden" name="name" id="LessionID" value="@ViewBag.ShowLive.ID" />
+                @if (flag == true)
+                {
+                    <iframe src="" @ViewBag.ShowLive.Path " width=" 600" height="400"></iframe>
+                    }
+                    else
+                    {
+                    <script> player(""@ViewBag.ShowLive.Path", 600, 400, 1, "start.jpg");</script>
+                }
+            </div>
+
+        </div>
+    </div>
+
+    <div class="clear"></div>
+</div>
+</div>

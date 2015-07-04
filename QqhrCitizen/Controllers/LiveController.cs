@@ -102,6 +102,16 @@ namespace QqhrCitizen.Controllers
         {
             return View();
         }
-
+        public ActionResult ReviewShow(int id)
+        {
+            bool flag = false;
+            Live live = db.Lives.Find(id);
+            if (live.Path.Contains(".htm") || live.Path.Contains(".html"))
+            {
+                flag = true;
+            }
+            ViewBag.Flag = flag;
+            return View();
+        }
     }
 }
