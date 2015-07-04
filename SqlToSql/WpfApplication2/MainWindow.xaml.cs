@@ -76,7 +76,7 @@ namespace WpfApplication2
             for (int i = 0; i < citizen_sqldt.Rows.Count; i++)
             {
                 string Time = Convert.ToDateTime(citizen_sqldt.Rows[i]["CreatedTime"]).ToString("yyyy-MM-dd HH:mm:ss.fff", DateTimeFormatInfo.InvariantInfo);
-                citizen_sql = "insert into News (Title,Content,FirstImgUrl,Time,UserID,Browses,NewsTypeID,IsHaveImg,IsWord,Place) values (@Title,@Content,@FirstImgUrl,@Time,@UserID,@Browse,@NewsTypeID,@IshaveImg,@IsWord,@Place)";
+                citizen_sql = "insert into News (Title,Content,FirstImgUrl,Time,UserID,Browses,NewsTypeID,IsHaveImg,IsWord,PlaceAsInt) values (@Title,@Content,@FirstImgUrl,@Time,@UserID,@Browse,@NewsTypeID,@IshaveImg,@IsWord,@Place)";
                 SqlParameter[] para = new SqlParameter[]
 	                    {
                              new SqlParameter("@Title", SqlDbType.VarChar),
@@ -88,7 +88,7 @@ namespace WpfApplication2
                              new SqlParameter("@NewsTypeID", SqlDbType.Int),
                              new SqlParameter("@IshaveImg",SqlDbType.Int),
                              new SqlParameter("@IsWord",SqlDbType.Int),
-                             new SqlParameter("@IsWord",SqlDbType.Int)
+                             new SqlParameter("@Place",SqlDbType.Int)
                         };
                 para[0].Value = citizen_sqldt.Rows[i]["Subject"].ToString();
                 if (citizen_sqldt.Rows[i]["ImageFlag"].ToString() != "0")
@@ -342,8 +342,9 @@ namespace WpfApplication2
         {
             if (radiobt_1.IsChecked == true || radiobt_2.IsChecked == true)
             {
+                int user_id = Convert.ToInt32(txtuser.Text.ToString());
                 string citizen_connStr = radiobt_1.IsChecked == true ? radio_1 : radio_2;
-                ThreadStart start = delegate { insert_Repository(user_id, citizen_connStr); };
+                ThreadStart start = delegate { insert_Repository(user_id, citizen_connStr,0); };
                 Thread test = new Thread(new ThreadStart(start));
                 test.Start();
             }

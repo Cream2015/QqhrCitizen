@@ -166,27 +166,66 @@
                         </a>
                         { i++; }
                     }
-                </div><div id="d_board" class="d-board">
+                </div>
+            <div id="d_board" class="d-board">
                     <div class="tabbar">
-                        <div class="tab_select" style="width:144px;" onmouseover="sub_t(42);km_tab.tabclk(0,'d_board');">开心一刻</div><div class="tab" style="width:144px;" onmouseover="sub_t(186);km_tab.tabclk(1,'d_board');">最近新闻</div><div class="bar" style="left: 42px;"></div>
+                        <div class="tab_select" style="width:144px;" onmouseover="sub_t(42);km_tab.tabclk(0,'d_board');">要闻播报</div><div class="tab" style="width:144px;" onmouseover="sub_t(186);km_tab.tabclk(1,'d_board');">本地社教</div><div class="bar" style="left: 42px;"></div>
                     </div>
                     <div class="tabcontent">
-                        <div id="d_board2" style="padding-top:10px;" class="">
+                        <div id="d_board2" style="padding-top:10px;">
                             <div class="scroll-wrapper external-scroll tis-container" style="position: relative;">
-                                <div class="external-scroll tis-container scroll-content" style="height: auto; margin-bottom: 0px; margin-right: 0px;">
+                                <div class="external-scroll tis-container scroll-content" style="height: auto; margin-bottom: 0px; margin-right: 0px;overflow:hidden;">
                                     <div id="tih" style="height: 314px;">
                                         <div class="tis-item">
                                             <div class="tis-content" style="color:#fff; font-size:14px;">
-                                                @ViewBag.Joke
+                                                @foreach (News n in ViewBag.Location)
+                                                {
+
+                                                    <li><a href="/News/Show/@n.ID" title="@n.Title">@n.Title</a></li>
+                                                }
                                             </div>
                                         </div>
                                         <div style="height:6px; overflow:hidden;">&nbsp;</div>
                                     </div>
-                                </div><div class="scroll-element scroll-element_show-arrows scroll-x" style="display: none; width: 290px;"><div class="scroll-arrow scroll-arrow_less"></div><div class="scroll-arrow scroll-arrow_more"></div><div class="scroll-element_outer">    <div class="scroll-element_size"></div>    <div class="scroll-element_inner-wrapper">        <div class="scroll-element_inner">            <div class="scroll-element_inner-bottom"></div>        </div>    </div>    <div class="scroll-bar">        <div class="scroll-bar_body">            <div class="scroll-bar_body-inner"></div>        </div>        <div class="scroll-bar_bottom"></div>        <div class="scroll-bar_center"></div>    </div></div></div>
-                            </div><div class="external-scroll_x"><div class="scroll-element_outer"><div class="scroll-element_size"></div><div class="scroll-element_inner"></div><div class="scroll-bar"></div></div></div><div class="external-scroll_y scroll-element_show-arrows scroll-y" style="display: none; height: 320px;"><div class="scroll-element_outer"><div class="scroll-element_size"></div><div class="scroll-element_inner"></div><div class="scroll-bar" style="height: 100px;"></div></div></div>
-                        </div><div class="clsHide">
+                                </div>
+                                <!--<div class="scroll-element scroll-element_show-arrows scroll-x" style="display: none; width: 290px;">
+                                    <div class="scroll-arrow scroll-arrow_less"></div>
+                                    <div class="scroll-arrow scroll-arrow_more"></div>
+                                    <div class="scroll-element_outer">
+                                        <div class="scroll-element_size"></div>
+                                        <div class="scroll-element_inner-wrapper">
+                                            <div class="scroll-element_inner">
+                                                <div class="scroll-element_inner-bottom"></div>
+                                            </div>
+                                        </div>
+                                        <div class="scroll-bar">
+                                            <div class="scroll-bar_body">
+                                                <div class="scroll-bar_body-inner"></div>
+                                            </div>
+                                            <div class="scroll-bar_bottom"></div>
+                                            <div class="scroll-bar_center"></div>
+                                        </div>
+                                    </div>
+                                </div>-->
+                            </div>
+                            <!--<div class="external-scroll_x">
+                                <div class="scroll-element_outer">
+                                    <div class="scroll-element_size"></div>
+                                    <div class="scroll-element_inner"></div>
+                                    <div class="scroll-bar"></div>
+                                </div>
+                            </div>
+                            <div class="external-scroll_y scroll-element_show-arrows scroll-y" style="display: none; height: 320px;">
+                                <div class="scroll-element_outer">
+                                    <div class="scroll-element_size"></div>
+                                    <div class="scroll-element_inner"></div>
+                                    <div class="scroll-bar" style="height: 100px;"></div>
+                                </div>
+                            </div>-->
+                        </div>
+                        <div class="clsHide" style="overflow:hidden">
                             <ul class="d-board-e">
-                                @foreach (News n in ViewBag.News)
+                                @foreach (News n in ViewBag.Native)
                                 {
                                     <li><a href="/News/Show/@n.ID" title="@n.Title">@n.Title</a></li>
                                 }
@@ -380,13 +419,13 @@
                         <p>
                             @foreach (ResourceLink rl in ViewBag.ImgLinks)
                             {
-                                <span><a href="@rl.URL" target="_blank"><img src="/Upload/@((new QqhrCitizen.Models.ViewModel.vResourceLink(rl)).File.Path)" class="cc-link-img" /></a></span>
+                                <span style="line-height:62px;display:inline-block"><a href="@rl.URL" target="_blank"><img src="/Upload/@((new QqhrCitizen.Models.ViewModel.vResourceLink(rl)).File.Path)" class="cc-link-img" /></a></span>
                             }
                         </p>
                         <p style="font-size: 20px;">
                             @foreach (ResourceLink rl in ViewBag.TextLinks)
                             {
-                                <span><a href="@rl.URL" target="_blank">@rl.Title</a>@MvcHtmlString.Create("&nbsp;&nbsp;")</span>
+                                <span style="line-height:30px;display:inline-block"><a href="@rl.URL" target="_blank">@rl.Title</a>@MvcHtmlString.Create("&nbsp;&nbsp;")</span>
                             }
                         </p>
                     </div>
