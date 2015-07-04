@@ -47,6 +47,7 @@ namespace QqhrCitizen.Controllers
 
             LstHotType = db.Courses.OrderByDescending(c => c.Browses).Select(x => x.TypeDictionary).DistinctBy(x => new { x.ID }).Take(20).ToList();
 
+
             ViewBag.LstNewCourse = _LstNewCourse;
             ViewBag.LstHotType = LstHotType;
             ViewBag.LstRecord = LstRecord;

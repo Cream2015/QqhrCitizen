@@ -22,7 +22,7 @@ namespace QqhrCitizen.Filters
                 var lession = db.Lessions.Find(id);
                 var course = db.Courses.Find(lession.CourseID);
 
-                if (lession.Course.Authority == Authority.Login)
+                if (lession.Course.TypeDictionary.NeedAuthorize == true)
                 {
                     if (!httpContext.User.Identity.IsAuthenticated)
                     {

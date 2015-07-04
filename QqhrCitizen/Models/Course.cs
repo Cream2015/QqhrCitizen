@@ -42,16 +42,16 @@ namespace QqhrCitizen.Models
         /// </summary>
         public byte[] Picture { get; set; }
 
-        public int AuthorityAsInt { set; get; }
+       // public int AuthorityAsInt { set; get; }
 
         public int Browses { get; set; }
 
-        [NotMapped]
-        public Authority Authority
-        {
-            set { AuthorityAsInt = (int)value; }
-            get { return (Authority)AuthorityAsInt; }
-        }
+        //[NotMapped]
+        //public Authority Authority
+        //{
+        //    set { AuthorityAsInt = (int)value; }
+        //    get { return (Authority)AuthorityAsInt; }
+        //}
 
         /// <summary>
         ///   学分
