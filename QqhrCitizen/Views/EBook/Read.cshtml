@@ -71,19 +71,30 @@
                 var w = $(document).width() - 10;
                 var h = $(document).height();
                 $("#pdf").css("width", w).css("height", h);
-                var success = new PDFObject({ url: "@ViewBag.FileLoad", pdfOpenParams: { scrollbars: '0', toolbar: '0', statusbar: '0' } }).embed("pdf");
-                if (!success) {
-                    var a = "<object width='100%' height='100%' data='@ViewBag.FileLoad#scrollbars=0&toolbar=0&statusbar=0' type='application/pdf'>";
-                    $("#pdf").html(a);
-                }
+                $.ajax({
+                    url:'@ViewBag.FileLoad',
+                    type:'HEAD',
+                    error: function() {
+                        alert("文件不存在，我们稍后会添加");
+                        location.href="/EBook/Index";
+                    },
+                    success: function () {
+                        $('#pdf1').show();
+                        var success = new PDFObject({ url: "@ViewBag.FileLoad", pdfOpenParams: { scrollbars: '0', toolbar: '0', statusbar: '0' } }).embed("pdf");
+                        if (!success) {
+                            var a = "<object width='100%' height='100%' data='@ViewBag.FileLoad#scrollbars=0&toolbar=0&statusbar=0' type='application/pdf'>";
+                            $("#pdf").html(a);
+                        }
+                    }
+                });
             }
         };
-    </script>
+</script>
 
 </head>
 
 <body>
-    <p>
+    <p style="display:none">
         It appears you don't have Adobe Reader or PDF support in this web
         browser. <a href="@ViewBag.FileLoad">Click here to download the PDF</a>
     </p>
