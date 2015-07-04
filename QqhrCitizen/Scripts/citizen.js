@@ -355,7 +355,7 @@ $(document).ready(function () {
 
         });
         rate = rate * (count * 1.0 / questionCount);
-        $.post("/Course/RecordScore", { cid: $("#courseId").val(), rate: rate }, function (data) {
+        $.post("/Course/DoTest", { cid: $("#courseId").val(), rate: rate }, function (data) {
             CastMsg("记录回答记录成功！");
         })
         console.log(str);
