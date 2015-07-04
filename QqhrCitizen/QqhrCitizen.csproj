@@ -1091,6 +1091,7 @@
     <Content Include="Views\Admin\ProductEdit.cshtml" />
     <Content Include="Views\Product\Index.cshtml" />
     <Content Include="Views\Product\Show.cshtml" />
+    <Content Include="Views\Admin\AddLiveVideo.cshtml" />
     <None Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Admin\ViwepagerEdit.cshtml" />
     <None Include="Web.Debug.config">
@@ -1104,6 +1105,7 @@
     <Folder Include="App_Data\" />
     <Folder Include="Content\" />
     <Folder Include="Lessions\" />
+    <Folder Include="LiveFile\" />
     <Folder Include="ProductFile\" />
     <Folder Include="Upload\NewsWord\" />
     <Folder Include="Views\ViewPager\" />

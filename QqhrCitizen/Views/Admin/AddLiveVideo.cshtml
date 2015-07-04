@@ -1,0 +1,25 @@
+﻿@{
+    ViewBag.Title = "AddLiveVideo";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>直播增加视频</h2>
+@using (Html.BeginForm("AddLiveVideo", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    <input name="LiveID" type="hidden" value="@ViewBag.LiveID" />
+    <table class="detail-table">
+        <tr>
+            <td class="row-title">
+                上传视屏
+            </td>
+            <td>
+                <input type="file" name="file" id="file" class="textbox" />
+            </td>
+        </tr>
+    </table>
+    <p><input type="submit" value="增加" class="button blue" /></p>
+}
+
+
+

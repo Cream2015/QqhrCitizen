@@ -25,5 +25,7 @@ namespace QqhrCitizen.Models
         public DateTime End { get; set; }
 
         public bool NeedAuthorize { set; get; }
+
+        public string Path { set; get; }
     }
 }

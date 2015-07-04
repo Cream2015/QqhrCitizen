@@ -70,8 +70,15 @@
                     </select>
                 </td>
             </tr>
+
+
         </table>
-        <p><input type="submit" value="保存" class="button blue" /></p>
+        <p>
+            <input type="submit" value="保存" class="button blue" />
+            @if (live.End < DateTime.Now)
+            {
+                <a href="/Admin/AddLiveVideo/@live.ID">添加直播视屏</a>
+            }
+        </p>
     }
 </div>
-

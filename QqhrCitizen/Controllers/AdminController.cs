@@ -1639,6 +1639,7 @@ namespace QqhrCitizen.Controllers
         }
         #endregion
 
+        #region 直播管理
 
         /// <summary>
         /// 
@@ -1725,7 +1726,7 @@ namespace QqhrCitizen.Controllers
         }
         #endregion
 
-        #region MyRegion
+        #region 直播信息展示
         /// <summary>
         ///  直播信息展示
         /// </summary>
@@ -1781,6 +1782,54 @@ namespace QqhrCitizen.Controllers
             db.SaveChanges();
             return Redirect("/Admin/LiveManager");
         }
+        #endregion
+
+        /// <summary>
+        ///  增加直播完成之后的视屏
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet]
+        public ActionResult AddLiveVideo(int id)
+        {
+            ViewBag.LiveID = id;
+            return View();
+        }
+
+        public ActionResult AddLiveVideo(int LiveID, HttpPostedFileBase file)
+        {
+            if (file != null)
+            {
+                string random = Helpers.DateHelper.GetTimeStamp();
+                Live live = db.Lives.Find(LiveID);
+
+                if (live.Path != null)
+                {
+                    var phicy = HostingEnvironment.MapPath(live.Path);
+                    if (System.IO.File.Exists(phicy))
+                    {
+                        //如果存在则删除
+                        System.IO.File.Delete(phicy);
+                    }
+                }
+               
+
+                string root = "~/LiveFile/";
+                var phicyPath = HostingEnvironment.MapPath(root);
+
+                file.SaveAs(phicyPath + random + file.FileName);
+
+
+                live.Path = "/LiveFile/"+ random + file.FileName;
+            }
+            else
+            {
+                return Redirect("/Admin/AdminMessage?msg=请上传文件内容");
+            }
+            return Redirect("/Admin/LiveShow/" + LiveID);
+        }
+
+
+
         #endregion
 
 
