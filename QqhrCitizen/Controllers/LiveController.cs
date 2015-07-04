@@ -13,7 +13,7 @@ namespace QqhrCitizen.Controllers
         // GET: /Index/
         public ActionResult Index()
         {
-            ViewBag.LiveList = db.Lives.ToList();
+            ViewBag.LiveList = db.Lives.Where(l => l.End > DateTime.Now).OrderByDescending(l=>l.Begin).ToList();
             return View();
         }
 
@@ -94,6 +94,11 @@ namespace QqhrCitizen.Controllers
             int index = page * 12;
             lives = db.Lives.Where(l => l.End < DateTime.Now).OrderByDescending(l => l.Begin).Skip(index).Take(12).ToList();
             return Json(lives, JsonRequestBehavior.AllowGet);
+        }
+
+        public ActionResult Review()
+        {
+            return View();
         }
 
     }

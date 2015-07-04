@@ -212,6 +212,35 @@ function LoadLives() {
     }
 }
 
+function LoadReviewLives() {
+    if (lock) {
+        return;
+    }
+    else {
+        lock = true;
+        $(".loadMore").text("正在加载中，请稍后");
+        $.ajax({
+            url: "/Live/GetReviewLivesByPage",
+            type: "get",
+            data: { "page": page },
+        }).done(function (data) {
+            var str = "";
+            for (var i = 0 ; i < data.length; i++) {
+               // str += ' <div class="item"><a class="cover" href="/Product/Show/' + data[i].ID + '" target="_blank" style="width: 230px;"><img src="' + data[i].ProductImages[0].Path + '" width="230" height="158" /></a><div class="title trim"><a href="/Product/Show/' + data[i].ID + '" style="text-align:center">' + data[i].Title + '</a></div><div class="description" title="">' + data[i].Price + '</div></div>';
+                str += '<div class="item"><a class="cover live_show" id="live_id_'+data[i].ID+'" style="cursor:pointer"><img src="/Live/ShowPicture/'+data[i].ID+'" /></a><div class="title trim"><a title="'+data[i].Title+'" class="live_show" id="live_id_'+data[i].Id+'" style="cursor:pointer">'+data[i].Title+'</a><input type="hidden" id="live_hidden_'+data[i].ID+'" value="'+data[i].NeedAuthorize+'" /></div><div class="date"><span>开始:'+data[i].Begin+'</span><br />结束<span>'+data[i].End+'</span></div></div>';
+            }
+            $(".lstReviewLive").append(str);
+            if (data.length == 10) {
+                lock = false;
+                page++;
+                $(".loadMore").text("下拉加载更多！");
+            } else {
+                $(".loadMore").text("没有更多数据了！");
+            }
+        });
+    }
+}
+
 
 function Load() {
     if ($(".lstNews").length > 0) {
@@ -235,11 +264,14 @@ function Load() {
     if ($(".lstProduct").length > 0) {
         LoadProducts();
     }
+
     if ($(".lstLive").length > 0) {
         LoadLives();
     }
 
-
+    if ($(".lstReviewLive").length > 0) {
+        LoadReviewLives();
+    }
 }
 
 $(document).ready(function () {
