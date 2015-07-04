@@ -467,5 +467,19 @@ namespace QqhrCitizen.Controllers
             }
             return Content("");
         }
+
+        /// <summary>
+        /// 课程测试
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public ActionResult Test(int id)
+        {
+            List<CourseQuestion> questions = new List<CourseQuestion>();
+            questions = db.CourseQuestions.Where(cq => cq.CourseID == id).ToList();
+            ViewBag.Questions = questions;
+            ViewBag.CourseID = id;
+            return View();
+        }
     }
 }

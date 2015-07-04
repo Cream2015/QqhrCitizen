@@ -1097,6 +1097,7 @@
     <Content Include="Views\Live\Review.cshtml" />
     <Content Include="Views\Live\ReviewShow.cshtml" />
     <Content Include="Views\Admin\AddCourseQuestion.cshtml" />
+    <Content Include="Views\Course\Test.cshtml" />
     <None Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Admin\ViwepagerEdit.cshtml" />
     <None Include="Web.Debug.config">
