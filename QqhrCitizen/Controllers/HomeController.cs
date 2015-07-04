@@ -40,7 +40,7 @@ namespace QqhrCitizen.Controllers
 
             ViewBag.Courses = db.Courses.OrderByDescending(x => x.Time).Take(6).ToList();
             ViewBag.NewsTypes = db.TypeDictionaries.Where(x => x.Belonger == TypeBelonger.新闻 && x.FatherID ==0).Take(5).ToList();
-            ViewBag.News = GetTop5News();
+            //ViewBag.News = GetTop5News();
             ViewBag.MoreNews = db.News.OrderByDescending(x => x.Time).Take(10).ToList();
             ViewBag.BookTypes = db.TypeDictionaries.Where(x => x.Belonger == TypeBelonger.电子书 && x.FatherID == 0).Take(6).ToList();
             ViewBag.Books = db.EBooks.OrderByDescending(x => x.Time).Take(10).ToList();
@@ -48,6 +48,9 @@ namespace QqhrCitizen.Controllers
             ViewBag.TextLinks = db.ResourceLinks.Where(x => !x.IsHaveFile).ToList();
             ViewBag.ImgLinks = db.ResourceLinks.Where(x => x.IsHaveFile).ToList();
             ViewBag.Pictures = db.Viewpagers.OrderBy(x => x.Priority).ToList();
+
+            ViewBag.Location = db.News.Where(n => n.PlaceAsInt == 0).OrderByDescending(n => n.Time).Take(10).ToList();
+            ViewBag.Native = db.News.Where(n => n.PlaceAsInt == 1).OrderByDescending(n => n.Time).Take(10).ToList();
             ViewBag.Menus = db.Menus.ToList();
             var joke = (from j in db.Jokes
                         orderby Guid.NewGuid() ascending

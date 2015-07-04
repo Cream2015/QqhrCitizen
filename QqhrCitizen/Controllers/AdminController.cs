@@ -300,6 +300,7 @@ namespace QqhrCitizen.Controllers
             model.UserID = CurrentUser.ID;
             model.Time = DateTime.Now;
             model.Browses = 0;
+            model.PlaceAsInt = 0;
 
             if (model.IsHaveImg)
             {
