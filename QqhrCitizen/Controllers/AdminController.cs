@@ -2156,9 +2156,9 @@ namespace QqhrCitizen.Controllers
         /// <returns></returns>
         [HttpGet]
 
-        public ActionResult AddCourseQuestion(int lid)
+        public ActionResult AddCourseQuestion(int Cid)
         {
-            ViewBag.Course = lid;
+            ViewBag.CourseID = Cid;
             return View();
         }
         #endregion
@@ -2192,6 +2192,39 @@ namespace QqhrCitizen.Controllers
             db.CourseQuestions.Add(model);
             db.SaveChanges();
             return Redirect("/Admin/CourseShow/" + model.CourseID);
+        }
+        #endregion
+
+        #region 显示课程测试
+        /// <summary>
+        /// 显示问题
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public ActionResult CourseQuestionShow(int id)
+        {
+            CourseQuestion coursequestion = new CourseQuestion();
+            coursequestion = db.CourseQuestions.Find(id);
+            ViewBag.Question = new vCourseQuestion(coursequestion);
+            return View();
+        }
+        #endregion
+
+        #region 删除课程测试
+        /// <summary>
+        /// 删除问题
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        [HttpGet]
+        [ValidateSID]
+        public ActionResult CourseQuestionDelete(int id)
+        {
+            CourseQuestion coursequestion = new CourseQuestion();
+            coursequestion = db.CourseQuestions.Find(id);
+            db.CourseQuestions.Remove(coursequestion);
+            db.SaveChanges();
+            return Redirect("/Admin/CourseShow/" + coursequestion.CourseID);
         }
         #endregion
     }
