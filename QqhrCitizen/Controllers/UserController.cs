@@ -37,7 +37,7 @@ namespace QqhrCitizen.Controllers
                 user1 = db.Users.Where(u => u.Username == model.Username).SingleOrDefault();
                 if (user1 == null)
                 {
-                    User user = new User { Username = model.Username, Password = Helpers.Encryt.GetMD5(model.Password), Role = Role.User, Realname = model.Realname, Email = model.Email, Phone = model.Phone, Address = model.Address, Score = 0 };
+                    User user = new User { Username = model.Username, Password = Helpers.Encryt.GetMD5(model.Password), RoleAsInt = model.RoleAsInt, Realname = model.Realname, Email = model.Email, Phone = model.Phone, Address = model.Address, Score = 0 };
                     db.Users.Add(user);
                     int result = db.SaveChanges();
                     if (result > 0)

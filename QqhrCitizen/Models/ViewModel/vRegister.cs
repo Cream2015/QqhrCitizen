@@ -23,5 +23,7 @@ namespace QqhrCitizen.Models.ViewModel
         [Display(Name = "电话号码")]
         public string Phone { get; set; }
         public string Address { get; set; }
+
+        public int RoleAsInt { set; get; }
     }
 }
