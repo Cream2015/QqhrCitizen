@@ -178,7 +178,7 @@
                                     <div id="tih" style="height: 314px;">
                                         <div class="tis-item">
                                             <div class="tis-content" style="color:#fff; font-size:14px;">
-                                                @foreach (News n in ViewBag.Location)
+                                                @foreach (News n in ViewBag.Native)
                                                 {
 
                                                     <li style="cursor:pointer"><a href="/News/Show/@n.ID" title="@n.Title" style="cursor:pointer">@n.Title</a></li>
@@ -225,7 +225,7 @@
                         </div>
                         <div class="clsHide" style="overflow:hidden">
                             <ul class="d-board-e">
-                                @foreach (News n in ViewBag.Native)
+                                @foreach (News n in ViewBag.Location)
                                 {
                                     <li style="cursor:pointer"><a href="/News/Show/@n.ID" style="cursor:pointer" title="@n.Title">@n.Title</a></li>
                                 }

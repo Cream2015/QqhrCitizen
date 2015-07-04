@@ -44,7 +44,7 @@
 <table class="detail-table">
     @foreach (var item in product.ProductImages)
     {
-        <tr>
+        <tr id="@item.ID">
             <td>@item.ID</td>
             <td>
                 <img src="@item.Path" alt="@product.Title" width="80" height="60" />
