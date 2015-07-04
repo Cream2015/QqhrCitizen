@@ -31,7 +31,7 @@ namespace QqhrCitizen.Controllers
         // GET: /Home/
         public ActionResult Index()
         {
-            List<TypeDictionary> courseTypes = db.TypeDictionaries.Where(x => x.Belonger == TypeBelonger.课程 && x.FatherID != null).Take(5).ToList();
+            List<TypeDictionary> courseTypes = db.TypeDictionaries.Where(x => x.Belonger == TypeBelonger.课程 && x.FatherID ==0).Take(5).ToList();
             foreach (var item in courseTypes)
             {
                 item.TypeValue = item.TypeValue.Substring(0, 4);
@@ -39,7 +39,7 @@ namespace QqhrCitizen.Controllers
             ViewBag.CourseTypes = courseTypes;
 
             ViewBag.Courses = db.Courses.OrderByDescending(x => x.Time).Take(6).ToList();
-            ViewBag.NewsTypes = db.TypeDictionaries.Where(x => x.Belonger == TypeBelonger.新闻 && x.FatherID != null).Take(5).ToList();
+            ViewBag.NewsTypes = db.TypeDictionaries.Where(x => x.Belonger == TypeBelonger.新闻 && x.FatherID ==0).Take(5).ToList();
             ViewBag.News = GetTop5News();
             ViewBag.MoreNews = db.News.OrderByDescending(x => x.Time).Take(10).ToList();
             ViewBag.BookTypes = db.TypeDictionaries.Where(x => x.Belonger == TypeBelonger.电子书 && x.FatherID == 0).Take(6).ToList();

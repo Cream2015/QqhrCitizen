@@ -32,6 +32,7 @@ namespace QqhrCitizen.Controllers
             return View();
         }
 
+        #region 分页查找产品
         /// <summary>
         /// 分页查找产品
         /// </summary>
@@ -42,9 +43,10 @@ namespace QqhrCitizen.Controllers
         {
             List<Product> products = new List<Product>();
             int index = page * 12;
-            products = db.Products.OrderByDescending(p => p.Time).Skip(index).Take(12).ToList(); 
-            return Json(products,JsonRequestBehavior.AllowGet);
-        }
+            products = db.Products.OrderByDescending(p => p.Time).Skip(index).Take(12).ToList();
+            return Json(products, JsonRequestBehavior.AllowGet);
+        } 
+        #endregion
 
     }
 }
