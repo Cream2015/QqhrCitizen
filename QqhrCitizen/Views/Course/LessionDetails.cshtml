@@ -56,7 +56,7 @@
                                 <input type="hidden" name="LessionID" id="LessionID" value="@lession.ID" />
                                 <input type="hidden" id="sid" value="@ViewBag.SID" />
                                 <textarea name="Content" class="textbox" id="noteContent"></textarea>
-                                <p><input type="button" value="保存" id="btnAddNote" class="btn-ok button btn-info" style="margin-left:10px;" /></p>
+                                <p><input type="button" value="保存" id="btnAddNote" class="btn btn-orange btn-big" style="margin-left:10px;width:100px" /></p>
                                 <div style="padding-top:10px;"><h5>历史笔记</h5></div>
                                 <div id="lstNote">
                                     @if (listNote != null)
@@ -64,8 +64,9 @@
                                         foreach (var note in listNote)
                                         {
                                             <div class="div_HisNote">
-                                                <p>@note.Time</p>
                                                 @Html.Sanitized(@note.Content)
+                                                <br/>
+                                                <span style="color:#808080;font-size:14px;text-align:right;margin-right:10px">@note.Time</span>
                                             </div>
                                         }
                                     }
@@ -89,17 +90,18 @@
                                     <input type="hidden" id="questionCount" value="@questions.Count" />
                                     for (int i = 0; i < questions.Count(); i++)
                                     {
-                                        <div class="question">
+                                        <div class="question" style="font-size:16px">
                                             @(i + 1)<span>.</span>@questions[i].Content <br />
                                             <input value="@questions[i].RightAnswer" type="hidden" class="roghtanswer" />
                                             @for (int j = 0; j < questions[i].Answers.Count(); j++)
                                             {
-                                                <input name="answer@(i+1)" type="radio" value="@j" class="answer w-3" />@CommonEnums.Answers[j]<span>:</span>@questions[i].Answers[j] <br />
+                                                <div class="radio"><label><input name="answer@(i+1)" type="radio" value="@j" class="answer"/>@CommonEnums.Answers[j] : @questions[i].Answers[j]</label></div>
                                             }
                                         </div>
 
                                     }
-                                    <input type="button" class="btn-ok button btn-info" value="提交" id="btnAnswerQuestion" />
+                                    <input type="button" class="btn btn-orange btn-big" value="提交" style="width:100px;margin-bottom:10px" id="btnAnswerQuestion"/>
+                                   
                                 }
                                 <div class="warning"></div>
 

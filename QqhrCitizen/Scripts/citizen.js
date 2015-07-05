@@ -271,7 +271,7 @@ $(document).ready(function () {
         var content = CKEDITOR.instances.noteContent.getData();
         $.post("/Course/AddNote?sid=" + $("#sid").val(), { content: content, lid: $("#LessionID").val() }, function (data) {
             CastMsg("添加的笔记成功！");
-            var str = "<div class='div_HisNote'><p>" + moment(data.Time).format("YYYY/MM/DD HH:mm:ss") + "</p>" + data.Content + "</div>"
+            var str = "<div class='div_HisNote'>"+ data.Content + "<br/><span style='color:#808080;font-size:14px;text-align:right;margin-right:10px'>" + moment(data.Time).format("YYYY/MM/DD HH:mm:ss") + "</span></div>"
             $("#lstNote").prepend(str);
             $("#noteContent").val("");
         })

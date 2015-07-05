@@ -1,7 +1,8 @@
 ﻿@using QqhrCitizen.Models.ViewModel
 @{
-    ViewBag.Title = "产品展示";
     vProduct product = ViewBag.Product as vProduct;
+    ViewBag.Title = @product.Title+"_产品展示";
+    
 }
 
 <script src="~/Scripts/video.js"></script>
@@ -76,7 +77,7 @@
                                                     <tbody>
                                                         <tr>
                                                             <td>
-                                                                <script> player("@product.ProductVideo.Path", 800, 400, 1, "start.jpg");</script>
+                                                                    <script> player("@product.ProductVideo.Path", 800, 400, 1, "start.jpg");</script>
                                                             </td>
                                                         </tr>
                                                         @foreach (var item in product.ProductImages)

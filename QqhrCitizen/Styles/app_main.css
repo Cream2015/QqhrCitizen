@@ -377,6 +377,99 @@ a {
     border: 1px solid #ddd;
 }
 
+.radio + .radio {
+    margin-top: -5px;
+}
+
+.checkbox, .radio {
+    position: relative;
+    display: block;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.d-courseaction a {
+    font-size: 16px;
+}
+
+label {
+    display: inline-block;
+    max-width: 100%;
+    min-height: 20px;
+    padding-left: 20px;
+    margin-bottom: 0;
+    font-weight: 400;
+    cursor: pointer;
+}
+label, .radio label {
+    min-height: 20px;
+    padding-left: 20px;
+    margin-bottom: 0;
+    font-weight: 400;
+    cursor: pointer;
+}
+.div_HisNote p
+{
+    font-size:16px;
+    display:inline-block;
+}
+input[type=radio]
+{
+    -webkit-appearance: radio;
+-webkit-rtl-ordering: logical;
+-webkit-user-select: text;
+-webkit-writing-mode: horizontal-tb;
+background-color: rgba(0, 0, 0, 0);
+border-bottom-color: rgb(51, 51, 51);
+border-bottom-style: none;
+border-bottom-width: 0px;
+border-image-outset: 0px;
+border-image-repeat: stretch;
+border-image-slice: 100%;
+border-image-source: none;
+border-image-width: 1;
+border-left-color: rgb(51, 51, 51);
+border-left-style: none;
+border-left-width: 0px;
+border-right-color: rgb(51, 51, 51);
+border-right-style: none;
+border-right-width: 0px;
+border-top-color: rgb(51, 51, 51);
+border-top-style: none;
+border-top-width: 0px;
+box-sizing: border-box;
+color: rgb(51, 51, 51);
+cursor: auto;
+display: block;
+font-family: 'Helvetica Neue', Helvetica, 'Microsoft Yahei', 'Hiragino Sans GB', 'WenQuanYi Micro Hei', sans-serif;
+font-size: 14px;
+font-style: normal;
+font-variant: normal;
+font-weight: normal;
+height: 13px;
+letter-spacing: normal;
+line-height: normal;
+margin-bottom: 0px;
+margin-left: -20px;
+margin-right: 0px;
+margin-top: 4px;
+padding-bottom: 0px;
+padding-left: 0px;
+padding-right: 0px;
+padding-top: 0px;
+position: absolute;
+text-align: start;
+text-indent: 0px;
+text-shadow: none;
+text-transform: none;
+width: 13px;
+word-spacing: 0px;
+writing-mode: lr-tb;
+}
+.well a {
+    font-size: 16px;
+}
+
 .well-small {
     padding: 10px;
 }
@@ -10785,15 +10878,18 @@ label.inline {
     font-size: 0;
     position: relative;
 }
+
 #spec-list .spec-items img {
-width: 50px;
-height: 50px;
-padding: 2px;
+    width: 50px;
+    height: 50px;
+    padding: 2px;
 }
-#spec-list .spec-items img.img:hover {
-border: 2px solid #e4393c;
-padding: 0;
-}
+
+    #spec-list .spec-items img.img:hover {
+        border: 2px solid #e4393c;
+        padding: 0;
+    }
+
 .lh li, .lh dl, .lh .item {
     float: left;
 }
@@ -10806,7 +10902,7 @@ padding: 0;
     width: 500px;
     float: left;
     padding-right: 24px;
-    margin-left:20px;
+    margin-left: 20px;
 }
 
 #itemInfo {
@@ -10837,10 +10933,10 @@ padding: 0;
 
     #name .p-ad {
         font-family: arial,"microsoft yahei";
-color: #e3393c;
-font-size: 16px;
-line-height: 20px;
-word-break: break-all;
+        color: #e3393c;
+        font-size: 16px;
+        line-height: 20px;
+        word-break: break-all;
     }
 
 #summary {
