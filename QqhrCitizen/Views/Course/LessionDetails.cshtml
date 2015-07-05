@@ -10,6 +10,11 @@
 <script>
     $("#topmenu_course").attr("class", "item_selected");
 </script>
+<script src="~/Scripts/alertify.js"></script>
+<script src="~/Scripts/jquery.timers-1.2.js"></script>
+<link rel="stylesheet" href="~/Styles/alertify.css" />
+<link rel="stylesheet" href="~/Styles/alertify-bootstrap.css" />
+<link rel="stylesheet" href="~/Styles/alertify-bootstrap-3.css" />
 <script src="~/Scripts/video.js"></script>
 <script src="~/Scripts/ckeditor/ckeditor.js"></script>
 <div id="d_menu" class="d-menu menu-cou">
@@ -65,7 +70,7 @@
                                         {
                                             <div class="div_HisNote">
                                                 @Html.Sanitized(@note.Content)
-                                                <br/>
+                                                <br />
                                                 <span style="color:#808080;font-size:14px;text-align:right;margin-right:10px">@note.Time</span>
                                             </div>
                                         }
@@ -95,13 +100,13 @@
                                             <input value="@questions[i].RightAnswer" type="hidden" class="roghtanswer" />
                                             @for (int j = 0; j < questions[i].Answers.Count(); j++)
                                             {
-                                                <div class="radio"><label><input name="answer@(i+1)" type="radio" value="@j" class="answer"/>@CommonEnums.Answers[j] : @questions[i].Answers[j]</label></div>
+                                                <div class="radio"><label><input name="answer@(i+1)" type="radio" value="@j" class="answer" />@CommonEnums.Answers[j] : @questions[i].Answers[j]</label></div>
                                             }
                                         </div>
 
                                     }
-                                    <input type="button" class="btn btn-orange btn-big" value="提交" style="width:100px;margin-bottom:10px" id="btnAnswerQuestion"/>
-                                   
+                                    <input type="button" class="btn btn-orange btn-big" value="提交" style="width:100px;margin-bottom:10px" id="btnAnswerQuestion" />
+
                                 }
                                 <div class="warning"></div>
 
@@ -121,7 +126,7 @@
                                 <p><a href="/Course/LessionDetails/@item.ID">[@item.Time.ToString("yyyy-MM-dd")] @item.Title</a></p>
                             }
                         </div>
-                        <div  class="d-courseaction well">
+                        <div class="d-courseaction well">
                             <a href="/Course/Test/@lession.CourseID">课程测试</a>
                         </div>
                     </div>
@@ -206,5 +211,28 @@
         width: "100%",
         height: "80px"
     });
+    $(function () {
+        reset = function () {
+            alertify.set({
+                labels: {
+                    ok: "确认",
+                    cancel: "取消"
+                },
+                delay: 5000,
+                buttonReverse: false,
+                buttonFocus: "ok"
+            });
+        };
+        $('body').everyTime('600s', function () {
+            reset();
+            alertify.confirm("确认框", function (e) {
+                if (e) {
+                    alertify.success("点击确认");
+                    alert("继续");
+                } else {
+                    alertify.error("点击取消");
+                }
+            });
+        });
+    });
 </script>
-

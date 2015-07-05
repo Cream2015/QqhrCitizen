@@ -192,6 +192,7 @@
     <Content Include="Images\sprite\lab.jpg" />
     <Content Include="Images\tbg.jpg" />
     <Content Include="Images\top.gif" />
+    <Content Include="Scripts\alertify.js" />
     <Content Include="Scripts\ckeditor\lang\af.js" />
     <Content Include="Scripts\ckeditor\lang\ar.js" />
     <Content Include="Scripts\ckeditor\lang\bg.js" />
@@ -553,12 +554,17 @@
     <Content Include="Scripts\jmeditor\mathquill-0.9.1\mathquill.js" />
     <Content Include="Scripts\jmeditor\mathquill-0.9.1\mathquill.min.js" />
     <Content Include="Scripts\jquery-1.6.4.min.js" />
+    <Content Include="Scripts\jquery.alerts.js" />
     <Content Include="Scripts\jquery.js" />
     <Content Include="Scripts\jquery.media.js" />
+    <Content Include="Scripts\jquery.timers-1.2.js" />
     <Content Include="Scripts\pdfobject.js" />
     <Content Include="Scripts\spectrum.js" />
     <Content Include="Scripts\stickUp.js" />
     <Content Include="Scripts\stickUp.min.js" />
+    <Content Include="Styles\alertify-bootstrap-3.css" />
+    <Content Include="Styles\alertify-bootstrap.css" />
+    <Content Include="Styles\alertify.css" />
     <Content Include="Styles\images\annotation-check.svg" />
     <Content Include="Styles\images\annotation-comment.svg" />
     <Content Include="Styles\images\annotation-help.svg" />
@@ -650,6 +656,7 @@
     <Content Include="Scripts\pdf.js" />
     <Content Include="Scripts\pdf.worker.js" />
     <Content Include="Scripts\viewer.js" />
+    <Content Include="Styles\jquery.alerts.css" />
     <Content Include="Styles\spectrum.css" />
     <Content Include="Styles\viewer.css" />
     <Content Include="Views\Admin\ViwepagerShow.cshtml" />
