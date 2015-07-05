@@ -10,7 +10,7 @@
         <div class="d-col-2-12">
             <div class="contentarea">
                 <div id="product-intro" class="m-item-grid clearfix">
-                    <div id="preview" clstag="shangpin|keycount|product|mainpicarea_1">
+                    <div id="preview">
                         <div id="spec-n1" class="jqzoom">
                             <img data-img="1" width="350" height="350" src="@product.ProductImages[0].Path" id="show_pic">
                         </div>
@@ -18,7 +18,7 @@
                             <a class="spec-control disabled" id="spec-forward"></a>
                             <a class="spec-control" id="spec-backward"></a>
                             <div class="spec-items" style="position: absolute; width: 310px; height: 54px; overflow: hidden;">
-                                <ul class="lh" style="position: absolute; width: 372px; height: 54px; top: 0px; left: 0px;">
+                                <ul class="lh" style="position: absolute; width: 310px; height: 54px; top: 0px; left: 0px;padding:0px">
                                     @{ int i = 0;}
                                     <!--图片列表-->
                                     @foreach (var item in product.ProductImages)
@@ -28,22 +28,25 @@
                                         {
                                             break;
                                         }
-                                        <li style="cursor:pointer"><img class="img-hover" alt="" src="@item.Path"></li>
+                                        <li style="cursor:pointer"><img class="img" alt="" src="@item.Path" width="50" height="50"></li>
                                     }
                                 </ul>
                                 <script>
-                                    $(".img-hover").mouseover(function (e) {
+                                    $(".img").mouseover(function (e) {
                                         $("#show_pic").attr("src",$(this).attr("src"));
                                     });
                                 </script>
                             </div>
                         </div>
-                    </div>
+                        <div id="short-share" style="zoom: 1;padding: 24px 40px 0 34px;overflow: hidden;">
+                            <div class="fl" style="color:#808080;font-size:14px"><span>商品编号：</span><span>@product.ID</span></div>
 
-                    <div class="m-item-inner" clstag="shangpin|keycount|product|zhushujuqu_1">
+                        </div>
+                    </div>
+                   
+                    <div class="m-item-inner">
                         <div id="itemInfo">
                             <div id="name">
-                                <h2>编号：@product.ID</h2>
                                 <h1>名称：@product.Title</h1>
                                 <div id="p-ad" class="p-ad">
                                     简介：@product.Description
@@ -53,7 +56,7 @@
                                 <div id="summary-price" style="margin: 5px 0px;">
                                     <div class="dt">价 格：</div>
                                     <div class="dd">
-                                        <strong class="p-price" id="jd-price">@product.Price</strong>
+                                        <strong class="p-price" id="jd-price">￥@product.Price</strong>
                                     </div>
                                 </div>
 
@@ -72,14 +75,14 @@
                                                 <table style="width:1000px;margin:0 auto;padding:0;">
                                                     <tbody>
                                                         <tr>
-                                                            <td style="text-align:center">
+                                                            <td>
                                                                 <script> player("@product.ProductVideo.Path", 800, 400, 1, "start.jpg");</script>
                                                             </td>
                                                         </tr>
                                                         @foreach (var item in product.ProductImages)
                                                         {
                                                             <tr>
-                                                                <td><img src="@item.Path" class="" style=""></td>
+                                                                <td><img src="@item.Path" class="" width="750" style="vertical-align: middle;"></td>
                                                             </tr>
                                                         }
                                                     </tbody>

@@ -10785,7 +10785,15 @@ label.inline {
     font-size: 0;
     position: relative;
 }
-
+#spec-list .spec-items img {
+width: 50px;
+height: 50px;
+padding: 2px;
+}
+#spec-list .spec-items img.img:hover {
+border: 2px solid #e4393c;
+padding: 0;
+}
 .lh li, .lh dl, .lh .item {
     float: left;
 }
@@ -10795,9 +10803,10 @@ label.inline {
 }
 
 .m-item-grid .m-item-inner {
-    width: 588px;
+    width: 500px;
     float: left;
     padding-right: 24px;
+    margin-left:20px;
 }
 
 #itemInfo {
@@ -10827,7 +10836,11 @@ label.inline {
     }
 
     #name .p-ad {
-        font-size: 20px;
+        font-family: arial,"microsoft yahei";
+color: #e3393c;
+font-size: 16px;
+line-height: 20px;
+word-break: break-all;
     }
 
 #summary {
@@ -10849,7 +10862,7 @@ label.inline {
         display: inline-block;
         vertical-align: middle;
         color: #e4393c;
-        font-size: 22px;
+        font-size: 20px;
     }
 
     #summary-price .dt, #summary-promotion .dt, #summary-service .dt, #summary-stock .dt {
