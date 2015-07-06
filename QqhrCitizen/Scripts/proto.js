@@ -125,8 +125,9 @@ var $proto={
 	        s+='<div id="d_bottom" class="d-bottom">';
 	            s+='<div class="d-bottom-c">';
 	                s+='<div id="d_scrolltop" class="d-scrolltop">';
-	                	s+=s1;
-						s+='<span class="t" onclick="$(document.body).ScrollTo();">顶部</span>';
+	                s += s1;
+	               var span = "$('html,body').animate({scrollTop: '0px'}, 800);"
+						s+="<span class='t' onclick="+span+">顶部</span>";
 	                s+='</div>';
 	            s+='</div>';
 	        s+='</div>';

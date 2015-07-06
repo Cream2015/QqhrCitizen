@@ -343,8 +343,9 @@ namespace WpfApplication2
             if (radiobt_1.IsChecked == true || radiobt_2.IsChecked == true)
             {
                 int user_id = Convert.ToInt32(txtuser.Text.ToString());
+                int father_id=Convert.ToInt32(txt_type.Text.ToString());
                 string citizen_connStr = radiobt_1.IsChecked == true ? radio_1 : radio_2;
-                ThreadStart start = delegate { insert_Repository(user_id, citizen_connStr,0); };
+                ThreadStart start = delegate { insert_Repository(user_id, citizen_connStr,father_id); };
                 Thread test = new Thread(new ThreadStart(start));
                 test.Start();
             }
@@ -353,9 +354,9 @@ namespace WpfApplication2
                 MessageBox.Show("请选择数据库");
             }
         }
-        private void  insert_Repository(int user_id,string citizen_connStr,int FantherID)
+        private void insert_Repository(int user_id, string citizen_connStr, int FantherID)
         {
-            string Time, insert_sql5, insert_sql6, Time_Course, Url;
+            string Time, insert_sql5, insert_sql6, insert_sql7, Time_Course, Url;
             int inset_id_course = 0, inset_id_type;
             DataTable cit_sql6;
             DataTable cit_sql5 = Sqlhelp.ExecuteDataTable("select * from RepositoryCategoryInfo", qqhr_connStr);
@@ -372,16 +373,16 @@ namespace WpfApplication2
                 ShowSqlNumber.Dispatcher.Invoke(new UpdateTextCallback(this.ShowText),
                     new object[] { insert_sql6 });
                 sum++;
-                inset_id_course = Convert.ToInt32(Sqlhelp.ExecuteScalar(insert_sql5, citizen_connStr));
+                inset_id_course = Convert.ToInt32(Sqlhelp.ExecuteScalar(insert_sql6, citizen_connStr));
                 for (int g = 0; g < cit_sql6.Rows.Count; g++)
                 {
                     Time_Course = SetDateTime(cit_sql6.Rows[g]["CreatedTime"]);
                     Url = cit_sql6.Rows[g]["Url"].ToString();
                     Url = Url.Replace("http://218.8.130.135/终身学习", "http://218.8.130.135:8000");
-                    insert_sql6 = "insert into Lessions (Title,Description,CourseID,Time,Path,Browses) values ('" + cit_sql6.Rows[g]["Name"] + "','" + cit_sql5.Rows[f]["Name"] + "——" + cit_sql6.Rows[g]["Name"] + "','" + inset_id_course + "','" + Time_Course + "','" + Url + "','0')";
+                    insert_sql7 = "insert into Lessions (Title,Description,CourseID,Time,Path,Browses) values ('" + cit_sql6.Rows[g]["Name"] + "','" + cit_sql5.Rows[f]["Name"] + "——" + cit_sql6.Rows[g]["Name"] + "','" + inset_id_course + "','" + Time_Course + "','" + Url + "','0')";
                     ShowSqlNumber.Dispatcher.Invoke(new UpdateTextCallback(this.ShowText),
-                    new object[] { insert_sql6 });
-                    Sqlhelp.ExecuteScalar(insert_sql6, citizen_connStr);
+                    new object[] { insert_sql7 });
+                    Sqlhelp.ExecuteScalar(insert_sql7, citizen_connStr);
                     sum++;
                     if ((sum + 1) % 1000 == 0)
                     {

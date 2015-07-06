@@ -18,7 +18,7 @@
         </div><!-- region end: menu -->
     </div>
 </div>
-<div id="d_bottom" class="d-bottom" style="visibility: hidden;"><div class="d-bottom-c"><div id="d_scrolltop" class="d-scrolltop"><span class="t" onclick="$(document.body).ScrollTo();">顶部</span></div></div></div>
+<div id="d_bottom" class="d-bottom" style="visibility: hidden;"><div class="d-bottom-c"><div id="d_scrolltop" class="d-scrolltop"><span class="t" onclick="$('html,body').animate({scrollTop: '0px'}, 800);">顶部</span></div></div></div>
 <div class="d-row" style="margin-bottom: 20px; padding: 20px 0 0 0;">
     <div class="d-row-c">
         <div class="d-col-2-3">
@@ -26,9 +26,9 @@
             <div class="contentarea" style="border-right: 1px solid #ddd;">
                 @foreach (var item in ViewBag.Types as List<TypeDictionary>)
                 {
-                    <div id="d_12FF2473CE16B988" class="d-coursecategory">
+                    <div  class="d-coursecategory">
                         <div class="head">
-                            <span onclick="doSubmit(0,'12FF2473CE16B988')">
+                            <span>
                                 @item.TypeValue
                             </span>
                         </div>
@@ -36,7 +36,7 @@
                             <div id="d_select_category_a" class="cff3">
                                 @foreach (var type in @item.Children)
                                 {
-                                    <div data-txt="@item.TypeValue" class="cfp3"><a href="/Course/Discovery/@item.ID">@type.TypeValue</a></div>
+                                    <div data-txt="@type.TypeValue" class="cfp3"><a href="/Course/Discovery/@type.ID">@type.TypeValue</a></div>
                                 }
                             </div>
                         </div>
