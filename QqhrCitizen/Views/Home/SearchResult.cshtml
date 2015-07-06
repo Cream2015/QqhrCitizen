@@ -12,7 +12,7 @@
                     @using (Html.BeginForm("Search", "Home", FormMethod.Post, new { id = "frmSearch1" }))
                     {
                         @Html.AntiForgeryToken()
-                        <input id="Search" name="key" maxlength="30" type="text" class="input-big" value="" placeholder="课程、新闻、电子书" style="width: 400px;">
+                        <input id="Search" name="key" maxlength="30" type="text" class="input-big" value="" placeholder="课程、新闻、电子书、直播、产品" style="width: 400px;">
                         <input type="button" class="btn btn-big btn-green" id="btnSearch" onclick="dosearch1();" style="width: 70px;" value="搜索">
                     }
                 </div><!-- region end: 搜索条件 --><!-- region start: 搜索结果标签 -->

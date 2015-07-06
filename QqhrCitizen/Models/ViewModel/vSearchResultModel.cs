@@ -56,7 +56,7 @@ namespace QqhrCitizen.Models.ViewModel
             }
             else
             {
-                this.URL = "/Live/Review/Show/" + model.ID;
+                this.URL = "/Live/ReviewShow/" + model.ID;
             }
             this.Sumamry = Helpers.String.SubString(model.Description,50,"...");
             this.Time = model.Begin;

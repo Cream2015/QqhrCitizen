@@ -83,7 +83,7 @@
                             @using (Html.BeginForm("Search", "Home", FormMethod.Post, new { id = "frmSearch" }))
                             {
                                 @Html.AntiForgeryToken()
-                                <input id="txtSearch" maxlength="30" name="key" onkeydown="if(event.keyCode==13){dosearch();}" type="text" value="" placeholder="课程、新闻、电子书" autocomplete="off" autocorrect="off" autocapitalize="off">
+                                <input id="txtSearch" maxlength="30" name="key" onkeydown="if(event.keyCode==13){dosearch();}" type="text" value="" placeholder="课程、新闻、电子书、直播、产品" autocomplete="off" autocorrect="off" autocapitalize="off">
                                 <span id="icon-search" class="icon-search" onclick="dosearch();"></span>
                             }
                         </div>
