@@ -5,10 +5,16 @@
 }
 
 <div>
-    
+
     当前用户:@user.Username  <br />
-    角色：@CommonEnums.RoleDisply[user.RoleAsInt] <br />
-    新闻数：@ViewBag.NewsCount  <br />
-    课程数: @ViewBag.CourseCount <br />
-    电子书数： @ViewBag.EBookCount
+    @if (user.Role > Role.Business)
+    {
+        <span>角色：@CommonEnums.RoleDisply[user.RoleAsInt] </span><br />
+        <span>新闻数：@ViewBag.NewsCount  </span><br />
+        <span>课程数: @ViewBag.CourseCount </span><br />
+        <span>电子书数： @ViewBag.EBookCount </span><br />
+        <span>直播数：@ViewBag.LiveCount </span><br />
+    }
+
+    产品：@ViewBag.ProductCount
 </div>

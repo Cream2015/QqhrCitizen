@@ -29,7 +29,15 @@ namespace QqhrCitizen.Controllers
             ViewBag.NewsCount = db.News.Count();
             ViewBag.CourseCount = db.Courses.Count();
             ViewBag.EBookCount = db.EBooks.Count();
-
+            ViewBag.LiveCount = db.Lives.Count();
+            if (CurrentUser.Role == Role.Business)
+            {
+                ViewBag.ProductCount = db.Products.Where(p => p.UserID == CurrentUser.ID).Count();
+            }
+            else
+            {
+                ViewBag.ProductCount = db.Products.Count();
+            }
 
             return View();
         }
@@ -592,8 +600,8 @@ namespace QqhrCitizen.Controllers
         {
             CourseQuestion coursequestion = new CourseQuestion();
             List<CourseQuestion> coursequestions = db.CourseQuestions.Where(cq => cq.CourseID == id).ToList();
-            List<vCourseQuestion> coursequestionlist=new List<vCourseQuestion>();  
-            foreach(var item in coursequestions)
+            List<vCourseQuestion> coursequestionlist = new List<vCourseQuestion>();
+            foreach (var item in coursequestions)
             {
                 coursequestionlist.Add(new vCourseQuestion(item));
             }
@@ -1823,7 +1831,7 @@ namespace QqhrCitizen.Controllers
                         System.IO.File.Delete(phicy);
                     }
                 }
-               
+
 
                 string root = "~/LiveFile/";
                 var phicyPath = HostingEnvironment.MapPath(root);
@@ -1831,7 +1839,7 @@ namespace QqhrCitizen.Controllers
                 file.SaveAs(phicyPath + random + file.FileName);
 
 
-                live.Path = "/LiveFile/"+ random + file.FileName;
+                live.Path = "/LiveFile/" + random + file.FileName;
             }
             else
             {
