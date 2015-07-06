@@ -85,7 +85,7 @@ namespace QqhrCitizen.Controllers
                 _lstCourse.Add(new vCourse(item));
             }
 
-            return Json(_lstCourse, JsonRequestBehavior.AllowGet);
+            return Content(Newtonsoft.Json.JsonConvert.SerializeObject(_lstCourse));
         }
         #endregion
 

@@ -51,6 +51,7 @@ function LoadCourses() {
             url: "/Course/getCourses",
             type: "get",
             data: { "page": page, "tid": tid },
+            dataType: "json"
         }).done(function (data) {
             var str = "";
             for (var i = 0 ; i < data.length; i++) {
@@ -167,6 +168,7 @@ function LoadProducts() {
             url: "/Product/getProductByPage",
             type: "get",
             data: { "page": page },
+            dataType: "json"
         }).done(function (data) {
             var str = "";
             for (var i = 0 ; i < data.length; i++) {

@@ -49,7 +49,7 @@ namespace QqhrCitizen.Controllers
             {
                 _products.Add(new vProduct(item));
             }
-            return Json(_products, JsonRequestBehavior.AllowGet);
+            return Content(Newtonsoft.Json.JsonConvert.SerializeObject(_products));
         } 
         #endregion
 
