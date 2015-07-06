@@ -50,7 +50,7 @@
                                 <script> player("@lession.Path", 600, 400, 1, "start.jpg");</script>
                             }
                         </div>
-
+                        <div style="width:600px;height:400px;background-color:#ffffff;position: absolute;top: 34px;z-index:1000;display:none" id="video-hidden"></div>
                         <hr style="border: none; height: 1px; background-color: #ccc; margin: 20px 25px 0 0;">
                         <div id="d_courseware" class="d-courseware">
                             <div class="head">
@@ -228,9 +228,10 @@
             alertify.confirm("确认框", function (e) {
                 if (e) {
                     alertify.success("点击确认");
-                    alert("继续");
+                    $("#video-hidden").hide();
                 } else {
                     alertify.error("点击取消");
+                    $("#video-hidden").show();
                 }
             });
         });
