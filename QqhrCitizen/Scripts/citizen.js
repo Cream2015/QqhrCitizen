@@ -429,6 +429,12 @@ function Search(data) {
     if (data == "3") {
         type = "ebook";
     }
+    if (data == "4") {
+        type = "live";
+    }
+    if (data == "5") {
+        type = "product";
+    }
     lock = false;
     $(".result").html("");
     LoadSearchRessult();

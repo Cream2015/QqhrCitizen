@@ -31,7 +31,7 @@ namespace QqhrCitizen.Controllers
         // GET: /Home/
         public ActionResult Index()
         {
-            List<TypeDictionary> courseTypes = db.TypeDictionaries.Where(x => x.Belonger == TypeBelonger.课程 && x.FatherID ==0).Take(5).ToList();
+            List<TypeDictionary> courseTypes = db.TypeDictionaries.Where(x => x.Belonger == TypeBelonger.课程 && x.FatherID == 0).Take(5).ToList();
             foreach (var item in courseTypes)
             {
                 item.TypeValue = item.TypeValue.Substring(0, 4);
@@ -39,7 +39,7 @@ namespace QqhrCitizen.Controllers
             ViewBag.CourseTypes = courseTypes;
 
             ViewBag.Courses = db.Courses.OrderByDescending(x => x.Time).Take(6).ToList();
-            ViewBag.NewsTypes = db.TypeDictionaries.Where(x => x.Belonger == TypeBelonger.新闻 && x.FatherID ==0).Take(5).ToList();
+            ViewBag.NewsTypes = db.TypeDictionaries.Where(x => x.Belonger == TypeBelonger.新闻 && x.FatherID == 0).Take(5).ToList();
             ViewBag.News = GetTop5News();
             ViewBag.MoreNews = db.News.OrderByDescending(x => x.Time).Take(10).ToList();
             ViewBag.BookTypes = db.TypeDictionaries.Where(x => x.Belonger == TypeBelonger.电子书 && x.FatherID == 0).Take(6).ToList();
@@ -71,6 +71,8 @@ namespace QqhrCitizen.Controllers
             int newsCount = db.News.Where(n => n.Title.Contains(key) || n.Content.Contains(key)).OrderByDescending(n => n.Time).Count();
             int courseCount = db.Courses.Where(c => c.Title.Contains(key)).OrderByDescending(c => c.Time).Count();
             int ebookCount = db.EBooks.Where(eb => eb.Title.Contains(key)).OrderByDescending(e => e.Time).Count();
+            int liveCount = db.Lives.Where(eb => eb.Title.Contains(key)).OrderByDescending(e => e.Begin).Count();
+            int productCount = db.Courses.Where(eb => eb.Title.Contains(key)).OrderByDescending(e => e.Time).Count();
 
             if (!hots.Contains(key))
             {
@@ -89,6 +91,8 @@ namespace QqhrCitizen.Controllers
             ViewBag.NewsCount = newsCount;
             ViewBag.CourseCount = courseCount;
             ViewBag.EBookCount = ebookCount;
+            ViewBag.LiveCount = liveCount;
+            ViewBag.ProductCount = productCount;
             ViewBag.Key = key;
             ViewBag.Hots = HttpContext.Application["hots"];
             return View("SearchResult");
@@ -126,7 +130,7 @@ namespace QqhrCitizen.Controllers
                 }
                 return Json(_result, JsonRequestBehavior.AllowGet);
             }
-            else if (type == "ebook")
+            if (type == "ebook")
             {
                 var result = db.EBooks.Where(e => e.Title.Contains(key)).OrderByDescending(n => n.Time).Skip(index).Take(10).ToList();
                 List<vSearchResultModel> _result = new List<vSearchResultModel>();
@@ -136,6 +140,27 @@ namespace QqhrCitizen.Controllers
                 }
                 return Json(_result, JsonRequestBehavior.AllowGet);
             }
+            if (type == "live")
+            {
+                var result = db.Lives.Where(e => e.Title.Contains(key)).OrderByDescending(n => n.Begin).Skip(index).Take(10).ToList();
+                List<vSearchResultModel> _result = new List<vSearchResultModel>();
+                foreach (var item in result)
+                {
+                    _result.Add(new vSearchResultModel(item));
+                }
+                return Json(_result, JsonRequestBehavior.AllowGet);
+            }
+            if (type == "product")
+            {
+                var result = db.Products.Where(e => e.Title.Contains(key)).OrderByDescending(n => n.Time).Skip(index).Take(10).ToList();
+                List<vSearchResultModel> _result = new List<vSearchResultModel>();
+                foreach (var item in result)
+                {
+                    _result.Add(new vSearchResultModel(item));
+                }
+                return Json(_result, JsonRequestBehavior.AllowGet);
+            }
+
             return Json(null);
         }
 

@@ -45,5 +45,23 @@ namespace QqhrCitizen.Models.ViewModel
             this.Sumamry = Helpers.String.SubString(model.Description, 50, "...");
             this.Time = model.Time;
         }
+
+        public vSearchResultModel(Live model)
+        {
+            this.ID = model.ID;
+            this.Title = model.Title;
+            this.URL = "/Live/Show/" + model.ID;
+            this.Sumamry = Helpers.String.SubString(model.Description,50,"...");
+            this.Time = model.Begin;
+        }
+
+        public vSearchResultModel(Product model)
+        {
+            this.ID = model.ID;
+            this.Title = model.Title;
+            this.URL = "/Product/Show/"+model.ID;
+            this.Sumamry = Helpers.String.SubString(model.Description,50,"...");
+            this.Time = model.Time;
+        }
     }
 }
