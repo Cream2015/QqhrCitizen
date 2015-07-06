@@ -50,7 +50,14 @@ namespace QqhrCitizen.Models.ViewModel
         {
             this.ID = model.ID;
             this.Title = model.Title;
-            this.URL = "/Live/Show/" + model.ID;
+            if (model.Begin <= DateTime.Now && model.End >= DateTime.Now)
+            {
+                this.URL = "/Live/Show/" + model.ID;
+            }
+            else
+            {
+                this.URL = "/Live/Review/Show/" + model.ID;
+            }
             this.Sumamry = Helpers.String.SubString(model.Description,50,"...");
             this.Time = model.Begin;
         }
