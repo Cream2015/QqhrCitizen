@@ -71,8 +71,8 @@ namespace QqhrCitizen.Controllers
             int newsCount = db.News.Where(n => n.Title.Contains(key) || n.Content.Contains(key)).OrderByDescending(n => n.Time).Count();
             int courseCount = db.Courses.Where(c => c.Title.Contains(key)).OrderByDescending(c => c.Time).Count();
             int ebookCount = db.EBooks.Where(eb => eb.Title.Contains(key)).OrderByDescending(e => e.Time).Count();
-            int liveCount = db.Lives.Where(eb => eb.Title.Contains(key)).OrderByDescending(e => e.Begin).Count();
-            int productCount = db.Courses.Where(eb => eb.Title.Contains(key)).OrderByDescending(e => e.Time).Count();
+            int liveCount = db.Lives.Where(l => l.Title.Contains(key) && l.Begin <= DateTime.Now && l.End>=DateTime.Now).OrderByDescending(e => e.Begin).Count();
+            int productCount = db.Products.Where(p => p.Title.Contains(key)).OrderByDescending(e => e.Time).Count();
 
             if (!hots.Contains(key))
             {
