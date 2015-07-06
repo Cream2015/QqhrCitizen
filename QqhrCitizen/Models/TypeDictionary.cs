@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
+using Newtonsoft.Json;
 
 namespace QqhrCitizen.Models
 {
@@ -37,6 +38,7 @@ namespace QqhrCitizen.Models
         public int? FatherID { get; set; }
         
         [NotMapped]
+        [JsonIgnore]
         public List<TypeDictionary> Children
         {
             get

@@ -657,6 +657,8 @@
     <Content Include="Scripts\viewer.js" />
     <Content Include="Styles\spectrum.css" />
     <Content Include="Styles\viewer.css" />
+    <Content Include="swfs\playerProductInstall.swf" />
+    <Content Include="swfs\videoPlayer.swf" />
     <Content Include="Views\Admin\ViwepagerShow.cshtml" />
     <None Include="Properties\PublishProfiles\nele.pubxml" />
     <None Include="Properties\PublishProfiles\qqrtvu.pubxml" />

@@ -21,10 +21,10 @@ namespace QqhrCitizen.Models.ViewModel
         public DateTime Time { get; set; }
         public string Remark { get; set; }
 
-        public List<CourseQuestion> CourseQuestions { get; set; }
+        //public List<CourseQuestion> CourseQuestions { get; set; }
 
 
-        public List<Lession> Lessions { set; get; }
+        //public List<Lession> Lessions { set; get; }
 
         public string Sumamry { get; set; }
 
@@ -46,7 +46,7 @@ namespace QqhrCitizen.Models.ViewModel
             this.Remark = model.Remark;
            // this.AuthorityAsInt = model.AuthorityAsInt;
             this.Browses = model.Browses;
-            Lessions = (from l in db.Lessions where l.CourseID == model.ID select l).ToList();
+            //Lessions = (from l in db.Lessions where l.CourseID == model.ID select l).ToList();
             this.Sumamry = Helpers.String.SubString(QqhrCitizen.Helpers.HtmlFilter.Instance.SanitizeHtml(model.Description), 50, "...");
         }
 
