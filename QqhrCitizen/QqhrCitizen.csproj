@@ -61,8 +61,8 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="CodeComb.Video, Version=1.0.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\CodeComb.Video.1.0.1\lib\net45\CodeComb.Video.dll</HintPath>
-      <Private>True</Private>
     </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
@@ -187,6 +187,10 @@
     <Content Include="Images\play.jpg" />
     <Content Include="Images\player.png" />
     <Content Include="LiveFile\1435980559test.mp4" />
+    <Content Include="ProductFile\test\1436021876团旗.jpg" />
+    <Content Include="ProductFile\test\1436021901团旗1.jpg" />
+    <Content Include="ProductFile\test\1436021916团旗2.jpg" />
+    <Content Include="ProductFile\test\QQ截图20150605214146.png" />
     <Content Include="Scripts\AC_RunActiveContent.js" />
     <Content Include="Images\midstars.gif" />
     <Content Include="Images\signin-password.jpg" />
@@ -1130,7 +1134,6 @@
     <Folder Include="App_Data\" />
     <Folder Include="Content\" />
     <Folder Include="Lessions\" />
-    <Folder Include="ProductFile\" />
     <Folder Include="Upload\NewsWord\" />
     <Folder Include="Views\ViewPager\" />
   </ItemGroup>

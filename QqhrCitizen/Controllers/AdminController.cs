@@ -1078,7 +1078,7 @@ namespace QqhrCitizen.Controllers
 
             var exten = Path.GetExtension(file.FileName);
 
-            if (exten.Equals(".mp4"))
+            if (!exten.Equals(".mp4"))
             {
                 var video = new VideoFile(phicyPath + file.FileName);
                 video.Convert(".mp4", Quality.Medium).MoveTo(phicyPath + radom + ".mp4");
