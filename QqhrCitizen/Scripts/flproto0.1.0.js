@@ -2336,13 +2336,13 @@ function km_image(){
         console.log('onloadImg');
     };
     this.unloadImg=function (m,q){
-        self.size[q]={w:0,h:0};
-        self.imgs[q].onload=null;
-        self.imgs[q].onerror=null;
-        self.imgs[q].onabort=null;
-        self.himgs_status[self.himgs[m]]=0;
-        self.imgsUnload[q]=0;
-        console.log('unloadImg');
+        //self.size[q]={w:0,h:0};
+        //self.imgs[q].onload=null;
+        //self.imgs[q].onerror=null;
+        //self.imgs[q].onabort=null;
+        //self.himgs_status[self.himgs[m]]=0;
+        //self.imgsUnload[q]=0;
+        //console.log('unloadImg');
     };
     this.show=function (){
         var imgNum=0;

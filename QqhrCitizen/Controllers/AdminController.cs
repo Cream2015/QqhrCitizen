@@ -1078,10 +1078,10 @@ namespace QqhrCitizen.Controllers
 
             var exten = Path.GetExtension(file.FileName);
 
-            if (!exten.Equals(".mp4"))
+            if (!exten.Equals(".swf"))
             {
                 var video = new VideoFile(phicyPath + file.FileName);
-                video.Convert(".mp4", Quality.Medium).MoveTo(phicyPath + radom + ".mp4");
+                video.Convert(".swf", Quality.Medium).MoveTo(phicyPath + radom + ".mp4");
                 model.Path = fileServer + "Lessions/" + course.Title + "/" + radom + ".mp4";
                 if (System.IO.File.Exists(phicyPath + file.FileName))
                 {
