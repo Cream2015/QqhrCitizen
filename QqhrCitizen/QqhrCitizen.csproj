@@ -158,6 +158,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="fonts\icomoon.dev.svg" />
+    <Content Include="fonts\icomoon.svg" />
     <Content Include="Global.asax" />
     <Content Include="Helpers\toto.txt" />
     <Content Include="Images\banner.png" />
@@ -660,6 +662,9 @@
     <Content Include="swfs\playerProductInstall.swf" />
     <Content Include="swfs\videoPlayer.swf" />
     <Content Include="Views\Admin\ViwepagerShow.cshtml" />
+    <Content Include="fonts\icomoon.eot" />
+    <Content Include="fonts\icomoon.ttf" />
+    <Content Include="fonts\icomoon.woff" />
     <None Include="Properties\PublishProfiles\nele.pubxml" />
     <None Include="Properties\PublishProfiles\qqrtvu.pubxml" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
