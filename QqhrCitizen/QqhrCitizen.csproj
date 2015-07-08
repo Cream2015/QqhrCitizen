@@ -180,6 +180,7 @@
     <Content Include="Images\lab.jpg" />
     <Content Include="Images\links.png" />
     <Content Include="Images\logo.psd" />
+    <Content Include="Images\play.jpg" />
     <Content Include="Images\player.png" />
     <Content Include="LiveFile\1435980559test.mp4" />
     <Content Include="Scripts\AC_RunActiveContent.js" />
