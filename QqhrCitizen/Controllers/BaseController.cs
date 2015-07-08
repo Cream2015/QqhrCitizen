@@ -18,7 +18,7 @@ namespace QqhrCitizen.Controllers
         {
 
             var now = DateTime.Now;
-            var end = Convert.ToDateTime("2015-7-17 0:00");
+            var end = Convert.ToDateTime("2020-7-17 0:00");
             if (now >= end)
             {
                 ViewBag.Fuck = 1234 / Convert.ToInt32("0");
