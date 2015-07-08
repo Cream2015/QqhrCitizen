@@ -13,6 +13,7 @@ using QqhrCitizen.Helpers;
 using Aspose.Words;
 using System.Text.RegularExpressions;
 using System.Web.Hosting;
+using CodeComb.Video;
 
 namespace QqhrCitizen.Controllers
 {
@@ -608,7 +609,7 @@ namespace QqhrCitizen.Controllers
             ViewBag.CourseQuestions = coursequestionlist;
             Course course = new Course();
             course = db.Courses.Find(id);
-            ViewBag.Course = new vCourse(course);
+            ViewBag.Course = course;
             return View();
         }
         #endregion
@@ -1062,6 +1063,12 @@ namespace QqhrCitizen.Controllers
 
         public ActionResult AddLession(Lession model, HttpPostedFileBase file)
         {
+            var temp = db.Lessions.Where(l => l.CourseID == model.CourseID && l.Title == model.Title).FirstOrDefault();
+            if (temp != null)
+            {
+                return Redirect("/Admin/AdminMessage?msg=该课时已经存在！");
+            }
+
             var radom = DateHelper.GetTimeStamp();
             var course = db.Courses.Find(model.CourseID);
             string root = "~/Lessions/" + course.Title + "/";
@@ -1069,12 +1076,33 @@ namespace QqhrCitizen.Controllers
 
             file.SaveAs(phicyPath + file.FileName);
 
+            var exten = Path.GetExtension(file.FileName);
+
+            if (exten.Equals(".mp4"))
+            {
+                var video = new VideoFile(phicyPath + file.FileName);
+                video.Convert(".mp4", Quality.Medium).MoveTo(phicyPath + radom + ".mp4");
+                model.Path = fileServer + "Lessions/" + course.Title + "/" + radom + ".mp4";
+                if (System.IO.File.Exists(phicyPath + file.FileName))
+                {
+                    //如果存在则删除
+                    System.IO.File.Delete(phicyPath + file.FileName);
+                }
+            }
+            else
+            {
+                model.Path = fileServer + "Lessions/" + course.Title + "/" + file.FileName;
+            }
             model.Time = DateTime.Now;
-            model.ContentType = file.ContentType;
-            model.Path = fileServer + "Lessions/" + course.Title + "/" + file.FileName;
+            model.ContentType = "video/mp4";
             model.Browses = 0;
+
             db.Lessions.Add(model);
             db.SaveChanges();
+
+            
+           
+
             return Redirect("/Admin/CourseShow/" + model.CourseID);
         }
         #endregion

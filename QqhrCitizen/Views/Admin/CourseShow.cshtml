@@ -1,7 +1,7 @@
 ﻿@using QqhrCitizen.Models.ViewModel
 @{
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
-    vCourse course = ViewBag.Course as vCourse;
+    Course course = ViewBag.Course as Course;
     ViewBag.Title = course.Title;
 }
 
@@ -47,7 +47,7 @@
             操作员
         </td>
         <td>
-            @course.Username
+            @course.User.Username
         </td>
     </tr>
 </table>

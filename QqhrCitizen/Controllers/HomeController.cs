@@ -52,11 +52,7 @@ namespace QqhrCitizen.Controllers
             ViewBag.Location = db.News.Where(n => n.PlaceAsInt == 0).OrderByDescending(n => n.Time).Take(10).ToList();
             ViewBag.Native = db.News.Where(n => n.PlaceAsInt == 1).OrderByDescending(n => n.Time).Take(10).ToList();
             ViewBag.Menus = db.Menus.ToList();
-            var joke = (from j in db.Jokes
-                        orderby Guid.NewGuid() ascending
-                        select j).FirstOrDefault();
-            if (joke == null) ViewBag.Joke = "";
-            else ViewBag.Joke = joke.Content;
+           
             return View();
         }
 

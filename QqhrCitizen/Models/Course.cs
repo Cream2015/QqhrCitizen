@@ -57,5 +57,8 @@ namespace QqhrCitizen.Models
         ///   学分
         /// </summary>
         public int Credit { get; set; }
+
+
+        public virtual ICollection<Lession> Lessions { set; get; }
     }
 }
