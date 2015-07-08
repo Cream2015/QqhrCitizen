@@ -14,7 +14,7 @@
 
     <link href="~/Styles/spectrum.css" rel="stylesheet" />
     <script src="~/Scripts/jquery-1.11.3.min.js"></script>
-   
+
     <script src="~/Scripts/citizen.admin.js"></script>
     <script src="~/Scripts/jquery.datetimepicker.js"></script>
     <script src="~/Scripts/spectrum.js"></script>
@@ -53,121 +53,231 @@
                     @if (user.Role == Role.Admin || user.Role == Role.NewsManager)
                     {
                         <li>
-                            <a href="#"><i class="icon-font">&#xe018;</i>新闻管理</a>
-                            <ul class="sub-menu">
+                            <a id="New_Manager" style="cursor:pointer"><i class="icon-font">&#xe018;</i>新闻管理</a>
+                            <ul class="sub-menu" id="new_manager_ul" style="display:none">
                                 <li><a href="/Admin/NewsManager"><i class="icon-font">&#xe017;</i>新闻管理</a></li>
                                 <li><a href="/Admin/AddNews"><i class="icon-font">&#xe037;</i>增加新闻</a></li>
                                 <li><a href="/Admin/TypeManager?type=0"><i class="icon-font">&#xe037;</i>分类管理</a></li>
                             </ul>
                         </li>
+                        <script>
+                            $("#New_Manager").click(function () {
+                                if ($("#new_manager_ul").css("display") == "none") {
+                                    $("#new_manager_ul").show();
+                                }
+                                else {
+                                    $("#new_manager_ul").hide();
+                                }
+                            });
+                        </script>
                     }
                     @if (user.Role == Role.Admin || user.Role == Role.CourseManager)
                     {
                         <li>
-                            <a href="#"><i class="icon-font">&#xe018;</i>课程管理</a>
-                            <ul class="sub-menu">
+                            <a id="Course_Manager" style="cursor:pointer"><i class="icon-font">&#xe018;</i>课程管理</a>
+                            <ul id="course_manager_ul" class="sub-menu" style="display:none">
                                 <li><a href="/Admin/CourseManager"><i class="icon-font">&#xe017;</i>课程管理</a></li>
                                 <li><a href="/Admin/AddCourse"><i class="icon-font">&#xe037;</i>增加课程</a></li>
                                 <li><a href="/Admin/TypeManager?type=4"><i class="icon-font">&#xe037;</i>分类管理</a></li>
                             </ul>
                         </li>
+                        <script>
+                            $("#Course_Manager").click(function () {
+                                if ($("#course_manager_ul").css("display") == "none") {
+                                    $("#course_manager_ul").show();
+                                }
+                                else {
+                                    $("#course_manager_ul").hide();
+                                }
+                            });
+                        </script>
                     }
                     @if (user.Role == Role.Admin || user.Role == Role.EBookManager)
                     {
                         <li>
-                            <a href="#"><i class="icon-font">&#xe018;</i>电子书管理</a>
-                            <ul class="sub-menu">
+                            <a id="Ebook_Manager" style="cursor:pointer"><i class="icon-font">&#xe018;</i>电子书管理</a>
+                            <ul class="sub-menu" id="ebook_manager_ul" style="display:none">
                                 <li><a href="/Admin/EBookManager"><i class="icon-font">&#xe017;</i>电子书管理</a></li>
                                 <li><a href="/Admin/AddEBook"><i class="icon-font">&#xe037;</i>增加电子书</a></li>
                                 <li><a href="/Admin/TypeManager?type=3"><i class="icon-font">&#xe037;</i>分类管理</a></li>
                             </ul>
                         </li>
+                        <script>
+                            $("#Ebook_Manager").click(function () {
+                                if ($("#ebook_manager_ul").css("display") == "none") {
+                                    $("#ebook_manager_ul").show();
+                                }
+                                else {
+                                    $("#ebook_manager_ul").hide();
+                                }
+                            });
+                        </script>
                     }
                     @if (user.Role == Role.Admin || user.Role == Role.LinkManager)
                     {
                         <li>
-                            <a href="#"><i class="icon-font">&#xe018;</i>直管理播</a>
-                            <ul class="sub-menu">
+                            <a id="Live_Manager" style="cursor:pointer"><i class="icon-font">&#xe018;</i>直管理播</a>
+                            <ul class="sub-menu" id="live_manager_ul" style="display:none">
                                 <li><a href="/Admin/LiveManager"><i class="icon-font">&#xe017;</i>直播管理</a></li>
                                 <li><a href="/Admin/AddLive"><i class="icon-font">&#xe037;</i>增加直播</a></li>
                             </ul>
                         </li>
+                        <script>
+                            $("#Live_Manager").click(function () {
+                                if ($("#live_manager_ul").css("display") == "none") {
+                                    $("#live_manager_ul").show();
+                                }
+                                else {
+                                    $("#live_manager_ul").hide();
+                                }
+                            });
+                        </script>
                     }
                     @if (user.Role == Role.Admin || user.Role == Role.LinkManager)
                     {
                         <li>
-                            <a href="#"><i class="icon-font">&#xe018;</i>资源链接</a>
-                            <ul class="sub-menu">
+                            <a id="Link_Manager" style="cursor:pointer"><i class="icon-font">&#xe018;</i>资源链接</a>
+                            <ul class="sub-menu" id="link_manager_ul" style="display:none">
                                 <li><a href="/Admin/LinkManager"><i class="icon-font">&#xe017;</i>链接管理</a></li>
                                 <li><a href="/Admin/AddLink"><i class="icon-font">&#xe037;</i>增加链接</a></li>
                                 <li><a href="/Admin/TypeManager?type=2"><i class="icon-font">&#xe037;</i>分类管理</a></li>
                             </ul>
                         </li>
+                        <script>
+                            $("#Link_Manager").click(function () {
+                                if ($("#link_manager_ul").css("display") == "none") {
+                                    $("#link_manager_ul").show();
+                                }
+                                else {
+                                    $("#link_manager_ul").hide();
+                                }
+                            });
+                        </script>
                     }
                     @if (user.Role == Role.Admin || user.Role == Role.Business)
                     {
                         <li>
-                            <a href="#"><i class="icon-font">&#xe018;</i>市民生活管理</a>
-                            <ul class="sub-menu">
+                            <a id="Product_Manager" style="cursor:pointer"><i class="icon-font">&#xe018;</i>市民生活管理</a>
+                            <ul class="sub-menu" id="product_manager_ul" style="display:none">
                                 <li><a href="/Admin/ProductManager"><i class="icon-font">&#xe017;</i>市民生活管理</a></li>
                                 <li><a href="/Admin/AddProduct"><i class="icon-font">&#xe037;</i>增加产品</a></li>
                             </ul>
                         </li>
+                        <script>
+                            $("#Product_Manager").click(function () {
+                                if ($("#product_manager_ul").css("display") == "none") {
+                                    $("#product_manager_ul").show();
+                                }
+                                else {
+                                    $("#product_manager_ul").hide();
+                                }
+                            });
+                        </script>
                     }
                     @if (user.Role == Role.Admin)
                     {
 
                         <li>
-                            <a href="#"><i class="icon-font">&#xe018;</i>I实验管理</a>
-                            <ul class="sub-menu">
+                            <a id="ITrial_Manager" style="cursor:pointer"><i class="icon-font">&#xe018;</i>I实验管理</a>
+                            <ul class="sub-menu" id="itrial_manager_ul" style="display:none">
                                 <li><a href="/Admin/ITrialManager"><i class="icon-font">&#xe017;</i>I实验管理</a></li>
                                 <li><a href="/Admin/AddITrial"><i class="icon-font">&#xe037;</i>增加I实验</a></li>
                             </ul>
                         </li>
+                        <script>
+                            $("#ITrial_Manager").click(function () {
+                                if ($("#itrial_manager_ul").css("display") == "none") {
+                                    $("#itrial_manager_ul").show();
+                                }
+                                else {
+                                    $("#itrial_manager_ul").hide();
+                                }
+                            });
+                        </script>
                     }
                     @if (user.Role == Role.Admin)
                     {
 
                         <li>
-                            <a href="#"><i class="icon-font">&#xe018;</i>轮播管理</a>
-                            <ul class="sub-menu">
+                            <a id="Viwepager_Manager" style="cursor:pointer"><i class="icon-font">&#xe018;</i>轮播管理</a>
+                            <ul class="sub-menu" id="viwepager_manager_ul" style="display:none">
                                 <li><a href="/Admin/ViwepagerManager"><i class="icon-font">&#xe017;</i>轮播管理</a></li>
                                 <li><a href="/Admin/AddViwepager"><i class="icon-font">&#xe037;</i>增加轮播</a></li>
                             </ul>
                         </li>
+                        <script>
+                            $("#Viwepager_Manager").click(function () {
+                                if ($("#viwepager_manager_ul").css("display") == "none") {
+                                    $("#viwepager_manager_ul").show();
+                                }
+                                else {
+                                    $("#viwepager_manager_ul").hide();
+                                }
+                            });
+                        </script>
                     }
                     @if (user.Role == Role.Admin)
                     {
 
                         <li>
-                            <a href="#"><i class="icon-font">&#xe018;</i>导航管理</a>
-                            <ul class="sub-menu">
+                            <a id="Navigation_Manager" style="cursor:pointer"><i class="icon-font">&#xe018;</i>导航管理</a>
+                            <ul class="sub-menu" id="navigation_manager_ul" style="display:none">
                                 <li><a href="/Admin/NavigationManager"><i class="icon-font">&#xe017;</i>导航管理</a></li>
                                 <li><a href="/Admin/AddNavigation"><i class="icon-font">&#xe037;</i>增加导航</a></li>
                             </ul>
                         </li>
+                        <script>
+                            $("#Navigation_Manager").click(function () {
+                                if ($("#navigation_manager_ul").css("display") == "none") {
+                                    $("#navigation_manager_ul").show();
+                                }
+                                else {
+                                    $("#navigation_manager_ul").hide();
+                                }
+                            });
+                        </script>
                     }
                     @if (user.Role == Role.Admin)
                     {
 
                         <li>
-                            <a href="#"><i class="icon-font">&#xe018;</i>笑话管理</a>
-                            <ul class="sub-menu">
+                            <a id="Joke_Manager" style="cursor:pointer"><i class="icon-font">&#xe018;</i>笑话管理</a>
+                            <ul class="sub-menu" id="joke_manager_ul" style="display:none">
                                 <li><a href="/Admin/JokeManager"><i class="icon-font">&#xe017;</i>笑话管理</a></li>
                                 <li><a href="/Admin/AddJoke"><i class="icon-font">&#xe037;</i>增加笑话</a></li>
                             </ul>
                         </li>
+                        <script>
+                            $("#Joke_Manager").click(function () {
+                                if ($("#joke_manager_ul").css("display") == "none") {
+                                    $("#joke_manager_ul").show();
+                                }
+                                else {
+                                    $("#joke_manager_ul").hide();
+                                }
+                            });
+                        </script>
                     }
                     @if (user.Role == Role.Admin)
                     {
 
                         <li>
-                            <a href="#"><i class="icon-font">&#xe018;</i>系统设置</a>
-                            <ul class="sub-menu">
+                            <a id="Manager_Manager" style="cursor:pointer"><i class="icon-font">&#xe018;</i>系统设置</a>
+                            <ul class="sub-menu" id="manager_manager_ul" style="display:none">
                                 <li><a href="/Admin/ManagerManage"><i class="icon-font">&#xe017;</i>管理员管理</a></li>
                                 <li><a href="/Admin/AddManager"><i class="icon-font">&#xe037;</i>增加管理员</a></li>
                             </ul>
                         </li>
+                        <script>
+                            $("#Manager_Manager").click(function () {
+                                if ($("#manager_manager_ul").css("display") == "none") {
+                                    $("#manager_manager_ul").show();
+                                }
+                                else {
+                                    $("#manager_manager_ul").hide();
+                                }
+                            });
+                        </script>
                     }
                 </ul>
             </div>
