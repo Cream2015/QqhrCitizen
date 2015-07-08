@@ -146,7 +146,7 @@
                 @foreach (Viewpager n in ViewBag.Pictures)
                 {
                     if (i > 5) { break; }
-                    <li id="bb@(i)" style="background-color: @n.BgColor; z-index: 9; display: block;">
+                    <li id="bb@(i+1)" style="background-color: @n.BgColor; z-index: 9; display: block;">
                         <a href="@n.Url" target="_blank" style="background-image: url(/ViewPager/ShowPicture/@n.ID);">
                             <p class="t" style="display: none;"></p>
                             <p class="h" style="color: rgb(255, 255, 255);">@n.Title</p>
@@ -489,12 +489,11 @@
         adtranObj.container = 'd_homebanner';
         adtranObj.thumb = 'd_banner_thumb';
         adtranObj.himgs = [
-            @{ var iii = 0; }
+            @{ var iii = 1; }
             @foreach (Viewpager n in ViewBag.Pictures)
             {
-                if (iii >= 5) { break; }
-                @MvcHtmlString.Create("{ id: 'bb" + (iii + 1) + "', bg: '/Viewpager/ShowPicture/" + n.ID + "', thumb: '/Viewpager/ShowPicture/" + n.ID + "', bgcolor: '" + n.BgColor + "', fgcolor: '#fff' },")
-                { i++; }
+                @MvcHtmlString.Create("{ id: 'bb" + (iii) + "', bg: '/Viewpager/ShowPicture/" + n.ID + "', thumb: '/Viewpager/ShowPicture/" + n.ID + "', bgcolor: '" + n.BgColor + "', fgcolor: '#fff' },")
+                { iii++; }
             }
         ];
         var adtranObjList = [];
