@@ -1078,11 +1078,11 @@ namespace QqhrCitizen.Controllers
 
             var exten = Path.GetExtension(file.FileName);
 
-            if (!exten.Equals(".swf"))
+            /*if (!exten.Equals(".mp4"))
             {
                 var video = new VideoFile(phicyPath + file.FileName);
-                video.Convert(".mp4", Quality.Medium).MoveTo(phicyPath + radom + ".swf");
-                model.Path = fileServer + "Lessions/" + course.Title + "/" + radom + ".swf";
+                video.Convert(".swf", Quality.Medium).MoveTo(phicyPath + radom + ".mp4");
+                model.Path = fileServer + "Lessions/" + course.Title + "/" + radom + ".mp4";
                 if (System.IO.File.Exists(phicyPath + file.FileName))
                 {
                     //如果存在则删除
@@ -1092,9 +1092,10 @@ namespace QqhrCitizen.Controllers
             else
             {
                 model.Path = fileServer + "Lessions/" + course.Title + "/" + file.FileName;
-            }
+            }*/
+            model.Path = fileServer + "Lessions/" + course.Title + "/" + file.FileName;
             model.Time = DateTime.Now;
-            model.ContentType = "video/mp4";
+            model.ContentType = file.ContentType;
             model.Browses = 0;
 
             db.Lessions.Add(model);
