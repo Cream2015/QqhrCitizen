@@ -23,6 +23,7 @@ namespace QqhrCitizen.Controllers
 
         static string fileServer = "http://218.8.130.134:80/";
 
+         
 
         // GET: Admin
         public ActionResult Index()
@@ -1076,13 +1077,13 @@ namespace QqhrCitizen.Controllers
 
             file.SaveAs(phicyPath + file.FileName);
 
-            /*var exten = Path.GetExtension(file.FileName);
+            var exten = Path.GetExtension(file.FileName);
 
-            if (!exten.Equals(".mp4"))
+            if (!exten.Equals(".flv"))
             {
                 var video = new VideoFile(phicyPath + file.FileName);
-                video.Convert(".swf", Quality.Medium).MoveTo(phicyPath + radom + ".mp4");
-                model.Path = fileServer + "Lessions/" + course.Title + "/" + radom + ".mp4";
+                video.Convert(".flv", Quality.Medium).MoveTo(phicyPath + radom + ".flv");
+                model.Path = fileServer + "Lessions/" + course.Title + "/" + radom + ".flv";
                 if (System.IO.File.Exists(phicyPath + file.FileName))
                 {
                     //如果存在则删除
@@ -1092,8 +1093,8 @@ namespace QqhrCitizen.Controllers
             else
             {
                 model.Path = fileServer + "Lessions/" + course.Title + "/" + file.FileName;
-            }*/
-            model.Path = fileServer + "Lessions/" + course.Title + "/" + file.FileName;
+            }
+           // model.Path = fileServer + "Lessions/" + course.Title + "/" + file.FileName;
             model.Time = DateTime.Now;
             model.ContentType = file.ContentType;
             model.Browses = 0;
