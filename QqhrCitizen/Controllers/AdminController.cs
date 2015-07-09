@@ -1081,8 +1081,8 @@ namespace QqhrCitizen.Controllers
             if (!exten.Equals(".swf"))
             {
                 var video = new VideoFile(phicyPath + file.FileName);
-                video.Convert(".swf", Quality.Medium).MoveTo(phicyPath + radom + ".mp4");
-                model.Path = fileServer + "Lessions/" + course.Title + "/" + radom + ".mp4";
+                video.Convert(".mp4", Quality.Medium).MoveTo(phicyPath + radom + ".swf");
+                model.Path = fileServer + "Lessions/" + course.Title + "/" + radom + ".swf";
                 if (System.IO.File.Exists(phicyPath + file.FileName))
                 {
                     //如果存在则删除
