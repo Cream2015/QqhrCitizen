@@ -47,95 +47,126 @@
                             }
                             else
                             {
-                                <script> player("@lession.Path", 600, 400, 1, "start.jpg");</script>
-                            }
-                        </div>
-                        <div style="width:600px;height:400px;background-color:#ffffff;position: absolute;top: 34px;z-index:1000;display:none" id="video-hidden"></div>
-                        <hr style="border: none; height: 1px; background-color: #ccc; margin: 20px 25px 0 0;">
-                        <div id="d_courseware" class="d-courseware">
-                            <div class="head">
-                                课堂笔记
-                            </div>
-                            <div class="body">
-                                <input type="hidden" id="userId" name="UserID" value="@(ViewBag.CurrentUser==null?"":@ViewBag.CurrentUser.ID)" />
-                                <input type="hidden" name="LessionID" id="LessionID" value="@lession.ID" />
-                                <input type="hidden" id="sid" value="@ViewBag.SID" />
-                                <textarea name="Content" class="textbox" id="noteContent"></textarea>
-                                <p><input type="button" value="保存" id="btnAddNote" class="btn btn-orange btn-big" style="margin-left:10px;width:100px" /></p>
-                                <div style="padding-top:10px;"><h5>历史笔记</h5></div>
-                                <div id="lstNote">
-                                    @if (listNote != null)
-                                    {
-                                        foreach (var note in listNote)
-                                        {
-                                            <div class="div_HisNote">
-                                                @Html.Sanitized(@note.Content)
-                                                <br />
-                                                <span style="color:#808080;font-size:14px;text-align:right;margin-right:10px">@note.Time</span>
-                                            </div>
-                                        }
-                                    }
-
-                                </div>
-                            </div>
-                        </div>
-                        <hr style="border: none; height: 1px; background-color: #ccc; margin: 20px 25px 0 0;">
-                        <div id="d_courseware" class="d-courseware">
-                            <div class="head">
-                                课后问题
-                            </div>
-                            <div class="body">
-
-                                @if (questions.Count() == 0)
+                                if (lession.ContentType.ToString().Equals("video/mpeg"))
                                 {
-                                    <div>暂无课后问题</div>
+                                    <object id ="player"  height="400"  width="600" classid="CLSID:6BF52A52-394A-11d3-B153-00C04F79FAA6">
+                                        <param name ="AutoStart"  value="-1">
+                                        <param name ="Balance"  value="0">
+                                        <param name ="enabled"  value="-1">
+                                        <param name ="EnableContextMenu"  value="-1">
+                                        <param name ="url"  value="@lession.Path">
+                                        <param name ="PlayCount"  value="1">
+                                        <param name ="rate"  value="1">
+                                        <param name ="currentPosition"  value="0">
+                                        <param name ="currentMarker"  value="0">
+                                        <param name ="defaultFrame"  value="">
+                                        <param name ="invokeURLs"  value="0">
+                                        <param name ="baseURL"  value="">
+                                        <param name ="stretchToFit"  value="0">
+                                        <param name ="volume"  value="100">
+                                        <param name ="mute"  value="0">
+                                        <param name ="uiMode"  value="mini">
+                                        <param name ="windowlessVideo"  value="0">
+                                        <param name ="fullScreen"  value="0">
+                                        <param name ="enableErrorDialogs"  value="-1">
+                                        <param name ="SAMIStyle"  value>
+                                        <param name ="SAMILang"  value>
+                                        <param name ="SAMIFilename"  value>
+                                     </object> 
                                 }
                                 else
                                 {
-                                    <input type="hidden" id="questionCount" value="@questions.Count" />
-                                    for (int i = 0; i < questions.Count(); i++)
-                                    {
-                                        <div class="question" style="font-size:16px">
-                                            @(i + 1)<span>.</span>@questions[i].Content <br />
-                                            <input value="@questions[i].RightAnswer" type="hidden" class="roghtanswer" />
-                                            @for (int j = 0; j < questions[i].Answers.Count(); j++)
-                                            {
-                                                <div class="radio"><label><input name="answer@(i+1)" type="radio" value="@j" class="answer" />@CommonEnums.Answers[j] : @questions[i].Answers[j]</label></div>
-                                            }
-                                        </div>
-
-                                    }
-                                    <input type="button" class="btn btn-orange btn-big" value="提交" style="width:100px;margin-bottom:10px" id="btnAnswerQuestion" />
-
+                                    <script> player("@lession.Path", 600, 400, 1, "start.jpg");</script>
                                 }
-                                <div class="warning"></div>
 
-                            </div>
-                        </div>
-
-
-
-                    </div>
-                </div>
-                <div class="d-col-2-4">
-                    <div class="contentarea">
-                        <div id="Record" class="d-courseaction well">
-                            <h2>课时</h2>
-                            @foreach (var item in ViewBag.Lessions as List<vLession>)
-                            {
-                                <p><a href="/Course/LessionDetails/@item.ID">[@item.Time.ToString("yyyy-MM-dd")] @item.Title</a></p>
                             }
-                        </div>
-                        <div class="d-courseaction well">
-                            <a href="/Course/Test/@lession.CourseID">课程测试</a>
-                        </div>
+</div>
+<div style="width:600px;height:400px;background-color:#ffffff;position: absolute;top: 34px;z-index:1000;display:none" id="video-hidden"></div>
+<hr style="border: none; height: 1px; background-color: #ccc; margin: 20px 25px 0 0;">
+<div id="d_courseware" class="d-courseware">
+    <div class="head">
+        课堂笔记
+    </div>
+    <div class="body">
+        <input type="hidden" id="userId" name="UserID" value="@(ViewBag.CurrentUser==null?"":@ViewBag.CurrentUser.ID)" />
+        <input type="hidden" name="LessionID" id="LessionID" value="@lession.ID" />
+        <input type="hidden" id="sid" value="@ViewBag.SID" />
+        <textarea name="Content" class="textbox" id="noteContent"></textarea>
+        <p><input type="button" value="保存" id="btnAddNote" class="btn btn-orange btn-big" style="margin-left:10px;width:100px" /></p>
+        <div style="padding-top:10px;"><h5>历史笔记</h5></div>
+        <div id="lstNote">
+            @if (listNote != null)
+            {
+                foreach (var note in listNote)
+                {
+                    <div class="div_HisNote">
+                        @Html.Sanitized(@note.Content)
+                        <br />
+                        <span style="color:#808080;font-size:14px;text-align:right;margin-right:10px">@note.Time</span>
                     </div>
+                }
+            }
 
-                </div>
-                <div class="clear"></div>
-            </div>
         </div>
     </div>
+</div>
+<hr style="border: none; height: 1px; background-color: #ccc; margin: 20px 25px 0 0;">
+<div id="d_courseware" class="d-courseware">
+    <div class="head">
+        课后问题
+    </div>
+    <div class="body">
+
+        @if (questions.Count() == 0)
+        {
+            <div>暂无课后问题</div>
+        }
+        else
+        {
+            <input type="hidden" id="questionCount" value="@questions.Count" />
+            for (int i = 0; i < questions.Count(); i++)
+            {
+                <div class="question" style="font-size:16px">
+                    @(i + 1)<span>.</span>@questions[i].Content <br />
+                    <input value="@questions[i].RightAnswer" type="hidden" class="roghtanswer" />
+                    @for (int j = 0; j < questions[i].Answers.Count(); j++)
+                    {
+                        <div class="radio"><label><input name="answer@(i+1)" type="radio" value="@j" class="answer" />@CommonEnums.Answers[j] : @questions[i].Answers[j]</label></div>
+                    }
+                </div>
+
+            }
+            <input type="button" class="btn btn-orange btn-big" value="提交" style="width:100px;margin-bottom:10px" id="btnAnswerQuestion" />
+
+        }
+        <div class="warning"></div>
+
+    </div>
+</div>
+
+
+
+</div>
+</div>
+<div class="d-col-2-4">
+    <div class="contentarea">
+        <div id="Record" class="d-courseaction well">
+            <h2>课时</h2>
+            @foreach (var item in ViewBag.Lessions as List<vLession>)
+            {
+                <p><a href="/Course/LessionDetails/@item.ID">[@item.Time.ToString("yyyy-MM-dd")] @item.Title</a></p>
+            }
+        </div>
+        <div class="d-courseaction well">
+            <a href="/Course/Test/@lession.CourseID">课程测试</a>
+        </div>
+    </div>
+
+</div>
+<div class="clear"></div>
+</div>
+</div>
+</div>
 </div>
 
 <script>
@@ -215,7 +246,7 @@
         reset = function () {
             alertify.set({
                 labels: {
-                    ok: "确认",
+                    ok: "继续",
                     cancel: "取消"
                 },
                 delay: 5000,
@@ -225,7 +256,8 @@
         };
         $('body').everyTime('600s', function () {
             reset();
-            alertify.confirm("确认框", function (e) {
+            alertify.confirm("是否继续播放视频", function (e) {
+                $("#video-hidden").hide();
                 if (e) {
                     alertify.success("点击确认");
                     $("#video-hidden").hide();
