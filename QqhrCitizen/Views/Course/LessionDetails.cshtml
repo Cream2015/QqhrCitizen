@@ -135,48 +135,19 @@
                                     </object>
 
                                 }
-                                else if (lession.ContentType.ToString().Equals("video/mpeg"))
-                                {
-                                    <object classid="clsid:05589FA1-C356-11CE-BF01-00AA0055595A" id="ActiveMovie1" width="600" height="400">
-                                        <param name="Appearance" value="0">
-                                        <param name="AutoStart" value="-1">
-                                        <param name="AllowChangeDisplayMode" value="-1">
-                                        <param name="AllowHideDisplay" value="0">
-                                        <param name="AllowHideControls" value="-1">
-                                        <param name="AutoRewind" value="-1">
-                                        <param name="Balance" value="0">
-                                        <param name="CurrentPosition" value="0">
-                                        <param name="DisplayBackColor" value="0">
-                                        <param name="DisplayForeColor" value="16777215">
-                                        <param name="DisplayMode" value="0">
-                                        <param name="Enabled" value="-1">
-                                        <param name="EnableContextMenu" value="-1">
-                                        <param name="EnablePositionControls" value="-1">
-                                        <param name="EnableSelectionControls" value="0">
-                                        <param name="EnableTracker" value="-1">
-                                        <param name="Filename" value="@lession.Path" valuetype="ref">
-                                        <param name="FullScreenMode" value="0">
-                                        <param name="MovieWindowSize" value="0">
-                                        <param name="PlayCount" value="1">
-                                        <param name="Rate" value="1">
-                                        <param name="SelectionStart" value="-1">
-                                        <param name="SelectionEnd" value="-1">
-                                        <param name="ShowControls" value="-1">
-                                        <param name="ShowDisplay" value="-1">
-                                        <param name="ShowPositionControls" value="0">
-                                        <param name="ShowTracker" value="-1">
-                                        <param name="Volume" value="-480">
-                                    </object>
-                                }
                                 else
                                 {
-                                    <object align=middle classid="CLSID:22d6f312-b0f6-11d0-94ab-0080c74c7e95" class=OBJECT id=MediaPlayer width=600 height=400>
-                                        <param name=ShowStatusBar value=0>
-                                        <param name=Filename value="@lession.Path">
-                                        <embed type=application/x-oleobject codebase="http://activex.microsoft.com/activex/controls/mplayer/en/nsmp2inf.cab#Version=5,1,52,701">
-                                        </embed>
-                                    </object>
-                                    <!--<script> player("@lession.Path", 600, 400, 1, "start.jpg");</script>-->
+                                    <script>
+                                        if (window.addEventListener)
+                                        {
+                                            player("@lession.Path", 600, 400, 1, "start.jpg");
+                                        }
+                                        else 
+                                        {
+                                            str = "<object align=middle classid='CLSID:22d6f312-b0f6-11d0-94ab-0080c74c7e95' class=OBJECT id=MediaPlayer width=600 height=400><param name=ShowStatusBar value=0><param name=Filename value=@lession.Path><embed type=application/x-oleobject codebase='http://activex.microsoft.com/activex/controls/mplayer/en/nsmp2inf.cab#Version=5,1,52,701'></embed></object>";
+                                            $("#d_coursedetail").html(str);
+                                        }
+                                    </script>
                                 }
 
                             }
@@ -356,6 +327,7 @@
         };
         $('body').everyTime('600s', function () {
             reset();
+            $("#video-hidden").hide();
             alertify.confirm("确认框", function (e) {
                 if (e) {
                     alertify.success("点击确认");
