@@ -188,31 +188,32 @@
                             </div>
                             <div class="body">
 
-                                @if (questions.Count() == 0)
-        {
-                                    <div>暂无课后问题</div>
-        }
-        else
-        {
-                                    <input type="hidden" id="questionCount" value="@questions.Count" />
-            for (int i = 0; i < questions.Count(); i++)
-            {
-                <div class="question" style="font-size:16px">
-                    @(i + 1)<span>.</span>@questions[i].Content <br />
-                    <input value="@questions[i].RightAnswer" type="hidden" class="roghtanswer" />
-                    @for (int j = 0; j < questions[i].Answers.Count(); j++)
-                    {
-                        <div class="radio"><label><input name="answer@(i+1)" type="radio" value="@j" class="answer" />@CommonEnums.Answers[j] : @questions[i].Answers[j]</label></div>
-                    }
-                </div>
+                                                                @if (questions.Count() == 0)
+                                                                {
+                                                                    <p style ="position:absolute; bottom:10px;text-align:center;width:1000px;color:#00a000">
+                                                                        暂无课后问题</p>
+                                                                }
+                                                                else
+                                                                {
+                                                                    <input type="hidden" id="questionCount" value="@questions.Count" />
+                                                                    for (int i = 0; i < questions.Count(); i++)
+                                                                    {
+                                                                        <div class="question" style="font-size:16px">
+                                                                            @(i + 1)<span>.</span>@questions[i].Content <br />
+                                                                            <input value="@questions[i].RightAnswer" type="hidden" class="roghtanswer" />
+                                                                            @for (int j = 0; j < questions[i].Answers.Count(); j++)
+                                                                            {
+                                                                                <div class="radio"><label><input name="answer@(i+1)" type="radio" value="@j" class="answer" />@CommonEnums.Answers[j] : @questions[i].Answers[j]</label></div>
+                                                                            }
+                                                                        </div>
 
-            }
-            <input type="button" class="btn btn-orange btn-big" value="提交" style="width:100px;margin-bottom:10px" id="btnAnswerQuestion" />
+                                                                    }
+                                                                    <input type="button" class="btn btn-orange btn-big" value="提交" style="width:100px;margin-bottom:10px" id="btnAnswerQuestion" />
 
-        }
-                                <div class="warning"></div>
+                                                                }
+                                                                <div class="warning"></div>
 
-                            </div>
+</div>
                         </div>
 
 
