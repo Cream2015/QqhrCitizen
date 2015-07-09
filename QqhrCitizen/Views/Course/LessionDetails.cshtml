@@ -47,32 +47,11 @@
                             }
                             else
                             {
-                                if (lession.ContentType.ToString().Equals("video/mpeg"))
+                                if (lession.ContentType.ToString().Equals("video/mp4"))
                                 {
-                                    <object id ="player"  height="400"  width="600" classid="CLSID:6BF52A52-394A-11d3-B153-00C04F79FAA6">
-                                        <param name ="AutoStart"  value="-1">
-                                        <param name ="Balance"  value="0">
-                                        <param name ="enabled"  value="-1">
-                                        <param name ="EnableContextMenu"  value="-1">
-                                        <param name ="url"  value="@lession.Path">
-                                        <param name ="PlayCount"  value="1">
-                                        <param name ="rate"  value="1">
-                                        <param name ="currentPosition"  value="0">
-                                        <param name ="currentMarker"  value="0">
-                                        <param name ="defaultFrame"  value="">
-                                        <param name ="invokeURLs"  value="0">
-                                        <param name ="baseURL"  value="">
-                                        <param name ="stretchToFit"  value="0">
-                                        <param name ="volume"  value="100">
-                                        <param name ="mute"  value="0">
-                                        <param name ="uiMode"  value="mini">
-                                        <param name ="windowlessVideo"  value="0">
-                                        <param name ="fullScreen"  value="0">
-                                        <param name ="enableErrorDialogs"  value="-1">
-                                        <param name ="SAMIStyle"  value>
-                                        <param name ="SAMILang"  value>
-                                        <param name ="SAMIFilename"  value>
-                                     </object> 
+                                    <video controls="" autoplay="" name="media" width="600" height="400">
+                                        <source src="@lession.Path" type="video/mp4">
+                                    </video>
                                 }
                                 else
                                 {
@@ -256,8 +235,7 @@
         };
         $('body').everyTime('600s', function () {
             reset();
-            alertify.confirm("是否继续播放视频", function (e) {
-                $("#video-hidden").hide();
+            alertify.confirm("确认框", function (e) {
                 if (e) {
                     alertify.success("点击确认");
                     $("#video-hidden").hide();
