@@ -1076,9 +1076,9 @@ namespace QqhrCitizen.Controllers
 
             file.SaveAs(phicyPath + file.FileName);
 
-            var exten = Path.GetExtension(file.FileName);
+            /*var exten = Path.GetExtension(file.FileName);
 
-            /*if (!exten.Equals(".mp4"))
+            if (!exten.Equals(".mp4"))
             {
                 var video = new VideoFile(phicyPath + file.FileName);
                 video.Convert(".swf", Quality.Medium).MoveTo(phicyPath + radom + ".mp4");
