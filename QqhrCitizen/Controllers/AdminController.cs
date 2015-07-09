@@ -1516,6 +1516,8 @@ namespace QqhrCitizen.Controllers
         [ValidateInput(false)]
         public ActionResult ViwepagerkEdit(Viewpager model, HttpPostedFileBase file)
         {
+            Viewpager viewpager = new Viewpager();
+            viewpager = db.Viewpagers.Find(model.ID);
             if (file != null)
             {
                 System.IO.Stream stream = file.InputStream;
@@ -1523,16 +1525,14 @@ namespace QqhrCitizen.Controllers
                 stream.Read(buffer, 0, (int)stream.Length);
                 stream.Close();
                 model.Picture = buffer;
+                viewpager.Picture = model.Picture;
             }
-
-
-            Viewpager viewpager = new Viewpager();
-            viewpager = db.Viewpagers.Find(model.ID);
+            
             viewpager.Title = model.Title;
             viewpager.Subtitle = model.Subtitle;
             viewpager.Url = model.Url;
             viewpager.Priority = model.Priority;
-            viewpager.Picture = model.Picture;
+           
 
             db.SaveChanges();
             return RedirectToAction("ViwepagerManager");
