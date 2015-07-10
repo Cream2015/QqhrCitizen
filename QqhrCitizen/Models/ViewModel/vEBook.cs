@@ -52,7 +52,7 @@ namespace QqhrCitizen.Models.ViewModel
             this.FileID = model.FileID;
             this.File = model.File;
             this.Browses = model.Browses;
-            this.Sumamry = Helpers.String.SubString(QqhrCitizen.Helpers.HtmlFilter.Instance.SanitizeHtml(model.Description), 50, "...");
+            this.Sumamry = Helpers.String.SubString(QqhrCitizen.Helpers.HtmlFilter.Instance.SanitizeHtml(model.Description), 100, "...");
         }
     }
 }

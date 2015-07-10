@@ -25,7 +25,7 @@ function LoadNews() {
             var str = "";
             console.log(data);
             for (var i = 0 ; i < data.length; i++) {
-                str += '<div class="item"><div class="title"><a href="/News/Show/' + data[i].ID + '" target="_blank">' + data[i].Title + '</a></div><div>' + data[i].Sumamry + '</div></div>';
+                str += '<div class="item"><div class="title" style="padding:5px 0;font-size:18px;text-align:center"><a href="/News/Show/' + data[i].ID + '" target="_blank">' + data[i].Title + '</a></div><div style="font-size:16px">&emsp;&emsp;' + data[i].Sumamry + '</div></div>';
             }
             $(".lstNews").append(str);
             if (data.length == 10) {

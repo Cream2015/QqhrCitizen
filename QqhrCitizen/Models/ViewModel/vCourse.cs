@@ -47,7 +47,7 @@ namespace QqhrCitizen.Models.ViewModel
            // this.AuthorityAsInt = model.AuthorityAsInt;
             this.Browses = model.Browses;
             //Lessions = (from l in db.Lessions where l.CourseID == model.ID select l).ToList();
-            this.Sumamry = Helpers.String.SubString(QqhrCitizen.Helpers.HtmlFilter.Instance.SanitizeHtml(model.Description), 50, "...");
+            this.Sumamry = Helpers.String.SubString(QqhrCitizen.Helpers.HtmlFilter.Instance.SanitizeHtml(model.Description), 100, "...");
         }
 
     }
