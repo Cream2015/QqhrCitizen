@@ -55,7 +55,11 @@ function LoadCourses() {
         }).done(function (data) {
             var str = "";
             for (var i = 0 ; i < data.length; i++) {
-                str += '<div class="item"><div class="title"><a href="/Course/Show/' + data[i].ID + '" target="_blank">' + data[i].Title + '</a></div><div class="desc">' + data[i].Sumamry + '</div><div class="add"></div><div class="cover"> <a href="/Course/Show/' + data[i].ID + '" target="_blank"><img class="imgCoursePicM" src="/Course/ShowPicture/' + data[i].ID + '"></a></div></div>';
+                if (data[i].Sumamry.length == 0)
+                {
+                    data[i].Sumamry = "</br>";
+                }
+                str += '<div class="item"><div class="title"><a href="/Course/Show/' + data[i].ID + '" target="_blank">' + data[i].Title + '</a></div><div class="desc">' + data[i].Sumamry + '</br></div><div class="add"></div><div class="cover"><a href="/Course/Show/' + data[i].ID + '" target="_blank"><img class="imgCoursePicM" src="/Course/ShowPicture/' + data[i].ID + '" style="width:106px;height:106px"></a></div></div>';
             }
             $(".lstCourse").append(str);
             if (data.length == 10) {
