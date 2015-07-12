@@ -9,18 +9,31 @@ namespace QqhrCitizen.Models
     public class DB : DbContext
     {
         public DB() : base("sqlserverdb") { }
+
         public DbSet<User> Users { get; set; }
+
         public DbSet<Channel> Channels { get; set; }
+
         public DbSet<Course> Courses { get; set; }
+
         public DbSet<EBook> EBooks { get; set; }
+
         public DbSet<File> Files { get; set; }
+
         public DbSet<Lession> Lessions { get; set; }
+
         public DbSet<News> News { get; set; }
+
         public DbSet<Note> Notes { get; set; }
+
         public DbSet<Question> Questions { get; set; }
+
         public DbSet<CourseQuestion> CourseQuestions { get; set; }
+
         public DbSet<ResourceLink> ResourceLinks { get; set; }
+
         public DbSet<TypeDictionary> TypeDictionaries { get; set; }
+
         public DbSet<Live> Lives { get; set; }
 
         public DbSet<LessionScore> LessionScores { set; get; }
@@ -46,6 +59,8 @@ namespace QqhrCitizen.Models
         public DbSet<Product> Products { set; get; }
 
         public DbSet<ProductFile> ProductFiles { set; get; }
+
+        public DbSet<SpiderArticle> SpiderArticles { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

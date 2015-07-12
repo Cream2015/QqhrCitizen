@@ -1,0 +1,30 @@
+﻿@model IEnumerable<SpiderArticle>
+@{
+    ViewBag.Title = "Spider";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2 class="head-tietle">爬虫新闻审核</h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th>标题</th>
+            <th>来源</th>
+            <th>URL</th>
+            <th>时间</th>
+            <th>操作</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var n in Model)
+        {
+            <tr>
+                <td>@n.Title</td>
+                <td>@n.Source</td>
+                <td>@n.URL</td>
+                <td>@n.Time</td>
+                <td>TODO</td>
+            </tr>
+        }
+    </tbody>
+</table>

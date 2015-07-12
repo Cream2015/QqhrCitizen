@@ -5,15 +5,36 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
+using System.Timers;
+using QqhrCitizen.Spider;
 
 namespace QqhrCitizen
 {
     public class MvcApplication : System.Web.HttpApplication
     {
+        public static List<Spider.Spider>  Spiders = new List<Spider.Spider>();
+
         protected void Application_Start()
         {
             AreaRegistration.RegisterAllAreas();
             RouteConfig.RegisterRoutes(RouteTable.Routes);
+
+            /* 添加爬虫 */
+            Spiders.Add(new ApclcSpider());
+
+            var SpiderTimer = new Timer();
+            SpiderTimer.Interval = 1000 * 60 * 60 * 4;
+            SpiderTimer.Elapsed += SpiderTimer_Elapsed;
+            SpiderTimer.Start();
+
+            foreach (var s in Spiders)
+                s.SpiderBegin();
+        }
+
+        private void SpiderTimer_Elapsed(object sender, ElapsedEventArgs e)
+        {
+            foreach (var s in Spiders)
+                s.SpiderBegin();
         }
 
         protected void Session_Start(object sender, EventArgs e)

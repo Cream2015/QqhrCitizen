@@ -2263,5 +2263,11 @@ namespace QqhrCitizen.Controllers
             return Content("ok");
         }
         #endregion
+
+        public ActionResult Spider()
+        {
+            var news = db.SpiderArticles.Where(x => x.Status == SpiderArticleStatus.待审核).OrderByDescending(x => x.Time).ToList();
+            return View(news);
+        }
     }
 }
