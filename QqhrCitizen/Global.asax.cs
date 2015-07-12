@@ -21,6 +21,9 @@ namespace QqhrCitizen
 
             /* 添加爬虫 */
             Spiders.Add(new ApclcSpider());
+            Spiders.Add(new MoeSpider());
+            Spiders.Add(new HljceduSpider());
+            Spiders.Add(new PeopleSpider());
 
             var SpiderTimer = new Timer();
             SpiderTimer.Interval = 1000 * 60 * 60 * 4;

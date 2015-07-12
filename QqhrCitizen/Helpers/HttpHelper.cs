@@ -45,7 +45,7 @@ namespace QqhrCitizen.Helpers
             }
             return ret;
         }
-        public static string HttpGet(string Url)
+        public static string HttpGet(string Url, Encoding Encoding)
         {
             string ret = string.Empty;
             try
@@ -55,7 +55,7 @@ namespace QqhrCitizen.Helpers
                 webReq.CookieContainer = cookie;
                 HttpWebResponse response = (HttpWebResponse)webReq.GetResponse();
                 //cookie = webReq.CookieContainer.GetCookies(webReq, Url);
-                StreamReader sr = new StreamReader(response.GetResponseStream(), Encoding.Default);
+                StreamReader sr = new StreamReader(response.GetResponseStream(), Encoding);
                 ret = sr.ReadToEnd();
                 sr.Close();
                 response.Close();

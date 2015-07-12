@@ -13,12 +13,15 @@ namespace QqhrCitizen.Spider
 {
     public abstract class Spider
     {
-        public Spider(string Source, string BaseURL, int Interval = 1000)
+        public Spider(string Source, string BaseURL, Encoding Encoding, int Interval = 1000)
         {
             this.Source = Source;
             this.BaseURL = BaseURL;
             this.Interval = Interval;
+            this.Encoding = Encoding;
         }
+
+        private Encoding Encoding { get; set; }
 
         private string Source { get; set; }
 
@@ -28,46 +31,50 @@ namespace QqhrCitizen.Spider
 
         public Task SpiderBegin()
         {
-            using (var db = new DB())
+            return Task.Factory.StartNew(() =>
             {
-                return Task.Factory.StartNew(() =>
+                using (var db = new DB())
                 {
-                    var html = HttpHelper.HttpGet(BaseURL);
+                    System.Diagnostics.Debug.WriteLine("正在获取：" + BaseURL);
+                    var html = HttpHelper.HttpGet(BaseURL, Encoding);
                     var _urls = RegMatchUrl(html);
+                    System.Diagnostics.Debug.WriteLine("获得URL：" + _urls.Count);
                     var urls = FilterURL(_urls);
+                    System.Diagnostics.Debug.WriteLine("过滤后剩余：" + urls.Count);
                     foreach (var url in urls)
                     {
+                        System.Diagnostics.Debug.WriteLine("正在抓取：" + url);
                         if (db.SpiderArticles.Any(x => x.URL == url)) continue;
                         Thread.Sleep(Interval);
-                        var _html = HttpHelper.HttpGet(url);
+                        var _html = HttpHelper.HttpGet(url, Encoding);
                         try
                         {
                             db.SpiderArticles.Add(new SpiderArticle
                             {
                                 Time = GetTime(_html),
                                 Title = GetTitle(_html),
-                                Content = GetContent(_html),
+                                Content = GetContent(_html, url),
                                 Status = SpiderArticleStatus.待审核,
                                 NewsID = null,
                                 URL = url,
                                 Source = Source
                             });
+                            db.SaveChanges();
                         }
                         catch (Exception ex)
                         {
                             System.Diagnostics.Debug.WriteLine(ex.ToString());
                         }
                     }
-                    db.SaveChanges();
-                });
-            }
+                }
+            });
         }
         protected virtual List<string> FilterURL(List<string> URLs)
         {
             return null;
         }
 
-        protected virtual string GetContent(string Html)
+        protected virtual string GetContent(string Html, string URL = null)
         {
             return null;
         }
@@ -85,10 +92,10 @@ namespace QqhrCitizen.Spider
         private static List<string> RegMatchUrl(string html)
         {
             List<string> links = new List<string>();
-            MatchCollection matches = Regex.Matches(html, "<a(?:\\s+.+?)*?\\s+href=\"([^\"]*?)\".+>(.*?)</a>", RegexOptions.IgnoreCase);
-            foreach (Match match in matches)
+            MatchCollection matches = Regex.Matches(html, "href\\s*=\\s*(?:[\"'](?<1>[^\"']*)[\"']|(?<1>\\S+))", RegexOptions.IgnoreCase);
+            for (var i = 0; i < matches.Count; i++)
             {
-                string s = match.Groups[1].Value;
+                string s = matches[i].Groups[1].Value;
                 links.Add(s);
             }
             return links;
