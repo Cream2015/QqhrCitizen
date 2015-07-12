@@ -25,7 +25,7 @@ namespace QqhrCitizen.Spider
 
         protected override string GetTitle(string Html)
         {
-            return GetMidTxt(Html, "<title>", "--教育--人民网");
+            return GetMidTxt(Html, "<title>", "--教育--人民网").Replace("&nbsp;", " ");
         }
     }
 }
