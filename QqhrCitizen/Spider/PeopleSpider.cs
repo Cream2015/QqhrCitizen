@@ -20,8 +20,7 @@ namespace QqhrCitizen.Spider
         
         protected override string GetContent(string Html, string URL)
         {
-            return "<div>" + GetMidTxt(Html, "<div id=\"p_content\" class=\"clearfix\">", "<div class=\"diwen_ad\">")
-                .Replace("src=\"", "src=\"http://edu.people.com.cn/");
+            return "<div>" + GetMidTxt(Html, "<div id=\"p_content\" class=\"clearfix\">", "<div class=\"diwen_ad\">");
         }
 
         protected override string GetTitle(string Html)
