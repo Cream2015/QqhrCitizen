@@ -70,6 +70,7 @@ namespace QqhrCitizen.Controllers
             ViewBag.CourseTypes = _courseTypes;
             ViewBag.EBookTypes = _ebookTypes;
             ViewBag.Navigation = db.Navigations.ToList();
+            ViewBag.SpiderCount = db.SpiderArticles.Where(x => x.Status == SpiderArticleStatus.待审核).Count();
             if (requestContext.HttpContext.User.Identity.IsAuthenticated)
             {
                 ViewBag.CurrentUser = (from u in db.Users

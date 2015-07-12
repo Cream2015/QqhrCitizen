@@ -261,7 +261,7 @@
                     @if (user.Role == Role.Admin)
                     {
                         <li>
-                            <a id="Spider_Manage" style="cursor:pointer"><i class="icon-font">&#xe057;</i>爬虫管理</a>
+                            <a id="Spider_Manage" style="cursor:pointer"><i class="icon-font">&#xe057;</i>爬虫管理 (@ViewBag.SpiderCount)</a>
                             <ul class="sub-menu" id="spider_manage_ul" style="display:none">
                                 <li><a href="/Admin/Spider"><i class="icon-font">&#xe014;</i>爬虫新闻审核</a></li>
                             </ul>
