@@ -385,6 +385,8 @@
     <Content Include="Scripts\ckeditor\skins\moono\images\arrow.png" />
     <Content Include="Scripts\ckeditor\skins\moono\images\close.png" />
     <Content Include="Scripts\ckeditor\skins\moono\images\mini.png" />
+    <Content Include="Scripts\codecomb.cascade-1.0.3.js" />
+    <Content Include="Scripts\codecomb.cascade-1.0.3.min.js" />
     <Content Include="Scripts\jmeditor\ckeditor\build-config.js" />
     <Content Include="Scripts\jmeditor\ckeditor\ckeditor.js" />
     <Content Include="Scripts\jmeditor\ckeditor\config.js" />
@@ -1128,6 +1130,7 @@
     <Content Include="Views\Admin\AddCourseQuestion.cshtml" />
     <Content Include="Views\Course\Test.cshtml" />
     <Content Include="Views\Admin\Spider.cshtml" />
+    <Content Include="Views\Admin\SpiderVerify.cshtml" />
     <None Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Admin\ViwepagerEdit.cshtml" />
     <None Include="Web.Debug.config">

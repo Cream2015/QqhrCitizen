@@ -2264,10 +2264,50 @@ namespace QqhrCitizen.Controllers
         }
         #endregion
 
-        public ActionResult Spider()
+        public ActionResult Spider(int p = 1)
         {
-            var news = db.SpiderArticles.Where(x => x.Status == SpiderArticleStatus.待审核).OrderByDescending(x => x.Time).ToList();
+            IEnumerable<SpiderArticle> news = db.SpiderArticles.Where(x => x.Status == SpiderArticleStatus.待审核).OrderByDescending(x => x.Time);
+            ViewBag.PageInfo = PagerHelper.Do(ref news, 50, p);
             return View(news);
+        }
+
+        public ActionResult SpiderVerify(int id)
+        {
+            ViewBag.Level1 = db.TypeDictionaries.Where(x => x.Belonger == TypeBelonger.新闻 && x.FatherID == 0).ToList();
+            ViewBag.Level2 = db.TypeDictionaries.Where(x => x.FatherID != 0 && x.Belonger == TypeBelonger.新闻).ToList();
+            var sn = db.SpiderArticles.Find(id);
+            return View(sn);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult SpiderVerify(int id, string Operation, int TypeID)
+        {
+            var sn = db.SpiderArticles.Find(id);
+            if (Operation == "Accept")
+            {
+                var news = new News
+                {
+                    NewsTypeID = TypeID,
+                    Browses = 0,
+                    Place = Place.Native,
+                    IsWord = false,
+                    Time = sn.Time,
+                    Title = sn.Title,
+                    Content = sn.Content,
+                    UserID = CurrentUser.ID,
+                    IsHaveImg = false
+                };
+                db.News.Add(news);
+                sn.NewsID = news.ID;
+                sn.Status = SpiderArticleStatus.已收录;
+            }
+            else
+            {
+                sn.Status = SpiderArticleStatus.已废弃;
+            }
+            db.SaveChanges();
+            return RedirectToAction("Spider", "Admin");
         }
     }
 }

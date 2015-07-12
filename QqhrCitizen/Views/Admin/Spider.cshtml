@@ -18,13 +18,15 @@
     <tbody>
         @foreach (var n in Model)
         {
-            <tr>
+            <tr id="sn-@n.ID">
                 <td>@n.Title</td>
                 <td>@n.Source</td>
                 <td>@n.URL</td>
                 <td>@n.Time</td>
-                <td>TODO</td>
+                <td><a href="/Admin/SpiderVerify/@n.ID" target="_blank">审核新闻</a></td>
             </tr>
         }
     </tbody>
 </table>
+
+@Html.MakePager()
