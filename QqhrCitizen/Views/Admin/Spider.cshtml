@@ -1,0 +1,30 @@
+﻿@model IEnumerable<SpiderArticle>
+@{
+    ViewBag.Title = "Spider";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2 class="head-tietle">爬虫新闻审核</h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th>标题</th>
+            <th>来源</th>
+            <th>时间</th>
+            <th>操作</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var n in Model)
+        {
+            <tr id="sn-@n.ID">
+                <td>@n.Title</td>
+                <td>@n.Source</td>
+                <td>@n.Time</td>
+                <td><a href="/Admin/SpiderVerify/@n.ID" target="_blank">审核新闻</a></td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@Html.MakePager()
