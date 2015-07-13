@@ -4173,3 +4173,29 @@ background-position: 19px 0;
     height: 60px;
     margin-right: 5px;
 }
+.tis-item .tis-content ul li {
+display: list-item;
+list-style-position: inside;
+width: 260px;
+height: 30px;
+line-height: 30px;
+padding: 0 15px;
+margin: 2px 0 0;
+color: #c6ccc6;
+font-size: 12px;
+text-overflow: ellipsis;
+white-space: nowrap;
+overflow: hidden;
+}
+.tis-item .tis-content ul li a{
+font-size: 14px;
+color: #c6ccc6;
+cursor:pointer;
+}
+.tis-item .tis-content ul li a:hover {
+                        text-decoration: none;
+                    }
+
+                .tis-item .tis-content ul li:hover {
+                    background-color: #404040;
+                }
