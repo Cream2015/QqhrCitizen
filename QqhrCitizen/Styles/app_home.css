@@ -4173,7 +4173,7 @@ background-position: 19px 0;
     height: 60px;
     margin-right: 5px;
 }
-.tis-item .tis-content ul li {
+#tih .tis-item .tis-content ul li {
 display: list-item;
 list-style-position: inside;
 width: 260px;
@@ -4187,15 +4187,15 @@ text-overflow: ellipsis;
 white-space: nowrap;
 overflow: hidden;
 }
-.tis-item .tis-content ul li a{
+#tih .tis-item .tis-content ul li a{
 font-size: 14px;
 color: #c6ccc6;
 cursor:pointer;
 }
-.tis-item .tis-content ul li a:hover {
+#tih .tis-item .tis-content ul li a:hover {
                         text-decoration: none;
                     }
 
-                .tis-item .tis-content ul li:hover {
+                #tih .tis-item .tis-content ul li:hover {
                     background-color: #404040;
                 }
