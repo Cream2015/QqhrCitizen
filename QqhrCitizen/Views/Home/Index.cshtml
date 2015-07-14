@@ -172,17 +172,19 @@
                         <div class="tab_select" style="width:144px;" onmouseover="sub_t(42);km_tab.tabclk(0,'d_board');">要闻播报</div><div class="tab" style="width:144px;" onmouseover="sub_t(186);km_tab.tabclk(1,'d_board');">本地社教</div><div class="bar" style="left: 42px;"></div>
                     </div>
                     <div class="tabcontent">
-                        <div id="d_board2" style="padding-top:10px;">
+                        <div id="d_board2">
                             <div class="scroll-wrapper external-scroll tis-container" style="position: relative;overflow:hidden">
                                 <div class="external-scroll tis-container scroll-content" style="height: auto; margin-bottom: 0px; margin-right: 0px;overflow:hidden;">
                                     <div id="tih" style="height: 314px;">
                                         <div class="tis-item">
                                             <div class="tis-content">
+											<ul>
                                                 @foreach (News n in ViewBag.Native)
                                                 {
 
                                                     <li style="cursor:pointer"><a href="/News/Show/@n.ID" title="@n.Title" >@n.Title</a></li>
                                                 }
+												</ul>
                                             </div>
                                         </div>
                                         <div style="height:6px; overflow:hidden;">&nbsp;</div>
