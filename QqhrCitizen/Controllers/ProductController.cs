@@ -28,7 +28,16 @@ namespace QqhrCitizen.Controllers
         {
             Product product = new Product();
             product = db.Products.Find(id);
-            ViewBag.Product = new vProduct(product);
+            vProduct pro = new vProduct(product);
+            if(pro.ProductVideo==null)
+            {
+                ViewBag.ProductVideo = 0;
+            }
+            else
+            {
+                ViewBag.ProductVideo = 1;
+            }
+            ViewBag.Product = pro;
             return View();
         }
 
