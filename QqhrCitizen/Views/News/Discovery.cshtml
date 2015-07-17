@@ -27,7 +27,7 @@
                 {
                     <div id="d_12FF2473CE16B988" class="d-coursecategory">
                         <div class="head">
-                            <span onclick="doSubmit(0,'12FF2473CE16B988')">
+                            <span>
                                 @item.TypeValue
                             </span>
                         </div>
@@ -36,7 +36,9 @@
                             <div id="d_select_category_a" class="cff3">
                                 @foreach (var type in @item.Children)
                                 {
-                                    <div data-txt="@item.TypeValue" class="cfp3"><a href="/News/Discovery/@item.ID">@type.TypeValue</a></div>
+                                    <div data-txt="@item.TypeValue" class="cfp3">
+										<a href="/News/Discovery/@item.ID">@type.TypeValue</a>
+									</div>
                                 }
                             </div>
                         </div>

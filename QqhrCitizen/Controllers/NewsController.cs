@@ -19,9 +19,6 @@ namespace QqhrCitizen.Controllers
             ViewBag.Navigation = db.Navigations.ToList();
             List<News> lstNews = new List<News>();
             lstNews = db.News.OrderByDescending(n => n.Browses).ThenByDescending(n => n.Time).Take(8).ToList();
-
-            
-           
             ViewBag.LstNews = lstNews;
             return View();
         }
