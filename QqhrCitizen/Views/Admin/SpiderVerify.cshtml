@@ -3,7 +3,6 @@
     ViewBag.Title = "审核新闻";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
-<script type="text/javascript" src="~/Scripts/qqhrcitizen.base.js"></script>
 <h2>@Model.Title</h2>
 
 <div>
@@ -38,7 +37,7 @@
 <script>
     function Accept() {
         $('#Operation').val('Accept');
-		if($("#lvl2").val()=="")
+		if($("#lvl2").val()==null)
 		{
 			CastMsg("请选择新闻分类");
 			return false;
