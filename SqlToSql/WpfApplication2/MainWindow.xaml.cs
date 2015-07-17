@@ -363,7 +363,7 @@ namespace WpfApplication2
             for (int f = 0; f < cit_sql5.Rows.Count; f++)
             {
                 Time = SetDateTime(cit_sql5.Rows[f]["CreatedTime"]);
-                insert_sql5 = "insert into TypeDictionaries (TypeValue,Time,NeedAuthorize,Belonger,FatherID) values ('" + cit_sql5.Rows[f]["Name"] + "','" + Time + "','0','0','" + FantherID + "');Select @@Identity";
+                insert_sql5 = "insert into TypeDictionaries (TypeValue,Time,NeedAuthorize,Belonger,FatherID) values ('" + cit_sql5.Rows[f]["Name"] + "','" + Time + "','0','4','" + FantherID + "');Select @@Identity";
                 ShowSqlNumber.Dispatcher.Invoke(new UpdateTextCallback(this.ShowText),
                     new object[] { insert_sql5 });
                 sum++;
