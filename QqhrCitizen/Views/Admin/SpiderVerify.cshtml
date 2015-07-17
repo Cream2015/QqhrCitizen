@@ -30,6 +30,7 @@
                 <option data-parent-id="@td.FatherID" value="@td.ID">@td.TypeValue</option>
             }
         </select>
+		<a href="/Admin/AddType?type=新闻" class="btn btn-deflaut" id="add_new_type">增加新闻分类</a>
         <a href="javascript: Accept()" class="btn btn-success">录入新闻</a>
         <a href="javascript: Reject()" class="btn btn-danger">删除新闻</a>
     </p>
@@ -37,10 +38,29 @@
 <script>
     function Accept() {
         $('#Operation').val('Accept');
-        $('form').submit();
+		if($("#lvl2").val()=="")
+		{
+			CastMsg("请选择新闻分类");
+			return false;
+		}
+		else
+		{
+			$('form').submit();
+			return true;
+		}
     }
     function Reject() {
         $('#Operation').val('Reject');
         $('form').submit();
     }
+	$("#lvl2").change(function(){
+		if($("#lvl2").val()!="")
+		{
+			$("#add_new_type").hide();
+		}
+		else
+		{
+			$("#add_new_type").show();
+		}
+	});
 </script>
