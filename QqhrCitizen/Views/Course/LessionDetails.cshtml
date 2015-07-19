@@ -48,18 +48,11 @@
                             else
                             {
                                     <script>
-									function JudgeBroswer() { 
 											if($.browser.msie) { 
 												if($.browser.msie&&($.browser.version == "7.0")||$.browser.msie&&($.browser.version == "6.0")||$.browser.msie&&($.browser.version == "5.0")||$.browser.msie&&($.browser.version == "8.0") )
 												{
-												<video width="600" height="400" controls="controls"> 
-													<source src="movie.mp4" type="video/mp4" /> 
-													<source src="movie.ogg" type="video/ogg" /> 
-													<source src="movie.webm" type="video/webm" /> 
-													<object data="movie.mp4" width="320" height="240"> 
-														<embed src="movie.swf" width="320" height="240" /> 
-													</object> 
-												</video> 
+												var show_html="<video width='600' height='400' controls='controls'><source src='@lession.Path' type='video/mp4'/><source src='@lession.Path' type='video/ogg'/><source src='@lession.Path' type='video/webm'/><object data='@lession.Path' width='600' height='400'><embed src='@lession.Path' width='600' height='400'/></object></video>";
+												$("#d_coursedetail").html(show_html);
 												}
 												else
 												{
