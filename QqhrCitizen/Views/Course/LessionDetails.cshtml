@@ -47,9 +47,30 @@
                             }
                             else
                             {
-                        
                                     <script>
-                                        player("@lession.Path", 600, 400, 1, "start.jpg");
+									function JudgeBroswer() { 
+											if($.browser.msie) { 
+												if($.browser.msie&&($.browser.version == "7.0")||$.browser.msie&&($.browser.version == "6.0")||$.browser.msie&&($.browser.version == "5.0")||$.browser.msie&&($.browser.version == "8.0") )
+												{
+												<video width="600" height="400" controls="controls"> 
+													<source src="movie.mp4" type="video/mp4" /> 
+													<source src="movie.ogg" type="video/ogg" /> 
+													<source src="movie.webm" type="video/webm" /> 
+													<object data="movie.mp4" width="320" height="240"> 
+														<embed src="movie.swf" width="320" height="240" /> 
+													</object> 
+												</video> 
+												}
+												else
+												{
+												player("@lession.Path", 600, 400, 1, "start.jpg");
+												}
+											} 
+											else
+											{
+												player("@lession.Path", 600, 400, 1, "start.jpg");
+											}
+                                        
                                     </script>
                             }
                         </div>
