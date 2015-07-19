@@ -48,22 +48,23 @@
                             else
                             {
                                     <script>
-											if($.browser.msie) { 
-												if($.browser.msie&&($.browser.version == "7.0")||$.browser.msie&&($.browser.version == "6.0")||$.browser.msie&&($.browser.version == "5.0")||$.browser.msie&&($.browser.version == "8.0") )
-												{
-												var show_html="<video width='600' height='400' controls='controls'><source src='@lession.Path' type='video/mp4'/><source src='@lession.Path' type='video/ogg'/><source src='@lession.Path' type='video/webm'/><object data='@lession.Path' width='600' height='400'><embed src='@lession.Path' width='600' height='400'/></object></video>";
-												$("#d_coursedetail").html(show_html);
-												}
-												else
-												{
-												player("@lession.Path", 600, 400, 1, "start.jpg");
-												}
-											} 
-											else
-											{
-												player("@lession.Path", 600, 400, 1, "start.jpg");
-											}
-                                        
+									if($.browser.msie)
+									{
+										if(($.browser.version==7)||($.browser.version==6)||($.browser.version==8)) 
+										{ 
+													player("@lession.Path", 600, 400, 1, "start.jpg");
+													alert($.browser.version);
+										}
+										else
+										{
+													var show_html="<video width='600' height='400' controls='controls'><source src='@lession.Path' type='video/mp4'/><source src='@lession.Path' type='video/ogg'/><source src='@lession.Path' type='video/webm'/><object data='@lession.Path' width='600' height='400'><embed src='@lession.Path' width='600' height='400'/></object></video>";
+													$("#d_coursedetail").html(show_html);
+										}
+									}
+									else
+									{
+									player("@lession.Path", 600, 400, 1, "start.jpg");
+									}		
                                     </script>
                             }
                         </div>
