@@ -10758,8 +10758,7 @@ label.inline {
 
     .d-livenew .body {
         width: 1000px;
-        height: 474px;
-        overflow: hidden;
+		overflow: hidden;
     }
 
         .d-livenew .body .slidecontainer {
@@ -10783,7 +10782,7 @@ label.inline {
                     display: block;
                     width: 230px;
                     height: 158px;
-                    overflow: hidden;
+					overflow: hidden;
                 }
 
                     .d-livenew .body .slidecontainer .item .cover img {

@@ -2,6 +2,7 @@
 @using QqhrCitizen.Models.ViewModel;
 @{
     ViewBag.Title = "直播首页_齐齐哈尔市民学习网";
+	int i=0;
 }
 <script>
     $("#topmenu_live").attr("class", "item_selected");
@@ -33,7 +34,7 @@
                     <div class="head">
                         最新直播
                     </div>
-                    <div class="body">
+                    <div class="body" id="live_body">
                         <div id="slide_bookhot" class="slidecontainer lstLive">
                             @foreach (var item in ViewBag.LiveList)
                             {
@@ -59,6 +60,7 @@
                                     }
                                     <div class="date"><span>开始:@item.Begin</span><br />结束<span>@item.End</span></div>
                                 </div>
+								i++;
                             }
                         </div>
                     </div>
@@ -68,3 +70,10 @@
         <div class="clear"></div>
     </div>
 </div>
+$(document).ready(function(){
+				var word_list=@i;
+				var height=Math.ceil(word_list/4)*270;
+				alert(height);
+				$("#live_body").height(height);
+});						
+</script>

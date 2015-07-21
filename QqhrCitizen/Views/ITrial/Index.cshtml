@@ -1,14 +1,15 @@
 ﻿@{
     ViewBag.Title = "I实验";
     Layout = "~/Views/Shared/_Layout.cshtml";
+	int i=0;
 }
 
 <div class="d-row" style="border-top: 1px solid #3169ea;">
     <div class="d-row-c" style="margin-top:10px">
         <div class="d-col-2-12">
             <div class="contentarea">
-                <div id="d_bookhot" class="d-livenew" style="width:1000px">
-                    <div class="body">
+                <div id="livenew" class="d-livenew" style="width:1000px">
+                    <div class="body" id="itrial_body">
                         <div id="slide_bookhot" class="slidecontainer" style="width:1000px">
                             @foreach (var item in ViewBag.ITrials as List<ITrial>)
                             {
@@ -21,6 +22,7 @@
                                     </div>
                                     <div class="date" title="">@item.Time</div>
                                 </div>
+								i++;
                             }
                         </div>
                     </div>
@@ -29,3 +31,10 @@
         </div>
     </div>
 </div>
+<script>
+$(document).ready(function(){
+				var word_list=@i;
+				var height=Math.ceil(word_list/4)*270;
+				$("#itrial_body").height(height);
+});						
+</script>
