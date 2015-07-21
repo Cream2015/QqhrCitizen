@@ -14,8 +14,7 @@ namespace QqhrCitizen.Controllers
         private List<News> GetTop5News()
         {
             var ret = new List<News>();
-            var i = 0;
-            foreach (var n in db.News.AsNoTracking())
+            foreach (var n in db.News.AsNoTracking().OrderByDescending(n => n.Browses))
             {
                 if (n.ImgUrl.Count > 0)
                 {
