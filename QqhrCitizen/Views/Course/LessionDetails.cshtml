@@ -7,6 +7,7 @@
     bool flag = ViewBag.Flag;
     ViewBag.Title = lession.Title;
 }
+
 <script>
     $("#topmenu_course").attr("class", "item_selected");
 </script>
@@ -15,7 +16,6 @@
 <link rel="stylesheet" href="~/Styles/alertify.css" />
 <link rel="stylesheet" href="~/Styles/alertify-bootstrap.css" />
 <link rel="stylesheet" href="~/Styles/alertify-bootstrap-3.css" />
-<script src="~/Scripts/video.js"></script>
 <script src="~/Scripts/ckeditor/ckeditor.js"></script>
 <div id="d_menu" class="d-menu menu-cou">
     <div id="d_menu_c" class="d-menu-c">
@@ -30,6 +30,7 @@
         <!-- region end: menu -->
     </div>
 </div>
+
 <div id="d_main" class="d-main" style="min-width: 1000px;">
     <div class="container">
         <div class="d-row" style="padding: 20px 0 0 0;">
@@ -37,7 +38,7 @@
                 <div class="d-col-2-8">
                     <div class="contentarea">
                         <!-- region start: 课程信息 -->
-                        <div id="d_coursedetail" class="d-coursedetail">
+                        <div id="d_coursedetail" class="d-coursedetail" width="600" height="400">
                             <h2>@lession.Title</h2>
                             <input type="hidden" id="hdCurrentuser" value="@(ViewBag.CurrentUser!=null? @ViewBag.CurrentUser.Username:"")" />
                             <input type="hidden" name="name" id="LessionID" value="@lession.ID" />
@@ -47,25 +48,50 @@
                             }
                             else
                             {
-                                    <script>
-									if($.browser.msie)
-									{
-										if(($.browser.version==7)||($.browser.version==6)||($.browser.version==8)) 
-										{ 
-													player("@lession.Path", 600, 400, 1, "start.jpg");
-													alert($.browser.version);
-										}
-										else
-										{
-													var show_html="<video width='600' height='400' controls='controls'><source src='@lession.Path' type='video/mp4'/><source src='@lession.Path' type='video/ogg'/><source src='@lession.Path' type='video/webm'/><object data='@lession.Path' width='600' height='400'><embed src='@lession.Path' width='600' height='400'/></object></video>";
-													$("#d_coursedetail").html(show_html);
-										}
-									}
-									else
-									{
-									player("@lession.Path", 600, 400, 1, "start.jpg");
-									}		
-                                    </script>
+								if(lession.Path.ToString().Substring(lession.Path.ToString().Length-3,3)!="wmv")
+								{
+								<div id="a1"></div>
+								<script type="text/javascript" src="~/Scripts/ckplayer/ckplayer.js" charset="utf-8"></script>
+								<script type="text/javascript">
+									var flashvars={
+										f:'@lession.Path',
+										c:0
+									};
+									var params={bgcolor:'#FFF',allowFullScreen:true,allowScriptAccess:'always',wmode:'transparent'};
+									var video=['@lession.Path'];
+									CKobject.embed('/Scripts/ckplayer/ckplayer.swf','a1','ckplayer_a1','600','400',false,flashvars,video,params);
+													
+								</script>
+								}
+								else
+								{
+								<object width=600 height=400 classid="CLSID:22d6f312-b0f6-11d0-94ab-0080c74c7e95" codebase="http://activex.microsoft.com/activex/controls/mplayer/en/nsmp2inf.cab#Version=6,4,5,715" standby="Loading Microsoft Windows Media Player components..." type="application/x-oleobject" hspace="5"> 
+									<param name="AutoRewind" value=1> 
+									<param name="FileName" value="@lession.Path"> 
+									<param name="ShowControls" value="1"> 
+									<param name="ShowPositionControls" value="0"> 
+									<param name="ShowAudioControls" value="1"> 
+									<param name="ShowTracker" value="0"> 
+									<param name="ShowDisplay" value="0"> 
+									<param name="ShowStatusBar" value="0"> 
+									<param name="ShowGotoBar" value="0"> 
+									<param name="ShowCaptioning" value="0"> 
+									<param name="AutoStart" value=1> 
+									<param name="Volume" value="5000"> 
+									<param name="AnimationAtStart" value="0"> 
+									<param name="TransparentAtStart" value="0"> 
+									<param name="AllowChangeDisplaySize" value="0"> 
+									<param name="AllowScan" value="0"> 
+									<param name="EnableContextMenu" value="0"> 
+									<param name="ClickToPlay" value="0"> 
+								</object>
+								<script>
+								if(!$.browser.msie){ 
+								document.write("<p style='font-size:14px'>如果无法观看视频，说明你没有安装<strong>wmpfirefoxplugin</strong>插件，下载地址：<a target='_blank' href='http://download.csdn.net/detail/fanfzj/8920997'>http://download.csdn.net/detail/fanfzj/8920997</a></p>");
+								}
+								</script> 
+								
+								}
                             }
                         </div>
                         <div style="width:600px;height:400px;background-color:#ffffff;position: absolute;top: 34px;z-index:1000;display:none" id="video-hidden"></div>
@@ -244,13 +270,16 @@
         };
         $('body').everyTime('600s', function () {
             reset();
-            $("#video-hidden").hide();
+            $("#video-hidden").show();
+			CKobject.getObjectById('ckplayer_a1').videoPause();
             alertify.confirm("确认框", function (e) {
                 if (e) {
                     alertify.success("点击确认");
+					CKobject.getObjectById('ckplayer_a1').videoPlay();
                     $("#video-hidden").hide();
                 } else {
                     alertify.error("点击取消");
+					CKobject.getObjectById('ckplayer_a1').videoPause();
                     $("#video-hidden").show();
                 }
             });

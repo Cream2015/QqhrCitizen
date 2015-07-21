@@ -162,6 +162,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="crossdomain.xml" />
     <Content Include="fonts\icomoon.dev.svg" />
     <Content Include="fonts\icomoon.svg" />
     <Content Include="Global.asax" />
@@ -385,6 +386,24 @@
     <Content Include="Scripts\ckeditor\skins\moono\images\arrow.png" />
     <Content Include="Scripts\ckeditor\skins\moono\images\close.png" />
     <Content Include="Scripts\ckeditor\skins\moono\images\mini.png" />
+    <Content Include="Scripts\ckplayer\ckplayer.js" />
+    <Content Include="Scripts\ckplayer\ckplayer.swf" />
+    <Content Include="Scripts\ckplayer\ckplayer.xml" />
+    <Content Include="Scripts\ckplayer\language.xml" />
+    <Content Include="Scripts\ckplayer\related.xml" />
+    <Content Include="Scripts\ckplayer\share.xml" />
+    <Content Include="Scripts\ckplayer\share\feixin.png" />
+    <Content Include="Scripts\ckplayer\share\google.png" />
+    <Content Include="Scripts\ckplayer\share\kaixin001.png" />
+    <Content Include="Scripts\ckplayer\share\msn.png" />
+    <Content Include="Scripts\ckplayer\share\qq.png" />
+    <Content Include="Scripts\ckplayer\share\qq2.png" />
+    <Content Include="Scripts\ckplayer\share\qzone.png" />
+    <Content Include="Scripts\ckplayer\share\rr.png" />
+    <Content Include="Scripts\ckplayer\share\sina.png" />
+    <Content Include="Scripts\ckplayer\share\sohu.png" />
+    <Content Include="Scripts\ckplayer\share\tianya.png" />
+    <Content Include="Scripts\ckplayer\style.swf" />
     <Content Include="Scripts\codecomb.cascade-1.0.3.js" />
     <Content Include="Scripts\codecomb.cascade-1.0.3.min.js" />
     <Content Include="Scripts\jmeditor\ckeditor\build-config.js" />
