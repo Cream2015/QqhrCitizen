@@ -573,6 +573,9 @@
     <Content Include="Scripts\spectrum.js" />
     <Content Include="Scripts\stickUp.js" />
     <Content Include="Scripts\stickUp.min.js" />
+    <Content Include="Scripts\video.dev.js" />
+    <Content Include="Scripts\video.novtt.dev.js" />
+    <Content Include="Scripts\video.novtt.js" />
     <Content Include="Styles\alertify-bootstrap-3.css" />
     <Content Include="Styles\alertify-bootstrap.css" />
     <Content Include="Styles\alertify.css" />
@@ -668,6 +671,9 @@
     <Content Include="Scripts\pdf.worker.js" />
     <Content Include="Scripts\viewer.js" />
     <Content Include="Styles\spectrum.css" />
+    <Content Include="Styles\video-js.css" />
+    <Content Include="Styles\video-js.min.css" />
+    <Content Include="Styles\video-js.swf" />
     <Content Include="Styles\viewer.css" />
     <Content Include="swfs\playerProductInstall.swf" />
     <Content Include="swfs\videoPlayer.swf" />
@@ -1131,6 +1137,7 @@
     <Content Include="Views\Course\Test.cshtml" />
     <Content Include="Views\Admin\Spider.cshtml" />
     <Content Include="Views\Admin\SpiderVerify.cshtml" />
+    <Content Include="Styles\video-js.less" />
     <None Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Admin\ViwepagerEdit.cshtml" />
     <None Include="Web.Debug.config">
