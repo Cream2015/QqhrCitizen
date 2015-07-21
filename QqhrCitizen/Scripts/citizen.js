@@ -182,7 +182,6 @@ function LoadProducts() {
             }
             var height=Math.ceil(i/4)*270;
             $("#product_body").height(height + product_list_height);
-            alert(height + product_list_height);
             $(".lstProduct").append(str);
             if (data.length == 10) {
                 lock = false;
