@@ -1138,6 +1138,7 @@
     <Content Include="Views\Admin\Spider.cshtml" />
     <Content Include="Views\Admin\SpiderVerify.cshtml" />
     <Content Include="Styles\video-js.less" />
+    <Content Include="Styles\demo.captions.vtt" />
     <None Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Admin\ViwepagerEdit.cshtml" />
     <None Include="Web.Debug.config">
@@ -1152,6 +1153,7 @@
     <Folder Include="Content\" />
     <Folder Include="Lessions\" />
     <Folder Include="LiveFile\" />
+    <Folder Include="Styles\font\" />
     <Folder Include="Upload\NewsWord\" />
     <Folder Include="Views\ViewPager\" />
   </ItemGroup>

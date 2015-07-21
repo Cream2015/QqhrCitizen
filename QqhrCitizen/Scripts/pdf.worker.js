@@ -18608,9 +18608,9 @@ var Font = (function FontClosure() {
               properties.cidSystemInfo.ordering === 'Korea1')))) {
         // Then:
         // a) Map the character code to a character identifier (CID) according
-        // to the font’s CMap.
+        // to the font's CMap.
         // b) Obtain the registry and ordering of the character collection used
-        // by the font’s CMap (for example, Adobe and Japan1) from its
+        // by the font's CMap (for example, Adobe and Japan1) from its
         // CIDSystemInfo dictionary.
         var registry = properties.cidSystemInfo.registry;
         var ordering = properties.cidSystemInfo.ordering;
