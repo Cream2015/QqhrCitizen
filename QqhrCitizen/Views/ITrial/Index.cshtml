@@ -7,7 +7,7 @@
     <div class="d-row-c" style="margin-top:10px">
         <div class="d-col-2-12">
             <div class="contentarea">
-                <div id="d_bookhot" class="d-livenew" style="width:1000px">
+                <div id="d_livenew" class="d-livenew" style="width:1000px">
                     <div class="body">
                         <div id="slide_bookhot" class="slidecontainer" style="width:1000px">
                             @foreach (var item in ViewBag.ITrials as List<ITrial>)
@@ -22,6 +22,7 @@
                                     <div class="date" title="">@item.Time</div>
                                 </div>
                             }
+                            <div class="clear"></div>
                         </div>
                     </div>
                 </div>
