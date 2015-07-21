@@ -181,7 +181,8 @@ function LoadProducts() {
                 str += ' <div class="item"><a class="cover" href="/Product/Show/' + data[i].ID + '" target="_blank" style="width: 230px;"><img src="' + data[i].ProductImages[0].Path + '" width="230" height="158" /></a><div class="title trim"><a href="/Product/Show/' + data[i].ID + '" style="text-align:center">' + data[i].Title + '</a></div><div class="description" title="">' + data[i].Price + '</div></div>';
             }
             var height=Math.ceil(i/4)*270;
-            $("#itrial_body").height(height + product_list_height);
+            $("#product_body").height(height + product_list_height);
+            alert(height + product_list_height);
             $(".lstProduct").append(str);
             if (data.length == 10) {
                 lock = false;
