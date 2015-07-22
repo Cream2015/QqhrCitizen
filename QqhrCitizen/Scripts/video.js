@@ -77,7 +77,7 @@ function ShowFlash(furl,width,height,autostart,baseurl){
 function ShowFlv(furl,width,height,autostart,baseurl){
     var str='';
     var fname='';
-    str='<object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=6,0,29,0" width="'+width+'" height="'+height+'"><param name="movie" value="'+baseurl+'e/incs/videoplayer/flv/flvplayer.swf?vcastr_file='+furl+'&vcastr_title='+fname+'&BarColor=0x000000&BarPosition=1&IsAutoPlay='+autostart+'"><param name="quality" value="high"><param name="allowFullScreen" value="true" /><embed src="'+baseurl+'e/incs/videoplayer/flv/flvplaye...(line truncated)...
+    str='<object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=6,0,29,0" width="'+width+'" height="'+height+'"><param name="movie" value="'+baseurl+'e/incs/videoplayer/flv/flvplayer.swf?vcastr_file='+furl+'&vcastr_title='+fname+'&BarColor=0x000000&BarPosition=1&IsAutoPlay='+autostart+'"><param name="quality" value="high"><param name="allowFullScreen" value="true" /><embed src="'+baseurl+'e/incs/videoplayer/flv/flvplayer.swf?vcastr_file='+furl+'&vcastr_title='+fname+'&BarColor=0x000000&BarPosition=1&IsAutoPlay='+autostart+'" allowFullScreen="true"  quality="high" pluginspage="http://www.macromedia.com/go/getflashplayer" type="application/x-shockwave-flash" width="'+width+'" height="'+height+'"></embed></object>';
     return str;
 }
 
@@ -91,7 +91,7 @@ function ShowMediaPlayer(furl,width,height,autostart,baseurl){
 //realplayer
 function ShowRealPlayer(furl,width,height,autostart,baseurl){
     var str='';
-    str='<object classid="clsid:CFCDAA03-8BE4-11cf-B84B-0020AFBBCCFA" HEIGHT="'+height+'" ID="Player" WIDTH="'+width+'" VIEWASTEXT><param NAME="_ExtentX" VALUE="12726"><param NAME="_ExtentY" VALUE="8520"><param NAME="AUTOSTART" VALUE="'+autostart+'"><param NAME="SHUFFLE" VALUE="0"><param NAME="PREFETCH" VALUE="0"><param NAME="NOLABELS" VALUE=0><param NAME=CONTROLS VALUE=ImageWindow><param NAME=CONSOLE VALUE=_master><param NAME=LOOP VALUE=0><param NAME=NUMLOOP VALUE=0><param NAME=CENTER VALUE=0><param NAME=MAIN...(line truncated)...
+    str = '<object classid="clsid:CFCDAA03-8BE4-11cf-B84B-0020AFBBCCFA" HEIGHT="' + height + '" ID="Player" WIDTH="' + width + '" VIEWASTEXT><param NAME="_ExtentX" VALUE="12726"><param NAME="_ExtentY" VALUE="8520"><param NAME="AUTOSTART" VALUE="' + autostart + '"><param NAME="SHUFFLE" VALUE="0"><param NAME="PREFETCH" VALUE="0"><param NAME="NOLABELS" VALUE=0><param NAME=CONTROLS VALUE=ImageWindow><param NAME=CONSOLE VALUE=_master><param NAME=LOOP VALUE=0><param NAME=NUMLOOP VALUE=0><param NAME=CENTER VALUE=0><param NAME=MAINTAINASPECT VALUE="' + furl + '"><param NAME=BACKGROUNDCOLOR VALUE="#000000"></object><br><object CLASSID="clsid:CFCDAA03-8BE4-11cf-B84B-0020AFBBCCFA" HEIGHT=32 ID="Player" WIDTH="' + width + '" VIEWASTEXT><param NAME=_ExtentX VALUE=18256><param NAME=_ExtentY VALUE=794><param NAME=AUTOSTART VALUE="' + autostart + '"><param NAME=SHUFFLE VALUE=0><param NAME=PREFETCH VALUE=0><param NAME=NOLABELS VALUE=0><param NAME=CONTROLS VALUE=controlpanel><param NAME=CONSOLE VALUE=_master><param NAME=LOOP VALUE=0><param NAME=NUMLOOP VALUE=0><param NAME=CENTER VALUE=0><param NAME=MAINTAINASPECT VALUE=0><param NAME=BACKGROUNDCOLOR VALUE="#000000"><param NAME=SRC VALUE="' + furl + '"></object>';
     return str;
 }
 

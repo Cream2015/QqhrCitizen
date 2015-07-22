@@ -11,6 +11,7 @@
 <script>
     $("#topmenu_course").attr("class", "item_selected");
 </script>
+<script src="~/Scripts/video.js"></script>
 <script src="~/Scripts/alertify.js"></script>
 <script src="~/Scripts/jquery.timers-1.2.js"></script>
 <link rel="stylesheet" href="~/Styles/alertify.css" />
@@ -50,95 +51,71 @@
                             {
 								if(lession.Path.ToString().Substring(lession.Path.ToString().Length-3,3)!="wmv")
 								{
-								<div id="a1"></div>
-								<script type="text/javascript" src="~/Scripts/ckplayer/ckplayer.js" charset="utf-8"></script>
-								<script type="text/javascript">
-									var flashvars={
-										f:'@lession.Path',
-										c:0
-									};
-									var params={bgcolor:'#FFF',allowFullScreen:true,allowScriptAccess:'always',wmode:'transparent'};
-									var video=['@lession.Path'];
-									CKobject.embed('/Scripts/ckplayer/ckplayer.swf','a1','ckplayer_a1','600','400',false,flashvars,video,params);
+									<div id="a1"></div>
+									<script type="text/javascript" src="~/Scripts/ckplayer/ckplayer.js" charset="utf-8"></script>
+									<script type="text/javascript">
+										var flashvars={
+											f:'@lession.Path',
+											c:0
+										};
+										var params={bgcolor:'#FFF',allowFullScreen:true,allowScriptAccess:'always',wmode:'transparent'};
+										var video=['@lession.Path'];
+										CKobject.embed('/Scripts/ckplayer/ckplayer.swf','a1','ckplayer_a1','600','400',false,flashvars,video,params);
 													
-								</script>
+									</script>
 								}
 								else
 								{
-								<OBJECT classid="CLSID:22d6f312-b0f6-11d0-94ab-0080c74c7e95" codebase="http://activex.microsoft.com/activex/controls/mplayer/en/nsmp2inf.cab#Version=5,1,52,701" type=application/x-oleobject STANDBY="Loading Microsoft Windows Media Player components..." width="500" height="400">
-								 <PARAM NAME="AudioStream" VALUE="-1">
-								 <PARAM NAME="AutoSize" VALUE="0">
-								 <PARAM NAME="AutoStart" VALUE="-1">
-								 <PARAM NAME="AnimationAtStart" VALUE="0">
-								 <PARAM NAME="AllowScan" VALUE="-1">
-								 <PARAM NAME="AllowChangeDisplaySize" VALUE="-1">
-								 <PARAM NAME="AutoRewind" VALUE="0">
-								 <PARAM NAME="Balance" VALUE="0">
-								 <PARAM NAME="BaseURL" VALUE="">
-								 <PARAM NAME="BufferingTime" VALUE="5">
-								 <PARAM NAME="CaptioningID" VALUE="">
-								 <PARAM NAME="ClickToPlay" VALUE="-1">
-								 <PARAM NAME="CursorType" VALUE="0">
-								 <PARAM NAME="CurrentPosition" VALUE="-1">
-								 <PARAM NAME="CurrentMarker" VALUE="0">
-								 <PARAM NAME="DefaultFrame" VALUE="">
-								 <PARAM NAME="DisplayBackColor" VALUE="0">
-								 <PARAM NAME="DisplayForeColor" VALUE="16777215">
-								 <PARAM NAME="DisplayMode" VALUE="0">
-								 <PARAM NAME="DisplaySize" VALUE="4">
-								 <PARAM NAME="Enabled" VALUE="-1">
-								 <PARAM NAME="EnableContextMenu" VALUE="-1">
-								 <PARAM NAME="EnablePositionControls" VALUE="-1">
-								 <PARAM NAME="EnableFullScreenControls" VALUE="0">
-								 <PARAM NAME="EnableTracker" VALUE="-1">
-								 <PARAM NAME="Filename" VALUE="@lession.Path">
-								 <PARAM NAME="InvokeURLs" VALUE="-1">
-								 <PARAM NAME="Language" VALUE="-1">
-								 <PARAM NAME="Mute" VALUE="0">
-								 <PARAM NAME="PlayCount" VALUE="1">
-								 <PARAM NAME="PreviewMode" VALUE="0">
-								 <PARAM NAME="Rate" VALUE="1">
-								 <PARAM NAME="SAMILang" VALUE="">
-								 <PARAM NAME="SAMIStyle" VALUE="">
-								 <PARAM NAME="SAMIFileName" VALUE="">
-								 <PARAM NAME="SelectionStart" VALUE="-1">
-								 <PARAM NAME="SelectionEnd" VALUE="-1">
-								 <PARAM NAME="SendOpenStateChangeEvents" VALUE="-1">
-								 <PARAM NAME="SendWarningEvents" VALUE="-1">
-								 <PARAM NAME="SendErrorEvents" VALUE="-1">
-								 <PARAM NAME="SendKeyboardEvents" VALUE="0">
-								 <PARAM NAME="SendMouseClickEvents" VALUE="0">
-								 <PARAM NAME="SendMouseMoveEvents" VALUE="0">
-								 <PARAM NAME="SendPlayStateChangeEvents" VALUE="-1">
-								 <PARAM NAME="ShowCaptioning" VALUE="0">
-								 <PARAM NAME="ShowControls" VALUE="-1">
-								 <PARAM NAME="ShowAudioControls" VALUE="-1">
-								 <PARAM NAME="ShowDisplay" VALUE="0">
-								 <PARAM NAME="ShowGotoBar" VALUE="0">
-								 <PARAM NAME="ShowPositionControls" VALUE="0">
-								 <PARAM NAME="ShowStatusBar" VALUE="-1">
-								 <PARAM NAME="ShowTracker" VALUE="0">
-								 <PARAM NAME="TransparentAtStart" VALUE="0">
-								 <PARAM NAME="VideoBorderWidth" VALUE="0">
-								 <PARAM NAME="VideoBorderColor" VALUE="0">
-								 <PARAM NAME="VideoBorder3D" VALUE="0">
-								 <PARAM NAME="Volume" VALUE="-600">
-								 <PARAM NAME="WindowlessVideo" VALUE="0">
-								 <embed type="application/x-mplayer2" pluginspage="http://www.microsoft.com/Windows/Downloads/Contents/Products/MediaPlayer/" Name="MediaPlayer" src="@lession.Path" HEIGHT="400" WIDTH="500" ShowControls="1" ShowPositionControls="1" ShowAudioControls="1" ShowTracker="0" ShowDisplay="1" ShowStatusBar="0" ShowGoToBar="0" ShowCaptioning="0" AutoStart="1" AutoRewind="0" AnimationAtStart="0" TransparentAtStart="0" AllowChangeDisplaySize="0" AllowScan="0" EnableContextMenu="1" ClickToPlay="1"></embed>
-								</OBJECT>
-								<script>
-								
-								if(!$.browser.msie){ 
-								document.write("<p style='font-size:14px'>如果无法观看视频，说明你未安装<strong>wmpfirefoxplugin</strong>插件，<a target='_blank' href='http://download.csdn.net/detail/fanfzj/8920997'>下载地址</a></p>");
-								document.write("<p style='font-size:14px'>详细步骤：<a target='_blank' href='http://www.cnit618.com/html/fwdkf/jzjq/2651.htm'>谷歌浏览器CHROME 不能显示或播放Windows Media player plugin的解决方法</a></p>");
-								}
-								</script> 
-								
+									<object id="NSPlay" width=200 height=180 classid="CLSID:22d6f312-b0f6-11d0-94ab-0080c74c7e95" codebase="http://activex.microsoft.com/activex/controls/mplayer/en/nsmp2inf.cab#Version=6,4,5,715" standby="Loading Microsoft Windows Media Player components..." type="application/x-oleobject" align="right" hspace="5">
+										<!-- ASX File Name -->
+										<param name="AutoRewind" value=1>
+										<param name="FileName" value="@lession.Path">
+										<!-- Display Controls -->
+										<param name="ShowControls" value="1">
+										<!-- Display Position Controls -->
+										<param name="ShowPositionControls" value="0">
+										<!-- Display Audio Controls -->
+										<param name="ShowAudioControls" value="1">
+										<!-- Display Tracker Controls -->
+										<param name="ShowTracker" value="0">
+										<!-- Show Display -->
+										<param name="ShowDisplay" value="0">
+										<!-- Display Status Bar -->
+										<param name="ShowStatusBar" value="0">
+										<!-- Diplay Go To Bar -->
+										<param name="ShowGotoBar" value="0">
+										<!-- Display Controls -->
+										<param name="ShowCaptioning" value="0">
+										<!-- Player Autostart -->
+										<param name="AutoStart" value=1>
+										<!-- Animation at Start -->
+										<param name="Volume" value="-2500">
+										<param name="AnimationAtStart" value="0">
+										<!-- Transparent at Start -->
+										<param name="TransparentAtStart" value="0">
+										<!-- Do not allow a change in display size -->
+										<param name="AllowChangeDisplaySize" value="0">
+										<!-- Do not allow scanning -->
+										<param name="AllowScan" value="0">
+										<!-- Do not show contect menu on right mouse click -->
+										<param name="EnableContextMenu" value="0">
+										<!-- Do not allow playback toggling on mouse click -->
+										<param name="ClickToPlay" value="0">
+									</object>
+									<script>
+									if(!$.browser.msie){ 
+										$("#NSPlay").hide();
+										player("@lession.Path", 600, 400, 1, "start.jpg");
+										document.write("<p style='font-size:14px'>如果无法观看视频，说明你未安装<strong>wmpfirefoxplugin</strong>插件，<a target='_blank' href='http://download.csdn.net/detail/fanfzj/8920997'>下载地址</a></p>");
+										document.write("<p style='font-size:14px'>详细步骤：<a target='_blank' href='http://www.cnit618.com/html/fwdkf/jzjq/2651.htm'>谷歌浏览器CHROME 不能显示或播放Windows Media player plugin的解决方法</a></p>");
+										document.write("<p style='font-size:16px;text-align:center'><strong style='color:#003300'>建议使用IE播放该视频</strong></p>");
+									}
+									</script>
 								}
                             }
                         </div>
                         <div style="width:600px;height:400px;background-color:#ffffff;position: absolute;top: 34px;z-index:1000;display:none" id="video-hidden">
-							<button>
+							
 						</div>
                         <hr style="border: none; height: 1px; background-color: #ccc; margin: 20px 25px 0 0;">
                         <div id="d_courseware" class="d-courseware">
@@ -312,22 +289,36 @@
                 buttonReverse: false,
                 buttonFocus: "ok"
             });
-        };
-        $('body').everyTime('600s', function () {
-            reset();
+			};
+		var myVar=setTimeout(playorpause,60000);
+		function playorpause()
+		{
+			reset();
             $("#video-hidden").show();
-			CKobject.getObjectById('ckplayer_a1').videoPause();
+			if(typeof(CKobject)!="undefined")
+			{
+				CKobject.getObjectById('ckplayer_a1').videoPause();
+			}
             alertify.confirm("确认框", function (e) {
                 if (e) {
                     alertify.success("点击确认");
-					CKobject.getObjectById('ckplayer_a1').videoPlay();
+					if(typeof(CKobject)!="undefined")
+					{
+						CKobject.getObjectById('ckplayer_a1').videoPlay();
+					}
                     $("#video-hidden").hide();
+					myVar=setTimeout(playorpause,60000);
+					console.log("1");
                 } else {
                     alertify.error("点击取消");
-					CKobject.getObjectById('ckplayer_a1').videoPause();
+					if(typeof(CKobject)!="undefined")
+					{
+						CKobject.getObjectById('ckplayer_a1').videoPause();
+					}
+					clearInterval(myVar);
                     $("#video-hidden").show();
                 }
-            });
-        });
+			});
+		}
     });
 </script>
