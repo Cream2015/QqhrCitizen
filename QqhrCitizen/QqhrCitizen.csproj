@@ -1038,6 +1038,7 @@
     <Compile Include="SignalR\ContosoChatHub.cs" />
     <Compile Include="Spider\ApclcSpider.cs" />
     <Compile Include="Spider\HljceduSpider.cs" />
+    <Compile Include="Spider\McaSpider.cs" />
     <Compile Include="Spider\MoeSpider.cs" />
     <Compile Include="Spider\PeopleSpider.cs" />
     <Compile Include="Spider\Spider.cs" />
