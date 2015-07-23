@@ -12,9 +12,9 @@ namespace QqhrCitizen.Spider
 
         protected override List<string> FilterURL(List<string> URLs)
         {
-            var ret = URLs.Where(x => x.IndexOf("/article/zwgk/dfxx/ttxx/") >= 0).ToList();
+            var ret = URLs.Where(x => x.IndexOf("/article/zwgk/dfxx/ttxx/") >= 0 && x.Length > "/article/zwgk/dfxx/ttxx/".Length).ToList();
             for (var i = 0; i < ret.Count; i++)
-                ret[i] = "http://www.mca.gov.cn/article/zwgk/dfxx/ttxx/" + ret[i];
+                ret[i] = "http://www.mca.gov.cn/" + ret[i];
             return ret;
         }
 
