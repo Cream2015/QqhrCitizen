@@ -2,7 +2,7 @@
 @using QqhrCitizen.Models.ViewModel;
 @{
     ViewBag.Title = "直播首页_齐齐哈尔市民学习网";
-	int i=0;
+    int i = 0;
 }
 <script>
     $("#topmenu_live").attr("class", "item_selected");
@@ -60,7 +60,7 @@
                                     }
                                     <div class="date"><span>开始:@item.Begin</span><br />结束<span>@item.End</span></div>
                                 </div>
-								i++;
+                                i++;
                             }
                         </div>
                     </div>
@@ -70,10 +70,10 @@
         <div class="clear"></div>
     </div>
 </div>
-$(document).ready(function(){
-				var word_list=@i;
-				var height=Math.ceil(word_list/4)*270;
-				alert(height);
-				$("#live_body").height(height);
-});						
+<script>
+    $(document).ready(function(){
+        var word_list=@i;
+        var height=Math.ceil(word_list/4)*270;
+        $("#live_body").height(height);
+    });
 </script>
