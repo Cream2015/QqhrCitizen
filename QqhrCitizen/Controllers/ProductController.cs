@@ -13,6 +13,7 @@ namespace QqhrCitizen.Controllers
         // GET: Product
         public ActionResult Index(int? id)
         {
+            ViewBag.TId = id;
             return View();
         }
 

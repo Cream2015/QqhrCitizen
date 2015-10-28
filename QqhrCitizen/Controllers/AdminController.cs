@@ -2161,6 +2161,7 @@ namespace QqhrCitizen.Controllers
             product.Title = model.Title;
             product.Description = model.Description;
             product.Price = model.Price;
+            product.ProductCategory = model.ProductCategory;
             db.SaveChanges();
             return Redirect("/Admin/ProductShow/" + model.ID);
         }

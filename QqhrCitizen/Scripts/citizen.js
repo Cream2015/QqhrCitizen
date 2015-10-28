@@ -165,7 +165,7 @@ function LoadProducts() {
         $.ajax({
             url: "/Product/getProductByPage",
             type: "get",
-            data: { "page": page },
+            data: { "page": page,tid:$("#tid").val() },
             dataType: "json",
             success: function (data) {
                 var str = "";

@@ -18,10 +18,20 @@
             <tr>
                 <td class="row-title">标题</td>
                 <td>
-                    <input class="textbox w-3" type="text" name="Title" value="@product.Title" disabled="disabled" />
+                    <input class="textbox w-3" type="text" name="Title" value="@product.Title" />
                 </td>
             </tr>
-
+            <tr>
+                <td class="row-title">
+                    类型
+                </td>
+                <td>
+                    <select name="ProductCategory" class="textbox">
+                        <option value="1"  @(product.ProductCategory==ProductCategory.商品?"selected":"")>商品</option>
+                        <option value="2" @(product.ProductCategory==ProductCategory.作品?"selected":"")>作品</option>
+                    </select>
+                </td>
+            </tr>
             <tr>
                 <td class="row-title">描述</td>
                 <td>
