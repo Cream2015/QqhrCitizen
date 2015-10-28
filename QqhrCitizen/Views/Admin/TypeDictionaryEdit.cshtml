@@ -37,12 +37,31 @@
                 </tr>
                 <tr>
                     <td class="row-title">
+                        优先级
+                    </td>
+                    <td>
+                        <input type="text" name="PID" class="textbox" value="@Model.PID" />(请填写数据，数字越小排名越靠前)
+                    </td>
+                </tr>
+                <tr>
+                    <td class="row-title">
                         是否需要登陆标记
                     </td>
                     <td>
                         <select name="NeedAuthorize" class="textbox">
                             <option value="false" @(Model.NeedAuthorize ? "selected" : "")>否</option>
                             <option value="true" @(Model.NeedAuthorize ? "selected" : "")>是</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="row-title">
+                        是否高亮
+                    </td>
+                    <td>
+                        <select name="Top" class="textbox">
+                            <option value="0">否</option>
+                            <option value="1">是</option>
                         </select>
                     </td>
                 </tr>
@@ -57,7 +76,7 @@
                             {
                                 foreach (var item in lstFather)
                                 {
-                                    <option value="@item.ID" @(item.ID==Model.FatherID?"selected":"")>@item.TypeValue</option>
+                                    <option value="@item.ID" @(item.ID == Model.FatherID ? "selected" : "")>@item.TypeValue</option>
                                 }
                             }
                         </select>

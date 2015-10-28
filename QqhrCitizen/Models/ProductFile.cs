@@ -37,10 +37,17 @@ namespace QqhrCitizen.Models
         [NotMapped]
         public ProductFileType ProductFileType
         {
-           set { FileTypeAsInt = (int)value; }
+            set { FileTypeAsInt = (int)value; }
             get { return (ProductFileType)FileTypeAsInt; }
         }
+
+        /// <summary>
+        /// 文件来源
+        /// </summary>
+        public SourceEnum Source { set; get; }
     }
 
-    public enum ProductFileType { image,video}
+    public enum ProductFileType { image, video }
+
+    public enum SourceEnum { 用户, 管理员 }
 }

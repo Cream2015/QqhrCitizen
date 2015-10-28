@@ -37,6 +37,16 @@ namespace QqhrCitizen.Models
         
         public int? FatherID { get; set; }
         
+        /// <summary>
+        ///  优先级ID
+        /// </summary>
+        public int? PID { set; get; }
+
+        /// <summary>
+        /// 是否高亮
+        /// </summary>
+        public bool Top { set; get; }
+
         [NotMapped]
         [JsonIgnore]
         public List<TypeDictionary> Children
@@ -49,6 +59,7 @@ namespace QqhrCitizen.Models
                 {
                     ret = (from td in db.TypeDictionaries
                            where td.FatherID == ID
+                           orderby td.PID ascending
                            select td).ToList();
                     return ret;
                 }

@@ -1004,6 +1004,7 @@
     <Compile Include="Models\Note.cs" />
     <Compile Include="Models\Product.cs" />
     <Compile Include="Models\ProductFile.cs" />
+    <Compile Include="Models\ProductUserInfo.cs" />
     <Compile Include="Models\Question.cs" />
     <Compile Include="Models\ReadRecord.cs" />
     <Compile Include="Models\ResourceLink.cs" />

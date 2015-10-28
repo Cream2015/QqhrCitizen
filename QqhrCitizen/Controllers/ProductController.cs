@@ -11,16 +11,8 @@ namespace QqhrCitizen.Controllers
     public class ProductController : BaseController
     {
         // GET: Product
-        public ActionResult Index()
+        public ActionResult Index(int? id)
         {
-            List<Product> products = new List<Product>();
-            List<vProduct> _products = new List<vProduct>();
-            products = db.Products.ToList();
-            foreach (var item in products)
-            {
-                _products.Add(new vProduct(item));
-            }
-            ViewBag.Products = _products;
             return View();
         }
 
@@ -29,7 +21,7 @@ namespace QqhrCitizen.Controllers
             Product product = new Product();
             product = db.Products.Find(id);
             vProduct pro = new vProduct(product);
-            if(pro.ProductVideo==null)
+            if (pro.ProductVideo == null)
             {
                 ViewBag.ProductVideo = 0;
             }
@@ -48,18 +40,33 @@ namespace QqhrCitizen.Controllers
         /// <param name="page"></param>
         /// <returns></returns>
         [HttpGet]
-        public ActionResult getProductByPage(int page)
+        public ActionResult getProductByPage(int page,int? tid)
         {
-            List<Product> products = new List<Product>();
-            List<vProduct> _products = new List<vProduct>();
-            int index = page * 12;
-            products = db.Products.OrderByDescending(p => p.Time).Skip(index).Take(12).ToList();
-            foreach (var item in products)
+            if (tid != null && tid != 0)
             {
-                _products.Add(new vProduct(item));
+                List<Product> products = new List<Product>();
+                List<vProduct> _products = new List<vProduct>();
+                int index = page * 12;
+                products = db.Products.Where(p=>p.ProductCategory==(ProductCategory)tid).OrderByDescending(p => p.Time).Skip(index).Take(12).ToList();
+                foreach (var item in products)
+                {
+                    _products.Add(new vProduct(item));
+                }
+                return Content(Newtonsoft.Json.JsonConvert.SerializeObject(_products));
             }
-            return Content(Newtonsoft.Json.JsonConvert.SerializeObject(_products));
-        } 
+            else
+            {
+                List<Product> products = new List<Product>();
+                List<vProduct> _products = new List<vProduct>();
+                int index = page * 12;
+                products = db.Products.OrderByDescending(p => p.Time).Skip(index).Take(12).ToList();
+                foreach (var item in products)
+                {
+                    _products.Add(new vProduct(item));
+                }
+                return Content(Newtonsoft.Json.JsonConvert.SerializeObject(_products));
+            }
+        }
         #endregion
 
     }

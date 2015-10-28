@@ -62,6 +62,8 @@ namespace QqhrCitizen.Models
 
         public DbSet<SpiderArticle> SpiderArticles { get; set; }
 
+        public DbSet<ProductUserInfo> ProductUserInfos { set; get; }
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);

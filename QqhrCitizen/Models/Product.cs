@@ -40,5 +40,17 @@ namespace QqhrCitizen.Models
         /// 发布日期
         /// </summary>
         public DateTime Time { set; get; }
+
+        /// <summary>
+        /// 分类
+        /// </summary>
+        public ProductCategory ProductCategory { set; get; }
+
+        /// <summary>
+        /// 当为 作品 对应User 可为空
+        /// </summary>
+        public int? TUserID { set; get; }
     }
+
+    public enum ProductCategory { 商品, 作品 }
 }

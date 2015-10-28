@@ -10767,8 +10767,8 @@ label.inline {
             position: absolute;
             top: 0;
             left: 0;
-            width: 676px;
-            height: 495px;
+            width: 780px;
+            min-height: 495px;
             font-size: 0;
         }
 

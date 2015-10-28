@@ -23,7 +23,7 @@ namespace QqhrCitizen.Controllers
 
         static string fileServer = "http://218.8.130.134:80/";
 
-         
+
 
         // GET: Admin
         public ActionResult Index()
@@ -101,7 +101,7 @@ namespace QqhrCitizen.Controllers
         /// <returns></returns>
 
         [HttpPost]
-        public ActionResult AddType(TypeBelonger Belonger, string TypeValue, int NeedAuthorize, int FatherID)
+        public ActionResult AddType(TypeBelonger Belonger, string TypeValue, int NeedAuthorize, int FatherID, int? PID,int Top)
         {
             TypeDictionary temp = db.TypeDictionaries.Where(tp => tp.TypeValue == TypeValue.Trim() && tp.Belonger == Belonger).FirstOrDefault();
             if (temp != null)
@@ -109,7 +109,8 @@ namespace QqhrCitizen.Controllers
                 return Redirect("/Admin/AdminMessage?msg=你填写的分类名称已经存在！");
             }
             bool flag = Convert.ToBoolean(NeedAuthorize);
-            TypeDictionary type = new TypeDictionary { TypeValue = TypeValue, Belonger = Belonger, NeedAuthorize = flag, FatherID = FatherID, Time = DateTime.Now };
+            bool top = Convert.ToBoolean(Top);
+            TypeDictionary type = new TypeDictionary { TypeValue = TypeValue, Belonger = Belonger, NeedAuthorize = flag, FatherID = FatherID, Time = DateTime.Now, PID = PID,Top=top };
             db.TypeDictionaries.Add(type);
             db.SaveChanges();
             return Redirect("/Admin/TypeManager?type=" + Belonger);
@@ -199,6 +200,8 @@ namespace QqhrCitizen.Controllers
             TypeDictionary.TypeValue = model.TypeValue;
             TypeDictionary.FatherID = model.FatherID;
             TypeDictionary.NeedAuthorize = model.NeedAuthorize;
+            TypeDictionary.PID = model.PID;
+            TypeDictionary.Top = model.Top;
             db.SaveChanges();
             return Redirect("/Admin/TypeManager?type=" + TypeDictionary.Belonger);
         }
@@ -1094,7 +1097,7 @@ namespace QqhrCitizen.Controllers
             {
                 model.Path = fileServer + "Lessions/" + course.Title + "/" + file.FileName;
             }
-           // model.Path = fileServer + "Lessions/" + course.Title + "/" + file.FileName;
+            // model.Path = fileServer + "Lessions/" + course.Title + "/" + file.FileName;
             model.Time = DateTime.Now;
             model.ContentType = file.ContentType;
             model.Browses = 0;
@@ -1102,8 +1105,8 @@ namespace QqhrCitizen.Controllers
             db.Lessions.Add(model);
             db.SaveChanges();
 
-            
-           
+
+
 
             return Redirect("/Admin/CourseShow/" + model.CourseID);
         }
@@ -1528,12 +1531,12 @@ namespace QqhrCitizen.Controllers
                 model.Picture = buffer;
                 viewpager.Picture = model.Picture;
             }
-            
+
             viewpager.Title = model.Title;
             viewpager.Subtitle = model.Subtitle;
             viewpager.Url = model.Url;
             viewpager.Priority = model.Priority;
-           
+
 
             db.SaveChanges();
             return RedirectToAction("ViwepagerManager");

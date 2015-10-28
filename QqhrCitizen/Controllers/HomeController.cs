@@ -30,10 +30,13 @@ namespace QqhrCitizen.Controllers
         // GET: /Home/
         public ActionResult Index()
         {
-            List<TypeDictionary> courseTypes = db.TypeDictionaries.Where(x => x.Belonger == TypeBelonger.课程 && x.FatherID == 0).Take(5).ToList();
+            List<TypeDictionary> courseTypes = db.TypeDictionaries.Where(x => x.Belonger == TypeBelonger.课程 && x.FatherID == 0).OrderBy(x=>x.PID).Take(5).ToList();
             foreach (var item in courseTypes)
             {
-                item.TypeValue = item.TypeValue.Substring(0, 4);
+                if (item.TypeValue.Length > 4)
+                {
+                    item.TypeValue = item.TypeValue.Substring(0, 4);
+                }
             }
             ViewBag.CourseTypes = courseTypes;
 

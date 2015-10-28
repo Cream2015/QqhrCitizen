@@ -169,13 +169,13 @@ function LoadProducts() {
             dataType: "json",
             success: function (data) {
                 var str = "";
-                var product_list_height = $("#product_body").height();
+                //var product_list_height = $("#product_body").height();
                 var i;
                 for (i = 0; i < data.length; i++) {
-                    str += ' <div class="item"><a class="cover" href="/Product/Show/' + data[i].ID + '" target="_blank" style="width: 230px;"><img src="' + data[i].ProductImages[0].Path + '" width="230" height="158" /></a><div class="title trim"><a href="/Product/Show/' + data[i].ID + '" style="text-align:center">' + data[i].Title + '</a></div><div class="description" title="">' + data[i].Price + '</div></div>';
+                    str += ' <div class="productItem"><a href="/Product/Show/' + data[i].ID + '" target="_blank"><img  class="cover" src="' + data[i].ProductImages[0].Path + '"  /></a><div class="title trim"><a href="/Product/Show/' + data[i].ID + '" style="text-align:center">' + data[i].Title + '</a></div><div class="description" title="">' + data[i].Price + '</div></div>';
                 }
-                var height = Math.ceil(i / 4) * 270;
-                $("#product_body").height(height + product_list_height);
+                //var height = Math.ceil(i / 2) * 270;
+                //$("#product_body").height(height + product_list_height);
                 $(".lstProduct").append(str);
                 if (data.length == 10) {
                     lock = false;

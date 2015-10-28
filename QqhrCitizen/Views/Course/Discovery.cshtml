@@ -36,7 +36,7 @@
                             <div id="d_select_category_a" class="cff3">
                                 @foreach (var type in @item.Children)
                                 {
-                                    <div data-txt="@type.TypeValue" class="cfp3"><a href="/Course/Discovery/@type.ID">@type.TypeValue</a></div>
+                                    <div data-txt="@type.TypeValue" class="cfp3" style="padding:2px;background-color:@(type.Top?"red":"");"><a href="/Course/Discovery/@type.ID">@type.TypeValue</a></div>
                                 }
                             </div>
                         </div>

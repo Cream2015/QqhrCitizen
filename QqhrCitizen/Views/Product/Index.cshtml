@@ -4,19 +4,48 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<div class="d-row" style="border-top: 1px solid #3169ea;">
-    <div class="d-row-c" style="margin-top:10px">
-        <div class="d-col-2-12">
-            <div class="contentarea">
-                <div id="d_livenew" class="d-livenew">
-                    <div class="body" id="product_body">
-                        <div id="slide_bookhot" class="slidecontainer lstProduct">
-							
+<div class="d-row" style="margin-bottom: 20px; padding: 20px 0 0 0;">
+    <div class="d-row-c">
+        <div class="d-col-2-3">
+            <input type="hidden" value="0" id="tid">
+            <div class="contentarea" style="border-right: 1px solid #ddd;">
+                <div class="d-coursecategory">
+                    <div class="body fselect">
+                        <div id="d_select_category_a" class="cff3">
+                            <div data-txt="通识能力类" class="cfp3"><a href="/Product/Index">全部</a></div>
+                            <div data-txt="通识能力类" class="cfp3"><a href="/Product/Index/1">产品</a></div>
+                            <div data-txt="社会管理类" class="cfp3"><a href="/Product/Index/2">作品</a></div>
                         </div>
-                        <p class="loadMore" style="position:absolute; bottom:10px;text-align:center;width:1000px;color:#00a000"></p>
                     </div>
                 </div>
             </div>
         </div>
+        <div class="d-col-2-9">
+            <div class="contentarea" style="padding: 0 0 0 25px;">
+                <div id="d_main" class="d-main" style="width: 725px; min-width: 1000px;">
+                    <div class="d-row" style="width: 725px; margin-bottom: 20px; padding: 1px 0 0 0;">
+                        <div class="d-row-c" style="width: 725px;">
+                            <div class="container" style="width: 725px;">
+                                <div class="d-col-2-9" style="width: 725px;">
+                                    <div class="contentarea">
+                                        <div id="d_coursesearch" class="d-coursesearch">
+                                            <div class="body lstProduct">
+                                                       
+                                            </div>
+                                            <div class="clear"></div>
+                                            <div class="loadMore">下拉加载更多！</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="clear"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <input id="SearchItem" type="hidden" value="">
+            </div>
+        </div>
+        <div class="clear"></div>
     </div>
+    <div class="clear"></div>
 </div>

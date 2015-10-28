@@ -28,3 +28,14 @@
 .show_public_tips_text {
     color: #fff;
 }
+
+.productItem {
+  float:left;
+  margin-left:10px;
+  line-height:200px;
+}
+
+    .productItem .cover {
+      width:200px;
+      height:160px;
+    }

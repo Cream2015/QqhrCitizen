@@ -399,7 +399,7 @@ namespace QqhrCitizen.Controllers
         public ActionResult Discovery(int? id)
         {
             List<TypeDictionary> types = new List<TypeDictionary>();
-            types = db.TypeDictionaries.Where(t => t.Belonger == TypeBelonger.课程 && t.FatherID == 0).ToList();
+            types = db.TypeDictionaries.Where(t => t.Belonger == TypeBelonger.课程 && t.FatherID == 0).OrderBy(t=>t.PID).ToList();
             ViewBag.Tid = id;
             var type = new TypeDictionary();
             if (id != 0 && id != null)

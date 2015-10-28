@@ -23,7 +23,9 @@
                 <tr>
                     <td>编号</td>
                     <td>名称</td>
+                    <td>优先级</td>
                     <td>是否是登陆授权</td>
+                    <td>是否高亮</td>
                     <td>所属类别</td>
                     <td>增加时间</td>
                     <td>操作</td>
@@ -35,7 +37,9 @@
                     <tr id="@item.ID">
                         <td>@item.ID</td>
                         <td>@item.TypeValue</td>
+                        <td>@item.PID</td>
                         <td>@(item.NeedAuthorize ? "是" : "否")</td>
+                        <td>@(item.Top ? "是" : "否")</td>
                         <td>@item.Belonger</td>
                         <td>@item.Time</td>
                         <td>
