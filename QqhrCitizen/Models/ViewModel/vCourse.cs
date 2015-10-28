@@ -34,7 +34,7 @@ namespace QqhrCitizen.Models.ViewModel
 
         public vCourse(Course model)
         {
-            DB db = new DB();
+            //DB db = new DB();
             this.ID = model.ID;
             this.CourseTypeID = model.CourseTypeID;
             this.TypeDictionary = model.TypeDictionary;
@@ -47,7 +47,14 @@ namespace QqhrCitizen.Models.ViewModel
            // this.AuthorityAsInt = model.AuthorityAsInt;
             this.Browses = model.Browses;
             //Lessions = (from l in db.Lessions where l.CourseID == model.ID select l).ToList();
-            this.Sumamry = Helpers.String.SubString(QqhrCitizen.Helpers.HtmlFilter.Instance.SanitizeHtml(model.Description), 100, "...");
+            if (string.IsNullOrEmpty(model.Description))
+            {
+                this.Sumamry = "暂无简介";
+            }
+            else
+            {
+                this.Sumamry = Helpers.String.SubString(QqhrCitizen.Helpers.HtmlFilter.Instance.SanitizeHtml(model.Description), 100, "...");
+            }
         }
 
     }

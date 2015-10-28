@@ -64,12 +64,12 @@ namespace QqhrCitizen.Controllers
         /// <param name="tid"></param>
         /// <returns></returns>
         [HttpGet]
-        public ActionResult getCourses(int page, int tid)
+        public ActionResult getCourses(int page, int? tid)
         {
             List<Course> lstCourse = new List<Course>();
             List<vCourse> _lstCourse = new List<vCourse>();
             int index = page * 10;
-            if (tid == 0)
+            if (tid == 0 || tid == null)
             {
                 lstCourse = db.Courses.OrderByDescending(n => n.Time).Skip(index).Take(10).ToList();
             }
@@ -84,8 +84,8 @@ namespace QqhrCitizen.Controllers
             {
                 _lstCourse.Add(new vCourse(item));
             }
-
-            return Content(Newtonsoft.Json.JsonConvert.SerializeObject(_lstCourse));
+            return Json(_lstCourse, JsonRequestBehavior.AllowGet);
+            //return Content(Newtonsoft.Json.JsonConvert.SerializeObject(_lstCourse));
         }
         #endregion
 
@@ -382,6 +382,7 @@ namespace QqhrCitizen.Controllers
             {
                 var path = Server.MapPath("~/Images/book.jpg");
                 return File(path, "image/jpg");
+                //return Content(path);
             }
             else
             {
@@ -395,13 +396,13 @@ namespace QqhrCitizen.Controllers
         /// 课程列表显示
         /// </summary>
         /// <returns></returns>
-        public ActionResult Discovery(int id)
+        public ActionResult Discovery(int? id)
         {
             List<TypeDictionary> types = new List<TypeDictionary>();
             types = db.TypeDictionaries.Where(t => t.Belonger == TypeBelonger.课程 && t.FatherID == 0).ToList();
             ViewBag.Tid = id;
             var type = new TypeDictionary();
-            if (id != 0)
+            if (id != 0 && id != null)
             {
                 type = db.TypeDictionaries.Find(id);
             }
@@ -491,7 +492,7 @@ namespace QqhrCitizen.Controllers
                 db.SaveChanges();
             }
             return View();
-        } 
+        }
         #endregion
 
 

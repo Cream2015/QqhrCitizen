@@ -5,10 +5,6 @@ var options = ['A', 'B', 'C', 'D'];
 var type = "";
 
 
-function resize() {
-    $('.main').width($(window).width() - 280);
-}
-
 //加载新闻
 function LoadNews() {
     if (lock) {
@@ -20,20 +16,20 @@ function LoadNews() {
         $.ajax({
             url: "/News/getNews",
             type: "post",
-            data: { "page": page, "tid": tid },
-        }).done(function (data) {
-            var str = "";
-            console.log(data);
-            for (var i = 0 ; i < data.length; i++) {
-                str += '<div class="item"><div class="title" style="padding:5px 0;font-size:18px;text-align:center"><a href="/News/Show/' + data[i].ID + '" target="_blank">' + data[i].Title + '</a></div><div style="font-size:16px">&emsp;&emsp;' + data[i].Sumamry + '</div></div>';
-            }
-            $(".lstNews").append(str);
-            if (data.length == 10) {
-                lock = false;
-                page++;
-                $(".loadMore").text("下拉加载更多！");
-            } else {
-                $(".loadMore").text("没有更多数据了！");
+            data: { "page": page, "tid": $('#tid').val() },
+            success: function (data) {
+                var str = "";
+                for (var i = 0 ; i < data.length; i++) {
+                    str += '<div class="item"><div class="title" style="padding:5px 0;font-size:18px;text-align:center"><a href="/News/Show/' + data[i].ID + '" target="_blank">' + data[i].Title + '</a></div><div style="font-size:16px">&emsp;&emsp;' + data[i].Sumamry + '</div></div>';
+                }
+                $(".lstNews").append(str);
+                if (data.length == 10) {
+                    lock = false;
+                    page++;
+                    $(".loadMore").text("下拉加载更多！");
+                } else {
+                    $(".loadMore").text("没有更多数据了！");
+                }
             }
         });
     }
@@ -50,24 +46,20 @@ function LoadCourses() {
         $.ajax({
             url: "/Course/getCourses",
             type: "get",
-            data: { "page": page, "tid": tid },
-            dataType: "json"
-        }).done(function (data) {
-            var str = "";
-            for (var i = 0 ; i < data.length; i++) {
-                if (data[i].Sumamry.length == 0)
-                {
-                    data[i].Sumamry = "</br>";
+            data: { "page": page, "tid": $('#tid').val() },
+            success: function (data) {
+                var str = "";
+                for (var i = 0 ; i < data.length; i++) {
+                    str += '<div class="item"><div class="title"><a href="/Course/Show/' + data[i].ID + '" target="_blank">' + data[i].Title + '</a></div><div class="desc">' + data[i].Sumamry + '</br></div><div class="add"></div><div class="cover"><a href="/Course/Show/' + data[i].ID + '" target="_blank"><img class="imgCoursePicM" src="/Course/ShowPicture/' + data[i].ID + '" style="width:106px;height:106px"></a></div></div>';
                 }
-                str += '<div class="item"><div class="title"><a href="/Course/Show/' + data[i].ID + '" target="_blank">' + data[i].Title + '</a></div><div class="desc">' + data[i].Sumamry + '</br></div><div class="add"></div><div class="cover"><a href="/Course/Show/' + data[i].ID + '" target="_blank"><img class="imgCoursePicM" src="/Course/ShowPicture/' + data[i].ID + '" style="width:106px;height:106px"></a></div></div>';
-            }
-            $(".lstCourse").append(str);
-            if (data.length == 10) {
-                lock = false;
-                page++;
-                $(".loadMore").text("下拉加载更多！");
-            } else {
-                $(".loadMore").text("没有更多数据了！");
+                $(".lstCourse").append(str);
+                if (data.length == 10) {
+                    lock = false;
+                    page++;
+                    $(".loadMore").text("下拉加载更多！");
+                } else {
+                    $(".loadMore").text("没有更多数据了！");
+                }
             }
         });
     }
@@ -85,18 +77,19 @@ function LoadEBooks() {
             url: "/EBook/getEBookes",
             type: "post",
             data: { "page": page, "tid": tid },
-        }).done(function (data) {
-            var str = "";
-            for (var i = 0 ; i < data.length; i++) {
-                str += '<div class="item"><div class="title"><a href="/Ebook/Show/' + data[i].ID + '" target="_blank">' + data[i].Title + '</a></div><div class="desc">' + data[i].Sumamry + '</br></div><div class="add"></div><div class="cover"> <a href="/Ebook/Show/' + data[i].ID + '" target="_blank"><img class="imgCoursePicM" src="/Ebook/ShowPicture/' + data[i].ID + '"></a></div></div>';
-            }
-            $(".lstEBook").append(str);
-            if (data.length == 10) {
-                lock = false;
-                page++;
-                $(".loadMore").text("下拉加载更多！");
-            } else {
-                $(".loadMore").text("没有更多数据了！");
+            success: function (data) {
+                var str = "";
+                for (var i = 0 ; i < data.length; i++) {
+                    str += '<div class="item"><div class="title"><a href="/Ebook/Show/' + data[i].ID + '" target="_blank">' + data[i].Title + '</a></div><div class="desc">' + data[i].Sumamry + '</br></div><div class="add"></div><div class="cover"> <a href="/Ebook/Show/' + data[i].ID + '" target="_blank"><img class="imgCoursePicM" src="/Ebook/ShowPicture/' + data[i].ID + '"></a></div></div>';
+                }
+                $(".lstEBook").append(str);
+                if (data.length == 10) {
+                    lock = false;
+                    page++;
+                    $(".loadMore").text("下拉加载更多！");
+                } else {
+                    $(".loadMore").text("没有更多数据了！");
+                }
             }
         });
     }
@@ -114,18 +107,19 @@ function LoadSearchRessult() {
             url: "/Home/GetSearchResultMore",
             type: "get",
             data: { "type": type, "key": $("#searchKey").val(), "page": page },
-        }).done(function (data) {
-            var str = "";
-            for (var i = 0 ; i < data.length; i++) {
-                str += "<div class='Q-pList'><h2><a  href='" + data[i].URL + "' style='color:#000;' class='show'>" + data[i].Title + " </a></h2><p class='sub_title'>时间：" + moment(data[i].Time).format("YYYY-MM-DD HH:mm:ss") + "</p><p>" + data[i].Sumamry + "</p></div>";
-            }
-            $(".result").append(str);
-            if (data.length == 10) {
-                lock = false;
-                page++;
-                $(".loadMore").text("下拉加载更多！");
-            } else {
-                $(".loadMore").text("没有更多数据了！");
+            success: function (data) {
+                var str = "";
+                for (var i = 0 ; i < data.length; i++) {
+                    str += "<div class='Q-pList'><h2><a  href='" + data[i].URL + "' style='color:#000;' class='show'>" + data[i].Title + " </a></h2><p class='sub_title'>时间：" + moment(data[i].Time).format("YYYY-MM-DD HH:mm:ss") + "</p><p>" + data[i].Sumamry + "</p></div>";
+                }
+                $(".result").append(str);
+                if (data.length == 10) {
+                    lock = false;
+                    page++;
+                    $(".loadMore").text("下拉加载更多！");
+                } else {
+                    $(".loadMore").text("没有更多数据了！");
+                }
             }
         });
     }
@@ -143,19 +137,19 @@ function LoadIndexNews() {
             url: "/News/getNewsByPage",
             type: "get",
             data: { "page": page },
-        }).done(function (data) {
-            var str = "";
-            for (var i = 0 ; i < data.length; i++) {
-                str += '<div class="item"><div class="title"><a href="/News/Show/' + data[i].ID + '" target="_blank">' + data[i].Title + '</a></div><div class="info"><span class="date">' + moment(data[i].Time).format("YYYY-MM-DD HH:mm:ss") + '</span> <span class="from"></span><span class="view">浏览次数: ' + data[i].Browses + '</span></div><div class="desc txt-justify"><p>' + data[i].Sumamry + '</p></div></div>';
-                //str += "<div class='Q-pList'><h2><a  href='" + data[i].URL + "' style='color:#000;' class='show'>" + data[i].Title + " </a></h2><p class='sub_title'>时间：" + moment(data[i].Time).format("YYYY-MM-DD HH:mm:ss") + "</p><p>" + data[i].Sumamry + "</p></div>";
-            }
-            $("#lstNews").append(str);
-            if (data.length == 10) {
-                lock = false;
-                page++;
-                $(".loadMore").text("下拉加载更多！");
-            } else {
-                $(".loadMore").text("没有更多数据了！");
+            success: function (data) {
+                var str = "";
+                for (var i = 0 ; i < data.length; i++) {
+                    str += '<div class="item"><div class="title"><a href="/News/Show/' + data[i].ID + '" target="_blank">' + data[i].Title + '</a></div><div class="info"><span class="date">' + moment(data[i].Time).format("YYYY-MM-DD HH:mm:ss") + '</span> <span class="from"></span><span class="view">浏览次数: ' + data[i].Browses + '</span></div><div class="desc txt-justify"><p>' + data[i].Sumamry + '</p></div></div>';
+                }
+                $("#lstNews").append(str);
+                if (data.length == 10) {
+                    lock = false;
+                    page++;
+                    $(".loadMore").text("下拉加载更多！");
+                } else {
+                    $(".loadMore").text("没有更多数据了！");
+                }
             }
         });
     }
@@ -172,23 +166,24 @@ function LoadProducts() {
             url: "/Product/getProductByPage",
             type: "get",
             data: { "page": page },
-            dataType: "json"
-        }).done(function (data) {
-            var str = "";
-            var product_list_height = $("#product_body").height();
-            var i;
-            for (i = 0; i < data.length; i++) {
-                str += ' <div class="item"><a class="cover" href="/Product/Show/' + data[i].ID + '" target="_blank" style="width: 230px;"><img src="' + data[i].ProductImages[0].Path + '" width="230" height="158" /></a><div class="title trim"><a href="/Product/Show/' + data[i].ID + '" style="text-align:center">' + data[i].Title + '</a></div><div class="description" title="">' + data[i].Price + '</div></div>';
-            }
-            var height=Math.ceil(i/4)*270;
-            $("#product_body").height(height + product_list_height);
-            $(".lstProduct").append(str);
-            if (data.length == 10) {
-                lock = false;
-                page++;
-                $(".loadMore").text("下拉加载更多！");
-            } else {
-                $(".loadMore").text("没有更多数据了！");
+            dataType: "json",
+            success: function (data) {
+                var str = "";
+                var product_list_height = $("#product_body").height();
+                var i;
+                for (i = 0; i < data.length; i++) {
+                    str += ' <div class="item"><a class="cover" href="/Product/Show/' + data[i].ID + '" target="_blank" style="width: 230px;"><img src="' + data[i].ProductImages[0].Path + '" width="230" height="158" /></a><div class="title trim"><a href="/Product/Show/' + data[i].ID + '" style="text-align:center">' + data[i].Title + '</a></div><div class="description" title="">' + data[i].Price + '</div></div>';
+                }
+                var height = Math.ceil(i / 4) * 270;
+                $("#product_body").height(height + product_list_height);
+                $(".lstProduct").append(str);
+                if (data.length == 10) {
+                    lock = false;
+                    page++;
+                    $(".loadMore").text("下拉加载更多！");
+                } else {
+                    $(".loadMore").text("没有更多数据了！");
+                }
             }
         });
     }
@@ -206,21 +201,20 @@ function LoadReviewLives() {
             url: "/Live/GetReviewLivesByPage",
             type: "get",
             data: { "page": page },
-        }).done(function (data) {
-         
-            var str = "";
-            for (var i = 0 ; i < data.length; i++) {
-               // str += ' <div class="item"><a class="cover" href="/Product/Show/' + data[i].ID + '" target="_blank" style="width: 230px;"><img src="' + data[i].ProductImages[0].Path + '" width="230" height="158" /></a><div class="title trim"><a href="/Product/Show/' + data[i].ID + '" style="text-align:center">' + data[i].Title + '</a></div><div class="description" title="">' + data[i].Price + '</div></div>';
-                str += '<div class="item"><a class="cover live_show" id="live_id_' + data[i].ID + '" style="cursor:pointer"><img src="/Live/ShowPicture/' + data[i].ID + '" /></a><div class="title trim"><a title="' + data[i].Title + '" class="live_show" id="live_id_' + data[i].ID + '" style="cursor:pointer" href="/Live/ReviewShow/'+data[i].ID+'">' + data[i].Title + '</a><input type="hidden" id="live_hidden_' + data[i].ID + '" value="' + data[i].NeedAuthorize + '" /></div><div class="date"><span>开始:' + moment(data[i].Begin).format("YYYY/MM/DD HH:mm:ss") + '</span><br />结束<span>' + moment(data[i].End).format("YYYY/MM/DD HH:mm:ss") + '</span></div></div>';
-            }
-            $(".lstReviewLive").append(str);
+            success: function (data) {
+                var str = "";
+                for (var i = 0 ; i < data.length; i++) {
+                    str += '<div class="item"><a class="cover live_show" id="live_id_' + data[i].ID + '" style="cursor:pointer"><img src="/Live/ShowPicture/' + data[i].ID + '" /></a><div class="title trim"><a title="' + data[i].Title + '" class="live_show" id="live_id_' + data[i].ID + '" style="cursor:pointer" href="/Live/ReviewShow/' + data[i].ID + '">' + data[i].Title + '</a><input type="hidden" id="live_hidden_' + data[i].ID + '" value="' + data[i].NeedAuthorize + '" /></div><div class="date"><span>开始:' + moment(data[i].Begin).format("YYYY/MM/DD HH:mm:ss") + '</span><br />结束<span>' + moment(data[i].End).format("YYYY/MM/DD HH:mm:ss") + '</span></div></div>';
+                }
+                $(".lstReviewLive").append(str);
 
-            if (data.length == 10) {
-                lock = false;
-                page++;
-                $(".loadMore").text("下拉加载更多！");
-            } else {
-                $(".loadMore").text("没有更多数据了！");
+                if (data.length == 10) {
+                    lock = false;
+                    page++;
+                    $(".loadMore").text("下拉加载更多！");
+                } else {
+                    $(".loadMore").text("没有更多数据了！");
+                }
             }
         });
     }
@@ -250,16 +244,13 @@ function Load() {
         LoadProducts();
     }
 
-   
+
     if ($(".lstReviewLive").length > 0) {
         LoadReviewLives();
     }
 }
 
 $(document).ready(function () {
-
-
-
     Load();
 
     $(window).scroll(
@@ -273,7 +264,6 @@ $(document).ready(function () {
 
     $("#btnAddNote").click(function () {
         var userid = $("#userId").val();
-        console.log(userid);
         if (userid == "") {
             CastMsg("请先登录，在添加笔记");
             return false;
@@ -281,7 +271,7 @@ $(document).ready(function () {
         var content = CKEDITOR.instances.noteContent.getData();
         $.post("/Course/AddNote?sid=" + $("#sid").val(), { content: content, lid: $("#LessionID").val() }, function (data) {
             CastMsg("添加的笔记成功！");
-            var str = "<div class='div_HisNote'>"+ data.Content + "<br/><span style='color:#808080;font-size:14px;text-align:right;margin-right:10px'>" + moment(data.Time).format("YYYY/MM/DD HH:mm:ss") + "</span></div>"
+            var str = "<div class='div_HisNote'>" + data.Content + "<br/><span style='color:#808080;font-size:14px;text-align:right;margin-right:10px'>" + moment(data.Time).format("YYYY/MM/DD HH:mm:ss") + "</span></div>"
             $("#lstNote").prepend(str);
             $("#noteContent").val("");
         })
@@ -321,10 +311,6 @@ $(document).ready(function () {
         $.post("/Course/RecordScore", { lid: $("#LessionID").val(), rate: rate }, function (data) {
             CastMsg("记录回答记录成功！");
         })
-        console.log(str);
-        // str = +"  正确率：" + rate.toString();
-        console.log(rate);
-
         var str1 = "正确率：" + rate * 100 + "%";
         if (rate >= 0.6) {
             str1 += "状态：通过";
@@ -369,10 +355,6 @@ $(document).ready(function () {
         $.post("/Course/DoTest", { cid: $("#courseId").val(), rate: rate }, function (data) {
             CastMsg("记录回答记录成功！");
         })
-        console.log(str);
-        // str = +"  正确率：" + rate.toString();
-        console.log(rate);
-
         var str1 = "正确率：" + rate * 100 + "%";
         if (rate >= 0.6) {
             str1 += "状态：通过";
@@ -395,8 +377,6 @@ $(document).ready(function () {
             return false;
         }
     });
-
-
 });
 
 
@@ -426,10 +406,7 @@ function hotSearch(data) {
 }
 
 function Search(data) {
-
-    // $(".d_searchtabs>a").removeClass("tab_select");
-    //$(this).addClass("tab_select");
-    console.log($(this));
+    page = 0;
     if (data == "1") {
         type = "course";
     }

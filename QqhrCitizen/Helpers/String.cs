@@ -85,6 +85,10 @@ namespace QqhrCitizen.Helpers
 
         public static string SubString(string s, int l, string endStr)
         {
+            if (string.IsNullOrEmpty(s))
+            {
+                return "暂无简介";
+            }
             string temp = s.Substring(0, (s.Length < l + 1) ? s.Length : l + 1);
             byte[] encodedBytes = System.Text.ASCIIEncoding.ASCII.GetBytes(temp);
 

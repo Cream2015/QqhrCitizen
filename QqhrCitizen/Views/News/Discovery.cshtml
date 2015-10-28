@@ -3,6 +3,7 @@
     ViewBag.Search = "新闻、标签";
 }
 <script>
+    
     $("#topmenu_news").attr("class", "item_selected");
 </script>
 <div id="d_menu" class="d-menu menu-msg">
@@ -11,7 +12,7 @@
         <div id="d_headmenu" class="d-headmenu">
             <div class="body">
                 <a id="headmenu_default" class="item" href="/News/Index">新闻首页</a>
-                <a id="headmenu_discovery" class="item_selected" href="/News/Discovery">发现新闻</a>
+                <a id="headmenu_discovery" class="item_selected" href="/News/Discovery/1">发现新闻</a>
             </div>
         </div>
         <!-- region end: menu -->
@@ -27,15 +28,15 @@
                 {
                     <div id="d_12FF2473CE16B988" class="d-coursecategory">
                         <div class="head">
-							<a href="/News/Discovery/@item.ID">@item.TypeValue</a>
+                            <a href="/News/Discovery/@item.ID">@item.TypeValue</a>
                         </div>
                         <div class="body fselect">
                             <div id="d_select_category_a" class="cff3">
                                 @foreach (var type in @item.Children)
                                 {
                                     <div data-txt="@item.TypeValue" class="cfp3">
-										<a href="/News/Discovery/@type.ID">@type.TypeValue</a>
-									</div>
+                                        <a href="/News/Discovery/@type.ID">@type.TypeValue</a>
+                                    </div>
                                 }
                             </div>
                         </div>
@@ -77,6 +78,6 @@
     </div>
 </div>
 
-<script>
-    tid = $('#tid').val();
-</script>
+@*<script>
+        tid = $('#tid').val();
+    </script>*@
