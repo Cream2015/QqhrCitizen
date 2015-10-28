@@ -24,8 +24,8 @@
                 </td>
                 <td>
                     <select name="ProductCategory" id="slProductCategory" class="textbox">
-                        <option value="1">商品</option>
-                        <option value="2">作品</option>
+                        <option value="0">商品</option>
+                        <option value="1">作品</option>
                     </select>
                 </td>
             </tr>
@@ -44,7 +44,7 @@
             <tr id="trUser" style="display:none;">
                 <td class="row-title">对应用户名</td>
                 <td>
-                    <input class="textbox w-3 nullable" type="text" id="txtUsername" name="User" />
+                    <input class="textbox w-3 nullable" type="text" id="txtUsername" name="TUsername" />
                     <input type="hidden" name="TUserID" id="txtUserId" />
                 </td>
             </tr>
@@ -58,7 +58,7 @@
     $(document).ready(function () {
         $("#slProductCategory").change(function () {
             var data = $("#slProductCategory").val();
-            if (data == "1") {
+            if (data == "0") {
                 $("#trUser").hide();
                 $("#trPrice").show();
             }

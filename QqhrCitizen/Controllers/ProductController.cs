@@ -43,7 +43,7 @@ namespace QqhrCitizen.Controllers
         [HttpGet]
         public ActionResult getProductByPage(int page,int? tid)
         {
-            if (tid != null && tid != 0)
+            if (tid != null)
             {
                 List<Product> products = new List<Product>();
                 List<vProduct> _products = new List<vProduct>();

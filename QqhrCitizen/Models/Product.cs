@@ -50,6 +50,8 @@ namespace QqhrCitizen.Models
         /// 当为 作品 对应User 可为空
         /// </summary>
         public int? TUserID { set; get; }
+
+        public string TUsername { set; get; }
     }
 
     public enum ProductCategory { 商品, 作品 }
