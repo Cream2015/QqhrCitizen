@@ -50,4 +50,6 @@ namespace QqhrCitizen.Models
     public enum ProductFileType { image, video }
 
     public enum SourceEnum { 用户, 管理员 }
+
+
 }

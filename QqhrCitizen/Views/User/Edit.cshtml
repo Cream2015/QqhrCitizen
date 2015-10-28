@@ -140,7 +140,7 @@
                                 </td>
                                 <td>
                                     <div>
-                                        @Html.DropDownListFor(model => model.Sex, ViewBag.Sex as IEnumerable<SelectListItem>, new { @class = "int-hs nullable" ,@style = "width:150px" })
+                                        @Html.DropDownListFor(model => model.Sex, ViewBag.Sex as IEnumerable<SelectListItem>, new { @class = "int-hs nullable", @style = "width:150px" })
                                     </div>
                                 </td>
                             </tr>
@@ -266,6 +266,9 @@
                         </div>
                         <div class="item">
                             <a href="/User/Edit/@user.ID">修改个人信息</a>
+                        </div>
+                        <div class="item">
+                            <a href="/User/Product/@user.ID">作品信息</a>
                         </div>
                         <!--<div class="item">
                             <a href="/usercenter/verify">实名认证</a>

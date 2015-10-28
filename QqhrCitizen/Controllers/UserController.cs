@@ -7,6 +7,7 @@ using System.Data.Entity.Validation;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
+using System.Web.Hosting;
 using System.Web.Mvc;
 using System.Web.Security;
 
@@ -328,6 +329,106 @@ namespace QqhrCitizen.Controllers
             ViewBag.NoteSum = noteSum;
             ViewBag.Notes = notes;
             return View();
+        }
+
+        /// <summary>
+        ///  得到个人产品信息
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        [HttpGet]
+        public ActionResult Product()
+        {
+            List<Product> products = new List<Models.Product>();
+            int uid = CurrentUser.ID;
+            products = db.Products.Where(x => x.ProductCategory == ProductCategory.作品 && x.TUserID == uid).ToList();
+            ViewBag.Products = products;
+
+            User user = db.Users.Find(uid);
+            ViewBag.User = user;
+
+            return View();
+        }
+
+        /// <summary>
+        /// 按页获取用用户的作品
+        /// </summary>
+        /// <param name="page"></param>
+        /// <returns></returns>
+        [HttpGet]
+        public ActionResult GetUserProducts(int page)
+        {
+            List<Product> products = new List<Product>();
+            List<vProductListModel> _products = new List<vProductListModel>();
+            int uid = CurrentUser.ID;
+            int index = page * 12;
+            products = db.Products.Where(x => x.ProductCategory == ProductCategory.作品 && x.TUserID == uid).OrderByDescending(p => p.Time).Skip(index).Take(12).ToList();
+            foreach (var item in products)
+            {
+                _products.Add(new vProductListModel(item));
+            }
+            return Content(Newtonsoft.Json.JsonConvert.SerializeObject(_products));
+        }
+
+        /// <summary>
+        /// 作品展示
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        [HttpGet]
+        public ActionResult ProductShow(int id)
+        {
+            Product product = new Models.Product();
+            product = db.Products.Find(id);
+
+            User user = db.Users.Find(CurrentUser.ID);
+            ViewBag.User = user;
+
+            ViewBag.Product = new vProduct(product);
+            return View();
+        }
+
+        [HttpGet]
+        public ActionResult ProductEdit(int id)
+        {
+            Product product = new Models.Product();
+            product = db.Products.Find(id);
+
+            User user = db.Users.Find(CurrentUser.ID);
+            ViewBag.User = user;
+
+            ViewBag.Product = new vProduct(product);
+            return View();
+        }
+
+        public ActionResult VideoUpload(int ProductID)
+        {
+            HttpPostedFileBase file = Request.Files[0];
+            if (file != null)
+            {
+                string random = Helpers.DateHelper.GetTimeStamp();
+                Product product = db.Products.Find(ProductID);
+                ProductFile productFile = new ProductFile();
+                productFile.ProductID = ProductID;
+                productFile.FileTypeAsInt = 1;
+                productFile.Source = SourceEnum.管理员;
+
+                string root = "~/ProductFile/" + product.ID + "/";
+                var phicyPath = HostingEnvironment.MapPath(root);
+
+                file.SaveAs(phicyPath + random + file.FileName);
+
+                productFile.Path = "/ProductFile/" + product.ID + "/" + random + file.FileName;
+
+                db.ProductFiles.Add(productFile);
+                db.SaveChanges();
+
+                return Json(new { filePath = productFile.Path });
+            }
+            else
+            {
+                return Json(new { filePath = "" });
+            }
         }
     }
 }

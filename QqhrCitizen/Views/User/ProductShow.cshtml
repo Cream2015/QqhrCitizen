@@ -1,0 +1,85 @@
+﻿@using QqhrCitizen.Models;
+@using QqhrCitizen.Models.ViewModel;
+@{
+    ViewBag.Title = "作品展示";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    User user = ViewBag.User as User;
+    vProduct product = ViewBag.Product as vProduct;
+}
+
+<script src="~/Scripts/video.js"></script>
+<div id="d_menu" class="d-menu menu-use">
+    <div id="d_menu_c" class="d-menu-c">
+        <!-- region start: menu -->
+        <div id="d_headmenu" class="d-headmenu">
+            <div class="body">
+                <a id="headmenu_useraccount" class="item_selected" href="/User/Show/@user.ID">个人信息</a>
+                <a id="headmenu_history" class="item" href="/User/HistoryCourse/@user.ID">学习档案</a>
+            </div>
+        </div>
+        <!-- region end: menu -->
+    </div>
+</div>
+<div id="d_bottom" class="d-bottom" style="visibility: hidden; position: fixed;"><div class="d-bottom-c"><div id="d_scrolltop" class="d-scrolltop" style="right: -70px;"><span class="t" onclick="$('html,body').animate({scrollTop: '0px'}, 800);">顶部</span></div></div></div>
+<div class="d-row" style="padding:0 0 40px 0">
+    <div class="d-row-c">
+        <div class="d-col-2-8">
+            <div class="contentarea">
+                <h2>@product.Title</h2>
+                <div>
+                    <div>时间：@product.Time</div>
+                    简介： @product.Description
+                </div>
+                <div>
+                    <h4>视屏</h4>
+                    <div>
+                        @if (product.ProductVideo != null)
+                        {
+                            <script> player("@product.ProductVideo.Path", 800, 400, 1, "start.jpg");</script>
+                        }
+                        else
+                        {
+                             <text>暂无</text>
+                        }
+                    </div>
+                
+                </div>
+                <div>
+                    <h4>缩略图</h4>
+                    @foreach (var item in product.ProductImages)
+                    {
+                        <img src="@item.Path" width="220" height="180" />
+                    }
+                </div>
+            </div>
+        </div>
+        <div class="d-col-2-4">
+            <div class="contentarea">
+                <!-- region start: 个人设置 -->
+                <div id="d_settings" class="d-settings">
+                    <div class="head">
+                        &nbsp;
+                    </div><div class="body">
+                        <div class="item">
+                            <a href="/User/PwdEdit/@user.ID">修改密码</a>
+                        </div>
+                        <div class="item">
+                            <a href="/User/Edit/@user.ID">修改个人信息</a>
+                        </div>
+                        <div class="item">
+                            <a href="/User/Product">作品信息</a>
+                        </div>
+                        <!--<div class="item">
+                            <a href="/usercenter/verify">实名认证</a>
+                        </div>-->
+                    </div>
+                </div>
+                <!-- region end: 个人设置 -->
+                <input type="hidden" id="redirect" name="redirect">
+            </div>
+        </div>
+        <div class="clear"></div>
+    </div>
+</div>
+

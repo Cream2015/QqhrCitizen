@@ -190,6 +190,38 @@ function LoadProducts() {
 }
 
 
+function LoadUserProducts() {
+    if (lock) {
+        return;
+    }
+    else {
+        lock = true;
+        $(".loadMore").text("正在加载中，请稍后");
+        $.ajax({
+            url: "/User/GetUserProducts",
+            type: "get",
+            data: { "page": page },
+            dataType: "json",
+            success: function (data) {
+                var str = "";
+                var i;
+                for (i = 0; i < data.length; i++) {
+                    str += ' <div class="productItem"><a href="/User/ProductShow/' + data[i].ID + '" target="_blank"><img  class="cover" src="' + data[i].FirstImagePath + '"  /></a><div class="title trim"><a href="/User/ProductShow/' + data[i].ID + '" style="text-align:center">' + data[i].Title + '</a><a href="/User/ProductEdit/' + data[i].ID + '" style="text-align:center;margin-left:20px;">修改</a></div></div>';
+                }
+                $(".lstUserProduct").append(str);
+                if (data.length == 10) {
+                    lock = false;
+                    page++;
+                    $(".loadMore").text("下拉加载更多！");
+                } else {
+                    $(".loadMore").text("没有更多数据了！");
+                }
+            }
+        });
+    }
+}
+
+
 function LoadReviewLives() {
     if (lock) {
         return;
@@ -248,6 +280,11 @@ function Load() {
     if ($(".lstReviewLive").length > 0) {
         LoadReviewLives();
     }
+
+    if ($(".lstUserProduct").length > 0) {
+        LoadUserProducts();
+    }
+    
 }
 
 $(document).ready(function () {
