@@ -395,6 +395,7 @@
     <Content Include="Scripts\ckplayer\style.swf" />
     <Content Include="Scripts\codecomb.cascade-1.0.3.js" />
     <Content Include="Scripts\codecomb.cascade-1.0.3.min.js" />
+    <Content Include="Scripts\codecomb.droptxt.js" />
     <Content Include="Scripts\jmeditor\ckeditor\build-config.js" />
     <Content Include="Scripts\jmeditor\ckeditor\ckeditor.js" />
     <Content Include="Scripts\jmeditor\ckeditor\config.js" />
@@ -587,6 +588,7 @@
     <Content Include="Styles\alertify-bootstrap-3.css" />
     <Content Include="Styles\alertify-bootstrap.css" />
     <Content Include="Styles\alertify.css" />
+    <Content Include="Styles\codecomb.droptxt.css" />
     <Content Include="Styles\images\annotation-check.svg" />
     <Content Include="Styles\images\annotation-comment.svg" />
     <Content Include="Styles\images\annotation-help.svg" />

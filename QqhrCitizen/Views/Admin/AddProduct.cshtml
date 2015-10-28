@@ -2,7 +2,8 @@
     ViewBag.Title = "增加产品";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
-
+<link href="~/Styles/codecomb.droptxt.css" rel="stylesheet" />
+<script src="~/Scripts/codecomb.droptxt.js"></script>
 <div>
     <div class="result-title">
         <h1 class="head-tietle">增加产品</h1>
@@ -22,7 +23,7 @@
                    类型
                 </td>
                 <td>
-                    <select name="ProductCategory" class="textbox">
+                    <select name="ProductCategory" id="slProductCategory" class="textbox">
                         <option value="1">商品</option>
                         <option value="2">作品</option>
                     </select>
@@ -34,10 +35,17 @@
                      <textarea name="Description" rows="20" class="textbox"></textarea>
                 </td>
             </tr>
-            <tr>
+            <tr id="trPrice">
                 <td class="row-title">价格</td>
                 <td>
-                    <input class="textbox w-3" type="text" name="Price" />
+                    <input class="textbox w-3 nullable" type="text" name="Price" />
+                </td>
+            </tr>
+            <tr id="trUser" style="display:none;">
+                <td class="row-title">对应用户名</td>
+                <td>
+                    <input class="textbox w-3 nullable" type="text" id="txtUsername" name="User" />
+                    <input type="hidden" name="TUserID" id="txtUserId" />
                 </td>
             </tr>
         </table>
@@ -45,3 +53,19 @@
     }
 </div>
 
+<script>
+    $('#txtUsername').droptxt('/Admin/GetUserByName', 'data');
+    $(document).ready(function () {
+        $("#slProductCategory").change(function () {
+            var data = $("#slProductCategory").val();
+            if (data == "1") {
+                $("#trUser").hide();
+                $("#trPrice").show();
+            }
+            else {
+                $("#trUser").show();
+                $("#trPrice").hide();
+            }
+        });
+    })
+</script>

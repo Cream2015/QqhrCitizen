@@ -172,7 +172,7 @@ function LoadProducts() {
                 //var product_list_height = $("#product_body").height();
                 var i;
                 for (i = 0; i < data.length; i++) {
-                    str += ' <div class="productItem"><a href="/Product/Show/' + data[i].ID + '" target="_blank"><img  class="cover" src="' + data[i].ProductImages[0].Path + '"  /></a><div class="title trim"><a href="/Product/Show/' + data[i].ID + '" style="text-align:center">' + data[i].Title + '</a></div><div class="description" title="">' + data[i].Price + '</div></div>';
+                    str += ' <div class="productItem"><a href="/Product/Show/' + data[i].ID + '" target="_blank"><img  class="cover" src="' + data[i].ProductImages[0].Path + '"  /></a><div class="title trim"><a href="/Product/Show/' + data[i].ID + '" style="text-align:center">' + data[i].Title + '</a></div></div>';
                 }
                 //var height = Math.ceil(i / 2) * 270;
                 //$("#product_body").height(height + product_list_height);

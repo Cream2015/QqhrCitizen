@@ -2017,7 +2017,7 @@ namespace QqhrCitizen.Controllers
             db.Products.Add(model);
             db.SaveChanges();
 
-            string root = "~/ProductFile/" + model.Title + "/";
+            string root = "~/ProductFile/" + model.ID + "/";
             var phicyPath = HostingEnvironment.MapPath(root);
             Directory.CreateDirectory(phicyPath);
 
@@ -2056,13 +2056,14 @@ namespace QqhrCitizen.Controllers
                 ProductFile productFile = new ProductFile();
                 productFile.ProductID = ProductID;
                 productFile.FileTypeAsInt = 0;
+                productFile.Source = SourceEnum.管理员;
 
-                string root = "~/ProductFile/" + product.Title + "/";
+                string root = "~/ProductFile/" + product.ID + "/";
                 var phicyPath = HostingEnvironment.MapPath(root);
 
                 file.SaveAs(phicyPath + random + file.FileName);
 
-                productFile.Path = "/ProductFile/" + product.Title + "/" + random + file.FileName;
+                productFile.Path = "/ProductFile/" + product.ID + "/" + random + file.FileName;
 
                 db.ProductFiles.Add(productFile);
                 db.SaveChanges();
@@ -2100,12 +2101,12 @@ namespace QqhrCitizen.Controllers
                 productFile.ProductID = ProductID;
                 productFile.FileTypeAsInt = 1;
 
-                string root = "~/ProductFile/" + product.Title + "/";
+                string root = "~/ProductFile/" + product.ID + "/";
                 var phicyPath = HostingEnvironment.MapPath(root);
 
                 file.SaveAs(phicyPath + random + file.FileName);
 
-                productFile.Path = "/ProductFile/" + product.Title + "/" + random + file.FileName;
+                productFile.Path = "/ProductFile/" + product.ID + "/" + random + file.FileName;
 
                 db.ProductFiles.Add(productFile);
                 db.SaveChanges();
@@ -2312,6 +2313,14 @@ namespace QqhrCitizen.Controllers
             }
             db.SaveChanges();
             return RedirectToAction("Spider", "Admin");
+        }
+
+        [HttpGet]
+        public ActionResult GetUserByName(string data)
+        {
+            List<User> users = new List<Models.User>();
+            users = db.Users.Where(u => u.Username.Contains(data)).ToList();
+            return Json(users,JsonRequestBehavior.AllowGet);
         }
     }
 }
