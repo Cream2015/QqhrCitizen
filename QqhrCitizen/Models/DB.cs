@@ -64,6 +64,7 @@ namespace QqhrCitizen.Models
 
         public DbSet<ProductUserInfo> ProductUserInfos { set; get; }
 
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);

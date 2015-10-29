@@ -43,7 +43,7 @@ namespace QqhrCitizen.Models.ViewModel
             this.Time = model.Time;
             using (DB db = new DB())
             {
-                ProductFile file = db.ProductFiles.Where(pf => pf.FileTypeAsInt == 0 && pf.ProductID == model.ID).FirstOrDefault();
+                ProductFile file = db.ProductFiles.Where(pf => pf.FileTypeAsInt == 0 && pf.ProductID == model.ID && pf.IsUse==true).FirstOrDefault();
                 if (file != null)
                 {
                     this.FirstImagePath = file.Path;

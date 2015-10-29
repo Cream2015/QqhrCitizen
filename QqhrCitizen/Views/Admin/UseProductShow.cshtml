@@ -1,0 +1,81 @@
+﻿@model QqhrCitizen.Models.ViewModel.vUserProductInfo
+@{
+    ViewBag.Title = "用户作品展示";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<script src="~/Scripts/video.js"></script>
+<h2 class="head-tietle">@Model.Title - 用户作品展示  <a href="/Admin/UserProductInfo">管理</a></h2>
+<table class="detail-table">
+    <tr>
+        <td class="row-title">标题</td>
+        <td>
+            @Model.Title
+        </td>
+    </tr>
+    <tr>
+        <td class="row-title">
+            描述
+        </td>
+        <td>
+            @Model.Description
+        </td>
+    </tr>
+    <tr>
+        <td class="row-title">状态</td>
+        <td>
+            @Model.Status
+        </td>
+    </tr>
+    <tr>
+        <td class="row-title">时间</td>
+        <td>
+            @Model.Time.ToString("yyyy-MM-dd HH:ss:mm");
+        </td>
+    </tr>
+    <tr>
+        <td class="row-title">商品</td>
+        <td>
+            @Model.ProductTitle
+        </td>
+    </tr>
+    <tr>
+        <td class="row-title">操作员</td>
+        <td>
+            @Model.Username
+        </td>
+    </tr>
+</table>
+<h3>图片</h3>
+<table class="detail-table">
+    @foreach (var item in Model.ProductImages)
+    {
+        <tr id="@item.ID">
+            <td>@item.ID</td>
+            <td>
+                <img src="@item.Path" alt="@Model.Title" width="80" height="60" />
+            </td>
+        </tr>
+    }
+</table>
+
+<h3>视频</h3>
+<table class="detail-table">
+    @if (Model.ProductVideo != null)
+    {
+        <tr>
+            <td>@Model.ProductVideo.ID</td>
+            <td>
+                @if (Model.ProductVideo != null)
+                {
+                    <script> player("@Model.ProductVideo.Path", 600, 400, 1, "start.jpg");</script>
+                }
+            </td>
+        </tr>
+    }
+</table>
+
+
+
+
+

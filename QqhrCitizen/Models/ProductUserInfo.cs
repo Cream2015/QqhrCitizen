@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -41,8 +42,9 @@ namespace QqhrCitizen.Models
         /// <summary>
         /// 状态
         /// </summary>
-        public StatusEnum Status { set; get; }
+        public ProductUserInfoStatusEnum Status { set; get; }
 
+        [ForeignKey("AuthorID")]
         public virtual User User { get; set; }
 
         public virtual Product Product { set; get; }
@@ -53,5 +55,5 @@ namespace QqhrCitizen.Models
         public DateTime Time { set; get; }
     }
 
-    public enum StatusEnum { 审核中, 审核通过, 审核不通过 }
+    public enum ProductUserInfoStatusEnum { 审核中, 审核通过, 审核不通过 }
 }

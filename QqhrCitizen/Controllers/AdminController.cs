@@ -101,7 +101,7 @@ namespace QqhrCitizen.Controllers
         /// <returns></returns>
 
         [HttpPost]
-        public ActionResult AddType(TypeBelonger Belonger, string TypeValue, int NeedAuthorize, int FatherID, int? PID,int Top)
+        public ActionResult AddType(TypeBelonger Belonger, string TypeValue, int NeedAuthorize, int FatherID, int? PID, int Top)
         {
             TypeDictionary temp = db.TypeDictionaries.Where(tp => tp.TypeValue == TypeValue.Trim() && tp.Belonger == Belonger).FirstOrDefault();
             if (temp != null)
@@ -110,7 +110,7 @@ namespace QqhrCitizen.Controllers
             }
             bool flag = Convert.ToBoolean(NeedAuthorize);
             bool top = Convert.ToBoolean(Top);
-            TypeDictionary type = new TypeDictionary { TypeValue = TypeValue, Belonger = Belonger, NeedAuthorize = flag, FatherID = FatherID, Time = DateTime.Now, PID = PID,Top=top };
+            TypeDictionary type = new TypeDictionary { TypeValue = TypeValue, Belonger = Belonger, NeedAuthorize = flag, FatherID = FatherID, Time = DateTime.Now, PID = PID, Top = top };
             db.TypeDictionaries.Add(type);
             db.SaveChanges();
             return Redirect("/Admin/TypeManager?type=" + Belonger);
@@ -2003,6 +2003,128 @@ namespace QqhrCitizen.Controllers
             return View(query);
         }
 
+
+        /// <summary>
+        /// 用户作品修改管理
+        /// </summary>
+        /// <returns></returns>
+        public ActionResult UserProductInfo(string key, DateTime? Begin, DateTime? End, int p = 0)
+        {
+            IEnumerable<ProductUserInfo> query = db.ProductUserInfos.AsEnumerable();
+            if (!string.IsNullOrEmpty(key))
+            {
+                query = query.Where(c => c.Title.Contains(key));
+            }
+            if (Begin.HasValue)
+            {
+                query = query.Where(c => c.Time >= Begin);
+            }
+            if (End.HasValue)
+            {
+                query = query.Where(c => c.Time <= End);
+            }
+            query = query.OrderByDescending(x => x.Time);
+            ViewBag.PageInfo = PagerHelper.Do(ref query, 50, p);
+            return View(query);
+        }
+
+        /// <summary>
+        /// 删除用户作品信息
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        [HttpPost]
+        [ValidateSID]
+        public ActionResult UseProductShowDelete(int id)
+        {
+            List<ProductFile> files = new List<ProductFile>();
+            files = db.ProductFiles.Where(pf => pf.PUId == id).ToList();
+            ProductUserInfo info = new ProductUserInfo();
+            info = db.ProductUserInfos.Find(id);
+            foreach (var item in files)
+            {
+                db.ProductFiles.Remove(item);
+            }
+            db.ProductUserInfos.Remove(info);
+            db.SaveChanges();
+
+            foreach (var item in files)
+            {
+                var phicyPath = HostingEnvironment.MapPath(item.Path);
+
+                if (System.IO.File.Exists(phicyPath))
+                {
+                    System.IO.File.Delete(phicyPath);
+                }
+            }
+
+            return Content("ok");
+        }
+
+        /// <summary>
+        ///  用户提交作品展示
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        [HttpGet]
+        public ActionResult UseProductShow(int id)
+        {
+            ProductUserInfo info = new ProductUserInfo();
+            info = db.ProductUserInfos.Find(id);
+            return View(new vUserProductInfo(info));
+        }
+
+        /// <summary>
+        ///  通过审核
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        [HttpGet]
+        public ActionResult UserProductPass(int id)
+        {
+            ProductUserInfo info = new ProductUserInfo();
+            info = db.ProductUserInfos.Find(id);
+            info.Status = ProductUserInfoStatusEnum.审核通过;
+            db.SaveChanges();
+
+            Product product = new Product();
+            product = db.Products.Find(info.ProductID);
+
+            product.Title = info.Title;
+            product.Description = info.Description;
+            List<ProductFile> files = new List<ProductFile>();
+            files = db.ProductFiles.Where(pf => pf.ProductID == product.ID).ToList();
+            foreach (var item in files)
+            {
+                if (item.IsUse && item.PUId != id)
+                {
+                    item.IsUse = false;
+                }
+                if (item.PUId == id)
+                {
+                    item.IsUse = true;
+                }
+            }
+            db.SaveChanges();
+            return Redirect("/Admin/UserProductInfo");
+        }
+
+        /// <summary>
+        /// 审核不通过
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        [HttpGet]
+        public ActionResult UserProductNotPass(int id)
+        {
+            ProductUserInfo info = new ProductUserInfo();
+            info = db.ProductUserInfos.Find(id);
+            info.Status = ProductUserInfoStatusEnum.审核不通过;
+            db.SaveChanges();
+            return Redirect("/Admin/UserProductInfo");
+        }
+
+
         [HttpGet]
         public ActionResult AddProduct()
         {
@@ -2057,6 +2179,7 @@ namespace QqhrCitizen.Controllers
                 productFile.ProductID = ProductID;
                 productFile.FileTypeAsInt = 0;
                 productFile.Source = SourceEnum.管理员;
+                productFile.IsUse = true;
 
                 string root = "~/ProductFile/" + product.ID + "/";
                 var phicyPath = HostingEnvironment.MapPath(root);
@@ -2100,6 +2223,8 @@ namespace QqhrCitizen.Controllers
                 ProductFile productFile = new ProductFile();
                 productFile.ProductID = ProductID;
                 productFile.FileTypeAsInt = 1;
+                productFile.Source = SourceEnum.管理员;
+                productFile.IsUse = true;
 
                 string root = "~/ProductFile/" + product.ID + "/";
                 var phicyPath = HostingEnvironment.MapPath(root);
@@ -2138,7 +2263,7 @@ namespace QqhrCitizen.Controllers
             }
             db.Products.Remove(product);
             db.SaveChanges();
-            string root = "~/ProductFile/" + product.Title + "/";
+            string root = "~/ProductFile/" + product.ID + "/";
             var phicyPath = HostingEnvironment.MapPath(root);
 
             DirectoryInfo di = new DirectoryInfo(phicyPath);
@@ -2320,7 +2445,7 @@ namespace QqhrCitizen.Controllers
         {
             List<User> users = new List<Models.User>();
             users = db.Users.Where(u => u.Username.Contains(data)).ToList();
-            return Json(users,JsonRequestBehavior.AllowGet);
+            return Json(users, JsonRequestBehavior.AllowGet);
         }
     }
 }

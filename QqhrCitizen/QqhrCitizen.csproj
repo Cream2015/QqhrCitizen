@@ -1067,6 +1067,7 @@
     <Compile Include="Models\Note.cs" />
     <Compile Include="Models\Product.cs" />
     <Compile Include="Models\ProductFile.cs" />
+    <Compile Include="Models\ProductUserFile.cs" />
     <Compile Include="Models\ProductUserInfo.cs" />
     <Compile Include="Models\Question.cs" />
     <Compile Include="Models\ReadRecord.cs" />
@@ -1097,6 +1098,7 @@
     <Compile Include="Models\ViewModel\vTypeDictionary.cs" />
     <Compile Include="Models\ViewModel\vUser.cs" />
     <Compile Include="Models\ViewModel\vUserEdit.cs" />
+    <Compile Include="Models\ViewModel\vUserProductInfo.cs" />
     <Compile Include="Models\ViewModel\vUserPwdEdit.cs" />
     <Compile Include="Models\Viewpager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -1213,6 +1215,8 @@
     <Content Include="Views\Admin\SpiderVerify.cshtml" />
     <Content Include="Styles\video-js.less" />
     <Content Include="Styles\demo.captions.vtt" />
+    <Content Include="Views\Admin\UserProductInfo.cshtml" />
+    <Content Include="Views\Admin\UseProductShow.cshtml" />
     <None Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Admin\ViwepagerEdit.cshtml" />
     <Content Include="Views\User\Product.cshtml" />

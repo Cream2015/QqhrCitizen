@@ -31,13 +31,21 @@
     <div class="d-row-c">
         <div class="d-col-2-8">
             <div class="contentarea">
-                @using (Html.BeginForm("AddCourse", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                <h2>修改作品</h2>
+                @using (Html.BeginForm("EditProductInfo", "User", FormMethod.Post, new { enctype = "multipart/form-data" }))
                 {
-                    <input type="hidden" id="txtProductID" name="ProductID" />
-                    <div><input type="text" name="Title" /></div>
+                    @Html.AntiForgeryToken()
+                    <input type="hidden" id="txtProductID" name="ProductID" value="@product.ID" />
+                    <div class="PuidHide">
+
+                    </div>
                     <div>
-                        简介：
-                        <textarea name="Description">
+                        <h4>标题</h4>
+                        <input type="text" name="Title" class="int-hs" />
+                    </div>
+                    <div style="margin-top:20px;">
+                        <h4>简介</h4>
+                        <textarea name="Description" class="int-hs" cols="30">
                             @product.Description
                         </textarea>
                     </div>
@@ -45,12 +53,17 @@
                         <h4>视屏</h4>
                         <div>
                             <input type="file" id="fileupload" name="files[]" />
+                            <div class="videoWarning"></div>
                         </div>
 
                     </div>
                     <div>
-                        <h4>缩略图</h4>
-
+                        <h4>缩略图(大小不能超过3M)</h4>
+                        <input type="file" id="imgFileupload" name="files[]" />
+                        <div class="imgWarning"></div>
+                    </div>
+                    <div style="margin-top:20px;">
+                        <input type="submit" class="btn btn-orange btn-big" value="保存" style="width:100px;">
                     </div>
                 }
             </div>
@@ -86,18 +99,40 @@
 <script>
     var ProductID = $("#txtProductID").val();
     $('#fileupload').fileupload({
-        url: "@Url.Action("VideoUpload", "User"})",
+        url: "/User/VideoUpload?ProductID=" + ProductID,
         dataType: 'json',
         autoUpload: true,
-        acceptFileTypes: /(\.|\/)(gif|jpe?g|png)$/i,
-        maxFileSize: 307200000, // 3 MB
+        maxFileSize: 307200000, // 300 MB
         done: function (e, data) {//设置文件上传完毕事件的回调函数
-            if (data.filePath == "") {
+            if (data.result.filePath == "") {
                 alert("上传失败！");
                 return false;
             }
-            console.log(data);
+            else {
+                var str = "<input type='hidden' value='" + data.result.PUId + "' name='InfoID' />";
+                $(".videoWarning").html("上传成功");
+                $(".PuidHide").html(str);
+              
+            }
         }
     });
 
+    $('#imgFileupload').fileupload({
+        url: "/User/ImageUpload?ProductID=" + ProductID,
+        dataType: 'json',
+        autoUpload: true,
+        maxFileSize: 3072000, // 300 MB
+        done: function (e, data) {//设置文件上传完毕事件的回调函数
+            if (data.result.filePath == "") {
+                alert("上传失败！");
+                return false;
+            }
+            else {
+                var str1 = "<input type='hidden' value='" + data.result.PUId + "' name='InfoID' />";
+                var str = "<img src='" + data.result.filePath + "' width='60' heigth='60' /><br />"
+                $(".imgWarning").append(str);
+                $(".PuidHide").html(str1);
+            }
+        }
+    });
 </script>

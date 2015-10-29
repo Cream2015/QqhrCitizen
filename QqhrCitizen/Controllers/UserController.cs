@@ -401,17 +401,35 @@ namespace QqhrCitizen.Controllers
             return View();
         }
 
-        public ActionResult VideoUpload(int ProductID)
+        /// <summary>
+        /// 上传视频
+        /// </summary>
+        /// <param name="ProductID"></param>
+        /// <returns></returns>
+        public ActionResult VideoUpload(int ProductID, int? InfoID)
         {
             HttpPostedFileBase file = Request.Files[0];
             if (file != null)
             {
+                if (InfoID == null)
+                {
+                    ProductUserInfo info = new ProductUserInfo();
+                    info.Time = DateTime.Now;
+                    info.ProductID = ProductID;
+                    info.Status = ProductUserInfoStatusEnum.审核中;
+                    info.AuthorID = CurrentUser.ID;
+                    db.ProductUserInfos.Add(info);
+                    db.SaveChanges();
+                    InfoID = info.ID;
+                }
+
+
                 string random = Helpers.DateHelper.GetTimeStamp();
                 Product product = db.Products.Find(ProductID);
                 ProductFile productFile = new ProductFile();
                 productFile.ProductID = ProductID;
                 productFile.FileTypeAsInt = 1;
-                productFile.Source = SourceEnum.管理员;
+
 
                 string root = "~/ProductFile/" + product.ID + "/";
                 var phicyPath = HostingEnvironment.MapPath(root);
@@ -420,15 +438,96 @@ namespace QqhrCitizen.Controllers
 
                 productFile.Path = "/ProductFile/" + product.ID + "/" + random + file.FileName;
 
+
+                productFile.PUId = InfoID;
                 db.ProductFiles.Add(productFile);
                 db.SaveChanges();
 
-                return Json(new { filePath = productFile.Path });
+                return Json(new { filePath = productFile.Path, PUId = InfoID });
             }
             else
             {
                 return Json(new { filePath = "" });
             }
         }
+
+        /// <summary>
+        ///   上传图片
+        /// </summary>
+        /// <param name="ProductID"></param>
+        /// <returns></returns>
+        public ActionResult ImageUpload(int ProductID, int? InfoID)
+        {
+            HttpPostedFileBase file = Request.Files[0];
+            if (file != null)
+            {
+
+                if (InfoID == null)
+                {
+                    ProductUserInfo info = new ProductUserInfo();
+                    info.Time = DateTime.Now;
+                    info.ProductID = ProductID;
+                    info.Status = ProductUserInfoStatusEnum.审核中;
+                    info.AuthorID = CurrentUser.ID;
+                    db.ProductUserInfos.Add(info);
+                    db.SaveChanges();
+                    InfoID = info.ID;
+                }
+
+                string random = Helpers.DateHelper.GetTimeStamp();
+                Product product = db.Products.Find(ProductID);
+                ProductFile productFile = new ProductFile();
+                productFile.ProductID = ProductID;
+                productFile.FileTypeAsInt = 0;
+                productFile.Source = SourceEnum.管理员;
+                productFile.IsUse = false;
+
+                string root = "~/ProductFile/" + product.ID + "/";
+                var phicyPath = HostingEnvironment.MapPath(root);
+
+                file.SaveAs(phicyPath + random + file.FileName);
+
+                productFile.Path = "/ProductFile/" + product.ID + "/" + random + file.FileName;
+
+                productFile.PUId = InfoID;
+                db.ProductFiles.Add(productFile);
+                db.SaveChanges();
+
+                return Json(new { filePath = productFile.Path, PUId = InfoID });
+            }
+            else
+            {
+                return Json(new { filePath = "" });
+            }
+        }
+
+        [ValidateAntiForgeryToken]
+        [HttpPost]
+        public ActionResult EditProductInfo(string Description, string Title, int ProductID, int? InfoID)
+        {
+            if (InfoID == null)
+            {
+                ProductUserInfo info = new ProductUserInfo();
+                info.Description = Description;
+                info.Title = Title;
+                info.ProductID = ProductID;
+                info.Time = DateTime.Now;
+                info.AuthorID = CurrentUser.ID;
+                db.ProductUserInfos.Add(info);
+                db.SaveChanges();
+            }
+            else
+            {
+                ProductUserInfo info = new ProductUserInfo();
+                info = db.ProductUserInfos.Find(InfoID);
+                info.Description = Description;
+                info.Title = Title;
+                info.ProductID = ProductID;
+                db.SaveChanges();
+            }
+
+            return Redirect("/User/ProductShow/"+ ProductID);
+        }
+
     }
 }
