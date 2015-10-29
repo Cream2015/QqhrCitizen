@@ -1,7 +1,7 @@
 ﻿@using QqhrCitizen.Models.ViewModel
 @{
     vProduct product = ViewBag.Product as vProduct;
-    ViewBag.Title = @product.Title+"_产品展示";
+    ViewBag.Title = @product.Title + "_产品展示";
 }
 
 <script src="~/Scripts/video.js"></script>
@@ -33,7 +33,7 @@
                                 </ul>
                                 <script>
                                     $(".img").mouseover(function (e) {
-                                        $("#show_pic").attr("src",$(this).attr("src"));
+                                        $("#show_pic").attr("src", $(this).attr("src"));
                                     });
                                 </script>
                             </div>
@@ -42,7 +42,7 @@
                             <div class="fl" style="color:#808080;font-size:14px"><span>商品编号：</span><span>@product.ID</span></div>
                         </div>
                     </div>
-                   
+
                     <div class="m-item-inner">
                         <div id="itemInfo">
                             <div id="name">
@@ -51,15 +51,17 @@
                                     简介：@product.Description
                                 </div>
                             </div>
-                            <div id="summary">
-                                <div id="summary-price" style="margin: 5px 0px;">
-                                    <div class="dt">价 格：</div>
-                                    <div class="dd">
-                                        <strong class="p-price" id="jd-price">￥@product.Price</strong>
+                            @if (product.ProductCategory != ProductCategory.作品.ToString())
+                            {
+                                <div id="summary">
+                                    <div id="summary-price" style="margin: 5px 0px;">
+                                        <div class="dt">价 格：</div>
+                                        <div class="dd">
+                                            <strong class="p-price" id="jd-price">￥@product.Price</strong>
+                                        </div>
                                     </div>
                                 </div>
-
-                            </div>
+                            }
                         </div>
                     </div>
                 </div>
@@ -75,11 +77,11 @@
                                                     <tbody>
                                                         <tr>
                                                             <td>
-															@if(ViewBag.ProductVideo>0)
-															{
-															<script> player("@product.ProductVideo.Path", 800, 400, 1, "start.jpg");</script>
-															}
-															</td>
+                                                                @if (ViewBag.ProductVideo > 0)
+                                                                {
+                                                                    <script> player("@product.ProductVideo.Path", 800, 400, 1, "start.jpg");</script>
+                                                                }
+                                                            </td>
                                                         </tr>
                                                         @foreach (var item in product.ProductImages)
                                                         {

@@ -46,24 +46,24 @@ namespace QqhrCitizen.Controllers
             if (tid != null)
             {
                 List<Product> products = new List<Product>();
-                List<vProduct> _products = new List<vProduct>();
+                List<vProductListModel> _products = new List<vProductListModel>();
                 int index = page * 12;
                 products = db.Products.Where(p=>p.ProductCategory==(ProductCategory)tid).OrderByDescending(p => p.Time).Skip(index).Take(12).ToList();
                 foreach (var item in products)
                 {
-                    _products.Add(new vProduct(item));
+                    _products.Add(new vProductListModel(item));
                 }
                 return Content(Newtonsoft.Json.JsonConvert.SerializeObject(_products));
             }
             else
             {
                 List<Product> products = new List<Product>();
-                List<vProduct> _products = new List<vProduct>();
+                List<vProductListModel> _products = new List<vProductListModel>();
                 int index = page * 12;
                 products = db.Products.OrderByDescending(p => p.Time).Skip(index).Take(12).ToList();
                 foreach (var item in products)
                 {
-                    _products.Add(new vProduct(item));
+                    _products.Add(new vProductListModel(item));
                 }
                 return Content(Newtonsoft.Json.JsonConvert.SerializeObject(_products));
             }
