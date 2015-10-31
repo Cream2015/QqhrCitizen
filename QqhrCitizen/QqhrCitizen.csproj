@@ -738,6 +738,7 @@
     <Content Include="fonts\icomoon.eot" />
     <Content Include="fonts\icomoon.ttf" />
     <Content Include="fonts\icomoon.woff" />
+    <None Include="Properties\PublishProfiles\local.pubxml" />
     <None Include="Properties\PublishProfiles\nele.pubxml" />
     <None Include="Properties\PublishProfiles\qqrtvu.pubxml" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />

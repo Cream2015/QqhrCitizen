@@ -32,6 +32,7 @@ namespace QqhrCitizen.Controllers
             ViewBag.CourseCount = db.Courses.Count();
             ViewBag.EBookCount = db.EBooks.Count();
             ViewBag.LiveCount = db.Lives.Count();
+            ViewBag.UserCount = db.Users.Count();
             if (CurrentUser.Role == Role.Business)
             {
                 ViewBag.ProductCount = db.Products.Where(p => p.UserID == CurrentUser.ID).Count();
