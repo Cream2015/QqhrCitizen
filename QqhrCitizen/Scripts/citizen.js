@@ -206,7 +206,7 @@ function LoadUserProducts() {
                 var str = "";
                 var i;
                 for (i = 0; i < data.length; i++) {
-                    str += ' <div class="productItem"><a href="/User/ProductShow/' + data[i].ID + '" target="_blank"><img  class="cover" src="' + data[i].FirstImagePath + '"  /></a><div class="title trim"><a href="/User/ProductShow/' + data[i].ID + '" style="text-align:center">' + data[i].Title + '</a><a href="/User/ProductEdit/' + data[i].ID + '" style="text-align:center;margin-left:20px;">修改</a></div></div>';
+                    str += ' <div class="productItem"><a href="/User/ProductShow/' + data[i].ID + '" target="_blank"><img  class="cover" src="' + data[i].FirstImagePath + '"  /></a><div class="title trim"><a href="/User/ProductShow/' + data[i].ID + '" style="text-align:center">' + data[i].Title + '</a><a href="/User/ProductEdit/' + data[i].ID + '" style="text-align:center;margin-left:20px;">修改</a><a href="/User/ProductEditRecord/' + data[i].ID + '" style="text-align:center;margin-left:20px;">修改记录</a></div></div>';
                 }
                 $(".lstUserProduct").append(str);
                 if (data.length == 10) {

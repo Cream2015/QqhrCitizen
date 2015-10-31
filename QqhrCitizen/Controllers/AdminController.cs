@@ -2231,7 +2231,24 @@ namespace QqhrCitizen.Controllers
 
                 file.SaveAs(phicyPath + random + file.FileName);
 
-                productFile.Path = "/ProductFile/" + product.ID + "/" + random + file.FileName;
+
+                var exten = Path.GetExtension(file.FileName);
+
+                if (!exten.Equals(".flv"))
+                {
+                    var video = new VideoFile(phicyPath + random + file.FileName);
+                    video.Convert(".flv", Quality.Medium).MoveTo(phicyPath + random + ".flv");
+                    productFile.Path = "/ProductFile/" + product.ID + "/" + random + ".flv";
+                    if (System.IO.File.Exists(phicyPath + random + file.FileName))
+                    {
+                        //如果存在则删除
+                        System.IO.File.Delete(phicyPath + random + file.FileName);
+                    }
+                }
+                else
+                {
+                    productFile.Path = "/ProductFile/" + product.ID + "/" + random + file.FileName;
+                }
 
                 db.ProductFiles.Add(productFile);
                 db.SaveChanges();

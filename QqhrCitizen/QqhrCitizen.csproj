@@ -1222,6 +1222,8 @@
     <Content Include="Views\User\Product.cshtml" />
     <Content Include="Views\User\ProductShow.cshtml" />
     <Content Include="Views\User\ProductEdit.cshtml" />
+    <Content Include="Views\User\ProductEditRecord.cshtml" />
+    <Content Include="Views\User\ShowProductUserRecord.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

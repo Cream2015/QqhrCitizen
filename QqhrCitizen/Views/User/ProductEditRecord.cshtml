@@ -1,0 +1,79 @@
+﻿@model List<QqhrCitizen.Models.ProductUserInfo>
+@using QqhrCitizen.Models;
+    @{
+        ViewBag.Title = "申请记录";
+        Layout = "~/Views/Shared/_Layout.cshtml";
+        User user = ViewBag.User as User;
+    }
+
+    <div id="d_menu" class="d-menu menu-use">
+        <div id="d_menu_c" class="d-menu-c">
+            <!-- region start: menu -->
+            <div id="d_headmenu" class="d-headmenu">
+                <div class="body">
+                    <a id="headmenu_useraccount" class="item_selected" href="/User/Show/@user.ID">个人信息</a>
+                    <a id="headmenu_history" class="item" href="/User/HistoryCourse/@user.ID">学习档案</a>
+                </div>
+            </div>
+            <!-- region end: menu -->
+        </div>
+    </div>
+    <div id="d_bottom" class="d-bottom" style="visibility: hidden; position: fixed;"><div class="d-bottom-c"><div id="d_scrolltop" class="d-scrolltop" style="right: -70px;"><span class="t" onclick="$('html,body').animate({scrollTop: '0px'}, 800);">顶部</span></div></div></div>
+    <div class="d-row" style="padding:0 0 40px 0">
+        <div class="d-row-c">
+            <div class="d-col-2-8">
+                <div class="contentarea">
+                    <h2>修改作品记录</h2>
+                    <table class="tbl" width="100%;">
+                        <thead>
+                            <tr>
+                                <td>编号</td>
+                                <td>标题</td>
+                                <td>时间</td>
+                                <td>状态</td>
+                                <td>操作</td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>@item.ID</td>
+                                    <td>@item.Title</td>
+                                    <td>@item.Time</td>
+                                    <td>@item.Status</td>
+                                    <td><a href="/User/ShowProductUserRecord/@item.ID">详细</a></td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="d-col-2-4">
+                <div class="contentarea">
+                    <!-- region start: 个人设置 -->
+                    <div id="d_settings" class="d-settings">
+                        <div class="head">
+                            &nbsp;
+                        </div><div class="body">
+                            <div class="item">
+                                <a href="/User/PwdEdit/@user.ID">修改密码</a>
+                            </div>
+                            <div class="item">
+                                <a href="/User/Edit/@user.ID">修改个人信息</a>
+                            </div>
+                            <div class="item">
+                                <a href="/User/Product">作品信息</a>
+                            </div>
+                            <!--<div class="item">
+                        <a href="/usercenter/verify">实名认证</a>
+                    </div>-->
+                        </div>
+                    </div>
+                    <!-- region end: 个人设置 -->
+                    <input type="hidden" id="redirect" name="redirect">
+                </div>
+            </div>
+        </div>
+        <div class="clear"></div>
+    </div>

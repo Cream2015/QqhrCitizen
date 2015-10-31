@@ -1,9 +1,11 @@
-﻿using QqhrCitizen.Filters;
+﻿using CodeComb.Video;
+using QqhrCitizen.Filters;
 using QqhrCitizen.Models;
 using QqhrCitizen.Models.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity.Validation;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
@@ -436,7 +438,25 @@ namespace QqhrCitizen.Controllers
 
                 file.SaveAs(phicyPath + random + file.FileName);
 
-                productFile.Path = "/ProductFile/" + product.ID + "/" + random + file.FileName;
+
+                var exten = Path.GetExtension(file.FileName);
+
+                if (!exten.Equals(".flv"))
+                {
+                    var video = new VideoFile(phicyPath + random + file.FileName);
+                    video.Convert(".flv", Quality.Medium).MoveTo(phicyPath + random + ".flv");
+                    productFile.Path = "/ProductFile/" + product.ID + "/" + random + ".flv";
+                    if (System.IO.File.Exists(phicyPath + random + file.FileName))
+                    {
+                        //如果存在则删除
+                        System.IO.File.Delete(phicyPath + random + file.FileName);
+                    }
+                }
+                else
+                {
+                    productFile.Path = "/ProductFile/" + product.ID + "/" + random + file.FileName;
+                }
+
 
 
                 productFile.PUId = InfoID;
@@ -527,6 +547,32 @@ namespace QqhrCitizen.Controllers
             }
 
             return Redirect("/User/ProductShow/"+ ProductID);
+        }
+
+
+        /// <summary>
+        ///  作品申请记录
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        [HttpGet]
+        public ActionResult ProductEditRecord(int id)
+        {
+            List<ProductUserInfo> records = new List<ProductUserInfo>();
+            records = db.ProductUserInfos.Where(p => p.ProductID == id).OrderByDescending(p=>p.Time).ToList();
+            User user = db.Users.Find(CurrentUser.ID);
+            ViewBag.User = user;
+            return View(records);
+        }
+
+        [HttpGet]
+        public ActionResult ShowProductUserRecord(int id)
+        {
+            var record = new ProductUserInfo();
+            record = db.ProductUserInfos.Find(id);
+            User user = db.Users.Find(CurrentUser.ID);
+            ViewBag.User = user;
+            return View(new vUserProductInfo(record));
         }
 
     }
