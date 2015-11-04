@@ -10,12 +10,12 @@
     <title>市民学习网 - 后台管理</title>
     <link href="~/Styles/common.css" rel="stylesheet" />
     <link href="~/Styles/admin.css" rel="stylesheet" />
-	<link href="~/Styles/citizen.css" rel="stylesheet" />
+    <link href="~/Styles/citizen.css" rel="stylesheet" />
     <link href="~/Styles/datetimepicker.css" rel="stylesheet" />
 
     <link href="~/Styles/spectrum.css" rel="stylesheet" />
     <script src="~/Scripts/jquery-1.11.3.min.js"></script>
-	
+
     <script src="~/Scripts/qqhrcitizen.base.js"></script>
     <script src="~/Scripts/citizen.admin.js"></script>
     <script src="~/Scripts/jquery.datetimepicker.js"></script>
@@ -163,7 +163,11 @@
                             <ul class="sub-menu" id="product_manager_ul" style="display:none">
                                 <li><a href="/Admin/ProductManager"><i class="icon-font">&#xe017;</i>市民生活管理</a></li>
                                 <li><a href="/Admin/AddProduct"><i class="icon-font">&#xe026;</i>增加产品</a></li>
-                                <li><a href="/Admin/UserProductInfo"><i class="icon-font">&#xe017;</i>用户申请修改</a></li>
+                                @if (user.Role == Role.Admin)
+                                {
+                                    <li><a href="/Admin/UserProductInfo"><i class="icon-font">&#xe017;</i>用户申请修改</a></li>
+                                    <li><a href="/Admin/ProductCategoryManager"><i class="icon-font">&#xe017;</i>分类管理</a></li>
+                                }
                             </ul>
                         </li>
                         <script>
@@ -279,7 +283,7 @@
                                 }
                             });
                         </script>
-                    }                
+                    }
                     @if (user.Role == Role.Admin)
                     {
 

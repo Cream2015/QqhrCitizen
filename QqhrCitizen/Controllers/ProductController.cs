@@ -48,7 +48,7 @@ namespace QqhrCitizen.Controllers
                 List<Product> products = new List<Product>();
                 List<vProductListModel> _products = new List<vProductListModel>();
                 int index = page * 12;
-                products = db.Products.Where(p=>p.ProductCategory==(ProductCategory)tid).OrderByDescending(p => p.Time).Skip(index).Take(12).ToList();
+                //products = db.Products.Where(p=>p.ProductCategory==(ProductCategory)tid).OrderByDescending(p => p.Time).Skip(index).Take(12).ToList();
                 foreach (var item in products)
                 {
                     _products.Add(new vProductListModel(item));

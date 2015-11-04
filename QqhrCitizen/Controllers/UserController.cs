@@ -343,7 +343,7 @@ namespace QqhrCitizen.Controllers
         {
             List<Product> products = new List<Models.Product>();
             int uid = CurrentUser.ID;
-            products = db.Products.Where(x => x.ProductCategory == ProductCategory.作品 && x.TUserID == uid).ToList();
+          //  products = db.Products.Where(x => x.ProductCategory == ProductCategory.作品 && x.TUserID == uid).ToList();
             ViewBag.Products = products;
 
             User user = db.Users.Find(uid);
@@ -364,7 +364,7 @@ namespace QqhrCitizen.Controllers
             List<vProductListModel> _products = new List<vProductListModel>();
             int uid = CurrentUser.ID;
             int index = page * 12;
-            products = db.Products.Where(x => x.ProductCategory == ProductCategory.作品 && x.TUserID == uid).OrderByDescending(p => p.Time).Skip(index).Take(12).ToList();
+           // products = db.Products.Where(x => x.ProductCategory == ProductCategory.作品 && x.TUserID == uid).OrderByDescending(p => p.Time).Skip(index).Take(12).ToList();
             foreach (var item in products)
             {
                 _products.Add(new vProductListModel(item));

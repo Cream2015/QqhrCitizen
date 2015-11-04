@@ -1,0 +1,58 @@
+﻿@model IEnumerable<QqhrCitizen.Models.ProductCategory>
+@{
+    ViewBag.Title = "产品类型管理";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div>
+    <div class="result-title">
+        <h1 class="head-tietle">产品类型管理 <a href="/Admin/AddProductCategory?Belong=0">增加产品分类</a> <a href="/Admin/AddProductCategory?Belong=1">增加作品作者</a></h1>
+    </div>
+    <div class="result-content">
+        <form class="search">
+            检索：
+            <input type="text" name="Begin" class="textbox datetime nullable" placeholder="发布时间(大于)" value="@Request.QueryString["Begin"]" />
+            <input type="text" name="End" class="textbox datetime nullable" placeholder="发布时间(小于)" value="@Request.QueryString["End"]" />
+            信息分类
+            <input type="text" name="Key" class="textbox nullable" placeholder="关键字" />
+            <select name="Belong" class="textbox">
+                <option value="0">产品</option>
+                <option value="1">作品</option>
+            </select>
+            <input type="submit" class="btn blue" value="检索" />
+        </form>
+        <table class="table">
+            <thead>
+                <tr>
+                    <td>编号</td>
+                    <td>名称</td>
+                    <td>图片</td>
+                    <td>优先级</td>
+                    <td>所属类别</td>
+                    <td>父类</td>
+                    <td>增加时间</td>
+                    <td>操作</td>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr id="@item.ID">
+                        <td>@item.ID</td>
+                        <td>@item.Content</td>
+                        <td><img src="/Admin/ShowProductCategoryImg/@item.ID" alt="@item.Content" width="60" height="60" /></td>
+                        <td>@item.Priority</td>
+                        <td>@(item.Belong == 0 ? "产品" : "商品")</td>
+                        <td>@(item.Father == null ? "无" : item.Father.Content)</td>
+                        <td>@item.AddTime</td>
+                        <td>
+                            <a href="javascript:deleteDialog('/Admin/ProductCategoryDelete/' + @item.ID + '?sid=@ViewBag.SID',@item.ID);">删除</a>
+                            <a href="/Admin/ProductCategoryEdit/@item.ID">编辑</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        @Html.MakePager()
+    </div>
+</div>

@@ -64,6 +64,7 @@ namespace QqhrCitizen.Models
 
         public DbSet<ProductUserInfo> ProductUserInfos { set; get; }
 
+        public DbSet<ProductCategory> ProductCategories { set; get; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -82,6 +83,7 @@ namespace QqhrCitizen.Models
             modelBuilder.Entity<LearningRecord>().HasRequired(ls => ls.User).WithMany().WillCascadeOnDelete(false);
             modelBuilder.Entity<ReadRecord>().HasRequired(ls => ls.User).WithMany().WillCascadeOnDelete(false);
             modelBuilder.Entity<UserCourse>().HasRequired(ls => ls.User).WithMany().WillCascadeOnDelete(false);
+            modelBuilder.Entity<ProductUserInfo>().HasRequired(ls => ls.User).WithMany().WillCascadeOnDelete(false);
         }
 
     }

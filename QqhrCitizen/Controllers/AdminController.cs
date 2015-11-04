@@ -2125,11 +2125,143 @@ namespace QqhrCitizen.Controllers
             return Redirect("/Admin/UserProductInfo");
         }
 
+        [HttpGet]
+        public ActionResult ProductCategoryManager(string key, DateTime? Begin, DateTime? End, int? Belong, int p = 0)
+        {
+            IEnumerable<ProductCategory> query = db.ProductCategories.AsEnumerable();
+            if (!string.IsNullOrEmpty(key))
+            {
+                query = query.Where(c => c.Content.Contains(key));
+            }
+            if (Begin.HasValue)
+            {
+                query = query.Where(c => c.AddTime >= Begin);
+            }
+            if (End.HasValue)
+            {
+                query = query.Where(c => c.AddTime <= End);
+            }
+            if (Belong.HasValue)
+            {
+                query = query.Where(c => c.Belong == (ProductBelong)Belong);
+            }
+            query = query.OrderByDescending(x => x.AddTime);
+            ViewBag.PageInfo = PagerHelper.Do(ref query, 50, p);
+            return View(query);
+        }
+
+        [HttpGet]
+        public ActionResult AddProductCategory(int Belong)
+        {
+            List<ProductCategory> categories = new List<ProductCategory>();
+            ViewBag.Belong = Belong;
+            if (Belong == 1)
+            {
+                ViewBag.LastProductCategories = categories;
+            }
+            else
+            {
+                categories = db.ProductCategories.Where(pc => (pc.FatherID == null || pc.FatherID == 0) && pc.Belong == (ProductBelong)Belong).ToList();
+                ViewBag.LastProductCategories = categories;
+            }
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult AddProductCategory(ProductCategory model, HttpPostedFileBase file)
+        {
+            if (file != null)
+            {
+                System.IO.Stream stream = file.InputStream;
+                byte[] buffer = new byte[stream.Length];
+                stream.Read(buffer, 0, (int)stream.Length);
+                stream.Close();
+                model.Picture = buffer;
+                model.AddTime = DateTime.Now;
+                model.Belong = (ProductBelong)Belong;
+                db.ProductCategories.Add(model);
+                db.SaveChanges();
+                return Redirect("/Admin/ProductCategoryManager");
+            }
+            else
+            {
+                return Redirect("/Admin/AdminMessage?msg=你填写信息不正确，请重新填写！");
+            }
+        }
 
         [HttpGet]
         public ActionResult AddProduct()
         {
             return View();
+        }
+
+        /// <summary>
+        /// 显示产品分类图片你
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        [HttpGet]
+        public ActionResult ShowProductCategoryImg(int id)
+        {
+            ProductCategory category = new ProductCategory();
+            category = db.ProductCategories.Find(id);
+            return File(category.Picture, "image/jpg");
+        }
+
+        [HttpPost]
+        [ValidateSID]
+        public ActionResult ProductCategoryDelete(int id)
+        {
+            try
+            {
+                ProductCategory category = new ProductCategory();
+                category = db.ProductCategories.Find(id);
+                List<ProductCategory> categories = new List<ProductCategory>();
+                categories = db.ProductCategories.Where(pc => pc.FatherID == id).ToList();
+                foreach (var item in categories)
+                {
+                    item.FatherID = 0;
+                }
+                db.ProductCategories.Remove(category);
+                db.SaveChanges();
+                return Content("ok");
+            }
+            catch
+            {
+                return Content("err");
+            }
+        }
+
+        [HttpGet]
+        public ActionResult ProductCategoryEdit(int id)
+        {
+            ProductCategory category = new ProductCategory();
+            category = db.ProductCategories.Find(id);
+
+            List<ProductCategory> categories = new List<ProductCategory>();
+            categories = db.ProductCategories.Where(pc => (pc.FatherID == null || pc.FatherID == 0) && pc.Belong == (ProductBelong)category.Belong).ToList();
+            ViewBag.LastProductCategories = categories;
+            return View(category);
+        }
+
+        public ActionResult ProductCategoryEdit(ProductCategory model, HttpPostedFileBase file)
+        {
+            ProductCategory category = new ProductCategory();
+            category = db.ProductCategories.Find(model.ID);
+            category.Content = model.Content;
+            category.FatherID = model.FatherID;
+            category.Priority = model.Priority;
+            if (file != null)
+            {
+                System.IO.Stream stream = file.InputStream;
+                byte[] buffer = new byte[stream.Length];
+                stream.Read(buffer, 0, (int)stream.Length);
+                stream.Close();
+                category.Picture = buffer;
+            }
+            db.SaveChanges();
+            return Redirect("/Admin/ProductCategoryManager");
         }
 
         [HttpPost]
@@ -2305,7 +2437,7 @@ namespace QqhrCitizen.Controllers
             product.Title = model.Title;
             product.Description = model.Description;
             product.Price = model.Price;
-            product.ProductCategory = model.ProductCategory;
+            //product.ProductCategory = model.ProductCategory;
             db.SaveChanges();
             return Redirect("/Admin/ProductShow/" + model.ID);
         }

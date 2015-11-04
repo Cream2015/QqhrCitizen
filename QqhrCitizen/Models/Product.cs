@@ -44,7 +44,15 @@ namespace QqhrCitizen.Models
         /// <summary>
         /// 分类
         /// </summary>
-        public ProductCategory ProductCategory { set; get; }
+        public int ProductCategoryID { set; get; }
+
+        public virtual ProductCategory ProductCategory { set; get; }
+
+
+        /// <summary>
+        ///属于那个大类 0产品 1作品
+        /// </summary>
+        public ProductBelong Belong { set; get; }
 
         /// <summary>
         /// 当为 作品 对应User 可为空
@@ -54,5 +62,5 @@ namespace QqhrCitizen.Models
         public string TUsername { set; get; }
     }
 
-    public enum ProductCategory { 商品, 作品 }
+
 }

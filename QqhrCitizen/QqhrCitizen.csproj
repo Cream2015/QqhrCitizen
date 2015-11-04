@@ -1067,6 +1067,7 @@
     <Compile Include="Models\News.cs" />
     <Compile Include="Models\Note.cs" />
     <Compile Include="Models\Product.cs" />
+    <Compile Include="Models\ProductCategory.cs" />
     <Compile Include="Models\ProductFile.cs" />
     <Compile Include="Models\ProductUserFile.cs" />
     <Compile Include="Models\ProductUserInfo.cs" />
@@ -1218,6 +1219,9 @@
     <Content Include="Styles\demo.captions.vtt" />
     <Content Include="Views\Admin\UserProductInfo.cshtml" />
     <Content Include="Views\Admin\UseProductShow.cshtml" />
+    <Content Include="Views\Admin\ProductCategoryManager.cshtml" />
+    <Content Include="Views\Admin\AddProductCategory.cshtml" />
+    <Content Include="Views\Admin\ProductCategoryEdit.cshtml" />
     <None Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Admin\ViwepagerEdit.cshtml" />
     <Content Include="Views\User\Product.cshtml" />

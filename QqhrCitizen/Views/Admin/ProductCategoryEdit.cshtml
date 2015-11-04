@@ -1,0 +1,55 @@
+﻿@model QqhrCitizen.Models.ProductCategory
+@{
+    ViewBag.Title = "修改实名生活分类";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div>
+    <div class="result-title">
+        <h1 class="head-tietle">修改实名生活分类</h1>
+    </div>
+    @using (Html.BeginForm("ProductCategoryEdit", "Admin", FormMethod.Post, new { id = "frmAddProductCategory", enctype = "multipart/form-data" }))
+    {
+        @Html.AntiForgeryToken()
+        <input type="hidden" value="@Model.Belong" name="Belong" />
+        <input type="hidden" value="@Model.ID" name="ID" />
+        <table class="detail-table">
+            <tr>
+                <td class="row-title">内容</td>
+                <td>
+                    <input type="text" class="textbox w-2" name="Content" value="@Model.Content" />
+                </td>
+            </tr>
+            <tr>
+                <td class="row-title">优先级</td>
+                <td>
+                    <input type="text" class="textbox w-2" name="Priority" value="@Model.Priority" />
+                </td>
+            </tr>
+            <tr>
+                <td class="row-title">
+                    直播缩略图:
+                </td>
+                <td>
+                    <input type="file" name="file" id="file" class="textbox" />
+                </td>
+            </tr>
+            <tr>
+                <td class="row-title">
+                    父类
+                </td>
+                <td>
+                    <select name="FatherID" id="lsFatherID" class="textbox">
+                        <option value="0">无上级分类</option>
+                        @foreach (var item in ViewBag.LastProductCategories as List<ProductCategory>)
+                        {
+                            <option value="@item.ID" @(item.ID == Model.FatherID ? "selected" : "")>@item.Content</option>
+                        }
+                    </select>
+                </td>
+            </tr>
+        </table>
+
+        <p><input type="submit" value="保存" class="button blue" /><input class="button" onclick="history.go(-1)" value="返回" type="button"></p>
+    }
+</div>

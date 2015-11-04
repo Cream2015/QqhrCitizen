@@ -1,0 +1,62 @@
+﻿@{
+    ViewBag.Title = "增加产品分类";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div>
+    <div class="result-title">
+        <h1 class="head-tietle">
+            @if (ViewBag.Belong == 1)
+            {
+                <text>增加作品作者</text>
+            }
+            else
+            {
+                <text>增加产品分类</text>
+            }
+        </h1>
+    </div>
+    @using (Html.BeginForm("AddProductCategory", "Admin", FormMethod.Post, new { id = "frmAddProductCategory", enctype = "multipart/form-data" }))
+    {
+        @Html.AntiForgeryToken()
+        <input type="hidden" value="@ViewBag.Belong" name="Belong" />
+        <table class="detail-table">
+            <tr>
+                <td class="row-title">内容</td>
+                <td>
+                    <input type="text" class="textbox w-2" name="Content" />
+                </td>
+            </tr>
+            <tr>
+                <td class="row-title">优先级</td>
+                <td>
+                    <input type="text" class="textbox w-2" name="Priority" />
+                </td>
+            </tr>
+            <tr>
+                <td class="row-title">
+                    直播缩略图:
+                </td>
+                <td>
+                    <input type="file" name="file" id="file" class="textbox" />
+                </td>
+            </tr>
+            <tr style="display:@(ViewBag.Belong==1?"none":"")">
+                <td class="row-title">
+                    父类
+                </td>
+                <td>
+                    <select name="FatherID" id="lsFatherID" class="textbox">
+                        <option value="0">无上级分类</option>
+                        @foreach (var item in ViewBag.LastProductCategories as List<ProductCategory>)
+                        {
+                            <option value="@item.ID">@item.Content</option>
+                        }
+                    </select>
+                </td>
+            </tr>
+        </table>
+
+        <p><input type="submit" value="增加" class="button blue" /><input class="button" onclick="history.go(-1)" value="返回" type="button"></p>
+    }
+</div>
