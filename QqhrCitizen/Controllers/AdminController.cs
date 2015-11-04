@@ -2179,7 +2179,6 @@ namespace QqhrCitizen.Controllers
                 stream.Close();
                 model.Picture = buffer;
                 model.AddTime = DateTime.Now;
-                model.Belong = (ProductBelong)Belong;
                 db.ProductCategories.Add(model);
                 db.SaveChanges();
                 return Redirect("/Admin/ProductCategoryManager");
