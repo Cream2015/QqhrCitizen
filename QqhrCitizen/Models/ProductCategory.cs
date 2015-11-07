@@ -27,6 +27,8 @@ namespace QqhrCitizen.Models
 
         public byte[] Picture { set; get; }
 
+        public string Description { set; get; }
+
         [NotMapped]
         public ProductCategory Father
         {

@@ -14,6 +14,11 @@ namespace QqhrCitizen.Controllers
 
         public BaseController() { }
 
+        /// <summary>
+        /// 当前线路
+        /// </summary>
+        public int CurrentRoute = 0;
+
         protected override void Initialize(System.Web.Routing.RequestContext requestContext)
         {
 

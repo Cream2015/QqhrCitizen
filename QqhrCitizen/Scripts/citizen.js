@@ -165,14 +165,14 @@ function LoadProducts() {
         $.ajax({
             url: "/Product/getProductByPage",
             type: "get",
-            data: { "page": page,tid:$("#tid").val() },
+            data: { "page": page, flag: $("#flag").val(),belong: $("#belong").val() },
             dataType: "json",
             success: function (data) {
                 var str = "";
                 //var product_list_height = $("#product_body").height();
                 var i;
                 for (i = 0; i < data.length; i++) {
-                    str += ' <div class="productItem"><a href="/Product/Show/' + data[i].ID + '" target="_blank"><img  class="cover" src="' + data[i].FirstImagePath + '"  /></a><div class="title trim"><a href="/Product/Show/' + data[i].ID + '" style="text-align:center">' + data[i].Title + '</a></div></div>';
+                    str += ' <div class="productItem"><a href="' + data[i].Url + '"><img  class="cover" src="' + data[i].FacePath + '"  /></a><div class="title trim"><a href="' + data[i].Url + '" style="text-align:center">' + data[i].Title + '</a></div></div>';
                 }
                 //var height = Math.ceil(i / 2) * 270;
                 //$("#product_body").height(height + product_list_height);

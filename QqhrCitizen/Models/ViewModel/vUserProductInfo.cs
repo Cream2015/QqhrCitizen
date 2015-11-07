@@ -30,6 +30,10 @@ namespace QqhrCitizen.Models.ViewModel
 
         public string Status { set; get; }
 
+        public ProductBelong Belong { set; get; }
+
+        public string ProductCategory { set; get; }
+
         public vUserProductInfo() { }
 
         public vUserProductInfo(ProductUserInfo model)
@@ -43,9 +47,18 @@ namespace QqhrCitizen.Models.ViewModel
             this.Status = model.Status.ToString();
             this.Time = model.Time;
             this.Price = model.Price.ToString();
-            this.ProductTitle = model.Product.Title;
+            this.Belong = model.Belong;
+            if (model.ProductID != null)
+            {
+                this.ProductTitle = db.Products.Find(model.ProductID).Title;
+            }
+            else
+            {
+                this.ProductTitle = "";
+            }
             this.ProductImages = db.ProductFiles.Where(pf => pf.FileTypeAsInt == 0 && pf.PUId == model.ID).ToList();
             this.ProductVideo = db.ProductFiles.Where(pf => pf.FileTypeAsInt == 1 && pf.PUId == model.ID).FirstOrDefault();
+            this.ProductCategory = model.ProductCategory.Content;
         }
     }
 }

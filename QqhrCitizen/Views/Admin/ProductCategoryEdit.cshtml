@@ -6,7 +6,16 @@
 
 <div>
     <div class="result-title">
-        <h1 class="head-tietle">修改实名生活分类</h1>
+        <h1 class="head-tietle">
+            @if (Model.Belong == ProductBelong.作品)
+            {
+                <text>修改作品作者</text>
+            }
+            else
+            {
+                <text>修改产品分类</text>
+            }
+        </h1>
     </div>
     @using (Html.BeginForm("ProductCategoryEdit", "Admin", FormMethod.Post, new { id = "frmAddProductCategory", enctype = "multipart/form-data" }))
     {
@@ -31,10 +40,10 @@
                     直播缩略图:
                 </td>
                 <td>
-                    <input type="file" name="file" id="file" class="textbox" />
+                    <input type="file" name="file" id="file" class="textbox nullable" />
                 </td>
             </tr>
-            <tr>
+            <tr style="display:@(Model.Belong==ProductBelong.作品?"none":"")">
                 <td class="row-title">
                     父类
                 </td>

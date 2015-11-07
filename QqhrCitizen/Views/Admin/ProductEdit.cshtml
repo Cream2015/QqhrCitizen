@@ -27,8 +27,8 @@
                 </td>
                 <td>
                     <select name="ProductCategory" class="textbox">
-                        <option value="1"  @(product.ProductCategory==ProductCategory.商品?"selected":"")>商品</option>
-                        <option value="2" @(product.ProductCategory==ProductCategory.作品?"selected":"")>作品</option>
+                        <option value="1"  @(product.Belong==ProductBelong.产品?"selected":"")>产品</option>
+                        <option value="2" @(product.Belong == ProductBelong.作品?"selected":"")>作品</option>
                     </select>
                 </td>
             </tr>
@@ -45,7 +45,7 @@
                 </td>
             </tr>
         </table>
-        <p><input type="submit" value="保存" class="button blue" /></p>
+        <p><input type="submit" value="保存" class="button blue" /><input class="button" onclick="history.go(-1)" value="返回" type="button"></p>
     }
 </div>
 

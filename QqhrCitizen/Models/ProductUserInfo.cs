@@ -22,7 +22,7 @@ namespace QqhrCitizen.Models
         /// <summary>
         /// 产品
         /// </summary>
-        public int ProductID { set; get; }
+        public int? ProductID { set; get; }
 
         /// <summary>
         /// 标题
@@ -44,6 +44,12 @@ namespace QqhrCitizen.Models
         /// </summary>
         public ProductUserInfoStatusEnum Status { set; get; }
 
+        public int ProductCategoryID { set; get; }
+
+        public virtual ProductCategory ProductCategory { set; get; }
+
+        public ProductBelong Belong { set; get; }
+
         [ForeignKey("AuthorID")]
         public virtual User User { get; set; }
 
@@ -55,5 +61,5 @@ namespace QqhrCitizen.Models
         public DateTime Time { set; get; }
     }
 
-    public enum ProductUserInfoStatusEnum { 审核中, 审核通过, 审核不通过 }
+    public enum ProductUserInfoStatusEnum { 未提交, 审核中, 审核通过, 审核不通过 }
 }

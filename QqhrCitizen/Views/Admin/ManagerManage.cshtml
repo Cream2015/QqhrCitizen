@@ -12,6 +12,20 @@
     <div class="result-title">
         <h1 class="head-tietle">管理员管理 <a href="/Admin/AddManager">增加</a></h1>
     </div>
+    <form class="search">
+        检索：
+        <input type="text" name="Key" class="textbox nullable" placeholder="关键字" />
+        <select name="Role" class="textbox nullable">
+            <option value="">全部</option>
+            <option value="1">商户</option>
+            <option value="2">超级管理员</option>
+            <option value="3">新闻管理员</option>
+            <option value="4">图书管理员</option>
+            <option value="5">课程管理员</option>
+            <option value="6">连接管理员</option>
+        </select>
+        <input type="submit" class="btn blue" value="检索" />
+    </form>
     <div class="result-content">
 
         <table class="table">

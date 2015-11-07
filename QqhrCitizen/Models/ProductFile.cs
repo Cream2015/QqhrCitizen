@@ -19,10 +19,7 @@ namespace QqhrCitizen.Models
         /// <summary>
         ///  产品ID
         /// </summary>
-        [ForeignKey("Product")]
-        public int ProductID { set; get; }
-
-        public virtual Product Product { set; get; }
+        public int? ProductID { set; get; }
 
         /// <summary>
         /// 文件路径

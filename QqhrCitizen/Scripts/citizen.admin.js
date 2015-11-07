@@ -50,7 +50,7 @@ $(document).ready(function () {
             var option = options[index];
         });
 
-        
+
     });
 
 
@@ -97,7 +97,7 @@ $(document).ready(function () {
         $(this).removeClass('error');
     });
 
-   
+
     $("#frmAddManager").submit(function () {
         var password = $("#txtPassword").val();
         var confirm = $("#txtPasswordConfirm").val();
@@ -120,7 +120,7 @@ $(document).ready(function () {
         return true;
     });
 
-    
+
     $("#frmPasswordReset").submit(function () {
         var password = $("#txtPassword").val();
         var confirm = $("#txtPasswordConfirm").val();
@@ -152,7 +152,7 @@ $(document).ready(function () {
             $("#file").removeClass("error");
         }
     })
-    
+
     $("#frmEditLink").submit(function () {
         if ($("#slEditLink").val() == "true") {
             if ($("#hdIsHaveFile").val() == "false" && $("#fileEditLink").val() == "") {
@@ -169,6 +169,14 @@ $(document).ready(function () {
     $("#frmAddCourseQuestion").submit(function () {
         var content = $("#content").text();
         $("#txtcontent").val(content);
+    });
+
+
+    $("#slOneProductCategory").click(function () {
+        var fatherId = $("#slOneProductCategory").val();
+        $.get("/Admin/GetChildrenProductCategoryByFatherID", { FatherID: fatherId }, function (data) {
+            $("#slTwoProductCategory").html(data);
+        })
     });
 });
 

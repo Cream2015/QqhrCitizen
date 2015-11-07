@@ -12,7 +12,14 @@
                 <div id="product-intro" class="m-item-grid clearfix">
                     <div id="preview">
                         <div id="spec-n1" class="jqzoom">
-                            <img data-img="1" width="350" height="350" src="@product.ProductImages[0].Path" id="show_pic">
+                            @if (product.ProductImages.Count > 0)
+                            {
+                                <img data-img="1" width="350" height="350" src="@product.ProductImages[0].Path" id="show_pic">
+                            }
+                            else
+                            {
+                                <img data-img="1" width="350" height="350" src="~/Images/productpre.jpg" id="show_pic">
+                            }
                         </div>
                         <div id="spec-list">
                             <a class="spec-control disabled" id="spec-forward"></a>
@@ -21,14 +28,17 @@
                                 <ul class="lh" style="position: absolute; width: 310px; height: 54px; top: 0px; left: 0px;padding:0px">
                                     @{ int i = 0;}
                                     <!--图片列表-->
-                                    @foreach (var item in product.ProductImages)
+                                    @if (product.ProductImages.Count > 0)
                                     {
-                                        i++;
-                                        if (i > 4)
+                                        foreach (var item in product.ProductImages)
                                         {
-                                            break;
+                                            i++;
+                                            if (i > 4)
+                                            {
+                                                break;
+                                            }
+                                            <li style="cursor:pointer"><img class="img" alt="" src="@item.Path" width="50" height="50"></li>
                                         }
-                                        <li style="cursor:pointer"><img class="img" alt="" src="@item.Path" width="50" height="50"></li>
                                     }
                                 </ul>
                                 <script>
@@ -51,7 +61,7 @@
                                     简介：@product.Description
                                 </div>
                             </div>
-                            @if (product.ProductCategory != ProductCategory.作品.ToString())
+                            @if (product.Belong != ProductBelong.作品.ToString())
                             {
                                 <div id="summary">
                                     <div id="summary-price" style="margin: 5px 0px;">
@@ -83,11 +93,14 @@
                                                                 }
                                                             </td>
                                                         </tr>
-                                                        @foreach (var item in product.ProductImages)
+                                                        @if (product.ProductImages.Count > 0)
                                                         {
-                                                            <tr>
-                                                                <td><img src="@item.Path" class="" width="750" style="vertical-align: middle;"></td>
-                                                            </tr>
+                                                            foreach (var item in product.ProductImages)
+                                                            {
+                                                                <tr>
+                                                                    <td><img src="@item.Path" class="" width="750" style="vertical-align: middle;"></td>
+                                                                </tr>
+                                                            }
                                                         }
                                                     </tbody>
                                                 </table>

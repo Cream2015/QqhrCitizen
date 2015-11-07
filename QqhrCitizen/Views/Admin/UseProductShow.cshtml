@@ -5,7 +5,13 @@
 }
 
 <script src="~/Scripts/video.js"></script>
-<h2 class="head-tietle">@Model.Title - 用户作品展示  <a href="/Admin/UserProductInfo">管理</a></h2>
+<h2 class="head-tietle">
+    @Model.Title - 用户商品展示
+    @if (ViewBag.CurrentUser.Role == Role.Business)
+    {
+        <a href="/Admin/UserProductManager">管理</a>
+    }
+</h2>
 <table class="detail-table">
     <tr>
         <td class="row-title">标题</td>
@@ -22,6 +28,29 @@
         </td>
     </tr>
     <tr>
+        <td class="row-title">
+            分类
+        </td>
+        <td>
+            @Model.Belong  /  @Model.ProductCategory
+        </td>
+    </tr>
+    @if (Model.Belong == ProductBelong.产品)
+    {
+        <tr>
+            <td class="row-title">价格</td>
+            <td>
+                @Model.Price
+            </td>
+        </tr>
+        <tr>
+            <td class="row-title">商品</td>
+            <td>
+                @Model.ProductTitle
+            </td>
+        </tr>
+    }
+    <tr>
         <td class="row-title">状态</td>
         <td>
             @Model.Status
@@ -31,12 +60,6 @@
         <td class="row-title">时间</td>
         <td>
             @Model.Time.ToString("yyyy-MM-dd HH:ss:mm");
-        </td>
-    </tr>
-    <tr>
-        <td class="row-title">商品</td>
-        <td>
-            @Model.ProductTitle
         </td>
     </tr>
     <tr>

@@ -142,7 +142,7 @@ namespace QqhrCitizen.Controllers
         /// <returns></returns>
         [HttpGet]
         [AccessToLession]
-        public ActionResult LessionDetails(int id)
+        public ActionResult LessionDetails(int id, int route = 1)
         {
             bool flag = false;
             var vLessions = new List<vLession>();
@@ -161,8 +161,6 @@ namespace QqhrCitizen.Controllers
                 record.Time = DateTime.Now;
 
                 db.StudyRecords.Add(record);
-
-
 
                 userCourse = db.UserCourses.Where(uc => uc.UserID == CurrentUser.ID && uc.CourseID == Lession.CourseID).FirstOrDefault();
                 if (userCourse == null)
@@ -207,6 +205,8 @@ namespace QqhrCitizen.Controllers
             ViewBag.Questions = questions;
             ViewBag.Lessions = vLessions;
             ViewBag.Flag = flag;
+            ViewBag.RouteCount = Lession.Route;
+            ViewBag.CurrentRoute = route;
             return View("LessionDetails");
         }
 
@@ -217,7 +217,7 @@ namespace QqhrCitizen.Controllers
         /// <returns></returns>
         [HttpGet]
         [AccessToLession]
-        public ActionResult BeginCourse(int id)
+        public ActionResult BeginCourse(int id,int route=1)
         {
             bool flag2 = false;
             var vLessions = new List<vLession>();
@@ -289,6 +289,8 @@ namespace QqhrCitizen.Controllers
             ViewBag.Questions = questions;
             ViewBag.Lessions = vLessions;
             ViewBag.Flag = flag2;
+            ViewBag.RouteCount = Lession.Route;
+            ViewBag.CurrentRoute = route;
             return View("LessionDetails");
         }
 
@@ -399,7 +401,7 @@ namespace QqhrCitizen.Controllers
         public ActionResult Discovery(int? id)
         {
             List<TypeDictionary> types = new List<TypeDictionary>();
-            types = db.TypeDictionaries.Where(t => t.Belonger == TypeBelonger.课程 && t.FatherID == 0).OrderBy(t=>t.PID).ToList();
+            types = db.TypeDictionaries.Where(t => t.Belonger == TypeBelonger.课程 && t.FatherID == 0).OrderBy(t => t.PID).ToList();
             ViewBag.Tid = id;
             var type = new TypeDictionary();
             if (id != 0 && id != null)

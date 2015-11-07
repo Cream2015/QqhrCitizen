@@ -249,7 +249,7 @@
                             <div class="body">
                                 @foreach (TypeDictionary td in ViewBag.CourseTypes)
                                 {
-                                    <a class="item" href="/Course?tid=@td.ID" style="background-color:@(td.Top?"red":"")">@td.TypeValue</a>
+                                    <a class="item" href="/Course?tid=@td.ID" style="color:@(td.Top?"red":"")">@td.TypeValue</a>
                                 }
                             </div>
                         </div>

@@ -1,21 +1,20 @@
-﻿@{
-    ViewBag.Title = "增加产品";
+﻿@model QqhrCitizen.Models.ViewModel.vUserProductInfo
+@{
+    ViewBag.Title = "用户作品展示";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
-<link href="~/Styles/codecomb.droptxt.css" rel="stylesheet" />
-<script src="~/Scripts/codecomb.droptxt.js"></script>
+
+<h2 class="head-tietle">@Model.Title - 用户产品修改  <a href="/Admin/UserProductManager">管理</a></h2>
 <div>
-    <div class="result-title">
-        <h1 class="head-tietle">增加产品</h1>
-    </div>
-    @using (Html.BeginForm("AddProduct", "Admin", FormMethod.Post))
+    @using (Html.BeginForm("UserProductEdit", "Admin", FormMethod.Post))
     {
         @Html.AntiForgeryToken()
+        <input type="hidden" name="ID" value="@Model.ID" />
         <table class="detail-table">
             <tr>
                 <td class="row-title">标题</td>
                 <td>
-                    <input class="textbox w-3" type="text" name="Title" />
+                    <input class="textbox w-3" type="text" name="Title" value="@Model.Title" />
                 </td>
             </tr>
             <tr>
@@ -37,24 +36,29 @@
                     二级分类
                 </td>
                 <td>
-                    <select name="TwoProductCategory" id="slTwoProductCategory" class="textbox">
-                    </select>
+                    <select name="TwoProductCategory" id="slTwoProductCategory" class="textbox"></select>
                 </td>
             </tr>
             <tr>
                 <td class="row-title">描述</td>
                 <td>
-                    <textarea name="Description" rows="20" class="textbox w-3" style="height:60px;"></textarea>
+                    <textarea name="Description" rows="20" class="textbox">@Model.Description</textarea>
                 </td>
             </tr>
             <tr id="trPrice">
                 <td class="row-title">价格</td>
                 <td>
-                    <input class="textbox w-3 nullable" type="text" name="Price" />
+                    <input class="textbox w-3 nullable" type="text" name="Price" value="@Model.Price" />
                 </td>
             </tr>
         </table>
-        <p><input type="submit" value="增加" class="button blue" /><input class="button" onclick="history.go(-1)" value="返回" type="button"></p>
+        <p><input type="submit" value="保存" class="button blue" /><input class="button" onclick="history.go(-1)" value="返回" type="button"></p>
     }
 </div>
- 
+
+
+
+
+
+
+

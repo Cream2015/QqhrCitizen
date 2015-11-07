@@ -16,6 +16,7 @@
             <input type="text" name="End" class="textbox datetime nullable" placeholder="发布时间(小于)" value="@Request.QueryString["End"]" />
             信息分类
             <input type="text" name="Key" class="textbox nullable" placeholder="关键字" />
+            <input type="hidden" name="type" value="@ViewBag.Type" />
             <input type="submit" class="btn blue" value="检索" />
         </form>
         <table class="table">

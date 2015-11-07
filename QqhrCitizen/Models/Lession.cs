@@ -42,5 +42,9 @@ namespace QqhrCitizen.Models
         {
             return new vLession(this);
         }
+
+        public int? Route { set; get; }
+
+        public string SecondPath { set; get; }
     }
 }

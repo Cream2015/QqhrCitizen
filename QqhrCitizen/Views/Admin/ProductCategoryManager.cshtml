@@ -28,6 +28,7 @@
                     <td>名称</td>
                     <td>图片</td>
                     <td>优先级</td>
+                    <td>描述</td>
                     <td>所属类别</td>
                     <td>父类</td>
                     <td>增加时间</td>
@@ -42,6 +43,7 @@
                         <td>@item.Content</td>
                         <td><img src="/Admin/ShowProductCategoryImg/@item.ID" alt="@item.Content" width="60" height="60" /></td>
                         <td>@item.Priority</td>
+                        <td>@item.Description</td>
                         <td>@(item.Belong == 0 ? "产品" : "作品")</td>
                         <td>@(item.Father == null ? "无" : item.Father.Content)</td>
                         <td>@item.AddTime</td>

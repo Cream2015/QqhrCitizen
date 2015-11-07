@@ -7,14 +7,26 @@
 <div class="d-row" style="margin-bottom: 20px; padding: 20px 0 0 0;">
     <div class="d-row-c">
         <div class="d-col-2-3">
-            <input type="hidden" value="@ViewBag.TId" id="tid">
+            <input type="hidden" value="@ViewBag.Flag" id="flag">
+            <input type="hidden" value="@ViewBag.Category" id="category">
+            <input type="hidden" value="@ViewBag.Belong" id="belong">
             <div class="contentarea" style="border-right: 1px solid #ddd;">
                 <div class="d-coursecategory">
                     <div class="body fselect">
                         <div id="d_select_category_a" class="cff3">
                             <div data-txt="全部" class="cfp3"><a href="/Product/Index">全部</a></div>
-                            <div data-txt="产品" class="cfp3"><a href="/Product/Index/0">产品</a></div>
-                            <div data-txt="作品" class="cfp3"><a href="/Product/Index/1">作品</a></div>
+                            <div data-txt="产品" class="cfp3"><a href="/Product/Index?Category=0&Belong=0">产品</a></div>
+                            <div data-txt="作品" class="cfp3"><a href="/Product/Index?Category=0&Belong=1">作品</a></div>
+                            @if ((int)ViewBag.Flag == 5)
+                            {
+                                <div style="margin:30px auto;width:100%;text-align:center">
+                                    <img src="/Product/ProductCategoryImgage/@ViewBag.Author.ID" width="120" height="120" /> <br />
+                                    <div>
+                                        <div>@ViewBag.Author.Content</div> 
+                                        <div>@ViewBag.Author.Description</div>
+                                    </div>
+                                </div>
+                            }
                         </div>
                     </div>
                 </div>
@@ -30,7 +42,7 @@
                                     <div class="contentarea">
                                         <div id="d_coursesearch" class="d-coursesearch">
                                             <div class="body lstProduct">
-                                                       
+
                                             </div>
                                             <div class="clear"></div>
                                             <div class="loadMore">下拉加载更多！</div>

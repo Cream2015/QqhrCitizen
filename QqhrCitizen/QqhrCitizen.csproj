@@ -162,6 +162,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\dbchange.txt" />
     <Content Include="crossdomain.xml" />
     <Content Include="fonts\icomoon.dev.svg" />
     <Content Include="fonts\icomoon.svg" />
@@ -187,10 +188,7 @@
     <Content Include="Images\logo.psd" />
     <Content Include="Images\play.jpg" />
     <Content Include="Images\player.png" />
-    <Content Include="ProductFile\test\1436021876团旗.jpg" />
-    <Content Include="ProductFile\test\1436021901团旗1.jpg" />
-    <Content Include="ProductFile\test\1436021916团旗2.jpg" />
-    <Content Include="ProductFile\test\QQ截图20150605214146.png" />
+    <Content Include="Images\productpre.jpg" />
     <Content Include="Scripts\AC_RunActiveContent.js" />
     <Content Include="Images\midstars.gif" />
     <Content Include="Images\signin-password.jpg" />
@@ -1079,6 +1077,8 @@
     <Compile Include="Models\TypeDictionary.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Models\UserCourse.cs" />
+    <Compile Include="Models\UserToProduct.cs" />
+    <Compile Include="Models\ViewModel\ProductListItem.cs" />
     <Compile Include="Models\ViewModel\vCourseQuestion.cs" />
     <Compile Include="Models\ViewModel\vLive.cs" />
     <Compile Include="Models\ViewModel\vAdminModel.cs" />
@@ -1222,6 +1222,10 @@
     <Content Include="Views\Admin\ProductCategoryManager.cshtml" />
     <Content Include="Views\Admin\AddProductCategory.cshtml" />
     <Content Include="Views\Admin\ProductCategoryEdit.cshtml" />
+    <Content Include="Views\Admin\UserProductManager.cshtml" />
+    <Content Include="Views\Admin\UserProductEdit.cshtml" />
+    <Content Include="Views\Admin\AddWork.cshtml" />
+    <Content Include="Views\Admin\NewsPriorityEdit.cshtml" />
     <None Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Admin\ViwepagerEdit.cshtml" />
     <Content Include="Views\User\Product.cshtml" />
@@ -1237,10 +1241,11 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App_Data\" />
     <Folder Include="Content\" />
     <Folder Include="Lessions\" />
     <Folder Include="LiveFile\" />
+    <Folder Include="ProductFile\AdminFiles\" />
+    <Folder Include="ProductFile\UserFiles\" />
     <Folder Include="Styles\font\" />
     <Folder Include="Upload\NewsWord\" />
     <Folder Include="Views\ViewPager\" />

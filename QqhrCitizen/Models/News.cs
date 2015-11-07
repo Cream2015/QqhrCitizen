@@ -46,6 +46,8 @@ namespace QqhrCitizen.Models
 
         public int PlaceAsInt { set; get; }
 
+        public int? Priority { set; get; }
+
         [NotMapped]
         public Place Place
         {

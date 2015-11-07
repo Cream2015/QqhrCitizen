@@ -14,12 +14,6 @@
         </td>
     </tr>
     <tr>
-        <td class="row-title">分类</td>
-        <td>
-            @product.ProductCategory
-        </td>
-    </tr>
-    <tr>
         <td class="row-title">
             描述
         </td>
@@ -27,7 +21,15 @@
             @product.Description
         </td>
     </tr>
-    @if (product.ProductCategory == ProductCategory.商品.ToString())
+    <tr>
+        <td class="row-title">
+            分类
+        </td>
+        <td>
+            @product.Belong  / @product.ProductCategory
+        </td>
+    </tr>
+    @if (product.Belong == ProductBelong.产品.ToString())
     {
         <tr>
             <td class="row-title">
@@ -38,7 +40,7 @@
             </td>
         </tr>
     }
-    @if (product.ProductCategory == ProductCategory.作品.ToString())
+    @if (product.Belong == ProductBelong.作品.ToString())
     {
         <tr>
             <td class="row-title">

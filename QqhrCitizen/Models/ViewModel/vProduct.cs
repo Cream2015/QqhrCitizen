@@ -27,6 +27,8 @@ namespace QqhrCitizen.Models.ViewModel
 
         public string ProductCategory { get; set; }
 
+        public string Belong { set; get; }
+
         public int? TUserID { set; get; }
 
         public string TUsername { set; get; }
@@ -45,9 +47,10 @@ namespace QqhrCitizen.Models.ViewModel
             this.Time = model.Time;
             this.ProductImages = db.ProductFiles.Where(pf => pf.FileTypeAsInt == 0 && pf.ProductID == model.ID && pf.IsUse==true).ToList();
             this.ProductVideo = db.ProductFiles.Where(pf => pf.FileTypeAsInt == 1 && pf.ProductID == model.ID && pf.IsUse==true).FirstOrDefault();
-            this.ProductCategory = model.ProductCategory.ToString();
+            this.ProductCategory = model.ProductCategory.Content;
             this.TUserID = model.TUserID;
             this.TUsername = model.TUsername;
+            this.Belong = model.Belong.ToString();
         }
     }
 }

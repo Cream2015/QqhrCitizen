@@ -1,4 +1,4 @@
-﻿@model IEnumerable<QqhrCitizen.Models.Product>
+﻿@model IEnumerable<QqhrCitizen.Models.ProductUserInfo>
 @{
     ViewBag.Title = "产品管理";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
@@ -24,8 +24,8 @@
                     <td>编号</td>
                     <td>标题</td>
                     <td>时间</td>
+                    <td>状态</td>
                     <td>操作员</td>
-                    <td>分类</td>
                     <td>操作</td>
                 </tr>
             </thead>
@@ -37,16 +37,18 @@
                         <td>@item.ID</td>
                         <td>@item.Title</td>
                         <td>@item.Time</td>
+                        <td>@item.Status</td>
                         <td>@item.User.Username</td>
                         <td>
-                            @item.Belong
-                        </td>
-                        <td>
-                            <a href="/Admin/ProductShow/@item.ID">查看详细</a>
+                            <a href="/Admin/UseProductShow/@item.ID">查看详细</a>
                             <a href="javascript:deleteDialog('/Admin/ProductDelete/' + @item.ID + '?sid=@ViewBag.SID',@item.ID);">删除</a>
-                            <a href="/Admin/ProductEdit/@item.ID">编辑</a>
+                            <a href="/Admin/UserProductEdit/@item.ID">编辑</a>
                             <a href="/Admin/AddProductImage/@item.ID">添加图片</a>
                             <a href="/Admin/AddProductVideo/@item.ID">添加视屏</a>
+                            @if (item.Status != ProductUserInfoStatusEnum.审核中)
+                            {
+                               <a href="/Admin/UserSubmitProduct/@item.ID">提交修改</a>
+                            }
                         </td>
                     </tr>
                 }

@@ -307,6 +307,7 @@ namespace QqhrCitizen.Controllers
                 }
                 message = BodyFilter.HtmlFilter(message, "/Upload/NewsWord/" + random + "/");
                 model.Content = message;
+
                 model.IsWord = true;
             }
             else
@@ -317,6 +318,7 @@ namespace QqhrCitizen.Controllers
             model.Time = DateTime.Now;
             model.Browses = 0;
             model.PlaceAsInt = 0;
+            model.Priority = 100;
 
             if (model.IsHaveImg)
             {
@@ -439,6 +441,23 @@ namespace QqhrCitizen.Controllers
             return RedirectToAction("NewsManager");
         }
         #endregion
+
+        [HttpGet]
+        public ActionResult NewsPriorityEdit(int id)
+        {
+            var news = db.News.Find(id);
+            return View(news);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult NewsPriorityEdit(int id, int Priority)
+        {
+            var news = db.News.Find(id);
+            news.Priority = Priority;
+            db.SaveChanges();
+            return Redirect("/Admin/NewsManager");
+        }
 
         #region 新闻详细信息
         /// <summary>
@@ -1287,9 +1306,18 @@ namespace QqhrCitizen.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpGet]
-        public ActionResult ManagerManage(int page = 1)
+        public ActionResult ManagerManage(string Key, int? Role, int page = 1)
         {
-            var list = db.Users.Where(u => u.RoleAsInt > 0).OrderBy(u => u.ID).ToPagedList(page, 10);
+            IEnumerable<User> query = db.Users.AsEnumerable();
+            if (!string.IsNullOrEmpty(Key))
+            {
+                query = query.Where(c => c.Username.Contains(Key));
+            }
+            if (Role.HasValue)
+            {
+                query = query.Where(c => c.Role == (QqhrCitizen.Models.Role)Role);
+            }
+            var list = query.Where(u => u.RoleAsInt > 0).OrderBy(u => u.ID).ToPagedList(page, 10);
             return View(list);
         }
         #endregion
@@ -2004,6 +2032,74 @@ namespace QqhrCitizen.Controllers
             return View(query);
         }
 
+        /// <summary>
+        /// 商户产品管理
+        /// </summary>
+        /// <param name="key"></param>
+        /// <param name="Begin"></param>
+        /// <param name="End"></param>
+        /// <param name="p"></param>
+        /// <returns></returns>
+        [HttpGet]
+        public ActionResult UserProductManager(string key, DateTime? Begin, DateTime? End, int p = 0)
+        {
+            IEnumerable<ProductUserInfo> query = db.ProductUserInfos.AsEnumerable();
+            if (CurrentUser.Role == Role.Business)
+            {
+                query = query.Where(c => c.AuthorID == CurrentUser.ID);
+            }
+            if (!string.IsNullOrEmpty(key))
+            {
+                query = query.Where(c => c.Title.Contains(key));
+            }
+            if (Begin.HasValue)
+            {
+                query = query.Where(c => c.Time >= Begin);
+            }
+            if (End.HasValue)
+            {
+                query = query.Where(c => c.Time <= End);
+            }
+            query = query.OrderByDescending(x => x.Time);
+            ViewBag.PageInfo = PagerHelper.Do(ref query, 50, p);
+            return View(query);
+        }
+
+        [HttpGet]
+        public ActionResult UserProductEdit(int id)
+        {
+            ProductUserInfo info = new ProductUserInfo();
+            info = db.ProductUserInfos.Find(id);
+
+            List<ProductCategory> categories = new List<ProductCategory>();
+            categories = db.ProductCategories.Where(pc => (pc.FatherID == null || pc.FatherID == 0)).ToList();
+            ViewBag.OneProductCategories = categories;
+
+            return View(new vUserProductInfo(info));
+        }
+
+        [HttpPost]
+        public ActionResult UserProductEdit(int ID, string Description, string Title, double Price, int TwoProductCategory)
+        {
+            ProductUserInfo info = new ProductUserInfo();
+            info = db.ProductUserInfos.Find(ID);
+            info.Description = Description;
+            info.Title = Title;
+            info.Price = (decimal)Price;
+            info.ProductCategoryID = TwoProductCategory;
+            db.SaveChanges();
+            return Redirect("/Admin/UseProductShow/" + ID);
+        }
+
+        [HttpGet]
+        public ActionResult UserSubmitProduct(int id)
+        {
+            ProductUserInfo info = new ProductUserInfo();
+            info = db.ProductUserInfos.Find(id);
+            info.Status = ProductUserInfoStatusEnum.审核中;
+            db.SaveChanges();
+            return Redirect("/Admin/UserProductManager/");
+        }
 
         /// <summary>
         /// 用户作品修改管理
@@ -2024,6 +2120,10 @@ namespace QqhrCitizen.Controllers
             {
                 query = query.Where(c => c.Time <= End);
             }
+            if (CurrentUser.Role == Role.Business)
+            {
+                query = query.Where(x => x.AuthorID == CurrentUser.ID);
+            }
             query = query.OrderByDescending(x => x.Time);
             ViewBag.PageInfo = PagerHelper.Do(ref query, 50, p);
             return View(query);
@@ -2039,9 +2139,15 @@ namespace QqhrCitizen.Controllers
         public ActionResult UseProductShowDelete(int id)
         {
             List<ProductFile> files = new List<ProductFile>();
-            files = db.ProductFiles.Where(pf => pf.PUId == id).ToList();
+            List<ProductFile> _files = new List<ProductFile>();
+            files = db.ProductFiles.Where(pf => pf.PUId == id && pf.IsUse == false).ToList();
+            _files = db.ProductFiles.Where(pf => pf.PUId == id && pf.IsUse == true).ToList();
             ProductUserInfo info = new ProductUserInfo();
             info = db.ProductUserInfos.Find(id);
+            foreach (var item in _files)
+            {
+                item.PUId = null;
+            }
             foreach (var item in files)
             {
                 db.ProductFiles.Remove(item);
@@ -2052,7 +2158,6 @@ namespace QqhrCitizen.Controllers
             foreach (var item in files)
             {
                 var phicyPath = HostingEnvironment.MapPath(item.Path);
-
                 if (System.IO.File.Exists(phicyPath))
                 {
                     System.IO.File.Delete(phicyPath);
@@ -2088,25 +2193,59 @@ namespace QqhrCitizen.Controllers
             info.Status = ProductUserInfoStatusEnum.审核通过;
             db.SaveChanges();
 
-            Product product = new Product();
-            product = db.Products.Find(info.ProductID);
-
-            product.Title = info.Title;
-            product.Description = info.Description;
-            List<ProductFile> files = new List<ProductFile>();
-            files = db.ProductFiles.Where(pf => pf.ProductID == product.ID).ToList();
-            foreach (var item in files)
+            if (info.ProductID != null)
             {
-                if (item.IsUse && item.PUId != id)
+                Product product = new Product();
+                product = db.Products.Find(info.ProductID);
+
+                product.Title = info.Title;
+                product.Description = info.Description;
+
+                List<ProductFile> _files = new List<ProductFile>();
+                _files = db.ProductFiles.Where(pf => pf.ProductID == product.ID).ToList();
+                foreach (var item in _files)
                 {
                     item.IsUse = false;
                 }
-                if (item.PUId == id)
+
+                List<ProductFile> files = new List<ProductFile>();
+                files = db.ProductFiles.Where(pf => pf.PUId == id).ToList();
+                foreach (var item in files)
                 {
+                    item.ProductID = product.ID;
                     item.IsUse = true;
                 }
+                db.SaveChanges();
             }
-            db.SaveChanges();
+            else
+            {
+                Product product = new Product();
+                product.Title = info.Title;
+                product.Description = info.Description;
+                product.Price = info.Price.ToString();
+                product.ProductCategoryID = info.ProductCategoryID;
+                product.Time = DateTime.Now;
+                product.UserID = CurrentUser.ID;
+                product.Belong = info.Belong;
+                db.Products.Add(product);
+                db.SaveChanges();
+
+                List<ProductFile> files = new List<ProductFile>();
+                files = db.ProductFiles.Where(pf => pf.PUId == info.ID).ToList();
+                foreach (var item in files)
+                {
+                    item.ProductID = product.ID;
+                    item.IsUse = true;
+                }
+                info.ProductID = product.ID;
+                db.SaveChanges();
+
+                string root = "~/ProductFile/AdminFiles/" + product.ID + "/";
+                var phicyPath = HostingEnvironment.MapPath(root);
+                Directory.CreateDirectory(phicyPath);
+
+            }
+
             return Redirect("/Admin/UserProductInfo");
         }
 
@@ -2189,11 +2328,7 @@ namespace QqhrCitizen.Controllers
             }
         }
 
-        [HttpGet]
-        public ActionResult AddProduct()
-        {
-            return View();
-        }
+
 
         /// <summary>
         /// 显示产品分类图片你
@@ -2263,20 +2398,132 @@ namespace QqhrCitizen.Controllers
             return Redirect("/Admin/ProductCategoryManager");
         }
 
-        [HttpPost]
-        public ActionResult AddProduct(Product model)
+        [HttpGet]
+        public ActionResult GetChildrenProductCategoryByFatherID(int FatherID)
         {
-            model.UserID = CurrentUser.ID;
-            model.Time = DateTime.Now;
-            db.Products.Add(model);
-            db.SaveChanges();
-
-            string root = "~/ProductFile/" + model.ID + "/";
-            var phicyPath = HostingEnvironment.MapPath(root);
-            Directory.CreateDirectory(phicyPath);
-
-            return Redirect("/Admin/ProductManager");
+            string str = "";
+            List<ProductCategory> categories = new List<ProductCategory>();
+            categories = db.ProductCategories.Where(pc => pc.FatherID == FatherID).ToList();
+            foreach (var item in categories)
+            {
+                str += "<option value='" + item.ID + "'>" + item.Content + "</option>";
+            }
+            return Content(str);
         }
+
+        #region 增加产品
+        /// <summary>
+        ///  增加产品
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet]
+        public ActionResult AddProduct()
+        {
+            List<ProductCategory> categories = new List<ProductCategory>();
+            categories = db.ProductCategories.Where(pc => (pc.FatherID == null || pc.FatherID == 0) && pc.Belong == ProductBelong.产品).ToList();
+            ViewBag.OneProductCategories = categories;
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult AddProduct(string Title, string Description, double Price, int TwoProductCategory)
+        {
+            if (CurrentUser.Role > Role.Business)
+            {
+                Product product = new Product();
+                product.Belong = ProductBelong.产品;
+                product.Description = Description;
+                product.Time = DateTime.Now;
+                product.ProductCategoryID = TwoProductCategory;
+                product.Price = Price.ToString();
+                product.Title = Title;
+                product.UserID = CurrentUser.ID;
+                db.Products.Add(product);
+                db.SaveChanges();
+                string root = "~/ProductFile/AdminFiles/" + product.ID + "/";
+                var phicyPath = HostingEnvironment.MapPath(root);
+                Directory.CreateDirectory(phicyPath);
+                return Redirect("/Admin/ProductManager");
+            }
+            else
+            {
+                ProductUserInfo info = new ProductUserInfo();
+                info.Title = Title;
+                info.Description = Description;
+                info.Price = (decimal)Price;
+                info.Belong = ProductBelong.产品;
+                info.Time = DateTime.Now;
+                info.AuthorID = CurrentUser.ID;
+                info.ProductCategoryID = TwoProductCategory;
+                info.Status = ProductUserInfoStatusEnum.未提交;
+                db.ProductUserInfos.Add(info);
+                db.SaveChanges();
+                string root = "~/ProductFile/UserFiles/" + info.ID + "/";
+                var phicyPath = HostingEnvironment.MapPath(root);
+                Directory.CreateDirectory(phicyPath);
+                return Redirect("/Admin/UserProductManager");
+            }
+
+        }
+
+        #endregion
+
+        #region 增加作品
+        /// <summary>
+        /// 增加作品
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet]
+        public ActionResult AddWork()
+        {
+            List<ProductCategory> categories = new List<ProductCategory>();
+            categories = db.ProductCategories.Where(pc => (pc.FatherID == null || pc.FatherID == 0) && pc.Belong == ProductBelong.作品).ToList();
+            ViewBag.WorkCategories = categories;
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult AddWork(string Title, string Description, int WorkCategory)
+        {
+            if (CurrentUser.Role > Role.Business)
+            {
+                Product product = new Product();
+                product.Belong = ProductBelong.作品;
+                product.Description = Description;
+                product.Time = DateTime.Now;
+                product.ProductCategoryID = WorkCategory;
+
+                product.Title = Title;
+                product.UserID = CurrentUser.ID;
+                db.Products.Add(product);
+                db.SaveChanges();
+                string root = "~/ProductFile/AdminFiles/" + product.ID + "/";
+                var phicyPath = HostingEnvironment.MapPath(root);
+                Directory.CreateDirectory(phicyPath);
+                return Redirect("/Admin/ProductManager");
+            }
+            else
+            {
+                ProductUserInfo info = new ProductUserInfo();
+                info.Title = Title;
+                info.Description = Description;
+                info.Belong = ProductBelong.作品;
+                info.Time = DateTime.Now;
+                info.AuthorID = CurrentUser.ID;
+                info.ProductCategoryID = WorkCategory;
+                info.Status = ProductUserInfoStatusEnum.未提交;
+                db.ProductUserInfos.Add(info);
+                db.SaveChanges();
+                string root = "~/ProductFile/UserFiles/" + info.ID + "/";
+                var phicyPath = HostingEnvironment.MapPath(root);
+                Directory.CreateDirectory(phicyPath);
+                return Redirect("/Admin/UserProductManager");
+            }
+        }
+
+        #endregion
+
 
         [HttpGet]
         public ActionResult ProductShow(int id)
@@ -2303,32 +2550,64 @@ namespace QqhrCitizen.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult AddProductImage(int ProductID, HttpPostedFileBase file)
         {
-            if (file != null)
+            if (CurrentUser.Role == Role.Admin)
             {
-                string random = Helpers.DateHelper.GetTimeStamp();
-                Product product = db.Products.Find(ProductID);
-                ProductFile productFile = new ProductFile();
-                productFile.ProductID = ProductID;
-                productFile.FileTypeAsInt = 0;
-                productFile.Source = SourceEnum.管理员;
-                productFile.IsUse = true;
+                if (file != null)
+                {
+                    string random = Helpers.DateHelper.GetTimeStamp();
+                    Product product = db.Products.Find(ProductID);
+                    ProductFile productFile = new ProductFile();
+                    productFile.ProductID = ProductID;
+                    productFile.FileTypeAsInt = 0;
+                    productFile.Source = SourceEnum.管理员;
+                    productFile.IsUse = true;
 
-                string root = "~/ProductFile/" + product.ID + "/";
-                var phicyPath = HostingEnvironment.MapPath(root);
+                    string root = "~/ProductFile/AdminFiles/" + product.ID + "/";
+                    var phicyPath = HostingEnvironment.MapPath(root);
 
-                file.SaveAs(phicyPath + random + file.FileName);
+                    file.SaveAs(phicyPath + random + file.FileName);
 
-                productFile.Path = "/ProductFile/" + product.ID + "/" + random + file.FileName;
+                    productFile.Path = "/ProductFile/AdminFiles/" + product.ID + "/" + random + file.FileName;
 
-                db.ProductFiles.Add(productFile);
-                db.SaveChanges();
+                    db.ProductFiles.Add(productFile);
+                    db.SaveChanges();
 
-                return Redirect("/Admin/ProductShow/" + ProductID);
+                    return Redirect("/Admin/ProductShow/" + ProductID);
+                }
+                else
+                {
+                    return Redirect("/Admin/AdminMessage?msg=你没有选择图片文件");
+                }
             }
             else
             {
-                return Redirect("/Admin/AdminMessage?msg=你没有选择图片文件");
+                if (file != null)
+                {
+                    string random = Helpers.DateHelper.GetTimeStamp();
+                    //ProductUserInfo info = db.Products.Find(ProductID);
+                    ProductFile productFile = new ProductFile();
+                    productFile.FileTypeAsInt = 0;
+                    productFile.Source = SourceEnum.用户;
+                    productFile.IsUse = false;
+                    productFile.PUId = ProductID;
+                    string root = "~/ProductFile/UserFiles/" + ProductID + "/";
+                    var phicyPath = HostingEnvironment.MapPath(root);
+
+                    file.SaveAs(phicyPath + random + file.FileName);
+
+                    productFile.Path = "/ProductFile/UserFiles/" + ProductID + "/" + random + file.FileName;
+
+                    db.ProductFiles.Add(productFile);
+                    db.SaveChanges();
+
+                    return Redirect("/Admin/UseProductShow/" + ProductID);
+                }
+                else
+                {
+                    return Redirect("/Admin/AdminMessage?msg=你没有选择图片文件");
+                }
             }
+
         }
 
         [HttpGet]
@@ -2348,49 +2627,98 @@ namespace QqhrCitizen.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult AddProductVideo(int ProductID, HttpPostedFileBase file)
         {
-            if (file != null)
+            if (CurrentUser.Role == Role.Admin)
             {
-                string random = Helpers.DateHelper.GetTimeStamp();
-                Product product = db.Products.Find(ProductID);
-                ProductFile productFile = new ProductFile();
-                productFile.ProductID = ProductID;
-                productFile.FileTypeAsInt = 1;
-                productFile.Source = SourceEnum.管理员;
-                productFile.IsUse = true;
-
-                string root = "~/ProductFile/" + product.ID + "/";
-                var phicyPath = HostingEnvironment.MapPath(root);
-
-                file.SaveAs(phicyPath + random + file.FileName);
-
-
-                var exten = Path.GetExtension(file.FileName);
-
-                if (!exten.Equals(".flv"))
+                if (file != null)
                 {
-                    var video = new VideoFile(phicyPath + random + file.FileName);
-                    video.Convert(".flv", Quality.Medium).MoveTo(phicyPath + random + ".flv");
-                    productFile.Path = "/ProductFile/" + product.ID + "/" + random + ".flv";
-                    if (System.IO.File.Exists(phicyPath + random + file.FileName))
+                    string random = Helpers.DateHelper.GetTimeStamp();
+                    Product product = db.Products.Find(ProductID);
+                    ProductFile productFile = new ProductFile();
+                    productFile.ProductID = ProductID;
+                    productFile.FileTypeAsInt = 1;
+                    productFile.Source = SourceEnum.管理员;
+                    productFile.IsUse = true;
+
+                    string root = "~/ProductFile/AdminFiles/" + product.ID + "/";
+                    var phicyPath = HostingEnvironment.MapPath(root);
+
+                    file.SaveAs(phicyPath + random + file.FileName);
+
+
+                    var exten = Path.GetExtension(file.FileName);
+
+                    if (!exten.Equals(".flv"))
                     {
-                        //如果存在则删除
-                        System.IO.File.Delete(phicyPath + random + file.FileName);
+                        var video = new VideoFile(phicyPath + random + file.FileName);
+                        video.Convert(".flv", Quality.Medium).MoveTo(phicyPath + random + ".flv");
+                        productFile.Path = "/ProductFile/AdminFiles/" + product.ID + "/" + random + ".flv";
+                        if (System.IO.File.Exists(phicyPath + random + file.FileName))
+                        {
+                            //如果存在则删除
+                            System.IO.File.Delete(phicyPath + random + file.FileName);
+                        }
                     }
+                    else
+                    {
+                        productFile.Path = "/ProductFile/AdminFiles/" + product.ID + "/" + random + file.FileName;
+                    }
+
+                    db.ProductFiles.Add(productFile);
+                    db.SaveChanges();
+
+                    return Redirect("/Admin/UseProductShow/" + ProductID);
                 }
                 else
                 {
-                    productFile.Path = "/ProductFile/" + product.ID + "/" + random + file.FileName;
+                    return Redirect("/Admin/AdminMessage?msg=你没有选择视频文件");
                 }
-
-                db.ProductFiles.Add(productFile);
-                db.SaveChanges();
-
-                return Redirect("/Admin/ProductShow/" + ProductID);
             }
             else
             {
-                return Redirect("/Admin/AdminMessage?msg=你没有选择视频文件");
+                if (file != null)
+                {
+                    string random = Helpers.DateHelper.GetTimeStamp();
+                    //Product product = db.Products.Find(ProductID);
+                    ProductFile productFile = new ProductFile();
+                    productFile.FileTypeAsInt = 1;
+                    productFile.Source = SourceEnum.用户;
+                    productFile.IsUse = false;
+                    productFile.PUId = ProductID;
+                    string root = "~/ProductFile/UserFiles/" + ProductID + "/";
+                    var phicyPath = HostingEnvironment.MapPath(root);
+
+                    file.SaveAs(phicyPath + random + file.FileName);
+
+
+                    var exten = Path.GetExtension(file.FileName);
+
+                    if (!exten.Equals(".flv"))
+                    {
+                        var video = new VideoFile(phicyPath + random + file.FileName);
+                        video.Convert(".flv", Quality.Medium).MoveTo(phicyPath + random + ".flv");
+                        productFile.Path = "/ProductFile/UserFiles/" + ProductID + "/" + random + ".flv";
+                        if (System.IO.File.Exists(phicyPath + random + file.FileName))
+                        {
+                            //如果存在则删除
+                            System.IO.File.Delete(phicyPath + random + file.FileName);
+                        }
+                    }
+                    else
+                    {
+                        productFile.Path = "/ProductFile/UserFiles/" + ProductID + "/" + random + file.FileName;
+                    }
+
+                    db.ProductFiles.Add(productFile);
+                    db.SaveChanges();
+
+                    return Redirect("/Admin/UseProductShow/" + ProductID);
+                }
+                else
+                {
+                    return Redirect("/Admin/AdminMessage?msg=你没有选择视频文件");
+                }
             }
+
         }
 
         /// <summary>
@@ -2402,22 +2730,43 @@ namespace QqhrCitizen.Controllers
         [ValidateSID]
         public ActionResult ProductDelete(int id)
         {
-            List<ProductFile> files = new List<ProductFile>();
-            files = db.ProductFiles.Where(pf => pf.ProductID == id).ToList();
-            Product product = new Product();
-            product = db.Products.Find(id);
-            foreach (var item in files)
+            if (CurrentUser.Role == Role.Admin)
             {
-                db.ProductFiles.Remove(item);
+                List<ProductFile> files = new List<ProductFile>();
+                files = db.ProductFiles.Where(pf => pf.ProductID == id && pf.PUId == null).ToList();
+                Product product = new Product();
+                product = db.Products.Find(id);
+                foreach (var item in files)
+                {
+                    db.ProductFiles.Remove(item);
+                }
+                db.SaveChanges();
+                db.Products.Remove(product);
+                db.SaveChanges();
+                string root = "~/ProductFile/AdminFiles/" + product.ID + "/";
+                var phicyPath = HostingEnvironment.MapPath(root);
+                DirectoryInfo di = new DirectoryInfo(phicyPath);
+
+                di.Delete(true);
             }
-            db.Products.Remove(product);
-            db.SaveChanges();
-            string root = "~/ProductFile/" + product.ID + "/";
-            var phicyPath = HostingEnvironment.MapPath(root);
+            else
+            {
+                List<ProductFile> files = new List<ProductFile>();
+                files = db.ProductFiles.Where(pf => pf.PUId == id).ToList();
+                ProductUserInfo product = new ProductUserInfo();
+                product = db.ProductUserInfos.Find(id);
+                foreach (var item in files)
+                {
+                    db.ProductFiles.Remove(item);
+                }
+                db.ProductUserInfos.Remove(product);
+                db.SaveChanges();
+                string root = "~/ProductFile/UserFiles/" + product.ID + "/";
+                var phicyPath = HostingEnvironment.MapPath(root);
 
-            DirectoryInfo di = new DirectoryInfo(phicyPath);
-            di.Delete(true);
-
+                DirectoryInfo di = new DirectoryInfo(phicyPath);
+                di.Delete(true);
+            }
             return Content("ok");
         }
 
