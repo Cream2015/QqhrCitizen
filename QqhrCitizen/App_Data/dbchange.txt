@@ -1,0 +1,3 @@
+﻿SELECT * from Lessions where Path LIKE '%/wmv%'  查找全部的wmv格式的
+将 wmv转成 flv的
+update Lessions  set Lessions.Path=(select REPLACE(B.Path, '.wmv', '.flv' ) from Lessions B where Lessions.ID=B.ID) where Lessions.Path LIKE '%.wmv%'

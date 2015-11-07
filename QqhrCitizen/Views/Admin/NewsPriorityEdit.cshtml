@@ -1,0 +1,31 @@
+﻿@model QqhrCitizen.Models.News
+@{
+    ViewBag.Title = "NewPriorityEdit";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<h2>@Model.Title -- 设置新闻优先级</h2>
+@using (Html.BeginForm("NewsPriorityEdit", "Admin", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    <input name="id" type="hidden" value="@Model.ID" />
+    <table class="detail-table">
+        <tr>
+            <td class="row-title">
+                优先级
+            </td>
+            <td>
+                <input type="text" name="Priority" class="textbox" value="@Model.Priority" />
+            </td>
+        </tr>
+    </table>
+    <p>
+        <input type="submit" value="增加" class="button blue" />
+        <input class="button" onclick="history.go(-1)" value="返回" type="button">
+    </p>
+}
+
+
+
+

@@ -1,0 +1,44 @@
+﻿@{
+    ViewBag.Title = "增加作品";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<link href="~/Styles/codecomb.droptxt.css" rel="stylesheet" />
+<script src="~/Scripts/codecomb.droptxt.js"></script>
+<div>
+    <div class="result-title">
+        <h1 class="head-tietle">增加作品</h1>
+    </div>
+    @using (Html.BeginForm("AddWork", "Admin", FormMethod.Post))
+    {
+        @Html.AntiForgeryToken()
+        <table class="detail-table">
+            <tr>
+                <td class="row-title">标题</td>
+                <td>
+                    <input class="textbox w-3" type="text" name="Title" />
+                </td>
+            </tr>
+            <tr>
+                <td class="row-title">
+                    分类
+                </td>
+                <td>
+                    <select name="WorkCategory" id="slWorkCategory" class="textbox">
+                        <option value="0">选择分类</option>
+                        @foreach (var item in ViewBag.WorkCategories as List<ProductCategory>)
+                        {
+                            <option value="@item.ID">@item.Content</option>
+                        }
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td class="row-title">描述</td>
+                <td>
+                    <textarea name="Description" rows="20" class="textbox w-3" style="height:60px;"></textarea>
+                </td>
+            </tr>
+        </table>
+        <p><input type="submit" value="增加" class="button blue" /><input class="button" onclick="history.go(-1)" value="返回" type="button"></p>
+    }
+</div>
