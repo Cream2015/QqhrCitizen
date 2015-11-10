@@ -2666,7 +2666,7 @@ namespace QqhrCitizen.Controllers
                     db.ProductFiles.Add(productFile);
                     db.SaveChanges();
 
-                    return Redirect("/Admin/UseProductShow/" + ProductID);
+                    return Redirect("/Admin/ProductShow/" + ProductID);
                 }
                 else
                 {

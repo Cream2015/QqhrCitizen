@@ -14,7 +14,7 @@ namespace QqhrCitizen.Controllers
         private List<News> GetTop5News()
         {
             var ret = new List<News>();
-            foreach (var n in db.News.AsNoTracking().OrderBy(n=>n.Priority).ThenByDescending(n=>n.Browses))
+            foreach (var n in db.News.AsNoTracking().OrderBy(n => n.Priority).ThenByDescending(n => n.Browses))
             {
                 if (n.ImgUrl.Count > 0)
                 {
@@ -30,7 +30,7 @@ namespace QqhrCitizen.Controllers
         // GET: /Home/
         public ActionResult Index()
         {
-            List<TypeDictionary> courseTypes = db.TypeDictionaries.Where(x => x.Belonger == TypeBelonger.课程 && x.FatherID == 0).OrderBy(x=>x.PID).Take(5).ToList();
+            List<TypeDictionary> courseTypes = db.TypeDictionaries.Where(x => x.Belonger == TypeBelonger.课程 && x.FatherID == 0).OrderBy(x => x.PID).Take(5).ToList();
             foreach (var item in courseTypes)
             {
                 if (item.TypeValue.Length > 4)
@@ -54,7 +54,7 @@ namespace QqhrCitizen.Controllers
             ViewBag.Location = db.News.Where(n => n.PlaceAsInt == 0).OrderByDescending(n => n.Time).Take(10).ToList();
             ViewBag.Native = db.News.Where(n => n.PlaceAsInt == 1).OrderByDescending(n => n.Time).Take(10).ToList();
             ViewBag.Menus = db.Menus.ToList();
-           
+
             return View();
         }
 
@@ -67,7 +67,9 @@ namespace QqhrCitizen.Controllers
                 hots = new List<string>();
             }
             int newsCount = db.News.Where(n => n.Title.Contains(key) || n.Content.Contains(key)).OrderByDescending(n => n.Time).Count();
-            int courseCount = db.Courses.Where(c => c.Title.Contains(key)).OrderByDescending(c => c.Time).Count();
+            // int courseCount = db.Courses.Where(c => c.Title.Contains(key)).OrderByDescending(c => c.Time).Count();
+            int courseCount = db.Lessions.Where(l => l.Course.Title.Contains(key) || l.Title.Contains(key)).DistinctBy(l => l.CourseID).Count();
+
             int ebookCount = db.EBooks.Where(eb => eb.Title.Contains(key)).OrderByDescending(e => e.Time).Count();
             int liveCount = db.Lives.Where(l => l.Title.Contains(key)).OrderByDescending(e => e.Begin).Count();
             int productCount = db.Products.Where(p => p.Title.Contains(key)).OrderByDescending(e => e.Time).Count();
@@ -120,7 +122,15 @@ namespace QqhrCitizen.Controllers
             }
             if (type == "course")
             {
-                var result = db.Courses.Where(c => c.Title.Contains(key)).OrderByDescending(n => n.Time).Skip(index).Take(10).ToList();
+                List<int> courseIds = db.Lessions.Where(l => l.Course.Title.Contains(key) || l.Title.Contains(key)).DistinctBy(l => l.CourseID).OrderByDescending(x=>x.Time).Skip(index).Take(10).Select(x => x.CourseID).ToList();
+                //var result = db.Courses.Where(c => c.Title.Contains(key)).OrderByDescending(n => n.Time).Skip(index).Take(10).ToList();
+                var result = new List<Course>();
+                foreach (int item in courseIds)
+                {
+                    Course course = new Course();
+                    course = db.Courses.Find(item);
+                    result.Add(course);
+                }
                 List<vSearchResultModel> _result = new List<vSearchResultModel>();
                 foreach (var item in result)
                 {
