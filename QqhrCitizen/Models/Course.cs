@@ -42,7 +42,7 @@ namespace QqhrCitizen.Models
         /// </summary>
         public byte[] Picture { get; set; }
 
-       // public int AuthorityAsInt { set; get; }
+        // public int AuthorityAsInt { set; get; }
 
         public int Browses { get; set; }
 
@@ -57,6 +57,8 @@ namespace QqhrCitizen.Models
         ///   学分
         /// </summary>
         public int Credit { get; set; }
+
+        public int Priority { get; set; }
 
 
         public virtual ICollection<Lession> Lessions { set; get; }

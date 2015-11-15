@@ -40,7 +40,7 @@ namespace QqhrCitizen.Controllers
             }
             ViewBag.CourseTypes = courseTypes;
 
-            ViewBag.Courses = db.Courses.OrderByDescending(x => x.Time).Take(6).ToList();
+            ViewBag.Courses = db.Courses.OrderBy(x => x.Priority).ThenByDescending(x => x.Time).Take(12).ToList();
             ViewBag.NewsTypes = db.TypeDictionaries.Where(x => x.Belonger == TypeBelonger.新闻 && x.FatherID == 0).Take(5).ToList();
             ViewBag.News = GetTop5News();
             ViewBag.MoreNews = db.News.OrderByDescending(x => x.Time).Take(10).ToList();

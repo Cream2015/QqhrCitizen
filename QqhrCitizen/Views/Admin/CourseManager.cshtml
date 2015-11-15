@@ -23,19 +23,20 @@
                     <td>编号</td>
                     <td>标题</td>
                     <td>分类</td>
+                    <td>优先级</td>
                     <td>时间</td>
                     <td>操作员</td>
                     <td>操作</td>
                 </tr>
             </thead>
             <tbody>
-
                 @foreach (var item in Model)
                 {
                     <tr id="@item.ID">
                         <td>@item.ID</td>
                         <td>@item.Title</td>
                         <td>@item.TypeDictionary.TypeValue</td>
+                        <td>@item.Priority</td>
                         <td>@item.Time</td>
                         <td>@item.User.Username</td>
                         <td>
@@ -48,10 +49,7 @@
                 }
             </tbody>
         </table>
-
         @Html.MakePager()
     </div>
 </div>
-
-
 
