@@ -67,9 +67,9 @@ namespace QqhrCitizen.Controllers
                 hots = new List<string>();
             }
             int newsCount = db.News.Where(n => n.Title.Contains(key) || n.Content.Contains(key)).OrderByDescending(n => n.Time).Count();
-            // int courseCount = db.Courses.Where(c => c.Title.Contains(key)).OrderByDescending(c => c.Time).Count();
-            int courseCount = db.Lessions.Where(l => l.Course.Title.Contains(key) || l.Title.Contains(key)).DistinctBy(l => l.CourseID).Count();
-
+            int courseCount = db.Courses.Where(c => c.Title.Contains(key)).Count();
+            //int courseCount = db.Lessions.Where(l => l.Course.Title.Contains(key) || l.Title.Contains(key)).DistinctBy(l => l.CourseID).Count();
+            int lessionCount = db.Lessions.Where(l => l.Title.Contains(key)).Count();
             int ebookCount = db.EBooks.Where(eb => eb.Title.Contains(key)).OrderByDescending(e => e.Time).Count();
             int liveCount = db.Lives.Where(l => l.Title.Contains(key)).OrderByDescending(e => e.Begin).Count();
             int productCount = db.Products.Where(p => p.Title.Contains(key)).OrderByDescending(e => e.Time).Count();
@@ -93,6 +93,7 @@ namespace QqhrCitizen.Controllers
             ViewBag.EBookCount = ebookCount;
             ViewBag.LiveCount = liveCount;
             ViewBag.ProductCount = productCount;
+            ViewBag.LessionCount = lessionCount;
             ViewBag.Key = key;
             ViewBag.Hots = HttpContext.Application["hots"];
             return View("SearchResult");
@@ -120,17 +121,27 @@ namespace QqhrCitizen.Controllers
                 }
                 return Json(_result, JsonRequestBehavior.AllowGet);
             }
+            if (type == "lession")
+            {
+                var result = db.Lessions.Where(n => n.Title.Contains(key)).OrderByDescending(n => n.Time).Skip(index).Take(10).ToList();
+                List<vSearchResultModel> _result = new List<vSearchResultModel>();
+                foreach (var item in result)
+                {
+                    _result.Add(new vSearchResultModel(item));
+                }
+                return Json(_result, JsonRequestBehavior.AllowGet);
+            }
             if (type == "course")
             {
-                List<int> courseIds = db.Lessions.Where(l => l.Course.Title.Contains(key) || l.Title.Contains(key)).DistinctBy(l => l.CourseID).OrderByDescending(x=>x.Time).Skip(index).Take(10).Select(x => x.CourseID).ToList();
-                //var result = db.Courses.Where(c => c.Title.Contains(key)).OrderByDescending(n => n.Time).Skip(index).Take(10).ToList();
-                var result = new List<Course>();
-                foreach (int item in courseIds)
-                {
-                    Course course = new Course();
-                    course = db.Courses.Find(item);
-                    result.Add(course);
-                }
+                //List<int> courseIds = db.Lessions.Where(l => l.Course.Title.Contains(key) || l.Title.Contains(key)).DistinctBy(l => l.CourseID).OrderByDescending(x => x.Time).Skip(index).Take(10).Select(x => x.CourseID).ToList();
+                var result = db.Courses.Where(c => c.Title.Contains(key)).OrderByDescending(n => n.Time).Skip(index).Take(10).ToList();
+                //var result = new List<Course>();
+                //foreach (int item in courseIds)
+                //{
+                //    Course course = new Course();
+                //    course = db.Courses.Find(item);
+                //    result.Add(course);
+                //}
                 List<vSearchResultModel> _result = new List<vSearchResultModel>();
                 foreach (var item in result)
                 {

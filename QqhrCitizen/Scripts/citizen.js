@@ -109,9 +109,16 @@ function LoadSearchRessult() {
             data: { "type": type, "key": $("#searchKey").val(), "page": page },
             success: function (data) {
                 var str = "";
-                for (var i = 0 ; i < data.length; i++) {
-                    str += "<div class='Q-pList'><h2><a  href='" + data[i].URL + "' style='color:#000;' class='show'>" + data[i].Title + " </a></h2><p class='sub_title'>时间：" + moment(data[i].Time).format("YYYY-MM-DD HH:mm:ss") + "</p><p>" + data[i].Sumamry + "</p></div>";
+                if (type != "lession") {
+                    for (var i = 0 ; i < data.length; i++) {
+                        str += "<div class='Q-pList'><h2><a  href='" + data[i].URL + "' style='color:#000;' class='show'>" + data[i].Title + " </a></h2><p class='sub_title'>时间：" + moment(data[i].Time).format("YYYY-MM-DD HH:mm:ss") + "</p><p>" + data[i].Sumamry + "</p></div>";
+                    }
+                } else {
+                    for (var i = 0 ; i < data.length; i++) {
+                        str += "<div class='Q-pList'><h2><a  href='" + data[i].URL + "' style='color:#000;' class='show'>" + data[i].Title + " </a></h2><p class='sub_title'>时间：" + moment(data[i].Time).format("YYYY-MM-DD HH:mm:ss") + "</p><p>课程：<a href='" + data[i].CourseURL + "'>" + data[i].Course + "</a></p><p>" + data[i].Sumamry + "</p></div>";
+                    }
                 }
+
                 $(".result").append(str);
                 if (data.length == 10) {
                     lock = false;
@@ -165,7 +172,7 @@ function LoadProducts() {
         $.ajax({
             url: "/Product/getProductByPage",
             type: "get",
-            data: { "page": page, flag: $("#flag").val(),belong: $("#belong").val() },
+            data: { "page": page, flag: $("#flag").val(), belong: $("#belong").val() },
             dataType: "json",
             success: function (data) {
                 var str = "";
@@ -284,7 +291,7 @@ function Load() {
     if ($(".lstUserProduct").length > 0) {
         LoadUserProducts();
     }
-    
+
 }
 
 $(document).ready(function () {
@@ -458,6 +465,9 @@ function Search(data) {
     }
     if (data == "5") {
         type = "product";
+    }
+    if (data == "6") {
+        type = "lession";
     }
     lock = false;
     $(".result").html("");

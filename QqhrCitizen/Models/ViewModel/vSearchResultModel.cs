@@ -17,6 +17,16 @@ namespace QqhrCitizen.Models.ViewModel
 
         public DateTime Time { set; get; }
 
+        /// <summary>
+        /// 课程只有课时有
+        /// </summary>
+        public string Course { set; get; }
+
+        /// <summary>
+        /// 课程url；
+        /// </summary>
+        public string CourseURL { set; get; }
+
         public vSearchResultModel() { }
 
         public vSearchResultModel(News model)
@@ -69,6 +79,17 @@ namespace QqhrCitizen.Models.ViewModel
             this.URL = "/Product/Show/"+model.ID;
             this.Sumamry = Helpers.String.SubString(model.Description,50,"...");
             this.Time = model.Time;
+        }
+
+        public vSearchResultModel(Lession model)
+        {
+            this.ID = model.ID;
+            this.Title = model.Title;
+            this.URL = "/Course/LessionDetails/" + model.ID;
+            this.Sumamry = Helpers.String.SubString(model.Description, 50, "...");
+            this.Time = model.Time;
+            this.Course = model.Course.Title;
+            this.CourseURL = "/Course/Show/" + model.CourseID;
         }
     }
 }
