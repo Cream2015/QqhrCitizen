@@ -246,12 +246,12 @@
                             <a href="/Course">
                                 <div class="head news"></div>
                             </a>
-                            <div class="body">
+                            @*<div class="body">
                                 @foreach (TypeDictionary td in ViewBag.CourseTypes)
                                 {
                                     <a class="item" href="/Course?tid=@td.ID" style="color:@(td.Top?"red":"")">@td.TypeValue</a>
                                 }
-                            </div>
+                            </div>*@
                         </div>
                     </div>
                 </div>
@@ -271,7 +271,7 @@
                                             <div>
                                                 @foreach (var item in ViewBag.CourseTypes as List<TypeDictionary>)
                                                 {
-                                                    <a href="/Course/Discovery/@item.ID" style="margin-left:10px;font-size:16px;">@item.TypeValue</a>
+                                                    <a href="/Course/Discovery/@item.ID">@item.TypeValue</a>
                                                 }
                                             </div>
                                         </div>
@@ -298,10 +298,10 @@
                                                     证书学习
                                                 </div>
                                             </div>
-                                            <div style="text-align:center;font-size:16px;">
+                                            <div class="Certificate_content">
                                                 @foreach (var item in ViewBag.CertificateTypes as List<TypeDictionary>)
                                                 {
-                                                    <a href="/Course/Discovery/@item.ID">@item.TypeValue</a>
+                                                    <p><a href="/Course/Discovery/@item.ID">@item.TypeValue</a></p>
                                                 }
                                             </div>
                                         </div>
@@ -311,10 +311,10 @@
                                                     专题学习
                                                 </div>
                                             </div>
-                                            <div style="text-align:center;font-size:16px;">
+                                            <div class="Certificate_content">
                                                 @foreach (var item in ViewBag.SubjectTypes as List<TypeDictionary>)
                                                 {
-                                                    <a href="/Course/Discovery/@item.ID">@item.TypeValue</a>
+                                                    <p><a href="/Course/Discovery/@item.ID">@item.TypeValue</a></p>
                                                 }
                                             </div>
                                         </div>
@@ -324,10 +324,10 @@
                                                     学历学习
                                                 </div>
                                             </div>
-                                            <div style="text-align:center;font-size:16px;">
+                                            <div class="Certificate_content">
                                                 @foreach (var item in ViewBag.EducationTypes as List<TypeDictionary>)
                                                 {
-                                                    <a href="/Course/Discovery/@item.ID">@item.TypeValue</a>
+                                                    <p><a href="/Course/Discovery/@item.ID">@item.TypeValue</a></p>
                                                 }
                                             </div>
                                         </div>

@@ -4177,81 +4177,90 @@ background-position: 19px 0;
 	margin: 0 auto;
 	height: 1000px;
 	/*width: 860px;*/
-	background-color: pink;
+	/*background-color: pink;*/
 }
 .Citizen{
 	height: 480px;
-	background-color: blue;
+	/*background-color: blue;*/
 	overflow: hidden;
 }
 .Citizen_nav{
-	margin: 5px;
-	height: 175px;
-	background-color: pink;
+	/*margin: 5px;*/
+	height: 100px;
+	background-color:lightgreen;
     overflow:hidden;
 }
+.Citizen_nav a{
+    margin-left:10px;
+    display: inline-block;
+    padding:7px;
+    font-size:16px;
+    text-decoration:none;
+    font-family:FangSong;
+}
+.Citizen_nav a:hover{
+    color:white;
+    background-color:#0082cd;
+}
 .Citizen_nav_title{
-    height:40px;
-    background-color:aqua;
+    height:45px;
+    background-color:lightgreen;
 }
 .Citizen_nav_title_content{
     text-align:center;
     font-size:20px;
-    font-family:"Hiragino Sans GB";
+    font-family:微软雅黑;
     font-weight:700;
     padding:10px;
 }
 .Citizen_Content{
-	margin: 5px;
+	margin: 5px 0;
 	height: 295px;
-	background-color: grey;
+	/*background-color: grey;*/
 }
 /*----*/
 .Container1{
 	height: 360px;
-	background-color: #cc0001;
+	/*background-color: #cc0001;*/
 	overflow: hidden;
 }
 .Certificate{
 	display: inline-block;
-	margin: 6px;
+	margin: 6px 0;
 	float: left;
-	width: 287px; 
+	width: 295px; 
 	height: 347px;
-	background-color: green;
+	background-color:lightgreen;
 }
 .Certificate_title{
     height:40px;
-    background-color:aqua;
+    background-color:lightgreen;
 }
 .Certificate_title_content{
     text-align:center;
     font-size:20px;
-    font-family:"Hiragino Sans GB";
+    font-family:微软雅黑;
     font-weight:700;
     padding:10px;
 }
-/*.project1{
-	display: inline-block;
-	width:436px;
-	height:10px;
-	margin:6px 0;
-	float: left;
-}*/
+.Certificate_content{
+    text-align:center;
+    font-size:16px
+}
 .Project{
     display: inline-block;
-	margin: 6px;	
-	width: 287px; 
+	margin: 6px 0;	
+	width: 296px; 
 	height: 347px;
-	background-color: green;
+	background-color:lightgreen;
 }
 .Academic{
 	display: inline-block;
 	float: left;
 	margin: 6px;	
-	width: 287px; 
+	width: 296px; 
 	height: 347px;
-	background-color: green;
+	background-color:lightgreen;
 }
 
 #tih .tis-item .tis-content ul li {

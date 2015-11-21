@@ -585,6 +585,7 @@ namespace QqhrCitizen.Controllers
             var second = new List<TypeDictionary>();
             second = db.TypeDictionaries.Where(td => td.FatherID == course.TypeDictionary.FatherID).ToList();
 
+
             ViewBag.Second = second;
             ViewBag.Course = course;
             ViewBag.Types = courseTypes;
@@ -605,6 +606,7 @@ namespace QqhrCitizen.Controllers
             Course course = new Course();
             course = db.Courses.Find(model.ID);
             course.CourseTypeID = model.CourseTypeID;
+            course.Priority = model.Priority;
             course.Title = model.Title;
             course.Description = model.Description;
             //course.Authority = model.Authority;

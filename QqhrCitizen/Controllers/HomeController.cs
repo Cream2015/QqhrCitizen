@@ -40,27 +40,28 @@ namespace QqhrCitizen.Controllers
             //}
             //ViewBag.CourseTypes = courseTypes;
 
-            ///拓展学习子类
+            ///市民学习子类
             List<TypeDictionary> CourseTypes = new List<TypeDictionary>();
-            CourseTypes = db.TypeDictionaries.Where(td => td.FatherID == 1).ToList();
+            CourseTypes = db.TypeDictionaries.Where(td => td.FatherID == 1).OrderBy(x => x.PID).ThenByDescending(x => x.Time).Take(9).ToList();
             ViewBag.CourseTypes = CourseTypes;
+            
 
             ///证书学习子类
             List<TypeDictionary> CertificateTypes = new List<TypeDictionary>();
-            CertificateTypes = db.TypeDictionaries.Where(td => td.FatherID == 3).ToList();
+            CertificateTypes = db.TypeDictionaries.Where(td => td.FatherID == 13).OrderBy(x => x.PID).ThenByDescending(x => x.Time).Take(9).ToList();
             ViewBag.CertificateTypes = CertificateTypes;
 
             ///学历学习子类
             List<TypeDictionary> EducationTypes = new List<TypeDictionary>();
-            EducationTypes = db.TypeDictionaries.Where(td => td.FatherID == 29).ToList();
+            EducationTypes = db.TypeDictionaries.Where(td => td.FatherID == 15).OrderBy(x => x.PID).ThenByDescending(x => x.Time).Take(9).ToList();
             ViewBag.EducationTypes = EducationTypes;
 
             ///专题学习子类
             List<TypeDictionary> SubjectTypes = new List<TypeDictionary>();
-            SubjectTypes = db.TypeDictionaries.Where(td => td.FatherID == 128).ToList();
+            SubjectTypes = db.TypeDictionaries.Where(td => td.FatherID == 16).OrderBy(x => x.PID).ThenByDescending(x => x.Time).Take(9).ToList();
             ViewBag.SubjectTypes = SubjectTypes;
 
-            ViewBag.Courses = db.Courses.Where(c => c.CourseTypeID == 1 || c.TypeDictionary.FatherID==1).OrderBy(x => x.Priority).ThenByDescending(x => x.Time).Take(12).ToList();
+            ViewBag.Courses = db.Courses.Where(c => c.CourseTypeID == 1 || c.TypeDictionary.FatherID==1).OrderBy(x => x.Priority).ThenByDescending(x => x.Time).Take(8).ToList();
 
             ViewBag.NewsTypes = db.TypeDictionaries.Where(x => x.Belonger == TypeBelonger.新闻 && x.FatherID == 0).Take(5).ToList();
             ViewBag.News = GetTop5News();

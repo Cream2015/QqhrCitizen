@@ -125,7 +125,6 @@ namespace QqhrCitizen.Controllers
             //相关的课程
             var lstCourse = db.Courses.Where(c => c.CourseTypeID == Course.CourseTypeID && c.ID != id).OrderByDescending(n => n.Browses).ThenByDescending(n => n.Time).Take(8).ToList();
             ViewBag.Lessions = lessions;
-
             ViewBag.Course = Course;
             ViewBag.lstCourse = lstCourse;
             ViewBag.LstRecord = LstRecord;
