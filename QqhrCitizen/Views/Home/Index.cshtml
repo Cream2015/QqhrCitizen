@@ -251,7 +251,7 @@
                                 {
                                     <a class="item" href="/Course?tid=@td.ID" style="color:@(td.Top?"red":"")">@td.TypeValue</a>
                                 }
-                            </div>
+                            </div>                         
                         </div>
                     </div>
                 </div>
@@ -260,18 +260,46 @@
                         <!-- region start: 首页推荐课程 -->
                         <div id="d_courserecommend" class="d-courserecommend">
                             <div class="body">
-                                <div id="slide_courserecommend" class="slidecontainer">
-                                    @foreach (Course c in ViewBag.Courses)
-                                    {
-                                        <div class="item">
-                                            <a class="course-cover cover" href="/Course/Show/@c.ID" title="@c.Title">
-                                                <img src="/Course/ShowPicture/@c.ID" data-echo="/Course/ShowPicture/@c.ID" onerror="this.onerror='';this.src='/Course/ShowPicture/@c.ID';">
-                                            </a>
-                                            <div class="title trim">
-                                                <a href="/Course/Show/@c.ID" title="@c.Title">@c.Title</a>
-                                            </div><span class="signed">NaN 人学习</span>
+                                <div class="Course">
+                                    <div class="Citizen">
+                                        <div class="Citizen_nav">
+                                            <div class="Citizen_nav_title">
+                                                <div class="Citizen_nav_title_content">
+                                                    市民学习
+                                                </div>
+                                            </div>
+                                            市民学习各种分类
                                         </div>
-                                    }
+                                        <div class="Citizen_Content">
+                                            市民学习推荐课程：图片
+                                        </div>
+                                    </div>
+                                    <div class="Container1">
+                                        <div class="Certificate">
+                                            <div class="Certificate_title">
+                                                <div class="Certificate_title_content">
+                                                    证书学习
+                                                </div>
+                                            </div>
+                                            证书学习类的内容
+                                        </div>
+                                            <div class="Project">
+                                                <div class="Certificate_title">
+                                                    <div class="Certificate_title_content">
+                                                        专题学习
+                                                    </div>
+                                                </div>
+                                                专题学习类的内容
+                                            </div>     
+                                        <div class="Academic">
+                                            <div class="Certificate_title">
+                                                <div class="Certificate_title_content">
+                                                    学历学习
+                                                </div>
+                                            </div>
+                                            学历学习类的内容
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div><!-- region end: 首页推荐课程 -->

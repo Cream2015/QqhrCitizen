@@ -2780,7 +2780,7 @@ background-position: 19px 0;
 
     .d-courserecommend .body {
         width: 899px;
-        height: 920px;
+        height: 840px;
         overflow: hidden;
     }
 
@@ -4173,6 +4173,87 @@ background-position: 19px 0;
     height: 60px;
     margin-right: 5px;
 }
+.Course{
+	margin: 0 auto;
+	height: 1000px;
+	/*width: 860px;*/
+	background-color: pink;
+}
+.Citizen{
+	height: 480px;
+	background-color: blue;
+	overflow: hidden;
+}
+.Citizen_nav{
+	margin: 5px;
+	height: 175px;
+	background-color: pink;
+    overflow:hidden;
+}
+.Citizen_nav_title{
+    height:40px;
+    background-color:aqua;
+}
+.Citizen_nav_title_content{
+    text-align:center;
+    font-size:20px;
+    font-family:"Hiragino Sans GB";
+    font-weight:700;
+    padding:10px;
+}
+.Citizen_Content{
+	margin: 5px;
+	height: 295px;
+	background-color: grey;
+}
+/*----*/
+.Container1{
+	height: 360px;
+	background-color: #cc0001;
+	overflow: hidden;
+}
+.Certificate{
+	display: inline-block;
+	margin: 6px;
+	float: left;
+	width: 287px; 
+	height: 347px;
+	background-color: green;
+}
+.Certificate_title{
+    height:40px;
+    background-color:aqua;
+}
+.Certificate_title_content{
+    text-align:center;
+    font-size:20px;
+    font-family:"Hiragino Sans GB";
+    font-weight:700;
+    padding:10px;
+}
+/*.project1{
+	display: inline-block;
+	width:436px;
+	height:10px;
+	margin:6px 0;
+	float: left;
+}*/
+.Project{
+    display: inline-block;
+	margin: 6px;	
+	width: 287px; 
+	height: 347px;
+	background-color: green;
+}
+.Academic{
+	display: inline-block;
+	float: left;
+	margin: 6px;	
+	width: 287px; 
+	height: 347px;
+	background-color: green;
+}
+
 #tih .tis-item .tis-content ul li {
 display: list-item;
 list-style-position: inside;
