@@ -30,17 +30,38 @@ namespace QqhrCitizen.Controllers
         // GET: /Home/
         public ActionResult Index()
         {
-            List<TypeDictionary> courseTypes = db.TypeDictionaries.Where(x => x.Belonger == TypeBelonger.课程 && x.FatherID == 0).OrderBy(x => x.PID).Take(5).ToList();
-            foreach (var item in courseTypes)
-            {
-                if (item.TypeValue.Length > 4)
-                {
-                    item.TypeValue = item.TypeValue.Substring(0, 4);
-                }
-            }
-            ViewBag.CourseTypes = courseTypes;
+            //  List<TypeDictionary> courseTypes = db.TypeDictionaries.Where(x => x.Belonger == TypeBelonger.课程 && x.FatherID == 0).OrderBy(x => x.PID).Take(5).ToList();
+            //foreach (var item in courseTypes)
+            //{
+            //    if (item.TypeValue.Length > 4)
+            //    {
+            //        item.TypeValue = item.TypeValue.Substring(0, 4);
+            //    }
+            //}
+            //ViewBag.CourseTypes = courseTypes;
 
-            ViewBag.Courses = db.Courses.OrderBy(x => x.Priority).ThenByDescending(x => x.Time).Take(12).ToList();
+            ///拓展学习子类
+            List<TypeDictionary> CourseTypes = new List<TypeDictionary>();
+            CourseTypes = db.TypeDictionaries.Where(td => td.FatherID == 1).ToList();
+            ViewBag.CourseTypes = CourseTypes;
+
+            ///证书学习子类
+            List<TypeDictionary> CertificateTypes = new List<TypeDictionary>();
+            CertificateTypes = db.TypeDictionaries.Where(td => td.FatherID == 3).ToList();
+            ViewBag.CertificateTypes = CertificateTypes;
+
+            ///学历学习子类
+            List<TypeDictionary> EducationTypes = new List<TypeDictionary>();
+            EducationTypes = db.TypeDictionaries.Where(td => td.FatherID == 29).ToList();
+            ViewBag.EducationTypes = EducationTypes;
+
+            ///专题学习子类
+            List<TypeDictionary> SubjectTypes = new List<TypeDictionary>();
+            SubjectTypes = db.TypeDictionaries.Where(td => td.FatherID == 128).ToList();
+            ViewBag.SubjectTypes = SubjectTypes;
+
+            ViewBag.Courses = db.Courses.Where(c => c.CourseTypeID == 1 || c.TypeDictionary.FatherID==1).OrderBy(x => x.Priority).ThenByDescending(x => x.Time).Take(12).ToList();
+
             ViewBag.NewsTypes = db.TypeDictionaries.Where(x => x.Belonger == TypeBelonger.新闻 && x.FatherID == 0).Take(5).ToList();
             ViewBag.News = GetTop5News();
             ViewBag.MoreNews = db.News.OrderByDescending(x => x.Time).Take(10).ToList();
@@ -54,6 +75,7 @@ namespace QqhrCitizen.Controllers
             ViewBag.Location = db.News.Where(n => n.PlaceAsInt == 0).OrderByDescending(n => n.Time).Take(10).ToList();
             ViewBag.Native = db.News.Where(n => n.PlaceAsInt == 1).OrderByDescending(n => n.Time).Take(10).ToList();
             ViewBag.Menus = db.Menus.ToList();
+
 
             return View();
         }
@@ -73,6 +95,7 @@ namespace QqhrCitizen.Controllers
             int ebookCount = db.EBooks.Where(eb => eb.Title.Contains(key)).OrderByDescending(e => e.Time).Count();
             int liveCount = db.Lives.Where(l => l.Title.Contains(key)).OrderByDescending(e => e.Begin).Count();
             int productCount = db.Products.Where(p => p.Title.Contains(key)).OrderByDescending(e => e.Time).Count();
+
 
             if (!hots.Contains(key))
             {
@@ -95,6 +118,7 @@ namespace QqhrCitizen.Controllers
             ViewBag.ProductCount = productCount;
             ViewBag.LessionCount = lessionCount;
             ViewBag.Key = key;
+
             ViewBag.Hots = HttpContext.Application["hots"];
             return View("SearchResult");
         }

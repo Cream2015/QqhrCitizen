@@ -167,7 +167,7 @@
                         { i++; }
                     }
                 </div>
-            <div id="d_board" class="d-board">
+                <div id="d_board" class="d-board">
                     <div class="tabbar">
                         <div class="tab_select" style="width:144px;" onmouseover="sub_t(42);km_tab.tabclk(0,'d_board');">要闻播报</div><div class="tab" style="width:144px;" onmouseover="sub_t(186);km_tab.tabclk(1,'d_board');">本地社教</div><div class="bar" style="left: 42px;"></div>
                     </div>
@@ -178,13 +178,13 @@
                                     <div id="tih" style="height: 314px;">
                                         <div class="tis-item">
                                             <div class="tis-content">
-											<ul>
-                                                @foreach (News n in ViewBag.Native)
-                                                {
+                                                <ul>
+                                                    @foreach (News n in ViewBag.Native)
+                                                    {
 
-                                                    <li style="cursor:pointer"><a href="/News/Show/@n.ID" title="@n.Title" >@n.Title</a></li>
-                                                }
-												</ul>
+                                                        <li style="cursor:pointer"><a href="/News/Show/@n.ID" title="@n.Title">@n.Title</a></li>
+                                                    }
+                                                </ul>
                                             </div>
                                         </div>
                                         <div style="height:6px; overflow:hidden;">&nbsp;</div>
@@ -251,7 +251,7 @@
                                 {
                                     <a class="item" href="/Course?tid=@td.ID" style="color:@(td.Top?"red":"")">@td.TypeValue</a>
                                 }
-                            </div>                         
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -268,10 +268,27 @@
                                                     市民学习
                                                 </div>
                                             </div>
-                                            市民学习各种分类
+                                            <div>
+                                                @foreach (var item in ViewBag.CourseTypes as List<TypeDictionary>)
+                                                {
+                                                    <a href="/Course/Discovery/@item.ID" style="margin-left:10px;font-size:16px;">@item.TypeValue</a>
+                                                }
+                                            </div>
                                         </div>
                                         <div class="Citizen_Content">
-                                            市民学习推荐课程：图片
+                                            <div id="slide_courserecommend" class="slidecontainer">
+                                                @foreach (Course c in ViewBag.Courses)
+                                                {
+                                                    <div class="item">
+                                                        <a class="course-cover cover" href="/Course/Show/@c.ID" title="@c.Title">
+                                                            <img src="/Course/ShowPicture/@c.ID" data-echo="/Course/ShowPicture/@c.ID" onerror="this.onerror='';this.src='/Course/ShowPicture/@c.ID';">
+                                                        </a>
+                                                        <div class="title trim">
+                                                            <a href="/Course/Show/@c.ID" title="@c.Title">@c.Title</a>
+                                                        </div>
+                                                    </div>
+                                                }
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="Container1">
@@ -281,23 +298,38 @@
                                                     证书学习
                                                 </div>
                                             </div>
-                                            证书学习类的内容
+                                            <div style="text-align:center;font-size:16px;">
+                                                @foreach (var item in ViewBag.CertificateTypes as List<TypeDictionary>)
+                                                {
+                                                    <a href="/Course/Discovery/@item.ID">@item.TypeValue</a>
+                                                }
+                                            </div>
                                         </div>
-                                            <div class="Project">
-                                                <div class="Certificate_title">
-                                                    <div class="Certificate_title_content">
-                                                        专题学习
-                                                    </div>
+                                        <div class="Project">
+                                            <div class="Certificate_title">
+                                                <div class="Certificate_title_content">
+                                                    专题学习
                                                 </div>
-                                                专题学习类的内容
-                                            </div>     
+                                            </div>
+                                            <div style="text-align:center;font-size:16px;">
+                                                @foreach (var item in ViewBag.SubjectTypes as List<TypeDictionary>)
+                                                {
+                                                    <a href="/Course/Discovery/@item.ID">@item.TypeValue</a>
+                                                }
+                                            </div>
+                                        </div>
                                         <div class="Academic">
                                             <div class="Certificate_title">
                                                 <div class="Certificate_title_content">
                                                     学历学习
                                                 </div>
                                             </div>
-                                            学历学习类的内容
+                                            <div style="text-align:center;font-size:16px;">
+                                                @foreach (var item in ViewBag.EducationTypes as List<TypeDictionary>)
+                                                {
+                                                    <a href="/Course/Discovery/@item.ID">@item.TypeValue</a>
+                                                }
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
