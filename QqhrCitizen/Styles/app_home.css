@@ -2780,7 +2780,7 @@ background-position: 19px 0;
 
     .d-courserecommend .body {
         width: 899px;
-        height: 840px;
+        height: 870px;
         overflow: hidden;
     }
 
@@ -4220,7 +4220,7 @@ background-position: 19px 0;
 }
 /*----*/
 .Container1{
-	height: 360px;
+	height: 400px;
 	/*background-color: #cc0001;*/
 	overflow: hidden;
 }
@@ -4229,7 +4229,7 @@ background-position: 19px 0;
 	margin: 6px 0;
 	float: left;
 	width: 295px; 
-	height: 347px;
+	height: 365px;
 	background-color:lightgreen;
 }
 .Certificate_title{
@@ -4245,13 +4245,25 @@ background-position: 19px 0;
 }
 .Certificate_content{
     text-align:center;
-    font-size:16px
+    font-size:16px;   
+}
+.Certificate_content a{
+    height:18px;
+    display:block;
+    text-decoration:none;
+    color:grey;
+    font-weight:500;
+}
+.Certificate_content a:hover{
+    color:white;
+    background-color:#0082cd;
+    transition:all 0.5s linear;
 }
 .Project{
     display: inline-block;
 	margin: 6px 0;	
 	width: 296px; 
-	height: 347px;
+	height: 365px;
 	background-color:lightgreen;
 }
 .Academic{
@@ -4259,7 +4271,7 @@ background-position: 19px 0;
 	float: left;
 	margin: 6px;	
 	width: 296px; 
-	height: 347px;
+	height: 365px;
 	background-color:lightgreen;
 }
 
