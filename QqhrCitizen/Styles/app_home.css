@@ -2780,7 +2780,7 @@ background-position: 19px 0;
 
     .d-courserecommend .body {
         width: 899px;
-        height: 870px;
+        height: 1000px;
         overflow: hidden;
     }
 
@@ -4180,7 +4180,7 @@ background-position: 19px 0;
 	/*background-color: pink;*/
 }
 .Citizen{
-	height: 480px;
+	height: 580px;
 	/*background-color: blue;*/
 	overflow: hidden;
 }
@@ -4216,7 +4216,7 @@ background-position: 19px 0;
 }
 .Citizen_Content{
 	margin: 5px 0;
-	height: 295px;
+	height: 600px;
 	/*background-color: grey;*/
 }
 /*----*/
@@ -4235,7 +4235,8 @@ background-position: 19px 0;
 }
 .Certificate_title{
     height:40px;
-    background-color:lightgreen;
+    background-color:greenyellow;
+    box-shadow:0 4px;
 }
 .Certificate_title_content{
     text-align:center;
