@@ -4193,10 +4193,11 @@ background-position: 19px 0;
 .Citizen_nav a{
     margin-left:10px;
     display: inline-block;
-    padding:7px;
+    padding:8px;
     font-size:16px;
     text-decoration:none;
     font-family:FangSong;
+    color:darkgreen;
 }
 .Citizen_nav a:hover{
     color:white;
@@ -4251,7 +4252,7 @@ background-position: 19px 0;
     height:18px;
     display:block;
     text-decoration:none;
-    color:grey;
+    color:darkgreen;
     font-weight:500;
 }
 .Certificate_content a:hover{
