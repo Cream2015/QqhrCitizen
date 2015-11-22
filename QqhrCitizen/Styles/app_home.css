@@ -2780,7 +2780,7 @@ background-position: 19px 0;
 
     .d-courserecommend .body {
         width: 899px;
-        height: 1000px;
+        height: 1050px;
         overflow: hidden;
     }
 
@@ -4198,10 +4198,14 @@ background-position: 19px 0;
     text-decoration:none;
     font-family:FangSong;
     color:darkgreen;
+    -webkit-transition:all 0.3s ease-in-out;
+    -moz-transition:all 0.3s ease-in-out;
 }
 .Citizen_nav a:hover{
     color:white;
     background-color:#0082cd;
+    -webkit-transform:rotate(360deg) skew(0deg) scale(1.0) translate(0,0);
+    -moz-transform:rotate(360deg) skew(0deg)scale(1.0) translate(0,0);
 }
 .Citizen_nav_title{
     height:45px;
@@ -4221,7 +4225,7 @@ background-position: 19px 0;
 }
 /*----*/
 .Container1{
-	height: 400px;
+	height: 440px;
 	/*background-color: #cc0001;*/
 	overflow: hidden;
 }
@@ -4230,7 +4234,7 @@ background-position: 19px 0;
 	margin: 6px 0;
 	float: left;
 	width: 295px; 
-	height: 365px;
+	height: 435px;
 	background-color:lightgreen;
 }
 .Certificate_title{
@@ -4250,8 +4254,9 @@ background-position: 19px 0;
     font-size:16px;   
 }
 .Certificate_content a{
-    height:18px;
+    height:20px;
     display:block;
+    padding:3px;
     text-decoration:none;
     color:darkgreen;
     font-weight:500;
@@ -4265,7 +4270,7 @@ background-position: 19px 0;
     display: inline-block;
 	margin: 6px 0;	
 	width: 296px; 
-	height: 365px;
+	height: 435px;
 	background-color:lightgreen;
 }
 .Academic{
@@ -4273,7 +4278,7 @@ background-position: 19px 0;
 	float: left;
 	margin: 6px;	
 	width: 296px; 
-	height: 365px;
+	height: 435px;
 	background-color:lightgreen;
 }
 
