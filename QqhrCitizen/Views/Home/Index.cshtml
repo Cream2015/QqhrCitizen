@@ -279,9 +279,9 @@
                                             <div id="slide_courserecommend" class="slidecontainer">
                                                 @foreach (Course c in ViewBag.Courses)
                                                 {
-                                                    <div class="item">
+                                                    <div class="item" style="width:170px">
                                                         <a class="course-cover cover" href="/Course/Show/@c.ID" title="@c.Title">
-                                                            <img src="/Course/ShowPicture/@c.ID" data-echo="/Course/ShowPicture/@c.ID" onerror="this.onerror='';this.src='/Course/ShowPicture/@c.ID';">
+                                                            <img src="/Course/ShowPicture/@c.ID" data-echo="/Course/ShowPicture/@c.ID" onerror="this.onerror='';this.src='/Course/ShowPicture/@c.ID';" style="width:170px">
                                                         </a>
                                                         <div class="title trim">
                                                             <a href="/Course/Show/@c.ID" title="@c.Title">@c.Title</a>
