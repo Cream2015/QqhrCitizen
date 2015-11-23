@@ -58,7 +58,7 @@ namespace QqhrCitizen.Models
         /// </summary>
         public int Credit { get; set; }
 
-        public int Priority { get; set; }
+        public int? Priority { get; set; }
 
 
         public virtual ICollection<Lession> Lessions { set; get; }
