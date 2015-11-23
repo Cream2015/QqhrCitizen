@@ -2780,7 +2780,7 @@ background-position: 19px 0;
 
     .d-courserecommend .body {
         width: 899px;
-        height: 1050px;
+        height: 1200px;
         overflow: hidden;
     }
 
@@ -4175,26 +4175,26 @@ background-position: 19px 0;
 }
 .Course{
 	margin: 0 auto;
-	height: 1000px;
+	height: 1200px;
 	/*width: 860px;*/
 	/*background-color: pink;*/
 }
 .Citizen{
-	height: 580px;
+	height: 710px;
 	/*background-color: blue;*/
 	overflow: hidden;
 }
 .Citizen_nav{
 	/*margin: 5px;*/
-	height: 100px;
+	height: 240px;
 	background-color:lightgreen;
     overflow:hidden;
 }
 .Citizen_nav a{
-    margin-left:10px;
+    margin-left:28px;
     display: inline-block;
     padding:8px;
-    font-size:16px;
+    font-size:20px;
     text-decoration:none;
     font-family:FangSong;
     color:darkgreen;

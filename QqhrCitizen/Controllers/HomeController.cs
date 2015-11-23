@@ -42,7 +42,7 @@ namespace QqhrCitizen.Controllers
 
             ///市民学习子类
             List<TypeDictionary> CourseTypes = new List<TypeDictionary>();
-            CourseTypes = db.TypeDictionaries.Where(td => td.FatherID == 1).OrderBy(x => x.PID).ThenByDescending(x => x.Time).Take(9).ToList();
+            CourseTypes = db.TypeDictionaries.Where(td => td.FatherID == 1).OrderBy(x => x.PID).ThenByDescending(x => x.Time).Take(35).ToList();
             ViewBag.CourseTypes = CourseTypes;
             
 
