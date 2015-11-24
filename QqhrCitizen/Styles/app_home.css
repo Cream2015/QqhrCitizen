@@ -4204,8 +4204,8 @@ background-position: 19px 0;
 .Citizen_nav a:hover{
     color:white;
     background-color:#0082cd;
-    -webkit-transform:rotate(360deg) skew(0deg) scale(1.0) translate(0,0);
-    -moz-transform:rotate(360deg) skew(0deg)scale(1.0) translate(0,0);
+    -webkit-transform:rotate(0deg) skew(0deg) scale(1.5) translate(0,0);
+    -moz-transform:rotate(0deg) skew(0deg) scale(1.5) translate(0,0);
 }
 .Citizen_nav_title{
     height:45px;
