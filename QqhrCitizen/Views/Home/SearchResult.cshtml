@@ -18,8 +18,8 @@
                 </div><!-- region end: 搜索条件 --><!-- region start: 搜索结果标签 -->
                 <div id="d_searchtabs" class="d-searchtabs">
                     <input type="hidden" name="Key" id="searchKey" value="@ViewBag.Key" />
-                    <a id=" headmenu_searchall" class="tab" onclick="Search(1);">课程<span class="baget">@ViewBag.CourseCount </span></a>
                     <a id="headmenu_searchread" class="tab" onclick="Search(6);">课时<span class="baget">@ViewBag.LessionCount</span></a>
+                    <a id=" headmenu_searchall" class="tab" onclick="Search(1);">课程<span class="baget">@ViewBag.CourseCount </span></a>
                     <a id="headmenu_searchevent" class="tab" onclick="Search(2);">新闻<span class="baget">@ViewBag.NewsCount </span></a>
                     <a id="headmenu_searchread" class="tab" onclick="Search(3);">电子书<span class="baget">@ViewBag.EBookCount </span></a>
                     <a id="headmenu_searchread" class="tab" onclick="Search(4);">直播<span class="baget">@ViewBag.LiveCount </span></a>
@@ -62,5 +62,5 @@
 </div>
 <input type="hidden" id="sid" value="@ViewBag.SID" />
 <script>
-    var type = "course";
+    var type = "lession";
 </script>
