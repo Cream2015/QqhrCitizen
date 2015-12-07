@@ -692,6 +692,7 @@
     <None Include="Properties\PublishProfiles\local.pubxml" />
     <None Include="Properties\PublishProfiles\nele.pubxml" />
     <None Include="Properties\PublishProfiles\qqrtuv.pubxml" />
+    <None Include="Properties\PublishProfiles\qqrtvu-fdd.pubxml" />
     <None Include="Properties\PublishProfiles\qqrtvu.pubxml" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
     <Content Include="Scripts\compressed.tracemonkey-pldi-09.pdf" />
