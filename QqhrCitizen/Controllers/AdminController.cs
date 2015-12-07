@@ -1123,6 +1123,7 @@ namespace QqhrCitizen.Controllers
             model.Time = DateTime.Now;
             model.ContentType = file.ContentType;
             model.Browses = 0;
+            model.Route = 1;
 
             db.Lessions.Add(model);
             db.SaveChanges();
