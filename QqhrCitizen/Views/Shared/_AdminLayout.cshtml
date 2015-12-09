@@ -135,6 +135,26 @@
                             });
                         </script>
                     }
+                    @if (user.Role == Role.Admin)
+                    {
+                        <li>
+                            <a id="Live_Memu" style="cursor:pointer"><i class="icon-font">&#xe044;</i>频道管理</a>
+                            <ul class="sub-menu" id="menu_manager_ul" style="display:none">
+                                <li><a href="/Admin/MenuManager"><i class="icon-font">&#xe017;</i>频道管理</a></li>
+                                <li><a href="/Admin/AddMenu"><i class="icon-font">&#xe026;</i>增加频道</a></li>
+                            </ul>
+                        </li>
+                        <script>
+                            $("#Live_Memu").click(function () {
+                                if ($("#menu_manager_ul").css("display") == "none") {
+                                    $("#menu_manager_ul").show();
+                                }
+                                else {
+                                    $("#menu_manager_ul").hide();
+                                }
+                            });
+                        </script>
+                    }
                     @if (user.Role == Role.Admin || user.Role == Role.LinkManager)
                     {
                         <li>

@@ -104,13 +104,13 @@
                 <div id="d_menusub_c" class="d-menusub-c">
                     <!-- region start: menusub -->
                     <div class="d-headmenusub">
-                        <div class="body channel">
+                        <div class="body channel" style="width: 1000px;">
                             <div class="lab">频道</div>
-                            <div class="box">
+                            <div style="position: relative; line-height: 30px; font-size: 13px; margin-left: 50px;">
                                 @foreach (Menu m in ViewBag.Menus)
                                 {
-                                    <span class="item">
-                                        <a href="@m.Url">@m.Title</a>
+                                    <span style="margin-left: 10px;">
+                                        <a href="@m.Url"  data-href="@m.Url" target="_blank" >@m.Title</a>
                                     </span>
                                 }
                             </div>

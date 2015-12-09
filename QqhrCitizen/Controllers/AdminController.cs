@@ -2948,5 +2948,80 @@ namespace QqhrCitizen.Controllers
             users = db.Users.Where(u => u.Username.Contains(data)).ToList();
             return Json(users, JsonRequestBehavior.AllowGet);
         }
+
+        #region 频道管理
+        /// <summary>
+        /// 频道管理
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet]
+        public ActionResult MenuManager()
+        {
+            List<Menu> menus = new List<Menu>();
+            menus = db.Menus.ToList();
+            return View(menus);
+        }
+
+        [HttpGet]
+        public ActionResult AddMenu()
+        {
+            return View();
+        }
+
+        /// <summary>
+        /// 增加频道
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult AddMenu(Menu model)
+        {
+            Menu menu = new Menu();
+            menu.Title = model.Title;
+            menu.Url = model.Url;
+            db.Menus.Add(menu);
+            db.SaveChanges();
+            return RedirectToAction("MenuManager");
+        }
+
+        /// <summary>
+        /// 删除
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        [HttpPost]
+        public ActionResult MenuDelete(int id)
+        {
+            Menu menu = db.Menus.Find(id);
+            db.Menus.Remove(menu);
+            db.SaveChanges();
+            return Content("ok");
+        }
+
+        /// <summary>
+        /// 修改导航
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public ActionResult MenuEdit(int id)
+        {
+            ViewBag.Menu = db.Menus.Find(id);
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult MenuEdit(Menu model)
+        {
+            Menu menu = new Menu();
+            menu = db.Menus.Find(model.ID);
+            menu.Title = model.Title;
+            menu.Url = model.Url == null ? "Null" : model.Url;
+            db.SaveChanges();
+            return RedirectToAction("MenuManager");
+        }
+
+        #endregion
     }
 }

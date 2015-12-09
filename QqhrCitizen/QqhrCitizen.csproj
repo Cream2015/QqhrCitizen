@@ -1167,6 +1167,9 @@
     <Content Include="Views\Admin\UserProductEdit.cshtml" />
     <Content Include="Views\Admin\AddWork.cshtml" />
     <Content Include="Views\Admin\NewsPriorityEdit.cshtml" />
+    <Content Include="Views\Admin\MenuManager.cshtml" />
+    <Content Include="Views\Admin\AddMenu.cshtml" />
+    <Content Include="Views\Admin\MenuEdit.cshtml" />
     <None Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Admin\ViwepagerEdit.cshtml" />
     <Content Include="Views\User\Product.cshtml" />

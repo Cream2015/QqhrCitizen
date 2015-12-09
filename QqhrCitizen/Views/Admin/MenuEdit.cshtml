@@ -1,0 +1,33 @@
+﻿@using QqhrCitizen.Models
+@{
+    ViewBag.Title = "修改频道";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    Menu menu = ViewBag.Menu as Menu;
+}
+<div class="result-title">
+    <h1 class="head-tietle">修改频道</h1>
+</div>
+
+@using (Html.BeginForm("MenuEdit", "Admin", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    <input type="hidden" name="ID" value="@menu.ID"/>
+    <table class="detail-table">
+        <tr>
+            <td>标题</td>
+            <td>
+                <input class="textbox w-3" name="Title" value="@menu.Title" />
+            </td>
+        </tr>
+        <tr>
+            <td>Url</td>
+            <td>
+                <input class="textbox w-3" name="Url" id="Url" style="margin-right:20px" value="@menu.Url" />
+                <span id="Url_demo">(例如: http://www.baidu.com)</span>
+            </td>
+        </tr>
+    </table>
+    <p><input type="submit" value="保存" class="button blue" /></p>
+}
+
+

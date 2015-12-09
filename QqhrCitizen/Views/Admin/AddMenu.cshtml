@@ -1,0 +1,31 @@
+﻿@using QqhrCitizen.Models
+@{
+    ViewBag.Title = "增加频道";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<div class="result-title">
+    <h1 class="head-tietle">增加导航</h1>
+</div>
+
+@using (Html.BeginForm("AddMenu", "Admin", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    <table class="detail-table">
+        <tr>
+            <td>标题</td>
+            <td>
+                <input class="textbox w-3" name="Title" />
+            </td>
+        </tr>
+        <tr>
+            <td>Url</td>
+            <td>
+                <input class="textbox w-3" name="Url" id="Url" style="margin-right:20px" /><br>
+                <span id="Url_demo">(例如: http://www.baidu.com)</span>
+            </td>
+        </tr>
+    </table>
+    <p><input type="submit" value="增加" class="button blue" /></p>
+}
+
+
